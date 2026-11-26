@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (prepared 2026-11-23; not yet published)
+## 0.1.0 (2026-11-26; software record doi:10.5281/zenodo.24556080)
 
 First release, accompanying the methods preprint (Raz, Mayo and Alon, bioRxiv 2026).
 

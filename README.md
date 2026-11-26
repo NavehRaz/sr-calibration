@@ -1,12 +1,14 @@
 # sr-calibration
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24556080.svg)](https://doi.org/10.5281/zenodo.24556080)
+
 Code, frozen calibrator versions, tests and benchmark data for the methods preprint
 
 > Raz N, Mayo A, Alon U. *Calibrating the saturating-removal model of aging from survival data: exact likelihood,
 > identifiability and intervention effects.* bioRxiv (2026). DOI: TBD
 
-Release **0.1.0**. Data record: [doi:10.5281/zenodo.24555552](https://doi.org/10.5281/zenodo.24555552). Software record: this repository, archived by
-Zenodo when the GitHub release is published (its DOI is on that Zenodo record).
+Release **0.1.0**. Software record: [doi:10.5281/zenodo.24556080](https://doi.org/10.5281/zenodo.24556080) (all versions:
+[doi:10.5281/zenodo.24556079](https://doi.org/10.5281/zenodo.24556079)). Data record: [doi:10.5281/zenodo.24555552](https://doi.org/10.5281/zenodo.24555552).
 Code: BSD 3-Clause (`LICENSE`). Data record: CC BY 4.0.
 
 ## What is here
