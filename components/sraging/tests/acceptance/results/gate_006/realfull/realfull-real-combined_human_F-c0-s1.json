@@ -1,0 +1,173 @@
+{
+ "cell": "realfull",
+ "claims": [
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box (at the archive point that widened it), not by the data \u00b7 at least 0.007573; edge not found (widened 0.754 dex from the profile's 0.00133314741650345 to contain the fit's own evaluated points)",
+   "label_info": {
+    "edge": "beta<=1000",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 4.478870888354189e-05,
+   "n_components": 1,
+   "parameter": "eta",
+   "point": 0.00024620467089086194,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.007572703351004024,
+   "widening": {
+    "claims_profile": {
+     "lower": 4.478870888354189e-05,
+     "shape": "closed",
+     "upper": 0.00133314741650345
+    },
+    "lower_moved_dex": 0.0,
+    "upper_moved_dex": 0.7543727689441131
+   }
+  },
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 2.0791043280630186,
+   "n_components": 1,
+   "parameter": "beta",
+   "point": 13.3254611689281,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box (at the archive point that widened it), not by the data \u00b7 at least 11.62; edge not found (widened 0.916 dex from the profile's 1.4114732824749647 to contain the fit's own evaluated points)",
+   "label_info": {
+    "edge": "beta<=1000",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.07306582324161512,
+   "n_components": 1,
+   "parameter": "epsilon",
+   "point": 0.39774262807615773,
+   "scored": true,
+   "shape": "closed",
+   "upper": 11.620721614680834,
+   "widening": {
+    "claims_profile": {
+     "lower": 0.07306582324161512,
+     "shape": "closed",
+     "upper": 1.4114732824749647
+    },
+    "lower_moved_dex": 0.0,
+    "upper_moved_dex": 0.9155604354999225
+   }
+  },
+  {
+   "decline_reason": null,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "kappa",
+   "point": null,
+   "scored": true,
+   "shape": "none",
+   "upper": null,
+   "widening": null
+  }
+ ],
+ "cluster": "real|combined_human_F",
+ "cohort_id": "realfull-real-combined_human_F-c0-s1",
+ "combinations": {
+  "cost_s": 0.0,
+  "on": false,
+  "order": [],
+  "order_source": "off (combinations=False)"
+ },
+ "cpu_model": "AMD EPYC 9754 128-Core Processor",
+ "element_cpu_s": 3205.9463130000004,
+ "fit_cpu_s": 3055.239901301,
+ "h_node": {
+  "loglik": -396324.7268584165,
+  "run": "jax2h-v6-full-bign",
+  "value": 4.007429557088839e-11
+ },
+ "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+ "host": "cn809.wexac.weizmann.ac.il",
+ "kappa_true": 0.0338,
+ "leverage": {
+  "R": {
+   "all4": 2.9644269046763,
+   "lead_pair": 1.0256165555782883,
+   "raw": 2.9644269046763
+  },
+  "cost": {
+   "cpu_s": 135.56706124400034,
+   "share_of_fit": 0.04437198571093301
+  },
+  "delta_nats": 2.334337371018071e-06,
+  "delta_total": 0.23335903830593452,
+  "dropped": {
+   "age": 31411.5,
+   "event": 1,
+   "row": 100000,
+   "row_windowed": 99969
+  },
+  "label": "flat_valley_slide",
+  "reason": null
+ },
+ "leverage_flag": "flat_valley_slide",
+ "loglik_H_at_theta_w": -396324.45337199065,
+ "loglik_hat": -396324.4529188184,
+ "loglik_truth": -396325.4284131236,
+ "lsf_index": "1",
+ "lsf_jobid": "838825",
+ "n": 100000,
+ "negligible_labels": [],
+ "status": "ok",
+ "theta_hat": {
+  "beta": 13.3254611689281,
+  "epsilon": 0.39774262807615773,
+  "eta": 0.00024620467089086194,
+  "h_ext": 0.0,
+  "kappa": 0.0788126124710902,
+  "time_unit": "input units",
+  "xc": 1.0
+ },
+ "warnings": [],
+ "window": {
+  "S_lo_at_theta_hat": 0.9996668102031343,
+  "hi_mapped_from": null,
+  "hi_rule": null,
+  "hi_used": 40177.5,
+  "lo_rule": "on the grid",
+  "min_deaths": 4,
+  "n_censored_above_hi": 0,
+  "n_censored_at_hi_eff": 0,
+  "n_deaths_censored": 0,
+  "n_deaths_fitted": 99969,
+  "n_dropped_below_lo": 31,
+  "n_rows_given": 100000,
+  "n_rows_kept": 99969,
+  "row_map": "the kept rows (age >= lo), in the cohort's order",
+  "rule": "the tester's apply_window, then the frozen snap",
+  "window_eff": [
+   10957.5,
+   40177.5
+  ],
+  "window_given": [
+   10957.5,
+   40177.5
+  ]
+ }
+}

@@ -1,0 +1,52 @@
+\section{Versions}\label{sec:versions}
+
+\paragraph{Components.} Table~\ref{tab:versions} lists each component of the framework with its released version or
+commit, where it lives, and whether it is in the planned public release (the \code{sraging} package at its release tag
+\code{v0.1.0}, commit \code{33213ce}).
+% src: sources/CODE_MAP.md sections 1-4
+\begingroup\small
+\begin{longtable}{@{}p{3.6cm}p{4.2cm}p{4.0cm}p{2.6cm}@{}}
+\caption{Components, versions and release status.}\label{tab:versions}\\
+\toprule Component & Version / commit & Lives in & In public release \\ \midrule \endfirsthead
+\toprule Component & Version / commit & Lives in & In public release \\ \midrule \endhead
+\bottomrule \endfoot
+Likelihood engine (finite-volume Fokker--Planck) & \code{v0.1.0} (\code{src/sraging/engine/}) & \code{sraging} & yes \\
+Calibrator $J$, \code{profile_jax2} & 1.0.1; numerics snapshot \code{6884fc8}; reference release commit \code{c855d9a} (tag \code{mle_profile_jax2-1.0.1}) & \code{sraging} (port, default); calibration-tester repository (reference) & port: yes; tester: no \\
+Calibrator 1.0.0 & numerics snapshot \code{3bc5775} & \code{sraging} (frozen port); tester & port: yes; tester: no \\
+Variant $H$, \code{profile_jax2_h} & 1.0.1 (constant external hazard only) & \code{sraging}; tester & yes (constant hazard; optional window, compared with the frozen calibrator, not re-scored) \\
+Variant $W$, \code{profile_jax2_w} & 1.0.1+w1 (calibrator 1.0.1 with the window on and no hazard; \code{sraging}'s composition, not a calibrator release) & \code{sraging} & yes \\
+Variants kfix ($\kappa$ pinned; six names) & 1.0.1 & tester only (refused in \code{sraging}) & no \\
+Reference calibrator v0.3.3 & \code{profile_v033} (bit-identical port) & \code{sraging} & yes \\
+Windowed engine fit $W_0$ & project code & private project repository & no \\
+Piecewise (switch) likelihood & \code{fp_piecewise}, SRK \code{cb191f5} (plus uncommitted edits) & private SRK repository; engine segments in \code{sraging} & SRK: no; segments: yes \\
+Effect fitters, design effect, permutation tests & project code & private project repositories & no \\
+Combination claims & \code{v0.1.0} (\code{claims/}) & \code{sraging} & yes \\
+Leverage check & \code{v0.1.0} (\code{leverage.py}) & \code{sraging} & yes \\
+Cohort generator & tag \code{sraging-gen-1} (\code{bbb1ea4}) & \code{sraging} & yes \\
+Scoring and gates & tester \code{e137c85}; \code{scoring/paired.py} & tester (benchmark harness); module in \code{sraging} & yes \\
+Langevin simulator, curve-fit seed & SRK \code{cb191f5}; sampler branch of \code{sraging} (not merged) & private SRK; \code{sraging} branch & no \\
+\end{longtable}
+\endgroup
+
+\paragraph{Version bridges.} A study run on an earlier version of a component may cite this paper for the methods if
+the two versions agree. Table~\ref{tab:bridges} lists the agreements measured between the released components and their
+earlier versions, on public ITP control cohorts and on the calibrator's reference fits. A study that ran an earlier
+version reports its own bridge in the same way: it re-evaluates the log-likelihood of its stored best fits, at the
+stored parameters and with the same data and observation model, under the release, and gives the largest difference
+per individual. Such study-specific bridges belong to the studies themselves.
+\begingroup\small
+\begin{longtable}{@{}p{3.6cm}p{4.6cm}p{5.6cm}@{}}
+\caption{Measured agreements between versions and engines.}\label{tab:bridges}\\
+\toprule Bridge & Compared on & Agreement \\ \midrule \endfirsthead
+\toprule Bridge & Compared on & Agreement \\ \midrule \endhead
+\bottomrule \endfoot
+Calibrator 1.0.0 against 1.0.1 & \C{br-b4-n} ITP control cohorts (re-analysis) & $\hat\theta$ identical on \C{br-b4-theta} of \C{br-b4-n}; largest log-likelihood difference \C{br-b4-dll} nats. Interval ends moved for $\eta$ in \C{br-b4-eta-changed}, $\beta$ in \C{br-b4-beta-changed}, $\eps$ in \C{br-b4-epsilon-changed} and $\kappa$ in \C{br-b4-kappa-changed} cohorts (mostly box-limited upper ends). \\
+Engine against $J$ likelihood at the old estimates (gate V1) & \C{br-v1b3-n} ITP controls, ITP re-analysis & worst difference \C{br-v1b3-worst} nats per individual (tolerance \C{br-v1-tol}). \\
+Engine against $J$ likelihood at $J$'s estimates (gate V1) & \C{br-v1j-n} ITP controls & worst difference \C{br-v1j-worst} nats per individual. \\
+Engine segments against SRK piecewise (gate V2) & \C{br-v2-n} evaluations on a start--stop arm, ITP re-analysis & worst difference \C{br-v2-worst} nats per individual (\C{br-v2-abs} nats absolute). \\
+Port against oracle (calibrator 1.0.1) & \C{repro-oracle-pairs} complete fits & \C{repro-oracle-diffs} differences. \\
+\end{longtable}
+\endgroup
+% src: itp recal results/2026-10-18_J100/b4/b4_vs_b0.csv (DECISIONS D24, METHODS B4); itp recal results/gates/{V1_b3,V1_j100,V2}.json; sraging tests/acceptance/results/parity_003b.json
+
+

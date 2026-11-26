@@ -1,0 +1,322 @@
+{
+ "phase": "fit2-pick",
+ "written_at": "2026-10-28T23:50:07Z",
+ "repo_head": "6bafd0f9bd6aa377126e75d2b08dd090e61e8699",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 0.4399220943450928,
+ "cpu_s": 0.292458,
+ "status": "picked",
+ "candidates": [
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+   "cpu_s": 1926.6206780900002,
+   "arm": "realfull",
+   "valid": true,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s0",
+   "cpu_s": 1954.4017597670002,
+   "arm": "realfull",
+   "valid": true,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c0-s0",
+   "cpu_s": 3125.4335479250003,
+   "arm": "realfull",
+   "valid": true,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c2-s0",
+   "cpu_s": 4568.84609782,
+   "arm": "realfull",
+   "valid": true,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c0-s1",
+   "cpu_s": 7020.036431708,
+   "arm": "realfull",
+   "valid": true,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c0-s0",
+   "cpu_s": 10131.448401848998,
+   "arm": "realfull",
+   "valid": true,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_homo-c1-s0",
+   "cpu_s": 1780.774419675,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_homo-c1-s1",
+   "cpu_s": 1841.5808720569999,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_homo-c2-s1",
+   "cpu_s": 2054.400395612,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-combined_human_F-c1-s0",
+   "cpu_s": 2244.1726999830003,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_homo-c0-s0",
+   "cpu_s": 2268.6742783610002,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1900_hetro-c0-s1",
+   "cpu_s": 2281.685031257,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-combined_human_M-c0-s1",
+   "cpu_s": 2363.033650053,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_hetro-c0-s1",
+   "cpu_s": 2487.949229851,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_homo-c2-s0",
+   "cpu_s": 2499.651101484,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_M_1890_homo-c0-s1",
+   "cpu_s": 2548.056748766,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_F_1890_hetro-c0-s0",
+   "cpu_s": 2556.261580124,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Sweden_F_1910_hetro-c1-s0",
+   "cpu_s": 2621.830219372,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_F_1900_hetro-c0-s1",
+   "cpu_s": 2718.610446682,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_F_1890_hetro-c0-s1",
+   "cpu_s": 2725.290867737,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c2-s0",
+   "cpu_s": 2869.8488084670003,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-combined_human_M-c0-s0",
+   "cpu_s": 3090.98605657,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c2-s1",
+   "cpu_s": 3126.346892501,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Denmark_F_1900_hetro-c0-s0",
+   "cpu_s": 3221.175465394,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Sweden_M_1910_hetro-c0-s1",
+   "cpu_s": 3521.079340114,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c1-s0",
+   "cpu_s": 3565.5663115889997,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c1-s1",
+   "cpu_s": 3590.865248561,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-combined_human_F-c0-s0",
+   "cpu_s": 3662.9850616050003,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Sweden_M_1910_hetro-c0-s0",
+   "cpu_s": 4376.256206923999,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Sweden_F_1910_hetro-c0-s0",
+   "cpu_s": 4416.806720571,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-combined_human_F-c0-s1",
+   "cpu_s": 4602.54353321,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c1-s1",
+   "cpu_s": 5063.094316725,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "het-real-Sweden_F_1910_homo-c0-s1",
+   "cpu_s": 6065.594933348,
+   "arm": "het",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c0-s1",
+   "cpu_s": 7814.539919373,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c0-s0",
+   "cpu_s": 8084.231203206999,
+   "arm": "realfull",
+   "valid": false,
+   "basin_j": false,
+   "n_refit": 1
+  }
+ ],
+ "pick": {
+  "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+  "cpu_s": 1926.6206780900002,
+  "arm": "realfull",
+  "valid": true,
+  "basin_j": false,
+  "n_refit": 1
+ },
+ "basin_j_fired": [],
+ "deviation": "no BASIN-J record fired the basin re-fit in W1; the cheapest valid human cohort where it fired (Naveh, 2026-10-27)",
+ "price_cpu_h": 0.5351724105805556,
+ "price_basis": "the W1 record's cpu_seconds (WEXAC), Mac per-core taken as equal [I]",
+ "tester_head": "0805d36bb92dd9a1a531683bcc21824ca7dadac8"
+}

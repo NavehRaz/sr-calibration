@@ -1,0 +1,105 @@
+{
+ "phase": "v033-leverage",
+ "written_at": "2026-11-14T18:38:43Z",
+ "repo_head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "e694cbc4bf697cc5f3c6af73c929cfbc9fd17055"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "development",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 41.66533017158508,
+ "cpu_s": 0.28854799999999997,
+ "status": "capped",
+ "R-9": {
+  "positive_control": {
+   "not_run": "cell capped: spent 8.46 + the control's 2.7 CPU-h > cap 8.0",
+   "itp_age0": null,
+   "itp_refuses": false,
+   "candidates": [],
+   "control": null,
+   "option": null,
+   "control_flagged": false
+  },
+  "null": {
+   "flags": [
+    "censor-real-Denmark_M_1890_hetro-c1-s0",
+    "hazard-real-Denmark_F_1900_hetro-c1-s1",
+    "hazard-real-Sweden_F_1910_hetro-c0-s0",
+    "hazard-real-Sweden_F_1910_hetro-c1-s0",
+    "hazard-real-Sweden_F_1910_hetro-c1-s1",
+    "hazard-real-Sweden_M_1910_hetro-c0-s0"
+   ],
+   "assessed": 18,
+   "labels": {
+    "flag": 6,
+    "flat_valley_slide": 8,
+    "no_flag": 4,
+    "not_assessed": 8
+   },
+   "n": 26,
+   "max_flags": 1,
+   "min_assessed": 20,
+   "conclusive": false,
+   "passes": false
+  },
+  "option": null
+ },
+ "errors": {},
+ "missing": [],
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "n_cohorts": 26,
+ "n_rows": 26,
+ "waves": [],
+ "factor": {
+  "hazard-real-Sweden_F_1910_hetro-c1-s0": 1.03,
+  "hazard-real-Sweden_F_1910_hetro-c1-s1": 1.03,
+  "censor-real-Denmark_M_1900_hetro-c1-s0": 1.03,
+  "censor-real-Denmark_M_1890_hetro-c1-s0": 1.03,
+  "hazard-real-Denmark_F_1900_hetro-c1-s1": 1.03,
+  "hazard-real-combined_human_F-c1-s1": 1.03,
+  "pure-real-Sweden_F_1910_homo-c1-s0": 1.03,
+  "pure-real-Denmark_M_1900_hetro-c1-s1": 1.03,
+  "pure-real-Denmark_M_1890_hetro-c1-s1": 1.03,
+  "pure-real-Denmark_F_1900_hetro-c1-s0": 1.03,
+  "hazard-real-combined_human_F-c1-s0": 1.03,
+  "hazard-real-Sweden_M_1910_hetro-c0-s0": 1.03,
+  "hazard-real-Sweden_F_1910_hetro-c0-s0": 1.03,
+  "pure-k0.01-p01-c0-s0": 1.03,
+  "pure-k0.01-p01-c0-s1": 1.03,
+  "pure-k0.01-p02-c0-s0": 1.03,
+  "pure-k0.01-p02-c0-s1": 1.03,
+  "pure-k0.01-p03-c0-s0": 1.03,
+  "censor-k0.01-p01-c0-s0": 1.03,
+  "censor-k0.01-p01-c0-s1": 1.03,
+  "censor-k0.01-p01-c1-s0": 1.03,
+  "censor-k0.01-p01-c1-s1": 1.03,
+  "censor-k0.01-p02-c0-s0": 1.03,
+  "pure-k2-p09-c1-s0": 1.03,
+  "pure-k10-p09-c1-s0": 1.03,
+  "censor-real-Denmark_F_1890_hetro-c0-s1": 1.03
+ },
+ "lead_pair_ids": [],
+ "price_cpu_h": 4.334971053870055,
+ "ledger": "tests/acceptance/results/gate_006/v033-leverage_ledger.json",
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "f2b23baab000cb61e55fffad291c7212d2af2a2443f7c25cf24dbaf7f247568a"
+ },
+ "cap": {
+  "cap_cpu_h": 8.0,
+  "cpu_spent_h": 8.461510831388889,
+  "capped": true,
+  "where": "wexac"
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "phase": "cost",
+ "written_at": "2026-10-14T15:03:23Z",
+ "repo_head": "cee96aa48d7111dee6f9002195462e13640d3c28",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "f39f31acce7ad7a2c864a96ca1108c5210dd8b14"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84c40a04c6ffa86ffca163329af77cca3c81221f"
+ },
+ "wall_s": 0.08183979988098145,
+ "cpu_s": 0.01433000000000001,
+ "status": "written",
+ "library_generation": {
+  "cohorts": 2410,
+  "cpu_s": 11393.198229,
+  "wall_s": 1229.6511161327362,
+  "cpu_s_per_cohort": 4.727468144813278,
+  "workers": 10,
+  "host_cpu": {
+   "machine": "arm64",
+   "processor": "arm",
+   "brand": "Apple M5 Pro",
+   "node": "MC06268844"
+  },
+  "source": "determinism_003d.json"
+ },
+ "with_g_tests": {
+  "cpu_s": 12842.776019,
+  "wall_s": 1353.8901629447937,
+  "source": "gtest_003d.json"
+ },
+ "srk_v1": {
+  "cohorts": 1990,
+  "build_seconds_wall": 835.9,
+  "cores": "not recorded",
+  "generator": {
+   "package": "SRK",
+   "resolved_path": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/SRtools_kappa",
+   "revision": "cb191f5",
+   "dirty": true
+  }
+ },
+ "note": "generation only: each process solves a point's curves once (the per-process curve cache); heterogeneous points need 161 node curves at N 6000"
+}

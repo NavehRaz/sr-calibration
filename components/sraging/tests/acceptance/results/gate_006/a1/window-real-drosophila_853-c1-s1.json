@@ -1,0 +1,153 @@
+{
+ "cell": "a1",
+ "claims": [
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "beta<=1000",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.010130463394446402,
+   "n_components": 1,
+   "parameter": "eta",
+   "point": 0.1034062843464879,
+   "scored": true,
+   "shape": "closed",
+   "upper": 13.164043341781918,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 0.11827791773599174,
+   "n_components": 1,
+   "parameter": "beta",
+   "point": 3.8681658683321243,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 0.03215098749180202,
+   "n_components": 1,
+   "parameter": "epsilon",
+   "point": 0.48640505531276507,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "kappa",
+   "point": null,
+   "scored": true,
+   "shape": "none",
+   "upper": null,
+   "widening": null
+  }
+ ],
+ "cluster": "real|drosophila_853",
+ "cohort_id": "window-real-drosophila_853-c1-s1",
+ "combinations": {
+  "cost_s": 0.0,
+  "on": false,
+  "order": [],
+  "order_source": "off (combinations=False)"
+ },
+ "cpu_model": "AMD EPYC 9754 128-Core Processor",
+ "element_cpu_s": 974.37065,
+ "fit_cpu_s": 827.733145875,
+ "h_node": {
+  "loglik": -933.4450390145014,
+  "run": "jax2h-v6-full-bign",
+  "value": 6.969272237196758e-08
+ },
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn826.wexac.weizmann.ac.il",
+ "kappa_true": 0.489,
+ "leverage": {
+  "R": {
+   "all4": 1.653251326252824,
+   "lead_pair": 1.1593092807231096,
+   "raw": 1.653251326252824
+  },
+  "cost": {
+   "cpu_s": 118.73811177300001,
+   "share_of_fit": 0.14344974870793833
+  },
+  "delta_nats": 4.174697125697566e-05,
+  "delta_total": 0.01598908999142168,
+  "dropped": {
+   "age": 2.0,
+   "event": 1,
+   "row": 17,
+   "row_windowed": 1
+  },
+  "label": "flat_valley_slide",
+  "reason": null
+ },
+ "leverage_flag": "flat_valley_slide",
+ "loglik_H_at_theta_w": -933.4450244291265,
+ "loglik_hat": -933.4450251484831,
+ "loglik_truth": -933.6767422188065,
+ "lsf_index": "86",
+ "lsf_jobid": "676860",
+ "n": 400,
+ "negligible_labels": [],
+ "status": "ok",
+ "theta_hat": {
+  "beta": 3.8681658683321243,
+  "epsilon": 0.48640505531276507,
+  "eta": 0.1034062843464879,
+  "h_ext": 0.0,
+  "kappa": 0.0010000000000000002,
+  "time_unit": "input units",
+  "xc": 1.0
+ },
+ "warnings": [
+  "CENSOR_TIE"
+ ],
+ "window": {
+  "S_lo_at_theta_hat": 0.9764369301762686,
+  "hi_mapped_from": null,
+  "hi_rule": null,
+  "hi_used": 24.0,
+  "lo_rule": "on the grid",
+  "min_deaths": 4,
+  "n_censored_above_hi": 19,
+  "n_censored_at_hi_eff": 39,
+  "n_deaths_censored": 20,
+  "n_deaths_fitted": 345,
+  "n_dropped_below_lo": 16,
+  "n_rows_given": 400,
+  "n_rows_kept": 384,
+  "row_map": "the kept rows (age >= lo), in the cohort's order",
+  "rule": "the tester's apply_window, then the frozen snap",
+  "window_eff": [
+   2.0,
+   24.0
+  ],
+  "window_given": [
+   2.0,
+   24.0
+  ]
+ }
+}

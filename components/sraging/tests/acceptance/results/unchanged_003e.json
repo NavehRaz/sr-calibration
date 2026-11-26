@@ -1,0 +1,110 @@
+{
+ "phase": "unchanged",
+ "written_at": "2026-10-17T21:39:50Z",
+ "repo_head": "5a6c447409061f56f61d658278d98a5f2fd33d49",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 219.55580615997314,
+ "cpu_s": 0.06441100000000005,
+ "status": "PASS",
+ "groups": {
+  "unit": {
+   "tests": 725,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 725,
+   "returncode": 0,
+   "summary": "725 passed, 12 deselected in 113.06s (0:01:53)",
+   "wall_s": 114.6,
+   "paths": [
+    "tests/unit"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "parity": {
+   "tests": 493,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 493,
+   "returncode": 0,
+   "summary": "493 passed, 1 deselected in 102.20s (0:01:42)",
+   "wall_s": 104.3,
+   "paths": [
+    "tests/parity"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "results_001_002_003": {
+   "tests": 27,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 2,
+   "passed": 25,
+   "returncode": 1,
+   "summary": "25 passed, 1 skipped, 1 xfailed in 0.31s",
+   "wall_s": 0.5,
+   "paths": [
+    "tests/acceptance/test_results.py",
+    "tests/acceptance/test_results_002.py",
+    "tests/acceptance/test_results_003.py"
+   ],
+   "skipped_list": [
+    [
+     "tests.acceptance.test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch",
+     "NOT APPLICABLE: the fit path changed since spec 002's claims re-run (['src/sraging/adapters/observation.py', 'src/sraging/adapters/srbench.py', 'src/sraging/labels.py', 'src/sraging/registry.py', 'src/sraging/result.py']); spec 003's re-run (results/claims-001_003.json, test_results_003.py) is the c"
+    ],
+    [
+     "tests.acceptance.test_results_003::test_coverage_no_combination_loses_on_a_gated_arm",
+     "SC-005 fails as recorded: [['profile_jax2|censor', 'eta_over_eps', 'vs_eta'], ['profile_jax2|censor', 'eta_over_eps', 'vs_epsilon']] (Naveh 2026-10-10, [coverage_result])"
+    ]
+   ],
+   "failed_list": []
+  }
+ },
+ "skips_unlisted": [],
+ "superseded": {
+  "test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch": "spec 002's claims re-run; once spec 003 changed the fit path it is NOT APPLICABLE for good, and spec 003's re-run (results/claims-001_003.json, test_results_003.py) is the check, as its own comment rules"
+ },
+ "recorded_skips": {
+  "test_results_003::test_coverage_no_combination_loses_on_a_gated_arm": "xfail: spec 003 SC-005 fails as recorded (eta/eps on censored cohorts; Naveh 2026-10-10, [coverage_result])"
+ },
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

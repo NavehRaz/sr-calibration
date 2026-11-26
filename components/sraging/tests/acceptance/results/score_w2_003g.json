@@ -1,0 +1,502 @@
+{
+ "phase": "score-w2",
+ "written_at": "2026-10-28T23:50:20Z",
+ "repo_head": "48e09c2ec37a11d8b1836853440159239081af39",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 0.9705510139465332,
+ "cpu_s": 0.70484,
+ "status": "reported",
+ "strata": {
+  "BASIN-H": {
+   "n": 13,
+   "n_witnessed": 13,
+   "w_max": -0.6250465498887934,
+   "n_over_1_92": 0,
+   "verdict": {
+    "stratum": "BASIN-H",
+    "rule": "PR-1",
+    "verdict": "PASS",
+    "arm": null,
+    "quantity": null,
+    "n_valid": 13,
+    "n_all": 13,
+    "statistic": {
+     "n": 13,
+     "n_witnessed": 13,
+     "k": 0,
+     "upper95": 0.20581666518655062,
+     "w_thr": 1.92,
+     "failing": [],
+     "missing": [],
+     "w_max": -0.6250465498887934
+    },
+    "interval": null,
+    "reasons": []
+   },
+   "rows": [
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c0-s0",
+     "W": -0.7387588824840581,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c0-s1",
+     "W": -2.2480539522002356,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s1",
+     "W": -6.168158455542668,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c0-s0",
+     "W": -0.7828787891776301,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c0-s1",
+     "W": -2.748077846772503,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s0",
+     "W": -4.148250433228864,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s1",
+     "W": -2.9734707144737063,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_M_1910_hetro-c0-s0",
+     "W": -0.8271074152417704,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_M_1910_hetro-c0-s1",
+     "W": -1.8809338415969787,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c0-s0",
+     "W": -0.6250465498887934,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c0-s1",
+     "W": -0.8914037016220391,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c1-s0",
+     "W": -1.435598062176723,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c1-s1",
+     "W": -2.025840662302534,
+     "reason": null
+    }
+   ]
+  },
+  "HZ-4": {
+   "n": 69,
+   "n_witnessed": 69,
+   "w_max": -0.10347888485739531,
+   "n_over_1_92": 0,
+   "verdict": {
+    "stratum": "HZ-4",
+    "rule": "PR-1",
+    "verdict": "PASS",
+    "arm": null,
+    "quantity": null,
+    "n_valid": 36,
+    "n_all": 69,
+    "statistic": {
+     "n": 36,
+     "n_witnessed": 36,
+     "k": 0,
+     "upper95": 0.07984650951989439,
+     "w_thr": 1.92,
+     "failing": [],
+     "missing": [],
+     "w_max": -0.36643059199835987
+    },
+    "interval": null,
+    "reasons": []
+   },
+   "rows": [
+    {
+     "cohort_id": "hazard-k0.01-p01-c1-s0",
+     "W": -1.2237200850213412,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.01-p01-c1-s1",
+     "W": -0.12516960467473837,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.01-p02-c1-s0",
+     "W": -4.117295675925561,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.01-p02-c1-s1",
+     "W": -2.1592834975162987,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.01-p03-c1-s0",
+     "W": -0.7678787734839716,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.01-p03-c1-s1",
+     "W": -2.8644766832439927,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.0316-p01-c1-s0",
+     "W": -1.4048765443149023,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.0316-p01-c1-s1",
+     "W": -0.5593594703896088,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.0316-p02-c1-s0",
+     "W": -3.220659766760946,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.0316-p02-c1-s1",
+     "W": -0.8549151845072629,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.0316-p03-c1-s0",
+     "W": -2.6049463101444417,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.0316-p03-c1-s1",
+     "W": -0.6179605925863143,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.1-p01-c1-s0",
+     "W": -2.3034798155204044,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.1-p01-c1-s1",
+     "W": -1.5149892369881854,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.1-p02-c1-s0",
+     "W": -2.13528186386975,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.1-p02-c1-s1",
+     "W": -0.6722006332493038,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.1-p03-c1-s0",
+     "W": -0.9380776134203188,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.1-p03-c1-s1",
+     "W": -2.89602184452815,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.316-p01-c0-s0",
+     "W": -2.029641026997524,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.316-p01-c0-s1",
+     "W": -0.10347888485739531,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.316-p01-c1-s1",
+     "W": -0.9287395493520307,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.316-p02-c1-s0",
+     "W": -0.4210532621364109,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k0.316-p02-c1-s1",
+     "W": -1.0690163223043783,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k1-p01-c0-s0",
+     "W": -0.497031130547839,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k1-p01-c0-s1",
+     "W": -1.1243084773195733,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k1-p01-c1-s0",
+     "W": -1.9407802033947519,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k1-p01-c1-s1",
+     "W": -1.1025413062998268,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k10-p01-c0-s0",
+     "W": -1.6527913310292206,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k10-p01-c0-s1",
+     "W": -2.5632318233438127,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k10-p01-c1-s0",
+     "W": -0.7231748090243855,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k10-p01-c1-s1",
+     "W": -0.3931136528285606,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k2-p01-c0-s0",
+     "W": -1.8290736042781646,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k2-p01-c0-s1",
+     "W": -0.19788598010563874,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k2-p01-c1-s0",
+     "W": -0.7610114458070711,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-k2-p01-c1-s1",
+     "W": -3.3602104158708244,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1890_hetro-c1-s0",
+     "W": -0.36643059199835987,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1890_hetro-c1-s1",
+     "W": -3.5530759458803196,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1890_hetro-c2-s0",
+     "W": -3.4898293302206977,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1890_hetro-c2-s1",
+     "W": -3.662833593763935,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s0",
+     "W": -0.7243359810236143,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s1",
+     "W": -6.168158455542668,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c2-s0",
+     "W": -0.8311466981573647,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_F_1900_hetro-c2-s1",
+     "W": -1.637070768630156,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1890_hetro-c1-s0",
+     "W": -2.319308672423268,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1890_hetro-c1-s1",
+     "W": -2.7806825497715772,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1890_hetro-c2-s0",
+     "W": -2.274470604804902,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1890_hetro-c2-s1",
+     "W": -0.84764334477023,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1900_hetro-c1-s0",
+     "W": -0.5608376142332576,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1900_hetro-c1-s1",
+     "W": -0.41916320520977024,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1900_hetro-c2-s0",
+     "W": -2.215457737283937,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Denmark_M_1900_hetro-c2-s1",
+     "W": -2.4453835478198016,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s0",
+     "W": -4.148250433228864,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s1",
+     "W": -2.9734707144737063,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c2-s0",
+     "W": -3.706804116642161,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_hetro-c2-s1",
+     "W": -1.289884508087178,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_homo-c1-s0",
+     "W": -1.0315923517456522,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_homo-c1-s1",
+     "W": -4.4071372312800845,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_homo-c2-s0",
+     "W": -0.93043161532212,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_F_1910_homo-c2-s1",
+     "W": -3.790668182870498,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_M_1910_hetro-c1-s0",
+     "W": -2.894990630437603,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_M_1910_hetro-c1-s1",
+     "W": -3.0480151740798256,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_M_1910_hetro-c2-s0",
+     "W": -1.7802349218093407,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-Sweden_M_1910_hetro-c2-s1",
+     "W": -0.44572396314270996,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c1-s0",
+     "W": -1.435598062176723,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c1-s1",
+     "W": -2.025840662302534,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c2-s0",
+     "W": -1.1652051930314629,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_F-c2-s1",
+     "W": -1.6712006453235517,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_M-c2-s0",
+     "W": -2.460963779969383,
+     "reason": null
+    },
+    {
+     "cohort_id": "hazard-real-combined_human_M-c2-s1",
+     "W": -1.4140831483891816,
+     "reason": null
+    }
+   ]
+  },
+  "HZ-1": {
+   "status": "no _h record in any window"
+  }
+ },
+ "run": "jax2h-v6-full-bign",
+ "tester_head": "f5dcc742845b23891535b6ccc197c36a93088d26"
+}

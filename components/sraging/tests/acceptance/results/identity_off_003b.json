@@ -1,0 +1,469 @@
+{
+ "phase": "identity-off",
+ "written_at": "2026-10-20T17:54:34Z",
+ "repo_head": "11a83650c77408c4acc39ba00ce73163bdfb724b",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003b.toml": "06f889509eb0549c8a444c7d78457fc20436147a"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": "MC06268844",
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "3f9b2daf4b32d35c11de67eb572a845c491ad978"
+ },
+ "wall_s": 5180.572541236877,
+ "cpu_s": 0.136727,
+ "status": "pass",
+ "stopped": false,
+ "lines": 11,
+ "equal": 11,
+ "rows": [
+  {
+   "cohort_id": "hazard-k0.1-p00-c1-s1",
+   "name": "profile_jax2",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 186.10244,
+    "1.0.1_off": 194.369136
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s1",
+   "name": "profile_jax2",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 206.044985,
+    "1.0.1_off": 211.89694000000003
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "pure-k2-p03-c1-s0",
+   "name": "profile_jax2",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 207.657569,
+    "1.0.1_off": 213.096204
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s1",
+   "name": "profile_jax2",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 208.93922300000003,
+    "1.0.1_off": 213.91776399999998
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "name": "profile_jax2",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 239.68429,
+    "1.0.1_off": 236.798239
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "name": "profile_jax2_h",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 406.543397,
+    "1.0.1_off": 355.64248899999996
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": true
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s1",
+   "name": "profile_jax2",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 406.281693,
+    "1.0.1_off": 359.85470100000003
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s1",
+   "name": "profile_jax2_h",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 469.71484899999996,
+    "1.0.1_off": 399.77350500000006
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": true
+   }
+  },
+  {
+   "cohort_id": "window-k0.0316-p04-c1-s1",
+   "name": "profile_jax2_h",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 481.67918999999995,
+    "1.0.1_off": 409.19720299999994
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": true
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s1",
+   "name": "profile_jax2_h",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 627.366314,
+    "1.0.1_off": 503.435932
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": true
+   }
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c1-s0",
+   "name": "profile_jax2_h",
+   "level": "identity-off",
+   "equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "cpu_s": {
+    "1.0.0": 2542.531672,
+    "1.0.1_off": 2510.053695
+   },
+   "keywords": [
+    "dt_rule",
+    "early_all",
+    "exact_from_F",
+    "floor_early",
+    "hazard",
+    "n_rule",
+    "relabel",
+    "self_consistent",
+    "shadow",
+    "window"
+   ],
+   "mechanisms_1_0_1_off": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": true,
+    "dt_in_scope": false,
+    "hazard": true
+   }
+  }
+ ],
+ "errors": [],
+ "differences": [],
+ "g1_sha256": "51695d33a07913e5b8479d88eb9d10721bb9b193eeec01cc7b2b022e52f8769c",
+ "cpu": "Apple M5 Pro",
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.1",
+  "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": "v2",
+  "manifest_sha256": null,
+  "panel_commit": "06f889509eb0549c8a444c7d78457fc20436147a"
+ }
+}

@@ -1,0 +1,38 @@
+% Fig. 1: the pipeline (TikZ; no data).
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw, rounded corners=2pt, align=left, inner sep=4pt, text width=#1},
+  box/.default=4.4cm,
+  hd/.style={font=\small\bfseries},
+  ar/.style={-{Stealth[length=2mm]}, thick},
+  node distance=5mm and 5mm]
+\node[box] (data) {\textbf{Data}\\[1pt]
+  ages at death or censoring\\ recording resolution $\delta$\\ optional: entry age, window};
+\node[box, right=of data] (lik) {\textbf{Exact likelihood} (\S\ref{sec:likelihood})\\[1pt]
+  Fokker--Planck equation for $X$\\ absorbed flux gives $S(t)$, $f(t)$\\ $\ell(\theta)$ for recorded, censored\\
+  and truncated data};
+\node[box, right=of lik] (cal) {\textbf{Calibrator} (\S\ref{sec:estimation})\\[1pt]
+  seed, multistart L-BFGS-B\\ basin re-fit, profile likelihood\\ variants J, H, W, kfix, W0};
+\node[box, below=of cal] (claims) {\textbf{Claims} (\S\ref{sec:identifiability})\\[1pt]
+  a value, a bound or none for\\ $\eta$, $\eps$, $\sqrt\eta/\eps$, $\beta\rbar(\kappa)/\eta$\\ $\kappa$ is never reported};
+\node[box, below=of lik] (eff) {\textbf{Group comparison} (\S\ref{sec:effects})\\[1pt]
+  $M_0$, singles, full model\\ naming rule (seven conditions)\\ gives a parameter, a confusion\\ set or a block};
+\node[box, below=of data] (val) {\textbf{Validation} (\S\ref{sec:validation})\\[1pt]
+  numerical references\\ \C{v6-n-cohorts} synthetic cohorts\\ recovery simulations};
+\draw[ar] (data) -- (lik);
+\draw[ar] (lik) -- (cal);
+\draw[ar] (cal) -- (claims);
+\draw[ar] (lik) -- (eff);
+\draw[ar] (claims) -- (eff);
+\draw[ar, dashed] (val) -- (eff);
+\draw[ar, dashed] (val.north east) -- (lik.south west);
+\end{tikzpicture}
+\caption{\textbf{From survival data to claims about SR parameters.} A cohort's ages at death (with censoring, recording
+resolution and an optional entry age or fit window) enter an exact likelihood computed from the Fokker--Planck equation
+of the model. The calibrator maximises it and reports, for each identified quantity, a value, a bound or no claim. Two
+groups are compared by fitting effect models on the same likelihood. Each part is validated against numerical
+references, a library of synthetic cohorts with known parameters, and recovery simulations (dashed).}
+\label{fig:pipeline}
+\end{figure}

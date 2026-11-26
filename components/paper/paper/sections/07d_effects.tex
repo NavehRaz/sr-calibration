@@ -1,0 +1,85 @@
+\subsection{Group comparisons}\label{sec:val-effects}
+
+\paragraph{The effect likelihood.} The engine with age segments (Section~\ref{sec:likelihood}) reproduces the
+calibrator's own likelihood on 26 control cohorts of the NIA Interventions Testing Program to
+\C{eff-seg-vs-j-per-ind} nats per individual, and an independent piecewise implementation to
+\C{eff-seg-vs-srk-per-ind} nats per individual, for changes of $\eta$, $\beta$, $\eps$, $\kappa$, $A$, $\xc$ and $h$
+in arms that include a treatment started and stopped in mid-life. Its exact gradients agree with finite differences to
+a relative \C{eff-grad-rel}.
+% src: aging:code_5/itp_analysis/recal/results/gates/V1_j100.json, V2.json, V3.json
+A threshold change that starts at birth can be computed either with a threshold segment or by the rescaling of
+Section~\ref{sec:model}; the two agree to \C{eff-gx-birth-max} nats per individual. For a change that starts at
+$t_0>0$ they differ by \C{eff-gx-late-min}--\C{eff-gx-late-max} nats per individual, because the rescaling also
+rescales the damage accumulated before $t_0$. Late threshold changes are therefore always computed with the segment.
+% src: aging:code_4/Mire_fly_interventions/recal_2026-10/results/p3/gates/gates.json (G-X)
+
+\paragraph{Recovery with independent individuals.} A pre-registered recovery study simulated arms and controls at the
+designs of the Interventions Testing Program, with independent animals, from a null and from single-parameter and
+two-parameter truths, and applied the procedure of Section~\ref{sec:effects} with the reference fixed at its fit.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item Nominal 95\,\% profile intervals for the multiplier covered the truth in a fraction \C{itp-coverage} of
+    \C{itp-coverage-n} intervals.
+  \item At the asymptotic Šidák threshold, the null was rejected in a fraction \C{itp-fpr-8arm}--\C{itp-fpr-1arm} of
+    replicates, depending on the number of arms pooled, i.e. at or below the nominal 0.05.
+  \item A single-parameter truth was identified correctly in a fraction \C{itp-ident-single-1} of replicates with one
+    arm, rising to \C{itp-ident-single-2}, \C{itp-ident-single-4} and \C{itp-ident-single-8} with two, four and eight
+    arms that share the change. Two-parameter truths were identified in only \C{itp-ident-pair-1}--\C{itp-ident-pair-8}
+    when each arm had its own effect size.
+  \item Naming the group instead of the parameter (production $\{\eta,A\}$, removal $\{\beta,\kappa\}$, noise and
+    threshold $\{\eps,\xc\}$; Section~\ref{sec:effects}) raised the share of correct answers for single truths from
+    \C{grp-weak1-exact} to \C{grp-weak1-group} with one arm at a weak effect (expected $2\Delta\ell=4$), from
+    \C{grp-weak8-exact} to \C{grp-weak8-group} with eight arms, and from \C{grp-obs1-exact} to \C{grp-obs1-group} with
+    one arm at an effect that moves the median lifespan by 15\,\%. Most of the gain comes from $\eta$ confused with $A$
+    and $\kappa$ with $\beta$. Removal is the weakest group: with eight arms at the weak size its right-group rate was
+    \C{grp-removal-weak8-lo}--\C{grp-removal-weak8-hi}, against at least \C{grp-other-weak8-lo} for the other
+    parameters.
+\end{itemize}
+% src: aging:code_5/itp_analysis/recal/results/2026-10-18_J100/pool_pairs/ (pool_groups_singles.csv; Stage 5 replicates)
+
+\paragraph{Pooling arms to identify pairs.} A second simulation study asked how many pooled arms, and of what kind, make
+a two-parameter change identifiable. Two ITP arms served as bases, each with its own control, which was refitted in
+every replicate. Five pair truths were simulated, and eight arms were pooled
+in three designs (each pair member moving the median by about 7.5\,\%): arms spread over four dosing ages with one shared effect size, the same with a separate size per arm,
+and eight repeats at one dosing age with separate sizes (\C{pool-reps} replicates per cell, exact fits).
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item Spreading the arms over dosing ages with one shared size was the best design. It named $A+\eps$ in
+    \C{pool-aeps-lo}--\C{pool-aeps-hi} of replicates (at most \C{pool-aeps-repeats-hi} with repeats), $A+\xc$ in
+    \C{pool-axc-lo}--\C{pool-axc-hi}, and $\eta+A$ in \C{pool-etaa-lo}--\C{pool-etaa-hi}.
+  \item Production against removal did not separate: $\eta+\beta$ was named in at most \C{pool-etabeta-max} of
+    replicates under any design, about the rate of a random choice among the candidate pairs.
+  \item At the level of groups, the best design named the set of changed groups in \C{grp-pairs-best-lo}--\C{grp-pairs-best-hi}
+    of replicates, and at least one changed group in at least \C{grp-pairs-onegroup-min} for every truth.
+\end{itemize}
+% src: aging:code_5/itp_analysis/recal/results/2026-10-18_J100/pool_pairs/ (README.md, pool_sim_identification.csv, pool_groups_pairs.csv)
+A pair can thus be named from pooled data, but only from a design built for it, and production against removal could
+not be separated at eight arms.
+% src: aging:code_5/itp_analysis/recal/docs/PREREG_RECOVERY.md and recal/results/2026-10-18_J100/recovery_verdict/
+A single arm of a typical mouse lifespan study can therefore usually tell \emph{that} survival changed, but often not
+\emph{which} parameter changed. This is why condition 6 of the naming rule asks for recall and precision at the
+study's own design.
+
+\paragraph{The analytic shortcut.} The expected log-likelihood gap $D_{pq}$ (Section~\ref{sec:effects}) was checked
+against recovery simulations on \C{eff-ia-cells} design cells, totalling \C{interv-replicates} simulated replicates.
+$D$ and the simulated confusion rate were correlated as expected (Spearman $\rho=\C{eff-ia-rho}$). In all
+\C{eff-ia-cells-d9} cells with $D\ge9$ the confusion rate was at most \C{eff-ia-confusion-max}
+(\C{eff-ia-violations} violations).
+% src: aging:interventions_data/calib/ident/ia_validation/summary.json
+
+\paragraph{Clustered individuals.} One pre-registered simulation study used clustered individuals: a fly
+dietary-restriction design with flies housed in cages and cage effects at the measured between-cage variance.
+% src: aging:code_4/Mire_fly_interventions/recal_2026-10/docs/PREREG_P3.md, results/p3/P3_SUMMARY.md
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item Dividing the likelihood-ratio statistic by a Pearson dispersion $\phi$ and comparing it with $\chi^2$ rejected
+    the null in \C{fly-null-hits} of \C{fly-null-n} null replicates, a fraction \C{fly-null-rate} (Wilson 95\,\%
+    interval \C{fly-null-wilson-lo}--\C{fly-null-wilson-hi}), against a nominal 0.05.
+  \item The spread of the estimated multipliers across replicates was larger than the $\phi$-widened intervals imply:
+    those nominal 95\,\% intervals would cover the truth in only about \C{fly-cov-441}--\C{fly-cov-707} of
+    replicates. The bias of the estimates was at most \C{fly-bias} in $\log_{10}$.
+  \item With the null threshold calibrated by simulation instead, the one truth simulated in full (a production
+    change) was recovered with recall \C{fly-recall}; precision could not be assessed, since no other truth was
+    simulated at that design.
+\end{itemize}
+Design-effect scaling is therefore not a substitute for a calibrated threshold when individuals share cages, vials or plates, which
+is the basis of the recommendation in Section~\ref{sec:effects}.
+
+

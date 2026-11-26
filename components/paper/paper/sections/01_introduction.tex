@@ -1,0 +1,55 @@
+\section{Introduction}\label{sec:intro}
+
+Mortality rises with age in a similar way across species, while lifespans differ by orders of magnitude
+\citep{jones2014diversity,raz2026damage}. Stochastic models of damage and death connect these patterns to
+mechanism \citep{strehler1960general,sacher1962stochastic,ledberg2020exponential,fedichev2025minimal}. The
+saturating-removal (SR) model is one such model: damage is produced at a rate that rises with age, removed by a
+process that saturates, and perturbed by noise, and death occurs when damage crosses a threshold
+\citep{karin2019senescent}. It was introduced to explain senescent-cell dynamics and the Gompertz law in mice
+\citep{karin2019senescent}. Since then it has been used to explain the incidence of age-related diseases
+\citep{katzir2021senescent}, parabiosis experiments \citep{karin2021parabiosis}, the timing of death in
+\emph{E.~coli} \citep{yang2023damage}, interventions that compress morbidity
+\citep{yang2025compression}, the heritability of human lifespan \citep{shenhar2026heritability} and aging regimes
+across species \citep{raz2026damage}.
+% Yang et al. 2019 (Sci Adv, E. coli temporal scaling) is not cited (Naveh, 2026-11-23).
+
+These studies set the model's parameters in different ways. Only two of them had measurements of the damage itself
+\citep{karin2019senescent,yang2023damage}; the others relied on survival, incidence or mortality curves, which are
+available for many species, strains and interventions. The methods that used only such curves had not been
+standardized or tested thoroughly in the parameter regimes that span a wide range of organisms, or they were very
+costly to run.
+
+The cross-species study fitted the model to the survival curves of many organisms with a simulation-based
+likelihood: Langevin simulation of many individuals, a kernel density estimate of the death-time distribution, and Markov-chain Monte Carlo
+\citep{raz2026damage,foremanmackey2013emcee}.
+The main drawback of that approach is its cost, not its answer. In an unpublished comparison on the calibrated
+organisms of the cross-species study, an earlier and less accurate deterministic method, a least-squares fit of the
+Fokker--Planck survival curve to the Kaplan--Meier curve, already reproduced the MCMC results: the identifiable parameter combinations agreed to a median of \C{fpmcmc-combo-dex} decades, and the
+external hazard fell inside the MCMC's 95\,\% interval for \C{fpmcmc-exth-in} of \C{fpmcmc-exth-n} organisms. The fit took
+about \C{fpmcmc-fp-s}\,s per survival curve on a laptop, against about \C{fpmcmc-mcmc-h}\,h on 16 cores for the MCMC.
+The exact likelihood used here also ranks parameter values like the simulation-based objective (Spearman correlation
+\C{simlik-spearman} over \C{simlik-finite-sim} of \C{simlik-cloud-n} points of a synthetic cohort; the objective was
+minus infinity at the others), at \C{simlik-ms-fp}\,ms per evaluation against \C{simlik-ms-sim}\,ms. At the cost of the MCMC, a thorough test of the fitting method, on thousands of synthetic cohorts with known
+parameters, was not feasible. The simulation-based likelihood is also noisy, and censoring, left truncation, interval-recorded deaths and an external
+hazard have to be added by hand. Finally, it leaves two practical questions open: which parameters a survival curve
+actually determines, and how far the reported intervals can be trusted.
+
+Here we describe the methods now used for SR fits, and the evidence for them:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item an exact likelihood, obtained by solving the Fokker--Planck equation of the model for the first-passage
+    distribution, with an observation model for interval-recorded deaths, censoring, left truncation, a fit window,
+    an external hazard and parameter changes at a given age (Section~\ref{sec:likelihood});
+  \item a maximum-likelihood calibrator with profile-likelihood intervals and explicit claim shapes (a value, a bound
+    or no claim), in four variants (Section~\ref{sec:estimation});
+  \item what survival data identify and what they do not, and the reporting rules that follow
+    (Section~\ref{sec:identifiability});
+  \item a procedure for asking which parameter differs between two groups, including individuals housed together in cages, vials or plates
+    (Section~\ref{sec:effects});
+  \item validation: numerical accuracy against high-precision references and simulation; a benchmark of the
+    calibrator on \C{v6-n-cohorts} synthetic cohorts with known parameters; and the available evidence on the error
+    rates of the group comparisons (Section~\ref{sec:validation});
+  \item open-source software with pinned versions, so that a study can cite the exact method it used
+    (Section~\ref{sec:software}).
+\end{enumerate}
+% The two citing studies (mouse, mosquito) are added as examples of use in an updated version once they are public (Naveh 2026-11-22).
+

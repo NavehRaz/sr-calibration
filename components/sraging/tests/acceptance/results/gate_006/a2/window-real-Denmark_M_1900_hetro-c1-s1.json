@@ -1,0 +1,220 @@
+{
+ "cell": "a2",
+ "claims": [
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 4.841715275135058e-06,
+   "n_components": 1,
+   "parameter": "eta",
+   "point": 2.241378056293163e-05,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 0.21153347687860094,
+   "n_components": 1,
+   "parameter": "beta",
+   "point": 1.144614939430043,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box (at the archive point that widened it), not by the data \u00b7 at least 18.01; edge not found (widened 0.92 dex from the profile's 2.16401481407541 to contain the fit's own evaluated points)",
+   "label_info": {
+    "edge": "beta<=1000",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.011935191375014406,
+   "n_components": 1,
+   "parameter": "epsilon",
+   "point": 0.057749274013051057,
+   "scored": true,
+   "shape": "closed",
+   "upper": 18.012906185594275,
+   "widening": {
+    "claims_profile": {
+     "lower": 0.011935191375014406,
+     "shape": "closed",
+     "upper": 2.16401481407541
+    },
+    "lower_moved_dex": 0.0,
+    "upper_moved_dex": 0.9203235576716678
+   }
+  },
+  {
+   "decline_reason": null,
+   "label": "only an upper bound is supported by the data; the lower side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "beta<=1000",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "kappa",
+   "point": 0.009394930723415032,
+   "scored": true,
+   "shape": "upper_bound",
+   "upper": 81.99943495016136,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 0.00036154776128314935,
+   "n_components": 1,
+   "parameter": "eta_over_eps",
+   "point": 0.00038812229150908843,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.00044432350438592815,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "beta<=1000",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 41551.9716442354,
+   "n_components": 1,
+   "parameter": "rbar_over_eta",
+   "point": 48823.585963021185,
+   "scored": true,
+   "shape": "closed",
+   "upper": 67804.67759046363,
+   "widening": null
+  }
+ ],
+ "cluster": "real|Denmark_M_1900_hetro",
+ "cohort_id": "window-real-Denmark_M_1900_hetro-c1-s1",
+ "combinations": {
+  "combination_claims_contradicted": [],
+  "cost_s": 8041.481591252001,
+  "evals": 33041,
+  "fit_cost_s": 3114.273593035,
+  "lead_group": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "mode": "lead",
+  "on": true,
+  "order": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "order_source": "measured (tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac))",
+  "param_claims_contradicted": [
+   {
+    "archive_point": 25.82577432408489,
+    "claim_end": 18.012906185594275,
+    "dex": 0.15646956452649521,
+    "parameter": "epsilon",
+    "side": "upper"
+   }
+  ],
+  "ratio_to_fit": 2.5821371665086157
+ },
+ "cpu_model": "AMD EPYC 9754 128-Core Processor",
+ "element_cpu_s": 11341.133678,
+ "fit_cpu_s": 3114.273593035,
+ "h_node": {
+  "loglik": -107911.03605467205,
+  "run": "jax2h-v6-full-bign",
+  "value": 4.441545761035884e-11
+ },
+ "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+ "host": "cn827.wexac.weizmann.ac.il",
+ "kappa_true": 0.186,
+ "leverage": {
+  "R": {
+   "all4": 1.1381138569886622,
+   "lead_pair": 1.0116797272884666,
+   "raw": 1.1381138569886622
+  },
+  "cost": {
+   "cpu_s": 160.4862358290011,
+   "share_of_fit": 0.051532478131633905
+  },
+  "delta_nats": 5.205418318621601e-07,
+  "delta_total": 0.012864670832641423,
+  "dropped": {
+   "age": 31776.75,
+   "event": 1,
+   "row": 24998,
+   "row_windowed": 24713
+  },
+  "label": "no_flag",
+  "reason": null
+ },
+ "leverage_flag": "no_flag",
+ "loglik_H_at_theta_w": -107911.03906305319,
+ "loglik_hat": -107911.03903636814,
+ "loglik_truth": -107911.09175074149,
+ "lsf_index": "12",
+ "lsf_jobid": "831259",
+ "n": 25000,
+ "negligible_labels": [],
+ "status": "ok",
+ "theta_hat": {
+  "beta": 1.144614939430043,
+  "epsilon": 0.057749274013051057,
+  "eta": 2.241378056293163e-05,
+  "h_ext": 0.0,
+  "kappa": 0.009394930723415032,
+  "time_unit": "input units",
+  "xc": 1.0
+ },
+ "warnings": [],
+ "window": {
+  "S_lo_at_theta_hat": 0.9882215763067996,
+  "hi_mapped_from": null,
+  "hi_rule": null,
+  "hi_used": 40177.5,
+  "lo_rule": "on the grid",
+  "min_deaths": 4,
+  "n_censored_above_hi": 0,
+  "n_censored_at_hi_eff": 0,
+  "n_deaths_censored": 0,
+  "n_deaths_fitted": 24715,
+  "n_dropped_below_lo": 285,
+  "n_rows_given": 25000,
+  "n_rows_kept": 24715,
+  "row_map": "the kept rows (age >= lo), in the cohort's order",
+  "rule": "the tester's apply_window, then the frozen snap",
+  "window_eff": [
+   10957.5,
+   40177.5
+  ],
+  "window_given": [
+   10957.5,
+   40177.5
+  ]
+ }
+}

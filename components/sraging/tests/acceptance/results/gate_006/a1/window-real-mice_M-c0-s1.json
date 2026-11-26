@@ -1,0 +1,218 @@
+{
+ "cell": "a1",
+ "claims": [
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "kappa<=300",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 3.922921665594371e-06,
+   "n_components": 1,
+   "parameter": "eta",
+   "point": 1.2836976910577529e-05,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.00013436044266057414,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target; its upper end is set by the kappa box (kappa_max = 300), not by the data (spec 003's kappa_max = 3000 study): read it as a lower bound; the data determine combinations such as r-bar and beta/(1+kappa) \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "kappa<=300",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.0011979431585814433,
+   "n_components": 1,
+   "parameter": "beta",
+   "point": 0.010069007591350999,
+   "scored": true,
+   "shape": "closed",
+   "upper": 116.93098247795933,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "kappa<=300",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.0002957794375948121,
+   "n_components": 1,
+   "parameter": "epsilon",
+   "point": 0.0014170494133958892,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.02032536189434408,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "kappa",
+   "point": null,
+   "scored": true,
+   "shape": "none",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "kappa<=300",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.006166422514640211,
+   "n_components": 1,
+   "parameter": "eta_over_eps",
+   "point": 0.009058947972614691,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.013484598562514232,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 289.586134209244,
+   "n_components": 1,
+   "parameter": "rbar_over_eta",
+   "point": 777.9579696684985,
+   "scored": true,
+   "shape": "closed",
+   "upper": 1531.7775745137649,
+   "widening": null
+  }
+ ],
+ "cluster": "real|mice_M",
+ "cohort_id": "window-real-mice_M-c0-s1",
+ "combinations": {
+  "combination_claims_contradicted": [],
+  "cost_s": 8341.147439971,
+  "evals": 27830,
+  "fit_cost_s": 3544.650533782,
+  "lead_group": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "mode": "lead",
+  "on": true,
+  "order": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "order_source": "measured (tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac))",
+  "param_claims_contradicted": [
+   {
+    "archive_point": 3.91817556030193e-06,
+    "claim_end": 3.922921665594371e-06,
+    "dex": 0.0005257446837806531,
+    "parameter": "eta",
+    "side": "lower"
+   }
+  ],
+  "ratio_to_fit": 2.353164962378204
+ },
+ "cpu_model": "AMD EPYC 9754 128-Core Processor",
+ "element_cpu_s": 12052.385232999999,
+ "fit_cpu_s": 3544.650533782,
+ "h_node": {
+  "loglik": -16870.38803845587,
+  "run": "jax2h-v6-full-bign",
+  "value": 1.2425002745363414e-09
+ },
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn836.wexac.weizmann.ac.il",
+ "kappa_true": 0.0535,
+ "leverage": {
+  "R": {
+   "all4": 1.0694171399048786,
+   "lead_pair": 1.0269614816004013,
+   "raw": 1.0694171399048786
+  },
+  "cost": {
+   "cpu_s": 145.08162958699904,
+   "share_of_fit": 0.040929741367819066
+  },
+  "delta_nats": 1.5237395489250968e-06,
+  "delta_total": 0.003972389004047727,
+  "dropped": {
+   "age": 366.0,
+   "event": 1,
+   "row": 139,
+   "row_windowed": 1
+  },
+  "label": "no_flag",
+  "reason": null
+ },
+ "leverage_flag": "no_flag",
+ "loglik_H_at_theta_w": -16870.38803844437,
+ "loglik_hat": -16870.388036515884,
+ "loglik_truth": -16870.978972727105,
+ "lsf_index": "3",
+ "lsf_jobid": "685888",
+ "n": 2746,
+ "negligible_labels": [],
+ "status": "ok",
+ "theta_hat": {
+  "beta": 0.010069007591350999,
+  "epsilon": 0.0014170494133958892,
+  "eta": 1.2836976910577529e-05,
+  "h_ext": 0.0,
+  "kappa": 0.001219142219290246,
+  "time_unit": "input units",
+  "xc": 1.0
+ },
+ "warnings": [],
+ "window": {
+  "S_lo_at_theta_hat": 0.9375605274658401,
+  "hi_mapped_from": null,
+  "hi_rule": null,
+  "hi_used": 1160.0,
+  "lo_rule": "on the grid",
+  "min_deaths": 4,
+  "n_censored_above_hi": 136,
+  "n_censored_at_hi_eff": 140,
+  "n_deaths_censored": 4,
+  "n_deaths_fitted": 2468,
+  "n_dropped_below_lo": 138,
+  "n_rows_given": 2746,
+  "n_rows_kept": 2608,
+  "row_map": "the kept rows (age >= lo), in the cohort's order",
+  "rule": "the tester's apply_window, then the frozen snap",
+  "window_eff": [
+   365.0,
+   1160.0
+  ],
+  "window_given": [
+   365.0,
+   1160.0
+  ]
+ }
+}

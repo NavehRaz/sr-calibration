@@ -1,0 +1,33 @@
+{
+ "calibrator": "profile_v033",
+ "cell": "v033-leverage",
+ "cluster": "real|combined_human_F",
+ "cohort_id": "hazard-real-combined_human_F-c1-s0",
+ "cpu_model": "AMD EPYC 9634 84-Core Processor",
+ "dropped": {
+  "age": 4565.625,
+  "event": 1,
+  "row": 566
+ },
+ "element_cpu_s": 764.4185679999999,
+ "fit_cpu_s": 687.7834035589999,
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn132.wexac.weizmann.ac.il",
+ "kappa_true": 0.0338,
+ "leverage_cpu_s": 60.91285096199999,
+ "leverage_flag": "not_assessed",
+ "leverage_reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 4.46e+03 over 25000 individuals (0.179 per individual > 5e-05), so a refit without one row cannot be compared with it",
+ "loglik_hat": -123025.67474398889,
+ "lsf_index": "4",
+ "lsf_jobid": "678736",
+ "n": 25000,
+ "status": "ok",
+ "warnings": [
+  "BASIN_GAIN",
+  "BASIN_OUTSIDE",
+  "BASIN_OUTSIDE",
+  "FLOORED_DEATHS",
+  "AGE0_DEATHS",
+  "LEVERAGE"
+ ]
+}

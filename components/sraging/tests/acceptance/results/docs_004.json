@@ -1,0 +1,660 @@
+{
+ "phase": "docs",
+ "written_at": "2026-11-05T18:14:10Z",
+ "repo_head": "a586269b024a75014e20be91c55c77174fe43c80",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 1.1694400310516357,
+ "cpu_s": 0.05770199999999999,
+ "status": "pass",
+ "verdict": {
+  "status": "pass",
+  "reasons": [],
+  "n_markers": 66,
+  "n_mismatch": 0
+ },
+ "build": {
+  "ok": true,
+  "returncodes": [
+   0,
+   0
+  ],
+  "pages": 49,
+  "pdf_sha256": "4dbd62368414584e9a1bf5184f2a33e21c8a7f7bbcc846f5df4a4ff36e56e8e5",
+  "log_tail": ""
+ },
+ "sections": [
+  "docs/algorithms/sections/heterogeneity.tex",
+  "docs/algorithms/sections/langevin.tex"
+ ],
+ "markers": [
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/p0_het_cost_004.json",
+   "path": "f_value",
+   "spec": ".3f",
+   "text": "0.870",
+   "recomputed": "0.870",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/p0_het_cost_004.json",
+   "path": "f_grad",
+   "spec": ".3f",
+   "text": "3.132",
+   "recomputed": "3.132",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr1_004.json",
+   "path": "verdicts[0].status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr1_004.json",
+   "path": "verdicts[0].statistic.n_false_pass",
+   "spec": "d",
+   "text": "0",
+   "recomputed": "0",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr1_004.json",
+   "path": "verdicts[0].statistic.n_checked_valid",
+   "spec": "d",
+   "text": "159",
+   "recomputed": "159",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr1_004.json",
+   "path": "verdicts[0].statistic.cp_upper_95",
+   "spec": ".3g",
+   "text": "0.0187",
+   "recomputed": "0.0187",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr1_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "fail",
+   "recomputed": "fail",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr1_004.json",
+   "path": "verdicts[1].status",
+   "spec": "",
+   "text": "fail",
+   "recomputed": "fail",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr2_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr2_004.json",
+   "path": "verdicts[0].statistic.max_abs_diff",
+   "spec": ".3g",
+   "text": "0.101",
+   "recomputed": "0.101",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr2_004.json",
+   "path": "tol",
+   "spec": ".3g",
+   "text": "0.601",
+   "recomputed": "0.601",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr3_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "fail",
+   "recomputed": "fail",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr3_004.json",
+   "path": "verdicts[0].statistic.max_abs_dll",
+   "spec": ".3g",
+   "text": "7.35e+04",
+   "recomputed": "7.35e+04",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr3_004.json",
+   "path": "verdicts[0].statistic.saving.upper_95_log_ratio",
+   "spec": ".3g",
+   "text": "0.0548",
+   "recomputed": "0.0548",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr4_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "fail",
+   "recomputed": "fail",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr4_004.json",
+   "path": "verdicts[0].statistic.speedup.W",
+   "spec": "d",
+   "text": "5",
+   "recomputed": "5",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr4_004.json",
+   "path": "verdicts[0].statistic.speedup.upper_95_ratio",
+   "spec": ".3g",
+   "text": "0.518",
+   "recomputed": "0.518",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr5_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr5_004.json",
+   "path": "verdicts[0].statistic.share_inside",
+   "spec": ".4f",
+   "text": "0.9938",
+   "recomputed": "0.9938",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/hr5_004.json",
+   "path": "verdicts[0].statistic.median_ratio",
+   "spec": ".3f",
+   "text": "1.097",
+   "recomputed": "1.097",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "tests/acceptance/results/d401_004.json",
+   "path": "max_abs_dloglik",
+   "spec": ",.0f",
+   "text": "196,269",
+   "recomputed": "196,269",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/heterogeneity.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/s5_binned_kl.json",
+   "path": "kl_per_individual",
+   "spec": ".2e",
+   "text": "4.70e-06",
+   "recomputed": "4.70e-06",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[8].ladder[2].crit_95",
+   "spec": ".4f",
+   "text": "0.0086",
+   "recomputed": "0.0086",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[8].ladder[2].ks_D",
+   "spec": ".4f",
+   "text": "0.0065",
+   "recomputed": "0.0065",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[9].ladder[2].ks_D",
+   "spec": ".4f",
+   "text": "0.0345",
+   "recomputed": "0.0345",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[4].ladder[4].ks_D",
+   "spec": ".4f",
+   "text": "0.0399",
+   "recomputed": "0.0399",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[5].ladder[4].ks_D",
+   "spec": ".4f",
+   "text": "0.0388",
+   "recomputed": "0.0388",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[0].ladder[1].ks_D",
+   "spec": ".4f",
+   "text": "0.0109",
+   "recomputed": "0.0109",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_langevin_004.json",
+   "path": "cells[1].ladder[1].ks_D",
+   "spec": ".4f",
+   "text": "0.0045",
+   "recomputed": "0.0045",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_pooled_004.json",
+   "path": "frozen.ecoli|hom|reflect.m",
+   "spec": "d",
+   "text": "133",
+   "recomputed": "133",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[0].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.0222",
+   "recomputed": "0.0222",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[1].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.013",
+   "recomputed": "0.013",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[2].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.013",
+   "recomputed": "0.013",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[2].n",
+   "spec": ",",
+   "text": "1,003",
+   "recomputed": "1,003",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[3].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.024",
+   "recomputed": "0.024",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[5].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.0174",
+   "recomputed": "0.0174",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[6].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.0242",
+   "recomputed": "0.0242",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[7].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.0611",
+   "recomputed": "0.0611",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "plants[9].sup_abs_dS",
+   "spec": ".3g",
+   "text": "0.00691",
+   "recomputed": "0.00691",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/plants_004.json",
+   "path": "hr9.status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/hr8_004.json",
+   "path": "config.n",
+   "spec": ",",
+   "text": "25,013",
+   "recomputed": "25,013",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/hr8_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/clamp_vs_reflect.json",
+   "path": "rows[0].bias_at_dt",
+   "spec": ".4f",
+   "text": "0.0132",
+   "recomputed": "0.0132",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/clamp_vs_reflect.json",
+   "path": "rows[0].ks_D",
+   "spec": ".4f",
+   "text": "0.0242",
+   "recomputed": "0.0242",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/clean_vs_bias.json",
+   "path": "rows[2].ks_D",
+   "spec": ".4f",
+   "text": "0.0290",
+   "recomputed": "0.0290",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/clean_vs_bias.json",
+   "path": "rows[2].crit_95",
+   "spec": ".4f",
+   "text": "0.0304",
+   "recomputed": "0.0304",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/clean_vs_bias.json",
+   "path": "rows[2].bias_at_dt",
+   "spec": ".4f",
+   "text": "0.1093",
+   "recomputed": "0.1093",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p1_pooled_004.json",
+   "path": "frozen.mice_F|hom|clamp.m",
+   "spec": "d",
+   "text": "170",
+   "recomputed": "170",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/paths_004.json",
+   "path": "verdicts[0].status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/paths_004.json",
+   "path": "verdicts[0].n_valid",
+   "spec": "d",
+   "text": "11",
+   "recomputed": "11",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/paths_004.json",
+   "path": "verdicts[1].status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/paths_004.json",
+   "path": "verdicts[1].n_valid",
+   "spec": "d",
+   "text": "16",
+   "recomputed": "16",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/multi_004.json",
+   "path": "status",
+   "spec": "",
+   "text": "pass",
+   "recomputed": "pass",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/multi_004.json",
+   "path": "cells[4].D",
+   "spec": ".3g",
+   "text": "0.00709",
+   "recomputed": "0.00709",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/multi_004.json",
+   "path": "cells[4].crit",
+   "spec": ".4g",
+   "text": "0.01047",
+   "recomputed": "0.01047",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/multi_004.json",
+   "path": "composite.sup_dS",
+   "spec": ".2g",
+   "text": "2.6e-05",
+   "recomputed": "2.6e-05",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/multi_004_first_252ad3a.json",
+   "path": "cells[0].D",
+   "spec": ".4g",
+   "text": "0.01112",
+   "recomputed": "0.01112",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p3_cost_004.json",
+   "path": "boundary.rows[3].cpu_gen1_s",
+   "spec": ".0f",
+   "text": "690",
+   "recomputed": "690",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p3_cost_004.json",
+   "path": "boundary.rows[3].cpu_langevin_s",
+   "spec": ".0f",
+   "text": "127",
+   "recomputed": "127",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p3_cost_004.json",
+   "path": "boundary.rows[4].cpu_gen1_s",
+   "spec": ",.0f",
+   "text": "691",
+   "recomputed": "691",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p3_cost_004.json",
+   "path": "boundary.rows[4].cpu_langevin_s",
+   "spec": ",.0f",
+   "text": "1,254",
+   "recomputed": "1,254",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p4_jax_004.json",
+   "path": "ratio_geomean",
+   "spec": ".3g",
+   "text": "5.81",
+   "recomputed": "5.81",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p4_jax_004.json",
+   "path": "n_pairs",
+   "spec": "d",
+   "text": "20",
+   "recomputed": "20",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "tests/acceptance/results/p4_jax_004.json",
+   "path": "threshold",
+   "spec": "",
+   "text": "1.2",
+   "recomputed": "1.2",
+   "match": true
+  },
+  {
+   "file": "docs/algorithms/sections/langevin.tex",
+   "json": "specs/004-samplers/review/evidence/sr_naveh_004/s4_aggregate.json",
+   "path": "walls.reflect.rows",
+   "spec": "d",
+   "text": "8",
+   "recomputed": "8",
+   "match": true
+  }
+ ],
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {},
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.001388888888888889,
+  "projected_from": "the LaTeX build's CPU, two passes [M 2026-11-05] with headroom",
+  "cap_cpu_h": 0.1,
+  "cap_frozen_cpu_h": 0.1,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.0002553202777777778,
+  "parent_cpu_s": 0.045920000000000016,
+  "worker_cpu_s": 0.873239,
+  "capped": false
+ }
+}

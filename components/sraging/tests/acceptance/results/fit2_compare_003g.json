@@ -1,0 +1,115 @@
+{
+ "phase": "fit2-compare",
+ "written_at": "2026-10-28T23:50:08Z",
+ "repo_head": "d02ea1d85c7131a79a651e2b19beaa1500c93094",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 0.3909468650817871,
+ "cpu_s": {
+  "record_wexac": 1926.6206780900002,
+  "mac": 2249.7472549999998
+ },
+ "status": "reported",
+ "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+ "compare": {
+  "rows": [
+   {
+    "parameter": "beta",
+    "shape_mine": "lower_bound",
+    "shape_record": "lower_bound",
+    "shape_equal": true,
+    "hit_mine": false,
+    "hit_record": false,
+    "hit_equal": true,
+    "end_dex": {
+     "lower": 0.04120922427640039
+    },
+    "ends_beyond": [
+     "lower"
+    ]
+   },
+   {
+    "parameter": "epsilon",
+    "shape_mine": "closed",
+    "shape_record": "closed",
+    "shape_equal": true,
+    "hit_mine": false,
+    "hit_record": false,
+    "hit_equal": true,
+    "end_dex": {
+     "lower": 0.021038113829114025,
+     "upper": 1.6865694513201746e-05
+    },
+    "ends_beyond": []
+   },
+   {
+    "parameter": "eta",
+    "shape_mine": "closed",
+    "shape_record": "closed",
+    "shape_equal": true,
+    "hit_mine": false,
+    "hit_record": false,
+    "hit_equal": true,
+    "end_dex": {
+     "lower": 0.019398752796259355,
+     "upper": 0.0025636527533574593
+    },
+    "ends_beyond": []
+   },
+   {
+    "parameter": "kappa",
+    "shape_mine": "upper_bound",
+    "shape_record": "upper_bound",
+    "shape_equal": true,
+    "hit_mine": true,
+    "hit_record": true,
+    "hit_equal": true,
+    "end_dex": {
+     "upper": 0.1071663640151892
+    },
+    "ends_beyond": [
+     "upper"
+    ]
+   }
+  ],
+  "only_mine": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "only_record": [],
+  "raw_one_side": [],
+  "shapes_equal": true,
+  "hits_equal": true,
+  "n_ends_beyond": 2,
+  "pass": true
+ },
+ "basin_refit": {
+  "record": true,
+  "record_n_refit": 1,
+  "mac": false
+ },
+ "loglik": {
+  "record": -110091.72732426958,
+  "mac": -110092.13522225762,
+  "mac_minus_record": -0.40789798804325983
+ },
+ "record_sha256": "35f885cce843ee469fc527793cfe2d9e8fdbdf6a72f34b8837f3e6daabbba9fe",
+ "tester_head": "0805d36bb92dd9a1a531683bcc21824ca7dadac8"
+}

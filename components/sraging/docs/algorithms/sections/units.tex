@@ -1,0 +1,69 @@
+% Section for specs/005-data-plots-cli (T056; FR-007 to FR-009; research R6; Naveh's Dc). Paths relative to src/sraging/.
+% Checked by HR-8 (round trips, log-likelihood invariance, the factor table through SRK getTheta) and HR-7.
+\section{Time units (\texttt{sraging.units})}\label{sec:units}
+
+\subsection{Overview}\label{sec:units-overview}
+
+\code{sraging.units} makes the time unit explicit: \code{convert} returns a parameter set or a cohort in another unit,
+\code{with\_unit} labels an object whose unit is not yet named, and nothing converts unless \code{convert} is called
+\src{units.py:convert, with_unit}. It replaces SRK's \code{getTheta(name, time\_unit=)} factor table and its
+\code{rescaleTheta}, which apply the same table (\code{rescaleTheta} is in no frozen snapshot, HR-8).
+
+\subsection{The unit table}\label{sec:units-table}
+
+\code{UNITS} is the closed list of days per unit \src{units.py:UNITS}:
+\begin{center}\begin{tabular}{lrrrrr}
+\toprule
+unit & hours & days & weeks & years & generations\\
+\midrule
+days per unit $D$ & $1/24$ & $1$ & $7$ & $365$ & $1/8$\\
+\bottomrule
+\end{tabular}\end{center}
+A year is 365 days and a generation is $1/8$ day (Naveh's Dc; SRK's table has the same values, its $3/24$ being
+$1/8$). The generation is SRK's fixed three-hour convention for its yeast and \textit{E.~coli} presets, not a property
+of the user's organism. \code{convert} refuses any other unit by name, months included (\code{UnsupportedOptionError});
+a \code{time\_unit} given to \code{read\_cohorts} or \code{Cohort.from\_arrays} is a label, checked only when
+converting. \code{convert} also refuses
+\code{time\_unit="input units"} as a source, the default label of an object that has not been told its unit: name it
+first with \code{with\_unit(obj, unit)}, which refuses an object that already has a unit.
+
+\subsection{How the parameters transform}\label{sec:units-theta}
+
+Going from unit $a$ to unit $b$, write $s=D_b/D_a$ \src{units.py:factor}; a quantity in $a$-units, multiplied by $s$
+(rate) is in $b$-units. A time $T$ in $a$ is $T/s$ in $b$. The model $\dd X=(\eta t-\beta X/(X+\kappa))\dd t
++\sqrt{2\eps}\,\dd W$, killed at $x_c$, has $\eta$ of dimension $[x]\,[t]^{-2}$, $\beta$ of dimension $[x]\,[t]^{-1}$ and $\eps$ of
+dimension $[x]^2[t]^{-1}$; with $X$ itself unchanged,
+\begin{equation}\label{eq:units-theta}
+  \eta'=\eta\,s^{2},\qquad \beta'=\beta\,s,\qquad \eps'=\eps\,s,\qquad \hext'=\hext\,s,\qquad \kappa'=\kappa,\quad
+  x_c'=x_c ,
+\end{equation}
+as built by the \code{SRParams} constructor with \code{time\_unit=to} \src{units.py:convert}. For example days to
+weeks: $\eta\times49$, $\beta,\eps,\hext\times7$. The dimensionless groups $\reta,\rbeta,\reps$ at the grid length
+$L$ are unchanged when $L$ is converted with the ages ($L'=L/s$), so the converted problem is the same problem. For a
+$\delta$ cohort, whose terms are probabilities of intervals, the log-likelihood is invariant up to the numerical grid.
+A continuous cohort's terms are densities: each death's term gains $\ln s$, the Jacobian of $t'=t/s$, so its
+log-likelihood shifts by $n_{\rm deaths}\ln s$. $\hat\theta$ and likelihood ratios are unchanged, but log-likelihoods
+and AIC must not be compared across units.
+
+\paragraph{Presets' external hazard.} SRK's preset tables store $\mathrm{ExtH}=-\ln h$ in the preset's own unit,
+SRK's \code{getTheta} 'auto' unit (years for humans, dogs and cats: every preset that has an ExtH), and
+\code{getTheta} returns it unscaled in every unit. \code{presets.get(..., ExtH=True)} therefore returns
+$\hext=e^{-\mathrm{ExtH}}/D_{\rm auto}$ per day and names the unit in \code{info.ext\_h\_unit}
+\src{presets.py:get}; HR-7 compares $\hext$ converted back to that unit with $e^{-\mathrm{ExtH}}$.
+
+\paragraph{Cohorts.} Ages, $\delta$ (scalar or per-individual), entry ages and the window are divided by $s$
+($\times D_a/D_b$) and the cohort is rebuilt through \code{Cohort.from\_arrays}, so every validation re-runs
+\src{units.py:convert}. Events are unchanged.
+
+\subsection{Acceptance and limits}\label{sec:units-accept}
+
+HR-8 pre-registers: round trips within relative $10^{-15}$; $\mathrm{convert}(\mathrm{get}(\text{name}),\text{to}=u)$
+against SRK \code{getTheta(name, time\_unit=u)} from the frozen snapshot, for every preset and the five units, within
+relative $10^{-15}$; and a log-likelihood tolerance set by the P3 pilot (about $10\times$ the measured change under
+conversion, floor $10^{-12}$). HR-7 adds the preset table in days exactly and in the other units within $10^{-15}$.
+The recorded run (phase \code{units}) on a \verify{tests/acceptance/results/units_005.json}{cohort.n}{d}{200}-individual cohort (\verify{tests/acceptance/results/units_005.json}{cohort.n_deaths}{d}{172} deaths) gave a worst $|\Delta\log L|$ of \verify{tests/acceptance/results/units_005.json}{worst_abs_dloglik}{.3g}{9.55e-12} under joint
+conversion from days to weeks and to years, and the frozen tolerance is \verify{tests/acceptance/results/units_005.json}{loglik_tolerance}{.3g}{9.55e-11}, ten times P3's value. The run is the same
+computation as P3, so this clause is a regression lock; the evidence is the size, not the pass. Round trips returned parameters to relative \verify{tests/acceptance/results/units_005.json}{round_trips.params_rel}{.2g}{1.4e-16} and the cohort to \verify{tests/acceptance/results/units_005.json}{round_trips.cohort_rel}{.2g}{2.7e-16}.
+The factor table matched \code{getTheta} on \verify{tests/acceptance/results/units_005.json}{factors.cells}{d}{175} cells with a largest relative difference of \verify{tests/acceptance/results/units_005.json}{factors.max_rel}{.2g}{2.2e-16}, and the planted wrong factor is caught.
+The conversion is arithmetic on stored floats, so repeated conversions accumulate rounding of order $10^{-16}$ per
+step; it does not change $\kappa$ or $x_c$, which are in the units of $X$.

@@ -1,0 +1,327 @@
+{
+ "phase": "stored",
+ "written_at": "2026-11-15T12:25:37Z",
+ "repo_head": "8a224db4d131a634d22d152aef1a44bf76af9288",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "e694cbc4bf697cc5f3c6af73c929cfbc9fd17055"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 0.8028080463409424,
+ "cpu_s": 0.42500299999999996,
+ "status": "pass",
+ "n_cohorts": 240,
+ "n_clusters": 54,
+ "runs": {
+  "J": {
+   "R-1": {
+    "gated": {
+     "eta": {
+      "hits": 130,
+      "claimed": 235,
+      "coverage": 0.5531914893617021,
+      "cut": 0.9146897430519916,
+      "passes": false,
+      "n_clusters": 54
+     },
+     "epsilon": {
+      "hits": 77,
+      "claimed": 234,
+      "coverage": 0.32905982905982906,
+      "cut": 0.9146733101015705,
+      "passes": false,
+      "n_clusters": 54
+     }
+    },
+    "reported": {
+     "beta": {
+      "hits": 48,
+      "claimed": 55,
+      "coverage": 0.8727272727272727,
+      "n_clusters": 15
+     },
+     "kappa": {
+      "hits": 0,
+      "claimed": 2,
+      "coverage": 0.0,
+      "n_clusters": 1
+     }
+    },
+    "passes": false
+   },
+   "R-2_vs_null": {
+    "eta": {
+     "n_paired": 235,
+     "median_dex": -14.884005857038638,
+     "passes": true
+    },
+    "epsilon": {
+     "n_paired": 234,
+     "median_dex": -14.834631099532448,
+     "passes": true
+    }
+   }
+  },
+  "H": {
+   "R-1": {
+    "gated": {
+     "eta": {
+      "hits": 181,
+      "claimed": 181,
+      "coverage": 1.0,
+      "cut": 0.9134775773585422,
+      "passes": true,
+      "n_clusters": 53
+     },
+     "epsilon": {
+      "hits": 173,
+      "claimed": 173,
+      "coverage": 1.0,
+      "cut": 0.9132201635088518,
+      "passes": true,
+      "n_clusters": 51
+     }
+    },
+    "reported": {
+     "beta": {
+      "hits": 17,
+      "claimed": 17,
+      "coverage": 1.0,
+      "n_clusters": 13
+     },
+     "kappa": {
+      "hits": 0,
+      "claimed": 0,
+      "coverage": null,
+      "n_clusters": 0
+     }
+    },
+    "passes": true
+   },
+   "R-2_vs_null": {
+    "eta": {
+     "n_paired": 181,
+     "median_dex": -13.893615499868787,
+     "passes": true
+    },
+    "epsilon": {
+     "n_paired": 173,
+     "median_dex": -13.635357133935356,
+     "passes": true
+    }
+   }
+  },
+  "null": {
+   "R-1": {
+    "gated": {
+     "eta": {
+      "hits": 240,
+      "claimed": 240,
+      "coverage": 1.0,
+      "cut": 0.9147694006449265,
+      "passes": true,
+      "n_clusters": 54
+     },
+     "epsilon": {
+      "hits": 240,
+      "claimed": 240,
+      "coverage": 1.0,
+      "cut": 0.9147694006449265,
+      "passes": true,
+      "n_clusters": 54
+     }
+    },
+    "reported": {
+     "beta": {
+      "hits": 240,
+      "claimed": 240,
+      "coverage": 1.0,
+      "n_clusters": 54
+     },
+     "kappa": {
+      "hits": 240,
+      "claimed": 240,
+      "coverage": 1.0,
+      "n_clusters": 54
+     }
+    },
+    "passes": true
+   }
+  },
+  "J_vs_H": {
+   "eta": {
+    "n_paired": 180,
+    "median_dex": -0.7891277033358901
+   },
+   "epsilon": {
+    "n_paired": 169,
+    "median_dex": -1.0233344426147428
+   }
+  }
+ },
+ "discriminates": true,
+ "expected": "J's window records fail R-1 and H's pass it (spec.md US2 scenario 1)",
+ "equal_case": {
+  "what": "J's pure-arm records (main, bign): must pass R-1 at their N",
+  "n_cohorts": 688,
+  "gated": {
+   "eta": {
+    "hits": 617,
+    "claimed": 644,
+    "coverage": 0.9580745341614907,
+    "cut": 0.9165795324431594,
+    "passes": true
+   },
+   "epsilon": {
+    "hits": 627,
+    "claimed": 654,
+    "coverage": 0.9587155963302753,
+    "cut": 0.9165879153767956,
+    "passes": true
+   }
+  },
+  "reported": {
+   "beta": {
+    "hits": 272,
+    "claimed": 281,
+    "coverage": 0.9679715302491103
+   },
+   "kappa": {
+    "hits": 0,
+    "claimed": 0,
+    "coverage": null
+   }
+  },
+  "passes": true
+ },
+ "planted_088": {
+  "what": "H's window-arm closed claims shrunk in log space to 0.88 coverage: must fail R-1",
+  "eta": {
+   "factor": 0.9553323481144521,
+   "hits": 159,
+   "claimed": 181,
+   "coverage": 0.8784530386740331,
+   "cut": 0.9134775773585422,
+   "passes": false
+  },
+  "epsilon": {
+   "factor": 0.8714884208227857,
+   "hits": 152,
+   "claimed": 173,
+   "coverage": 0.8786127167630058,
+   "cut": 0.9132201635088518,
+   "passes": false
+  }
+ },
+ "J_window_design_effect": {
+  "eta": {
+   "coverage": 0.5531914893617021,
+   "claims": 235,
+   "clusters": 54,
+   "D": 3.349503487279481,
+   "clusters_with_2_or_more_misses": [
+    "k0.01|b0.1|e0.0158489",
+    "k0.01|b0.1|e0.0316228",
+    "k0.01|b0.1|e0.0630957",
+    "k0.01|b0.1|e0.251189",
+    "k0.0316|b0.1|e0.0158489",
+    "k0.0316|b0.1|e0.0316228",
+    "k0.0316|b0.1|e0.0630957",
+    "k0.0316|b0.1|e0.125893",
+    "k0.1|b0.1|e0.0158489",
+    "k0.1|b0.1|e0.0316228",
+    "k0.1|b0.1|e0.0630957",
+    "k0.1|b0.1|e0.125893",
+    "k0.316|b0.1|e0.0316228",
+    "real|Denmark_F_1890_hetro",
+    "real|Denmark_M_1890_hetro",
+    "real|Denmark_M_1890_homo",
+    "real|Denmark_M_1900_hetro",
+    "real|Denmark_M_1900_homo",
+    "real|Labradors_vetCompass",
+    "real|Staffy_vetCompass",
+    "real|Sweden_F_1910_homo",
+    "real|cats_vp_F",
+    "real|celegans",
+    "real|combined_human_M",
+    "real|drosophila_217",
+    "real|drosophila_707",
+    "real|drosophila_853",
+    "real|mice_F",
+    "real|mice_M",
+    "real|yeast"
+   ]
+  },
+  "epsilon": {
+   "coverage": 0.32905982905982906,
+   "claims": 234,
+   "clusters": 54,
+   "D": 3.115668612123365,
+   "clusters_with_2_or_more_misses": [
+    "k0.01|b0.1|e0.0158489",
+    "k0.01|b0.1|e0.0316228",
+    "k0.01|b0.1|e0.0630957",
+    "k0.01|b0.1|e0.251189",
+    "k0.0316|b0.1|e0.0158489",
+    "k0.0316|b0.1|e0.0316228",
+    "k0.0316|b0.1|e0.0630957",
+    "k0.0316|b0.1|e0.125893",
+    "k0.1|b0.1|e0.0158489",
+    "k0.1|b0.1|e0.0316228",
+    "k0.1|b0.1|e0.0630957",
+    "k0.1|b0.1|e0.125893",
+    "k0.316|b0.1|e0.0316228",
+    "k0.316|b0.1|e0.0630957",
+    "k0.316|b0.1|e0.251189",
+    "k10|b0.1|e0.0316228",
+    "k10|b0.1|e0.0630957",
+    "k10|b0.1|e0.125893",
+    "k1|b0.1|e0.0158489",
+    "k1|b0.1|e0.0316228",
+    "k1|b0.1|e0.0630957",
+    "k1|b0.1|e0.125893",
+    "k2|b0.1|e0.0316228",
+    "k2|b0.1|e0.0630957",
+    "k2|b0.1|e0.125893",
+    "real|Denmark_F_1890_hetro",
+    "real|Denmark_M_1890_hetro",
+    "real|Denmark_M_1890_homo",
+    "real|Denmark_M_1900_hetro",
+    "real|Denmark_M_1900_homo",
+    "real|Labradors_vetCompass",
+    "real|Staffy_vetCompass",
+    "real|Sweden_F_1910_homo",
+    "real|cats_vp_F",
+    "real|celegans",
+    "real|combined_human_M",
+    "real|drosophila_217",
+    "real|drosophila_707",
+    "real|drosophila_853",
+    "real|mice_F",
+    "real|mice_M",
+    "real|yeast"
+   ]
+  }
+ },
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "f2b23baab000cb61e55fffad291c7212d2af2a2443f7c25cf24dbaf7f247568a"
+ },
+ "cap": {
+  "cap_cpu_h": 0.1,
+  "cpu_spent_h": 0.00012083111111111113,
+  "capped": false,
+  "where": "mac"
+ }
+}

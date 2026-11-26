@@ -1,0 +1,116 @@
+{
+ "phase": "fidelity",
+ "written_at": "2026-10-14T13:25:41Z",
+ "repo_head": "34a8e579b38e620681c50f615a09b176b6387af9",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "f39f31acce7ad7a2c864a96ca1108c5210dd8b14"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84c40a04c6ffa86ffca163329af77cca3c81221f"
+ },
+ "wall_s": 42.42969298362732,
+ "cpu_s": 0.890672,
+ "status": "pass",
+ "generator_pass": true,
+ "positive_control_as_expected": true,
+ "points": [
+  {
+   "point": "k0.01-p05",
+   "source": "pure-k0.01-p05-c0-s0",
+   "lncv_ref": -3.925050495089418,
+   "gen_mean": -3.924549525381081,
+   "gen_sd": 0.006731986435223147,
+   "gen_diff": 0.0005009697083369069,
+   "gen_pass": true,
+   "control_mean": -3.7821700490497947,
+   "control_diff": 0.14288044603962335,
+   "control_pass": false,
+   "cpu_s": 4.6046130000000005
+  },
+  {
+   "point": "k0.01-p10",
+   "source": "pure-k0.01-p10-c0-s0",
+   "lncv_ref": -4.670627709160211,
+   "gen_mean": -4.6704169549615475,
+   "gen_sd": 0.006671858707359715,
+   "gen_diff": 0.00021075419866356526,
+   "gen_pass": true,
+   "control_mean": -4.5435006737131065,
+   "control_diff": 0.12712703544710457,
+   "control_pass": false,
+   "cpu_s": 4.57319
+  },
+  {
+   "point": "k0.0316-p15",
+   "source": "pure-k0.0316-p15-c0-s0",
+   "lncv_ref": -4.951761091662225,
+   "gen_mean": -4.9516109121439555,
+   "gen_sd": 0.007347228192954203,
+   "gen_diff": 0.00015017951826923337,
+   "gen_pass": true,
+   "control_mean": -4.915456078059227,
+   "control_diff": 0.03630501360299743,
+   "control_pass": false,
+   "cpu_s": 4.408704
+  },
+  {
+   "point": "k0.1-p00",
+   "source": "pure-k0.1-p00-c0-s0",
+   "lncv_ref": -3.564426170292799,
+   "gen_mean": -3.5642788718840337,
+   "gen_sd": 0.0067566301907698925,
+   "gen_diff": 0.0001472984087653728,
+   "gen_pass": true,
+   "control_mean": -3.469977972982721,
+   "control_diff": 0.09444819731007792,
+   "control_pass": false,
+   "cpu_s": 4.540686000000001
+  },
+  {
+   "point": "k0.1-p20",
+   "source": "pure-k0.1-p20-c0-s0",
+   "lncv_ref": -0.15741527800651559,
+   "gen_mean": -0.1578178520865611,
+   "gen_sd": 0.008764465756565297,
+   "gen_diff": -0.00040257408004551465,
+   "gen_pass": true,
+   "control_mean": -0.15780571440002894,
+   "control_diff": -0.0003904363935133548,
+   "control_pass": true,
+   "cpu_s": 10.169681
+  },
+  {
+   "point": "k2-p05",
+   "source": "pure-k2-p05-c0-s0",
+   "lncv_ref": -3.8734472857257636,
+   "gen_mean": -3.872263012541585,
+   "gen_sd": 0.006791603868236245,
+   "gen_diff": 0.0011842731841786858,
+   "gen_pass": true,
+   "control_mean": -3.6977881104382946,
+   "control_diff": 0.175659175287469,
+   "control_pass": false,
+   "cpu_s": 4.611329
+  }
+ ],
+ "rule": "|mean ln CV(recorded ages) - ln CV(binned reference)| <= fidelity_max_abs_diff; the backward-Euler control must fail at the sharp points and pass at the broad control",
+ "grid": {
+  "N": 6000,
+  "dt": 0.0002,
+  "tau_max": 30.0,
+  "Gtol": 1e-12,
+  "nstart": 20,
+  "K": 161
+ }
+}

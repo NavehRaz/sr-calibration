@@ -1,0 +1,776 @@
+................ssssssssss................F............................. [  2%]
+........................................................................ [  5%]
+........................................................................ [  8%]
+........................................................................ [ 11%]
+...................................s....ssss............................ [ 14%]
+........................................................................ [ 17%]
+........................................................................ [ 20%]
+........................F..F....................................F....... [ 23%]
+..........................................s........F.................... [ 26%]
+.......................................F..............................F. [ 28%]
+...F...........................................F........................ [ 31%]
+...................s................Fs.................................. [ 34%]
+...........FFF................................s......................... [ 37%]
+........................................................................ [ 40%]
+............s........................................................... [ 43%]
+........................................................................ [ 46%]
+................................................F....................... [ 49%]
+.......FFF.F.F.......................................................... [ 52%]
+........ss....ss.....s................s................................. [ 54%]
+........................................................................ [ 57%]
+........ssssssss.s..s..................................ssssssss......... [ 60%]
+......................................F................................. [ 63%]
+..F.......FF.F..........................................F............... [ 66%]
+........................................................................ [ 69%]
+.............................................................s.......... [ 72%]
+..........................sF............................................ [ 75%]
+..F.F................................................................... [ 78%]
+.................................................sssssssssssssssssssssss [ 80%]
+sssssssssss.ssssssssssssssssssssssssssssssssssssssss.....sssssssssssssss [ 83%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 86%]
+ssssssssssssssssssssssssssssssssssss..ssssssssssssssssssssssssssssssssss [ 89%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 92%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 95%]
+sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.sssss.ss [ 98%]
+.sssssssssssssssssssssssssssssssssssssssss                               [100%]
+==================================== ERRORS ====================================
+________________ ERROR collecting tests/unit/test_panel_003d.py ________________
+tests/unit/test_panel_003d.py:10: in <module>
+    SPEC = open(os.path.join(REPO, "specs", "003d-cohort-generator", "spec.md")).read()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/003d-cohort-generator/spec.md'
+=================================== FAILURES ===================================
+_________________ test_stepper_is_used_read_only_and_unchanged _________________
+
+    def test_stepper_is_used_read_only_and_unchanged():
+        import inspect
+        src = inspect.getsource(DEN)
+        assert "_march_forward(" in src and 'store="all"' in src.replace("'", '"')
+        r = subprocess.run(["git", "-C", REPO, "diff", "--quiet", "HEAD", "--", "src/sraging/engine/stepper.py"])
+>       assert r.returncode == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['git', '-C', 'SCRATCH/t011/rel2/sraging', 'diff', '--quiet', 'HEAD', '--', 'src/sraging/engine/stepper.py'], returncode=1).returncode
+
+tests/unit/engine/test_density.py:74: AssertionError
+----------------------------- Captured stderr call -----------------------------
+error: Could not access 'HEAD'
+______ test_the_pilot_panel_cuts_coverage_and_lists_every_kmax_candidate _______
+
+    def test_the_pilot_panel_cuts_coverage_and_lists_every_kmax_candidate():
+        """sr-manager CHEAPEN: het, the hazard arm under profile_jax2 and the realfull C. elegans cohorts are not fitted
+        under profile_jax2, each cut recorded with its reason; gate 4: the kmax list is every candidate, seeded."""
+        if not os.path.isdir(A.J2):
+            pytest.skip(f"NOT APPLICABLE: no J2 at {A.J2}")
+        import oracle_jax2 as OJ
+>       lib = OJ.library()
+              ^^^^^^^^^^^^
+
+tests/unit/test_acceptance_003_tools.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/oracle_jax2.py:132: in library
+    load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load() -> Oracle:
+        """Load the jax2 oracle into this process (once). Raises NotApplicable rather than load a wrong one."""
+        global _LOADED
+        if _LOADED is not None:
+            return _LOADED
+        problems = preflight()
+        if problems:
+>           raise NotApplicable(problems)
+E           oracle_v033.NotApplicable: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+
+tools/oracle_jax2.py:81: NotApplicable
+__________________________ test_the_walker_panel_draw __________________________
+
+    def test_the_walker_panel_draw():
+        """The coordinator's [walker] table: up to 3 kappa-hat-at-300 cohorts under their stored fit's name, 12 pure under
+        profile_jax2, 5 hazard under profile_jax2_h, no repeats, the same on every call."""
+        if not os.path.isdir(A.J2):
+            pytest.skip(f"NOT APPLICABLE: no J2 at {A.J2}")
+        import oracle_jax2 as OJ
+>       lib = OJ.library()
+              ^^^^^^^^^^^^
+
+tests/unit/test_acceptance_003_tools.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/oracle_jax2.py:132: in library
+    load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load() -> Oracle:
+        """Load the jax2 oracle into this process (once). Raises NotApplicable rather than load a wrong one."""
+        global _LOADED
+        if _LOADED is not None:
+            return _LOADED
+        problems = preflight()
+        if problems:
+>           raise NotApplicable(problems)
+E           oracle_v033.NotApplicable: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+
+tools/oracle_jax2.py:81: NotApplicable
+_________ test_the_census_phase_on_a_real_row_and_its_planted_dt_twin __________
+
+tmp_path = PosixPath('/private/var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/pytest-of-navehr/pytest-49/test_the_census_phase_on_a_rea0')
+
+    @pytest.mark.skipif(not (HAVE_J2 and os.path.isdir(os.environ.get("SRAGING_TESTER_V6", ACC.DROPBOX))),
+                        reason="the census or the tester's library v6 is absent on this host")
+    def test_the_census_phase_on_a_real_row_and_its_planted_dt_twin(tmp_path):
+        r = subprocess.run([sys.executable, "-c", CENSUS_SCRIPT, str(tmp_path), CID], cwd=REPO, capture_output=True,
+                           text=True, timeout=600)
+>       assert "EXIT 1" in r.stdout, r.stdout + r.stderr
+E       AssertionError: [census] price: < 0.3 Mac CPU-h; no fit (1.0.1's grid on 2,798 rows)
+E         [census] status not_applicable; wrote ../../../../../../../../var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/pytest-of-navehr/pytest-49/test_the_census_phase_on_a_rea0/census_003b.json (development)
+E         EXIT 3
+E         
+E       assert 'EXIT 1' in "[census] price: < 0.3 Mac CPU-h; no fit (1.0.1's grid on 2,798 rows)\n[census] status not_applicable; wrote ../../../...649qgb6hfm0000gp/T/pytest-of-navehr/pytest-49/test_the_census_phase_on_a_rea0/census_003b.json (development)\nEXIT 3\n"
+E        +  where "[census] price: < 0.3 Mac CPU-h; no fit (1.0.1's grid on 2,798 rows)\n[census] status not_applicable; wrote ../../../...649qgb6hfm0000gp/T/pytest-of-navehr/pytest-49/test_the_census_phase_on_a_rea0/census_003b.json (development)\nEXIT 3\n" = CompletedProcess(args=['SCRATCH/t011/rel...00gp/T/pytest-of-navehr/pytest-49/test_the_census_phase_on_a_rea0/census_003b.json (development)\nEXIT 3\n", stderr='').stdout
+
+tests/unit/test_acceptance_003b.py:110: AssertionError
+_________ test_the_scorer_files_are_compared_between_two_tester_heads __________
+
+tmp_path = PosixPath('/private/var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/pytest-of-navehr/pytest-49/test_the_scorer_files_are_comp0')
+
+    def test_the_scorer_files_are_compared_between_two_tester_heads(tmp_path):
+        """A scorer change between W1's and W3's tester heads is named (inside and outside verdicts must come from one
+        scorer); same head, nothing differs. Exercised on this repository's own history."""
+        import subprocess
+        sha = subprocess.run(["git", "-C", REPO, "log", "-1", "--format=%H", "--", "src/sraging/default_gate.py"],
+                             capture_output=True, text=True).stdout.strip()
+        files = ("src/sraging/default_gate.py", "src/sraging/leverage_rule.py")
+        same = WIN.scorer_diff(REPO, sha, sha, files)
+>       assert same["differs"] == [] and set(same["files"]) == set(files)
+E       AssertionError: assert (['src/sraging...rage_rule.py'] == []
+E         
+E         Left contains 2 more items, first extra item: 'src/sraging/default_gate.py'
+E         Use -v to get more diff)
+
+tests/unit/test_acceptance_003g.py:99: AssertionError
+_ test_p0s_projection_is_from_the_probe_and_inside_its_cap_and_its_summary_is_what_the_projections_read _
+
+    def test_p0s_projection_is_from_the_probe_and_inside_its_cap_and_its_summary_is_what_the_projections_read():
+        import json
+        import p0_het_cost_004 as P0
+>       probe = json.load(open(os.path.join(REPO, "specs", "004-samplers", "evidence", "cost_probe.json")))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/004-samplers/evidence/cost_probe.json'
+
+tests/unit/test_acceptance_004.py:606: FileNotFoundError
+____ test_the_rules_file_carries_the_same_caps_and_is_frozen_with_navehs_ok ____
+
+    def test_the_rules_file_carries_the_same_caps_and_is_frozen_with_navehs_ok():
+        """T004: rules_005.toml repeats the caps (a drift between the tool and the freeze fails here); frozen at T047
+        (Naveh, 2026-11-09), with no value left to a pilot."""
+>       rules = ACC.read_rules()
+                ^^^^^^^^^^^^^^^^
+
+tests/unit/test_acceptance_005.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def read_rules() -> dict:
+>       return tomllib.load(open(RULES, "rb"))
+                            ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/tests/acceptance/rules_005.toml'
+
+tools/acceptance_005.py:52: FileNotFoundError
+________________ test_the_real_manifest_names_every_record_file ________________
+
+    def test_the_real_manifest_names_every_record_file():
+        """The committed manifest's entries, as records_files reads them: cleaning.csv, its stamp and every per-cage file
+        of each record, and the fly's floors and nulls."""
+>       rows = ACC.record_files(ACC.RECORDS)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_acceptance_005.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = 'SCRATCH/t011/rel2/sraging/tests/acceptance/cleaning_records_005.toml'
+
+    def record_files(path=None) -> list:
+        """[(record, absolute path, pinned sha256)] for every file the manifest pins: cleaning.csv, its stamp, the fly's
+        floors and nulls ([<record>.sha256]) and each per-cage cohort file ([<record>.cohorts_allcages])."""
+>       recs = tomllib.load(open(path or RECORDS, "rb"))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/tests/acceptance/cleaning_records_005.toml'
+
+tools/acceptance_005.py:59: FileNotFoundError
+______ test_the_claims_reading_needs_40_of_40_and_no_closure_change_since ______
+
+tmp_path = PosixPath('/private/var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/pytest-of-navehr/pytest-49/test_the_claims_reading_needs_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x147428c20>
+
+    def test_the_claims_reading_needs_40_of_40_and_no_closure_change_since(tmp_path, monkeypatch):
+        """FR-030: a 40/40 claims re-run at 004's head (b92c48d) predates 006's closure edits, so it does not stand for
+        006; the same result at HEAD does (the twin), and 39/40 does not. Planted from the committed result, so the test
+        reads the same before and after 006's own re-run (T076)."""
+        import json
+        d = json.load(open(os.path.join(REPO, ACC.CLAIMS_RESULT)))
+        p = tmp_path / "claims.json"
+        monkeypatch.setattr(A3, "untouched_problems", lambda *a, **k: [])
+        d["repo_head"] = A3.git("rev-parse", "b92c48d")
+        p.write_text(json.dumps(d))
+>       r = ACC.claims_reading(str(p))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_acceptance_006.py:143: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/acceptance_006.py:1264: in claims_reading
+    violations = A3.untouched_problems(doc_only, exempt, A3.merge_base())
+                                                         ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def merge_base() -> str:
+        """Where this branch left BASE (`git merge-base main HEAD`): the one base of every `unchanged` diff (the untouched
+        paths, the claims closure, the oracle tool's additions). Refused by name when git cannot resolve it: in a clone with
+        no local main every diff against main printed nothing, and `unchanged` read "none changed" and skipped spec 001's
+        claims re-run (found at spec 004 T145). A missing base never reads as no change."""
+        base = git("merge-base", BASE, "HEAD")
+        if not base:
+>           sys.exit(f"[unchanged] REFUSED: no merge-base with {BASE} (create or fetch the {BASE} branch)")
+E           SystemExit: [unchanged] REFUSED: no merge-base with main (create or fetch the main branch)
+
+tools/acceptance_003.py:1089: SystemExit
+______________ test_the_003g_pins_start_with_the_v6_manifest_only ______________
+
+    def test_the_003g_pins_start_with_the_v6_manifest_only():
+        """Before pin-w1 the pins held the v6 manifest and nothing else; that pin is unchanged since. (Read through history
+        since 2026-10-28: as first written it read the working file, and failed from pin-w1 on.)"""
+        import json
+        import subprocess
+    
+        def git(*a):
+            return subprocess.run(["git", "-C", ACC.REPO, *a], capture_output=True, text=True).stdout
+>       pin = git("log", "--reverse", "--format=%H", "-S", '"jax2-v6-full-bign"', "--", ACC.PINS_PATH).split()[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_adapter_003g.py:53: IndexError
+_____________ test_d018_closed_interval_ends_at_the_beta_box_edge ______________
+
+    def test_d018_closed_interval_ends_at_the_beta_box_edge():
+        """The Drosophila cohort (first README example, now review evidence): theta-hat on the beta box edge, eta/epsilon 'closed' with no box note, and the
+        likelihood still higher outside the box (stored runs; no new fit)."""
+        import json
+        import os
+        res_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                               "specs", "001-reference-fit", "review", "evidence", "drosophila")
+>       r = json.load(open(os.path.join(res_dir, "drosophila_simons2024_25C_2pct_batch1.json")))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/001-reference-fit/review/evidence/drosophila/drosophila_simons2024_25C_2pct_batch1.json'
+
+tests/unit/test_asis_defects.py:91: FileNotFoundError
+_________________ test_d019_named_cohorts_differ_between_hosts _________________
+
+    def test_d019_named_cohorts_differ_between_hosts():
+        """Stored measurement (the oracle cannot be run on WEXAC from here): the named cohorts' stored reference
+        records differ from this host's oracle run; the quick tier matches (claims.json, adapter phase)."""
+        import json
+        import os
+>       m = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                                        "specs", "001-reference-fit", "review", "measurements.json")))["host"]
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/001-reference-fit/review/measurements.json'
+
+tests/unit/test_asis_defects.py:117: FileNotFoundError
+____________________ test_d020_ridge_keeps_eta_over_epsilon ____________________
+
+    def test_d020_ridge_keeps_eta_over_epsilon():
+        """Stored measurement of a MODEL property (the Drosophila ridge): over beta = 30..30000 the log-likelihood
+        changes by < 0.5 nats while eta/epsilon stays within 15 %."""
+        import json
+        import os
+        ev = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                          "specs", "001-reference-fit", "review", "evidence", "drosophila")
+>       ridge = json.load(open(os.path.join(ev, "drosophila_simons2024_25C_2pct_batch1.ridge.json")))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/001-reference-fit/review/evidence/drosophila/drosophila_simons2024_25C_2pct_batch1.ridge.json'
+
+tests/unit/test_asis_defects.py:130: FileNotFoundError
+____________________ test_every_contract_refusal_has_a_test ____________________
+
+    def test_every_contract_refusal_has_a_test():
+        import os as _os
+        import re as _re
+        repo = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+>       text = open(_os.path.join(repo, "specs", "003d-cohort-generator", "contracts", "python-api.md")).read()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/003d-cohort-generator/contracts/python-api.md'
+
+tests/unit/test_generator.py:395: FileNotFoundError
+______________ test_every_judged_step_is_the_frozen_step_it_cites ______________
+
+lang = {'amendments': {'A0': "E. coli leaves the clamp family: every E. coli clamp row leaves S4's clamp family and HR-10's c..., 'limits': {'ecoli_clamp': 'the default clamp is not shown to agree with FP for E. coli at any affordable step'}, ...}
+
+    def test_every_judged_step_is_the_frozen_step_it_cites(lang):
+>       fs = ACC.frozen_steps()
+             ^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_langevin_004_toml.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/acceptance_004.py:1375: in frozen_steps
+    p1 = p1_result()
+         ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def p1_result() -> dict:
+        rel = result_rel("p1-langevin")
+        if not committed(rel):
+>           raise Refused(f"no P1 result: {rel} is not committed (run p1-langevin first, tasks T111)")
+E           acceptance_004.Refused: no P1 result: tests/acceptance/results/p1_langevin_004.json is not committed (run p1-langevin first, tasks T111)
+
+tools/acceptance_004.py:1323: Refused
+_____________ test_ecoli_has_left_the_clamp_family_with_its_limit ______________
+
+lang = {'amendments': {'A0': "E. coli leaves the clamp family: every E. coli clamp row leaves S4's clamp family and HR-10's c..., 'limits': {'ecoli_clamp': 'the default clamp is not shown to agree with FP for E. coli at any affordable step'}, ...}
+
+    def test_ecoli_has_left_the_clamp_family_with_its_limit(lang):
+        import s4_fp_langevin_004 as S4
+        assert lang["limits"]["ecoli_clamp"] == "the default clamp is not shown to agree with FP for E. coli at any " \
+                                                "affordable step"
+        assert lang["s4"]["clamp_excluded"] == ["ecoli"] == lang["paths"]["clamp_excluded"]
+>       grid = S4.build_grid(lang["s4"], ACC.p1_steps())
+                                         ^^^^^^^^^^^^^^
+
+tests/unit/test_langevin_004_toml.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/acceptance_004.py:1385: in p1_steps
+    p1 = p1_result()
+         ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def p1_result() -> dict:
+        rel = result_rel("p1-langevin")
+        if not committed(rel):
+>           raise Refused(f"no P1 result: {rel} is not committed (run p1-langevin first, tasks T111)")
+E           acceptance_004.Refused: no P1 result: tests/acceptance/results/p1_langevin_004.json is not committed (run p1-langevin first, tasks T111)
+
+tools/acceptance_004.py:1323: Refused
+_____________ test_hr6s_g_is_the_grids_actual_row_count_per_family _____________
+
+lang = {'amendments': {'A0': "E. coli leaves the clamp family: every E. coli clamp row leaves S4's clamp family and HR-10's c..., 'limits': {'ecoli_clamp': 'the default clamp is not shown to agree with FP for E. coli at any affordable step'}, ...}
+
+    def test_hr6s_g_is_the_grids_actual_row_count_per_family(lang):
+        import s4_fp_langevin_004 as S4
+        from sraging import sampler_rules as R
+>       grid = S4.build_grid(lang["s4"], ACC.p1_steps())
+                                         ^^^^^^^^^^^^^^
+
+tests/unit/test_langevin_004_toml.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/acceptance_004.py:1385: in p1_steps
+    p1 = p1_result()
+         ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def p1_result() -> dict:
+        rel = result_rel("p1-langevin")
+        if not committed(rel):
+>           raise Refused(f"no P1 result: {rel} is not committed (run p1-langevin first, tasks T111)")
+E           acceptance_004.Refused: no P1 result: tests/acceptance/results/p1_langevin_004.json is not committed (run p1-langevin first, tasks T111)
+
+tools/acceptance_004.py:1323: Refused
+______________________ test_the_decided_items_are_filled _______________________
+
+lang = {'amendments': {'A0': "E. coli leaves the clamp family: every E. coli clamp row leaves S4's clamp family and HR-10's c..., 'limits': {'ecoli_clamp': 'the default clamp is not shown to agree with FP for E. coli at any affordable step'}, ...}
+
+    def test_the_decided_items_are_filled(lang):
+        assert lang["s4"]["cvs"] == [0.1, 0.2, 0.3] and lang["s4"]["plant_cells"] == ["Jack_Russell/v0/clamp",
+                                                                                   "mice_F/xc/cv0.2/clamp"]
+        assert set(lang["paths"]["ages"]) == {f"{p}|{h}" for p in ("mice_F", "Jack_Russell", "ecoli", "human")
+                                              for h in ("hom", "het")}
+        assert lang["paths"]["plant"]["preset"] == "mice_F" and lang["multi"]["preset"] == "mice_F"
+>       fs = ACC.frozen_steps()
+             ^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_langevin_004_toml.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/acceptance_004.py:1375: in frozen_steps
+    p1 = p1_result()
+         ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def p1_result() -> dict:
+        rel = result_rel("p1-langevin")
+        if not committed(rel):
+>           raise Refused(f"no P1 result: {rel} is not committed (run p1-langevin first, tasks T111)")
+E           acceptance_004.Refused: no P1 result: tests/acceptance/results/p1_langevin_004.json is not committed (run p1-langevin first, tasks T111)
+
+tools/acceptance_004.py:1323: Refused
+________________________ test_s5s_values_are_p2s_result ________________________
+
+lang = {'amendments': {'A0': "E. coli leaves the clamp family: every E. coli clamp row leaves S4's clamp family and HR-10's c..., 'limits': {'ecoli_clamp': 'the default clamp is not shown to agree with FP for E. coli at any affordable step'}, ...}
+
+    def test_s5s_values_are_p2s_result(lang):
+        import json
+        p2 = json.load(open(os.path.join(REPO, "tests", "acceptance", "results", "p2_s5_power_004.json")))
+        assert p2["status"] == "written" and p2["errors"] == []
+        s5, wall = lang["s5"], p2["branch"]["wall"]
+        h = p2["halving"][wall]
+        assert s5["R"] == p2["R"]["R_score"] and s5["branch"] == p2["branch"]
+>       frozen = ACC.frozen_steps()[f"s5|het|{wall}"]
+                 ^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_langevin_004_toml.py:130: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/acceptance_004.py:1375: in frozen_steps
+    p1 = p1_result()
+         ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def p1_result() -> dict:
+        rel = result_rel("p1-langevin")
+        if not committed(rel):
+>           raise Refused(f"no P1 result: {rel} is not committed (run p1-langevin first, tasks T111)")
+E           acceptance_004.Refused: no P1 result: tests/acceptance/results/p1_langevin_004.json is not committed (run p1-langevin first, tasks T111)
+
+tools/acceptance_004.py:1323: Refused
+________________________ test_the_real_readme_verifies _________________________
+
+    def test_the_real_readme_verifies():
+        """Once T057 has written README.md with markers, it must verify against the stored results."""
+        text = open(os.path.join(REPO, "README.md")).read()
+        if "<!-- verify" not in text:
+            pytest.skip("README.md has no verify markers yet (task T057: the worked example is pending)")
+>       assert V.verify(text) == []
+E       assert ["specs/006-c....json')", ...] == []
+E         
+E         Left contains 295 more items, first extra item: "specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json:edge_tie.n_fits: cannot recompute (FileNotF...-7ba83bef9411/scratchpad/t011/rel2/sraging/specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json')"
+E         Use -v to get more diff
+
+tests/unit/test_readme.py:53: AssertionError
+______________________________ test_schema_valid _______________________________
+
+    def test_schema_valid():
+>       schema = json.load(open(SCHEMA_FILE))
+                           ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/003-calibrator/contracts/fitresult.schema.json'
+
+tests/unit/test_result_json.py:85: FileNotFoundError
+______________ test_the_stored_examples_follow_the_current_schema ______________
+
+    def test_the_stored_examples_follow_the_current_schema():
+        """A stored example is read, and what it upgrades to is valid under the current schema (spec 003: /3 files are
+        upgraded on read; a stored example that no longer reads, or upgrades to an invalid /4, is stale)."""
+        import glob
+>       schema = json.load(open(SCHEMA_FILE))
+                           ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/003-calibrator/contracts/fitresult.schema.json'
+
+tests/unit/test_result_json.py:145: FileNotFoundError
+_____ test_the_schema_asks_each_numerics_for_its_own_grid_and_floor_fields _____
+
+    def test_the_schema_asks_each_numerics_for_its_own_grid_and_floor_fields():
+        """v033 records L_km and the v1 gradient; jax2 records its early grid, exact_from_F and its own floor fields
+        (floors.report_jax2). Each is required for its numerics only, and a numerics outside the data model is refused."""
+>       schema = json.load(open(SCHEMA_FILE))
+                           ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/003-calibrator/contracts/fitresult.schema.json'
+
+tests/unit/test_result_json.py:156: FileNotFoundError
+_________________ test_schema_4_round_trip_is_exact_and_valid __________________
+
+    def test_schema_4_round_trip_is_exact_and_valid():
+        r = make4()
+        back = FitResult.from_json(r.to_json())
+        assert hexes(back.to_dict()) == hexes(r.to_dict())
+        assert back.claims["rbar_over_eta"].label_info["kind"] == "negligible"
+        assert back.claims["sqrt_eta_over_eps"].decline_reason.startswith("combination walk")
+        assert back.nuisance["scored"] is False and back.archive_points == 2902
+>       jsonschema.validate(json.loads(r.to_json()), json.load(open(SCHEMA_FILE)))
+                                                               ^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/specs/003-calibrator/contracts/fitresult.schema.json'
+
+tests/unit/test_result_json.py:226: FileNotFoundError
+_______________ test_gen1s_own_objects_and_gen1_is_never_written _______________
+
+    def test_gen1s_own_objects_and_gen1_is_never_written():
+        from sraging import generator
+        assert S5.GEN is generator
+        for name in ("binned_distribution", "_record", "_het_nodes", "_S_obs", "_model"):
+            assert getattr(S5.GEN, name) is getattr(generator, name)
+        assert S5.law.__code__.co_names.count("binned_distribution") == 1
+        r = subprocess.run(["git", "-C", REPO, "diff", "--quiet", "HEAD", "--", "src/sraging/generator.py"])
+>       assert r.returncode == 0                                    # gen-1 unchanged against the commit
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['git', '-C', 'SCRATCH/t011/rel2/sraging', 'diff', '--quiet', 'HEAD', '--', 'src/sraging/generator.py'], returncode=1).returncode
+
+tests/unit/test_s5_gen1.py:59: AssertionError
+----------------------------- Captured stderr call -----------------------------
+error: Could not access 'HEAD'
+________________________ test_compat_v033_is_untouched _________________________
+
+    def test_compat_v033_is_untouched():
+        r = subprocess.run(["git", "-C", REPO, "diff", "--quiet", "HEAD", "--", "src/sraging/compat/v033"])
+>       assert r.returncode == 0
+E       AssertionError: assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['git', '-C', 'SCRATCH/t011/rel2/sraging', 'diff', '--quiet', 'HEAD', '--', 'src/sraging/compat/v033'], returncode=1).returncode
+
+tests/unit/test_v033_mle.py:18: AssertionError
+----------------------------- Captured stderr call -----------------------------
+error: Could not access 'HEAD'
+________________ test_the_frozen_ports_and_oracles_never_change ________________
+
+    def test_the_frozen_ports_and_oracles_never_change():
+        """Constitution VI: spec 003b adds a port and snapshots; it never edits compat/jax2, compat/v033 or an existing
+        oracle. Compared with `main`, the branch every spec starts from."""
+>       assert frozen_changed(REPO, "main", FROZEN) == []
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_verbatim.py:250: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repo = 'SCRATCH/t011/rel2/sraging'
+base = 'main'
+paths = ('src/sraging/compat/v033', 'src/sraging/compat/jax2', 'tests/oracle/v033', 'tests/oracle/jax2_3bc5775', 'tests/oracle/fp_piecewise_cb191f5', 'src/sraging/compat/jax2_101', ...)
+
+    def frozen_changed(repo, base, paths):
+        """The FROZEN paths that differ between `base` and the working tree (tracked or not); [] = unchanged."""
+        r = subprocess.run(["git", "-C", repo, "diff", "--name-only", base, "--", *paths], capture_output=True, text=True)
+        u = subprocess.run(["git", "-C", repo, "ls-files", "--others", "--exclude-standard", "--", *paths],
+                           capture_output=True, text=True)
+>       assert r.returncode == 0, r.stderr
+E       AssertionError: warning: Limiting comparison with pathspecs is only supported if both paths are directories.
+E         usage: git diff --no-index [<options>] <path> <path> [<pathspec>...]
+E         
+E         Diff output format options
+E             -p, --patch           generate patch
+E             -s, --no-patch        suppress diff output
+E             -u                    generate patch
+E             -U, --unified[=<n>]   generate diffs with <n> lines context
+E             -W, --[no-]function-context
+E                                   generate diffs with <n> lines context
+E             --raw                 generate the diff in raw format
+E             --patch-with-raw      synonym for '-p --raw'
+E             --patch-with-stat     synonym for '-p --stat'
+E             --numstat             machine friendly --stat
+E             --shortstat           output only the last line of --stat
+E             -X, --dirstat[=<param1>,<param2>...]
+E                                   output the distribution of relative amount of changes for each sub-directory
+E             --cumulative          synonym for --dirstat=cumulative
+E             --dirstat-by-file[=<param1>,<param2>...]
+E                                   synonym for --dirstat=files,<param1>,<param2>...
+E             --check               warn if changes introduce conflict markers or whitespace errors
+E             --summary             condensed summary such as creations, renames and mode changes
+E             --name-only           show only names of changed files
+E             --name-status         show only names and status of changed files
+E             --stat[=<width>[,<name-width>[,<count>]]]
+E                                   generate diffstat
+E             --stat-width <width>  generate diffstat with a given width
+E             --stat-name-width <width>
+E                                   generate diffstat with a given name width
+E             --stat-graph-width <width>
+E                                   generate diffstat with a given graph width
+E             --stat-count <count>  generate diffstat with limited lines
+E             --[no-]compact-summary
+E                                   generate compact summary in diffstat
+E             --binary              output a binary diff that can be applied
+E             --[no-]full-index     show full pre- and post-image object names on the "index" lines
+E             --[no-]color[=<when>] show colored diff
+E             --ws-error-highlight <kind>
+E                                   highlight whitespace errors in the 'context', 'old' or 'new' lines in the diff
+E             -z                    do not munge pathnames and use NULs as output field terminators in --raw or --numstat
+E             --[no-]abbrev[=<n>]   use <n> digits to display object names
+E             --src-prefix <prefix> show the given source prefix instead of "a/"
+E             --dst-prefix <prefix> show the given destination prefix instead of "b/"
+E             --line-prefix <prefix>
+E                                   prepend an additional prefix to every line of output
+E             --no-prefix           do not show any source or destination prefix
+E             --default-prefix      use default prefixes a/ and b/
+E             --inter-hunk-context <n>
+E                                   show context between diff hunks up to the specified number of lines
+E             --output-indicator-new <char>
+E                                   specify the character to indicate a new line instead of '+'
+E             --output-indicator-old <char>
+E                                   specify the character to indicate an old line instead of '-'
+E             --output-indicator-context <char>
+E                                   specify the character to indicate a context instead of ' '
+E         
+E         Diff rename options
+E             -B, --break-rewrites[=<n>[/<m>]]
+E                                   break complete rewrite changes into pairs of delete and create
+E             -M, --find-renames[=<n>]
+E                                   detect renames
+E             -D, --irreversible-delete
+E                                   omit the preimage for deletes
+E             -C, --find-copies[=<n>]
+E                                   detect copies
+E             --[no-]find-copies-harder
+E                                   use unmodified files as source to find copies
+E             --no-renames          disable rename detection
+E             --[no-]rename-empty   use empty blobs as rename source
+E             --[no-]follow         continue listing the history of a file beyond renames
+E             -l <n>                prevent rename/copy detection if the number of rename/copy targets exceeds given limit
+E         
+E         Diff algorithm options
+E             --minimal             produce the smallest possible diff
+E             -w, --ignore-all-space
+E                                   ignore whitespace when comparing lines
+E             -b, --ignore-space-change
+E                                   ignore changes in amount of whitespace
+E             --ignore-space-at-eol ignore changes in whitespace at EOL
+E             --ignore-cr-at-eol    ignore carrier-return at the end of line
+E             --ignore-blank-lines  ignore changes whose lines are all blank
+E             -I, --[no-]ignore-matching-lines <regex>
+E                                   ignore changes whose all lines match <regex>
+E             --[no-]indent-heuristic
+E                                   heuristic to shift diff hunk boundaries for easy reading
+E             --patience            generate diff using the "patience diff" algorithm
+E             --histogram           generate diff using the "histogram diff" algorithm
+E             --diff-algorithm <algorithm>
+E                                   choose a diff algorithm
+E             --anchored <text>     generate diff using the "anchored diff" algorithm
+E             --word-diff[=<mode>]  show word diff, using <mode> to delimit changed words
+E             --word-diff-regex <regex>
+E                                   use <regex> to decide what a word is
+E             --color-words[=<regex>]
+E                                   equivalent to --word-diff=color --word-diff-regex=<regex>
+E             --[no-]color-moved[=<mode>]
+E                                   moved lines of code are colored differently
+E             --[no-]color-moved-ws <mode>
+E                                   how white spaces are ignored in --color-moved
+E         
+E         Other diff options
+E             --[no-]relative[=<prefix>]
+E                                   when run from subdir, exclude changes outside and show relative paths
+E             -a, --[no-]text       treat all files as text
+E             -R                    swap two inputs, reverse the diff
+E             --[no-]exit-code      exit with 1 if there were differences, 0 otherwise
+E             --[no-]quiet          disable all output of the program
+E             --[no-]ext-diff       allow an external diff helper to be executed
+E             --[no-]textconv       run external text conversion filters when comparing binary files
+E             --ignore-submodules[=<when>]
+E                                   ignore changes to submodules in the diff generation
+E             --submodule[=<format>]
+E                                   specify how differences in submodules are shown
+E             --ita-invisible-in-index
+E                                   hide 'git add -N' entries from the index
+E             --ita-visible-in-index
+E                                   treat 'git add -N' entries as real in the index
+E             -S <string>           look for differences that change the number of occurrences of the specified string
+E             -G <regex>            look for differences that change the number of occurrences of the specified regex
+E             --pickaxe-all         show all changes in the changeset with -S or -G
+E             --pickaxe-regex       treat <string> in -S as extended POSIX regular expression
+E             -O <file>             control the order in which files appear in the output
+E             --rotate-to <path>    show the change in the specified path first
+E             --skip-to <path>      skip the output to the specified path
+E             --find-object <object-id>
+E                                   look for differences that change the number of occurrences of the specified object
+E             --diff-filter [(A|C|D|M|R|T|U|X|B)...[*]]
+E                                   select files by diff type
+E             --max-depth <depth>   maximum tree depth to recurse
+E             --output <file>       output to a specific file
+E         
+E         
+E       assert 129 == 0
+E        +  where 129 = CompletedProcess(args=['git', '-C', 'SCRATCH...ype\n    --max-depth <depth>   maximum tree depth to recurse\n    --output <file>       output to a specific file\n\n').returncode
+
+tests/unit/test_verbatim.py:243: AssertionError
+_ test_the_tool_checks_the_eleven_misses_the_seed_names_and_the_pilot_is_one_of_them _
+
+    def test_the_tool_checks_the_eleven_misses_the_seed_names_and_the_pilot_is_one_of_them():
+>       seed = open(os.path.join(WC.REPO, WC.SEED_DOC)).read()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'SCRATCH/t011/rel2/sraging/docs/planning/spec003c_seed.md'
+
+tests/unit/test_walker_check_003c.py:12: FileNotFoundError
+!!!!!!! 529 parity test(s) NOT APPLICABLE -- this session is NOT a pass !!!!!!!!
+  reason: Traceback (most recent call last):\n  File "<string>", line 3, in <module>\n    o = O.load()\n  File "SCRATCH/t011/rel2/sraging/tools/oracle_jax2_101.py", line 97, in load\n    raise NotApplicable(problems)\noracle_v033.No
+  reason: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)']
+  reason: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+  reason: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+  reason: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there
+  reason: the oracle snapshot cannot be used here: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+=========================== short test summary info ============================
+FAILED tests/unit/engine/test_density.py::test_stepper_is_used_read_only_and_unchanged
+FAILED tests/unit/test_acceptance_003_tools.py::test_the_pilot_panel_cuts_coverage_and_lists_every_kmax_candidate
+FAILED tests/unit/test_acceptance_003_tools.py::test_the_walker_panel_draw - ...
+FAILED tests/unit/test_acceptance_003b.py::test_the_census_phase_on_a_real_row_and_its_planted_dt_twin
+FAILED tests/unit/test_acceptance_003g.py::test_the_scorer_files_are_compared_between_two_tester_heads
+FAILED tests/unit/test_acceptance_004.py::test_p0s_projection_is_from_the_probe_and_inside_its_cap_and_its_summary_is_what_the_projections_read
+FAILED tests/unit/test_acceptance_005.py::test_the_rules_file_carries_the_same_caps_and_is_frozen_with_navehs_ok
+FAILED tests/unit/test_acceptance_005.py::test_the_real_manifest_names_every_record_file
+FAILED tests/unit/test_acceptance_006.py::test_the_claims_reading_needs_40_of_40_and_no_closure_change_since
+FAILED tests/unit/test_adapter_003g.py::test_the_003g_pins_start_with_the_v6_manifest_only
+FAILED tests/unit/test_asis_defects.py::test_d018_closed_interval_ends_at_the_beta_box_edge
+FAILED tests/unit/test_asis_defects.py::test_d019_named_cohorts_differ_between_hosts
+FAILED tests/unit/test_asis_defects.py::test_d020_ridge_keeps_eta_over_epsilon
+FAILED tests/unit/test_generator.py::test_every_contract_refusal_has_a_test
+FAILED tests/unit/test_langevin_004_toml.py::test_every_judged_step_is_the_frozen_step_it_cites
+FAILED tests/unit/test_langevin_004_toml.py::test_ecoli_has_left_the_clamp_family_with_its_limit
+FAILED tests/unit/test_langevin_004_toml.py::test_hr6s_g_is_the_grids_actual_row_count_per_family
+FAILED tests/unit/test_langevin_004_toml.py::test_the_decided_items_are_filled
+FAILED tests/unit/test_langevin_004_toml.py::test_s5s_values_are_p2s_result
+FAILED tests/unit/test_readme.py::test_the_real_readme_verifies - assert ["sp...
+FAILED tests/unit/test_result_json.py::test_schema_valid - FileNotFoundError:...
+FAILED tests/unit/test_result_json.py::test_the_stored_examples_follow_the_current_schema
+FAILED tests/unit/test_result_json.py::test_the_schema_asks_each_numerics_for_its_own_grid_and_floor_fields
+FAILED tests/unit/test_result_json.py::test_schema_4_round_trip_is_exact_and_valid
+FAILED tests/unit/test_s5_gen1.py::test_gen1s_own_objects_and_gen1_is_never_written
+FAILED tests/unit/test_v033_mle.py::test_compat_v033_is_untouched - Assertion...
+FAILED tests/unit/test_verbatim.py::test_the_frozen_ports_and_oracles_never_change
+FAILED tests/unit/test_walker_check_003c.py::test_the_tool_checks_the_eleven_misses_the_seed_names_and_the_pilot_is_one_of_them
+ERROR tests/unit/test_panel_003d.py - FileNotFoundError: [Errno 2] No such fi...
+SKIPPED [10] tests/unit/engine/test_default_vs_v033.py:32: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/engine/test_reference_mp_scheme.py:95: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [4] tests/unit/engine/test_reference_numpy_scheme.py:21: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_acceptance_003e.py:121: no pinned clone here (spec 003e T001)
+SKIPPED [1] tests/unit/test_adapter_003e.py:69: no pinned clone here (spec 003e T001)
+SKIPPED [1] tests/unit/test_adapter_006.py:22: the pinned tester clone is not here
+SKIPPED [1] tests/unit/test_cleaning.py:301: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_cohorts.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_oracle_fp_piecewise.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)']
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    o = O.load()
+  File "SCRATCH/t011/rel2/sraging/tools/oracle_jax2_101.py", line 97, in load
+    raise NotApplicable(problems)
+oracle_v033.NotApplicable: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_p1_langevin_004.py:131: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:41: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:48: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:53: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:59: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:66: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:71: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:78: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:83: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:94: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:113: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_presets.py:178: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [2] tests/unit/test_presets.py:189: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [1] tests/unit/test_presets.py:195: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [4] tests/unit/test_presets_004.py:29: NOT APPLICABLE: the oracle snapshot cannot be used here: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_survival.py:175: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_units.py:113: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [1] tests/parity/test_cohort_arrays.py:30: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [30] tests/parity/test_cohort_arrays.py:34: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [2] tests/parity/test_curves.py:28: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/parity/test_curves.py:42: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [40] tests/parity/test_engine_grid.py:12: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [6] tests/parity/test_engine_t0.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [36] tests/parity/test_engine_t0.py:55: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_engine_t0.py:65: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [20] tests/parity/test_engine_t1_het.py:31: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [24] tests/parity/test_engine_t1_segments.py:79: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/parity/test_engine_t1_segments.py:95: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [32] tests/parity/test_engine_t1_us1.py:52: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:41: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:57: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:73: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:110: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [240] tests/parity/test_value_grad_bytes.py:66: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [3] tests/parity/test_value_grad_bytes_jax2.py:43: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_value_grad_bytes_jax2.py:54: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_value_grad_bytes_jax2.py:66: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [2] tests/parity/test_value_grad_bytes_jax2_101.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [40] tests/parity/test_warnings_parity.py:49: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_warnings_parity.py:56: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+28 failed, 1930 passed, 532 skipped, 23 deselected, 1 error in 1010.64s (0:16:50)
+real 1017.39
+user 1359.82
+sys 81.16
+exit 1

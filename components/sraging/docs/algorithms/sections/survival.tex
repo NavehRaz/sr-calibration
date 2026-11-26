@@ -1,0 +1,86 @@
+% Section for specs/005-data-plots-cli (T056; FR-010 to FR-012; research R2, R3; register D-501). Paths are relative to
+% src/sraging/. Replaces lifelines' KaplanMeierFitter as SRK Dataset uses it, and SRK's Dataset.getMedianLifetime /
+% getSteepness (named, not edited). Measured numbers carry \verify markers against km_005.json or the development
+% checks of the sr-naveh review (review/evidence/devchecks_005.json).
+\section{The Kaplan--Meier estimator and summary statistics (\texttt{sraging.survival})}\label{sec:surv}
+
+\subsection{Overview}\label{sec:surv-overview}
+
+\code{sraging.survival.km} builds one Kaplan--Meier estimator $\hat S$ with a named 95\,\% band from a
+\code{Cohort} or an \code{(ages, events)} pair \src{survival.py:km, _km}; \code{summary} reads the named statistics
+from it \src{survival.py:summary}. It replaces the KM that SRK's \code{Dataset} takes from lifelines
+(\code{KaplanMeierFitter}) and its \code{getMedianLifetime} and \code{getSteepness}. Every statistic carries its
+definition as text, never implied. Left truncation (entry ages) and a fit window are refused by name. The linear
+band of \code{population.kaplan\_meier} (spec 004) and the compat KMs are untouched (FR-012, D-007).
+
+\subsection{The estimator}\label{sec:surv-km}
+
+Let $u_1<\dots<u_J$ be the distinct death times, $d(u)$ the deaths at $u$ and $r(u)=\#\{i: t_i\ge u\}$ the number at
+risk. A censoring at exactly $u$ is at risk at $u$, so \emph{deaths come first at a tie}:
+\begin{equation}\label{eq:surv-km}
+  \hat S(t)=\prod_{u_j\le t}\frac{r(u_j)-d(u_j)}{r(u_j)}
+  =\exp\sum_{u_j\le t}\big[\log(r-d)-\log r\big],\qquad \hat S=1\ \text{before } u_1 .
+\end{equation}
+$r(u)$ is $n$ minus the number of ages below $u$, found with \code{np.unique} and \code{np.searchsorted}
+\src{survival.py:_core}; the cost is $O(n\log n)$ and the result does not depend on row order. The sum-of-logs form is
+lifelines 0.30.3's arithmetic, so $\hat S$ is meant to equal lifelines' bit for bit (HR-3: $|\Delta\hat S|\le10^{-12}$,
+the median identical, against lifelines side by side on the cages of the two records and on synthetic ties). A
+planted defect, censorings before deaths at a tie, must fail HR-3. Because the arithmetic is lifelines', the
+comparison locks it rather than checking it independently.
+The recorded run (phase \code{km}) compared the mosquito and fly records' cage cohorts and \verify{tests/acceptance/results/km_005.json}{cells[0].cohorts}{d}{201} synthetic tie cohorts, with a largest
+$|\Delta\hat S|$ of \verify{tests/acceptance/results/km_005.json}{cells[1].max_dS}{g}{0}, \verify{tests/acceptance/results/km_005.json}{cells[2].max_dS}{g}{0} and \verify{tests/acceptance/results/km_005.json}{cells[0].max_dS}{g}{0} (mosquito, fly, synthetic), a largest band difference of \verify{tests/acceptance/results/km_005.json}{cells[1].max_dband}{g}{0}, \verify{tests/acceptance/results/km_005.json}{cells[2].max_dband}{g}{0} and \verify{tests/acceptance/results/km_005.json}{cells[0].max_dband}{g}{0}, and \verify{tests/acceptance/results/km_005.json}{cells[1].median_mismatches}{d}{0}, \verify{tests/acceptance/results/km_005.json}{cells[2].median_mismatches}{d}{0} and \verify{tests/acceptance/results/km_005.json}{cells[0].median_mismatches}{d}{0} median mismatches. The planted tie defect
+gives $\hat S(2)=\verify{tests/acceptance/results/km_005.json}{planted.planted}{.3f}{0.533}$ against the correct \verify{tests/acceptance/results/km_005.json}{planted.ours}{.3f}{0.600}, and fails as it must.
+HR-3 has no reference for the other statistics. In a development check the restricted mean matched lifelines'
+\code{restricted\_mean\_survival\_time} to relative \verify{specs/005-data-plots-cli/review/evidence/devchecks_005.json}{n5.rmst_rel}{.1e}{6.4e-16} and the median's CI matched on every cage of the two records
+(\verify{specs/005-data-plots-cli/review/evidence/devchecks_005.json}{n5.ci_mismatch}{d}{0} mismatches); the quartile ages, the CV and the conditional statistics are compared with nothing.
+
+\paragraph{The band.} With $V(t)=\sum_{u_j\le t} d/\big(r(r-d)\big)$ (a term with $r=d$ adds $0$) and $z$ the
+$1-(1-\text{level})/2$ normal quantile, the $\log(-\log)$ Greenwood band is
+\begin{equation}\label{eq:surv-band}
+  \hat S_{\mp}(t)=\exp\!\Big(-\exp\!\Big[\log(-\log\hat S)\;\mp\;\frac{z\sqrt{V}}{\log\hat S}\Big]\Big),
+\end{equation}
+the lower limit takes $\mp=-$ and the upper $\mp=+$ \src{survival.py:_band}. As in lifelines,
+the band is $[0,0]$ where $\hat S=0$ and $[1,1]$ before the first death (a NaN limit is set to $1$). HR-3 holds the
+band to $10^{-10}$. The band's name \code{log(-log) Greenwood} is stored on the result.
+
+\paragraph{Conditioning.} \code{condition\_on=}$t_0$ rebuilds the KM from the individuals observed beyond $t_0$, which
+is $\hat S(t)/\hat S(t_0)$ for $t\ge t_0$; the result records $(t_0,\hat S(t_0))$ and every statistic's definition
+text says it is conditional. It is refused when no one is observed beyond $t_0$, and on a KM already conditioned.
+
+\subsection{The named statistics}\label{sec:surv-stats}
+
+\paragraph{Median.} The first-crossing median is $\min\{t:\hat S(t)\le\tfrac12\}$ (lifelines' median), $\infty$ if
+$\hat S$ never reaches it \src{survival.py:_first}. A crossing at an exact rational level follows the \emph{computed}
+$\hat S$, which can sit one ulp either side, as lifelines' does. Its CI is the pair of ages where the band's lower and
+upper limits first reach $\tfrac12$.
+
+\paragraph{Quartile ages and steepness.} Two definitions of the age $t(q)$ at which $\hat S$ reaches $q$
+\src{survival.py:quartile_age}:
+\begin{align}
+  \text{first-crossing (default):}\quad & t(q)=\min\{t:\hat S(t)\le q\},\\
+  \text{nearest:}\quad & t(q)=\text{the first age of the KM timeline minimising }|\hat S(t)-q|,
+\end{align}
+the timeline being $\{$start$\}$ and every observed age (lifelines'), which is SRK \code{Dataset.getSteepness}'s
+choice. The IQR steepness is
+\begin{equation}\label{eq:surv-steep}
+  \sigma_{\rm IQR}=\frac{t_{1/2}}{t(0.25)-t(0.75)}=\frac{-t_{1/2}}{t(0.75)-t(0.25)},
+\end{equation}
+computed in SRK's arithmetic \src{survival.py:steepness}; it is non-finite when the interquartile range is zero. The
+summary names the quartile definition in every entry. Cleaning (Section~\ref{sec:clean}) asks for \code{nearest} by
+name, since the stored records use it; the summary's default is first-crossing (clarification 2026-11-08).
+
+\paragraph{Restricted mean and CV.} With horizon $\tau$ (default the last observed age) and start $t_0$ (0 unless
+conditioned),
+\begin{equation}
+  m_1=t_0+\int_{t_0}^{\tau}\hat S\,\dd t,\qquad m_2=t_0^2+\int_{t_0}^{\tau}2t\,\hat S\,\dd t,\qquad
+  \mathrm{CV}=\frac{\sqrt{\max(m_2-m_1^2,0)}}{m_1},
+\end{equation}
+integrated exactly on the step function \src{survival.py:_moments}. They are labelled \emph{restricted} when
+$\hat S(\tau)>0$, in which case $m_1$ is a lower bound on the mean.
+
+\subsection{Assumptions and limits}\label{sec:surv-limits}
+
+Right censoring only, noninformative; entry ages and windows are refused. The band is pointwise, not simultaneous.
+The mean and CV are restricted to the observed range. Every option is validated and refused by name
+(\code{UnsupportedOptionError}), including a \code{level} outside $(0,1)$, an unknown \code{quartiles}, and a
+\code{horizon} at or before the start.

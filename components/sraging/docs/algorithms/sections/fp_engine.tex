@@ -1,0 +1,413 @@
+% Section for specs/002-fp-engine (T062). Paths are relative to src/sraging/ unless they start with tests/ or SRK/.
+\providecommand{\todo}[1]{{\color{opencol}[\textbf{TODO:} #1]}}
+\newcommand{\ulp}{u}
+\newcommand{\Fabs}{F}
+
+\section{The FP engine (\texttt{sraging.engine})}\label{sec:fp}
+
+\subsection{Overview}\label{sec:fp-overview}
+
+\code{sraging.engine} is one Fokker--Planck march and one observation model. It replaces SRK's \code{fpt_full},
+\code{fp_loglik}, \code{fp_loglik_het_physical} and \code{fp_piecewise} (which duplicated the stepper) and
+v0.3.3's JAX twin. Everything is switched by static options; a feature that is off contributes \emph{no traced
+operation}. Two numerics versions exist:
+\begin{itemize}[nosep]
+  \item \textbf{\code{"v033"}} with every feature off, grid policy \code{"v033"} and scheme \code{"bdf2"}: the
+    engine's value and value-and-gradient programs have the \emph{same canonical program text} as
+    \code{compat/v033/fp_jax.py:make_loglik} (StableHLO with symbols renamed in order of appearance,
+    \src{engine/program.py:canonical_text}) and give the same value and gradient bytes
+    \src{engine/stepper.py:make_march}. The gate is a program comparison, not a timing.
+  \item \textbf{\code{"v1"}} (the default) $=$ \code{"v033"} $+$ D-004, D-106, D-107, D-108 (Sections
+    \ref{sec:fp-obs}, \ref{sec:fp-guard}). Everything else (D-105, D-109 to D-115) is common to both numerics.
+\end{itemize}
+D-115, D-116 and D-117 are ported as they are in both numerics (Section~\ref{sec:fp-limits}).
+
+\paragraph{Parameter layout.} The jitted kernels take one vector $z=\log(\text{free parameters})$ in the order
+carried by a \code{ParamLayout} \src{engine/layout.py:ParamLayout}. The default layout is
+$(\eta,\beta,\eps,\kappa)$, i.e.\ exactly v0.3.3's $z$. Other names that may be free: \code{xc},
+\code{h_ext}, \code{het_v}, \code{seg:<id>}; inputs that snap to the grid (entry ages, window, $\delta$, segment
+edges, a segment's $\xc$) have no gradient and are refused (FR-008). Everything not free is \emph{fixed} for the
+life of the evaluator (compiled in as a constant); parameters that disagree with a fixed value are refused.
+No public function takes a bare positional vector.
+
+\paragraph{Evaluator API.} \code{Evaluator(cohort, free=, fixed=, numerics="v1", grid=GridPolicy(...),
+scheme="bdf2", segments=, heterogeneity=)} compiles once \src{engine/evaluator.py:Evaluator}. Public methods
+take a named \code{SRParams}: \code{value}, \code{value_and_grad} (gradient by name), \code{terms} (per-row log
+terms and an auxiliary dictionary), \code{weighted_grad} ($\nabla\sum_iw_i\ell_i$), \code{survival_on_grid},
+\code{stiffness}, \code{nodes_dropped}, \code{m_report}, \code{objective} (the two jitted functions over $z$) and
+\code{program_text}. Curves without a cohort: \code{engine.curves.curves} \src{engine/curves.py:curves}.
+
+Notation. Time is in units of $L$ ($\tau=t/L$), $h=1/N$, and the dimensionless groups are those of
+Eq.~\eqref{eq:pv-groups}. The step matrix, the Scharfetter--Gummel coefficients, the clip, $S=h\sum_jp_j$, the
+stop rule ($S<G_{\rm tol}$ and $\tau>0.3$), the monotone truncation and the floor constants
+$\log^{\ge}$ are those of Section~\ref{sec:pv-lik}
+\src{engine/stepper.py:_coeffs, _step_q, truncate}. The sections below state what the engine adds.
+
+\subsection{The time mesh and the march}\label{sec:fp-mesh}
+
+\paragraph{Meshes.} A \code{Grid} carries either a uniform step ($\tau_n=n\Delta\tau$, $n_{\rm steps}=\lfloor
+\tau_{\max}/\Delta\tau\rfloor$, as v0.3.3) or an increasing node list $0=\tau_0<\dots<\tau_{n}$
+\src{engine/grid.py:Grid}. The graded start of a fit-time reference is
+\begin{equation}
+  \Delta_0=\Delta\tau_0,\quad\Delta_{j+1}=r\,\Delta_j\ \text{while}\ \Delta_j<\Delta\tau,\quad\text{then uniform steps }\Delta\tau\text{ to }\tau_{\max},
+\end{equation}
+\src{engine/grid.py:graded_start}; it is passed to the policy \code{"fixed"} as \code{nodes=}. The step
+$\Delta_n=\tau_{n+1}-\tau_n$ is used for step $n$.
+
+\paragraph{Segment edges are nodes (D-113).} Segment edges $e_s/L$ (finite, in $(0,\tau_{\rm end})$) are made
+nodes by \src{engine/grid.py:insert_edges}: an edge on a node (to relative $10^{-12}$) changes nothing, so a
+grid-aligned configuration keeps the uniform mesh like for like with \code{fp_piecewise}; otherwise the
+\emph{nearest} node is moved onto the edge (the step count is unchanged and every step stays in
+$[\Delta\tau/2,\,3\Delta\tau/2]$) and the step that starts at that node is a backward Euler restart. Two edges
+claiming one node (a segment shorter than about one step) are refused. \code{fp_piecewise} instead switched
+parameters at the node \emph{below} the edge while its clock ran from the exact edge (phase error of up to one
+step; \code{tests/oracle/fp_piecewise_cb191f5}). Hazard-segment edges never touch the mesh: the hazard acts outside
+the PDE (Section~\ref{sec:fp-obs}).
+
+\paragraph{Variable-step BDF2.} With $w_n=\Delta_n/\Delta_{n-1}$ the step is
+\begin{equation}
+  (\alpha_nI-\Delta_nA_n)\,q^{n+1}=a_n\,p^n+b_n\,p^{n-1},\qquad
+  \alpha_n=\frac{1+2w_n}{1+w_n},\quad a_n=1+w_n,\quad b_n=-\frac{w_n^2}{1+w_n},
+  \label{eq:fp-bdf2}
+\end{equation}
+$p^{n+1}=\max(q^{n+1},0)$, and $(\alpha,a,b)=(1,1,0)$ (backward Euler) for $n<n_{\rm start}=20$, at $n=0$ and at
+every restart \src{engine/stepper_gen.py:coefficients}. Note $a_n+b_n=\alpha_n$ (consistency), and on a uniform
+mesh $w=1$ gives $(\tfrac32,2,-\tfrac12)$, Section~\ref{sec:pv-lik}. Scheme \code{"be"} is backward Euler throughout.
+
+\paragraph{The general march.} \src{engine/stepper_gen.py:make_march, _step}. It marches any node list with
+piecewise-constant parameters. The time axis is cut into \emph{spans} at the (finite) edges of the march's
+segments; step $n$ uses the span containing the midpoint of $(\tau_n,\tau_{n+1})$ (ties to the earlier segment,
+as \code{fp_piecewise}). For span $k$ the multipliers $\eta_k,\beta_k,\eps_k,\kappa_k$ give
+$(\rho_\eta,\rho_\eps,r_j)_k$ on the common reference threshold $x_{\rm ref}=\max_k\xc^{(k)}$
+\src{engine/evaluator.py:_theta_gen}. The production term is evaluated at the accumulated DPUs $Y$ (damage production
+units; $A$, the \emph{DPU accumulation rate}, speeds up production only: removal, noise and the time step are not rescaled; a model that rescales all rates is time rescaling,
+not A)
+\begin{equation}
+  \begin{gathered}
+  Y(\tau)=Y_k+A_k(\tau-\tau_k)\ \ (\tau\in\text{span }k),\qquad Y_0=0,\ \ Y_{k+1}=Y_k+A_k(\tau_{k+1}-\tau_k),\\
+  P_j=(\rho_\eta^{(k)}Y(\tau_{n+1})-r_j^{(k)})\,h/\rho_\eps^{(k)},
+  \end{gathered}
+\end{equation}
+\src{engine/stepper_gen.py:_clock_starts}; with no $A$ segment $Y=\tau$ literally. A span whose threshold is
+$\xc^{(k)}$ uses the first $M_k=\mathrm{round}(N\xc^{(k)}/x_{\rm ref})$ cells (the rest are masked out of the
+solve); a raised threshold exposes empty cells, a lowered one is a \emph{lowering}, below. $M_k<2$ is refused
+(D-114). The stop rule uses $\tau_{n+1}>0.3$ on the node, and \code{truncate_gen} returns the same quantities as
+\code{truncate} on any mesh (density by the nonuniform \code{gradient}, one-sided at the stop)
+\src{engine/stepper_gen.py:truncate_gen}. One span on a uniform mesh equals the uniform path to round-off.
+
+\paragraph{The absorbed mass $F$.} Under numerics \code{"v1"} the march also carries $F\approx1-S$. Summing the
+step over cells, the column sums of $\alpha I-\Delta A$ vanish except in the last cell, where the outflow is
+$h\,c\,B(-P_{M-1})\,q_{M-1}$ with $c=\rho_\eps/h^2$. Because $a_n+b_n=\alpha_n$,
+\begin{equation}
+  F^{n+1}=\frac{a_n\,F^n+b_n\,F^{n-1}+\Delta_n\,\beta_n\,q^{n+1}_{M-1}}{\alpha_n}+h\sum_j\min\!\big(q^{n+1}_j,0\big),\qquad
+  \beta_n=\frac{\rho_\eps}{h}\,B\!\big(-P_{M-1}\big),
+  \label{eq:fp-F}
+\end{equation}
+\src{engine/stepper.py:_F_next, _bflux_coef; engine/stepper_gen.py:_step}: the scheme's own mass balance plus the
+mass the clip adds back. Every term is a small positive quantity, so $F$ keeps full relative precision where
+$S\approx1$ (where $1-S$ would not). $F_0=0$. The $S$ path is operation for operation the one without $F$.
+\code{truncate_F} gives $F$ on the truncated grid (running maximum, clipped to $[0,1]$, held at $F_k$ after
+the stop).
+
+\paragraph{A lowering carries into BDF2's history (T079).} At the first step $n$ of a span with $M_k<M_{k-1}$,
+the mass above the new threshold, $J=h\sum_{j\ge M_k}p^n_j$, is absorbed at once: $p^n_j\leftarrow0$ for $j\ge M_k$
+and $F^n\leftarrow F^n+J$. The step is a backward Euler restart, so $F^{n-1}$ is not used in it. But the \emph{next}
+step is BDF2 and uses the pre-step $F^{n}$ as its history. If that history excludes the jump, then Eq.~\eqref{eq:fp-F}
+at step $n+1$ counts $J$ with weight $(a_{n+1}F^{n+1}+b_{n+1}F^n)/\alpha_{n+1}$, i.e.\ $\tfrac43J-\tfrac13\cdot0=\tfrac43J$
+(for $w=1$) instead of $J$. The march therefore returns, with each new $F$, the post-lowering $F$ as the next step's
+history \src{engine/stepper_gen.py:_step, return \code{pn, Fn, F}} (the same applies to $F^{n-1}\leftarrow F^{n-1}+J$,
+which is moot because the step is backward Euler). Before this fix (review T064, T079) BDF2 counted the jump $4/3$
+times.
+
+\subsection{Gradients}\label{sec:fp-grad}
+
+\paragraph{Uniform mesh: custom VJP.} For the uniform march the gradient is v0.3.3's hand-written adjoint of
+$V=\sum_nS_n$-type functionals (Section~\ref{sec:pv-jax}; recurrence for $\lambda$, mask $\mathbf1[q>0]$, tail
+folding) \src{engine/stepper.py:make_march, _adjoint_step}, with the same switch: all $q^{n+1}$ stored when
+$(n_{\rm steps}+1)\,N\cdot8\le64$~MiB, otherwise a checkpoint $(p^n,p^{n-1})$ every
+$K=\lceil\sqrt{n_{\rm steps}}\rceil$ steps and a re-march per block \src{engine/stepper.py:grad_mode}.
+With $F$ carried (numerics \code{"v1"}) the VJP has a \emph{second adjoint} $\nu_m=\partial L/\partial F^m$
+\src{engine/stepper.py:_adjoint_step_F}:
+\begin{equation}\begin{gathered}
+  \nu_{n+1}=\bar F_{n+1}+\frac{a_{n+1}}{\alpha_{n+1}}\,\nu_{n+2}+\frac{b_{n+2}}{\alpha_{n+2}}\,\nu_{n+3},\\
+  \bar q=\bar p\odot\mathbf 1[q>0]+h\,\nu_{n+1}\,(1-\mathbf 1[q>0])+\frac{\Delta\,\beta_n\,\nu_{n+1}}{\alpha_n}\,e_{N-1},
+\end{gathered}\end{equation}
+where $\bar p=h\bar S_{n+1}+a_{n+1}\lambda_{n+1}+b_{n+2}\lambda_{n+2}$ is v0.3.3's and (uniform BDF2)
+$a/\alpha=\tfrac43$, $b/\alpha=-\tfrac13$. The coefficient cotangent is pulled back through the recomputed band
+\emph{and} $\beta_n$ (the cotangent $\nu\,\Delta\,q_{N-1}/\alpha$). The checkpoint stores only $(p,p_{-})$: $F$ is not
+needed backward, only $\nu$. Without $F$ the code path is v0.3.3's, statement for statement.
+
+\paragraph{General march: autodiff of a checkpointed scan.} The general march is differentiated by JAX, not by a
+hand-written sweep: the gradient program marches the \emph{fixed length} $n_{\rm steps}$ in a \code{lax.scan} over
+blocks of $K\approx\lceil\sqrt{n_{\rm steps}}\rceil$ steps, each block under \code{jax.checkpoint}, with a
+\code{live} mask for the tail \src{engine/stepper_gen.py:make_march, mode "grad"}. Past the stop index the
+survival is replaced by its held value in \code{truncate_gen}, so the fixed-length scan and the early-stopping
+march compute the same function, and the gradient is exact for it by construction.
+
+\paragraph{Values.} The value programs always use the early-stopping \code{lax.while_loop} (the value path is not
+reverse-differentiable); entries after the stop index repeat $S_k$ (and $F_k$).
+
+\subsection{The observation model}\label{sec:fp-obs}
+
+\src{engine/observation.py:Assembly}. It has two stages so that a heterogeneity mixture can sit between them.
+
+\paragraph{Stage 1: points.} From one march, \code{points} returns the survival quantities at the observation
+ages, by linear interpolation in $\tau$ ($S=1$, $F=0$ to the left of the grid, the last value to the right):
+$S_i=S(\tau_i)$, the density $p_i$ (exact times; $0$ beyond the stop, as v0.3.3), $S(\tau_i^+)$ and, under \code{"v1"}
+for a death with resolution, $F(\tau_i^+)$, $F(\tau_s)$, $S(\tau_s)$ ($\tau_s=\max(t_i,e_i)/L$, below), and
+$S(e_i)$, $S(t_{\rm lo})$, $S(t_{\rm hi})$ where entry or window are set. All are \emph{linear} in $S$ and $F$, and
+nothing nonlinear is applied yet.
+
+\paragraph{Stage 2: assemble.} Applies the hazard, the death rule, entry, window, the floor
+$\log^{\ge}(x)=\max(\log\max(x,e^{-700}),-700)$ \src{engine/observation.py:_logp}, and returns the per-row
+terms $\ell_i$; the total is one sum in input order, $-\infty$ if not finite.
+
+\paragraph{External hazard.} A constant rate $h_e$, or a piecewise-constant one by hazard segment (rates $r_k$ on
+spans $[a_k,a_k+w_k)$), with the cumulative hazard integrated exactly,
+\begin{equation}
+  \begin{gathered}H(x)=\sum_kr_k\,\mathrm{clip}(x-a_k,0,w_k),\qquad S_{\rm obs}(x)=S(x)\,e^{-H(x)},\\ f_{\rm obs}(x)=\big(f(x)+h(x)S(x)\big)e^{-H(x)},\end{gathered}
+\end{equation}
+\src{engine/observation.py:_H, _E, _rate, _dH}; for a constant rate $H=h_et$, SRK's \code{fp_loglik}. A death
+beyond the march keeps the hazard-only mass (register D-115, Section~\ref{sec:fp-limits}).
+
+\paragraph{Per-row terms (common structure).} Let $d_i$ be the death indicator.
+\begin{equation}
+  \ell_i=\Big[\,d_i\,\log^{\ge}\!\big(m_i\big)+(1-d_i)\log^{\ge}\!\big(S_{\rm obs}(t_i)\big)\Big]-\log^{\ge}\!\big(S_{\rm obs}(e_i)\big)\ \ (\text{entry}),
+  \label{eq:fp-term}
+\end{equation}
+with $m_i$ the death mass (below). For exact times $m_i=f_{\rm obs}(t_i)$ (density in physical time, $p_i/L$). For a
+death recorded with resolution $\delta_i$ (one value, or one per row) it is the interval mass over
+$[t_s,\,t_i+\delta_i)$, with $t_s=t_i$ and in v0.3.3
+\begin{equation}
+  m_i^{033}=\max\!\big(S_{\rm obs}(t_s)-S(t_i+\delta_i)\,e^{-H(t_i+\delta_i)},\,0\big).
+  \label{eq:fp-m033}
+\end{equation}
+
+\paragraph{Entry (left truncation).} Per-row entry ages $e_i$ condition each row on survival to $e_i$:
+$-\log^{\ge}S_{\rm obs}(e_i)$ in Eq.~\eqref{eq:fp-term}, in both numerics (no legacy formula exists; research R8).
+A death whose recording interval contains its entry ($e_i>t_i$, $e_i<t_i+\delta_i$) is scored from the entry:
+$t_s=\max(t_i,e_i)$ in Eq.~\eqref{eq:fp-m033} and $\Delta$ below uses $t_i+\delta_i-t_s$. A cohort has either entry or a
+window, not both (\code{cohort.py:_entry}).
+
+\paragraph{Exact-time deaths by density.} $m_i=p_i/L$ with the hazard composition $(p_i/L+h\,S_i)e^{-H(t_i)}$. Under
+\code{"v1"} $p_i$ itself is rebuilt from $F$ where the $S$ difference is round-off (D-106): at node $j$, with the
+same stencil as the $S$ density (central, one-sided at the ends), $p_j^F=\nabla_\tau F_j$ is used instead of
+$-\nabla_\tau S_j$ when $F(\tau_{j+1})<S(\tau_{j-1})$ (the difference whose operands are smaller has the smaller
+ulp); where $S$'s is kept the result is v0.3.3's bit for bit \src{engine/stepper.py:density_F; engine/stepper_gen.py:density_F_gen}.
+For a heterogeneous cohort the choice is made per node before mixing.
+
+\paragraph{The fit window $[t_{\rm lo},t_{\rm hi}]$.} A common window is the special case of entry
+(spec FR-012). Rows with $t_i<t_{\rm lo}$ are excluded (term $0$, counted). Every at-risk row is conditioned on
+$S_{\rm obs}(t_{\rm lo})$. Rows that reach past $t_{\rm hi}$ are censored at $t_{\rm hi}$:
+$\ell_i=\log^{\ge}$-style $\log\max(S_{\rm obs}(t_{\rm hi}),10^{-300})$, floored at $-700$. The rules differ:
+\begin{center}\small
+\begin{tabular}{@{}p{3.2cm}p{5.4cm}p{5.4cm}@{}}\toprule
+ & \code{"v033"} \src{SRK/fp_likelihood.py:_windowed_ll} & \code{"v1"} (D-107, D-108)\\\midrule
+censored at $t_{\rm hi}$ & $t_i>t_{\rm hi}$ & $t_i>t_{\rm hi}$, or a death with $t_i+\delta_i>t_{\rm hi}$ (D-107)\\
+death with $t_i\le t_{\rm hi}<t_i+\delta_i$ & keeps its whole interval & censored at $t_{\rm hi}$\\
+conditioning on $t_{\rm lo}$ & $\log\mathrm{clip}(S_{\rm obs}(t_{\rm lo}),10^{-12},1)$ & $\log^{\ge}S_{\rm obs}(t_{\rm lo})$ (D-108)\\\bottomrule
+\end{tabular}
+\end{center}
+\src{engine/observation.py:Assembly.__init__, assemble}.
+
+\paragraph{Heterogeneity.} One parameter $P\in\{\eta,\beta,\eps,\kappa,\xc\}$ is $P_k=P(1+v\,z_k)$ over the
+probabilists' Gauss--Hermite nodes $(z_k,w_k)$, $k\le M$, $\sum w_k$ normalised over the nodes with $P_k>0$
+(dropped nodes are marched at scale 1 with weight 0) \src{engine/evaluator.py:_node_scales, _points}. The
+engine marches all nodes (\code{vmap}) and \emph{averages the stage-1 points} before anything nonlinear:
+\begin{equation}
+  \bar S(\cdot)=\sum_kw_kS_k(\cdot),\quad\bar F=\sum_kw_kF_k,\quad\bar p=\sum_kw_kp_k,
+  \quad\text{and stage 2 is applied once to }(\bar S,\bar F,\bar p).
+\end{equation}
+Conditioning therefore divides the mixture: for entry $\ell_i$ contains $-\log^{\ge}\bar S_{\rm obs}(e_i)$, not
+a mixture of conditional terms; likewise $S_{\rm obs}(t_{\rm lo})$ for the window. The D-004 switch
+$F(t+\delta)<S(t_s)$ is evaluated on $\bar F,\bar S$, i.e.\ after mixing. The population mean is that of
+SRK's \code{fp_loglik_het_physical}; $v$ may be free (\code{het_v}); \code{m_report} gives each early-death
+term's change between $M$ and $M+4$ nodes. D-116: a node with $1+vz_k\le0$ is dropped and the weights renormalised,
+so the likelihood jumps in $v$ where a node crosses zero; the count is reported and no gradient in $v$ is given
+there. D-117: $P(1+vZ)$ itself puts probability $\Phi(-1/v)>0$ on non-positive parameter values (the model half
+of D-116). Both are ported as they are.
+
+\paragraph{D-004: the death mass from $F$ under \texttt{"v1"}.} For a death with resolution, the v0.3.3 mass
+\eqref{eq:fp-m033} is a difference of two numbers near $1$ and underflows to $0$ (or is round-off) when $S\approx1$:
+the term is $-700$ or a rounding-dependent value near $-31\ldots-37$. Under \code{"v1"}, after any mixing,
+\begin{equation}
+  \begin{gathered}\text{use\_F}=\big[\,F(t_i+\delta_i)<S(t_s)\,\big],\qquad
+  m_i^F=\max\!\big(F(t_i+\delta_i)-F(t_s),\,0\big),\\
+  m_i^{\rm v1}=\begin{cases}m_i^F,&\text{use\_F}\\ m_i^{033},&\text{otherwise,}\end{cases}\end{gathered}
+\end{equation}
+because $S(t_s)-S(t_i+\delta_i)=F(t_i+\delta_i)-F(t_s)$ in exact arithmetic and the difference with the smaller
+operands carries the smaller error. Where \code{use_F} is false the expression is v0.3.3's own, bit for bit.
+With an external hazard, factoring $e^{-H(t_s)}$ out of Eq.~\eqref{eq:fp-m033},
+\begin{equation}
+  m_i^F=e^{-H(t_s)}\Big[\,\big(F(t_i+\delta_i)-F(t_s)\big)+S(t_i+\delta_i)\,\big(-\mathrm{expm1}(-\Delta H)\big)\Big],\quad
+  \Delta H=H(t_i+\delta_i)-H(t_s),
+\end{equation}
+which has no cancellation either (the switch itself is on the hazard-free $S$ and $F$)
+\src{engine/observation.py:assemble}. Besides the cancellation, the $F$ route removes the $S$ route's stiffness
+error: $S$'s difference is a tridiagonal-solve residual away from the true mass, growing like $u\rho_\eps\Delta\tau N^2$
+(Section~\ref{sec:fp-guard}). It does \emph{not} remove the grid's discretisation error: a rescued early-death term can
+still be several nats from its converged value at the production grid (Section~\ref{sec:fp-floors}, D-105).
+
+\subsection{Grid policies}\label{sec:fp-grid}
+
+Every result records the policy's name and version and the grid it produced (\code{Grid.summary}). No environment
+variable is read \src{engine/grid.py:GridPolicy}.
+\begin{itemize}[nosep]
+  \item \textbf{\code{"v033"}} (version 1): v0.3.3's production grid, by calling
+    \code{compat.v033.estimator.solver_grid} on the cohort's arrays \src{engine/grid.py:v033_grid}. That is $L$ from the
+    Kaplan--Meier mean, $(\tau_{\max},\Delta\tau)$ from Eq.~\eqref{eq:pv-autogrid}, the dt ceiling
+    Eq.~\eqref{eq:pv-ceiling}, $N=900$, $G_{\rm tol}=10^{-11}$, $n_{\rm start}=20$. A per-row $\delta$ has no v0.3.3
+    rule; the ceiling then uses $\min_i\delta_i$.
+  \item \textbf{\code{"fixed"}}: explicit $N$, $\tau_{\max}$, $L$, $G_{\rm tol}$ and exactly one of a uniform
+    \code{dt} or an increasing node list \code{nodes} (e.g.\ \code{graded_start}).
+  \item \textbf{\code{"model"}}: for a parameter set without a cohort (\code{curves}), $L$ is the model's own mean
+    lifetime, as SRK's \code{fp_curves.auto_L} \src{engine/curves.py:model_L, model_grid_policy}. A coarse probe march
+    ($N=300$, $\Delta\tau=4\times10^{-3}$, $\tau_{\max}=20$, $G_{\rm tol}=10^{-6}$) is run with time unit $L$ (start $L=1$ or a
+    given \code{t_ref}); if the probe has absorbed ($S_{\rm end}<10^{-3}$, finite positive mean) the result is
+    \begin{equation}
+      L\leftarrow L\cdot\int_0^{\tau_k}S_{\rm probe}\,\dd\tau\quad(\text{trapezoid, to the probe's stop index }k),
+    \end{equation}
+    otherwise $L\leftarrow4L$ and repeat (at most 12 tries, then refusal). The curves are then computed on the standard grid
+    $N=900$, $\Delta\tau=10^{-3}$, $\tau_{\max}=20$, $G_{\rm tol}=10^{-11}$ with this $L$.
+\end{itemize}
+A graded mesh without segments uses the general march with one span \src{engine/evaluator.py:_setup_segments}.
+
+\subsection{The CI guard (constitution VII)}\label{sec:fp-guard}
+
+The default numerics may differ from \code{"v033"} only where a register entry's machine-checkable condition says so
+\src{engine/guard.py:compare}. For one cohort and one parameter point both numerics are evaluated term by term
+and every term is classified as \emph{covered} by an entry, or \emph{uncovered} (and then required to be equal in bits).
+
+\paragraph{Predicates.} A fixed vocabulary joined by \code{&} in the register's \code{terms} field:
+\code{death}, \code{censored}, \code{interval}, \code{exact}, \code{use_F}, \code{hazard}, \code{window_close}
+(a death with $t\le t_{\rm hi}<t+\delta$), \code{lo_floor} ($S_{\rm obs}(t_{\rm lo})<10^{-12}$, for every at-risk row)
+\src{engine/guard.py:_mask}. D-004: \code{death & interval & use_F}; D-106: \code{death & exact & use_F}; D-107:
+\code{window_close}; D-108: \code{lo_floor}. D-107 and D-108 have bound ``any'' (the entry defines the new value).
+
+\paragraph{Value bound, in mass space.} For covered rows of D-004 and D-106,
+\begin{equation}
+  \big|m^{\rm v1}-m^{033}\big|\le c\,u\,K+f\,u,\qquad K=\rho_\eps\,\Delta\tau\,N^2,\quad c=1.8996,\quad f=348.2,
+  \label{eq:fp-guard}
+\end{equation}
+where $u=2^{-52}$ ($f$ in ulps), $K$ is the solve's largest diffusion number over heterogeneity nodes and age spans
+(\code{Evaluator.stiffness}), and the mass is the death mass, the density times the largest step for exact times, and the
+survival for a censored row \src{engine/guard.py:masses}. The constants are frozen from the guard pilot
+\src{tests/acceptance/results/guard_pilot_002.json}: $c=4\times0.4749$ (margin $4\times$ the worst
+$|\Delta m|/(uK)$ at the stiff points, $K\ge10^4$; Denmark\_F\_1900 hetro truth at $N=450$, $\Delta\tau=10^{-3}$) and
+$f=4\times87.1$ ulps (the worst excess over $0.4749\,uK$ at ordinary points). The pilot ran $39$ ordinary and $11$ stiff
+points. The form follows the mass: the $S$ route's error is the tridiagonal solve's residual, which grows with $K$.
+\paragraph{Floor.} $m^{033}=0$ for a term on the $-700$ floor (and likewise $m^{\rm v1}$): a floored v0.3.3 term gets no
+free pass; v1 may rescue it only to a mass the $S$ route could not resolve.
+
+\paragraph{Term/mass consistency.} For covered death rows (excluding rows an ``any'' entry defines, and rows outside the
+window), the term must be its own mass minus the same conditioning in both numerics:
+\begin{equation}
+  \big|\,(\ell^{\rm v1}-\log^{\ge}m^{\rm v1})-(\ell^{033}-\log^{\ge}m^{033})\,\big|\le10^{-9},
+\end{equation}
+so a change to the term that its mass does not show is not that entry's.
+
+\paragraph{\texttt{use\_F} recomputed.} For interval deaths the engine's \code{use_F} is checked against the same rule
+recomputed from v0.3.3's own $S$: $(1-S_{033}(t+\delta))<S_{033}(t_s)$. They may differ only within $\mathrm{BAND}=10^{-9}$
+of the switch.
+
+\paragraph{Gradients.} With $w$ a 0/1 weight vector (\code{Evaluator.weighted_grad}):
+\begin{enumerate}[nosep]
+  \item \emph{uncovered}: the weighted gradient of the uncovered terms agrees to $10^{-10}$ relative to
+    $\max|g^{033}|$ (not bits: XLA fuses the two programs differently), in addition to the \emph{terms} being equal in bits;
+  \item \emph{covered, resolved by both} ($|\ell^{\rm v1}-\ell^{033}|\le10^{-8}$, neither on the floor): agree to $10^{-6}$ relative;
+  \item \emph{rescued} (covered death rows, not floored under v1, and either $|\Delta\ell|>10^{-8}$ or floored under v033): v1's
+    weighted gradient against central differences of v1 in $z$, with steps $10^{-4},10^{-5},10^{-6},10^{-7}$ (best accepted), each
+    with its own round-off bound $50\,u\,\max(|\ell|,1)/h_{\rm step}+10^{-6}\max|g|$.
+\end{enumerate}
+\paragraph{Planted changes.} The guard must fail on changes no entry covers (constitution V); four are planted by
+patching \code{Assembly.assemble} for v1 \src{tools/acceptance_002.py}: $+10^{-12}$ on every censored term;
+a factor $(1+2.2\times10^{-16})$ on every term; $+10^{-3}$ on every death term; and a \code{stop_gradient} on the $F$ route
+(values unchanged, rescued gradient wrong; caught by the covered and rescued gradient checks). Each must fail and name its
+terms.
+
+\subsection{FLOORED\_DEATHS}\label{sec:fp-floors}
+
+A sixth truth-free check of the fit-cohort calibrator \src{floors.py:report, message}. At $\hat\theta$ the deaths are
+evaluated on the fit's own grid with numerics \code{"v033"} (this fit) and \code{"v1"} (corrected).
+\paragraph{Candidates.} A death is a candidate if its v033 term is on the $-700$ floor, or $|\ell^{\rm v1}-\ell^{033}|>1$~nat,
+or $m^{\rm v1}<10^{-12}$ (robust to how v0.3.3 happened to round: one ulp takes the ITP example's added age-0 death from $-700$ to $-30.5$,
+D-105).
+\paragraph{Refinement.} A candidate inside the march ($\tau_i<\tau_k$ on the fit's grid) is re-evaluated under \code{"v1"} on a cohort of the
+candidates only, with grid policy \code{"fixed"}: $N$ fixed, $\Delta\tau_k=\Delta\tau/4^k$, $\tau_{\rm end}=\max_i(t_i+\delta_i)/L+4\Delta\tau_k$,
+$k=1,2,\dots$ until every term moves by less than $1$~nat between two refinements, at most $6$ refinements and
+$4\times10^9$ node-steps in all. The step, not $N$, sets an early death's term (at the ITP $\hat\theta$ the age-0 death is
+$-36.8$ at the fit's grid and $-114.0$ at $\Delta\tau/4^6$, while $N=900,1800,3600$ agree to $0.2$ nat). A candidate whose refinement did not converge
+is reported with \code{converged=False}.
+\paragraph{Categories.} Each candidate gets one category from its refined value:
+\begin{enumerate}[nosep]
+  \item \textbf{horizon}: $\tau_i\ge\tau_k$, beyond the march's early stop on the fit's grid: the grid, not the data, floored it;
+  \item \textbf{impossible}: refined mass $<10^{-12}$ (or corrected mass $<10^{-12}$ with the refined term within $1$~nat of the corrected one): the model at $\hat\theta$ leaves no room for it;
+  \item \textbf{grid}: otherwise, refined term differs from the corrected by more than $1$~nat: the fit's time step is too coarse for this death;
+  \item \textbf{cancellation}: otherwise: v0.3.3's arithmetic misscored it and the corrected value is resolved.
+\end{enumerate}
+\paragraph{Example.} The ITP example (\code{examples/results/itp_c2016_het3_control_female.json}) plus an added age-0 death:
+$-30.5$ in this fit, $-36.8$ corrected, $-114.0$ refined; category \emph{impossible}. The corrected-numerics
+gradient at $\hat\theta$ is kept in the report. Nothing here changes the fit, its claims or the other checks.
+
+\subsection{Verification: what is measured where}\label{sec:fp-verif}
+
+Measured values are quoted only from committed result files under \code{tests/acceptance/results/}. A placeholder
+\todo{from results/\ldots} marks a figure that is not yet in a committed file.
+
+\begin{center}\small
+\begin{longtable}{@{}p{1.55cm}p{4.6cm}p{4.2cm}p{4.5cm}@{}}
+\toprule
+Phase & What is measured & Against & Result\\\midrule\endhead
+T0 & compiled program text; value and gradient bytes, numerics \code{"v033"}, all features off, side by side in one process
+  & spec 001's port (\code{compat/v033/fp_jax.py}); 40 cohorts $\times$ 6 points
+  & \code{t0_002.json}: programs equal $40/40$, bytes equal $240/240$, status pass\\
+guard & the CI guard (Section~\ref{sec:fp-guard}) on its frozen panel, then four planted changes
+  & \code{"v033"}, same grid, same process
+  & \code{guard_002.json}: $78/78$ evaluations pass; $4/4$ plants fail\\
+guard-pilot & $c$ and $f$ of Eq.~\eqref{eq:fp-guard} from $\max|\Delta m|/(uK)$ over $50$ points (ordinary and stiff)
+  & \code{"v033"}
+  & \code{guard_pilot_002.json}: $c=1.8996$, $f=348.2$ ulps ($4\times$ margin)\\
+T1 & totals $\le10^{-5}$ nats per evaluation, resolved terms $\le10^{-8}$ nats, $\max|\Delta S|\le10^{-8}$, gradient $\le10^{-6}$ relative to autodiff of a fixed-length march
+  & SRK's frozen NumPy code (\code{fp_loglik}, \code{fp_loglik_het_physical}); \code{fp_piecewise} for segments
+  & \code{t1_002.json}: $474/480$ pass. Totals within $6.4\times10^{-10}$ nats except one cohort; resolved terms $\le2.0\times10^{-10}$; $\max|\Delta S|\le4.7\times10^{-10}$; gradient within $9.2\times10^{-7}$ of the fixed-length autodiff on all $350$ uniform-mesh evaluations. Fails: the $n=93{,}893$ Swedish cohort at $\beta,\eps\times1.5$ (totals $1.3\times10^{-5}$--$1.0\times10^{-4}$; cause not isolated: at the same $K=4.76\times10^5$ its truth, $\eta\times1.5$ and $\eta\times10$ agree to $\le2.1\times10^{-6}$, and all its terms fall below the low-mass cut, so it is checked by its total only), and central differences at two piecewise-smooth points; not applicable at $59$ (cause not diagnosed). Segments' gradient is checked independently on $111$ of $130$ evaluations; the other $19$ rest on the self-check\\
+mpref & numerics \code{"v1"} terms, low-mass rows and the round-off panel, within $10^{-5}$ nats; $\pm3$-ulp scan of $\theta$ moves the total by $\le10^{-5}$ nats
+  & the same discrete scheme in mpmath, 60 digits (\code{tests/reference/mp_scheme.py})
+  & \code{mpref_002.json}: F-route low-mass rows of $108$ evaluations within $7.4\times10^{-6}$ nats (v033 up to $209$). Round-off panel: v1 matches at every fitted or stored $\hat\theta$ (Sweden stored: $-4.9\times10^{-8}$ vs v033's $+83.25$); 5 of 17 fail (float64 conditioning): at three stiff human truths ($K\lesssim8\times10^6$) both numerics are $10^{-4}$--$3\times10^{-4}$ off, and on the $n=93{,}893$ Swedish cohort v1's $\pm3$-ulp spread is $1.7\times10^{-5}$ at $\eta\times1.5$ and it is $2.4\times10^{-5}$ off at $\eps\times1.5$\\
+early & residual of each early-death term ($S_{\rm obs}>1-10^{-3}$) at the v033 grid, v1 and v033
+  & a converged graded reference (start $\Delta\tau_0=10^{-10}$, ratio $1.005$, then $\Delta\tau=\delta/(10L)$) at $N=1800,3600,7200$, extrapolated in $N$
+  & \code{early_002.json}: $1313/1322$ references converged. Of the other $9$, $4$ with masses $<10^{-30}$ move by up to $3.5$ nats; $5$ with masses $10^{-21}$--$2\times10^{-14}$ move by $1.2\times10^{-4}$--$2.2\times10^{-3}$ nats, just above the $10^{-4}$ tolerance. v1 residual sums: Denmark M~1890 $-12.3$ (max $0.07$), pure-k0.1-p22 $+3.19$ (max $0.32$), Sweden F~1910 stored $+190$ (max $134$), ITP $+$ age-0 $+75.4$ nats\\
+anchor & (a) $S$ and early interval masses for $\eta=\beta=0$ at three $\rho_\eps$, refining $N$ and the step together; (b) self-convergence of the total log-likelihood to $N=7200$ (reported, not judged)
+  & the pure-diffusion closed-form series (\code{tests/reference/diffusion.py}); the scheme's reflecting wall sits at $-h/2$ from the start cell, so $S$ converges at order $O(h)$
+  & \code{anchor_002.json}: pass. $S$ observed order $0.999$ at all three $\rho_\eps$; early-term errors fall monotonically; the stiff Denmark truth is pre-asymptotic at $N=900$ (differences $0.15, 0.034, 0.048, 0.031$ nats)\\
+speed & CPU per evaluation, 1 core, $\ge5$ replicates, 95\% CI of the ratio
+  & v0.3.3's port (same program: $\le1.03$ upper CI); \code{"v1"} ($\le1.20$); features on vs the NumPy oracle ($\le1.0$)
+  & \code{speed_002.json}: pass. Off configuration $0.9996$ $[0.996, 1.002]$ (value), $0.9995$ $[0.997, 1.003]$ (value $+$ gradient); v1 $1.025$ $[1.020, 1.031]$ and $1.033$ $[1.026, 1.042]$; features against NumPy $0.15$--$0.37$; per step $11.6\,\mu$s (value) and $30.0\,\mu$s (value $+$ gradient) against the cost model's $11$ and $29$--$40$\\
+floors & FLOORED\_DEATHS firing set and categories
+  & the set computed in advance from per-term values at the stored $\hat\theta$
+  & \code{floors_002.json}: the quick tier and Sweden match the committed prediction. The ITP $+$ age-0 CLI fit does not: the age-0 death moves $\hat\theta$ ($\eta\ 3.6\times10^{-5}\to6.5\times10^{-6}$; BASIN warnings) and the death at 53 days becomes impossible too. Post hoc (\code{floors_posthoc_002.json}): the independent predictor at that $\hat\theta$ gives exactly the fit's rows\\
+score & mean gradient at the true $\theta$ over $R$ simulated cohorts, per feature (pure control, hazard, window, entry, heterogeneity; segments and the clock moved to spec 007)
+  & SRK's Euler/Brownian-bridge simulator (\code{SR\_hetro}), read-only, at $\Delta t/8$ (measured: at $\Delta t$ the pure control was biased by $\sim5$ SE); zero within its standard error at a multiplicity-corrected threshold
+  & \code{score_002.json}, \code{score_window_002.json}: pure control $|z|\le0.58$ ($R=200$); hazard $|z|\le2.76$; entry $|z|\le0.6$ ($R=40$), its alternative detected at $z=-123$; window ($t_{\rm hi}$ at the median) $|z|\le1.06$, SRK's window close detected at $|z|\le11.1$. Heterogeneity in $\xc$ ($v=0.2$, $M=41$, as $M=11$ biased the $\eps$ score by 14--29 SE, \code{mixture_M.json}), \code{score_het_002.json}: $|z|\le0.69$ ($R=200$, grid certified) but node-by-node conditioning is not detected ($|z|\le2.58$; the pilot needs $R=481$--$3893$): not informative at this $R$, so the mixture's conditioning has no truth-anchored check here (spec 006)\\
+\bottomrule
+\end{longtable}
+\end{center}
+Byte identity holds only in the pinned environment on the host that runs the test. The identities (xc reduction, full-life
+segment equals chronic value, $M=1$ equals homogeneous, window $[0,\infty)$ equals the full likelihood, entry at 0 equals no entry, terms sum to the
+total) are unit tests, not acceptance phases.
+
+\subsection{Known limitations}\label{sec:fp-limits}
+
+From spec 002's \emph{Not Covered}:
+\begin{itemize}[nosep]
+  \item $N=900$ is pre-asymptotic at $n\sim10^5$: the grid error is not removed by D-004 (it removes the cancellation and the stiffness error of $S$, not the
+    discretisation error), and no $N$ rule is a policy here.
+  \item D-115: with an external hazard, a death beyond the march scores a hazard-only mass $S_k(e^{-h t}-e^{-h(t+\delta)})$ in both numerics (SRK's semantics). $S_k$ jumps with
+    the discrete stop index, so the likelihood is jagged in $\theta$ near the horizon. Fixing it belongs with hazard fitting (spec 006).
+  \item D-116 and D-117: the heterogeneity mixture drops non-positive nodes, so the likelihood jumps in $v$ where a node crosses zero (a quadrature
+    artefact; no gradient in $v$ is given there); the definition $P(1+vZ)$ itself puts probability on non-positive values. The shared definition is spec 004's; only
+    \code{normal_frac_sd} exists here, for one parameter at a time.
+  \item The heterogeneity mixture's conditioning at entry or at a window's start has no truth-anchored check: the score test does not detect node-by-node conditioning at $R=200$ (the pilot needs $R=481$--$3893$). It is checked against its definition only \src{tests/unit/engine/test_mixture.py}; spec 006 carries the check.
+  \item Float64 conditioning is untouched by D-004: at $\rho_\eta\ge10^6$, and at very stiff points ($K=\rho_\eps\Delta\tau N^2\gtrsim5\times10^5$ on $n\sim10^5$; the mpref and T1 rows above give the measured values).
+  \item The time grid's own error on early-death terms is the largest error this spec measured, and D-004 does not remove it: v1 on the fit's grid against a converged reference is $+190$ nats on Sweden F~1910 at its stored $\hat\theta$ (at most $134$ on one term), $+75$ on the ITP example plus an age-0 death and $-12.3$ on Denmark M~1890 (\code{early_002.json}). A graded default mesh is spec 003's decision.
+  \item Also inherited: the censor-tie bias (D-006) and the p15 grid barrier; both are grid or data properties that no policy here removes.
+\end{itemize}

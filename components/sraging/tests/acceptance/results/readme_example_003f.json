@@ -1,0 +1,369 @@
+{
+ "phase": "readme-example",
+ "written_at": "2026-10-19T12:17:45Z",
+ "repo_head": "9076813edc847707475d016547debd8dd8e670b0",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003f.toml": "2a3b45d85c6f12f4201b7c5461aac5a2d9c901d7"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "014e9556d3df7407f80864f6d1d2816388520ea9"
+ },
+ "wall_s": 5925.154507160187,
+ "cpu_s": 0.38425600000000004,
+ "status": "REPORTED",
+ "claims_equal_to_stored": true,
+ "theta_hat_equal_to_stored": true,
+ "leverage": {
+  "version": "003f/2",
+  "label": "flat_valley_slide",
+  "reason": null,
+  "rule": {
+   "quantities": "all4",
+   "ratio": 1.5,
+   "delta_total_nats": 1.92,
+   "fail_nats": 0.1,
+   "refit": "mle_stage_and_warm_start",
+   "provisional": false
+  },
+  "provenance": {
+   "calibrator": "profile_jax2",
+   "version": "1.0.0",
+   "host": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro",
+   "library": null
+  },
+  "gap_sd": {
+   "g": 0.6794975123168453,
+   "n_deaths": 303,
+   "applicable": true,
+   "flagged": false
+  },
+  "share": {
+   "row": 74,
+   "age": 53.0,
+   "event": 1,
+   "term": -13.689428863889143,
+   "share": 0.006997487125233865
+  },
+  "influence": {
+   "all4": {
+    "top": {
+     "row": 74,
+     "age": 53.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.12015953163993726,
+      "rbar_over_eta": -0.10516287806862423,
+      "eta": -0.37547514484542954,
+      "epsilon": -0.4956346764853668
+     }
+    },
+    "median": {
+     "row": 202,
+     "age": 974.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.0011938914622813632,
+      "rbar_over_eta": -0.003291946811163359,
+      "eta": -0.014272115978596012,
+      "epsilon": -0.015466007440877375
+     }
+    },
+    "n_tied_top": 1
+   },
+   "lead_pair": {
+    "top": {
+     "row": 74,
+     "age": 53.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.12015953163993726,
+      "rbar_over_eta": -0.10516287806862423,
+      "eta": -0.37547514484542954,
+      "epsilon": -0.4956346764853668
+     }
+    },
+    "median": {
+     "row": 114,
+     "age": 837.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": -0.004011823270248557,
+      "rbar_over_eta": 0.00310101039566198,
+      "eta": 0.008806444736661615,
+      "epsilon": 0.012818268006910173
+     }
+    },
+    "n_tied_top": 1
+   },
+   "raw": {
+    "top": {
+     "row": 74,
+     "age": 53.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.12015953163993726,
+      "rbar_over_eta": -0.10516287806862423,
+      "eta": -0.37547514484542954,
+      "epsilon": -0.4956346764853668
+     }
+    },
+    "median": {
+     "row": 202,
+     "age": 974.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.0011938914622813632,
+      "rbar_over_eta": -0.003291946811163359,
+      "eta": -0.014272115978596012,
+      "epsilon": -0.015466007440877375
+     }
+    },
+    "n_tied_top": 1
+   },
+   "hessian": {
+    "free": [
+     true,
+     true,
+     true,
+     false
+    ],
+    "active": [
+     3
+    ],
+    "eigenvalues": [
+     0.7474900837569667,
+     560.7925421164932,
+     20169.76142734958
+    ],
+    "min_eigenvalue": 0.7474900837569667,
+    "min_relative": 3.7059936799420594e-05,
+    "n_negative": 0,
+    "condition": 26983.316388592284,
+    "n_cut": 0,
+    "n_kept": 3,
+    "rel_cut": 1e-06,
+    "source": "finite_difference"
+   }
+  },
+  "at_theta_hat": {
+   "log_distance_to_bounds": {
+    "eta": [
+     17.393215792169755,
+     17.14556060274093
+    ],
+    "beta": [
+     24.17853203944658,
+     10.360244355464104
+    ],
+    "epsilon": [
+     21.58579879488105,
+     12.952977600029634
+    ],
+    "kappa": [
+     0.0,
+     12.611537753638338
+    ]
+   },
+   "gradient": [
+    1.522989548404278e-06,
+    -1.3540062888537419e-06,
+    1.6564583907653157e-07,
+    -0.001502918104025344
+   ],
+   "free_gradient_norm": 2.044570551193457e-06
+  },
+  "basin_fix_fired": false,
+  "dropped": {
+   "row": 74,
+   "age": 53.0,
+   "event": 1
+  },
+  "refit": {
+   "status": "ok",
+   "reason": null,
+   "theta": [
+    1.986495422085394e-05,
+    0.014757862726486845,
+    0.0010863565458739102,
+    0.0010000000000000002
+   ],
+   "loglik_stage": -1942.131363545952,
+   "relabelled": 0,
+   "cpu_s": 65.44776599999932,
+   "start": "mle_stage"
+  },
+  "refits": {
+   "mle_stage": {
+    "status": "ok",
+    "reason": null,
+    "theta": [
+     1.986495422085394e-05,
+     0.014757862726486845,
+     0.0010863565458739102,
+     0.0010000000000000002
+    ],
+    "loglik_stage": -1942.131363545952,
+    "relabelled": 0,
+    "cpu_s": 65.44776599999932
+   },
+   "warm": {
+    "status": "ok",
+    "reason": null,
+    "theta": [
+     1.986496394048856e-05,
+     0.014757872084440907,
+     0.0010863570337540543,
+     0.0010000000000000002
+    ],
+    "loglik_stage": -1942.131363545899,
+    "plateau": false,
+    "n_grad": 41,
+    "exc_counts": {},
+    "cpu_s": 8.89928400000008
+   }
+  },
+  "n_tied_top": 1,
+  "ratios": {
+   "eta_over_eps": {
+    "log": 0.19095532973307705,
+    "ratio": 1.210405381742153
+   },
+   "rbar_over_eta": {
+    "log": -0.17474204608681987,
+    "ratio": 0.8396735899238909
+   },
+   "eta": {
+    "log": -0.5887481494543394,
+    "ratio": 0.5550216541810812
+   },
+   "epsilon": {
+    "log": -0.7797034791874164,
+    "ratio": 0.4585419583827618
+   }
+  },
+  "R": {
+   "all4": 2.1808255094624585,
+   "lead_pair": 1.210405381742153,
+   "raw": 2.1808255094624585
+  },
+  "ll_ref": -1942.6455556972548,
+  "ll_new": -1942.131363545952,
+  "ll_by_start": {
+   "mle_stage": -1942.131363545952,
+   "warm": -1942.131363545899
+  },
+  "delta_total": 0.5141921513029502,
+  "delta_nats": 0.0016970037996797034,
+  "labels": {
+   "all4": "flat_valley_slide",
+   "lead_pair": "no_flag",
+   "raw": "flat_valley_slide"
+  },
+  "cost": {
+   "cpu_s": 81.64770200000021,
+   "share_of_fit": 0.0582163102295751
+  }
+ },
+ "printed": [
+  "sraging 0.1.0 \u00b7 calibrator profile_jax2@1.0.0 \u00b7 n=304 (303 deaths, 1 censored) \u00b7 delta=1 \u00b7 fit cost 1402.5 CPU-s (measured)",
+  "parameter  claim           theta-hat        lower        upper  label",
+  "eta        closed         3.5791e-05   1.5422e-05   0.00021752  two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+  "beta       closed           0.031667     0.010649       122.41  two-sided 95% profile-likelihood interval; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target; its upper end is set by the kappa box (kappa_max = 300), not by the data (spec 003's kappa_max = 3000 study): read it as a lower bound; the data determine combinations such as r-bar and beta/(1+kappa)",
+  "epsilon    closed          0.0023692   0.00081315     0.015533  two-sided 95% profile-likelihood interval",
+  "kappa      none                0.001                            not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+  "eta_over_eps closed           0.015107     0.011308     0.021478  open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+  "rbar_over_eta closed             878.65       629.76       1207.7  ",
+  "loglik -1956.3349841006857  (wall 5923.6 s, cpu 1402.5 s)",
+  "leverage: flat_valley_slide -- dropped row 74 (age 53, death); eta/eps 1.2104x, rbar/eta 0.83967x, eta 0.55502x, eps 0.45854x; refit gains 0.51419 nats (by the MLE stage); cost 81.648 s CPU (6% of the fit)",
+  "note: profile_jax2's claims assume no external mortality: on the tester's hazard arm v0.3.3's closed eta claims covered the truth 8 times in 261 (PREREG_C:104); use profile_jax2_h for a cohort with external deaths",
+  "mechanisms: N=900 \u00b7 basin re-fit not fired \u00b7 censor-tie relabel 0 rows \u00b7 floored dt no \u00b7 widened none \u00b7 Nelder-Mead fallbacks 0",
+  "combination claims (the lead group: eta_over_eps, rbar_over_eta; --combinations all adds the other 4): 4387.8 CPU-s (3.1x the fit); order measured (tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac))",
+  "L_SR = 872.21 input units (the SR mean lifetime at theta-hat); box in L_SR units: eta*L^2 in [7.6075e-07, 7.6075e+08], beta*L in [8.7221e-10, 8.7221e+05], eps*L in [8.7221e-10, 8.7221e+05], kappa in [0.001, 300]",
+  "gap: the best point the fit evaluated beats theta-hat by 6.21e-11 nats (below the 1.92-nat threshold)",
+  "checks: BASIN_GAIN=ran/quiet BASIN_OUTSIDE=ran/quiet CENSOR_TIE=ran/quiet DELTA_GRID=ran/quiet BOX_EDGE=ran/quiet FLOORED_DEATHS=ran/quiet AGE0_DEATHS=ran/quiet",
+  "RESULT ok \u2014 no warnings fired",
+  "provenance: sraging 0.1.0 @ 9076813edc84 \u00b7 numerics jax2 \u00b7 engine fp \u00b7 grid N=900 dt=0.0003831620814843195 tau_max=2.0 dt_ceiling=0.0003831620814843195",
+  "-> /var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/sraging003f_pnzz4nfb/fit.json"
+ ],
+ "v033_early_deaths_evidence": {
+  "note": "Leverage of the 3 deaths before day 400 (raw ages 54, 197, 200) in the README example. The refit ran at 499d68f with uncommitted edits (provenance 'dirty'); the estimator code (src/sraging/compat) is identical at 499d68f and 4960dd5, and the uncommitted edits touched only BOX_EDGE's tolerance.",
+  "with": {
+   "eta": [
+    "closed",
+    1.5420839211741994e-05,
+    0.0002141072808601319
+   ],
+   "beta": [
+    "closed",
+    0.010647060346639644,
+    132.29171594807895
+   ],
+   "epsilon": [
+    "closed",
+    0.0008136078977053877,
+    0.015531969432206149
+   ],
+   "kappa": [
+    "none",
+    null,
+    null
+   ]
+  },
+  "without": {
+   "eta": [
+    "closed",
+    2.1259470505813675e-06,
+    1.9063911486110683e-05
+   ],
+   "beta": [
+    "upper_bound",
+    null,
+    6.538205149210764
+   ],
+   "epsilon": [
+    "closed",
+    4.7490666292028936e-05,
+    0.0007068024042715268
+   ],
+   "kappa": [
+    "none",
+    null,
+    null
+   ]
+  },
+  "loglik_with": -1956.3352137306206,
+  "loglik_without": -1903.219159805828,
+  "eta_intervals_overlap": true,
+  "epsilon_intervals_overlap": false
+ },
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.0",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": null,
+  "rule": {
+   "quantities": "all4",
+   "ratio": 1.5,
+   "delta_total_nats": 1.92,
+   "fail_nats": 0.1,
+   "refit": "mle_stage_and_warm_start",
+   "provisional": false
+  },
+  "panel_commit": "2a3b45d85c6f12f4201b7c5461aac5a2d9c901d7"
+ }
+}

@@ -1,0 +1,88 @@
+# Spec 003d's frozen panels and thresholds (FR-019): fixed before any generation run.
+# Sources: specs/003d-cohort-generator/spec.md (SC-001 to SC-011), research.md R3, R6, R11; the tester's library v5.
+
+[meta]
+spec = "specs/003d-cohort-generator/spec.md"
+library = "tester main data/library/v5 (manifest sha256 9489fb0df0024c44..., tester main 7522803 when M4 ran)"
+
+[grid]
+# R3: one grid per version, the cheapest rung passing SC-001 at all 262 configurations against (2N, dt/2, 2K)
+N_ladder = [1500, 3000, 6000, 12000, 24000]
+dt_ladder = [2e-4, 1e-4]
+K_ladder = [41, 81, 161, 321]
+tau_max = 30.0
+Gtol = 1e-12
+nstart = 20
+lowest_rho_eps_first = 30
+# the node ladder starts here: the sweep pilot (run 2, ffdf054) showed K 41 and 81 fail at the hardest points
+K_start = 161
+
+[het]
+# R6: s = 1 + het_var * z, z ~ N(0, 1) truncated to s > 0; nodes uniform in z on [z_a, z_b]
+u_tail = 1e-9               # z_a = max(ndtri(u_tail), -(1 - s_min) / het_var), z_b = ndtri(1 - u_tail)
+s_min = 0.05
+
+[thresholds]
+lambda_max = 0.05                       # SC-001: 2 n KL(P_gen || P_ref)
+dlncv_chi = 0.1                         # SC-001: |dlnCV| <= 0.5 * sqrt(dlncv_chi / (2 n_max))
+dlncv_refinement_factor = 1.3333333333333333   # SC-001: the bound applies to 4/3 of the refinement difference
+fidelity_n = 10000                      # SC-002
+fidelity_replicates = 200
+fidelity_max_abs_diff = 1.5e-3
+gtest_min_expected = 5                  # SC-003
+gtest_ks_p_min = 0.01
+gtest_alpha = 0.01                      # fraction with p < alpha <= alpha + 3 sqrt(alpha (1 - alpha) / m)
+witness_D_cut = 9.49                    # SC-011: fraction with D > cut <= 10/122
+witness_frac_max = 0.08196721311475409  # 10 / 122
+witness_median_max = 4.4
+witness_D_min = -0.1
+# heterogeneous configurations are judged at min(n_max, het_n_cap) (Naveh, 2026-10-13), the caveat recorded
+het_n_cap = 20000
+# Naveh 2026-10-14 ("Approve all three"): heterogeneous configurations pass at lambda <= het_lambda_max at min(n, het_n_cap)
+# and the tester's own CV rule 2 n dlnCV^2 <= dlncv_chi at the real n; the check is split into the node part
+# (tools/het_nodes_003d.py --all) and the grid part on het_grid_nodes-node mixtures, KL_total = 2 (KL_node + KL_grid)
+het_lambda_max = 0.2
+het_grid_nodes = 21
+het_pilot_points = 12
+
+[fidelity]
+# R11: the c0-s0 pure cohort's spec at each point, n -> fidelity_n, seeds seed0 + 1 .. seed0 + replicates
+seed0 = 9000000
+points = ["k0.0316-p15", "k2-p05", "k0.01-p05", "k0.01-p10", "k0.1-p00", "k0.1-p20"]
+source = ["pure-k0.0316-p15-c0-s0", "pure-k2-p05-c0-s0", "pure-k0.01-p05-c0-s0", "pure-k0.01-p10-c0-s0",
+          "pure-k0.1-p00-c0-s0", "pure-k0.1-p20-c0-s0"]
+sharp = ["k0.0316-p15", "k2-p05", "k0.01-p05", "k0.01-p10", "k0.1-p00"]    # the positive control must fail here
+broad_control = "k0.1-p20"                                                  # and pass here
+
+[witness]
+# R11: the 6 sharp points with the largest v5 dlnCV (c0-s0, the smallest n) and the n-ladder at k0.1-p00
+sharp = ["pure-k2-p05-c0-s0", "pure-k0.01-p05-c0-s0", "pure-k0.01-p10-c0-s0", "pure-k0.0316-p05-c0-s0",
+         "pure-k0.1-p10-c0-s0", "pure-k0.1-p05-c0-s0"]
+nladder = ["nlad-k0.1-p00-n150-s0", "nlad-k0.1-p00-n500-s0", "nlad-k0.1-p00-n1000-s0", "nlad-k0.1-p00-n3000-s0",
+           "nlad-k0.1-p00-n10000-s0", "nlad-k0.1-p00-n10000-s1"]
+
+[retest]
+# FR-018: spec 003's 55 censored (profile_jax2) and 55 hazard (profile_jax2_h) coverage cohorts
+source = "tests/acceptance/panel_003.toml [coverage]: the censor ids of profile_jax2, all ids of profile_jax2_h"
+# Amended 2026-10-14 (Naveh): only the 55 censored cohorts are re-tested now, with profile_jax2 (J 1.0.0); the 55 hazard
+# cohorts wait for _h 1.0.1 (the single jax2 handoff), because H 1.0.0 is not usable per the orchestrator
+now = "censor"
+deferred = "hazard: _h 1.0.1"
+combinations = ["eta_over_eps", "rbar_over_eta", "sqrt_eta_over_eps"]
+
+[predict]
+# R12 (FR-017, SC-010), amended 2026-10-14 (Naveh): the 14 censored clusters only, as 28 configurations (each point at
+# n 1,000 and 10,000; delta 1, L 100, censor_frac 0.2); the hazard points wait for _h 1.0.1. Committed before T047.
+rows = ".cache/out/wexac_rows/d903979764194c5b7afa7b048710210c15e9179b"   # spec 003's v2 coverage rows (WEXAC shards)
+arm = "censor"
+calibrator = "profile_jax2"
+quantity = "eta_over_eps"
+scale = 10                      # the expected-count cohort: round(scale * n * P(cell)) individuals per cell
+# be: SRK cb191f5's materialize on its backward-Euler grid (v2's law; 55/55 censored v2 cohorts rebuilt byte for byte)
+# gen1: sraging-gen-1's own law (the re-test's). Naveh 2026-10-14, after the pilot (T040: 74 CPU-s per fit; at k0.1-p00
+# both laws put the calibrator's eta/eps 0.21 dex low): "Both laws (Recommended)"
+laws = ["be", "gen1"]
+laws_pilot = ["be", "gen1"]
+pilot = ["censor-k0.1-p00-c0", "censor-k0.1-p00-c1"]
+# Naveh 2026-10-14, "Yes, forecast all 12 first (Recommended)": the 12 witness cohorts too, gen1 law only (ACC predict
+# --witness), with the 55 re-test cohorts' gen1 offsets, forecast SC-011's witness rule before the WEXAC fits

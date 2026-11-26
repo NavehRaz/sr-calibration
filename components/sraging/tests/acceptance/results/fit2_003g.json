@@ -1,0 +1,363 @@
+{
+ "phase": "fit2",
+ "written_at": "2026-10-27T20:16:17Z",
+ "repo_head": "899e164d7190f52153cbaba1baebb1e38bc7dbe6",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "d1680480c1b680052d4e5441a42332d6455d4b58",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "1260e25d95810f44934682ee4d008b5fee6cc3c6"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "f60262ea94fd2a463b8db1dfe79ed0524d17f40c"
+ },
+ "wall_s": 2729.312577009201,
+ "cpu_s": 2249.7472549999998,
+ "status": "written",
+ "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+ "price_cpu_h": 0.5351724105805556,
+ "window_set_aside": [
+  10957.5,
+  40177.5
+ ],
+ "fit": {
+  "status": "ok",
+  "claims": {
+   "eta": {
+    "parameter": "eta",
+    "shape": "closed",
+    "lower": 0.005870337321912516,
+    "upper": 0.01030259053614676,
+    "point": 0.010231142933949711,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+    "scored": true,
+    "label_info": {
+     "kind": "box_limited",
+     "edge": "beta<=1000",
+     "side": "upper",
+     "log10_cap_over_floor": null,
+     "regime": null
+    },
+    "widening": null,
+    "decline_reason": null
+   },
+   "beta": {
+    "parameter": "beta",
+    "shape": "lower_bound",
+    "lower": 524.0765160894351,
+    "upper": null,
+    "point": 999.9999999999998,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+    "scored": true,
+    "label_info": null,
+    "widening": null,
+    "decline_reason": null
+   },
+   "epsilon": {
+    "parameter": "epsilon",
+    "shape": "closed",
+    "lower": 23.251025467681107,
+    "upper": 37.4052792278052,
+    "point": 36.99280052699476,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+    "scored": true,
+    "label_info": {
+     "kind": "box_limited",
+     "edge": "beta<=1000",
+     "side": "upper",
+     "log10_cap_over_floor": null,
+     "regime": null
+    },
+    "widening": {
+     "claims_profile": {
+      "shape": "closed",
+      "lower": 24.247292648279473,
+      "upper": 37.4052792278052
+     },
+     "lower_moved_dex": 0.018221142276611237,
+     "upper_moved_dex": 0.0
+    },
+    "decline_reason": null
+   },
+   "kappa": {
+    "parameter": "kappa",
+    "shape": "upper_bound",
+    "lower": null,
+    "upper": 0.016149487333244474,
+    "point": 0.0031298062486476304,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "only an upper bound is supported by the data; the lower side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target \u00b7 open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+    "scored": true,
+    "label_info": {
+     "kind": "box_limited",
+     "edge": "beta<=1000",
+     "side": "upper",
+     "log10_cap_over_floor": null,
+     "regime": null
+    },
+    "widening": null,
+    "decline_reason": null
+   },
+   "eta_over_eps": {
+    "parameter": "eta_over_eps",
+    "shape": "closed",
+    "lower": 0.0002729493887086989,
+    "upper": 0.0002792407216979144,
+    "point": 0.0002765711919129707,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+    "scored": true,
+    "label_info": {
+     "kind": "box_limited",
+     "edge": "beta<=1000",
+     "side": "upper",
+     "log10_cap_over_floor": null,
+     "regime": null
+    },
+    "widening": null,
+    "decline_reason": null
+   },
+   "rbar_over_eta": {
+    "parameter": "rbar_over_eta",
+    "shape": "closed",
+    "lower": 93741.32449110306,
+    "upper": 97256.445486825,
+    "point": 95975.71931067512,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "open above: box-limited (beta<=1000): the upper end is set by the box, not by the data",
+    "scored": true,
+    "label_info": {
+     "kind": "box_limited",
+     "edge": "beta<=1000",
+     "side": "upper",
+     "log10_cap_over_floor": null,
+     "regime": null
+    },
+    "widening": null,
+    "decline_reason": null
+   }
+  },
+  "theta_hat": {
+   "eta": 0.010231142933949711,
+   "beta": 999.9999999999998,
+   "epsilon": 36.99280052699476,
+   "kappa": 0.0031298062486476304,
+   "xc": 1.0,
+   "h_ext": 0.0,
+   "time_unit": "input units",
+   "xc_fixed": true
+  },
+  "loglik": -110092.13522225762,
+  "timing": {
+   "wall_s": 2725.7823090003803,
+   "cpu_s": 454.138486
+  },
+  "combinations": {
+   "on": true,
+   "mode": "lead",
+   "lead_group": [
+    "eta_over_eps",
+    "rbar_over_eta"
+   ],
+   "cost_s": 1726.1946599999999,
+   "fit_cost_s": 454.138486,
+   "evals": 18513,
+   "param_claims_contradicted": [
+    {
+     "parameter": "eta",
+     "side": "upper",
+     "claim_end": 0.01030259053614676,
+     "archive_point": 0.010333702212503406,
+     "dex": 0.00130950260940491
+    }
+   ],
+   "combination_claims_contradicted": [],
+   "ratio_to_fit": 3.8010314325132972,
+   "order": [
+    "eta_over_eps",
+    "rbar_over_eta"
+   ],
+   "order_source": "measured (tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac))",
+   "walks": {
+    "eta_over_eps": {
+     "ci": {
+      "ci_lo": 0.0002729493887086989,
+      "ci_hi": 0.0002792407216979144,
+      "ci_level": 0.95,
+      "ci_thr": 3.8415,
+      "verdict": "identified",
+      "argmax_value": 0.0002765711919129707,
+      "max_deviance": 11.431419143686071,
+      "n_components": 1,
+      "ci_lo_connected": 0.0002729493887086989,
+      "ci_hi_connected": 0.0002792407216979144
+     },
+     "stops": {
+      "lower": "deviance",
+      "upper": "deviance"
+     },
+     "evals": 3232,
+     "gain": 0.25033112610981334,
+     "n_nodes": 12
+    },
+    "rbar_over_eta": {
+     "ci": {
+      "ci_lo": 93741.32449110306,
+      "ci_hi": 97256.445486825,
+      "ci_level": 0.95,
+      "ci_thr": 3.8415,
+      "verdict": "identified",
+      "argmax_value": 96503.06368190404,
+      "max_deviance": 11.073210190865211,
+      "n_components": 1,
+      "ci_lo_connected": 93741.32449110306,
+      "ci_hi_connected": 97256.445486825
+     },
+     "stops": {
+      "lower": "deviance",
+      "upper": "stalled"
+     },
+     "evals": 15281,
+     "gain": 0.2546146321546985,
+     "n_nodes": 13
+    }
+   }
+  },
+  "mechanisms": {
+   "basin_refit": {
+    "fired": false,
+    "rounds": 0
+   },
+   "relabelled_rows": 5,
+   "N": 1800,
+   "dt_floor": {
+    "binds": false,
+    "dt": 0.002
+   },
+   "n_fallback": 60,
+   "widened": [
+    "epsilon"
+   ]
+  },
+  "dt_in_scope": false,
+  "cv_c": 0.1821996530596386,
+  "leverage": {
+   "label": "not_assessed",
+   "reason": "the warm start did not move from theta-hat (g0 = 0) at a free-gradient norm of 647 > 1: theta-hat is not stationary, so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.010231142933949711,
+     999.9999999999998,
+     36.99280052699476,
+     0.0031298062486476304
+    ],
+    "ll_ref": -110092.13522225762,
+    "ll_warm": -110092.13522225762,
+    "cpu_s": 3.32278099999985
+   },
+   "warm_termination": {
+    "status": "ok",
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.401980999999978
+   },
+   "at_theta_hat": {
+    "log_distance_to_bounds": {
+     "eta": [
+      23.04870213441806,
+      11.490074260492623
+     ],
+     "beta": [
+      34.538776394910684,
+      0.0
+     ],
+     "epsilon": [
+      31.241744429288065,
+      3.297031965622618
+     ],
+     "kappa": [
+      1.1409711012455581,
+      11.47056665239278
+     ]
+    },
+    "gradient": [
+     -278.4533878248611,
+     829.2319330392056,
+     -583.6792000389981,
+     -9.422675058344893
+    ],
+    "free_gradient_norm": 646.76617455968
+   },
+   "dropped": {
+    "row": 23426,
+    "age": 40177.5,
+    "event": 1
+   },
+   "R": {
+    "all4": 1.0,
+    "lead_pair": 1.0,
+    "raw": 1.0
+   },
+   "delta_total": 0.0,
+   "cost": {
+    "cpu_s": 59.20111700000007,
+    "share_of_fit": 0.1303591719817379
+   }
+  },
+  "notes": [
+   {
+    "code": "COMBINATIONS_NOT_TRUTH_SCORED",
+    "message": "combination claims are not truth-scored on 1.0.1: they were scored on 1.0.0 only (spec 003), where the censored arm's eta/eps covered 0.818; read them as the 1.0.0 claims' method applied to this fit",
+    "data": {
+     "version": "1.0.1",
+     "scored_on": "1.0.0",
+     "censor_eta_over_eps_coverage_1_0_0": 0.818
+    }
+   }
+  ],
+  "warnings": [
+   "BOX_EDGE",
+   "LEVERAGE"
+  ],
+  "basin_fix_fired": false
+ },
+ "store_file": ".cache/store_003g/fit2_realfull-real-Sweden_F_1910_homo-c1-s1.json",
+ "store_sha256": "538de56ae76a33038e388f2672c10a2ba5b4c3decdfd6bca674344c502c86a66",
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.1",
+  "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+  "library": "v6",
+  "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+  "run_manifest": null,
+  "run_manifest_sha256": null,
+  "record_sha256": null,
+  "witness_sha256": null,
+  "host": "MC06268844",
+  "cpu": "Apple M5 Pro"
+ }
+}

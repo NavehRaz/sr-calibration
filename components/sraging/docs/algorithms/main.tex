@@ -1,0 +1,52 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!50!black]{hyperref}
+\input{macros.tex}
+\emergencystretch=2em
+\setlength{\parskip}{0.45em}
+\setcounter{tocdepth}{2}
+
+\title{sraging algorithms}
+\author{Draft for review}
+\date{3 October 2026}
+
+\begin{document}
+\sloppy
+\maketitle
+
+\begin{abstract}
+\noindent This document describes the algorithms of the \code{sraging} library. It grows by one section for
+every algorithm that is merged (constitution XII): no algorithm is merged without its section. Each section
+says what the code computes, with equations, and cites the ported source as \src{file.py:line}. Anything the
+code does that is a known defect is listed with its divergence-register identifier and the test that pins it.
+Measured results (coverage, CPU time, nats from benchmark runs) are not quoted here unless the source file
+and section they come from are named (constitution II); where a figure matters, this document points to the
+register or to the reference record instead of repeating it.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\input{sections/profile_v033.tex}
+\input{sections/fp_engine.tex}
+\input{sections/profile_jax2.tex}
+\input{sections/leverage.tex}
+\input{sections/jax2_101.tex}
+\input{sections/generator.tex}
+\input{sections/default_gate.tex}
+\input{sections/heterogeneity.tex}
+\input{sections/langevin.tex}
+\input{sections/survival.tex}
+\input{sections/units.tex}
+\input{sections/cleaning.tex}
+\input{sections/windows.tex}
+
+\end{document}

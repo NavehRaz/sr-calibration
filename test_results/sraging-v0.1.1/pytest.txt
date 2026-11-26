@@ -1,0 +1,184 @@
+................ssssssssss.............................................. [  2%]
+........................................................................ [  5%]
+........................................................................ [  8%]
+........................................................................ [ 11%]
+...................................s....ssss............................ [ 14%]
+........................................................................ [ 17%]
+........................................................................ [ 20%]
+........................F..F....................................F....... [ 23%]
+..........................................s............................. [ 25%]
+........................................................................ [ 28%]
+........................................................................ [ 31%]
+...................s.................s.................................. [ 34%]
+..............................................s......................... [ 37%]
+........................................................................ [ 40%]
+............s........................................................... [ 43%]
+........................................................................ [ 46%]
+........................................................................ [ 49%]
+........................................................................ [ 51%]
+........ss....ss.....s................s................................. [ 54%]
+........................................................................ [ 57%]
+...........ssssssss.s..s..................................ssssssss...... [ 60%]
+........................................................................ [ 63%]
+........................................................................ [ 66%]
+........................................................................ [ 69%]
+................................................................s....... [ 72%]
+.............................s.......................................... [ 75%]
+........................................................................ [ 77%]
+....................................................ssssssssssssssssssss [ 80%]
+ssssssssssssss.ssssssssssssssssssssssssssssssssssssssss.....ssssssssssss [ 83%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 86%]
+sssssssssssssssssssssssssssssssssssssss..sssssssssssssssssssssssssssssss [ 89%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 92%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [ 95%]
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.sssss [ 98%]
+.ss.sssssssssssssssssssssssssssssssssssssssss                            [100%]
+=================================== FAILURES ===================================
+______ test_the_pilot_panel_cuts_coverage_and_lists_every_kmax_candidate _______
+
+    def test_the_pilot_panel_cuts_coverage_and_lists_every_kmax_candidate():
+        """sr-manager CHEAPEN: het, the hazard arm under profile_jax2 and the realfull C. elegans cohorts are not fitted
+        under profile_jax2, each cut recorded with its reason; gate 4: the kmax list is every candidate, seeded."""
+        if not os.path.isdir(A.J2):
+            pytest.skip(f"NOT APPLICABLE: no J2 at {A.J2}")
+        import oracle_jax2 as OJ
+>       lib = OJ.library()
+              ^^^^^^^^^^^^
+
+tests/unit/test_acceptance_003_tools.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/oracle_jax2.py:132: in library
+    load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load() -> Oracle:
+        """Load the jax2 oracle into this process (once). Raises NotApplicable rather than load a wrong one."""
+        global _LOADED
+        if _LOADED is not None:
+            return _LOADED
+        problems = preflight()
+        if problems:
+>           raise NotApplicable(problems)
+E           oracle_v033.NotApplicable: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+
+tools/oracle_jax2.py:81: NotApplicable
+__________________________ test_the_walker_panel_draw __________________________
+
+    def test_the_walker_panel_draw():
+        """The coordinator's [walker] table: up to 3 kappa-hat-at-300 cohorts under their stored fit's name, 12 pure under
+        profile_jax2, 5 hazard under profile_jax2_h, no repeats, the same on every call."""
+        if not os.path.isdir(A.J2):
+            pytest.skip(f"NOT APPLICABLE: no J2 at {A.J2}")
+        import oracle_jax2 as OJ
+>       lib = OJ.library()
+              ^^^^^^^^^^^^
+
+tests/unit/test_acceptance_003_tools.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/oracle_jax2.py:132: in library
+    load()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def load() -> Oracle:
+        """Load the jax2 oracle into this process (once). Raises NotApplicable rather than load a wrong one."""
+        global _LOADED
+        if _LOADED is not None:
+            return _LOADED
+        problems = preflight()
+        if problems:
+>           raise NotApplicable(problems)
+E           oracle_v033.NotApplicable: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+
+tools/oracle_jax2.py:81: NotApplicable
+_________ test_the_census_phase_on_a_real_row_and_its_planted_dt_twin __________
+
+tmp_path = PosixPath('/private/var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/pytest-of-navehr/pytest-44/test_the_census_phase_on_a_rea0')
+
+    @pytest.mark.skipif(not (HAVE_J2 and os.path.isdir(os.environ.get("SRAGING_TESTER_V6", ACC.DROPBOX))),
+                        reason="the census or the tester's library v6 is absent on this host")
+    def test_the_census_phase_on_a_real_row_and_its_planted_dt_twin(tmp_path):
+        r = subprocess.run([sys.executable, "-c", CENSUS_SCRIPT, str(tmp_path), CID], cwd=REPO, capture_output=True,
+                           text=True, timeout=600)
+>       assert "EXIT 1" in r.stdout, r.stdout + r.stderr
+E       AssertionError: [census] price: < 0.3 Mac CPU-h; no fit (1.0.1's grid on 2,798 rows)
+E         [census] status not_applicable; wrote ../../../../../../../var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/pytest-of-navehr/pytest-44/test_the_census_phase_on_a_rea0/census_003b.json (development)
+E         EXIT 3
+E         
+E       assert 'EXIT 1' in "[census] price: < 0.3 Mac CPU-h; no fit (1.0.1's grid on 2,798 rows)\n[census] status not_applicable; wrote ../../../...649qgb6hfm0000gp/T/pytest-of-navehr/pytest-44/test_the_census_phase_on_a_rea0/census_003b.json (development)\nEXIT 3\n"
+E        +  where "[census] price: < 0.3 Mac CPU-h; no fit (1.0.1's grid on 2,798 rows)\n[census] status not_applicable; wrote ../../../...649qgb6hfm0000gp/T/pytest-of-navehr/pytest-44/test_the_census_phase_on_a_rea0/census_003b.json (development)\nEXIT 3\n" = CompletedProcess(args=['SCRATCH/t011/clo...00gp/T/pytest-of-navehr/pytest-44/test_the_census_phase_on_a_rea0/census_003b.json (development)\nEXIT 3\n", stderr='').stdout
+
+tests/unit/test_acceptance_003b.py:110: AssertionError
+!!!!!!! 529 parity test(s) NOT APPLICABLE -- this session is NOT a pass !!!!!!!!
+  reason: Traceback (most recent call last):\n  File "<string>", line 3, in <module>\n    o = O.load()\n  File "SCRATCH/t011/clone/tools/oracle_jax2_101.py", line 97, in load\n    raise NotApplicable(problems)\noracle_v033.NotApplic
+  reason: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)']
+  reason: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+  reason: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+  reason: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there
+  reason: the oracle snapshot cannot be used here: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+=========================== short test summary info ============================
+FAILED tests/unit/test_acceptance_003_tools.py::test_the_pilot_panel_cuts_coverage_and_lists_every_kmax_candidate
+FAILED tests/unit/test_acceptance_003_tools.py::test_the_walker_panel_draw - ...
+FAILED tests/unit/test_acceptance_003b.py::test_the_census_phase_on_a_real_row_and_its_planted_dt_twin
+SKIPPED [10] tests/unit/engine/test_default_vs_v033.py:32: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/engine/test_reference_mp_scheme.py:95: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [4] tests/unit/engine/test_reference_numpy_scheme.py:21: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_acceptance_003e.py:121: no pinned clone here (spec 003e T001)
+SKIPPED [1] tests/unit/test_adapter_003e.py:69: no pinned clone here (spec 003e T001)
+SKIPPED [1] tests/unit/test_adapter_006.py:22: the pinned tester clone is not here
+SKIPPED [1] tests/unit/test_cleaning.py:301: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_cohorts.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_oracle_fp_piecewise.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)']
+SKIPPED [1] tests/conftest.py:48: NOT APPLICABLE: Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    o = O.load()
+  File "SCRATCH/t011/clone/tools/oracle_jax2_101.py", line 97, in load
+    raise NotApplicable(problems)
+oracle_v033.NotApplicable: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_p1_langevin_004.py:131: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:41: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:48: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:53: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:59: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:66: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:71: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:78: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:83: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:94: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_plants_004.py:113: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_presets.py:178: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [2] tests/unit/test_presets.py:189: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [1] tests/unit/test_presets.py:195: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [4] tests/unit/test_presets_004.py:29: NOT APPLICABLE: the oracle snapshot cannot be used here: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/unit/test_survival.py:175: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/unit/test_units.py:113: NOT APPLICABLE: ['host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O']
+SKIPPED [1] tests/parity/test_cohort_arrays.py:30: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [30] tests/parity/test_cohort_arrays.py:34: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [2] tests/parity/test_curves.py:28: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/parity/test_curves.py:42: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [40] tests/parity/test_engine_grid.py:12: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [6] tests/parity/test_engine_t0.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [36] tests/parity/test_engine_t0.py:55: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_engine_t0.py:65: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [20] tests/parity/test_engine_t1_het.py:31: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [24] tests/parity/test_engine_t1_segments.py:79: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [1] tests/parity/test_engine_t1_segments.py:95: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O
+SKIPPED [32] tests/parity/test_engine_t1_us1.py:52: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:41: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:57: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:73: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_perturbation.py:110: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [240] tests/parity/test_value_grad_bytes.py:66: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [3] tests/parity/test_value_grad_bytes_jax2.py:43: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_value_grad_bytes_jax2.py:54: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_value_grad_bytes_jax2.py:66: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [2] tests/parity/test_value_grad_bytes_jax2_101.py:47: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [40] tests/parity/test_warnings_parity.py:49: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+SKIPPED [1] tests/parity/test_warnings_parity.py:56: NOT APPLICABLE: host arm64 macOS-26.7.3-arm64-arm-64bit-Mach-O is not the snapshot host arm64 macOS-26.5.2-arm64-arm-64bit-Mach-O (byte identity is claimed only there)
+3 failed, 1958 passed, 532 skipped, 23 deselected in 1130.46s (0:18:50)
+real 1137.76
+user 1529.14
+sys 97.21
+exit 1

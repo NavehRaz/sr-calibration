@@ -1,0 +1,228 @@
+# Spec 003b's panel (specs/003b-jax2-101-port/): what the acceptance phases pin and compare. Committed before each
+# phase that reads it; [ac11] is committed before any AC11 fit (tasks T029), [parity] and [identity] before T030.
+
+[pins]
+# the frozen handoff and what it pins (HANDOFF.txt section 1-2, 2.1, 5.1); all sha256
+handoff = "a424d48fa17147800e8f6dc6cfa57cb9697414a873bff9a3be16090cc50474fc"
+tag = "mle_profile_jax2-1.0.1"
+tag_object = "71e79f343da9ccc1a176f9f4106e528dcd38e8c5"
+commit = "6884fc8b4d34932d2e5b6d65720dd0685f5915cd"
+version_lock_sha256 = "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06"
+listing_digest = "c47dc9b20d04f23a229a80953757d26e501a6c579d2f3bfb5c3da557e892399f"
+srbench_tree = "f94ec2b8a97c65178542e22553033dc00e2d1a26"
+srbench_files_sha256_file = "85d8634bb2aa87fe46168f41c9e1be777d970689407ae7fadfc7961f50427a86"
+srbench_listing_digest = "280fb07b571eb10889e3f1e480ecfbd0706b9c7c8c6efdd1eceb0a27f160bc85"
+switches_tsv = "a592141d7482f025b59d4458b1a9374002b52ebfb37a7b5816625288ac115469"
+defect_register = "20ba3bc9bba5c71e53630a2dd1a828abff8445c08b6250a984dc5ef631d01a94"
+census_rows_v6 = "a39e87d3927fac5f0c4ac558f09f9fe8cb952a630b8280d6e68c931700e42cb9"
+library_v6_manifest = "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f"
+# library v5, where jax2's 1.0.1 S3 records were made (the parity panel's mechanism pairs; = REL/data/library/v5's)
+library_v5_manifest = "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3"
+g1_cohorts = "51695d33a07913e5b8479d88eb9d10721bb9b193eeec01cc7b2b022e52f8769c"
+# the SRK identity record whose srk_sha cites the 18 SRK files a 1.0.1 fit loads (handoff section 7.3)
+srk_record = "7aceeca6fa3560b5ff62e82012d09f8d6e3dc4597c2ddfa4d291fe86de60f3e4"
+
+[pins.runtime]
+"__init__.py" = "7e9e5380a4425659c996585e3dc846242313b3cdeda8b0301ff2fa31efe57e78"
+"estimator.py" = "e0335a5366237f5357fc31bbe5ea0e039b94ddca2d7dfd5fe077d6c0eb9a5ee2"
+"fp_jax.py" = "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253"
+"observation_model.py" = "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0"
+
+[identity]
+# G1's 11 lines (jax2 REL/G1/cohorts.txt, sha256 = pins.g1_cohorts; jax2's I1f set): library v2, read through the
+# 1.0.0 oracle's loader as spec 003 did (tasks T017). cpu_s = the file's own record_cpu_s (Phase C, cluster).
+source = "REL/G1/cohorts.txt"
+library = "v2"
+lines = [
+  {name = "jax2", cid = "pure-k0.01-p02-c1-s1", path = "identity", cpu_s = 750.2},
+  {name = "jax2_h", cid = "pure-k0.01-p02-c1-s1", path = "identity", cpu_s = 894.6},
+  {name = "jax2", cid = "pure-k0.01-p03-c0-s1", path = "identity", cpu_s = 354.4},
+  {name = "jax2_h", cid = "pure-k0.01-p03-c0-s1", path = "identity", cpu_s = 921.8},
+  {name = "jax2", cid = "pure-k0.01-p04-c0-s0", path = "identity", cpu_s = 372.5},
+  {name = "jax2_h", cid = "pure-k0.01-p04-c0-s0", path = "identity", cpu_s = 500.2},
+  {name = "jax2", cid = "hazard-k0.1-p00-c1-s1", path = "basin_refit_J", cpu_s = 1121.7},
+  {name = "jax2_h", cid = "realfull-real-Denmark_F_1890_hetro-c1-s0", path = "basin_refit_H", cpu_s = 3297.8},
+  {name = "jax2", cid = "pure-k2-p03-c1-s0", path = "nm_fallback", cpu_s = 275.9},
+  {name = "jax2", cid = "realfull-real-Denmark_M_1900_homo-c1-s1", path = "deferred_restart+box", cpu_s = 243.8},
+  {name = "jax2_h", cid = "window-k0.0316-p04-c1-s1", path = "ladder+window", cpu_s = 523.0},
+]
+
+[parity]
+# The panel by mechanism (research R7; tasks T016), port vs the 1.0.1 oracle at the class constants, one process per
+# pair. mode "full": run_fit level + the FitResult against the frozen claimset() (non-windowed ids); "mle_only": the
+# MLE stage (stages=("mle",)). sha256 = the array's (cohorts/<id>.npz) in `library`.
+# The in-scope ids (v6; census in5 True, J view): the full pair is R7's; the two theta-only ones are the cheapest
+# in-scope ids by 003d's Mac timers (tests/acceptance/results/dt_rule_test_003d.json, the dt_rule=True fits).
+# The mechanism ids (v5): the cheapest non-windowed records in jax2's S3 (REL/S3/cluster_home_BOTH/side/<name>/,
+# 1.0.1.dev5 = 1.0.1's numerics; read-only) where the mechanism fired; each pair re-derives the record's
+# prepared_sha256 (ADD1/cluster/common_rel.py's recipe) to show it runs on that data. Extent z is stored on every
+# full 1.0.1 fit (EXTENT_Z with SELF_CONSISTENT), so every full pair covers it.
+# stored_cpu_s: the stored timer (source given); price_cpu_s: the pair on this Mac [I]: both sides, plus half a side
+# for the FitResult (labels, floors, the leverage check); cluster (Xeon 6230R) CPU-s / 2.9 per side (spec 003's
+# Mac-vs-EPYC ratio, applied to the Xeon as an estimate); the full in-scope fit = theta-only x 6.2 (S2-DT4's
+# x4.8-7.6, mid).
+pairs = [
+  {cid = "censor-k0.01-p05-c1-s1", name = "profile_jax2", mode = "full", library = "v6", why = "DT_RULE in scope: the full pair (stage timers recorded)", sha256 = "e8be77c7fc0b7fac8b7ff86b785908339fed2b0c3f4c4b664abc743808653826", stored_cpu_s = 247.0, stored_source = "dt_rule_test_003d.json theta-only, Mac", price_cpu_s = 3830},
+  {cid = "censor-k0.0316-p05-c1-s0", name = "profile_jax2", mode = "mle_only", library = "v6", why = "DT_RULE in scope, theta-only (the cheapest in-scope id after the full pair's)", sha256 = "a71755031799ca804212f9eba2a9d6a55e488f09a9b1f3c45d89d43dd5850f2c", stored_cpu_s = 416.9, stored_source = "dt_rule_test_003d.json theta-only, Mac", price_cpu_s = 834},
+  {cid = "nlad-k0.1-p00-n10000-s1", name = "profile_jax2", mode = "mle_only", library = "v6", why = "DT_RULE in scope, theta-only (an uncensored nladder id)", sha256 = "c78108ecdc1512d6e8edfad7166ffa201b8dd553b73df6cdb3906864a83b98b5", stored_cpu_s = 811.4, stored_source = "dt_rule_test_003d.json theta-only, Mac", price_cpu_s = 1623},
+  {cid = "censor-k0.01-p04-c0-s1", name = "profile_jax2", mode = "full", library = "v5", why = "inner polish fires (S3: n_improved 2), out of scope", sha256 = "2cc940ab4932a982781c184ed8120eaba78960866ed2fd13f8e41911f72dd40d", record = "S3/cluster_home_BOTH/side/mle_profile_jax2/censor-k0.01-p04-c0-s1.json", record_prepared_sha256 = "29ea584b91b52fec1a94526b630cdfe1c06fa533f7e45b429ad57b09831ec046", stored_cpu_s = 473.1, stored_source = "S3 record_cpu_s, cluster", price_cpu_s = 408},
+  {cid = "pure-k0.01-p02-c0-s1", name = "profile_jax2", mode = "full", library = "v5", why = "bracket bisection fires (S3: n_nodes 2), out of scope", sha256 = "cfef2db2d761685aee9b3eafbde3e370080422ec24f74e947392607af2c3f976", record = "S3/cluster_home_BOTH/side/mle_profile_jax2/pure-k0.01-p02-c0-s1.json", record_prepared_sha256 = "684de2e52e24ac1734a0b17cc549bd7aa596ee4bb58b2c7dcba93e97178d7e85", stored_cpu_s = 508.5, stored_source = "S3 record_cpu_s, cluster", price_cpu_s = 438},
+  {cid = "hazard-k0.01-p04-c0-s0", name = "profile_jax2_h", mode = "full", library = "v5", why = "the _h path: an external-hazard cohort (shadow chains), out of scope", sha256 = "c77d0632412bc9a138b93b513a139f3e324a4605ca84cda1669a7ea56507e7ef", record = "S3/cluster_home_BOTH/side/mle_profile_jax2_h/hazard-k0.01-p04-c0-s0.json", record_prepared_sha256 = "b3ae884dab0d8549a24dd64ef7132dcb1fc75c33846f38e0ac514f19adae8cd2", stored_cpu_s = 1373.6, stored_source = "S3 record_cpu_s, cluster", price_cpu_s = 1184},
+  {cid = "hazard-k0.01-p04-c1-s1", name = "profile_jax2", mode = "full", library = "v5", why = "the basin re-fit fires (S3: fired; also inner polish 2, bisection 4)", sha256 = "a80f8d03e063da18ad35c3d19b3016d28c847e97d20b494f63ad33ad4238e09e", record = "S3/cluster_home_BOTH/side/mle_profile_jax2/hazard-k0.01-p04-c1-s1.json", record_prepared_sha256 = "5a423d6cb34b5fc8f3c336a76c34345488a43b8f9251176f534a00d5fbfaa636", stored_cpu_s = 3587.4, stored_source = "S3 record_cpu_s, cluster", price_cpu_s = 3093},
+]
+
+# The bytes item (research R8; 003e close item 5; tasks T013): one theta per hazard / age-0 cohort of the panel whose
+# first-interval mass (an age-0 death: [0, delta)) is below 1e-16 on 1.0.1, where v0.3.3's S(0) - S(delta) cancels to
+# the -700 floor. Found by `tools/jax2_cases_101.py scan` (deterministic: epsilon x 10^(-0.01 k) from jax2's own
+# 1.0.1 theta-hat in the S3 record, the first k with the 1.0.1 term in (floor, log 1e-16) and v0.3.3 at exactly the
+# floor). Over the scan, v0.3.3 scored the floor on only 34 of 127 (c1-s1) and 56 of 164 (c0-s0) such theta, and
+# round-off noise (-29 to -37 nats) on the rest [M]. tests/parity/test_value_grad_bytes_jax2_101.py re-checks each
+# entry side by side: value and value+gradient bytes, port vs the 1.0.1 oracle (the J objective; the _h entry also
+# the hazard objective at the box floor and hL = 0.1), the term, the mass, and the twin.
+[[parity.bytes]]
+cid = "hazard-k0.01-p04-c1-s1"
+library = "v5"
+name = "profile_jax2"
+sha256 = "a80f8d03e063da18ad35c3d19b3016d28c847e97d20b494f63ad33ad4238e09e"
+k = 83
+theta = {eta = 0.0029783168204434098, beta = 552.5673102953189, epsilon = 0.019515829534687258, kappa = 299.98114088673447}
+theta0_source = "S3/cluster_home_BOTH/side/mle_profile_jax2/hazard-k0.01-p04-c1-s1.json"
+n_age0 = 29
+term = -47.48367625688595
+mass = 2.388368975597981e-21
+
+[[parity.bytes]]
+cid = "hazard-k0.01-p04-c0-s0"
+library = "v5"
+name = "profile_jax2_h"
+sha256 = "c77d0632412bc9a138b93b513a139f3e324a4605ca84cda1669a7ea56507e7ef"
+k = 2
+theta = {eta = 0.0001049758659773898, beta = 0.0003357996120298826, epsilon = 0.0022597006417357955, kappa = 0.002615331764323292}
+theta0_source = "S3/cluster_home_BOTH/side/mle_profile_jax2_h/hazard-k0.01-p04-c0-s0.json"
+n_age0 = 2
+term = -80.02168765906734
+mass = 1.766129794365505e-35
+
+[ac11]
+# The AC11 registration (FR-010.2-3; data-model "The AC11 registration"; tasks T029), committed BEFORE any AC11 fit.
+# Naveh, 2026-10-20 (AskUserQuestion, with the recommendation): the small-n null uses all 47 ids ("All 47"); the
+# ceilings are "Held-out 0.25, small-n 0.15": each null passes when the Wilson 95 % upper bound of its flag rate
+# under the rule's quantities is at or below its ceiling (12 held-out: 0 flags give 0.242, so only 0 passes; 47
+# small-n: at most 2 flags, 0.142). The twins and the other quantity sets are reported, not gated; the planted
+# detection rate is reported by variant and n. The rule is leverage_rule.RULE, unchanged by Naveh's post-pilot
+# decision (T027).
+# DISCLOSED: before this registration, 4 development fits priced the panel (scratch, not results): the planted
+# k10-p03 point at n 1,000 (twin flat_valley_slide 284 CPU-s; age-0 flag 430; late flag 1,502) and at n 100
+# (late flag 255), with seeds 2026102049-50, not the registered ones; and one small-n null member,
+# nlad-k0.01-p01-n150-s0 (flat_valley_slide, 246 CPU-s). Price of the whole panel ~11 Mac CPU-h [I].
+generator_version = "sraging-gen-1"
+rule = {quantities = "all4", ratio = 1.5, delta_total_nats = 1.92, fail_nats = 0.1, refit = "mle_stage_and_warm_start", provisional = false}
+# the late plant: one death at factor x the twin's largest age, on the delta grid (an extreme late death)
+late_rule = {factor_of_max_age = 1.5}
+ceilings = {held_out = 0.25, small_n = 0.15}
+detection = {report_by_n = [100, 300, 1000], variants = ["age0", "late"], definition = "flag under the rule, with the planted death the row dropped"}
+
+[ac11.held_out]
+rule = """in v6 library order (manifest 399c9c55), each of 003f P3's two main strata continued: the next 6 pure ids
+after pure-k0.01-p03-c0-s0 and the next 6 censor ids after censor-k0.01-p02-c0-s0 with group main, n 1,000, no
+window, no real-data name, not in P3; sharp excluded by the group; all 12 outside DT_RULE's scope (census in5 False)"""
+[ac11.held_out.sha256]
+"pure-k0.01-p03-c0-s1" = "c4e5b9be15c24e4ee3282c59f6a40a5f433a942276f475eb83c63bd3eb6d6054"
+"pure-k0.01-p04-c0-s0" = "76f4a1767e4ff5256d388091fc0492263254709d434d8b7b9714f87e28e2d96a"
+"pure-k0.01-p04-c0-s1" = "2e55fe488a0c082ec294640d7d99aef688c5d1c1a82475bde9abdcb73870f3f5"
+"pure-k0.01-p06-c0-s0" = "39325dc5ce26addc180535e5e7d25c4f458f2f9f9b360ca07c275360a3383d6b"
+"pure-k0.01-p06-c0-s1" = "699dd4febb9e64339a1f47ef9a08912c6563c5b104bed8a7d2ce51579c6ae9c6"
+"pure-k0.01-p07-c0-s0" = "892a05b9d9fd6c10c982626f45ff93997781cef3a2c9b143e5eed2df4eb4f011"
+"censor-k0.01-p02-c0-s1" = "7944508e993cb7a45ba7bab8e3305b39eaa0a40d77507d2accc210b3b1eb76e0"
+"censor-k0.01-p03-c0-s0" = "bc5477b30881ffa6cf58bb36928a44da41e46411ed1280383f4b3710e184f54b"
+"censor-k0.01-p03-c0-s1" = "ffe4bd47c27828b68e6bbc74aeaea93f24af4e43f3391759c2d3f17a4a97e043"
+"censor-k0.01-p04-c0-s0" = "7ab9367d1b3f1faa829af16e8414b26dd0e345554032832a5ad35fd02e3441e4"
+"censor-k0.01-p04-c0-s1" = "a81f3fd00741cd1bab666a01fe9ee2054eae1354973a12a25e8fbba2ed0b803b"
+"censor-k0.0316-p01-c0-s0" = "fe37b04c7fe20d96c1e75fe37960c5ed5e892d709cf0892a14dd73f22a36943c"
+
+[ac11.small_n]
+rule = "every v6 nladder id at n = 150 with census in5 False (the J view), in library order: 47 (K = 47)"
+[ac11.small_n.sha256]
+"nlad-k0.01-p00-n150-s0" = "085f27bff90d732c8e1eb40ba5fb5d58184564557123a5bfdb90ce71edeaa0fa"
+"nlad-k0.01-p01-n150-s0" = "cdeb112defc5572bf41378b2deb8e9604b131445ffd036b1743e01c40cdd5c93"
+"nlad-k0.01-p01-n150-s1" = "39bc0546ba3d0a2dd7e83cd6b5c6ca240764c497a6a4bc89afb092bd0d72d353"
+"nlad-k0.0316-p01-n150-s0" = "933b4011cbd4b78648c151d33532862cad6581f1a979a4a46aa54f9222c557f1"
+"nlad-k0.0316-p01-n150-s1" = "446fab75f6bd4eb096df614303ebd38609d4dc932f9e3005b24e4cdc80aaa2fa"
+"nlad-k0.1-p01-n150-s0" = "25a30a70671d370781bf5f857d75a73039409032cf90d311521c78f6fee73cd6"
+"nlad-k0.1-p01-n150-s1" = "4e475736d9a960758ae2bccc31abe2b0f691ec1a5c557b606e203c6b3c1e62b4"
+"nlad-k0.316-p01-n150-s0" = "4075b9152fb479ad3e14c7473ce2becb85e8ac6cf61e2f2d67561d6f68d9792a"
+"nlad-k0.316-p01-n150-s1" = "c4db1cfb013d44a7ec5023743ff2c0226ae2bc1432ada5abc69cea4a4caa3f99"
+"nlad-k1-p01-n150-s0" = "b08236eb933d4a917b2aa5096bd087ff5eff97dee8526c9db08b4b955d83a6df"
+"nlad-k1-p01-n150-s1" = "905f87c512d9bd7be3c801be7637f32b1984ee80c337dbb987e431e43d58fce5"
+"nlad-k2-p01-n150-s0" = "831351d444ad6ed1a6b0a50df9b338c613e1d561089a7b2cd5c75f8e02c61e89"
+"nlad-k2-p01-n150-s1" = "9ce5fe76fc1aadcae11d1020946466f4d7094a3fe5f33ca7c95444c53d50754e"
+"nlad-k10-p01-n150-s0" = "f9cbda243741220cb7759fed873323e2b0b18d3d3005599134625a5d49616797"
+"nlad-k10-p01-n150-s1" = "68a91c5106156968c64cef9814dd42baa749dd1f43b868d4d82633f5d30bf7f9"
+"nlad-k0.01-p02-n150-s0" = "8fa8c54921ae81ddc6b6b9a08ff6af945a54f36a3eea73e736fb9c7f5889f3cf"
+"nlad-k0.01-p02-n150-s1" = "0a3782bde9704a170fcfe419861d16629b8bba0218bb2836ae336647f23bbe99"
+"nlad-k0.0316-p02-n150-s0" = "d636fadda6ecafbb9afa853aff33113b1ce0dfd7d818376e0bc369a07f369aad"
+"nlad-k0.0316-p02-n150-s1" = "e3fc35c79bde8e13e4ba9a5789e364d66a903d144959031764e2ec9810ec0c48"
+"nlad-k0.1-p02-n150-s0" = "639a7e577959865f0234da794ce1b574680b1aa2308f1bedc22a1f33b33170e6"
+"nlad-k0.1-p02-n150-s1" = "6aeb164f999de150877b257fda517b38e1e2523ec7dd0f5536bee2c4b6dff908"
+"nlad-k0.316-p02-n150-s0" = "d0df29b5245a935cd43dcaf02549226b5dffb1146d51466a6b784b3ff513e739"
+"nlad-k0.316-p02-n150-s1" = "0562c41833a14ab1afab6b6607b3af779a22020884ba2895d7dc71426dcfe9f9"
+"nlad-k1-p02-n150-s0" = "56c604cc3430498f140b449b593d5d66450d602c5c8075e8fc6337b13a0d1ba2"
+"nlad-k1-p02-n150-s1" = "96b4228dc3c67bb3bd1b1ba821741ed18a3d122aaee5ed83bc5805a0b106ee1c"
+"nlad-k2-p02-n150-s0" = "23c4877c1c1100b2f4da9679b2103f3c71764fd8631ef65b13f3939ad8908a21"
+"nlad-k2-p02-n150-s1" = "cd0b684d936c15292b4722836c7a9c82414c835270b4bdad104db2c6242de0fc"
+"nlad-k10-p02-n150-s0" = "1e35442fa91be8a5b2e56539f44b1e256dcf5820bee53bb94580d5ae5689ea53"
+"nlad-k10-p02-n150-s1" = "31335fe19dcb9e277d1d19759dfdb2e0d314443204685d24309a09fa968112a3"
+"nlad-k0.01-p03-n150-s0" = "5a8b16bad2ec096d21fe35919b413f2d7456d4f81eed49a9f6ac40b3fe7e0577"
+"nlad-k0.01-p03-n150-s1" = "998b41fee6ee2708942d324c9774621757ebc2a0dd42a8611e6187a7f8c8aae8"
+"nlad-k0.0316-p03-n150-s0" = "fb94737b77cf39251fc45229f0f891079fbdb69f88617cd6dc33c8981edd6e2c"
+"nlad-k0.0316-p03-n150-s1" = "740c0031773321c14068f591a154986d29a3bbf46a4f453ab49edc3f490a1eb2"
+"nlad-k0.1-p03-n150-s0" = "7a5313f4128e3d87746233957717893056f48552ba5f6ab21729c32af553818d"
+"nlad-k0.1-p03-n150-s1" = "e36edd717c5c800ab774e3a2270a4217ff14c2053e783c4493721619d44b6e8e"
+"nlad-k0.316-p03-n150-s0" = "f67cac806860b49650cd87a503ead6e96e8394ae3917f8140f079411b751838b"
+"nlad-k0.316-p03-n150-s1" = "52a999fe0b1cc2adcf0c8a28089301e13345ca84a6029496f7786f2bd4d13ea7"
+"nlad-k1-p03-n150-s0" = "f55bad2a09e4ddfcb50d40c3812bea785f2694821500e80b1d4b3a09166c9f33"
+"nlad-k1-p03-n150-s1" = "34aff4fd21bf2467513f34bfa42939f33a556b8ad885ada2b0b7bb12b75bbe20"
+"nlad-k2-p03-n150-s0" = "a54bc04ffc4449c0ecfa334beed1d0d2e0f2dd73dbe70b153c0221d05b5dd690"
+"nlad-k2-p03-n150-s1" = "ecad8388a9bddf9b4f943f1e9073a4e0408e77ecbbe11f83fa0db119946d7b15"
+"nlad-k10-p03-n150-s0" = "b870696f7f0be266a45a9973e2776ab19aa2d69d6d1393b7f6da2e2981100442"
+"nlad-k10-p03-n150-s1" = "46a93f22159aaf5a453f477ea470addb6603b1ebf42e9bf9ae0454f4bcbae6b7"
+"nlad-k0.01-p04-n150-s0" = "61d883bdd8e0c5439511cc1a04559f6b84f323fb4225b68c27261ca04c052aad"
+"nlad-k0.01-p04-n150-s1" = "61ca85103076a4d4f3079756e9ab0744015437177875e76ce69bbdadedb09ff3"
+"nlad-k0.0316-p04-n150-s0" = "bb142a04bc2dbf324745ae99107978a7fe83e98a3e3918b224acaabac8da2f79"
+"nlad-k0.0316-p04-n150-s1" = "9b21bf0700cfc07ac91738fdf51e3ab54488d261181995e6f00a24096da985e4"
+
+# The planted panel: 6 base points x n in {100, 300, 1000}, each a twin (sraging.generator.materialize of the spec
+# with that n and seed), an age-0 variant (one death at age 0 appended) and a late variant (late_rule). The points
+# are the v6 pure p03 points at kappa 0.01, 0.0316, 0.1, 0.316, 1 and 10 (each v6 c0-s0 cohort outside DT_RULE's
+# scope), recorded at delta 1 (the v6 kappa >= 1 cohorts use delta 0.1); seed = 2026102000 + 10 i + j (i the point,
+# j the n). All 54 materialise (checked at registration).
+[[ac11.planted]]
+name = "k0.01-p03"
+from = "pure-k0.01-p03-c0-s0"
+spec = {rho_eta = 1.8154144455025698, rho_beta = 0.1, rho_eps = 0.0630957344480193, kappa = 0.01, L_phys = 100.0, delta = 1.0}
+seeds = {"100" = 2026102000, "300" = 2026102001, "1000" = 2026102002}
+[[ac11.planted]]
+name = "k0.0316-p03"
+from = "pure-k0.0316-p03-c0-s0"
+spec = {rho_eta = 1.803924141807964, rho_beta = 0.1, rho_eps = 0.0630957344480193, kappa = 0.0316, L_phys = 100.0, delta = 1.0}
+seeds = {"100" = 2026102010, "300" = 2026102011, "1000" = 2026102012}
+[[ac11.planted]]
+name = "k0.1-p03"
+from = "pure-k0.1-p03-c0-s0"
+spec = {rho_eta = 1.7794071914231633, rho_beta = 0.1, rho_eps = 0.0630957344480193, kappa = 0.1, L_phys = 100.0, delta = 1.0}
+seeds = {"100" = 2026102020, "300" = 2026102021, "1000" = 2026102022}
+[[ac11.planted]]
+name = "k0.316-p03"
+from = "pure-k0.316-p03-c0-s0"
+spec = {rho_eta = 1.7401567809364908, rho_beta = 0.1, rho_eps = 0.0630957344480193, kappa = 0.316, L_phys = 100.0, delta = 1.0}
+seeds = {"100" = 2026102030, "300" = 2026102031, "1000" = 2026102032}
+[[ac11.planted]]
+name = "k1-p03"
+from = "pure-k1-p03-c0-s0"
+spec = {rho_eta = 1.6975985150154798, rho_beta = 0.1, rho_eps = 0.0630957344480193, kappa = 1.0, L_phys = 100.0, delta = 1.0}
+seeds = {"100" = 2026102040, "300" = 2026102041, "1000" = 2026102042}
+[[ac11.planted]]
+name = "k10-p03"
+from = "pure-k10-p03-c0-s0"
+spec = {rho_eta = 1.655027491674736, rho_beta = 0.1, rho_eps = 0.0630957344480193, kappa = 10.0, L_phys = 100.0, delta = 1.0}
+seeds = {"100" = 2026102050, "300" = 2026102051, "1000" = 2026102052}

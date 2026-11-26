@@ -1,0 +1,2692 @@
+{
+ "phase": "window",
+ "written_at": "2026-10-14T14:42:51Z",
+ "repo_head": "cee96aa48d7111dee6f9002195462e13640d3c28",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "f39f31acce7ad7a2c864a96ca1108c5210dd8b14"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84c40a04c6ffa86ffca163329af77cca3c81221f"
+ },
+ "wall_s": 116.61598992347717,
+ "cpu_s": 0.126533,
+ "status": "pass",
+ "n": 392,
+ "n_compared": 345,
+ "n_bytes_equal": 345,
+ "n_refused": 47,
+ "deaths_at_hi": 25899,
+ "errors": [],
+ "apply_window_source_sha256": "61af90eacf7ca432a315a73cf640f0839bd1590389ebf925d032de8dea7d9ae4",
+ "grid": {
+  "N": 6000,
+  "dt": 0.0002,
+  "tau_max": 30.0,
+  "Gtol": 1e-12,
+  "nstart": 20,
+  "K": 161
+ },
+ "rows": [
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 80331,
+   "deaths_at_hi": 100
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 80265,
+   "deaths_at_hi": 103
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 20110,
+   "deaths_at_hi": 28
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 20095,
+   "deaths_at_hi": 19
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8102,
+   "deaths_at_hi": 8
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1890_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8022,
+   "deaths_at_hi": 13
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1900_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 83892,
+   "deaths_at_hi": 163
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1900_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 83921,
+   "deaths_at_hi": 186
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1900_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 20980,
+   "deaths_at_hi": 49
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1900_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 20964,
+   "deaths_at_hi": 44
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1900_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8402,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_F_1900_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8442,
+   "deaths_at_hi": 20
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 76337,
+   "deaths_at_hi": 62
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 76229,
+   "deaths_at_hi": 48
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19075,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19070,
+   "deaths_at_hi": 15
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7620,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7676,
+   "deaths_at_hi": 6
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_homo-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 83370,
+   "deaths_at_hi": 172
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_homo-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 83691,
+   "deaths_at_hi": 194
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_homo-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 20827,
+   "deaths_at_hi": 57
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_homo-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 20860,
+   "deaths_at_hi": 50
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_homo-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8310,
+   "deaths_at_hi": 15
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1890_homo-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8377,
+   "deaths_at_hi": 22
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 78262,
+   "deaths_at_hi": 95
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 78111,
+   "deaths_at_hi": 106
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19441,
+   "deaths_at_hi": 27
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19462,
+   "deaths_at_hi": 18
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7890,
+   "deaths_at_hi": 12
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7836,
+   "deaths_at_hi": 16
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 76418,
+   "deaths_at_hi": 3
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 76550,
+   "deaths_at_hi": 3
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19074,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19144,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7642,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7594,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-German_Shepherd_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1055,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-German_Shepherd_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1055,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-German_Shepherd_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 383,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-German_Shepherd_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 376,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Jack_Russell_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1515,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Jack_Russell_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1513,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Jack_Russell_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 391,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Jack_Russell_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 379,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Labradors_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2361,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Labradors_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2363,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Labradors_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 595,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Labradors_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 594,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Staffy_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1997,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Staffy_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2003,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Staffy_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 495,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Staffy_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 498,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 92172,
+   "deaths_at_hi": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 92159,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 23043,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 22991,
+   "deaths_at_hi": 1
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9209,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9223,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 93673,
+   "deaths_at_hi": 27
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 93849,
+   "deaths_at_hi": 29
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 23482,
+   "deaths_at_hi": 7
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 23448,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9356,
+   "deaths_at_hi": 6
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9389,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 89009,
+   "deaths_at_hi": 12
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 89092,
+   "deaths_at_hi": 14
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 22402,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 22305,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8891,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_M_1910_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8870,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_F-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2602,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_F-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2599,
+   "deaths_at_hi": 22
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_F-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 646,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_F-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 648,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_M-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2791,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_M-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2820,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_M-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 699,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-cats_vp_M-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 698,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99977,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99969,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24988,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24995,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9996,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_F-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9997,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 97614,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 97534,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24381,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24354,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9754,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-combined_human_M-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9732,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_217-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 973,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_217-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 976,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_217-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 393,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_217-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 395,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_441-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1116,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_441-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1116,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_441-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 400,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "realfull-real-drosophila_441-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 400,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-k0.01-p00-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 972,
+   "deaths_at_hi": 20
+  },
+  {
+   "cohort_id": "window-k0.01-p00-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 970,
+   "deaths_at_hi": 21
+  },
+  {
+   "cohort_id": "window-k0.01-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9742,
+   "deaths_at_hi": 187
+  },
+  {
+   "cohort_id": "window-k0.01-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9724,
+   "deaths_at_hi": 203
+  },
+  {
+   "cohort_id": "window-k0.01-p01-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 954,
+   "deaths_at_hi": 20
+  },
+  {
+   "cohort_id": "window-k0.01-p01-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(85.0, 112.04999999999995) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.01-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9616,
+   "deaths_at_hi": 142
+  },
+  {
+   "cohort_id": "window-k0.01-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9598,
+   "deaths_at_hi": 127
+  },
+  {
+   "cohort_id": "window-k0.01-p02-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 952,
+   "deaths_at_hi": 9
+  },
+  {
+   "cohort_id": "window-k0.01-p02-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 956,
+   "deaths_at_hi": 16
+  },
+  {
+   "cohort_id": "window-k0.01-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9574,
+   "deaths_at_hi": 93
+  },
+  {
+   "cohort_id": "window-k0.01-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9534,
+   "deaths_at_hi": 114
+  },
+  {
+   "cohort_id": "window-k0.01-p03-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 959,
+   "deaths_at_hi": 8
+  },
+  {
+   "cohort_id": "window-k0.01-p03-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(70.95, 127.04999999999995) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.01-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9521,
+   "deaths_at_hi": 53
+  },
+  {
+   "cohort_id": "window-k0.01-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9537,
+   "deaths_at_hi": 55
+  },
+  {
+   "cohort_id": "window-k0.01-p04-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 952,
+   "deaths_at_hi": 3
+  },
+  {
+   "cohort_id": "window-k0.01-p04-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 952,
+   "deaths_at_hi": 4
+  },
+  {
+   "cohort_id": "window-k0.01-p04-c1-s0",
+   "refused": "time_range",
+   "message": "time_range=(36.950000000000045, 174.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.01-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9526,
+   "deaths_at_hi": 22
+  },
+  {
+   "cohort_id": "window-k0.01-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 979,
+   "deaths_at_hi": 38
+  },
+  {
+   "cohort_id": "window-k0.01-p05-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 982,
+   "deaths_at_hi": 53
+  },
+  {
+   "cohort_id": "window-k0.01-p05-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9789,
+   "deaths_at_hi": 417
+  },
+  {
+   "cohort_id": "window-k0.01-p05-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9792,
+   "deaths_at_hi": 437
+  },
+  {
+   "cohort_id": "window-k0.0316-p00-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 978,
+   "deaths_at_hi": 21
+  },
+  {
+   "cohort_id": "window-k0.0316-p00-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(92.95, 106.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.0316-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9718,
+   "deaths_at_hi": 207
+  },
+  {
+   "cohort_id": "window-k0.0316-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9752,
+   "deaths_at_hi": 179
+  },
+  {
+   "cohort_id": "window-k0.0316-p01-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 963,
+   "deaths_at_hi": 9
+  },
+  {
+   "cohort_id": "window-k0.0316-p01-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 956,
+   "deaths_at_hi": 8
+  },
+  {
+   "cohort_id": "window-k0.0316-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9528,
+   "deaths_at_hi": 132
+  },
+  {
+   "cohort_id": "window-k0.0316-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9533,
+   "deaths_at_hi": 116
+  },
+  {
+   "cohort_id": "window-k0.0316-p02-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(80.95, 120.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.0316-p02-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 954,
+   "deaths_at_hi": 9
+  },
+  {
+   "cohort_id": "window-k0.0316-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9588,
+   "deaths_at_hi": 96
+  },
+  {
+   "cohort_id": "window-k0.0316-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9561,
+   "deaths_at_hi": 83
+  },
+  {
+   "cohort_id": "window-k0.0316-p03-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(71.0, 127.04999999999995) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.0316-p03-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 957,
+   "deaths_at_hi": 7
+  },
+  {
+   "cohort_id": "window-k0.0316-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9537,
+   "deaths_at_hi": 61
+  },
+  {
+   "cohort_id": "window-k0.0316-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9557,
+   "deaths_at_hi": 62
+  },
+  {
+   "cohort_id": "window-k0.0316-p04-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(55.95, 146.04999999999995) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.0316-p04-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(53.95, 145.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.0316-p04-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9505,
+   "deaths_at_hi": 47
+  },
+  {
+   "cohort_id": "window-k0.0316-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9540,
+   "deaths_at_hi": 41
+  },
+  {
+   "cohort_id": "window-k0.0316-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 981,
+   "deaths_at_hi": 39
+  },
+  {
+   "cohort_id": "window-k0.0316-p05-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 981,
+   "deaths_at_hi": 40
+  },
+  {
+   "cohort_id": "window-k0.0316-p05-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9763,
+   "deaths_at_hi": 449
+  },
+  {
+   "cohort_id": "window-k0.0316-p05-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9785,
+   "deaths_at_hi": 442
+  },
+  {
+   "cohort_id": "window-k0.1-p00-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(94.95, 105.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.1-p00-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 967,
+   "deaths_at_hi": 27
+  },
+  {
+   "cohort_id": "window-k0.1-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9830,
+   "deaths_at_hi": 194
+  },
+  {
+   "cohort_id": "window-k0.1-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9811,
+   "deaths_at_hi": 202
+  },
+  {
+   "cohort_id": "window-k0.1-p01-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 959,
+   "deaths_at_hi": 10
+  },
+  {
+   "cohort_id": "window-k0.1-p01-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 951,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "window-k0.1-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9619,
+   "deaths_at_hi": 131
+  },
+  {
+   "cohort_id": "window-k0.1-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9609,
+   "deaths_at_hi": 128
+  },
+  {
+   "cohort_id": "window-k0.1-p02-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 952,
+   "deaths_at_hi": 10
+  },
+  {
+   "cohort_id": "window-k0.1-p02-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 957,
+   "deaths_at_hi": 14
+  },
+  {
+   "cohort_id": "window-k0.1-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9515,
+   "deaths_at_hi": 91
+  },
+  {
+   "cohort_id": "window-k0.1-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9513,
+   "deaths_at_hi": 96
+  },
+  {
+   "cohort_id": "window-k0.1-p03-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 961,
+   "deaths_at_hi": 6
+  },
+  {
+   "cohort_id": "window-k0.1-p03-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 953,
+   "deaths_at_hi": 3
+  },
+  {
+   "cohort_id": "window-k0.1-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9537,
+   "deaths_at_hi": 62
+  },
+  {
+   "cohort_id": "window-k0.1-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9517,
+   "deaths_at_hi": 62
+  },
+  {
+   "cohort_id": "window-k0.1-p04-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(58.0, 144.04999999999995) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-k0.1-p04-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 963,
+   "deaths_at_hi": 4
+  },
+  {
+   "cohort_id": "window-k0.1-p04-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9503,
+   "deaths_at_hi": 44
+  },
+  {
+   "cohort_id": "window-k0.1-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9515,
+   "deaths_at_hi": 36
+  },
+  {
+   "cohort_id": "window-k0.1-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 975,
+   "deaths_at_hi": 23
+  },
+  {
+   "cohort_id": "window-k0.1-p05-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 969,
+   "deaths_at_hi": 29
+  },
+  {
+   "cohort_id": "window-k0.1-p05-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9744,
+   "deaths_at_hi": 331
+  },
+  {
+   "cohort_id": "window-k0.1-p05-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9764,
+   "deaths_at_hi": 345
+  },
+  {
+   "cohort_id": "window-k0.316-p00-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 977,
+   "deaths_at_hi": 29
+  },
+  {
+   "cohort_id": "window-k0.316-p00-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 976,
+   "deaths_at_hi": 25
+  },
+  {
+   "cohort_id": "window-k0.316-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9789,
+   "deaths_at_hi": 256
+  },
+  {
+   "cohort_id": "window-k0.316-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9762,
+   "deaths_at_hi": 239
+  },
+  {
+   "cohort_id": "window-k0.316-p01-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 963,
+   "deaths_at_hi": 15
+  },
+  {
+   "cohort_id": "window-k0.316-p01-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 952,
+   "deaths_at_hi": 19
+  },
+  {
+   "cohort_id": "window-k0.316-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9668,
+   "deaths_at_hi": 133
+  },
+  {
+   "cohort_id": "window-k0.316-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9559,
+   "deaths_at_hi": 133
+  },
+  {
+   "cohort_id": "window-k0.316-p02-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 952,
+   "deaths_at_hi": 6
+  },
+  {
+   "cohort_id": "window-k0.316-p02-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 956,
+   "deaths_at_hi": 18
+  },
+  {
+   "cohort_id": "window-k0.316-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9568,
+   "deaths_at_hi": 75
+  },
+  {
+   "cohort_id": "window-k0.316-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9541,
+   "deaths_at_hi": 85
+  },
+  {
+   "cohort_id": "window-k0.316-p03-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(69.9, 129.91) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k0.316-p03-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(72.295, 129.01) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k0.316-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1913,
+   "deaths_at_hi": 182
+  },
+  {
+   "cohort_id": "window-k0.316-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1966,
+   "deaths_at_hi": 173
+  },
+  {
+   "cohort_id": "window-k0.316-p04-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(36.894999999999996, 175.8) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k0.316-p04-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(36.7, 184.41) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k0.316-p04-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1951,
+   "deaths_at_hi": 38
+  },
+  {
+   "cohort_id": "window-k0.316-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1951,
+   "deaths_at_hi": 36
+  },
+  {
+   "cohort_id": "window-k0.316-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1926,
+   "deaths_at_hi": 4
+  },
+  {
+   "cohort_id": "window-k0.316-p05-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1925,
+   "deaths_at_hi": 9
+  },
+  {
+   "cohort_id": "window-k0.316-p05-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 1023
+  },
+  {
+   "cohort_id": "window-k0.316-p05-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2000,
+   "deaths_at_hi": 978
+  },
+  {
+   "cohort_id": "window-k1-p00-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(94.69500000000001, 105.30000000000001) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p00-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1930,
+   "deaths_at_hi": 7
+  },
+  {
+   "cohort_id": "window-k1-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 1020
+  },
+  {
+   "cohort_id": "window-k1-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 1003
+  },
+  {
+   "cohort_id": "window-k1-p01-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(86.0, 114.705) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p01-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1906,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-k1-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1978,
+   "deaths_at_hi": 242
+  },
+  {
+   "cohort_id": "window-k1-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1966,
+   "deaths_at_hi": 221
+  },
+  {
+   "cohort_id": "window-k1-p02-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(79.80000000000001, 121.105) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p02-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(79.0, 120.405) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1985,
+   "deaths_at_hi": 95
+  },
+  {
+   "cohort_id": "window-k1-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1986,
+   "deaths_at_hi": 96
+  },
+  {
+   "cohort_id": "window-k1-p03-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(70.09500000000001, 129.9) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p03-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(70.2, 130.305) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1970,
+   "deaths_at_hi": 183
+  },
+  {
+   "cohort_id": "window-k1-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1909,
+   "deaths_at_hi": 73
+  },
+  {
+   "cohort_id": "window-k1-p04-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(54.095, 144.9) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p04-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(56.1, 145.82) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k1-p04-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1934,
+   "deaths_at_hi": 85
+  },
+  {
+   "cohort_id": "window-k1-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1941,
+   "deaths_at_hi": 72
+  },
+  {
+   "cohort_id": "window-k1-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1925,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "window-k1-p05-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1945,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "window-k1-p05-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 1016
+  },
+  {
+   "cohort_id": "window-k1-p05-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 973
+  },
+  {
+   "cohort_id": "window-k10-p00-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1930,
+   "deaths_at_hi": 8
+  },
+  {
+   "cohort_id": "window-k10-p00-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(94.69500000000001, 105.4) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 1010
+  },
+  {
+   "cohort_id": "window-k10-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1997,
+   "deaths_at_hi": 1009
+  },
+  {
+   "cohort_id": "window-k10-p01-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1913,
+   "deaths_at_hi": 4
+  },
+  {
+   "cohort_id": "window-k10-p01-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1908,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "window-k10-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1998,
+   "deaths_at_hi": 105
+  },
+  {
+   "cohort_id": "window-k10-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 120
+  },
+  {
+   "cohort_id": "window-k10-p02-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1903,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "window-k10-p02-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(78.995, 120.105) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1985,
+   "deaths_at_hi": 121
+  },
+  {
+   "cohort_id": "window-k10-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1988,
+   "deaths_at_hi": 112
+  },
+  {
+   "cohort_id": "window-k10-p03-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(70.08500000000001, 129.405) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p03-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(69.69, 130.805) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1906,
+   "deaths_at_hi": 77
+  },
+  {
+   "cohort_id": "window-k10-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1962,
+   "deaths_at_hi": 82
+  },
+  {
+   "cohort_id": "window-k10-p04-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(56.195, 149.705) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p04-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(56.300000000000004, 147.605) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p04-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1935,
+   "deaths_at_hi": 98
+  },
+  {
+   "cohort_id": "window-k10-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1941,
+   "deaths_at_hi": 80
+  },
+  {
+   "cohort_id": "window-k10-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1940,
+   "deaths_at_hi": 3
+  },
+  {
+   "cohort_id": "window-k10-p05-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(94.29500000000002, 105.2) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k10-p05-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2000,
+   "deaths_at_hi": 1027
+  },
+  {
+   "cohort_id": "window-k10-p05-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1998,
+   "deaths_at_hi": 999
+  },
+  {
+   "cohort_id": "window-k2-p00-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1938,
+   "deaths_at_hi": 6
+  },
+  {
+   "cohort_id": "window-k2-p00-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1927,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "window-k2-p00-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2000,
+   "deaths_at_hi": 942
+  },
+  {
+   "cohort_id": "window-k2-p00-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1997,
+   "deaths_at_hi": 997
+  },
+  {
+   "cohort_id": "window-k2-p01-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1907,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "window-k2-p01-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1906,
+   "deaths_at_hi": 3
+  },
+  {
+   "cohort_id": "window-k2-p01-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2000,
+   "deaths_at_hi": 98
+  },
+  {
+   "cohort_id": "window-k2-p01-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1999,
+   "deaths_at_hi": 92
+  },
+  {
+   "cohort_id": "window-k2-p02-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(79.5, 120.205) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k2-p02-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1903,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-k2-p02-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1977,
+   "deaths_at_hi": 90
+  },
+  {
+   "cohort_id": "window-k2-p02-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1984,
+   "deaths_at_hi": 117
+  },
+  {
+   "cohort_id": "window-k2-p03-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(69.4, 131.205) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k2-p03-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(69.285, 131.21) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k2-p03-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1905,
+   "deaths_at_hi": 82
+  },
+  {
+   "cohort_id": "window-k2-p03-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1967,
+   "deaths_at_hi": 79
+  },
+  {
+   "cohort_id": "window-k2-p04-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(52.395, 146.1) is off the delta=0.1 grid"
+  },
+  {
+   "cohort_id": "window-k2-p04-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1901,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-k2-p04-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1940,
+   "deaths_at_hi": 85
+  },
+  {
+   "cohort_id": "window-k2-p04-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1933,
+   "deaths_at_hi": 82
+  },
+  {
+   "cohort_id": "window-k2-p05-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1948,
+   "deaths_at_hi": 4
+  },
+  {
+   "cohort_id": "window-k2-p05-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1956,
+   "deaths_at_hi": 5
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1890_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99324,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1890_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99332,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1890_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24821,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1890_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24816,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1890_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9927,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1890_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9927,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1900_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99767,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1900_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99770,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1900_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24949,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1900_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24956,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1900_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9978,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_F_1900_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9964,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 98428,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 98445,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24626,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24612,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9835,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9830,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_homo-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 86721,
+   "deaths_at_hi": 208
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_homo-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 86786,
+   "deaths_at_hi": 219
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_homo-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 21696,
+   "deaths_at_hi": 58
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_homo-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 21762,
+   "deaths_at_hi": 55
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_homo-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8667,
+   "deaths_at_hi": 23
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1890_homo-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 8689,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 98871,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 98833,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24702,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24715,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9889,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9889,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_homo-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 78251,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_homo-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 78089,
+   "deaths_at_hi": 1
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_homo-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19582,
+   "deaths_at_hi": 1
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_homo-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 19512,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_homo-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7760,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Denmark_M_1900_homo-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 7820,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-German_Shepherd_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1098,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-German_Shepherd_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1100,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-German_Shepherd_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 400,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-German_Shepherd_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 398,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Guiniea_pig_VC-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(91.3125, 1095.75) is off the delta=182.625 grid"
+  },
+  {
+   "cohort_id": "window-real-Guiniea_pig_VC-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(91.3125, 1095.75) is off the delta=182.625 grid"
+  },
+  {
+   "cohort_id": "window-real-Guiniea_pig_VC-c1-s0",
+   "refused": "time_range",
+   "message": "time_range=(91.3125, 1278.375) is off the delta=182.625 grid"
+  },
+  {
+   "cohort_id": "window-real-Guiniea_pig_VC-c1-s1",
+   "refused": "time_range",
+   "message": "time_range=(91.3125, 1278.375) is off the delta=182.625 grid"
+  },
+  {
+   "cohort_id": "window-real-Jack_Russell_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1542,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Jack_Russell_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1546,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Jack_Russell_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 399,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Jack_Russell_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 400,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Labradors_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2408,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Labradors_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2401,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Labradors_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 604,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Labradors_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 602,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Staffy_vetCompass-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2062,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Staffy_vetCompass-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2045,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Staffy_vetCompass-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 510,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Staffy_vetCompass-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 508,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 100000,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99998,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 25000,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 25000,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9999,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 10000,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_homo-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99926,
+   "deaths_at_hi": 43
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_homo-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99922,
+   "deaths_at_hi": 35
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_homo-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24980,
+   "deaths_at_hi": 10
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_homo-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24973,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_homo-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9989,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "window-real-Sweden_F_1910_homo-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9994,
+   "deaths_at_hi": 7
+  },
+  {
+   "cohort_id": "window-real-Sweden_M_1910_hetro-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99991,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_M_1910_hetro-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99995,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_M_1910_hetro-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24997,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_M_1910_hetro-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24995,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_M_1910_hetro-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9999,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-Sweden_M_1910_hetro-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9999,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-cats_vp_F-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2578,
+   "deaths_at_hi": 54
+  },
+  {
+   "cohort_id": "window-real-cats_vp_F-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2568,
+   "deaths_at_hi": 38
+  },
+  {
+   "cohort_id": "window-real-cats_vp_F-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 642,
+   "deaths_at_hi": 6
+  },
+  {
+   "cohort_id": "window-real-cats_vp_F-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 642,
+   "deaths_at_hi": 12
+  },
+  {
+   "cohort_id": "window-real-cats_vp_M-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2907,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-cats_vp_M-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 2908,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-cats_vp_M-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 726,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-cats_vp_M-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 730,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-celegans-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(9.34668, 18.0936) is off the delta=0.0084 grid"
+  },
+  {
+   "cohort_id": "window-real-celegans-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(9.4248, 18.27546) is off the delta=0.0084 grid"
+  },
+  {
+   "cohort_id": "window-real-celegans-c1-s0",
+   "refused": "time_range",
+   "message": "time_range=(9.34836, 18.5976) is off the delta=0.0084 grid"
+  },
+  {
+   "cohort_id": "window-real-celegans-c1-s1",
+   "refused": "time_range",
+   "message": "time_range=(9.681000000000001, 18.227999999999998) is off the delta=0.0084 grid"
+  },
+  {
+   "cohort_id": "window-real-combined_human_F-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99967,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_F-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 99957,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_F-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24996,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_F-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24995,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_F-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9995,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_F-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9996,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_M-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 97526,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_M-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 97396,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_M-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24356,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_M-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 24407,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_M-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9709,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-combined_human_M-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9750,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_217-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 971,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_217-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 980,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_217-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 394,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_217-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 395,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_441-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1115,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_441-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1116,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_441-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 400,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_441-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 400,
+   "deaths_at_hi": 0
+  },
+  {
+   "cohort_id": "window-real-drosophila_707-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1080,
+   "deaths_at_hi": 37
+  },
+  {
+   "cohort_id": "window-real-drosophila_707-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1079,
+   "deaths_at_hi": 40
+  },
+  {
+   "cohort_id": "window-real-drosophila_707-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 388,
+   "deaths_at_hi": 12
+  },
+  {
+   "cohort_id": "window-real-drosophila_707-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 389,
+   "deaths_at_hi": 13
+  },
+  {
+   "cohort_id": "window-real-drosophila_853-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1084,
+   "deaths_at_hi": 50
+  },
+  {
+   "cohort_id": "window-real-drosophila_853-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 1062,
+   "deaths_at_hi": 68
+  },
+  {
+   "cohort_id": "window-real-drosophila_853-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 389,
+   "deaths_at_hi": 17
+  },
+  {
+   "cohort_id": "window-real-drosophila_853-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 384,
+   "deaths_at_hi": 20
+  },
+  {
+   "cohort_id": "window-real-mice_F-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 3520,
+   "deaths_at_hi": 2
+  },
+  {
+   "cohort_id": "window-real-mice_F-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 3517,
+   "deaths_at_hi": 4
+  },
+  {
+   "cohort_id": "window-real-mice_F-c1-s0",
+   "refused": "time_range",
+   "message": "time_range=(610.8, 1193.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-real-mice_F-c1-s1",
+   "refused": "time_range",
+   "message": "time_range=(608.4, 1179.3999999999999) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-real-mice_M-c0-s0",
+   "refused": "time_range",
+   "message": "time_range=(396.0, 1150.75) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-real-mice_M-c0-s1",
+   "refused": "time_range",
+   "message": "time_range=(364.5, 1160.0) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-real-mice_M-c1-s0",
+   "refused": "time_range",
+   "message": "time_range=(369.0, 1151.25) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-real-mice_M-c1-s1",
+   "refused": "time_range",
+   "message": "time_range=(353.0, 1155.25) is off the delta=1.0 grid"
+  },
+  {
+   "cohort_id": "window-real-yeast-c0-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 23311,
+   "deaths_at_hi": 277
+  },
+  {
+   "cohort_id": "window-real-yeast-c0-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 23404,
+   "deaths_at_hi": 278
+  },
+  {
+   "cohort_id": "window-real-yeast-c1-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 5826,
+   "deaths_at_hi": 63
+  },
+  {
+   "cohort_id": "window-real-yeast-c1-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 5860,
+   "deaths_at_hi": 77
+  },
+  {
+   "cohort_id": "window-real-yeast-c2-s0",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9509,
+   "deaths_at_hi": 93
+  },
+  {
+   "cohort_id": "window-real-yeast-c2-s1",
+   "refused": null,
+   "bytes_equal": true,
+   "n_observed": 9509,
+   "deaths_at_hi": 108
+  }
+ ]
+}

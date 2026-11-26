@@ -1,0 +1,137 @@
+% Section for specs/003g-default-switch (T054; research R15; constitution V, XI, XII). Paths are relative to src/sraging/
+% unless they start with tests/, tools/ or specs/. Numbers come from 003g's result files, named where they are used.
+\section{The default's gate (\texttt{sraging.default\_gate}; spec 003g)}\label{sec:gate}
+
+\tplPurpose
+A calibrator becomes sraging's default only after it passes where a registered defect of it, or of the calibrator it
+replaces, fires (constitution V), against rules fixed before the records it scores were read, every later change
+recorded as a dated deviation (XI). Spec 003g applies this
+to the switch from \code{profile_v033} (v0.3.3) to \code{profile_jax2} (jax2 1.0.1). The evidence is jax2's library-v6
+records, which it delivers in three windows (W1: the reference set; W2: \code{_h}; W3: the sharp and nladder groups);
+sraging fits two cohorts of its own (Section~\ref{sec:gate-cross}).
+
+\tplMath
+\textbf{The panel.} A frozen list (\code{tests/acceptance/panel_003g_ids.tsv}), built read-only from six sources each
+pinned by sha256 (\code{tools/panel_003g.py}): the defect register's v6 lists, the v6 manifest (each cohort's array
+checked against its content digest), the reference set, the validity audit, the basin labels and jax2's grid census.
+Its strata: the 53 \code{[T-JAX-BASIN]} cohorts mapped onto v6 (E.\,coli has no v6 cohort: a recorded deviation; the 13
+hazard ones are \code{_h}'s, reported); the register's lists in J's domain (no window, no hazard arm), 507 cohorts, 269
+inside the reference set and 238 outside; and three strata of the predecessor's other defects, by a data rule: a death
+in the first recording bin (324 cohorts), the censor-tie rule of jax2's own detector (0 on v6: an empty stratum, never
+a pass), and $\delta/L<10^{-3}$ (16).
+
+\textbf{The witness.} For a cohort with truth $\theta^\ast$ and fitted $\hat\theta$,
+\begin{equation}
+  W=\ell(\theta^\ast)-\ell(\hat\theta),
+\end{equation}
+with $\ell$ the candidate's own log-likelihood on its own grid for that cohort, by the value-and-gradient program, as
+jax2's G2 witness takes it (\code{GATEV6/PREREG_V6.txt}:517); on a human cohort jax2's Richardson-extrapolated
+$W_{\mathrm{REF}}$. $W$ is defined only on informative cohorts (no heterogeneity): the candidate's likelihood cannot
+score a heterogeneous truth. The candidate's $W$ is read from jax2's witness files, each pinned by sha256 and checked
+against the record it witnesses (\code{tools/witness_003g.py}).
+
+\textbf{The rules} (pre-registered; Naveh's OK 2026-10-22, with two corrections made before any v6 record was read;
+PR-4's followed a dry run on library-v5 records)
+\src{default_gate.py}:
+\begin{enumerate}[nosep]
+  \item[PR-1] a stratum fails if any valid informative cohort has $W>1.92$; it is incomplete if any lacks a fresh
+    witness; the exact one-sided 95\,\% bound on the failure rate is reported;
+  \item[PR-2] inside the reference set, per arm and quantity, the tester's own paired comparison of the candidate
+    against v0.3.3 (\code{build_comparison}): a stratum fails if any calibration outcome (two-sided or one-sided)
+    reads ``loses'' ($z<-2$);
+  \item[PR-3] outside it (no v0.3.3 record), the candidate's coverage hits against its own on the same arm and
+    quantity inside: the one-sided 95\,\% Newcombe hybrid-score lower bound of $p_{\mathrm{out}}-p_{\mathrm{in}}$ must
+    exceed $-0.10$. (The first approved margin, 0.05, was corrected after its power was computed. A power table built
+    from W1's closed counts and the panel's $N$ alone, committed before W3 (\code{pr3_power_003g.json}), shows that
+    $N\le3$ cannot pass, and that equal coverage passes at the counts the inside closed share predicts: on SRK-1,
+    154 of 161 against 617 of 644 gives $-0.038$ and 45 of 46 against 194 of 199 gives $-0.068$. Beside every PR-3 FAIL
+    the gate prints that row and, after W3, the probability of a count as low under exactly equal coverage,
+    $P(K\le k_{\mathrm{out}}\mid n_{\mathrm{out}},p_{\mathrm{in}})$.)
+  \item[PR-4] the candidate's median closed-interval width (dex) on $\eta$ and $\eps$ below the data-ignoring null's by
+    more than the tester's 0.05\,dex tolerance; its closed share is reported. (The tester's information axis also
+    fails a method whose closed share is below the reference's, and the null is closed on every cohort.)
+  \item[PR-5] v0.3.3 is shown failing on each of its defects' strata when at least one cohort shows the defect:
+    $W_{33}>1.92$ (the basin and round-off strata), its stored CPU time above the candidate's (the $\delta/L$ ceiling);
+  \item[PR-6] the switch is blocked by any failed or incomplete PR-1 to PR-4 verdict, any PR-5 ``not shown'', or a
+    required verdict missing; each blocked stratum goes to Naveh, who decides it (fix first, or a stated limit).
+\end{enumerate}
+\textbf{Deviations after W1} (the sr-naveh interim review, Naveh 2026-10-28; the panel's \code{[deviations]}, the
+registered \code{[rules]} unchanged): DV-1, the $\delta/L$ ceiling is a library gap (v0.3.3's cap $\delta/(3L)$ costs
+more than 1.0.1's floor only below $\delta/L\approx4.4\times10^{-4}$; v6's 16 cohorts sit at $\approx6\times10^{-4}$), so
+its PR-5 reads ``reported''; DV-2, a PR-2 verdict whose every axis is ``not measured'' reads ``reported'', not PASS (7
+strata); DV-3, \code{not_assessed} per individual (Section~\ref{sec:lev-rule}). At the close (the sr-naveh review,
+Naveh 2026-10-29): DV-4, P-ROUNDOFF's PR-5 reads ``reported'', because every cohort shown there is human with the basin's
+signature and none of the 112 non-human ones is shown, so the round-off defect itself is not shown on v6; DV-5, a PR-2
+PASS whose measured axes all have fewer than 3 paired cells reads ``reported'' (below 3, srbench's cluster-robust $z$
+cannot reach $-2$, enumerated over every cell difference and cluster partition). Naveh's decision on each blocking
+entry is the panel's \code{[[decisions]]}, copied onto the gate's entries. The rule code is frozen at W1's pin
+except for named changes, and a result is stale when a commit since it ran is not a reviewed one
+(\code{tests/acceptance/test_results_003g.py}).
+
+\textbf{v0.3.3's point} (no $\theta$ is stored; \code{tools/v033_points.py}): the four claim points; else $\eta$,
+$\beta$, $\eps$ from the claims and $\kappa$ by a 1-D maximisation of v0.3.3's own likelihood over $\log\kappa$ on the
+record's grid, kept iff it reproduces the stored log-likelihood within 0.5\,nats (the tester's basin-scope recipe).
+$W_{33}$ is then taken in the candidate's likelihood, never in v0.3.3's: at its own wrong-basin points v0.3.3's value
+is host-dependent, by more than 1\,nat on 5 of the 32 human basin cohorts and up to 3,346\,nats
+(\code{tests/acceptance/results/v033_points_verify_003g.json}). Where no v0.3.3 record exists (the three p15 cohorts), its
+MLE stage is replayed from outside the frozen port, call for call (\code{tools/v033_mle.py}; equal to a real fit bit
+for bit, \code{v033_mle_verify_003g.json}).
+
+\tplImpl
+\code{tools/acceptance_003g.py}: one phase per step, each on a clean committed tree; each window's runs, records and
+witness files are pinned (\code{tests/acceptance/pins_003g.json}) and committed before anything is scored; v0.3.3's v6
+records are sealed until jax2's gate run, and only the predecessor phase reads them.
+
+\subsection{sraging's own fits}\label{sec:gate-cross}
+Two fits tie jax2's records to the port a user runs. Fit 1 is the default settings on an in-scope sharp cohort
+(\code{censor-k0.01-p05-c1-s1}); its claim shapes and coverage hits must agree with its W3 record, and the interval
+ends are reported against the 1.0.0 host spread (spec 003e: 0 shape flips on 140 cohorts, 6 of 745 ends beyond
+0.03\,dex). Fit 2 was registered as a human basin cohort whose basin re-fit fired; in W1 the re-fit fired on no basin
+cohort (only on 22 heterogeneous and 13 realfull records), so it is a valid human realfull cohort
+(\code{realfull-real-Sweden_F_1910_homo-c1-s1}) whose re-fit fired on the cluster. On this Mac it did not fire: the
+MLE stage went straight to $\beta$ at the box. Fit 2 is therefore a host-agreement check, and the port's re-fit path
+has not run on this Mac. Its shapes and hits agree with the record; 2 of its 6 interval ends differ by more than
+0.03\,dex (0.04 on $\beta$'s lower end, 0.11 on $\kappa$'s upper end), and the log-likelihoods by $-0.41$\,nats, which is
+$1.7\times10^{-5}$ per individual at the $n=23{,}448$ fitted; that the two hosts sit at different points of the ridge is inferred,
+not measured. Fit 2's stored leverage reason predates DV-3's wording; its label is current.
+
+\tplEvidence
+From \code{tests/acceptance/results/}: \code{gate_003g.json} (``blocked; decided (11 of 11)'', all 11 entries
+outside the reference set),
+\code{score_w1_003g.json}, \code{predecessor_003g.json}, \code{score_w3_003g.json}, \code{pr3_power_003g.json}.
+\begin{itemize}[nosep]
+  \item Inside: PR-1 passes on every scored stratum and arm (largest $W=0.287$); PR-2 loses nowhere, and the strata
+    that measured nothing (DV-2) or could not show a loss (DV-5) read ``reported''; PR-4 passes everywhere. 1.0.1 often declines to cap $\eta$ or $\eps$ from above (on the
+    censored LB-2 cohorts $\eta$ is a lower bound only on 30 of 66), which PR-4's widths do not see.
+  \item PR-5: v0.3.3 is shown failing on 29 of 32 basin cohorts and on 3 of 3 p15 cohorts. On the round-off stratum
+    the 19 of 178 shown are all human with the basin's signature (15 of them basin cohorts), and none of the 112
+    non-human ones is shown (largest $W_{33}=-0.034$): DV-4. Of the 3 basin cohorts not shown, one was recovered with
+    $W_{33}=-0.06$; the other two were not recovered, one a real failure (recon $-27$), one a host call (recon $-0.545$
+    against the $-0.5$ cut). The human $W_{33}$ is $W_4$, not $W_{\mathrm{REF}}$ (a deviation from research R6: all 29
+    are above 10\,nats, and $W_4-W_{\mathrm{REF}}$ is about 1\,nat, so nothing flips). The $\delta/L$ ceiling is DV-1;
+    the censor tie is empty.
+  \item Outside: PR-1 passes (largest $W=-0.01$ on 56 censored and 171 witnessed pure sharp cohorts), except that one
+    valid cohort, \code{pure-k0.0316-p15-c0-s1}, has no record (incomplete). PR-4 passes. PR-3 passes on $\eta$ and $\eps$ for
+    the pure sharp cohorts and on $\eps$ for the censored ones; it fails where the power table says it cannot pass
+    (the p15, LB-1x and SRK-2 strata, $N\le3$, every claim covering; $\beta$ on 2 and 4 closed claims), and on
+    censored $\eta$, 43 of 45 against 194 of 199, one claim short; a count that low has probability 0.31 under
+    exactly equal coverage.
+  \item What PR-3 and PR-4 do not see, reported in \code{score_w3_003g.json} (\code{limits}) and printed on every
+    default fit in DT\_RULE's regime (\code{warnings.SHARP_COHORT_LIMIT}): $\eta$ has no upper end on 49 of the 227
+    witnessed sharp cohorts, every one of those lower bounds covering, and on each of them $\beta$ has no claim or only
+    the $\kappa$ box's end; median closed widths are 1.50--1.67\,dex ($\eta$) and 2.42--2.47\,dex ($\eps$); raw $\beta$
+    is closed on 6 of 227, and its upper end is always the $\kappa$ box's.
+  \item Naveh (2026-10-28) made every blocked entry a stated limit and switched the default
+    (\code{registry.py:DEFAULT}). Fit 1 agrees with its record (shapes and hits equal, ends within $10^{-4}$\,dex); it
+    took 59,867 CPU-s, over its price of 8.6--15\,h.
+  \item On realfull cohorts $W$ cannot fail: 1.0.1 models neither their fit window nor their external hazard. Of the 66
+    valid ones inside, 39 have $W<-10$ (from $-0.09$ to $-14{,}259$; per individual of the library cohort, which can exceed the $n$ fitted by about 6\,\%, a median of $-0.010$, from
+    $-1.3\times10^{-5}$ to $-1.58$), and 1.0.1's closed intervals covered 26 of 61 ($\eta$) and 20 of 57 ($\eps$)
+    (\code{score_w1_003g.json}, \code{realfull_all}).
+  \item Human records: \code{BOX_EDGE} fires on 85 of 396 ($\beta$ 45, $\kappa$ 40); closed $\eta$ widths are
+    bimodal (quartiles 0.11, 0.62, 2.28\,dex) (\code{human_box_edge}).
+\end{itemize}
+
+\tplRefs
+\code{specs/003g-default-switch/} (spec with its Clarifications, research R1--R15); jax2's \code{GATEV6/PREREG_V6.txt};
+Section~\ref{sec:j101}; Section~\ref{sec:lev}.

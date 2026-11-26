@@ -1,0 +1,3557 @@
+{
+ "phase": "t0",
+ "written_at": "2026-10-03T21:06:09Z",
+ "repo_head": "3705957249e87dfa7bf84e35a3a5469b8a346955",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_v1.toml": "c2c8f0fe2c5baf354fae3ba59a35a49b3f15f729"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "head": "dbe504a91a34ffe6656f5a662e1a33a6cbecba09"
+ },
+ "wall_s": 142.13565492630005,
+ "cpu_s": 317.91752299999996,
+ "status": "pass",
+ "checks": {
+  "program_equal": {
+   "passed": 40,
+   "total": 40
+  },
+  "bytes": {
+   "passed": 240,
+   "total": 240
+  }
+ },
+ "results": [
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.311,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -2921.7373426983045,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -2915.585701721865,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -2954.6520700621586,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.335,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -2825.9750854489193,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -2825.0147145863334,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -2872.563749213997,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -2825.0147145863334,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.39110000000028,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -28962.98698613835,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -28935.82215809384,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -29433.47260792235,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -28935.82215809384,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.49175000000028,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -28872.95509002239,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -28856.787625462384,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -29353.69007219372,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -28856.787625462384,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.56949999999999,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3585.067277704657,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3583.3092839082396,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3588.5522533063713,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -4336.454493324214,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.633,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3526.9361379961338,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3526.3543023221896,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3535.5956803945514,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -3526.3543023200345,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.57205000000052,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -35648.2547099393,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -35643.45987969177,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -35738.24506162385,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -35643.488412176186,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.42725000000053,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -35617.81085169574,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -35613.502575414794,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -35707.47130991421,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -53505.090634152715,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.86599999999999,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3879.230150445989,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3877.5874045825944,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3884.244728168034,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -3877.5874045823975,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 100.2205,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3882.322352477596,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3879.0806633276693,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3885.170574976537,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -3879.0806633273655,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.39350000000077,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -39175.014799363664,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -39173.802869393265,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -39214.468322440756,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -40137.4309073216,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.56085000000076,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -39104.19057510532,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -39103.225011371316,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -39146.37374092451,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -39103.22501136744,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.92499999999998,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -4284.1235033946705,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -4283.579530636681,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -4285.757098576901,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -697944.1271290018,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -4283.579530636227,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.43049999999997,
+    "N": 900,
+    "tau_max": 2.000895097580723,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -4354.680475942796,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -4350.815303220971,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -4352.444459037054,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -696579.3494499845,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -4442.432790539411,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.74940000000112,
+    "N": 900,
+    "tau_max": 2.006027103922407,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1003,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -42910.690626061645,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -42909.66520859882,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -42926.671128993665,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -6986331.045477655,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -43248.479000125415,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.54505000000113,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -42940.94433082851,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -42940.59265077135,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -42958.849462286285,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -6977439.598714031,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -42972.57173779684,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 96.66399999999994,
+    "N": 900,
+    "tau_max": 2.8314574195150226,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1200,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002359547849595852
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -5119.753525893329,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -5117.455668447242,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -5118.1285179067545,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -321902.2900065183,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -5117.4556269437335,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 98.94999999999996,
+    "N": 900,
+    "tau_max": 2.9519959575543213,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1200,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.0024599966312952677
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -5116.435540905359,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -5115.980502059871,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -5116.275661717102,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -350393.65054022125,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -5115.980515229955,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.62905000000288,
+    "N": 900,
+    "tau_max": 2.920332975171314,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1200,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002433610812642762
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -51379.29188598705,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -51378.64694217507,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -51386.113019774275,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -3497476.8828236233,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -51409.02197015438,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.2026500000028,
+    "N": 900,
+    "tau_max": 3.3038431937049135,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1200,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002753202661420761
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -51265.93154484112,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -51265.10417689227,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -51271.09152460228,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -3618710.423463009,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -51299.50665444754,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.44300000000003,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -2240.9365385843926,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -2225.3180839966103,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -33871.732369679274,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.49000000000001,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -2259.8574295674393,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -2234.4959638504083,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -38016.705733747716,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -2234.4959638504083,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.49985000000015,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -23870.456206114148,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -22301.083277018755,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -365543.5953453567,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.52895000000015,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -35069.826361221814,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -22395.647516223573,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -384350.0384161244,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -22395.647516223573,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.357,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3180.439789731837,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3178.6350863934285,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3202.2082219926556,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -3178.635086393237,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.281,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3165.094974422129,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3163.8899884406637,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3182.867350948364,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.51720000000034,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -31635.28846821695,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -31630.579038276905,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -31875.015088537166,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -37147.548996648926,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.59310000000036,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -31524.163018308675,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -31522.164539356483,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -31797.55590597349,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -1191312.3577806035,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.75,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3721.6337966083747,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3720.8953608766656,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3727.5539617751087,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -3725.060280263291,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.11149999999999,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -3756.2722051573364,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -3754.734313882475,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -3762.4985663226457,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -3754.734313882328,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k2-p04-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 98.78335000000006,
+    "N": 900,
+    "tau_max": 2.2188962006249016,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": 0.00033743878227791743,
+    "nsteps": 6575,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.00033743878227791743
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -14075.207367081639,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -14073.58276889818,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -14074.407427629802,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -1198981.2225786343,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -14073.58275763439,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -1400000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "realfull-real-mice_M-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 776.1384839650145,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": 0.0004294766207577445,
+    "nsteps": 4656,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.0004294766207577445
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -4551.027948359555,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -4550.568105229224,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -4551.3643036319645,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -416105.19522039697,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -6041.029136962341,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -480200.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-real-Sweden_F_1910_homo-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 31515.86653500033,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -449840.6440694435,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -454771.7070510016,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -458666.80738554057,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -69945364.11243907,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -1053356.0678068837,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -69999359.0576888,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-real-Denmark_F_1900_hetro-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 25540.513503750277,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -432344.81835458113,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -437551.28581155767,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -442993.78482666006,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -69921203.54213765,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -1063419.1082355417,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -69998713.8658675,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "censor-k0.0316-p05-c0-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.0485,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -1902.6889264682318,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -1890.2191763269277,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -1999.870833532666,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -1890.2191763269277,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "het-k0.01-p01-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 98.74890000000082,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -43330.20837572803,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -40102.4699241925,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -40132.58598496236,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -2539425.959486218,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.50015000000012,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -19778.959855414258,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -19806.698962332313,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -289615.52264182013,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.5291500000001,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -19683.112484718487,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -19709.66502494363,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -257587.2333098033,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c0-s0",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.06500000000001,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -1907.0430949367433,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -1895.9587260160301,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -7692.476918312548,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -1895.9587260160301,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -700000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 99.16125000000012,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": null,
+    "nsteps": 1000,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.002
+    }
+   },
+   "program_equal": {
+    "port_value": true,
+    "port_value_and_grad": true,
+    "oracle_value": true,
+    "oracle_value_and_grad": true
+   },
+   "points": [
+    {
+     "theta": "truth",
+     "value": -18793.82660304125,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "optimum",
+     "value": -18721.62589953299,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "seed",
+     "value": -41775.74700794232,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "floor",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "kmax",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    },
+    {
+     "theta": "corner",
+     "value": -7000000.0,
+     "diffs": {
+      "port_value": [],
+      "port_value_and_grad": [],
+      "oracle_value": [],
+      "oracle_value_and_grad": []
+     }
+    }
+   ],
+   "ok": true
+  }
+ ]
+}

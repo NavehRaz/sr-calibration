@@ -1,0 +1,26 @@
+{
+ "calibrator": "profile_v033",
+ "cell": "v033-leverage",
+ "cluster": "k0.01|b0.1|e0.0158489",
+ "cohort_id": "censor-k0.01-p01-c1-s1",
+ "cpu_model": "AMD EPYC 7702 64-Core Processor",
+ "dropped": {
+  "age": 64.0,
+  "event": 1,
+  "row": 1
+ },
+ "element_cpu_s": 420.62789100000003,
+ "fit_cpu_s": 320.076683405,
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn652.wexac.weizmann.ac.il",
+ "kappa_true": 0.01,
+ "leverage_cpu_s": 89.21946096900001,
+ "leverage_flag": "no_flag",
+ "leverage_reason": null,
+ "loglik_hat": -30255.651469573342,
+ "lsf_index": "4",
+ "lsf_jobid": "669928",
+ "n": 10000,
+ "status": "ok",
+ "warnings": []
+}

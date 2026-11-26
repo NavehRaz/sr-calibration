@@ -1,0 +1,46 @@
+% Shared macros for SR_algorithms.tex and every file in sections/.
+% Only these packages are available (TinyTeX): amsmath, amssymb, booktabs, longtable, enumitem,
+% xcolor, hyperref, float, geometry, tikz, caption. NOT available: algorithm2e, algorithmicx, microtype.
+% Pseudocode = numbered enumerate lists.
+
+\definecolor{srccol}{RGB}{90,90,140}
+\definecolor{opencol}{RGB}{190,30,30}
+
+% Inline code / identifiers (underscores are safe inside).
+% \path (url package, loaded by hyperref) allows line breaks inside long identifiers.
+\makeatletter\g@addto@macro\UrlBreaks{\do\:\do\-\do\,}\makeatother
+\Urlmuskip=0mu plus 1mu
+\urlstyle{tt}
+\newcommand{\code}[1]{\ifmmode\text{\path{#1}}\else\path{#1}\fi}
+% Source citation for an equation or statement: \src{SRK/fp_likelihood.py:fpt_full}
+\newcommand{\src}[1]{{\small\textcolor{srccol}{[\path{#1}]}}}
+% Anything not verified against the source, or a question for the author. Collected in the appendix.
+\newcommand{\openq}[1]{{\color{opencol}[\textbf{OPEN:} #1]}}
+
+% Model notation (physical)
+\newcommand{\xc}{x_c}
+\newcommand{\hext}{h_{\mathrm{ext}}}
+\newcommand{\eps}{\varepsilon}
+% Dimensionless groups (as named in the code)
+\newcommand{\reta}{\rho_\eta}
+\newcommand{\rbeta}{\rho_\beta}
+\newcommand{\reps}{\rho_\varepsilon}
+% Probability / survival
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\E}{\mathbb{E}}
+
+% Per-algorithm template headings (use in this order; omit none, write "None known." if empty)
+\newcommand{\tplPurpose}{\paragraph{Purpose.}}
+\newcommand{\tplMath}{\paragraph{Mathematics.}}
+\newcommand{\tplImpl}{\paragraph{Discretisation and implementation.}}
+\newcommand{\tplLimits}{\paragraph{Assumptions and validity limits.}}
+\newcommand{\tplWhere}{\paragraph{Where it lives today.}}
+\newcommand{\tplEvidence}{\paragraph{Validation evidence.}}
+\newcommand{\tplIssues}{\paragraph{Known issues and planned changes.}}
+\newcommand{\tplRefs}{\paragraph{References.}}
+
+% A verify marker (spec 004 FR-020, constitution II): \verify{results JSON}{dotted path}{format spec}{text}. It prints
+% the text; a checker recomputes format(value at the path, spec) from the stored result and compares it with the text,
+% as tools/verify_readme.py does for the README's <!-- verify:path:key:spec -->text<!-- /verify --> (path elements:
+% dict keys or [i] list indices; an empty spec is str(value)).
+\newcommand{\verify}[4]{#4}

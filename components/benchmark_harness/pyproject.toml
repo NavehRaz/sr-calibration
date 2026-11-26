@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "srbench"
+version = "0.1.0"
+description = "A lab-wide benchmark for SR (saturating-removal) aging-model calibration methods"
+requires-python = ">=3.14"
+
+# The system under test (SRK) is DELIBERATELY ABSENT. It is a build-time dependency of the
+# cohort library and a dependency of the shipped reference adapter -- never of the harness
+# core. Everything else runs on frozen data and stored results. See plan.md, "two-file blast
+# radius". If SRK appears here, that property has been lost.
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+srbench = "srbench.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["srbench*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The default suite performs ZERO production calibrations and must finish in minutes (FR-073,
+# SC-008). Anything that runs a real calibration is marked `slow` and is excluded here; run it
+# explicitly with `-m slow`.
+addopts = "-m 'not slow' --strict-markers -q"
+markers = [
+    "slow: performs at least one production-cost calibration (~1 CPU-hour each); excluded by default",
+    "sut: imports the system under test; excluded from the standalone-property check",
+]

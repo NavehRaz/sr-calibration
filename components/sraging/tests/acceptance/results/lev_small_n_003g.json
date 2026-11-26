@@ -1,0 +1,2478 @@
+{
+ "phase": "lev-small-n",
+ "written_at": "2026-10-29T00:09:10Z",
+ "repo_head": "9399c1b7d228fa17ab7686057bc5f909ba9f2f14",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 558.0389549732208,
+ "cpu_s": 0.14629899999999998,
+ "status": "written",
+ "n_rows": 47,
+ "n_measured": 22,
+ "n_not_measured": 25,
+ "not_measured": {
+  "nlad-k0.01-p01-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 8.3e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.0316-p01-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 4.43e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.0316-p01-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.32e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k0.01-p01-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.14e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.316-p01-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 0.00279 nats), so theta-hat cannot be recovered",
+  "nlad-k2-p01-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.14e-13 nats), so theta-hat cannot be recovered",
+  "nlad-k10-p01-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 5.23e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.0316-p02-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 4.32e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.01-p02-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 2.39e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.316-p02-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.11e-05 nats), so theta-hat cannot be recovered",
+  "nlad-k1-p02-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.94e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k1-p02-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 2.39e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k2-p02-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 4.65e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k10-p02-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 5.04e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k2-p02-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.3e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k0.01-p03-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.4e-05 nats), so theta-hat cannot be recovered",
+  "nlad-k0.01-p03-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 5.68e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.0316-p03-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 7.96e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k1-p03-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.82e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k0.316-p03-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 6.37e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k1-p03-n150-s1": "the re-run check did not reproduce AC-11's stored block (g0.g0, g0.theta, g0.ll_warm, R, delta_total): not shown to be the same point",
+  "nlad-k0.01-p04-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 2.01e-05 nats), so theta-hat cannot be recovered",
+  "nlad-k10-p03-n150-s1": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 3.06e-11 nats), so theta-hat cannot be recovered",
+  "nlad-k10-p03-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 6.03e-12 nats), so theta-hat cannot be recovered",
+  "nlad-k0.0316-p04-n150-s0": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 0.00114 nats), so theta-hat cannot be recovered"
+ },
+ "g_crit_per_ind": 5e-05,
+ "free_gradient_per_individual": {
+  "min": 1.9941169626931047e-09,
+  "median": 1.7216489963386796e-07,
+  "max": 1.6146268734278062e-06,
+  "n": 22
+ },
+ "free_gradient_norm": {
+  "min": 2.991175444039657e-07,
+  "median": 2.58247349450802e-05,
+  "max": 0.00024219403101417093,
+  "n": 22
+ },
+ "n_above": 0,
+ "above": [],
+ "converged_rule": "scipy_status == 0: the estimator's L-BFGS-B (_LBFGS_MLE: gtol 1e-6, ftol 1e-13) started at theta-hat on the full data reports CONVERGENCE (leverage.warm_termination); the second reading, n_fit_ok_above, takes every fit AC-11 returned with status ok as converged",
+ "n_converged": 4,
+ "n_converged_above": 0,
+ "n_fit_ok_above": 0,
+ "scipy_status_counts": {
+  "2": 18,
+  "0": 4
+ },
+ "labels_now": {
+  "flat_valley_slide": 20,
+  "no_flag": 2
+ },
+ "label_changes": {},
+ "n_scaling": {
+  "n": 150.0,
+  "median_norm": 2.58247349450802e-05,
+  "spread_dex": 2.9083215487131517,
+  "slope_to_assessed_reference": {
+   "ITP+age0": 5.966930117067339,
+   "censor-k0.01-p05-c1-s1": 1.567980697524845
+  },
+  "n_cross_if_constant": {
+   "median": 0.5164946989016039,
+   "max": 4.843880620283419
+  },
+  "reading": "slope 0: |g| set by the optimiser, independent of n; slope 1: |g| proportional to n, so |g|/n does not depend on n"
+ },
+ "beside": [
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.01-p00-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 2.991175444039657e-07,
+   "free_gradient_per_individual": 1.9941169626931047e-09,
+   "scipy_status": 0
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k10-p02-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 3.436039888235634e-07,
+   "free_gradient_per_individual": 2.290693258823756e-09,
+   "scipy_status": 0
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.01-p04-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 6.25724248697904e-07,
+   "free_gradient_per_individual": 4.17149499131936e-09,
+   "scipy_status": 0
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.0316-p04-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 1.4726144447668685e-06,
+   "free_gradient_per_individual": 9.817429631779124e-09,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k1-p01-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 1.6018100510543975e-06,
+   "free_gradient_per_individual": 1.0678733673695983e-08,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.1-p01-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 4.5109809388022755e-06,
+   "free_gradient_per_individual": 3.007320625868184e-08,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k2-p03-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 6.836868520507771e-06,
+   "free_gradient_per_individual": 4.5579123470051806e-08,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.1-p01-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 7.259721185367041e-06,
+   "free_gradient_per_individual": 4.839814123578027e-08,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.0316-p03-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 1.1112654974852244e-05,
+   "free_gradient_per_individual": 7.408436649901496e-08,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.1-p03-n150-s0",
+   "n": 150,
+   "label": "no_flag",
+   "free_gradient_norm": 1.449264860996954e-05,
+   "free_gradient_per_individual": 9.661765739979694e-08,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k2-p01-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 2.463860217842047e-05,
+   "free_gradient_per_individual": 1.6425734785613646e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.316-p01-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 2.7010867711739924e-05,
+   "free_gradient_per_individual": 1.8007245141159948e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k1-p01-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 3.048104793147325e-05,
+   "free_gradient_per_individual": 2.0320698620982166e-07,
+   "scipy_status": 0
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.1-p03-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 4.150483540993404e-05,
+   "free_gradient_per_individual": 2.766989027328936e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.1-p02-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 4.221820915952842e-05,
+   "free_gradient_per_individual": 2.814547277301895e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.1-p02-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 4.260004381981422e-05,
+   "free_gradient_per_individual": 2.840002921320948e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.316-p03-n150-s0",
+   "n": 150,
+   "label": "no_flag",
+   "free_gradient_norm": 5.159643579629232e-05,
+   "free_gradient_per_individual": 3.439762386419488e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.0316-p02-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 5.386886427814116e-05,
+   "free_gradient_per_individual": 3.5912576185427443e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.316-p02-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 7.640393963909135e-05,
+   "free_gradient_per_individual": 5.093595975939424e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k10-p01-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 7.953332586074166e-05,
+   "free_gradient_per_individual": 5.302221724049444e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k2-p03-n150-s1",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 8.062433204682431e-05,
+   "free_gradient_per_individual": 5.374955469788287e-07,
+   "scipy_status": 2
+  },
+  {
+   "source": "ac11 small_n",
+   "cohort_id": "nlad-k0.01-p02-n150-s0",
+   "n": 150,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 0.00024219403101417093,
+   "free_gradient_per_individual": 1.6146268734278062e-06,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "ITP+age0",
+   "n": 305,
+   "label": "flag",
+   "free_gradient_norm": 0.0017827684219882702,
+   "free_gradient_per_individual": 5.845142367174657e-06,
+   "scipy_status": 2
+  },
+  {
+   "source": "fit1_003g.json",
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "n": 10000,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 0.018702065454668144,
+   "free_gradient_per_individual": 1.8702065454668143e-06,
+   "scipy_status": null
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s1",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 10.10325767373518,
+   "free_gradient_per_individual": 0.00040413030694940724,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s1",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 16.969711362986178,
+   "free_gradient_per_individual": 0.0006787884545194471,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-combined_human_F-c1-s1",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 26.398584040026357,
+   "free_gradient_per_individual": 0.0010559433616010544,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-combined_human_F-c1-s0",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 155.85448918790138,
+   "free_gradient_per_individual": 0.006234179567516055,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s0",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 641.8155194867896,
+   "free_gradient_per_individual": 0.025672620779471585,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_M_1910_hetro-c0-s0",
+   "n": 100000,
+   "label": "not_assessed",
+   "free_gradient_norm": 267.0503293199079,
+   "free_gradient_per_individual": 0.002670503293199079,
+   "scipy_status": 2
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c0-s0",
+   "n": 100000,
+   "label": "not_assessed",
+   "free_gradient_norm": 474.5248843869398,
+   "free_gradient_per_individual": 0.004745248843869398,
+   "scipy_status": 2
+  }
+ ],
+ "rows": [
+  {
+   "cohort_id": "nlad-k0.01-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 8.29913915367797e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 8.3e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p01-n150-s1",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 4.433786671143025e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 4.43e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.318767317570746e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.32e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.1-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.0001886225855500526,
+    "beta": 1.000000000000001e-12,
+    "epsilon": 0.00012485919225836963,
+    "kappa": 0.0014400412675729395
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 7.259721185367041e-06,
+   "free_gradient_per_individual": 4.839814123578027e-08,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 15,
+    "moved": 0.0,
+    "cpu_s": 2.9789729999999963
+   },
+   "cost": {
+    "cpu_s": 46.628656,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.01-p00-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.013495944268329145,
+    "beta": 1.2446678808255696,
+    "epsilon": 0.016193672341656865,
+    "kappa": 0.0010000000000000002
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 2.991175444039657e-07,
+   "free_gradient_per_individual": 1.9941169626931047e-09,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 0,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "nit": 0,
+    "nfev": 1,
+    "moved": 0.0,
+    "cpu_s": 2.7769010000000094
+   },
+   "cost": {
+    "cpu_s": 239.513131,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": true
+  },
+  {
+   "cohort_id": "nlad-k0.01-p01-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.1368683772161603e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.14e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.1-p01-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.001807339121993636,
+    "beta": 58.14036118371423,
+    "epsilon": 0.002074924789688713,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "no_flag",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 4.5109809388022755e-06,
+   "free_gradient_per_individual": 3.007320625868184e-08,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 13,
+    "moved": 0.0,
+    "cpu_s": 3.159976999999998
+   },
+   "cost": {
+    "cpu_s": 79.676457,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.316-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.004938318225238229,
+    "beta": 0.42115848577112924,
+    "epsilon": 0.007956363426734201,
+    "kappa": 0.0010000000000000002
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 2.7010867711739924e-05,
+   "free_gradient_per_individual": 1.8007245141159948e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 2.9462580000000003
+   },
+   "cost": {
+    "cpu_s": 57.766470999999996,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k1-p01-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00037375897053550306,
+    "beta": 0.012005767414395291,
+    "epsilon": 0.0003790905377636069,
+    "kappa": 0.001177388763953115
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 3.048104793147325e-05,
+   "free_gradient_per_individual": 2.0320698620982166e-07,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 0,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "nit": 1,
+    "nfev": 6,
+    "moved": 0.0,
+    "cpu_s": 3.111931999999996
+   },
+   "cost": {
+    "cpu_s": 58.047458,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": true
+  },
+  {
+   "cohort_id": "nlad-k0.316-p01-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.002791700513853357,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 0.00279 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k1-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.005515587768425684,
+    "beta": 0.5142170244858689,
+    "epsilon": 0.01753614937740039,
+    "kappa": 0.007958752937427566
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 1.6018100510543975e-06,
+   "free_gradient_per_individual": 1.0678733673695983e-08,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 3.1739060000000165
+   },
+   "cost": {
+    "cpu_s": 150.982161,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k2-p01-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.1368683772161603e-13,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.14e-13 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k10-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00036829994987125505,
+    "beta": 0.010858839563522045,
+    "epsilon": 0.00019376465084775188,
+    "kappa": 0.001479998291376149
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 7.953332586074166e-05,
+   "free_gradient_per_individual": 5.302221724049444e-07,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.210380999999998
+   },
+   "cost": {
+    "cpu_s": 55.808757,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k2-p01-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.004408668241025857,
+    "beta": 147.07021277869745,
+    "epsilon": 0.0035585553283276447,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "no_flag",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 2.463860217842047e-05,
+   "free_gradient_per_individual": 1.6425734785613646e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 15,
+    "moved": 0.0,
+    "cpu_s": 3.2071810000000056
+   },
+   "cost": {
+    "cpu_s": 99.335637,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k10-p01-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 5.229594535194337e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 5.23e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.01-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.0027780388525654705,
+    "beta": 106.39535081821313,
+    "epsilon": 0.007869984882918237,
+    "kappa": 290.4076675703858
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "no_flag",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 0.00024219403101417093,
+   "free_gradient_per_individual": 1.6146268734278062e-06,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.216695999999999
+   },
+   "cost": {
+    "cpu_s": 73.378582,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00017614214427559183,
+    "beta": 1.2193996117572154e-10,
+    "epsilon": 0.00029529242721620117,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 5.386886427814116e-05,
+   "free_gradient_per_individual": 3.5912576185427443e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.288685000000001
+   },
+   "cost": {
+    "cpu_s": 49.773975,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.1-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.0001850270980547605,
+    "beta": 2.4651505855245917e-10,
+    "epsilon": 0.000263152640438514,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 4.221820915952842e-05,
+   "free_gradient_per_individual": 2.814547277301895e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.4079580000000007
+   },
+   "cost": {
+    "cpu_s": 53.878519,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 4.320099833421409e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 4.32e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.1-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.0019025574889652312,
+    "beta": 0.14924990163270993,
+    "epsilon": 0.0064412400105762525,
+    "kappa": 0.0010000000000000002
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "no_flag",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 4.260004381981422e-05,
+   "free_gradient_per_individual": 2.840002921320948e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 3.429427000000004
+   },
+   "cost": {
+    "cpu_s": 116.78325199999999,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.01-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 2.3874235921539366e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 2.39e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.316-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.001695785958095068,
+    "beta": 61.30308456110337,
+    "epsilon": 0.004981212909877103,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "no_flag",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 7.640393963909135e-05,
+   "free_gradient_per_individual": 5.093595975939424e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 15,
+    "moved": 0.0,
+    "cpu_s": 3.233370999999998
+   },
+   "cost": {
+    "cpu_s": 49.162649,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.316-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.107133664390858e-05,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.11e-05 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k1-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.944044925039634e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.94e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k1-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 2.3874235921539366e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 2.39e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k2-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 4.6497916628140956e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 4.65e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k10-p02-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 5.03632691106759e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 5.04e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k2-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.2960299500264227e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.3e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.01-p03-n150-s0",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.3953228631180536e-05,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.4e-05 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.01-p03-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 5.6843418860808015e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 5.68e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p03-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 7.958078640513122e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 7.96e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p03-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00016573895043257218,
+    "beta": 5.515848809836173e-12,
+    "epsilon": 0.0006432496736260795,
+    "kappa": 0.0013291146351648655
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 1.1112654974852244e-05,
+   "free_gradient_per_individual": 7.408436649901496e-08,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 3.2266249999999985
+   },
+   "cost": {
+    "cpu_s": 55.936565,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.1-p03-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00016575544568747116,
+    "beta": 1.000000000000001e-12,
+    "epsilon": 0.0005860811313142489,
+    "kappa": 0.83162143900891
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 4.150483540993404e-05,
+   "free_gradient_per_individual": 2.766989027328936e-07,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 3.3400330000000054
+   },
+   "cost": {
+    "cpu_s": 62.078627000000004,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.316-p03-n150-s0",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00015744943645073101,
+    "beta": 9.765503144623875e-07,
+    "epsilon": 0.0005261671392710371,
+    "kappa": 4.999969340161969
+   },
+   "label": "no_flag",
+   "labels": {
+    "all4": "no_flag",
+    "lead_pair": "no_flag",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 5.159643579629232e-05,
+   "free_gradient_per_individual": 3.439762386419488e-07,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 11,
+    "moved": 0.0,
+    "cpu_s": 3.3170800000000042
+   },
+   "cost": {
+    "cpu_s": 63.301926,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k1-p03-n150-s0",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 1.8189894035458565e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 1.82e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.1-p03-n150-s0",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00027900690108781145,
+    "beta": 0.008145456698475717,
+    "epsilon": 0.0010461947850871254,
+    "kappa": 0.0013895319216963133
+   },
+   "label": "no_flag",
+   "labels": {
+    "all4": "no_flag",
+    "lead_pair": "no_flag",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 1.449264860996954e-05,
+   "free_gradient_per_individual": 9.661765739979694e-08,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 15,
+    "moved": 0.0,
+    "cpu_s": 3.2498099999999965
+   },
+   "cost": {
+    "cpu_s": 58.897605999999996,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k10-p02-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.0129412911757792,
+    "beta": 669.586313006258,
+    "epsilon": 0.055979962085608945,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "no_flag",
+    "raw": "flat_valley_slide"
+   },
+   "reason": null,
+   "free_gradient_norm": 3.436039888235634e-07,
+   "free_gradient_per_individual": 2.290693258823756e-09,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 0,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "nit": 0,
+    "nfev": 1,
+    "moved": 0.0,
+    "cpu_s": 2.816847999999993
+   },
+   "cost": {
+    "cpu_s": 88.15632699999999,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": true
+  },
+  {
+   "cohort_id": "nlad-k0.316-p03-n150-s1",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 6.366462912410498e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 6.37e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k2-p03-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00017181402764592773,
+    "beta": 1.208513581850117e-12,
+    "epsilon": 0.00058387414373084,
+    "kappa": 0.0010702043820571122
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 8.062433204682431e-05,
+   "free_gradient_per_individual": 5.374955469788287e-07,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.3673009999999977
+   },
+   "cost": {
+    "cpu_s": 48.225795,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k2-p03-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00017601532052544488,
+    "beta": 0.0009300772791393901,
+    "epsilon": 0.0006278109522647793,
+    "kappa": 0.0010248223340312338
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 6.836868520507771e-06,
+   "free_gradient_per_individual": 4.5579123470051806e-08,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.3526279999999957
+   },
+   "cost": {
+    "cpu_s": 78.558507,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k1-p03-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": false,
+   "not_measured_reason": "the re-run check did not reproduce AC-11's stored block (g0.g0, g0.theta, g0.ll_warm, R, delta_total): not shown to be the same point",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.000168968065784775,
+    "beta": 0.0033906887141107547,
+    "epsilon": 0.0005667644259643363,
+    "kappa": 4.153356506173856
+   },
+   "unverified": {
+    "label": "flat_valley_slide",
+    "labels": {
+     "all4": "flat_valley_slide",
+     "lead_pair": "flat_valley_slide",
+     "raw": "no_flag"
+    },
+    "reason": null,
+    "free_gradient_norm": 4.393236444208611e-06,
+    "free_gradient_per_individual": 2.9288242961390738e-08,
+    "n_free": 4,
+    "g0": 5.7980287238024175e-12,
+    "warm_termination": null,
+    "cost": {
+     "cpu_s": 68.806757,
+     "share_of_fit": null
+    },
+    "reproduced": {
+     "equal": false,
+     "differs": [
+      "g0.g0",
+      "g0.theta",
+      "g0.ll_warm",
+      "R",
+      "delta_total"
+     ]
+    }
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.01-p04-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.0001545485730699918,
+    "beta": 0.007493834223495852,
+    "epsilon": 0.0030086982288134415,
+    "kappa": 0.2245566924211034
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 6.25724248697904e-07,
+   "free_gradient_per_individual": 4.17149499131936e-09,
+   "n_free": 4,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 0,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "nit": 0,
+    "nfev": 1,
+    "moved": 0.0,
+    "cpu_s": 2.770076000000003
+   },
+   "cost": {
+    "cpu_s": 86.517644,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": true
+  },
+  {
+   "cohort_id": "nlad-k0.01-p04-n150-s1",
+   "n": 150,
+   "label_003b": "no_flag",
+   "fit_status_003b": "ok",
+   "g0_003b": 2.006865838666272e-05,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 2.01e-05 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k10-p03-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 3.058175934711471e-11,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 3.06e-11 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k10-p03-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 6.0254023992456496e-12,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 6.03e-12 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p04-n150-s1",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0,
+   "measured": true,
+   "not_measured_reason": null,
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   },
+   "theta_source": "ac11_003b.json g0.theta (g0 == 0.0: the warm start's start, exp(log theta-hat))",
+   "theta": {
+    "eta": 0.00023606997191231763,
+    "beta": 5.17624685182656,
+    "epsilon": 0.002398036438579315,
+    "kappa": 299.99999999999994
+   },
+   "label": "flat_valley_slide",
+   "labels": {
+    "all4": "flat_valley_slide",
+    "lead_pair": "flat_valley_slide",
+    "raw": "no_flag"
+   },
+   "reason": null,
+   "free_gradient_norm": 1.4726144447668685e-06,
+   "free_gradient_per_individual": 9.817429631779124e-09,
+   "n_free": 3,
+   "g0": 0.0,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 3.4275749999999974
+   },
+   "cost": {
+    "cpu_s": 62.040505,
+    "share_of_fit": null
+   },
+   "reproduced": {
+    "equal": true,
+    "differs": []
+   },
+   "above": false,
+   "converged": false
+  },
+  {
+   "cohort_id": "nlad-k0.0316-p04-n150-s0",
+   "n": 150,
+   "label_003b": "flat_valley_slide",
+   "fit_status_003b": "ok",
+   "g0_003b": 0.0011442820790534824,
+   "measured": false,
+   "not_measured_reason": "AC-11 stored no theta-hat; g0.theta is where the warm start from theta-hat ended, and it moved (g0 = 0.00114 nats), so theta-hat cannot be recovered",
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  }
+ ],
+ "references": [
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s1",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 16.969711362986178,
+   "free_gradient_per_individual": 0.0006787884545194471,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-combined_human_F-c1-s1",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 26.398584040026357,
+   "free_gradient_per_individual": 0.0010559433616010544,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s0",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 641.8155194867896,
+   "free_gradient_per_individual": 0.025672620779471585,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-combined_human_F-c1-s0",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 155.85448918790138,
+   "free_gradient_per_individual": 0.006234179567516055,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s1",
+   "n": 25000,
+   "label": "not_assessed",
+   "free_gradient_norm": 10.10325767373518,
+   "free_gradient_per_individual": 0.00040413030694940724,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_M_1910_hetro-c0-s0",
+   "n": 100000,
+   "label": "not_assessed",
+   "free_gradient_norm": 267.0503293199079,
+   "free_gradient_per_individual": 0.002670503293199079,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "ITP+age0",
+   "n": 305,
+   "label": "flag",
+   "free_gradient_norm": 0.0017827684219882702,
+   "free_gradient_per_individual": 5.845142367174657e-06,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "lev_pilot_003g.json",
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c0-s0",
+   "n": 100000,
+   "label": "not_assessed",
+   "free_gradient_norm": 474.5248843869398,
+   "free_gradient_per_individual": 0.004745248843869398,
+   "scipy_status": 2,
+   "message": "ABNORMAL: "
+  },
+  {
+   "source": "fit1_003g.json",
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "n": 10000,
+   "label": "flat_valley_slide",
+   "free_gradient_norm": 0.018702065454668144,
+   "free_gradient_per_individual": 1.8702065454668143e-06,
+   "scipy_status": null,
+   "message": "ABNORMAL: "
+  }
+ ],
+ "source": {
+  "result": "tests/acceptance/results/ac11_003b.json",
+  "repo_head": "a1c370914e45503f1694388e4c06ae58f73b9f31",
+  "written_at": "2026-10-21T10:50:19Z",
+  "host": {
+   "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+   "machine": "arm64",
+   "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+   "node": "MC06268844"
+  },
+  "provenance": {
+   "calibrator": "profile_jax2",
+   "version": "1.0.1",
+   "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+   "host": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro",
+   "library": "v6",
+   "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+   "panel_commit": "06f889509eb0549c8a444c7d78457fc20436147a"
+  },
+  "fit": "sraging.fit_cohort(c, 'profile_jax2@1.0.1', combinations=False) on library v6 (acceptance_003b.ac11_worker)",
+  "theta_hat_stored": false,
+  "recovery": "g0.theta where g0 == 0.0, verified by log/exp round trip and a bit-for-bit reproduction of AC-11's stored check block",
+  "not_used": "jax2's W3 records (jax2-v6-sharp-nladder): another fit of the same calibrator and version, on WEXAC"
+ },
+ "workers": 4
+}

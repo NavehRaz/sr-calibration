@@ -1,0 +1,26 @@
+{
+ "calibrator": "profile_v033",
+ "cell": "v033-leverage",
+ "cluster": "k0.01|b0.1|e0.0158489",
+ "cohort_id": "pure-k0.01-p01-c0-s0",
+ "cpu_model": "AMD EPYC 9754 128-Core Processor",
+ "dropped": {
+  "age": 126.0,
+  "event": 1,
+  "row": 1000
+ },
+ "element_cpu_s": 510.70552899999996,
+ "fit_cpu_s": 419.668366274,
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn823.wexac.weizmann.ac.il",
+ "kappa_true": 0.01,
+ "leverage_cpu_s": 80.50074427300001,
+ "leverage_flag": "no_flag",
+ "leverage_reason": null,
+ "loglik_hat": -3572.824776921159,
+ "lsf_index": "4",
+ "lsf_jobid": "672173",
+ "n": 1000,
+ "status": "ok",
+ "warnings": []
+}

@@ -1,0 +1,143 @@
+{
+ "phase": "p2-s5-power",
+ "written_at": "2026-11-03T20:32:37Z",
+ "repo_head": "f16715cab36084b113467c1b7fd87866d40369e8",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 3784.575889825821,
+ "cpu_s": 3814.6694610000004,
+ "status": "written",
+ "errors": [],
+ "plant": {
+  "sd": 0.2,
+  "plant_sd": 0.20102844238281253,
+  "kl_per_individual": 1.913928291604665e-05,
+  "target": 1.92e-05
+ },
+ "R": {
+  "shift": [
+   16.71629218133688,
+   -0.6957248136016527,
+   -1.2616838293571486,
+   0.010115257633473967
+  ],
+  "sd_per_replicate": [
+   222.72296177637418,
+   17.35716850169343,
+   5.521388139343248,
+   1.105944283942256
+  ],
+  "R_per_component": [
+   2535.496065454539,
+   8889.874590710762,
+   273.53212773359184,
+   170736.14085968008
+  ],
+  "R_score": 274,
+  "R_ks": 3016,
+  "sup_dF": 0.0010748566928286962,
+  "zcrit": 2.4977054744123737
+ },
+ "config": {
+  "spec": {
+   "name": "s5-pure-k0.01-p00-c0-s0-xc0.2",
+   "rho_eta": 2.125427697723628,
+   "rho_beta": 0.1,
+   "rho_eps": 0.003981071705534973,
+   "kappa": 0.01,
+   "n": 2000,
+   "L_phys": 100.0,
+   "seed": 100000,
+   "delta": 1.0,
+   "het_param": "xc",
+   "het_var": 0.2
+  },
+  "key": 100000,
+  "dt_clamp": 0.00078125,
+  "dt_reflect": {
+   "step": [
+    "s5|het|reflect",
+    "dt"
+   ]
+  },
+  "steps_per_individual": 127312.9939,
+  "source": "spec.md Clarifications 2026-11-01 (8f0f269); score_het_002.json theta0_cohort; research R20"
+ },
+ "halving": {
+  "clamp": {
+   "mean": [
+    -2.06839227031421,
+    0.1679194602091419,
+    -0.03417940830640877,
+    -0.010942765483479278
+   ],
+   "se": [
+    0.15828919509226305,
+    0.012053186372375548,
+    0.004302062215009749,
+    0.0007531749618688334
+   ],
+   "cohorts": 100,
+   "cpu_per_cohort_s": 4.381951999999956,
+   "wall": "clamp",
+   "dt": 0.00078125,
+   "t_max": 171.12,
+   "n_beyond": 0,
+   "errors": [],
+   "p_hat": 0.5,
+   "bias_factor": 3.414213562373096,
+   "bias_in_se": [
+    0.6051792267969914,
+    0.6252399830499422,
+    0.4379195451817026,
+    0.6361671056757864
+   ],
+   "bias_in_se_is": "an upper bound: (|mean| + 2 SE) x 1/(1 - 2^-p)"
+  }
+ },
+ "projection_cpu_h": {
+  "clamp": 0.3335152355555522,
+  "reflect": Infinity
+ },
+ "branch": {
+  "branch": 1,
+  "wall": "clamp",
+  "action": "run",
+  "reason": "clamp projected at 0.333515 <= 86"
+ },
+ "smallest_detectable_nats_per_1e5": 0.0074459683240626715,
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {},
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.33473514268883814,
+  "projected_from": "P1's ns per individual-step x 2 rungs x 2 walls",
+  "cap_cpu_h": 6.0,
+  "cap_frozen_cpu_h": 6.0,
+  "naveh_ok": null,
+  "cpu_spent_h": 1.0596175366666667,
+  "parent_cpu_s": 3814.6231489999996,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

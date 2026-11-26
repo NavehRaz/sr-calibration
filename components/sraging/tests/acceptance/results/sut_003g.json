@@ -1,0 +1,82 @@
+{
+ "phase": "sut",
+ "written_at": "2026-10-28T23:50:06Z",
+ "repo_head": "32fa16a949062f3bffa30480d1368e168a37bab8",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 0.4475362300872803,
+ "cpu_s": 0.26718,
+ "status": "pass",
+ "rows": [
+  {
+   "cohort_id": "het-k0.01-p01-c0-s0",
+   "files": {
+    "SR_hetro.py": "46811f0bb9322ea9175b40808c32d5af3cc2d3294dcf9b4b52ad3cd5841eca16",
+    "SRmodellib.py": "08bda3648cebb92242fef6a4242c7536f0cc593e5f730e96cb318ea61c877460",
+    "SRmodellib_lifelines.py": "8b6ceffb91316ab5215028b3bd586484bad4e57e1fb1350f366c7281aba85d26",
+    "__init__.py": "946c5e65c0c9724e15686db6b4005111ed15dd6f5fc6700007da7476033ad4d0",
+    "deathTimesDataSet.py": "add34073e9d82fb779067e0218735b87553a976379952a1bde704b77c1d89fa9",
+    "distance_metrics.py": "efaced8124f39f355f825b70733d698cff69776a7c13bbe49e6ef2b9b8f8d82b",
+    "fp_curvefit.py": "716b67c893bddb75a63eaf41d6924e3ed150280b7f0cf6c0353c113e15dbfa0a",
+    "fp_gof.py": "9928908c46aaca06d60f472b4c93456cd25096db18ceddd3577710e5bf79d12b",
+    "fp_likelihood.py": "5331ae00c65b249ae771cbc6ededf004ee6eb8f558582c5ed3208935102bd6ae",
+    "initialParamsFinder.py": "63472a5b70b498df61e8bebcc3656b22fa296b472a43c516252d09921e104b78",
+    "joint_posterior.py": "849394c849b952ad420f2096b069cb88ce2178e25f267a7af1cf9b4d1e4f564f",
+    "life_table.py": "c27769f268f92edd50a053c81a7605af259df0ef2bd1bd4856ff817a450a7a64",
+    "makhamGompertzFitter.py": "d9dfc2be5515b788317debc57808d9220d7fb4c1bcc0e32753a08ee9533362bf",
+    "prior_gen.py": "c7d4f36d6babc4f8825d46d40fd040a1ec3e2e70f4210119231d8bc099650933",
+    "samples_utils.py": "2081a9e9578c804a9bd0d4aae4fcb4b8dff31891874fbf290d761cc580889cfb",
+    "sr_mcmc.py": "bbece2c99cc1458c5dffd78c0700a80a52ae382ddddc481a5b1cf781787de604",
+    "stepsize.py": "be897557455bb8164c1adf2dc062df740dfa5f6cbc4ea5df91b365c65638c2b5",
+    "weibullFitter.py": "a3e3390bba1bca266605e3cadaf2bb7a4834610c79a433e247c659d09c6f514b"
+   },
+   "n_files": 18,
+   "different": [],
+   "missing_in_oracle": []
+  },
+  {
+   "cohort_id": "pure-k2-p11-c0-s0",
+   "files": {
+    "SR_hetro.py": "46811f0bb9322ea9175b40808c32d5af3cc2d3294dcf9b4b52ad3cd5841eca16",
+    "SRmodellib.py": "08bda3648cebb92242fef6a4242c7536f0cc593e5f730e96cb318ea61c877460",
+    "SRmodellib_lifelines.py": "8b6ceffb91316ab5215028b3bd586484bad4e57e1fb1350f366c7281aba85d26",
+    "__init__.py": "946c5e65c0c9724e15686db6b4005111ed15dd6f5fc6700007da7476033ad4d0",
+    "deathTimesDataSet.py": "add34073e9d82fb779067e0218735b87553a976379952a1bde704b77c1d89fa9",
+    "distance_metrics.py": "efaced8124f39f355f825b70733d698cff69776a7c13bbe49e6ef2b9b8f8d82b",
+    "fp_curvefit.py": "716b67c893bddb75a63eaf41d6924e3ed150280b7f0cf6c0353c113e15dbfa0a",
+    "fp_gof.py": "9928908c46aaca06d60f472b4c93456cd25096db18ceddd3577710e5bf79d12b",
+    "fp_likelihood.py": "5331ae00c65b249ae771cbc6ededf004ee6eb8f558582c5ed3208935102bd6ae",
+    "initialParamsFinder.py": "63472a5b70b498df61e8bebcc3656b22fa296b472a43c516252d09921e104b78",
+    "joint_posterior.py": "849394c849b952ad420f2096b069cb88ce2178e25f267a7af1cf9b4d1e4f564f",
+    "life_table.py": "c27769f268f92edd50a053c81a7605af259df0ef2bd1bd4856ff817a450a7a64",
+    "makhamGompertzFitter.py": "d9dfc2be5515b788317debc57808d9220d7fb4c1bcc0e32753a08ee9533362bf",
+    "prior_gen.py": "c7d4f36d6babc4f8825d46d40fd040a1ec3e2e70f4210119231d8bc099650933",
+    "samples_utils.py": "2081a9e9578c804a9bd0d4aae4fcb4b8dff31891874fbf290d761cc580889cfb",
+    "sr_mcmc.py": "bbece2c99cc1458c5dffd78c0700a80a52ae382ddddc481a5b1cf781787de604",
+    "stepsize.py": "be897557455bb8164c1adf2dc062df740dfa5f6cbc4ea5df91b365c65638c2b5",
+    "weibullFitter.py": "a3e3390bba1bca266605e3cadaf2bb7a4834610c79a433e247c659d09c6f514b"
+   },
+   "n_files": 18,
+   "different": [],
+   "missing_in_oracle": []
+  }
+ ],
+ "tester_head": "0805d36bb92dd9a1a531683bcc21824ca7dadac8"
+}

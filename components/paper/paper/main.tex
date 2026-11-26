@@ -1,0 +1,31 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\IfFileExists{claims.tex}{\input{claims}}{}
+\externaldocument{si}
+
+\title{Calibrating the saturating-removal model of aging from survival data:\\[2pt]
+  exact likelihood, identifiability and intervention effects}
+\author{Naveh Raz\thanks{Corresponding author: \texttt{Naveh.raz@weizmann.ac.il}}, Avi Mayo and Uri Alon\\[4pt]
+  \small Department of Molecular Cell Biology, Weizmann Institute of Science, Rehovot, Israel}
+\date{Draft \today}
+
+\begin{document}
+\maketitle
+\linenumbers
+
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_model}
+\input{sections/03_likelihood}
+\input{sections/04_estimation}
+\input{sections/05_identifiability}
+\input{sections/06_effects}
+\input{sections/07_validation}
+\input{sections/08_example}
+\input{sections/09_software}
+\input{sections/10_limitations}
+\input{sections/11_availability}
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+\end{document}

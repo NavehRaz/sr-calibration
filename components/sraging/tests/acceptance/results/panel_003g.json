@@ -1,0 +1,68 @@
+{
+ "phase": "panel",
+ "written_at": "2026-10-28T23:50:05Z",
+ "repo_head": "587b82ce94f31dbe65429e398512922117b071b2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 6.829919099807739,
+ "cpu_s": 6.234915,
+ "status": "pass",
+ "differences": [],
+ "counts": {
+  "BASIN-ECOLI": 0,
+  "BASIN-H": 13,
+  "BASIN-J": 32,
+  "BASIN-P15": 3,
+  "HZ-1": 56,
+  "HZ-4": 69,
+  "LB-1x": 35,
+  "LB-2": 264,
+  "P-CENSORTIE": 0,
+  "P-DTCEIL": 16,
+  "P-ROUNDOFF": 324,
+  "SRK-1": 238,
+  "SRK-1b": 1,
+  "SRK-2": 4
+ },
+ "rows": 811,
+ "ids_sha256": "8b82710e7b64e7962bffc789cbbd80c15bdd26b01cce6cce209a6672d08d4c70",
+ "rules": {
+  "w_thr": 1.92,
+  "pr2_loses": "z < -2.0",
+  "pr3_margin": 0.1,
+  "pr3_alpha": 0.05,
+  "pr3_interval": "newcombe-hybrid-score",
+  "pr4_quantities": [
+   "eta",
+   "epsilon"
+  ],
+  "pr4_statistic": "the tester's information axis, its width comparison only (median closed width, WIDTH_TOLERANCE_DEX); its closed-share rule not applied, J's closed share reported (Naveh 2026-10-22, after a v5 dry run: the null is closed on every cohort)",
+  "pr5_measures": {
+   "BASIN-J": "W33 > w_thr",
+   "BASIN-P15": "W33 > w_thr",
+   "P-ROUNDOFF": "W33 > w_thr",
+   "P-DTCEIL": "cpu_s_v033 > cpu_s_j",
+   "P-CENSORTIE": "W33 > w_thr"
+  },
+  "pr6": "blocked iff any PR-1..PR-4 verdict is FAIL or incomplete, or any PR-5 is 'not shown'; empty strata never pass",
+  "g_crit": 1.0
+ },
+ "naveh_ok": "PR-1..PR-6 OK'd by Naveh 2026-10-22 (spec Clarifications, AskUserQuestion, each the recommendation)"
+}

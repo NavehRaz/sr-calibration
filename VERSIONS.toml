@@ -1,0 +1,170 @@
+# What this release contains, pinned. assemble.py reads this file; nothing else decides the contents.
+# To make a new version: change `ref` (or `include`) below, bump [release].version, run assemble.py, commit, tag.
+#
+# Path prefixes: `aging:` = the Dropbox aging folder; `~/` = the home folder.
+# kind = "code": `git archive <ref> -- <paths>` extracted into `dest` (tracked in this repository).
+# kind = "data": files staged into the data deposit (not tracked here; uploaded to Zenodo with DATA_MANIFEST.json).
+#   source = "git"   -> from `git archive <ref>` (committed files)
+#   source = "files" -> from the working tree, read-only (files that the source repository does not track)
+#   source = "store" -> per-cohort records of a tester run: data/store/<k[:2]>/<k[2:4]>/<key>.json for runs/<run>.json keys
+
+[release]
+name    = "sr-calibration"             # Naveh, 2026-11-23
+version = "0.1.0"
+repository = "https://github.com/NavehRaz/sr-calibration"   # Naveh's personal account (2026-11-23)
+authors = ["Naveh Raz", "Avi Mayo", "Uri Alon"]
+licence_code = "BSD-3-Clause"         # Naveh, 2026-11-12 (LICENSE)
+licence_data = "CC-BY-4.0"            # Naveh, 2026-11-12 (written into the data deposit as LICENSE-DATA.txt)
+preprint = "TBD"                       # bioRxiv DOI once posted
+
+# ---------------------------------------------------------------- code ----------------------------------------------
+[[component]]
+id      = "sraging"
+kind    = "code"
+repo    = "~/code/sraging"
+ref     = "v0.1.1"                     # tag 2026-11-25: commit d368157 (PR #14). src/ identical to v0.1.0 (33213ce); study counts and the tests' and tools' path defaults removed (Naveh, 2026-11-25)
+paths   = ["src", "pyproject.toml", "uv.lock", "README.md", "docs/algorithms", "examples", "divergences", "tests", "tools"]   # docs/planning and specs are internal process, not released; tools/ holds the test and acceptance harnesses the tests import
+# tests: Naveh 2026-11-23 ("the tests and their results should be easily accessible"). Left out: the data-cleaning
+# tests of spec 005 and the project inventory, which name or pin the studies' unpublished files.
+exclude = ["tests/acceptance/cleaning_records_005.toml", "tests/acceptance/rules_005.toml",
+           "tests/acceptance/results/exit_005.json", "tests/acceptance/results/km_005.json",
+           "tests/acceptance/results/noise_005.json", "tests/acceptance/results/presets_005.json",
+           "tests/acceptance/results/unchanged_005.json", "tests/acceptance/results/units_005.json",
+           "tests/acceptance/results/workers_005.json", "tests/acceptance/results/p5_inventory_004.json",
+           "tests/acceptance/test_results_005.py", "tests/unit/test_p5_inventory_004.py", "tools/p5_inventory_004.py",
+           "**/__pycache__/**"]
+dest    = "components/sraging"
+include = true
+note    = "likelihood engine, default calibrator profile_jax2 1.0.1 (port), leverage check, cohort generator, CLI, tests and their stored results"
+
+[[component]]
+id      = "calibrator-1.0.1"
+kind    = "code"
+repo    = "aging:code_5/sr_calibration_tester_jax2_freeze"
+ref     = "mle_profile_jax2-1.0.1"
+paths   = ["methods/mle_profile_jax2"]
+strip   = "methods/"
+dest    = "components/calibrators/mle_profile_jax2-1.0.1"
+include = true
+note    = "frozen calibrator as the studies ran it: J, H (with fit window), and the kappa-fixed names; VERSION_LOCK inside"
+
+[[component]]
+id      = "calibrator-1.0.0"
+kind    = "code"
+repo    = "aging:code_5/sr_calibration_tester_jax2_freeze"
+ref     = "mle_profile_jax2-1.0.0"
+paths   = ["methods/mle_profile_jax2"]
+strip   = "methods/"
+dest    = "components/calibrators/mle_profile_jax2-1.0.0"
+include = true
+note    = "for results produced with 1.0.0 (bridged to 1.0.1: identical estimates on 26 ITP controls)"
+
+[[component]]
+id      = "benchmark-harness"
+kind    = "code"
+repo    = "aging:code_5/sr_calibration_tester"
+ref     = "e137c85"                    # tester main 2026-11-17: machine-specific paths removed (README, provenance, fit_cohort_jax)
+paths   = ["srbench", "tools", "pyproject.toml", "README.md"]
+dest    = "components/benchmark_harness"
+include = true
+note    = "generates the library, runs a calibrator on it, scores the records"
+
+[[component]]
+id      = "group-comparison-mouse"
+kind    = "code"
+repo    = "aging:code_5/alibek_mouse"
+ref     = "f4f078f"
+paths   = ["analysis"]
+dest    = "components/group_comparison/mouse_study"
+include = false                        # Naveh 2026-11-12: released with the mouse paper, not here (code only, never data)
+note    = "effect fits as the mouse late-life study ran them (J 1.0.0 + SRK piecewise)"
+
+[[component]]
+id      = "group-comparison-mosquito"
+kind    = "code"
+repo    = "aging:code_5/mosquitos"
+ref     = "9cff079"                    # CHECK: the tree had 52 uncommitted changes on 2026-11-05; pin the commit the paper used
+paths   = ["reanalysis_2026-10/src"]
+strip   = "reanalysis_2026-10/"
+dest    = "components/group_comparison/mosquito_study"
+include = false                        # Naveh 2026-11-12: released with the mosquito paper, not here
+note    = "joint fits, design effect, permutation tests, W0, as the mosquito study ran them"
+
+[[component]]
+id      = "paper"
+kind    = "code"
+repo    = "aging:code_5/sr_methods_preprint"
+ref     = "HEAD"                       # REPLACE with the commit of the posted version
+paths   = ["verify_claims.py", "claims.toml", "paper_paths.py", "paper_inputs.py", "release_inputs.json", "script_inputs.txt",
+           "build.sh", "README.md", "paper", "tables", "figures", "sources/CLAIMS_FORMAT.md"]
+# Naveh 2026-11-23 (option a): released, without the two version-bridge scripts, which read the studies' own fits
+exclude = ["tables/bridge_mouse.py", "tables/bridge_mouse.csv", "tables/bridge_mosq.py", "tables/bridge_mosq.csv",
+           "paper/*.pdf", "**/__pycache__/**"]
+dest    = "components/paper"
+include = true
+note    = "every figure, table and number of the preprint, and the check that re-extracts each number from its source"
+
+# ---------------------------------------------------------------- data ----------------------------------------------
+[[data]]
+id     = "library-v6"
+source = "files"                       # the cohort files are not tracked by the tester's git (only manifest.json is)
+repo   = "aging:code_5/sr_calibration_tester"
+paths  = ["data/library/v6", "data/library/real_anchors.json"]
+strip  = "data/library/"
+dest   = "benchmark/library"
+note   = "2,408 synthetic cohorts with known parameters; real-data anchors are the published cross-species presets"
+
+[[data]]
+id     = "records"
+source = "store"
+repo   = "aging:code_5/sr_calibration_tester"
+runs   = ["jax2-v6-full-bign", "jax2h-v6-full-bign", "jax2-v6-all-groups"]
+dest   = "benchmark/records"
+note   = "one record per cohort and run: estimates, claims, intervals, grid, diagnostics, CPU time, host"
+
+[[data]]
+id     = "runs"
+source = "files"
+repo   = "aging:code_5/sr_calibration_tester"
+paths  = ["runs/jax2-v6-full-bign.json", "runs/jax2h-v6-full-bign.json", "runs/jax2-v6-all-groups.json"]
+strip  = "runs/"
+dest   = "benchmark/runs"
+note   = "the three runs' cohort lists (cohort id -> record), in the order the paper's scripts read them"
+
+[[data]]
+id     = "reports"
+source = "files"
+repo   = "aging:code_5/sr_calibration_tester"
+paths  = ["reports/jax2-v6-full-bign", "reports/jax2h-v6-full-bign", "reports/jax2-v6-all-groups", "reports/explorer.html", "reports/explorer_data.json"]
+strip  = "reports/"
+dest   = "benchmark/reports"
+note   = "scoring reports and the interactive explorer pages"
+
+[[data]]
+id     = "sraging-evidence"
+source = "git"
+repo   = "~/code/sraging"
+ref    = "v0.1.1"                      # follows the sraging component's ref (these five files are identical at v0.1.0)
+paths  = ["tests/acceptance/rules_006.toml",
+          "specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json",
+          "specs/006-calibrator-capabilities/review/evidence/windows_counts_006.py",
+          "specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json",
+          "specs/003b-jax2-101-port/review/evidence/census_scope.json"]
+dest   = "sraging_evidence"
+note   = "the pre-registered rules of W's validation and the counts the preprint cites from them (added 2026-11-17); the rest of specs/ is internal process, not released"
+
+[[data]]
+id     = "kfix-records"
+source = "store"
+repo   = "aging:code_5/sr_calibration_tester_kfix"
+runs   = ["s2-kfix_k0p001-panel", "s2-kfix_k0p1-panel", "s2-kfix_k0p5-panel", "s2-kfix_k1-panel", "s2-kfix_k1p5-panel",
+          "s2-kfix_k2-panel", "s2-kfix_k300-panel"]
+dest   = "kfix_records"
+note   = "the kappa-fixed identifiability panel: 36 cohorts at each of 7 fixed kappa values (Section 7c)"
+
+[[data]]
+id     = "paper-inputs"
+source = "paper-inputs"                # the list in components/paper/release_inputs.json (built by paper_inputs.py)
+repo   = "aging:code_5/sr_methods_preprint"
+dest   = "paper_inputs"
+note   = "the other stored results the preprint's numbers and figures are read from: gate and study reports, the I2 grid study, the kappa-fixed study, the earlier FP validation notebooks, and earlier sraging result files read at their commits"

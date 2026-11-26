@@ -1,0 +1,657 @@
+{
+ "phase": "a2",
+ "written_at": "2026-11-15T10:36:58Z",
+ "repo_head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "e694cbc4bf697cc5f3c6af73c929cfbc9fd17055"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 57519.83385324478,
+ "cpu_s": 2.9116150000000003,
+ "R-1": {
+  "gated": {
+   "eta": {
+    "hits": 31,
+    "claimed": 32,
+    "coverage": 0.96875,
+    "cut": 0.8217804208275572,
+    "passes": true
+   },
+   "epsilon": {
+    "hits": 28,
+    "claimed": 29,
+    "coverage": 0.9655172413793104,
+    "cut": 0.819352225631354,
+    "passes": true
+   }
+  },
+  "reported": {
+   "beta": {
+    "hits": 8,
+    "claimed": 9,
+    "coverage": 0.8888888888888888
+   },
+   "kappa": {
+    "hits": 0,
+    "claimed": 0,
+    "coverage": null
+   }
+  },
+  "passes": true,
+  "rule": "collapse"
+ },
+ "one_sided": {
+  "by_param": {
+   "eta": {
+    "hits": 12,
+    "claimed": 12,
+    "coverage": 1.0,
+    "cut": null,
+    "passes": null,
+    "note": "fewer than 20 claims: reported, not gated"
+   },
+   "epsilon": {
+    "hits": 15,
+    "claimed": 15,
+    "coverage": 1.0,
+    "cut": null,
+    "passes": null,
+    "note": "fewer than 20 claims: reported, not gated"
+   }
+  },
+  "passes": true
+ },
+ "R-2": {
+  "eta": {
+   "vs_H": {
+    "n_paired": 2,
+    "median_dex": 0.28460307993319733,
+    "max_dex": 0.1,
+    "passes": false
+   },
+   "vs_null": {
+    "n_paired": 32,
+    "median_dex": -12.797107684872252
+   }
+  },
+  "epsilon": {
+   "vs_H": {
+    "n_paired": 0,
+    "median_dex": null,
+    "max_dex": 0.1,
+    "passes": false
+   },
+   "vs_null": {
+    "n_paired": 29,
+    "median_dex": -12.884621975365393
+   }
+  }
+ },
+ "R-3": {
+  "n": 44,
+  "failures": [],
+  "missing_truth": [],
+  "passes": true,
+  "wilks": {
+   "n": 44,
+   "mean": 3.076875704126988,
+   "max": 11.612749723251909,
+   "above_chi2_95": {
+    "3": 3,
+    "4": 2
+   }
+  }
+ },
+ "R-4": {
+  "n": 44,
+  "failures": [
+   "window-real-Sweden_M_1910_hetro-c1-s1",
+   "window-real-Sweden_M_1910_hetro-c0-s1",
+   "window-real-Denmark_M_1900_homo-c0-s1"
+  ],
+  "not_evaluated": [],
+  "passes": false,
+  "max_gap": 0.5351579503185349,
+  "gaps": {
+   "window-real-Sweden_M_1910_hetro-c1-s0": 0.03963455448683817,
+   "window-real-Sweden_M_1910_hetro-c1-s1": 0.5351579503185349,
+   "window-real-Sweden_F_1910_homo-c1-s0": 0.003488340269541368,
+   "window-real-Sweden_F_1910_homo-c1-s1": 0.023208855680422857,
+   "window-real-Sweden_F_1910_hetro-c1-s0": 0.0006200046482263133,
+   "window-real-Sweden_F_1910_hetro-c1-s1": -0.036783552102860995,
+   "window-real-Denmark_M_1900_hetro-c1-s0": -0.08967698173364624,
+   "window-real-Denmark_M_1900_hetro-c1-s1": 0.003008381143445149,
+   "window-real-Denmark_M_1900_homo-c1-s0": -0.03206641932774801,
+   "window-real-Denmark_M_1900_homo-c1-s1": 0.0011414063919801265,
+   "window-real-Denmark_M_1890_hetro-c1-s0": -0.19538305774040055,
+   "window-real-Denmark_M_1890_hetro-c1-s1": 0.03782441993826069,
+   "window-real-Denmark_M_1890_homo-c1-s0": -0.0003045683552045375,
+   "window-real-Denmark_M_1890_homo-c1-s1": -0.113183108260273,
+   "window-real-Denmark_F_1900_hetro-c1-s0": -0.00019927213725168258,
+   "window-real-Denmark_F_1900_hetro-c1-s1": 0.037581122654955834,
+   "window-real-Denmark_F_1890_hetro-c1-s0": -0.026721865622675978,
+   "window-real-Denmark_F_1890_hetro-c1-s1": 0.003190760049619712,
+   "window-real-combined_human_M-c1-s0": 0.007024499194812961,
+   "window-real-combined_human_M-c1-s1": -0.1026065006153658,
+   "window-real-combined_human_F-c1-s0": -0.06545147293945774,
+   "window-real-combined_human_F-c1-s1": 0.00986946714692749,
+   "window-real-Sweden_M_1910_hetro-c0-s0": -0.0011532874777913094,
+   "window-real-Sweden_M_1910_hetro-c0-s1": 0.15963393251877278,
+   "window-real-Sweden_F_1910_homo-c0-s0": 0.03412294911686331,
+   "window-real-Sweden_F_1910_homo-c0-s1": 0.0001871928689070046,
+   "window-real-Sweden_F_1910_hetro-c0-s0": 0.0023055316996760666,
+   "window-real-Sweden_F_1910_hetro-c0-s1": 0.0025191015447489917,
+   "window-real-Denmark_M_1900_hetro-c0-s0": 0.01872621855000034,
+   "window-real-Denmark_M_1900_hetro-c0-s1": -0.06355983292451128,
+   "window-real-Denmark_M_1900_homo-c0-s0": -0.09171305992640555,
+   "window-real-Denmark_M_1900_homo-c0-s1": 0.4277969427057542,
+   "window-real-Denmark_M_1890_hetro-c0-s0": 6.415980169549584e-05,
+   "window-real-Denmark_M_1890_hetro-c0-s1": -0.04245271935360506,
+   "window-real-Denmark_M_1890_homo-c0-s0": -0.12715405761264265,
+   "window-real-Denmark_M_1890_homo-c0-s1": -0.04310383542906493,
+   "window-real-Denmark_F_1900_hetro-c0-s0": 0.0033503103186376393,
+   "window-real-Denmark_F_1900_hetro-c0-s1": 0.0224348625051789,
+   "window-real-Denmark_F_1890_hetro-c0-s0": -0.3898200854891911,
+   "window-real-Denmark_F_1890_hetro-c0-s1": 0.00185636174865067,
+   "window-real-combined_human_M-c0-s0": 0.0003884296165779233,
+   "window-real-combined_human_M-c0-s1": 0.02228906669188291,
+   "window-real-combined_human_F-c0-s0": 0.02819820842705667,
+   "window-real-combined_human_F-c0-s1": 0.09654652612516657
+  }
+ },
+ "FR-022": {
+  "leverage_flagged": 0,
+  "assessed": 18,
+  "allowed": 0,
+  "max_rate": 0.05,
+  "passes": true,
+  "flags": {},
+  "leverage_labels": {
+   "flat_valley_slide": 1,
+   "no_flag": 17,
+   "not_assessed": 26
+  },
+  "n": 44
+ },
+ "shapes": {
+  "eta": {
+   "n": 44,
+   "closed": 32,
+   "closure_rate": 0.7272727272727273,
+   "capped_by_data": 5,
+   "one_sided": 12,
+   "one_sided_data_determined": 12,
+   "coverage_closed": [
+    31,
+    32
+   ],
+   "coverage_one_sided": [
+    12,
+    12
+   ],
+   "coverage_one_sided_data_determined": [
+    12,
+    12
+   ]
+  },
+  "epsilon": {
+   "n": 44,
+   "closed": 29,
+   "closure_rate": 0.6590909090909091,
+   "capped_by_data": 0,
+   "one_sided": 15,
+   "one_sided_data_determined": 15,
+   "coverage_closed": [
+    28,
+    29
+   ],
+   "coverage_one_sided": [
+    15,
+    15
+   ],
+   "coverage_one_sided_data_determined": [
+    15,
+    15
+   ]
+  },
+  "beta": {
+   "n": 44,
+   "closed": 9,
+   "closure_rate": 0.20454545454545456,
+   "capped_by_data": 0,
+   "one_sided": 32,
+   "one_sided_data_determined": 32,
+   "coverage_closed": [
+    8,
+    9
+   ],
+   "coverage_one_sided": [
+    32,
+    32
+   ],
+   "coverage_one_sided_data_determined": [
+    32,
+    32
+   ]
+  },
+  "kappa": {
+   "n": 44,
+   "closed": 0,
+   "closure_rate": 0.0,
+   "capped_by_data": 0,
+   "one_sided": 31,
+   "one_sided_data_determined": 20,
+   "coverage_closed": [
+    0,
+    0
+   ],
+   "coverage_one_sided": [
+    31,
+    31
+   ],
+   "coverage_one_sided_data_determined": [
+    20,
+    20
+   ]
+  }
+ },
+ "truncation": {
+  "eta": {
+   "closed": 32,
+   "truncated": 28,
+   "rate": 0.875,
+   "named": {
+    "window-real-Sweden_M_1910_hetro-c1-s0": "widened",
+    "window-real-Sweden_M_1910_hetro-c1-s1": "widened",
+    "window-real-Sweden_F_1910_homo-c1-s0": "box_limited",
+    "window-real-Denmark_M_1900_homo-c1-s1": "box_limited",
+    "window-real-Denmark_M_1890_hetro-c1-s1": "box_limited",
+    "window-real-Denmark_M_1890_homo-c1-s1": "box_limited",
+    "window-real-Denmark_F_1900_hetro-c1-s0": "box_limited",
+    "window-real-Denmark_F_1890_hetro-c1-s0": "box_limited",
+    "window-real-combined_human_M-c1-s1": "contradicted above by the lead pair's walk (0.01 dex)",
+    "window-real-combined_human_F-c1-s0": "box_limited",
+    "window-real-Sweden_M_1910_hetro-c0-s0": "widened",
+    "window-real-Sweden_M_1910_hetro-c0-s1": "box_limited",
+    "window-real-Sweden_F_1910_homo-c0-s0": "widened",
+    "window-real-Sweden_F_1910_homo-c0-s1": "widened",
+    "window-real-Sweden_F_1910_hetro-c0-s0": "box_limited",
+    "window-real-Sweden_F_1910_hetro-c0-s1": "widened",
+    "window-real-Denmark_M_1900_hetro-c0-s0": "widened",
+    "window-real-Denmark_M_1900_hetro-c0-s1": "widened",
+    "window-real-Denmark_M_1890_hetro-c0-s0": "widened",
+    "window-real-Denmark_M_1890_hetro-c0-s1": "widened",
+    "window-real-Denmark_M_1890_homo-c0-s1": "box_limited",
+    "window-real-Denmark_F_1900_hetro-c0-s0": "box_limited",
+    "window-real-Denmark_F_1900_hetro-c0-s1": "box_limited",
+    "window-real-Denmark_F_1890_hetro-c0-s1": "widened",
+    "window-real-combined_human_M-c0-s0": "widened",
+    "window-real-combined_human_M-c0-s1": "widened",
+    "window-real-combined_human_F-c0-s0": "box_limited",
+    "window-real-combined_human_F-c0-s1": "box_limited"
+   }
+  },
+  "epsilon": {
+   "closed": 29,
+   "truncated": 29,
+   "rate": 1.0,
+   "named": {
+    "window-real-Sweden_M_1910_hetro-c1-s0": "widened",
+    "window-real-Sweden_M_1910_hetro-c1-s1": "widened",
+    "window-real-Sweden_F_1910_homo-c1-s0": "box_limited",
+    "window-real-Sweden_F_1910_homo-c1-s1": "widened",
+    "window-real-Sweden_F_1910_hetro-c1-s1": "box_limited",
+    "window-real-Denmark_M_1900_hetro-c1-s1": "box_limited",
+    "window-real-Denmark_F_1900_hetro-c1-s0": "box_limited",
+    "window-real-combined_human_M-c1-s1": "widened",
+    "window-real-combined_human_F-c1-s0": "box_limited",
+    "window-real-Sweden_M_1910_hetro-c0-s0": "widened",
+    "window-real-Sweden_M_1910_hetro-c0-s1": "box_limited",
+    "window-real-Sweden_F_1910_homo-c0-s0": "widened",
+    "window-real-Sweden_F_1910_homo-c0-s1": "widened",
+    "window-real-Sweden_F_1910_hetro-c0-s0": "box_limited",
+    "window-real-Sweden_F_1910_hetro-c0-s1": "widened",
+    "window-real-Denmark_M_1900_hetro-c0-s0": "widened",
+    "window-real-Denmark_M_1900_hetro-c0-s1": "widened",
+    "window-real-Denmark_M_1890_hetro-c0-s0": "widened",
+    "window-real-Denmark_M_1890_hetro-c0-s1": "widened",
+    "window-real-Denmark_M_1890_homo-c0-s0": "widened",
+    "window-real-Denmark_M_1890_homo-c0-s1": "box_limited",
+    "window-real-Denmark_F_1900_hetro-c0-s0": "box_limited",
+    "window-real-Denmark_F_1900_hetro-c0-s1": "box_limited",
+    "window-real-Denmark_F_1890_hetro-c0-s0": "box_limited",
+    "window-real-Denmark_F_1890_hetro-c0-s1": "widened",
+    "window-real-combined_human_M-c0-s0": "widened",
+    "window-real-combined_human_M-c0-s1": "widened",
+    "window-real-combined_human_F-c0-s0": "box_limited",
+    "window-real-combined_human_F-c0-s1": "box_limited"
+   }
+  }
+ },
+ "misses": {
+  "eta": {
+   "below": {},
+   "above": {
+    "window-real-Sweden_F_1910_hetro-c0-s1": 0.28357599464432925
+   },
+   "clusters_with_2_or_more": []
+  },
+  "epsilon": {
+   "below": {},
+   "above": {
+    "window-real-Sweden_F_1910_hetro-c0-s1": 0.3065086785734486
+   },
+   "clusters_with_2_or_more": []
+  }
+ },
+ "errors": {},
+ "missing": [],
+ "Dg": {
+  "n": 11,
+  "by_quantity": {
+   "eta_over_eps": {
+    "hits": 11,
+    "claimed": 11,
+    "coverage": 1.0,
+    "cut": 0.7768343884818365,
+    "passes": true,
+    "one_sided": [
+     0,
+     0
+    ]
+   },
+   "rbar_over_eta": {
+    "hits": 11,
+    "claimed": 11,
+    "coverage": 1.0,
+    "cut": 0.7768343884818365,
+    "passes": true,
+    "one_sided": [
+     0,
+     0
+    ]
+   }
+  },
+  "contradicted_ends": {
+   "window-real-Denmark_M_1900_hetro-c1-s1": [
+    {
+     "archive_point": 25.82577432408489,
+     "claim_end": 18.012906185594275,
+     "dex": 0.15646956452649521,
+     "parameter": "epsilon",
+     "side": "upper"
+    }
+   ],
+   "window-real-Denmark_M_1890_homo-c1-s1": [
+    {
+     "archive_point": 0.004683878011287403,
+     "claim_end": 0.004574675642394394,
+     "dex": 0.010245268844408316,
+     "parameter": "eta",
+     "side": "upper"
+    }
+   ],
+   "window-real-combined_human_M-c1-s1": [
+    {
+     "archive_point": 0.014411939444810557,
+     "claim_end": 0.013925462986431143,
+     "dex": 0.014912785383729487,
+     "parameter": "eta",
+     "side": "upper"
+    },
+    {
+     "archive_point": 39.24685934350434,
+     "claim_end": 36.747425336166486,
+     "dex": 0.028577992698874056,
+     "parameter": "epsilon",
+     "side": "upper"
+    }
+   ],
+   "window-real-Sweden_F_1910_hetro-c0-s0": [
+    {
+     "archive_point": 0.013564570912017055,
+     "claim_end": 0.009886486269912434,
+     "dex": 0.13736409272067399,
+     "parameter": "eta",
+     "side": "upper"
+    },
+    {
+     "archive_point": 19.66299128592389,
+     "claim_end": 13.403326757289571,
+     "dex": 0.1664369814425821,
+     "parameter": "epsilon",
+     "side": "upper"
+    }
+   ],
+   "window-real-Denmark_M_1890_hetro-c0-s0": [
+    {
+     "archive_point": 0.006026112502640355,
+     "claim_end": 0.0008993147599970332,
+     "dex": 0.8261255140122847,
+     "parameter": "eta",
+     "side": "upper"
+    },
+    {
+     "archive_point": 14.327259027895106,
+     "claim_end": 1.9768533276888036,
+     "dex": 0.8601886646331427,
+     "parameter": "epsilon",
+     "side": "upper"
+    }
+   ],
+   "window-real-Denmark_F_1900_hetro-c0-s1": [
+    {
+     "archive_point": 0.008178887977687715,
+     "claim_end": 0.007408975808363456,
+     "dex": 0.0429360831727829,
+     "parameter": "eta",
+     "side": "upper"
+    },
+    {
+     "archive_point": 19.347791907738298,
+     "claim_end": 17.335584751599004,
+     "dex": 0.047692912200985434,
+     "parameter": "epsilon",
+     "side": "upper"
+    }
+   ],
+   "window-real-combined_human_F-c0-s0": [
+    {
+     "archive_point": 0.01649462686902162,
+     "claim_end": 0.012623080255574282,
+     "dex": 0.1161771522582395,
+     "parameter": "eta",
+     "side": "upper"
+    },
+    {
+     "archive_point": 28.672477207439076,
+     "claim_end": 20.79165958423867,
+     "dex": 0.13957606020329782,
+     "parameter": "epsilon",
+     "side": "upper"
+    },
+    {
+     "archive_point": 0.46093994658717496,
+     "claim_end": 0.34315418918915974,
+     "dex": 0.12815504207915535,
+     "parameter": "kappa",
+     "side": "upper"
+    }
+   ]
+  },
+  "negligible": 0,
+  "passes": true
+ },
+ "r": {
+  "element_over_j": 0.8990886747698449,
+  "fit_over_j": 0.5242204414560954
+ },
+ "gates": {
+  "R-1 (collapse)": true,
+  "truncated_above": false,
+  "one_sided": true,
+  "R-3": true,
+  "R-4": false
+ },
+ "consequence": {
+  "stops_W": true,
+  "W_COVERAGE_warning": false,
+  "warning_n_ge_25000": true,
+  "needs_new_acceptance_FR022": false,
+  "lead_pair_warning": false
+ },
+ "status": "fail",
+ "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+ "n_cohorts": 44,
+ "n_rows": 44,
+ "waves": [
+  {
+   "wave": 1,
+   "job_id": "831259",
+   "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+   "n": 22,
+   "states": {
+    "DONE": 22
+   },
+   "element_cpu_s": 98410.65682,
+   "elements_cpu_s": 98410.65682,
+   "lsf_cpu_s": 35033.8,
+   "missing": []
+  },
+  {
+   "wave": 2,
+   "job_id": "840036",
+   "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+   "n": 10,
+   "states": {
+    "DONE": 10
+   },
+   "element_cpu_s": 43059.07945500001,
+   "elements_cpu_s": 43059.07945500001,
+   "lsf_cpu_s": 23099.6,
+   "missing": []
+  },
+  {
+   "wave": 3,
+   "job_id": "849701",
+   "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+   "n": 5,
+   "states": {
+    "DONE": 5
+   },
+   "element_cpu_s": 18168.059423,
+   "elements_cpu_s": 18168.059423,
+   "lsf_cpu_s": 8904.4,
+   "missing": []
+  },
+  {
+   "wave": 4,
+   "job_id": "858876",
+   "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+   "n": 4,
+   "states": {
+    "DONE": 4
+   },
+   "element_cpu_s": 22689.886895,
+   "elements_cpu_s": 22689.886895,
+   "lsf_cpu_s": 11892.5,
+   "missing": []
+  },
+  {
+   "wave": 5,
+   "job_id": "880966",
+   "head": "8d2bbeda2dddb8c9067bf2262776c01d47af6966",
+   "n": 3,
+   "states": {
+    "DONE": 3
+   },
+   "element_cpu_s": 15074.888772999999,
+   "elements_cpu_s": 15074.888772999999,
+   "lsf_cpu_s": 8820.2,
+   "missing": []
+  }
+ ],
+ "factor": {
+  "window-real-Sweden_M_1910_hetro-c1-s0": 1.162,
+  "window-real-Sweden_M_1910_hetro-c1-s1": 1.162,
+  "window-real-Sweden_F_1910_homo-c1-s0": 3.627,
+  "window-real-Sweden_F_1910_homo-c1-s1": 1.162,
+  "window-real-Sweden_F_1910_hetro-c1-s0": 1.162,
+  "window-real-Sweden_F_1910_hetro-c1-s1": 1.162,
+  "window-real-Denmark_M_1900_hetro-c1-s0": 1.162,
+  "window-real-Denmark_M_1900_hetro-c1-s1": 3.627,
+  "window-real-Denmark_M_1900_homo-c1-s0": 1.162,
+  "window-real-Denmark_M_1900_homo-c1-s1": 3.627,
+  "window-real-Denmark_M_1890_hetro-c1-s0": 1.162,
+  "window-real-Denmark_M_1890_hetro-c1-s1": 1.162,
+  "window-real-Denmark_M_1890_homo-c1-s0": 1.162,
+  "window-real-Denmark_M_1890_homo-c1-s1": 3.627,
+  "window-real-Denmark_F_1900_hetro-c1-s0": 1.162,
+  "window-real-Denmark_F_1900_hetro-c1-s1": 1.162,
+  "window-real-Denmark_F_1890_hetro-c1-s0": 1.162,
+  "window-real-Denmark_F_1890_hetro-c1-s1": 3.627,
+  "window-real-combined_human_M-c1-s0": 1.162,
+  "window-real-combined_human_M-c1-s1": 3.627,
+  "window-real-combined_human_F-c1-s0": 1.162,
+  "window-real-combined_human_F-c1-s1": 1.162,
+  "window-real-Sweden_M_1910_hetro-c0-s0": 3.627,
+  "window-real-Sweden_M_1910_hetro-c0-s1": 1.162,
+  "window-real-Sweden_F_1910_homo-c0-s0": 1.162,
+  "window-real-Sweden_F_1910_homo-c0-s1": 1.162,
+  "window-real-Sweden_F_1910_hetro-c0-s0": 3.627,
+  "window-real-Sweden_F_1910_hetro-c0-s1": 1.162,
+  "window-real-Denmark_M_1900_hetro-c0-s0": 1.162,
+  "window-real-Denmark_M_1900_hetro-c0-s1": 1.162,
+  "window-real-Denmark_M_1900_homo-c0-s0": 1.162,
+  "window-real-Denmark_M_1900_homo-c0-s1": 1.162,
+  "window-real-Denmark_M_1890_hetro-c0-s0": 3.627,
+  "window-real-Denmark_M_1890_hetro-c0-s1": 1.162,
+  "window-real-Denmark_M_1890_homo-c0-s0": 1.162,
+  "window-real-Denmark_M_1890_homo-c0-s1": 1.162,
+  "window-real-Denmark_F_1900_hetro-c0-s0": 1.162,
+  "window-real-Denmark_F_1900_hetro-c0-s1": 3.627,
+  "window-real-Denmark_F_1890_hetro-c0-s0": 1.162,
+  "window-real-Denmark_F_1890_hetro-c0-s1": 1.162,
+  "window-real-combined_human_M-c0-s0": 1.162,
+  "window-real-combined_human_M-c0-s1": 1.162,
+  "window-real-combined_human_F-c0-s0": 3.627,
+  "window-real-combined_human_F-c0-s1": 1.162
+ },
+ "lead_pair_ids": [
+  "window-real-Denmark_F_1890_hetro-c1-s1",
+  "window-real-Denmark_F_1900_hetro-c0-s1",
+  "window-real-Denmark_M_1890_hetro-c0-s0",
+  "window-real-Denmark_M_1890_homo-c1-s1",
+  "window-real-Denmark_M_1900_hetro-c1-s1",
+  "window-real-Denmark_M_1900_homo-c1-s1",
+  "window-real-Sweden_F_1910_hetro-c0-s0",
+  "window-real-Sweden_F_1910_homo-c1-s0",
+  "window-real-Sweden_M_1910_hetro-c0-s0",
+  "window-real-combined_human_F-c0-s0",
+  "window-real-combined_human_M-c1-s1"
+ ],
+ "price_cpu_h": 105.38180864120429,
+ "ledger": "tests/acceptance/results/gate_006/a2_ledger.json",
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "f2b23baab000cb61e55fffad291c7212d2af2a2443f7c25cf24dbaf7f247568a"
+ },
+ "cap": {
+  "cap_cpu_h": 131.7,
+  "cpu_spent_h": 54.839086038333335,
+  "capped": false,
+  "where": "wexac"
+ }
+}

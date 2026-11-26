@@ -1,0 +1,177 @@
+# Naveh's decisions that spec 003's acceptance phases read (spec Clarifications; sr-manager gate 3 and 5).
+# Each table is written by the main session from Naveh's own answer, with the date he gave it.
+
+[coverage_gate]
+# SC-005's gate: the sr-naveh implementation review proposed a non-inferiority margin (a loss is also a paired gap
+# whose 95% CI lower end is <= -0.05). Measured first on the committed panel (every cohort a cell, an upper bound):
+# per gate test a combination that loses nothing passes 28-95% with it, 97-100% without; 5 points worse passes
+# 3-7% with it, 48-84% without.
+margin = "none"
+decision = "Drop the margin: z < -2 only (the Clarification rule); the CI is printed beside each verdict and the gate's weakness against small losses is a Known limitation. The tester's availability and information axes are reported only, not gating."
+date = "2026-10-05"
+by = "Naveh (AskUserQuestion: 'Drop it: z < -2 only (Recommended)'; 'Report only (Recommended)')"
+
+[combination_cost]
+# Walker step 1 (results/walker_step1_003.json, 20 cohorts, run at 6ceb692): all six combination walks cost a median
+# 6.4x the fit's own objective evaluations (4.8x its CPU; range 2.0-10.5x); the lead group (eta/eps, r-bar/eta) 1.8x
+# (1.6x CPU), under the Clarification's 2x line. Per combination: eta/eps 0.61, r-bar/eta 0.93, sqrt(eta)/eps 0.77,
+# r-bar 1.01, beta/(eta(kappa+1)) 0.82, beta/(1+kappa) 0.93.
+default = "lead"
+flag = "--combinations all (Python: combinations='all') adds the other four; --no-combinations (False) none"
+scored = "all six, in the coverage phase, before any of them ships"
+decision = "The lead group on by default, the other four behind a flag; all six truth-scored in coverage (about 250 CPU-h for 215 fits)."
+date = "2026-10-06"
+by = "Naveh (AskUserQuestion: 'Lead pair on, rest by flag (Recommended)')"
+
+[walker_fix]
+# Walker step 1's archive check (results/walker_step1_003.json, run at 6ceb692): 6 of 183 unwidened walk ends have an
+# archived point more than 0.01 dex beyond them at deviance < 3.8415. Diagnosed 2026-10-06 (.cache/out/diag, refits):
+# r-bar lower (pure-k0.01-p00-c0-s0, jax2_h) stopped at a solver cliff at 0.041 while beta's floor is inside
+# (deviance 1.70, 2.52 on a 4x grid); sqrt(eta)/eps lower on three p00 cohorts 1.1-1.2 dex too narrow, the inside set
+# on a second branch (beta 10-17, kappa 160-300) the walk never started from (deviance 0.15 at 0.01 dex beyond the
+# end; it beats theta-hat by 0.13-0.18 nats); two crossings interpolated short by 0.033 and 0.16 dex. The brute force
+# as specified (+-1.5 dex around theta-hat) cannot reach a branch 9-10 dex away in beta: on one of these cohorts all
+# 77 starts read outside. The widened claims do not repair it (one still >= 0.035 dex short).
+decision = "Fix the walker (beta-floor probe before a lower end of a beta combination is closed, bisect each crossing to 0.01 dex, starts spanning beta's box at each edge, a final pass re-walking any side an archived point contradicts) and the brute force (Sobol starts over the whole beta and kappa box), and re-run walker steps 1 and 2 now; the lead pair's cost is re-measured and comes back to Naveh if it passes 2x."
+date = "2026-10-06"
+by = "Naveh (AskUserQuestion: 'Fix now, re-run now (Recommended)')"
+# Step 1 re-run at 339d113 (results/walker_step1_003.json): 0 of 182 archive checks fail; the lead pair costs 2.30x the
+# fit in objective evaluations (median over 20 cohorts; 1.79x before the fixes on the same cohorts; 1.96x in CPU;
+# per cohort 0.61-4.25x; median fit 661 CPU-s, lead pair ~1180 CPU-s).
+lead_cost_accepted = true
+lead_cost_decision = "Accept the lead pair at 2.30x the fit and run walker step 2 (priced on 2 cohorts first)."
+lead_cost_date = "2026-10-07"
+lead_cost_by = "Naveh (AskUserQuestion: 'Accept 2.3x, run step 2 (Recommended)')"
+# The ITP example (examples/data/itp_c2016_het3_control_female.csv, profile_jax2, the default lead pair, at 2306641):
+# 7806 CPU-s, 6.3x the fit, outside step 1's 0.61-4.25x. The r-bar/eta lower side crawled: past its end every
+# free-kappa solve 0.005 dex out failed (kappa-held slices 0.01 dex past it read deviance 4.52, so the end is right),
+# the step hovered above its 1e-4-dex floor, and the side took 24 nodes over 0.0034 dex: 29998 of the walk's 42133
+# evaluations. A kappa-corner retry made it costlier (each failed retry 1000-1600 evaluations). Prototyped
+# (.cache/out/diag/itp_stall_proto.py): a side past the threshold whose last 3 nodes span < 0.01 dex stops
+# "stalled" -- the same claims, 8 nodes and 6898 evaluations on that side, the lead pair 4388 CPU-s (3.4x).
+# None of step 1's 240 sides stopped at max_nodes.
+stall_stop = true
+stall_decision = "Add the stall stop (a side past the threshold whose last 3 nodes span < 0.01 dex stops 'stalled') with a synthetic unit test; re-run walker steps 1 and 2 and the ITP example after the running step 2 finishes."
+stall_date = "2026-10-08"
+stall_by = "Naveh (AskUserQuestion: 'Stall stop, re-run (Recommended)')"
+# Walker step 2 at b1220c9 (on step 1 at 339d113): 176 of 182 ends pass; every outward check and all 182 archive
+# checks pass. The 6 failures are the inward checks on the 3 intervals narrower than 0.05 dex (realfull Denmark_M_1900
+# eta/eps 0.017 dex wide and sqrt(eta)/eps 0.016; pure-k0.01-p08-c1-s1 eta/eps 0.033), where the point 0.05 dex
+# inward lies beyond the other end (brute-force deviance 84-114 and 14.5-22.5 there, as a quadratic profile gives).
+inward_cap = "argmax"
+inward_decision = "The inward point moves min(0.05 dex, the distance from the end to the profile's maximum): an inside point within 0.05 dex inward is what SC-004 asks ('no end more than 0.05 dex wider'). In effect from the step 2 re-run."
+inward_date = "2026-10-08"
+inward_by = "Naveh (AskUserQuestion: 'Cap at the argmax (Recommended)')"
+
+[coverage_library]
+# The tester's main (997b94e, 2026-10-08) has library v5, which corrects the first recording bin (a first-bin death
+# was written at delta/2; v5 records it at 0): 564 of v2's cohorts change arrays, 24 (ecoli) are gone; no store has
+# ever been calibrated against v5, and Library() still defaults to v2. Of the coverage panel, 6 of profile_jax2's
+# 160 cohorts and all 55 of profile_jax2_h's change in v5 (docs/planning/handoff_2026-10-08_decisions.md). The gate
+# is paired (method vs method on the same cohorts), which the tester says v2 keeps like-for-like. Priced from walker
+# step 1 at 339d113: about 310-380 CPU-h for 215 fits with all six walks, about 31-38 h wall on 10 workers.
+library = "v2"
+decision = "Run spec 003's coverage phase on library v2 now, on 003's current pins, all six combinations, after the walker re-runs. The move to v5 is a new spec after 003 closes, and repeats coverage there."
+date = "2026-10-08"
+by = "Naveh (AskUserQuestion: 'On v2 now (Recommended)'; 'New spec after 003 (Recommended)')"
+
+[coverage_validity]
+# The tester's reports/validity/validity.csv (the file the kmax panel already reads) flags 125 of the 215 coverage
+# cohorts invalid: profile_jax2 75 of 160 (cv_bias 69, cv_bias+zero_mass_death 6; all 36 cv-sharp cohorts among
+# them), profile_jax2_h 50 of 55 (cv_bias+zero_mass_death 39, zero_mass_death 11). Valid per gated cell: pure 49 of
+# 85, censor 16 of 55, hazard 5 of 55 -- each below the spec's 50-informative-cohort floor.
+gate_on = "all"
+decision = "The gate runs on all 215 cohorts as specified (it is paired: an invalid truth affects a combination's claims and the same fits' eta and eps claims alike). Beside each verdict, the absolute coverage is also reported on the validity-valid cohorts only."
+date = "2026-10-08"
+by = "Naveh (AskUserQuestion: 'Keep all, report valid (Recommended)')"
+
+[coverage_host]
+# SC-005 said "Mac fits with the port" (2026-10-05). The coverage run (215 fits with all six walks, about 310-380
+# CPU-h, 31-38 h wall on this Mac's 10 workers) moves to the WEXAC cluster to free the Mac (step 2, speed, unchanged)
+# and save about a day. The paired gate compares claims within one fit, so the host does not bias it; but the jax2
+# session measured that 1.0.0's claims differ across hosts (17 of 17 A/B cohorts), so the result describes cluster
+# fits and says so. A Mac subset of 15 cohorts (5 each of pure, censor, hazard), fitted at the same commit, is
+# compared row by row (shape differences, end shifts in dex, hit flips): reported, not gated (about 21-26 CPU-h).
+host = "wexac"
+mac_subset = 15
+decision = "Run the coverage fits on WEXAC (Python 3.14 env with the pinned packages, sraging at the run commit, a shard runner writing one row per fit with its host); score them locally at the same commit; fit 15 cohorts (5 per gated arm) on the Mac as a cross-host check, reported not gated. Nothing is submitted before walker step 2 passes and Naveh says yes to the launch."
+date = "2026-10-08"
+by = "Naveh (AskUserQuestion: 'Cluster + Mac subset (Recommended)')"
+# The smoke job (LSF 551868, at e7c7884; censor-k0.01-p00-c0-s0, profile_jax2, all six walks): done, 21789 CPU-s
+# (6.1 h), 731 MB peak, on cn430, an Intel Xeon Gold 5320 at 2.2 GHz. 87542 combination evaluations, near the walker
+# panel's Mac median (64053), but 0.221 CPU-s each against the Mac's median 0.064 (range 0.038-0.148): about 3.5x
+# slower per evaluation on that node, so the coverage run is roughly 1100-1300 CPU-h there and the slowest fits could
+# near short's 1440-min limit. The row imported at its own HEAD and was refused at another. WEXAC's hosts are 214
+# Intel and 151 AMD_EPYC (lshosts model; several EPYC generations share the label).
+queue = "long"
+cpu_model = "AMD_EPYC"
+queue_decision = "Submit the coverage array to queue long (RUNLIMIT 10080 min) and only to AMD_EPYC hosts (select[model==AMD_EPYC]), so every scored fit ran on one CPU family; first one more smoke job, the same cohort on an EPYC host, to measure its speed and compare its claims with the Intel row (row discarded)."
+queue_date = "2026-10-09"
+queue_by = "Naveh (AskUserQuestion: 'long, 7-day cap (Recommended)', 'AMD EPYC only (Recommended)', 'Yes, one EPYC smoke (Recommended)')"
+# The EPYC smoke (LSF 606338, at e24eb9b; no fitting-code change since e7c7884): done on cn127, an AMD EPYC 9634,
+# 18392 CPU-s (5.1 h), 816 MB peak; 0.188 CPU-s per combination evaluation (Intel 0.221). The same 87542
+# evaluations, the same gap (0.27475 nats) and all 10 claims (4 parameters, 6 combinations) bit-identical to the
+# Intel row: on this cohort the two x86 families agree exactly. At about 2.9x the Mac's CPU per evaluation, the
+# coverage run is roughly 900-1100 CPU-h on EPYC.
+# Walker step 2 passed at 01799ed (results/walker_003.json, committed f4b151c): 182/182 ends.
+launch = true
+launch_decision = "Submit the 215-fit coverage array to WEXAC (queue long, AMD_EPYC, 4096 MB) at the commit that records this, and start the 15-cohort Mac cross-check beside it in a worktree at the same commit; score when the rows are back."
+launch_date = "2026-10-09"
+launch_by = "Naveh (AskUserQuestion: 'Launch now (Recommended)')"
+
+[coverage_result]
+# The coverage phase at d903979 (results/coverage_003.json, committed 4992bb2): status fail. The 215 WEXAC fits (LSF
+# 623316; AMD EPYC 7702 145, 9634 70; 646 CPU-h, all ok) were imported and scored on this Mac at that commit. Two
+# losses, both profile_jax2|censor eta_over_eps: vs eta z -2.70 (35 cells, 14 clusters), vs eps z -2.74 (38 cells,
+# 13 clusters). Its closed coverage is 36/44 (0.818, Wilson 0.68-0.90), its median width 0.25 dex against eta's 0.87,
+# and every miss has the truth above the upper end. On the tester's validity-valid cohorts it covers 14/15; on its
+# cv_bias cohorts 22/29, falling with the flag's statistic 2n(dlnCV)^2: 14/15 below 0.1, 11/13 in 0.1-1, 6/7 in 1-10,
+# 5/9 above 10. The tester's generator over-spreads lifespans (reports/validity/SUMMARY.md), which pulls eta/eps
+# down; the narrow eta/eps interval shows it where the wider eta and eps intervals do not, so [coverage_validity]'s
+# "alike" does not hold for the narrowest combination. No library version through v5 changes the generator (by
+# commit title). 23 of the 36 gaps are underpowered (< 30 paired closed cells or < 10 clusters: r-bar,
+# beta/(1+kappa), beta/(eta(kappa+1)) and, on censor and hazard, r-bar/eta are mostly one-sided); the pre-fit power
+# counted every informative cohort as a cell. 11 gaps pass, both lead combinations on pure among them.
+# Cross-host (results/coverage_xhost_003.json, reported): 15 pairs, 0 hit flips in any quantity, 4 combination shape
+# changes; the cluster rows were 8 on the 7702 and 7 on the 9634.
+status = "fail"
+head = "d903979764194c5b7afa7b048710210c15e9179b"
+losses = [["profile_jax2|censor", "eta_over_eps", "vs_eta"], ["profile_jax2|censor", "eta_over_eps", "vs_epsilon"]]
+n_underpowered = 23
+decision = "Record SC-005 as failed, as the rule says, attributed to the panel generator's CV bias (the tester's validity flag, fixed before any coverage was looked at), with the dose-response and the valid-only coverage in the docs and README. The re-test on a panel without the bias goes to the next spec; it needs a corrected generator. Spec 003 closes with SC-005 failed and explained, if the sr-manager accepts it at T050."
+order = "unchanged"
+order_decision = "Keep the frozen order (SC-008, measured before coverage): eta/eps stays first. The docs note that eta/eps, the combination most sensitive to the lifespan CV, is where a model-data CV mismatch shows first."
+# The option's "most sensitive to the lifespan CV" is not measured; the docs say only what is: eta/eps's intervals
+# are the narrowest, and its misses track the generator's CV bias.
+date = "2026-10-10"
+by = "Naveh (AskUserQuestion: 'Record fail, attributed (Recommended)'; 'Keep the frozen order (Recommended)')"
+
+[speed_load]
+# SC-010's busy rule was "refuse to start above a 1-minute load of 1.0, not applicable if a later sample exceeds 2.0"
+# (the sr-manager's run order, gate 7, 2026-10-05). Measured on this Mac (M5 Pro: 5 Super + 10 Performance cores) on
+# 2026-10-10, with BTLEServer and Finder stopped: one-minute loads 1.54, 1.97, 4.22, 3.10, 2.89, 2.50, 7.10, 3.98 at
+# 19:30-19:37 while top showed the CPU 87-92 % idle (all other processes together about 1.2 cores) and the disk
+# under 1 MB/s outside one 40-60 MB/s burst: the load counts briefly runnable threads, not contention. Spec 002's
+# speed phase used max_load 5.0 (panel_002_speed.toml) and passed starting at 3.34. The ratio is paired and the order
+# alternates, so background load widens the CI (harder to meet the 1.03 upper limit), it does not make a pass.
+load_max = 5.0
+own_load = 1.0
+was = 1.0
+decision = "Use spec 002's bar for SC-010: refuse to start above a 1-minute load of 5.0; not applicable if any later sample exceeds 6.0 (5.0 plus this run's own process). Decided before the speed run, with no speed result seen."
+date = "2026-10-10"
+by = "Naveh (AskUserQuestion: 'Spec 002's bar: 5 (Recommended)')"
+
+[close]
+# The sr-manager's closing gate (T050, review/sr-manager_close.md): CLOSE WITH CONDITIONS, SC-005 accepted as failed
+# and attributed, the speed bar accepted; four documentation conditions, applied. It put two choices to Naveh and
+# one clean-up. The attribution is a supported hypothesis: the direction is measured (on censor the eta/eps point lies
+# below the truth in 79 % of flagged fits, 47 % of valid ones); coverage alone separates weakly (Fisher p 0.23 on
+# censor, 0.14 pooled). 6 of the 8 censor misses lie within 0.01 dex of the end, and the walker was never
+# brute-force checked on censored data.
+eta_eps_default = "unchanged"
+eta_eps_decision = "Keep eta/eps on by default on censored cohorts; the README and the docs warn (undercovered on censored test data, attributed to the generator's CV bias, supported not proven). No change to any fit."
+retest = "walker_check_first"
+retest_decision = "The next spec first checks the 8 censor misses' eta/eps upper ends by brute force (the manager's estimate 2-10 CPU-h, unmeasured); then re-tests only eta/eps, rbar/eta and sqrt(eta)/eps on censor and hazard, on a corrected generator. Not a repeat of the 215 fits: beta/(eta(kappa+1)) has 0 closed, not box-limited claims on censor and hazard and 3 on pure."
+worktrees = "removed"
+date = "2026-10-10"
+by = "Naveh (AskUserQuestion: 'Keep default, warn in README (Recommended)'; 'Walker check first (Recommended)'; 'Remove both (Recommended)')"

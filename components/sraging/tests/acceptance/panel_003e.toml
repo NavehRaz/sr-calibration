@@ -1,0 +1,71 @@
+# Spec 003e's panels and fixed inputs (plan.md; research R1, R4, R7, R9, R10). Fixed before any acceptance phase.
+# No phase calibrates (Naveh, C1). The tester and J2 are read-only.
+
+[meta]
+spec = "specs/003e-library-move/spec.md"
+written = "2026-10-17"
+
+[tester]
+# named by the tester on 2026-10-17 (docs/planning/spec003e_seed.md, "The tester's answer")
+commit = "42a2789a5f0e41e8820cbb354857c450d68da1f8"
+clone = ".cache/tester_42a2789"          # git clone --no-checkout <live>; checkout --detach <commit>
+audited_from = "55fc444"                 # the head the sr-manager gate audited (phase diff records the change)
+
+[libraries]
+# the tester-stated sha256 prefixes of the tracked manifests; the data (cohorts, store, runs) are pinned in pins_003e.json
+v5 = "9489fb0df0024c44"
+v6 = "399c9c555782b427"
+
+[runs]
+reference = "jax2-v5-full-bign"          # mle_profile_jax2 1.0.0 on v5, 1,776 (the tester's reference, a9def50)
+method_known_answer = "jax033-v5-full-bign"   # mle_profile_jax 0.3.3 on v5, 1,776
+null = "null_prior-v5-full-bign"         # the data-ignoring null
+never_read = ["jax033-v6-full-bign"]     # jax2's no-peek
+
+[known_answer]
+# SC-001: the tester's own score output for jax033-v5 (method) against jax2-v5 (reference)
+path = "sr_calibration_tester_jax2/reports/rc2/SWITCH/real/s6_5_score.txt"
+sha256 = "1627043169be29ccf48d6e0ba640860a8dff1f1235f0223a0555a4f6d2cec08a"
+paired = 1776
+
+[pairing]
+# research R7: sraging's 30 quick cohorts (panel_v1.toml) with a record in jax2-v5-full-bign; arrays unchanged v1->v5
+cohorts = ["pure-k0.01-p01-c0-s0", "pure-k0.01-p01-c0-s1", "pure-k0.01-p01-c1-s0", "pure-k0.01-p01-c1-s1",
+           "pure-k0.01-p02-c0-s0", "pure-k0.01-p02-c0-s1", "pure-k0.01-p02-c1-s0", "pure-k0.01-p02-c1-s1",
+           "pure-k0.01-p03-c0-s0", "pure-k0.01-p03-c0-s1", "pure-k0.01-p03-c1-s0", "pure-k0.01-p03-c1-s1",
+           "pure-k0.01-p04-c0-s0", "pure-k0.01-p04-c0-s1", "pure-k0.01-p04-c1-s0", "pure-k0.01-p04-c1-s1",
+           "pure-k0.01-p06-c0-s0", "pure-k0.01-p06-c0-s1", "pure-k0.01-p06-c1-s0", "pure-k0.01-p06-c1-s1",
+           "pure-k0.01-p07-c0-s0", "pure-k0.01-p07-c0-s1"]
+
+[excluded]
+# no record in jax2-v5-full-bign: the opt-in "sharp" group (C7)
+quick = ["pure-k0.01-p00-c0-s0", "pure-k0.01-p00-c0-s1", "pure-k0.01-p00-c1-s0", "pure-k0.01-p00-c1-s1",
+         "pure-k0.01-p05-c0-s0", "pure-k0.01-p05-c0-s1", "pure-k0.01-p05-c1-s0", "pure-k0.01-p05-c1-s1"]
+named = ["censor-k0.0316-p05-c0-s1", "pure-k0.01-p15-c1-s0", "pure-k0.01-p15-c1-s1", "censor-k0.01-p05-c0-s0",
+         "censor-k0.01-p05-c1-s1"]
+reason = "no record in jax2-v5-full-bign (the opt-in sharp group has no reference records)"
+
+[loader]
+# research R10: v5 panel cohorts with an age-0 death (none on v2), plus the 2 bytes cohorts
+byte_compared = ["hazard-k0.01-p00-c0-s0", "hazard-k0.01-p02-c1-s0", "hazard-k0.01-p04-c1-s1",
+                 "hazard-k0.0316-p00-c0-s1", "hazard-k0.0316-p02-c0-s0", "hazard-k0.0316-p03-c0-s1",
+                 "pure-k0.01-p19-c1-s0", "pure-k0.01-p19-c1-s1", "pure-k10-p09-c1-s0", "pure-k2-p09-c1-s0",
+                 "pure-real-celegans-c1-s0", "censor-real-celegans-c0-s0"]
+refused_windowed = ["realfull-real-Denmark_M_1900_homo-c1-s0", "realfull-real-Denmark_M_1900_homo-c1-s1",
+                    "realfull-real-Sweden_F_1910_homo-c1-s1"]
+
+[jcross]
+# research R9: reported, not gated
+mac_source = "tests/acceptance/results/fits_003.json"          # profile_jax2 port claims, this Mac, the 22
+wexac_rows = ".cache/out/wexac_rows/d903979764194c5b7afa7b048710210c15e9179b"
+wexac_rule = "calibrator profile_jax2; v2->v5 checksums equal; a key in jax2-v5-full-bign"
+wexac_expected = 118
+wexac_by_arm = {pure = 67, censor = 35, realfull = 16}
+
+[runs_keys_sha256]
+# the tester's cross-check (its message of 2026-10-17; jax2's command, `jq -cS .keys <run.json> | shasum -a 256`):
+# sha256 of json.dumps(keys, sort_keys=True, separators=(",", ":")) + "\n". It pins the SET OF KEYS, not the records
+# or the run file; sraging's own per-file and per-record sha256 (pins_003e.json) stay the primary pin.
+"jax2-v5-full-bign" = "5776dade83099921f9dee0973449e5936894060ac4f1b67161b6fea4ab53b16d"
+"jax033-v5-full-bign" = "d21066a6ce618037823f2109e4ed613dda44ec4539c31db75a0fe915f059fecc"
+"null_prior-v5-full-bign" = "8da6cadda46ccab188dc75469f0fac9015b0d597d33668e7ff70066107f06ccf"

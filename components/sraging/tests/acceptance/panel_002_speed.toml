@@ -1,0 +1,35 @@
+# The speed panel (spec 002 SC-009; research R16; sr-manager gate M8). COMMIT before `speed`; run it LAST, on an
+# idle machine (the phase refuses a 1-minute load average above max_load and records the load).
+# Engine against v0.3.3 (spec 001's port of fp_jax, the same compiled program as the frozen oracle): spec 001's
+# 40 cohorts at their "truth" theta point; value and value-and-gradient. Off configuration (numerics "v033")
+# upper 95% CI <= 1.03; default numerics "v1" upper CI <= 1.20.
+# Engine against SRK's NumPy code on the same grid, value only on both sides (the NumPy time is the worker's own
+# process CPU; IPC excluded): the T1 feature configurations below, upper CI <= 1.0.
+cohorts_from = "tests/acceptance/panel_v1.toml"
+theta = "truth"
+replicates = 5
+evaluations_per_replicate = 10
+bootstrap = 10000
+max_load = 5.0
+# amended 2026-10-04 before the run: with nothing of ours running, this 15-core Mac sits at a 1-minute load of
+# ~3.3 (system daemons: BTLEServer pinned at 100%, WindowServer); the phase uses one core, so 5 keeps ten cores idle
+cost_model = { value_us_per_step = 11.0, value_and_grad_us_per_step = [29.0, 40.0], N = 900 }
+
+[[feature]]
+name = "hazard"
+case = "hazard-k0.01-p00-c0-s0"
+[[feature]]
+name = "window"
+case = "window-k0.01-p00-c0-s0"
+[[feature]]
+name = "heterogeneity (xc, M = 7)"
+case = "het-k0.01-p00-c0-s0"
+[[feature]]
+name = "segments: beta (62,124)"
+case = "segments:beta (62,124)"
+[[feature]]
+name = "segments: xc lower (62,124)"
+case = "segments:xc lower (62,124)"
+[[feature]]
+name = "pure (no feature)"
+case = "pure-k0.01-p00-c0-s0"

@@ -1,0 +1,101 @@
+# Declared provenance and allowed edits of every module in sraging/compat/jax2_101.
+# Written by tools/port_jax2_101.py; read by tests/unit/test_verbatim.py (spec 003b research R1).
+
+[[module]]
+port = "fp_jax.py"
+source = "tests/oracle/jax2_6884fc8/mle_profile_jax2/fp_jax.py"
+mode = "whole"
+source_md5 = "f265532d8c6b740792510d4afbefe823"
+names = []
+[[module.edit]]
+kind = "replace_statement"
+old = "os.environ.setdefault('PJRT_NPROC', '1')"
+new = "from sraging.compat.v033 import runtime as _runtime\n_runtime.configure()"
+reason = "explicit runtime (R1); PJRT_NPROC overwritten, not defaulted"
+
+[[module]]
+port = "estimator.py"
+source = "tests/oracle/jax2_6884fc8/mle_profile_jax2/estimator.py"
+mode = "whole"
+source_md5 = "6eef84d64aacb76806d376f7e43bcbb6"
+names = []
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK.fp_curvefit import fp_curvefit_makeham"
+new = "from sraging.compat.jax2_101.fp_curvefit_h import fp_curvefit_makeham"
+reason = "SRK -> sraging.compat (hash-equal sources, tests/oracle/v033)"
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK import fp_likelihood as FPL"
+new = "from sraging.compat.v033 import fp_likelihood as FPL"
+reason = "SRK -> sraging.compat (hash-equal sources, tests/oracle/v033)"
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK import fp_gof as GOF"
+new = "from sraging.compat.v033 import fp_gof as GOF"
+reason = "SRK -> sraging.compat (hash-equal sources, tests/oracle/v033)"
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK.fp_curvefit import fp_curvefit_seed"
+new = "from sraging.compat.v033.fp_curvefit import fp_curvefit_seed"
+reason = "SRK -> sraging.compat (hash-equal sources, tests/oracle/v033)"
+[[module.edit]]
+kind = "replace_statement"
+old = "return os.environ.get('SRB_STRICT', '') not in ('', '0')"
+new = "return True"
+reason = "SRB_STRICT=1 is the validation runs' setting (handoff section 5); no environment variable may change behaviour (constitution VIII)"
+
+[[module]]
+port = "observation_model.py"
+source = "tests/oracle/jax2_6884fc8/mle_profile_jax2/observation_model.py"
+mode = "whole"
+source_md5 = "2a7c61a6fb7cfe4527601d854fedd998"
+names = []
+
+[[module]]
+port = "fp_curvefit_h.py"
+source = "tests/oracle/v033/SRtools_kappa/SRK/fp_curvefit.py"
+mode = "subset"
+source_md5 = "cf64615780a5dc36cfc8f079f9c4c073"
+names = ["fpt_full", "kaplan_meier", "XC_NOMINAL", "KAPPA_FLOOR", "KAPPA_CEIL", "N_FIT", "DT_FIT", "N_POLISH", "DT_POLISH", "TAU_MAX", "NGRID", "DEFAULT_EXTERNAL_HAZARD", "MK_N_FIT", "MK_DT_FIT", "H_FLOOR", "H_CEIL", "_START_PRODUCTION", "_START_REMOVAL", "fpt_full_survival", "from_dimensionless", "_empirical_on_taugrid", "S_FLOOR", "RHO_CEIL", "_MOMENT_TAU_MAX", "_empirical_cv", "_trapz_area", "_SURFACE_STARTS", "_surface_starts", "_s_of_omega", "_resid_fn", "_fit_one_arm", "fp_curvefit_seed", "_empirical_phys_grid", "_fp_solve_cached", "makeham_survival", "_mk_resid_fn", "_mk_fit_one_arm", "fp_curvefit_makeham"]
+[[module.edit]]
+kind = "note"
+reason = "the try/except loader of `_fpl` is replaced by `from sraging.compat.v033 import fp_likelihood as _fpl`; module-level imports are not compared"
+
+[[module]]
+port = "claims.py"
+source = "tests/oracle/jax2_6884fc8/mle_profile_jax2/__init__.py"
+mode = "subset"
+source_md5 = "a8c8a826d0835ccb57985c8489c0070c"
+names = ["VERSIONS", "BOUNDS", "KAPPA_MAX", "LEVEL", "VERDICT_TO_SHAPE", "SC_EDGE_DEX", "KFIX_KAPPAS", "kappa_tag", "kfix_name", "rbar", "COMBO_BOX", "ESTIMATE_KEY", "ESTIMATE_SCHEMA", "run_fit", "h_claim_kwargs", "claim_kwargs", "sc_widen_claim", "sc_widen_claims", "final_claim_kwargs", "combo_claim_kwargs", "kfix_claim_kwargs", "box_limited_block", "estimate_block"]
+[[module.edit]]
+kind = "delete_statements"
+name = "run_fit"
+match = ["changed = sorted((k for k, v in srk1['files'].items() if k in srk0['files'] and srk0['files'][k] != v))", "dg['srk_sha'] = srk", "env_guard()", "files = dict(srk1['files'], **srk0['files'])", "for m in _SRK_MODULES:\n    importlib.import_module(m)", "from srbench import npcompat", "srk = dict(root=srk0['root'], n_files=len(files), files=dict(sorted(files.items())), digest=hashlib.sha256(''.join((f'{k} {v}\\n' for k, v in sorted(files.items()))).encode()).hexdigest(), changed_during_fit=changed, srk_dt_ceiling_env=os.environ.get('SRK_DT_CEILING'))", "srk0 = srk_fingerprint()", "srk1 = srk_fingerprint()", "version_lock_guard()"]
+reason = "the tester's deployment guards and srk_sha fingerprint (R1)"
+[[module.edit]]
+kind = "replace_statement"
+name = "run_fit"
+old = "om = _sibling('observation_model')"
+new = "from sraging.compat.jax2_101 import observation_model as om"
+reason = "sibling load -> compat import (R1)"
+[[module.edit]]
+kind = "replace_statement"
+name = "run_fit"
+old = "fj = _sibling('fp_jax')"
+new = "from sraging.compat.jax2_101 import fp_jax as fj"
+reason = "sibling load -> compat import (R1)"
+[[module.edit]]
+kind = "replace_statement"
+name = "run_fit"
+old = "est = _sibling('estimator')"
+new = "from sraging.compat.jax2_101 import estimator as est"
+reason = "sibling load -> compat import (R1)"
+
+[[module]]
+port = "settings.py"
+source = "tests/oracle/jax2_6884fc8/mle_profile_jax2/__init__.py"
+mode = "class_constants"
+constants = ["NAME", "HAZARD", "WINDOW", "RELABEL", "SELF_CONSISTENT", "N_RULE", "DT_RULE", "FLOOR_EARLY", "EARLY_ALL", "SHADOW", "EXACT_F", "INNER_POLISH_J", "BRACKET_BISECT", "EXTENT_Z", "BOX_FLAG", "KAPPA0", "COMBOS", "KEEP_PROFILES"]
+source_md5 = "a8c8a826d0835ccb57985c8489c0070c"
+names = ["_MleProfileJax2Base", "MleProfileJax2", "MleProfileJax2H", "MleProfileJax2KfixK0p001", "MleProfileJax2KfixK0p5", "MleProfileJax2KfixK1", "MleProfileJax2HKfixK0p001", "MleProfileJax2HKfixK0p5", "MleProfileJax2HKfixK1"]

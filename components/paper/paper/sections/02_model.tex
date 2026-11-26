@@ -1,0 +1,45 @@
+\section{The saturating-removal model}\label{sec:model}
+
+\paragraph{Dynamics.} Each individual carries a scalar damage level $X(t)\ge 0$ that evolves as
+\begin{equation}\label{eq:sr}
+  \dd X = \Bigl(\eta\,Y(t) - \beta\,\frac{X}{X+\kappa}\Bigr)\dd t + \sqrt{2\eps}\,\dd W_t,
+  \qquad \frac{\dd Y}{\dd t} = A, \qquad X(0)=0,
+\end{equation}
+and dies at the first time $X$ reaches the threshold $\xc$ \citep{karin2019senescent,raz2026damage}. Damage is produced at
+a rate that rises linearly with age ($\eta$, the production slope), removed by a saturating process with maximal rate
+$\beta$ and half-saturation $\kappa$, and perturbed by white noise of strength $\eps$. In an untreated individual
+$Y(t)=t$ ($A=1$). An intervention may change $A$, the \emph{DPU (damage production unit) accumulation rate}: it then
+speeds or slows production only, while removal, noise and time itself are unchanged. An optional age-independent
+external hazard $h$ (a Makeham term \citep{makeham1860law}) adds deaths that do not pass through $X$.
+
+\paragraph{Units and the threshold convention.} A survival curve is unchanged under $X\to X/\xc$ with
+$(\eta,\beta,\kappa,\eps)\to(\eta/\xc,\beta/\xc,\kappa/\xc,\eps/\xc^2)$, so $\xc$ is not identifiable from survival
+data and is fixed at $\xc=1$; damage is measured in units of the threshold. The fitted parameters are
+$\theta=(\eta,\beta,\eps,\kappa)$, with $\eta$ in units of $\text{time}^{-2}$ and $\beta,\eps$ in $\text{time}^{-1}$.
+Two derived quantities recur below: the mean removal over damage levels below threshold,
+\begin{equation}\label{eq:rbar}
+  \beta\,\rbar(\kappa), \qquad \rbar(\kappa) = \int_0^1 \frac{x}{x+\kappa}\,\dd x = 1-\kappa\ln\!\Bigl(1+\frac1\kappa\Bigr),
+\end{equation}
+and the ballistic score $B=\beta\,\rbar(\kappa)/(\eta L)$, the mean removal capacity relative to production at the
+lifespan scale $L$ \citep{raz2026damage}.
+
+\paragraph{Time rescaling is not a change of $A$.} Speeding up an individual's whole life by a factor $a$,
+$X_a(t):=X(a t)$, gives
+$\dd X_a=(a^2\eta\,t - a\beta\,X_a/(X_a+\kappa))\,\dd t+\sqrt{2a\eps}\,\dd W_t$, i.e.
+$(\eta,\beta,\eps,\kappa)\to(a^2\eta,a\beta,a\eps,\kappa)$: every rate changes. We call this \emph{time rescaling}.
+It is a different hypothesis from a change of $A$, which multiplies only production. A change of $A$ that starts at
+birth is the same as a change of $\eta$ (production $\eta A t$); the two differ only when the change starts at an age
+$t_0>0$, where a change of $A$ keeps production continuous and changes its slope, whereas a change of $\eta$ makes
+production jump.
+
+\paragraph{From data to claims.} Figure~\ref{fig:pipeline} summarises how the model is fitted to a cohort and what
+is reported (Sections~\ref{sec:likelihood}--\ref{sec:effects}).
+
+\input{figs/fig_pipeline}
+
+\paragraph{Interventions and group differences.} A treatment or a difference between groups is represented as a
+multiplier $m$ on one parameter $p\in\{\eta,\beta,\eps,\kappa,\xc,A,h\}$, or on time (time rescaling), acting on an age
+window $[t_0,t_1)$. Before $t_0$ the treated group shares the reference parameters exactly. $t_0=0$ compares two
+cohorts over the whole life; $t_0>0$ models a late-life intervention. A threshold change at $t_0>0$ is implemented by
+moving the absorbing boundary, not by the rescaling above, because the rescaling is exact only from birth
+(Section~\ref{sec:val-effects}).

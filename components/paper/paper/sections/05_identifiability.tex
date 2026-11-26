@@ -1,0 +1,93 @@
+\section{What survival data identify}\label{sec:identifiability}
+
+A survival curve is the distribution of one number per individual, the first-passage time of $X$ to the threshold.
+Not every parameter of Eq.~\eqref{eq:sr} can be recovered from it. This section states which combinations can, which
+cannot, and the rules for reporting them that follow; Section~\ref{sec:val-ident} gives the evidence.
+Table~\ref{tab:identified} lists every quantity a user might report, says whether survival data pin it and how to
+report it, and gives the coverage and error that the released calibrator achieved on the benchmark.
+
+\paragraph{The threshold cancels.} The rescaling $X\to X/\xc$ of Section~\ref{sec:model} leaves the first-passage
+distribution unchanged, so $\xc$ is not a parameter of the survival problem. It is fixed at $\xc=1$ at no cost, and
+every damage-valued parameter ($\beta$, $\kappa$, and through $\eps$ the noise) is read in units of the threshold.
+After this reduction four parameters remain, and they are still not all identified.
+
+\paragraph{What a survival curve pins.} Production ($\eta$) and noise ($\eps$) are identified, as is the
+time-scale-free combination $\sqrt\eta/\eps$ (it is unchanged by time rescaling, $(\eta,\eps)\to(a^2\eta,a\eps)$).
+Removal enters only through the saturating term $X/(X+\kappa)$, and a survival curve constrains the removal rate
+\emph{averaged over the damage range that trajectories traverse}, $\beta\,\rbar(\kappa)$ of Eq.~\eqref{eq:rbar}
+\citep{raz2026damage}, not its value at any one damage level. This mean removal is a closed interval for \C{ident-rbar-closed-panel}
+of \C{ident-panel-valid} valid cohorts of the calibration panel and \C{ident-rbar-closed-medium} of \C{ident-medium-valid} of the
+medium tier, where the closed intervals are about \C{ident-rbar-width-lo} to \C{ident-rbar-width-hi} decades wide; on the
+others it is an upper bound, which is still an answer (a ``removal at most this large''). What the curve does not
+pin is $\kappa$, the removal at the threshold $\beta/(1+\kappa)$ (equivalently the time $\beta/(\eta(1+\kappa))$ at which
+removal at the threshold balances production), and $\xc$. In particular it does not show whether removal saturates
+($\kappa\lesssim1$) or is nearly linear ($\kappa\gg1$); the evidence is at the moderate cohort sizes of the
+calibration panel, and whether much larger cohorts can see saturation has not been tested.
+
+\paragraph{The ridge.} The profile likelihood is nearly flat along the curve
+\begin{equation}\label{eq:ridge}
+  \beta(\kappa)\,\rbar(\kappa) = c, \qquad \text{i.e.}\quad \beta(\kappa)=\frac{c}{\rbar(\kappa)},
+\end{equation}
+on which $\eta$, $\eps$ and the mean removal $c$ are fixed while $\kappa$ moves. Because $\rbar(\kappa)\to1$ for
+$\kappa\to0$ and $\rbar(\kappa)\simeq 1/(2\kappa)$ for $\kappa\gg1$, raw $\beta$ moves by a factor of about $2\kappa$
+along the ridge, and the removal at the threshold, $c/[\rbar(\kappa)(1+\kappa)]$, by a factor that approaches $2$
+(\C{ident-log2} decades). Across the pinned values of $\kappa$ from $10^{-3}$ to $300$, the log-likelihood of every
+valid panel cohort but one stayed within the one-parameter $95\,\%$ threshold of $1.92$ nats of its best value
+(\C{ridge-valley-n} of \C{ridge-valley-of}; the exception, a stale optimiser stop, is discussed in
+Section~\ref{sec:val-ident}), and the median drift across these slices was \C{ridge-drift-eta} decades for $\eta$,
+\C{ridge-drift-rbar} for $\beta\rbar$, \C{ridge-drift-kp1} for $\beta/(1+\kappa)$ and \C{ridge-drift-beta} for raw $\beta$.
+
+\paragraph{Pinning $\kappa$ is nearly lossless if removal is read as $\beta\rbar$.} Fixing $\kappa=\kappa_0$ with
+$\kappa_0=10^{-3}$ gives $\rbar(\kappa_0)=\C{ident-rbar-k0}$, so the fitted $\beta$ is in effect the mean removal. On
+\C{kfix-J-n} cohorts of an earlier benchmark library (v5), this variant (kfix) lost calibration on a net of at most
+\C{kfix-J0001-net-max} of them for any identified quantity, used
+\C{kfix-J0001-cpu} of the CPU time of the free fit, and reports $\beta$ as ``$\beta$ at $\kappa_0$'' and never $\kappa$
+(Section~\ref{sec:val-ident}). Pinning is biased when removal is read at the threshold, because that quantity moves along the
+ridge, in the direction of the pinned $\kappa_0$.
+
+\paragraph{Reporting rules.} These follow from the above and apply to every calibrator variant.
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item Report $\eta$ and $\eps$ as values (closed intervals), and as bounds where an end is open; $\sqrt\eta/\eps$ likewise.
+  \item Report removal as the mean removal $\beta\rbar(\kappa)$ or the ratio $\beta\rbar(\kappa)/\eta$, as a value or a bound
+    according to its interval. Raw $\beta$ is a bound, or ``$\beta$ at $\kappa_0$'' under a pinned variant.
+  \item Never report $\kappa$ or the removal at the threshold $\beta/(1+\kappa)$. The calibrator declines $\kappa$ on
+    \C{ident-kappa-declined-pct}\,\% of the \C{gate-v6-n} reference cohorts (Section~\ref{sec:val-ident}).
+  \item One-sided bounds are not $95\,\%$ bounds. Pooled over the reference cohorts of all arms, the one-sided
+    bounds on $\kappa$ and on $\beta$ covered the truth in \C{ident-onesided-kappa-pct}\,\% and \C{ident-onesided-beta-pct}\,\%
+    of cases (Section~\ref{sec:val-benchmark}); state them as ``at least'' or ``at most'' and give no confidence level.
+  \item The derived ballistic score $B=\beta\rbar(\kappa)/(\eta L)$ of Section~\ref{sec:model} is a function of $\eta$ and the mean
+    removal. It is as well determined as $\beta\rbar$ and no better: where $\beta\rbar$ is only an upper bound, so is $B$, and it is
+    never quoted with more precision than the interval of $\beta\rbar/\eta$.
+\end{enumerate}
+
+\begin{table}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\input{../tables/ident_table.tex}}
+\caption{What survival data identify, how to report it, and how well the calibrator recovers it. \emph{Identified?}: whether
+the survival curve constrains the quantity (pinned), leaves it free along the ridge of Eq.~\eqref{eq:ridge} (not pinned), or the
+quantity is removed by the choice $X_c=1$ (fixed by convention). \emph{Report}: what the reporting rules of this section allow:
+a value (closed $95\,\%$ interval), a bound (one-sided interval, no confidence level), or no claim. The remaining columns are
+measured on the pure arm of the reference run of Section~\ref{sec:val-benchmark}: calibrator J, version 1.0.1, library v6,
+\C{d2a-ref-pure} simulated cohorts whose truth is known. \emph{Closed claims}: share of cohorts for which the calibrator reported
+a closed interval. \emph{Coverage}: among those closed intervals, how many contained the true value (nominal $0.95$).
+\emph{Median error [IQR]}: median and interquartile range, over cohorts, of the absolute error of the point estimate in decades,
+$|\log_{10}(\text{estimate}/\text{truth})|$. \emph{Median width}: median width of the closed intervals, in decades.
+Dashes: the column does not apply.}
+\label{tab:identified}
+
+\smallskip
+\begin{minipage}{\textwidth}\footnotesize
+$^{a}$ Version 1.0.1 stores point estimates for these combinations but no interval, so closed share, coverage and width were not
+measured for it (Section~\ref{sec:limitations}); the error column is measured.
+$^{b}$ $\eta/\varepsilon$ is the square of $\sqrt\eta/\varepsilon$, so its error in decades is twice as large.\\
+$^{c}$ Not the v6 reference run: calibrator J 1.0.1 run together with a twin that also reports intervals for the
+combinations, on the \C{twin-pop-n} cohorts of the medium tier of the previous library (v5) used in the $\kappa_0$ study
+(pure, censored and real-data-derived arms). For $\sqrt\eta/\varepsilon$, \C{identtab-sqrt-eta-over-eps-twin-hits} of
+\C{identtab-sqrt-eta-over-eps-twin-n} closed intervals covered the truth; for $\beta\bar r(\kappa)$,
+\C{identtab-beta-rbar-twin-hits} of \C{identtab-beta-rbar-twin-n}. On the same cohorts $\eta$'s closed coverage was
+\C{twin-eta-cov}, so the shortfall from 0.95 is a property of these harder cohorts, not of the combination.\\
+$^{d}$ Evaluated at the fitted maximum-likelihood point, with $\kappa$ taken from the fit even where it is declined; the
+record flags these cohorts. For $\kappa$ itself the error is over the \C{identtab-kappa-err-n} cohorts where a bound gives a point,
+and for $\beta$ over the \C{identtab-beta-err-n} cohorts with a point.
+\end{minipage}
+\end{table}

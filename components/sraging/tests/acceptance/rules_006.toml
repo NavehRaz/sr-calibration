@@ -1,0 +1,177 @@
+# Spec 006's pre-registered rules (spec.md "Pre-registered rules"; contracts/acceptance.md; data-model.md "Rules file").
+# FROZEN 2026-11-11 (T058, Naveh's OK on the proposal of T057, d4397b6). It carries sr-naveh's review of the
+# cuts (review/sr-naveh_cuts_006.md) and Naveh's 8 decisions of 2026-11-11 (spec.md Clarifications), on the stored
+# result and the pilot (T052, T053; both seen before this file, as stated). A change from here is a new freeze, asked.
+frozen = true
+naveh_ok = "2026-11-11, AskUserQuestion on d4397b6: 'Freeze and start A1 (Recommended)'"
+
+# CPU-h per phase (tools/acceptance_006.py CAPS; tests/unit/test_acceptance_006.py checks they agree). a1 and a2 are
+# set at the freeze: 1.25 x each cell's price re-priced with the pilot's r (FR-020).
+[caps]
+# a1 and a2 at 1.25 x their price with Dg's cohorts (T055, re-priced in T057f; [pricing]); the spec's WEXAC bound
+# is [budget]'s
+parity = 0.5
+identity = 5.0
+stored = 0.1
+pilot = 12.0
+realfull = 24.0
+v033-leverage = 8.0
+unchanged = 1.0
+a1 = 191.7                                        # 1.25 x 153.3: 142 cohorts at r, Dg's 54 at r_lead (J 74.2 CPU-h)
+a2 = 131.7                                        # 1.25 x 105.4: 33 at r, Dg's 11 at r_lead (J 61.0 CPU-h)
+
+# --------------------------------------------------------------------------------------------------- the rules
+[rules."R-1"]
+what = "W's coverage on the closed claims of the window arm, beside the null"
+gated = ["eta", "epsilon"]
+reported = ["beta", "kappa"]                      # closed claims too few to gate (H 17 and 0, J 55 and 2; research R11);
+                                                  # their one-sided coverage is reported (sr-naveh F2)
+cut = "midpoint of the Wilson lower bound at p_good and the Wilson upper bound at p_bad, at n_eff = n_closed / D"
+p_good = 0.95
+p_bad = 0.88
+z = 1.959963984540054                             # two-sided 95 %
+D = 1.05                                          # design effect from J's pure-arm records (research R12); J's window
+                                                  # records cluster at 3.35 (eta), 3.12 (eps): reported (sr-naveh F4)
+shape_class = "closed"                            # declines leave the denominator; failures count (score/claims.py)
+on_miss = "W_COVERAGE warning stating the measured coverage, if R-3 and R-4 pass (Naveh, Dd); else to Naveh"
+# Naveh, 2026-11-11: R-1 gates on A1 alone, at A1's N; the 240 are reported pooled, never gated
+gate_cell = "a1"
+# the collapse rule: the same formula with p_bad 0.70, for A2, W's data-determined one-sided eta and eps claims and the
+# lead pair on Dg's cohorts. At 42 claims the cut is 0.827 (a true 0.95 passes with P 0.999, a true 0.70 with 0.04)
+collapse_p_bad = 0.70
+# A2: its collapse verdict, or a truncated-above rate above this share of its closed claims, trips W's warning at
+# n >= 25,000; if A1 fails, A2 never runs and the warning says "not measured at n >= 25,000"
+a2_truncated_max = 0.10
+# W's data-determined one-sided eta and eps claims (a lower bound, or an upper bound neither box-limited nor widened):
+# gated under the collapse rule from this many claims (at 20 a true 0.95 passes with P 0.984, a true 0.70 with 0.107);
+# fewer are reported (gate_006.ONE_SIDED_MIN)
+one_sided_min = 20
+# W's upper end this far below H's (both closed), or box-limited, widened or contradicted above by the lead pair's
+# walk, is "truncated above": named per cell, open in R-2's widths (gate_006.TRUNCATED_DEX; sr-naveh F7)
+truncated_dex = 0.3
+
+[rules."R-2"]
+what = "information: W's widths on eta and epsilon against H's"
+gate = "median over cohorts closed in both W and H of log10(width_W / width_H) <= max_dex; a truncated-above W claim counts as open"
+max_dex = 0.1                                     # Naveh, 2026-11-11; the pilot read -0.004 and -0.017 dex on 5
+planted = "H's own claims widened by 0.3 dex must fail"
+report = "against the null's box (15 dex wide; it cannot fail, so it is not the gate)"
+gate_cells = ["a1"]
+params = ["eta", "epsilon"]
+
+[rules."R-3"]
+what = "truth witness"
+gate = "ll(truth) - ll(theta_hat_W) <= 1.92 on every gated cohort; each failure named; a missing ll(truth) fails"
+max_gap_nats = 1.92
+report = "2(ll_hat - ll(truth)) against chi-square with 3 and 4 degrees of freedom (Wilks)"
+on_fail = "stops W: to Naveh (FR-021)"
+
+[rules."R-4"]
+what = "attribution against H's stored lowest-h node, exact (Naveh, 2026-11-11)"
+gate = "H's log-likelihood at (theta_hat_W, h of H's lowest-h stored profile node) >= that node's stored log-likelihood - 0.1, on every cohort; a cohort not evaluated fails"
+tolerance_nats = 0.1                              # 100 x the pilot's agreement (2e-10 to 6e-6 nats [M])
+applies = "every cohort (the 1e-9 box-floor filter of the draft, 91 of 240, was round-off: sr-naveh F8)"
+evaluation = "gate_006.h_loglik_at in the element: H 1.0.1's own window path, fit_inputs and value march"
+on_fail = "stops W: to Naveh, as R-3"
+
+[rules."R-5"]
+what = "W = J off-window, side by side, one host"
+compare = "identity_view: theta_hat, log-likelihood and claim bytes; name, version, provenance, switches and window_on excluded by name"
+
+[rules."R-6"]
+what = "W's and H's ports = the oracle (tests/oracle/jax2_6884fc8) on windowed cohorts, byte for byte"
+oracle_switches = { W = "hazard False, window True", H = "hazard True, window True" }
+
+[rules."R-7"]
+what = "windowed parity, fit-free: W against the engine (numerics v1, after FR-014/015) and v033 on the same prepared data"
+tolerance = "the no-window difference the phase measures first; the window term is judged within it"
+
+[rules."R-8"]
+what = "the engine's window edges"
+hi_inf = "value and gradient at hi = inf finite and equal to a large finite hi, within the tolerance T031 measures"
+underflow = "at gate M2's underflow theta: S_lo clipped at 1e-12, no spurious maximum, lo_clipped reported"
+clip = 1e-12
+
+[rules."R-9"]
+what = "profile_v033's leverage check (Naveh, 2026-11-11: option C, falling back to B; never A)"
+refusal = "tests/data/itp_plus_age0.csv (delta 1, days): v033's theta-hat is not stationary there, so the check reads not_assessed and LEVERAGE fires"
+# the candidates, in order; each valid only where J's own check flags its planted death (ac11_003b.json for the planted
+# two; one J fit first for the ITP one). The first that v033's check assesses is the control and must flag the planted
+# death; none assessed: option B (R-9 fails, X's deviation stays open, retargeted). acceptance_006.R9_CANDIDATES
+candidates = ["itp-late: the ITP example without its age-0 death, plus one death at 1.5 x its oldest age (day 2,007)",
+              "planted-k0.1-p03-n300-late (003b AC11; J flagged it)",
+              "planted-k1-p03-n300-late (003b AC11; J flagged it)"]
+null = "003f's P3 panel (panel_003f.toml [p3], 26 ids)"
+null_max_flags = 1                                # P 0.91 at a true 2 % flag rate, 0.25 at 10 % [M]
+null_min_assessed = 20                            # fewer: inconclusive, to Naveh
+leverage_rule = { set = "all4", ratio = 1.5, refit_gain_nats = 1.92 }
+
+[rules."FR-022"]
+what = "W's leverage-flag rate on A1's assessed fits (flag, no_flag, flat_valley_slide), an unplanted null on windows"
+max_rate = 0.05                                   # Naveh, 2026-11-11: at most 9 of 196; above it, a new acceptance
+report = "each flag with the dropped row's age against the window; not_assessed, failed and slide counts"
+
+# --------------------------------------------------------------------------------------------------- the panel
+[panel]
+library = "v6"
+pilot = ["window-k2-p01-c1-s1", "window-k0.01-p01-c0-s0", "window-k0.1-p01-c1-s0", "window-k0.316-p03-c1-s0",
+         "window-k10-p01-c1-s0", "window-real-Denmark_M_1890_hetro-c0-s0"]
+
+[panel.a1]
+arm = "window"
+groups = ["main", "bign"]
+n_below = 25000
+expect = 196
+
+[panel.a2]
+arm = "window"
+groups = ["main", "bign"]
+n_at_least = 25000
+expect = 44
+
+# Dg (Naveh, 2026-11-11): the lead pair on one cohort per cluster in A1 (54) and in A2 (11), drawn by this seed from each
+# cluster's cohorts in id order (acceptance_006.dg_ids), never by price; judged under the collapse rule, with the
+# count of contradicted claim ends and the `negligible` rate (FR-022)
+[panel.dg]
+seed = 20261111
+cells = ["a1", "a2"]
+
+# The pilot's 6 cohorts (5 in A1, Denmark 1890 M in A2) are seen; A1 and A2 refit them at the freeze's head, their pilot
+# claims are not reused (sr-naveh Q5.6)
+[panel.realfull]
+arm = "realfull"
+rule = "window set, no external hazard, het_var 0 (censoring allowed)"
+expect = 20
+
+[panel.excluded]
+sharp = "arm window, group sharp: 52 cohorts with no H record (Not Covered)"
+
+[panel.identity]
+unwindowed = ["tests/data/itp_plus_age0.csv", "pure-k0.01-p01-c0-s0", "pure-k1-p01-c0-s0"]
+windowed = ["window-k0.01-p01-c0-s0", "window-k0.316-p03-c1-s0"]
+
+# --------------------------------------------------------------------------------------------------- the pricing
+# T055 from the pilot (T053) [M]: a gate cohort costs r x J's stored CPU (W's fit, leverage, the truth's ll and R-4's
+# evaluation), a Dg cohort r_lead (the same with the lead pair: the pilot's element 3.627 x J); v033's P3 fit plus its
+# check 1.03 x v033's stored CPU (T054)
+[pricing]
+r = 1.162
+r_lead = 3.627
+v033_factor = 1.03
+
+[budget]
+# the spec's total, Naveh 2026-11-11 (raised from 230 with Dg(a)); the Mac's stays 15. Raised from 300 to 350 for A2,
+# Naveh 2026-11-14 (post-result, after A1; AskUserQuestion: 'Raise to 350, run A2 (Recommended)'): 192.2 spent,
+# A2 ~123 and realfull ~22 expected at A1's measured 1.17 x price, at most 347.9 at both caps
+wexac_cpu_h = 350.0
+# Mac raised from 15 to 21 for spec 001's claims re-run (~6) and `unchanged` (<= 1), Naveh 2026-11-15 (post-result;
+# AskUserQuestion: 'Raise to 21 (Recommended)'): 12.97 spent, ~20 with both
+mac_cpu_h = 21.0
+
+# --------------------------------------------------------------------------------------------------- the pins
+[pins]
+file = "tests/acceptance/pins_003g.json"
+library = "v6"
+J = "jax2-v6-full-bign"
+H = "jax2h-v6-full-bign"
+null = "null_prior-v6-full-bign"

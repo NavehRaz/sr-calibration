@@ -1,0 +1,1092 @@
+# The divergence register (constitution VII; spec FR-025; contracts/divergence-register.md).
+#
+# Every difference between sraging and the v0.3.3 reference, and every known defect of the ported code
+# path that is deliberately kept ("ported-as-is"), with the test that pins it. Read by
+# `sraging.divergences.load()`; checked by tests/unit/test_register.py.
+#
+# tag:    MODEL | ESTIMATOR/CONVENTION | CODE
+# status: ported-as-is | diverged | refused-input
+# impact: "none: not fixed" for ported-as-is entries; a measured table (VII) for `diverged` ones.
+
+[[divergence]]
+id = "D-001"
+title = "The curve-fit seed caps rho at 300, so large sharp (human) cohorts are seeded far from the truth"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "fp_curvefit.RHO_CEIL = 300.0; the shared seed lands at rho_eta ~3.5-5 on every human cohort against truths of 1e3-1e5"
+new = "identical (ported as-is); the resulting wrong fits are flagged by BASIN_GAIN / BASIN_OUTSIDE"
+source = "OPEN_TASKS [T-JAX-BASIN] root cause 1 (SRK/fp_curvefit.py:290)"
+impact = "none: not fixed"
+downstream = ["every v0.3.3 fit of a large human life table"]
+regression_test = "tests/unit/test_asis_defects.py::test_d001_seed_rho_cap"
+
+[[divergence]]
+id = "D-002"
+title = "No MLE-stage convergence check: an ABNORMAL or false-ftol L-BFGS-B result is accepted"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "estimator.fit keeps the best finite start result; L-BFGS-B can stop after 2-12 iterations with |g| 1e2-6e4 near the seed"
+new = "identical (ported as-is); reproduced byte for byte on the named basin cohorts"
+source = "OPEN_TASKS [T-JAX-BASIN] root cause 2"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/acceptance/test_results.py::test_basin_cohorts_reproduced"
+
+[[divergence]]
+id = "D-003"
+title = "Recentring is diagnostic only: the point stays stale and can lie outside its own interval"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "estimator.py:629-634 records gain_nats but keeps the stale MLE; profile_ci re-references the deviance to the row maximum"
+new = "identical (ported as-is); flagged by BASIN_GAIN and BASIN_OUTSIDE"
+source = "OPEN_TASKS [T-JAX-BASIN] root cause 4"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/acceptance/test_results.py::test_basin_cohorts_reproduced"
+
+[[divergence]]
+id = "D-004"
+title = "Interval-mass cancellation: S(t) - S(t+delta) underflows to exactly 0 when S ~ 1"
+tag = "CODE"
+status = "diverged"
+legacy = "p_phys = clip(S_i - S_hi, 0, None), floored at -700: head deaths score -700 or about -31..-37 nats depending only on rounding (numerics 'v033', unchanged)"
+new = "numerics 'v1' (the engine's default, spec 002): a death's mass is F(t+delta) - F(t) wherever F(t+delta) < S(t), F the absorbed mass carried by the march from the scheme's own discrete mass balance plus the clip's mass ([T-JAX-BASIN] fix B); with an external hazard the mass is e^{-H(t)} [m + S(t+delta)(-expm1(-h delta))], free of cancellation. Where F(t+delta) >= S(t) the mass is v033's own expression, bit for bit. Besides the cancellation it removes the S route's stiffness error: S's mass is the tridiagonal solve's residual away from the true difference, about (0.1-0.5) u rho_eps dtau N^2 (review T064 N2; mpmath at N = 300: F's median relative error 1.4e-10, S's 1.5e-7), which moves resolved terms by +4.8e-4 nats in total at Denmark_F_1900's truth and +3.0e-5 at Sweden's (sr-naveh's measurement). It does NOT remove the grid's discretisation error: a rescued early-death term can still be far from the converged value (the ITP age-0 death: -36.8 on the fit's grid, -114.0 converged), measured in spec 002 (residual below). profile_v033 keeps numerics 'v033'"
+source = "SR_algorithms.pdf Appendix A R1; OPEN_TASKS [T-JAX-BASIN] root cause 2 and fix B; tester reports/basin/likelihood_fix/v2 (t7_mpref.json: patched - exact 2.33e-10 vs frozen +83.25 nats at Sweden's stored point); jax2 fp_jax.py:207-228, 657-666 at 0ab67c0 (read-only reference)"
+downstream = ["spec 002: FLOORED_DEATHS (per-individual terms; decision 2026-10-03)", "spec 006: impact on theta-hat and claim shapes (constitution VII) is measured there (moved from spec 003 by Naveh's decision of 2026-10-05: no spec 003 calibrator uses the engine's numerics)"]
+regression_test = "tests/unit/engine/test_default_vs_v033.py::test_guard_passes_and_names_terms"
+
+[divergence.condition]
+applies_to = ["v1"]
+terms = "death & interval & use_F"
+value_bound = "mass_stiffness"
+gradient_bound = "uncovered terms: the weighted gradient agrees to 1e-10 relative (guard.GRAD_RTOL); covered terms both numerics resolve (|dl| <= 1e-8): to 1e-6 relative (guard.GRAD_COVERED_RTOL); rescued terms: v1's weighted gradient agrees with central differences of v1 (guard.CD_STEPS)"
+c_stiff = 1.8996
+floor_ulps = 348.2
+demonstrated_resolution = "the guard caught every planted change down to 1e-12 relative (results/guard_002.json); uncovered terms are held to 4 ulps x (1 + (S_lo + S_hi)/m), the compiler's rounding amplified by the difference that forms a death's mass, so a smaller change on a cancelling term can pass unseen"
+c_source = "tests/acceptance/results/guard_pilot_002.json: c = 4 x 0.4749 (the worst |dm|/(u K) at the stiff points, Denmark_F_1900 hetro truth at N = 450, dtau = 1e-3); floor = 4 x 87.1 u (the worst excess over 0.4749 u K, pure-k0.01-p02-c0-s1 kmax). Frozen from the acceptance run at 030f5bb (clean tree; 11 stiff and 39 ordinary points), 2026-10-04"
+
+[divergence.impact]
+panel = "tests/acceptance/panel_002_roundoff.toml"
+strata = ["[T-JAX-BASIN] round-off cohorts", "ITP example + an age-0 death (D-105)"]
+measured_here = "Sweden_F_1910 at its stored theta-hat: v033 -455513.2736039060, v1 -455596.5252974534; mpmath at 60 digits -455596.52529745025 (tests/reference/data/t7_mpref.json, remeasured_here; the stored 40-digit value is itself 3.4e-9 off): v1 - exact -3.1e-9, v033 - exact +83.25 nats"
+dloglik_total = { per_cohort = "results/mpref_002.json#dloglik" }
+residual_vs_converged = { per_term = "results/early_002.json#residual" }
+mpref_measured = "results/mpref_002.json (f08192c): on the routed F-route terms of 108 T1 evaluations v1 is within 7.4e-6 nats of 60-digit mpmath, v033 up to 209 nats off; on the round-off panel v1 matches at every fitted or stored theta (Denmark_F_1900 hetro optimum +1.7e-7 vs v033 +46.05; censor Denmark_F_1890 frozen +3.2e-7 vs v033 -3316); at the human cohorts' stiff truths (K up to ~8e6) both numerics are 9e-5..3e-4 nats off, and on the n = 93,893 Swedish cohort v1 misses at eta x1.5 (+-3-ulp spread 1.7e-5) and epsilon x1.5 (2.4e-5 off): float64 conditioning of the solve, not this entry (recorded limitation, Naveh 2026-10-04; 12 of 17 round-off evaluations meet 1e-5)"
+early_residuals = "results/early_002.json (f08192c): the time grid's own error on early-death terms (S_obs > 1 - 1e-3) at the v033 grid, v1 minus a converged graded-start reference: censor-real-Denmark_M_1890_homo-c0-s0 at its stored fit -12.3 nats over 281 terms (max 0.07); pure-k0.1-p22-c1-s1 +3.19 over 10 (max 0.32); pure-real-Sweden_F_1910_homo-c0-s0 at its stored theta-hat +190 over 1,027 (max 134); the ITP example + an age-0 death +75.4 (that death). 9 references miss the convergence tolerance (accepted with their uncertainty, Naveh 2026-10-04): 4 with masses < 1e-30 moving by up to 3.5 nats (Sweden rows 1-3, the ITP age-0 death), 5 with masses 1e-21..2e-14 whose halving moves of 1.2e-4..2.2e-3 nats are just above the 1e-4 tolerance (Sweden rows 4-8). D-004 removes the round-off; this residual remains, and a graded default mesh is spec 003's decision"
+dtheta_dex = "not measured in spec 002 (no fits); spec 006"
+claim_shape_changes = "not measured in spec 002; spec 006"
+
+[[divergence]]
+id = "D-005"
+title = "The p15 fit grid invents a 12.5-nat barrier (gone at N = 3600); the basin warning is blind to it"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "N = 900 grid on pure-k0.01-p15-c1-s{0,1}: truth beats the fit by ~27 nats with no recentring"
+new = "identical (ported as-is); reproduced on the two p15 panel cohorts"
+source = "OPEN_TASKS [T-JAX-BASIN] root cause 6"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/acceptance/test_results.py::test_basin_cohorts_reproduced"
+
+[[divergence]]
+id = "D-006"
+title = "Censor-tie deaths are scored over the whole end-of-study recording bin"
+tag = "ESTIMATOR/CONVENTION"
+status = "ported-as-is"
+legacy = "with delta, deaths recorded at the censoring age are scored over [t, t+delta) although they died before follow-up ended; biases eta upward once >= 0.5% of n"
+new = "identical (ported as-is); flagged by the CENSOR_TIE warning (FR-017)"
+source = "OPEN_TASKS [T-TESTER-DEFECTS] 7; tester reports/censor_tie"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_warnings.py::test_censor_tie_at_exactly_half_a_percent_fires_and_just_below_does_not"
+
+[[divergence]]
+id = "D-007"
+title = "Kaplan-Meier tie order: at a tied death and censoring the result depends on row order"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "kaplan_meier does not process deaths before censorings at a tie: t=(1,2,2,2,3) gives L = 1.75, 1.8333 or 1.8 by row order; L sets the grid and the corner trigger"
+new = "identical (ported as-is); cohort arrays keep the file's row order byte for byte"
+source = "SR_algorithms.pdf Appendix A B13"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d007_kaplan_meier_depends_on_row_order"
+
+[[divergence]]
+id = "D-008"
+title = "fpt_full: any scheme other than 'bdf2' silently runs backward Euler"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "use_bdf2 = (str(scheme).lower() == 'bdf2') (fp_likelihood.py:116, case-insensitive); 'cn', 'rk4', typos ... all run BE without error"
+new = "identical (ported as-is); not reachable through sraging's public API (the seed calls fpt_full with its own fixed arguments)"
+source = "SR_algorithms.pdf Appendix A B14"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d008_unknown_scheme_runs_backward_euler"
+
+[[divergence]]
+id = "D-009"
+title = "kappa_max = 300 box: raw-beta upper ends are set by the box, not the data"
+tag = "ESTIMATOR/CONVENTION"
+status = "ported-as-is"
+legacy = "box kappa in (1e-3, 300); raw-beta caps reached at kappa_max score coverage 1.000 for free on ratio-lo cohorts"
+new = "identical (ported as-is). Measured in spec 003 (FR-025, tests/acceptance/results/kmax_003.json): refitted with kappa_max = 3000, the raw-beta cap moved with the box (about 1 dex) on 10 of 10 study cohorts, and so did the upper ends of the 3 closed negative controls, whose lower ends stayed put. Every raw-beta upper end, an upper_bound claim or a closed one, therefore carries the box label in both calibrators (labels.py; Naveh, 2026-10-06): a closed raw beta reads as a lower bound, an upper bound as bounded on neither side. Before spec 003 a CLOSED beta claim carried no note (the README example: ITP C2016 F, beta closed up to 132, walk ended at box_edge). The r-bar and r-bar/eta caps did not move (at most 0.064 dex)"
+source = "SR_algorithms.pdf Appendix A R4; DECISIONS_2026-10-02 section 2.2"
+impact = "none: not fixed"
+downstream = ["spec 003: the open-above box-limited label per fit (FR-020) and the measured raw-beta note (FR-025)"]
+regression_test = "tests/unit/test_labels.py::test_every_raw_beta_upper_end_carries_the_measured_box_note"
+
+[[divergence]]
+id = "D-010"
+title = "L_KM (Kaplan-Meier mean) is load-bearing beyond the likelihood's numerical unit"
+tag = "ESTIMATOR/CONVENTION"
+status = "ported-as-is"
+legacy = "L_KM sets the grid, the corner trigger rho_beta < 1e-3 (estimator.py:L202), the seed box (rho <= 300 in L_KM units) and the box's dimensionless extent; it depends on censoring and on the unstable sort (D-007)"
+new = "identical (ported as-is); sraging reports no L-scaled quantity in spec 001 and dimensionless(L) takes L explicitly"
+source = "SR_algorithms.pdf Appendix A R3"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_verbatim.py::test_port_is_verbatim"
+
+[[divergence]]
+id = "D-011"
+title = "The dt-ceiling rule (delta/L/3) rests on one measurement and costs most of the full-tier CPU"
+tag = "ESTIMATOR/CONVENTION"
+status = "ported-as-is"
+legacy = "solver_grid: dt = min(auto dt, delta/L/3) when delta/L < auto dt; 72% of full-tier CPU (618 of 858 h); one measurement (1.711 nats on real_ecoli_s4)"
+new = "identical (ported as-is); re-measured in spec 002 ([T-DT-CEILING])"
+source = "SR_algorithms.pdf Appendix A R2"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_verbatim.py::test_port_is_verbatim"
+
+[[divergence]]
+id = "D-012"
+title = "n_profile = 11 is inert: the walk allows at least 24 nodes per side whatever n_profile is"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "estimator.fit: per_side = max(24, (int(n_profile) - 1) // 2 + 3), so any n_profile <= 43 gives 24"
+new = "identical (ported as-is); the setting is recorded but has no effect at its v0.3.3 value"
+source = "algorithms section docs/algorithms (T063 review, 2026-10-03); estimator.py fit()"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d012_n_profile_is_inert"
+
+[[divergence]]
+id = "D-013"
+title = "profile_ci's docstring states the one-sided verdicts the wrong way round"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "fp_gof.profile_ci docstring vs code: 'one-sided:<' is described inverted; the code (and the claim mapping one-sided:< -> upper_bound) is what runs"
+new = "identical (ported as-is, docstring included, by the verbatim rule); the claim mapping follows the code"
+source = "SR_algorithms.pdf Appendix A D10"
+impact = "none: documentation only"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d013_one_sided_mapping_follows_the_code"
+
+[[divergence]]
+id = "D-014"
+title = "Claim.n_components is never filled from profile_ci: a disconnected region is reported as its hull"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "the claim mapping does not pass profile_ci's n_components; every claim says 1"
+new = "identical (ported as-is)"
+source = "SR_algorithms.pdf Appendix A D11"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d014_n_components_is_always_one"
+
+[[divergence]]
+id = "D-015"
+title = "When every MLE start fails, the result is status 'ok' with four 'none' claims"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "estimator.fit returns theta = seed, ci = {}, diagnostics.error = 'all starts failed'; the adapter maps that to status ok and four none claims"
+new = "status stays ok (claims identity requires it) and diagnostics['error'] is kept, but the summary line reads RESULT FAILED, the result is never clean and the CLI exits 5 (FR-018, decision 2026-10-03). It occurs in 0 of the 1990 stored v0.3.3 records (review/measurements.json)"
+source = "SR_algorithms.pdf Appendix A D12"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d015_all_starts_failed_maps_to_four_none_claims"
+
+[[divergence]]
+id = "D-016"
+title = "Two chi-square thresholds: the polish uses 3.841459 (scipy), profile_ci uses 3.8415 (a table)"
+tag = "ESTIMATOR/CONVENTION"
+status = "ported-as-is"
+legacy = "estimator.fit: thr = chi2.ppf(0.95, 1); fp_gof._CHI2_1[0.95] = 3.8415; the walk measures deviance against the MLE, profile_ci against the profile's own maximum"
+new = "identical (ported as-is)"
+source = "SR_algorithms.pdf Appendix A D14"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d016_two_chi2_thresholds"
+
+[[divergence]]
+id = "D-017"
+title = "make_loglik normalises only a scalar sampling_dt; an array is used without shape/positivity checks"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "fp_jax.make_loglik copies only the scalar branch of fp_likelihood's sampling_dt normalisation"
+new = "identical (ported as-is); unreachable through sraging, which passes a scalar delta or None"
+source = "SR_algorithms.pdf Appendix A D13"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d017_sampling_dt_scalar_branch_only"
+
+[[divergence]]
+id = "D-018"
+title = "Theta-hat on an upper box edge: the fit ran up a ridge and its intervals sit too high"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "box eta, beta, epsilon <= 1e3, kappa <= kappa_max (estimator.box_for); when the likelihood keeps rising out of the box along the ridge of D-020, the MLE stops on the edge and the profiles are taken around that point; the verdict is identified and the label says two-sided 95% profile-likelihood interval. The true eta then lies BELOW the interval: the box does not touch the lower end, the whole interval sits up the ridge"
+new = "numbers identical (ported as-is); sraging adds the truth-free BOX_EDGE warning (FR-017b, theta-hat within 0.1 % of an upper edge). Scored on the 1990 stored v0.3.3 records it fires on at least 215 (records whose none claims hide theta-hat cannot be scored); a closed eta interval covers the true eta in 8 of 214 of them. A quiet BOX_EDGE does not make intervals right: on scorable quiet records closed eta covers in 66 of 248 (review/measurements.json, box_edge_rule_rtol_1e-3)"
+source = "found on the first README example (Drosophila, review/evidence/drosophila/, tools/example_ridge.py); sr-naveh review B1; related to D-009 (raw-beta bounds set by kappa_max)"
+impact = "in 147 stored records with beta on the 1e3 edge and a closed eta claim, the true eta lies below the interval in 143 and above it in 0; such intervals must not be used"
+downstream = ["spec 003: the 'open above: box-limited' claim shape"]
+regression_test = "tests/unit/test_asis_defects.py::test_d018_closed_interval_ends_at_the_beta_box_edge"
+
+[[divergence]]
+id = "D-020"
+title = "The SR likelihood has a Gompertz-like ridge: eta, beta and epsilon grow together with eta/epsilon nearly fixed"
+tag = "MODEL"
+status = "ported-as-is"
+legacy = "on cohorts whose hazard is close to Gompertz the likelihood barely changes along a direction in which eta, beta and epsilon grow together; on the Drosophila cohort it changes by 0.42 nats from beta = 30 to beta = 30000 while eta/epsilon stays within 0.074-0.084 (review/evidence/drosophila/*.ridge.json)"
+new = "identical: a property of the model, not of the code; its estimator consequence is D-018"
+source = "sr-naveh review of spec 001 (N7: D-018 split into its model and estimator halves)"
+impact = "eta, beta and epsilon are not separately identified on such cohorts; eta/epsilon is closer to what the data fix, but it is not reported (spec 003), and on the benchmark's external-hazard arm it misses too"
+downstream = ["spec 003: reported as the combination claim eta_over_eps (Naveh, 2026-10-05; constitution X amended)"]
+regression_test = "tests/unit/test_asis_defects.py::test_d020_ridge_keeps_eta_over_epsilon"
+
+[[divergence]]
+id = "D-021"
+title = "The log-likelihood moves by about 1e-6 nats under a one-ulp change of log(theta)"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "the BDF2 march and the interpolation of S make loglik(z) noisy at the ulp scale: a one-ulp move of one coordinate of z = log(theta) changes it by 60-200 times what the gradient predicts (small test cohort), and by up to 1.08e-6 nats at the Drosophila fit's theta-hat (review/measurements.json, ulp_noise); L-BFGS-B line searches can stall on this noise"
+new = "identical (ported as-is): the noise is part of the reference's numbers"
+source = "sr-naveh review of spec 001 (N9: the ridge points that stopped with ABNORMAL line searches)"
+impact = "optimiser stops and profile edges are uncertain at this scale; it is far below the 1.92-nat interval threshold"
+downstream = ["spec 002: the new engine's noise floor is measured against this"]
+regression_test = "tests/unit/test_asis_defects.py::test_d021_loglik_moves_at_the_ulp_scale"
+
+[[divergence]]
+id = "D-019"
+title = "Results depend on the host: v0.3.3 fits of ill-conditioned cohorts differ between machines and software environments"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "the stored reference records of the 10 named panel cohorts (computed on WEXAC, Linux) differ from the oracle run on the parity Mac on 10/10, by up to 3.24 dex in a reported value; claim shapes flip on Sweden_F_1910 and Denmark_F_1900 (specs/001-reference-fit/review/measurements.json)"
+new = "identical behaviour; bit-identity is claimed only on the parity host in the pinned environment (FR-012); the quick-tier records, computed on the Mac, match byte for byte"
+source = "sr-naveh review of spec 001, 2026-10-03 (specs/001-reference-fit/review/naveh.md), measured by tools/review_measurements.py"
+impact = "a v0.3.3 result is a function of (cohort, host, environment); the comparison cannot separate the machine from the software stack; cross-host comparisons of basin-prone cohorts are not meaningful (the 6 other named cohorts differ by at most 0.146 dex)"
+downstream = ["spec 002: decide whether host-robustness is a gate for the default calibrator"]
+regression_test = "tests/unit/test_asis_defects.py::test_d019_named_cohorts_differ_between_hosts"
+
+[[divergence]]
+id = "D-101"
+title = "CSV rows the reference reader skips or recodes are refused"
+tag = "CODE"
+status = "refused-input"
+legacy = "SRK/fit_cohort.read_csv silently drops short, non-numeric, non-finite and age <= 0 rows (age-0 deaths vanish) and counts any nonzero event as a death"
+new = "the file is refused with every offending row and its reason (FR-003); valid files load byte-identically. Exception: a death at age 0 with delta is kept (D-105)"
+source = "spec 001 FR-003 (clarified 2026-10-03); research R9"
+impact = "none on valid input (cohort-array parity, SC-002)"
+downstream = []
+regression_test = "tests/unit/test_csv_reader.py::test_every_offending_row_is_listed_in_one_error"
+
+[[divergence]]
+id = "D-102"
+title = "The recording resolution delta must be stated (no silent 'continuous')"
+tag = "CODE"
+status = "refused-input"
+legacy = "tools/fit_cohort_jax.py: an omitted --delta silently means exact (continuous) times"
+new = "delta is required, or continuous times must be stated explicitly (FR-002)"
+source = "spec 001 FR-002 (clarified 2026-10-03)"
+impact = "none when delta is given"
+downstream = []
+regression_test = "tests/unit/test_cohort_core.py::test_delta_rule_explains_why"
+
+[[divergence]]
+id = "D-103"
+title = "Environment overrides are not read; their v0.3.3 values are explicit settings"
+tag = "CODE"
+status = "diverged"
+legacy = "SRK_DT_CEILING (auto_grid), SRK_KAPPA_MAX (methods), SRK_CACHE_READONLY and PJRT_NPROC (setdefault) are read from the environment"
+new = "none are read; kappa_max, the dt-ceiling rule and PJRT_NPROC = 1 are explicit calibrator/runtime settings (FR-012)"
+source = "constitution VIII; research R2, R3"
+impact = "none with the overrides unset (the v0.3.3 reference ran with them unset); value and gradient bytes identical with them set (test)"
+downstream = []
+regression_test = "tests/unit/test_env_ignored.py::test_overrides_do_not_change_bytes"
+
+[[divergence]]
+id = "D-104"
+title = "Windowed observations reach the calibrator, which fits the window or refuses it by name (revised by spec 006)"
+tag = "CODE"
+status = "refused-input"
+legacy = "the reference adapter passes only ages, events and delta to estimator.fit: an Observation's window is silently ignored"
+new = "spec 001-005: cohort_from_observation refused a window (UnsupportedOptionError). Spec 006 (FR-013; research R9): the loader passes the window into the Cohort; profile_jax2_w and profile_jax2_h 1.0.1 fit it by the tester's apply_window (verbatim, idempotent on the tester's already-windowed observation) before the frozen snap; profile_v033, profile_jax2 and the 1.0.0 names refuse it by name, and the adapter's methods return error:WindowUnsupported without a fit; a window off the delta grid is refused by the loader"
+source = "constitution VIII; research R10; spec 006 research R9"
+impact = "none on the 40 panel cohorts (no window); the window arm is scored by spec 006's gate"
+downstream = []
+regression_test = "tests/unit/test_adapter_006.py::test_a_method_that_does_not_fit_windows_returns_window_unsupported_without_fitting"
+
+[[divergence]]
+id = "D-105"
+title = "A death at age 0 with delta is kept and scored over the first interval [0, delta)"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "SRK/fit_cohort.read_csv drops every age <= 0 row silently, so deaths found at the first check (age 0 once moved to the start of their interval) vanish"
+new = "with delta, a death at age 0 is a death found at the first check and is scored over [0, delta) by the unchanged likelihood (S(0) - S(delta)); age 0 stays refused for continuous times and for censored rows; negative ages are refused (decision 2026-10-03)"
+source = "sr-labmate review Q1 (review/labmate.md); Naveh's decision 2026-10-03 (spec Clarifications)"
+impact = "none on cohorts without age-0 deaths (all parity checks). Side by side on a cohort with 5 age-0 deaths, the port's claims and loglik equal the oracle estimator's on the same arrays (review/evidence/age0_parity.json, tools/age0_parity.py). The term is finite (-7.98) only where the first interval carries real risk: at the ITP example's theta-hat an added age-0 death scores -700 or -30.5 under v0.3.3's arithmetic depending on one ulp (D-004), -36.8 with the corrected arithmetic on the fit's grid and about -114 on a refined grid (spec 002 FLOORED_DEATHS lists it as impossible), so infant deaths in a life table dominate a fit; the README says so. Fitted (spec 002 floors phase, results/floors_002.json): that one added death moves the ITP fit's theta-hat (eta 3.6e-5 -> 6.5e-6, epsilon 2.4e-3 -> 2.2e-4) and makes BASIN_GAIN and BASIN_OUTSIDE fire; spec 002 adds the AGE0_DEATHS check (FR-031)"
+downstream = []
+regression_test = "tests/unit/test_cohort_core.py::test_a_death_at_age_zero_with_delta_is_the_first_interval"
+
+[[divergence]]
+id = "D-106"
+title = "Exact-time deaths: the density comes from the absorbed mass F where S's difference is round-off"
+tag = "CODE"
+status = "diverged"
+legacy = "p = -gradient(S) on the grid: where S ~ 1 the central difference is round-off, so the value of an exact-time cohort spreads by 1e4-1e5 nats under +-3-ulp moves of theta (jax2 rc2 I4, measured on hazard-k0.01-p00-c0-s0 read as exact times) (numerics 'v033', unchanged)"
+new = "numerics 'v1': the same stencil applied to F at every grid node where F's larger operand is below S's (where S's is kept the density is v033's bit for bit); refused with a graded mesh"
+source = "jax2 rc2 I4 (fp_jax.py:669-692 at 0ab67c0, read-only reference); OPEN_TASKS [T-JAX-BASIN] (rc2)"
+downstream = ["spec 006: impact on theta-hat and claim shapes (constitution VII) is measured there (moved from spec 003 by Naveh's decision of 2026-10-05: no spec 003 calibrator uses the engine's numerics)"]
+regression_test = "tests/unit/engine/test_F_route.py::test_exact_time_density_from_F"
+
+[divergence.condition]
+applies_to = ["v1"]
+terms = "death & exact & use_F"
+value_bound = "mass_stiffness"
+gradient_bound = "uncovered terms: the weighted gradient agrees to 1e-10 relative (guard.GRAD_RTOL); covered terms both numerics resolve (|dl| <= 1e-8): to 1e-6 relative (guard.GRAD_COVERED_RTOL); rescued terms: v1's weighted gradient agrees with central differences of v1 (guard.CD_STEPS)"
+c_stiff = 1.8996
+floor_ulps = 348.2
+c_source = "the same constants as D-004 (mass = density x step); tests/acceptance/results/guard_pilot_002.json: c = 4 x 0.4749 (the worst |dm|/(u K) at the stiff points, Denmark_F_1900 hetro truth at N = 450, dtau = 1e-3); floor = 4 x 87.1 u (the worst excess over 0.4749 u K, pure-k0.01-p02-c0-s1 kmax). Frozen from the acceptance run at 030f5bb (clean tree; 11 stiff and 39 ordinary points), 2026-10-04"
+
+[divergence.impact]
+panel = "tests/acceptance/panel_002_roundoff.toml"
+strata = ["the named exact-time cohort"]
+dloglik_total = { per_cohort = "results/mpref_002.json#dloglik_exact" }
+dtheta_dex = "not measured in spec 002 (no fits); spec 006"
+claim_shape_changes = "not measured in spec 002; spec 006"
+
+[[divergence]]
+id = "D-107"
+title = "Window close: a record that reaches past t_hi is censored at t_hi"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "SRK _windowed_ll: a death recorded at t <= t_hi keeps its whole interval [t, t+delta), although part of it lies after the window closes (a D-006-type tie at the window close); records with t > t_hi are censored at t_hi (numerics 'v033', unchanged)"
+new = "numerics 'v1': a death with t <= t_hi < t + delta, like any record with t > t_hi, scores log S_obs(t_hi): it is known alive at t_hi and the window says nothing after it"
+source = "sr-naveh review of the spec 002 seed, finding 5; SR_algorithms.pdf §3.3"
+downstream = ["spec 006: impact on theta-hat and claim shapes (constitution VII) is measured there (moved from spec 003 by Naveh's decision of 2026-10-05: no spec 003 calibrator uses the engine's numerics)"]
+regression_test = "tests/unit/engine/test_window_v1.py::test_window_close_is_censored_under_v1"
+
+[divergence.condition]
+applies_to = ["v1"]
+terms = "window_close"
+value_bound = "any"
+gradient_bound = "uncovered terms: the weighted gradient agrees to 1e-10 relative (guard.GRAD_RTOL); covered terms both numerics resolve (|dl| <= 1e-8): to 1e-6 relative (guard.GRAD_COVERED_RTOL); rescued terms: v1's weighted gradient agrees with central differences of v1 (guard.CD_STEPS)"
+
+[divergence.impact]
+panel = "tests/unit/engine/test_window_v1.py"
+strata = ["windowed cohorts whose t_hi lies on a recording-grid age with deaths recorded there"]
+measured_here = "only the deaths recorded in the bin [t_hi, t_hi + delta) change; their count is reported per cohort. Score test (results/score_window_002.json, 37b56bd): with t_hi at the median lifetime, v1's rule is unbiased against the simulator (|z| <= 1.06, R = 40) while SRK's window close (v033) is detected at |z| up to 11.1. results/t1_002.json reports each window cohort's D-107 rows and their summed change"
+dtheta_dex = "not measured in spec 002 (no fits); spec 006"
+claim_shape_changes = "not measured in spec 002; spec 006"
+
+[[divergence]]
+id = "D-108"
+title = "S(t_lo) clipped at 1e-12 when conditioning on the window's start, in both numerics (retired by spec 006)"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "SRK _windowed_ll conditions every at-risk row on log(min(max(S_lo, 1e-12), 1)) (numerics 'v033', unchanged); v0.3.3 and jax2 clip at 1e-12 too"
+new = "spec 002-005: numerics 'v1' conditioned on the common log+ floor only (clip at e^-700, floor -700), which differed only where S_obs(t_lo) < 1e-12 and there made the windowed value a spurious maximum (+18.45 nats measured, spec 006 brief B-S fact 3; 0.0 against -34.2 at a sensible theta in tests/unit/engine/test_engine_clip_006.py). Spec 006 (Naveh's Db, 2026-11-10; FR-015): 'v1' clips at 1e-12 as SRK, v0.3.3 and jax2 do, and reports when the clip binds (aux S_lo and lo_clipped; Evaluator.window_report; the warning ENGINE_S_LO_CLIPPED)"
+source = "SR_algorithms.pdf §3.3 (eq. s3-window); spec 006 research R8"
+impact = "none since spec 006: both numerics give the same log S_lo at every parameter point (above 1e-12 they always did); no stored result used the engine's windowed v1 likelihood"
+downstream = []
+regression_test = "tests/unit/engine/test_window_v1.py::test_the_lo_floor_is_srks_clip_in_both_numerics"
+
+[[divergence]]
+id = "D-109"
+title = "An external hazard given as NaN, negative or infinite is refused"
+tag = "CODE"
+status = "refused-input"
+legacy = "SRK fp_loglik treats any non-finite ExtH (NaN, -inf) as 'no hazard'; fp_model maps None to inf"
+new = "SRParams.h_ext and every fixed or segment hazard rate must be finite and >= 0; anything else raises, naming it"
+source = "SR_algorithms.pdf §3.1 ('off-switch spelling'); spec 002 research R7"
+impact = "none: refused input (no value changes)"
+downstream = []
+regression_test = "tests/unit/engine/test_refusals.py::test_a_nan_negative_or_infinite_hazard_is_refused"
+
+[[divergence]]
+id = "D-110"
+title = "A segment window that runs past the last observed age closes where it says"
+tag = "CODE"
+status = "diverged"
+legacy = "SRK fp_piecewise build_segments clips edges to [0, t_end] and extends the last span to infinity: a window (100, 10000) at t_end = 214 equals (100, 214), and a window starting at or after t_end has no effect (strict xfail in SRK's tests: mean 229.1 vs 191.2)"
+new = "the engine's spans are the windows as given; a window past the last age keeps acting until its stop (segments, both numerics)"
+source = "SR_algorithms.pdf §6.1; SRK tests/test_fp_piecewise.py TestKnownDefectsNotYetFixed"
+downstream = ["spec 007: interventions"]
+regression_test = "tests/unit/engine/test_segments.py::test_a_window_past_the_last_age_closes_where_it_says"
+
+[divergence.impact]
+panel = "tests/unit/engine/test_segments.py"
+strata = ["segments whose window runs past the last observed age"]
+measured_here = "the survival after the last age differs (max |dS| > 1e-3 in the test configuration); the likelihood of data that end before the window's stop is unchanged"
+dtheta_dex = "not measured (no fits); spec 007"
+claim_shape_changes = "not measured; spec 007"
+
+[[divergence]]
+id = "D-111"
+title = "Two segments changing one parameter at one age are refused"
+tag = "CODE"
+status = "refused-input"
+legacy = "SRK fp_piecewise multiplies two interventions on one parameter inside their overlap, while the simulator (intervention_sim.to_getisr_kwargs) rejects them"
+new = "AgeSegments refuses them, naming both segments and the overlap"
+source = "SR_algorithms.pdf §6.1; SRK tests/test_fp_piecewise.py (strict xfail)"
+impact = "none: refused input (no value changes)"
+downstream = []
+regression_test = "tests/unit/engine/test_segments.py::test_two_segments_on_one_parameter_at_one_age_are_refused"
+
+[[divergence]]
+id = "D-112"
+title = "Options SRK's fp_piecewise dropped are implemented or refused, never dropped"
+tag = "CODE"
+status = "refused-input"
+legacy = "SRK fp_piecewise forwards only N, dt, tau_max, Gtol, scheme, nstart to its solver: time_range, tail_extrap and absorb_flux passed through **solver_kw are discarded without an error"
+new = "the engine implements the fit window (with segments too) and refuses unknown options (tail_extrap, absorb_flux) with a TypeError naming them"
+source = "SR_algorithms.pdf §6.4; constitution VIII incident"
+impact = "none: refused input (no value changes)"
+downstream = []
+regression_test = "tests/unit/engine/test_refusals.py::test_unknown_keywords_are_a_type_error"
+
+[[divergence]]
+id = "D-113"
+title = "Segment edges are mesh nodes"
+tag = "CODE"
+status = "diverged"
+legacy = "SRK fp_piecewise switches a segment's parameters at the grid node below its edge (the step whose right end passes the edge; ties to the earlier segment) while the production clock runs from the exact edge: parameters and clock can be a step out of phase, a segment shorter than a step is skipped, and the result oscillates with where the edge falls in a step"
+new = "the engine makes every segment edge a node: an edge on a node changes nothing (binary-exact edges are like for like with fp_piecewise), otherwise the nearest node moves onto the edge and the step that starts there is a BE restart; two edges within one step are refused"
+source = "sr-naveh review of the spec 002 seed, finding 6; SR_algorithms.pdf §6.2"
+downstream = ["spec 007: interventions"]
+regression_test = "tests/parity/test_engine_t1_segments.py::test_off_grid_edges_are_d113_and_measured"
+
+[divergence.impact]
+panel = "tests/parity/test_engine_t1_segments.py"
+strata = ["segments whose edges are not exact grid nodes"]
+measured_here = "beta x 0.4 on (60, 120), n = 500, N = 300: at dt = 2^-8, 2^-10, 2^-12 of L the engine gives -3051.338, -3051.053, -3051.032 (converging) and fp_piecewise -3051.869, -3050.506, -3051.067 (oscillating with the edge's position in the step); on binary-exact edges the two agree to 2.5e-10 (24 configurations x 2 schemes)"
+dtheta_dex = "not measured (no fits); spec 007"
+claim_shape_changes = "not measured; spec 007"
+
+[[divergence]]
+id = "D-114"
+title = "A threshold lowered below two damage cells is refused"
+tag = "CODE"
+status = "refused-input"
+legacy = "SRK fp_piecewise serves a threshold below 2/N of x_ref silently at two cells and clamps fractions above 1"
+new = "the engine refuses it, naming the span and the cell width (refine N or raise the threshold); fractions above 1 cannot occur (x_ref is the largest threshold)"
+source = "SR_algorithms.pdf §6.2 (test_a_threshold_below_two_cells_is_silently_floored)"
+impact = "none: refused input (no value changes)"
+downstream = []
+regression_test = "tests/unit/engine/test_segments.py::test_a_threshold_below_two_cells_is_refused"
+
+[[divergence]]
+id = "D-115"
+title = "With an external hazard, a death beyond the march scores a hazard-only mass"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "SRK fp_loglik: past the early stop S is held at S_k (< Gtol), so an interval death there scores S_k (e^{-ht} - e^{-h(t+delta)}) rather than the floor; S_k jumps whenever the discrete stop index moves with theta (a sawtooth in theta; jax2 B5 measured an FD error of 5.8e-5 vs 5.7e-6 without the hazard)"
+new = "identical in both numerics (ported as-is); FLOORED_DEATHS calls such deaths 'horizon' when they score the floor"
+source = "jax2 fp_jax.py:801-810 (B5) at 0ab67c0; sr-naveh review of the spec 002 seed"
+impact = "none: not fixed"
+downstream = ["spec 006: hazard fitting decides whether to floor these (jax2 B5)"]
+regression_test = "tests/unit/engine/test_asis_engine.py::test_d115_a_death_beyond_the_march_keeps_a_hazard_only_mass"
+
+[[divergence]]
+id = "D-116"
+title = "Heterogeneity nodes with a non-positive parameter value are dropped, so the likelihood jumps in v"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "SRK _gh_nodes: P_k = P (1 + v z_k) with probabilists' Gauss-Hermite nodes; nodes with P_k <= 0 are dropped and the weights renormalised, i.e. a Normal truncated at Z > -1/v, but only through whichever nodes fall below -1/v (M = 11: the z = -5.19 node drops out at v = 0.193, next to the production 0.2)"
+new = "identical in both numerics (ported as-is, needed for T1 with fp_loglik_het_physical); the count is reported (Evaluator.nodes_dropped) and no gradient in v is given where a node is dropped. The library's shared heterogeneity definition is spec 004's (B21)"
+source = "SR_algorithms.pdf §5.1; sr-naveh review of the spec 002 seed, finding 7; re-tagged MODEL -> CODE at the sr-manager gate (specs/002-fp-engine/review/sr-manager_T064.md, condition 7): the jump comes from which quadrature nodes fall below -1/v, an artefact of the old code's quadrature, not of the SR model. The model half is D-117"
+impact = "none: not fixed"
+downstream = ["spec 004: the shared heterogeneity definition (B21)", "spec 006: fitting v (T-HETVAR)", "superseded as the default by D-401"]
+regression_test = "tests/unit/engine/test_mixture.py::test_dropped_nodes_are_labelled_and_the_v_gradient_refused_there"
+
+[[divergence]]
+id = "D-117"
+title = "The heterogeneity P(1 + vZ) gives non-positive parameter values positive probability"
+tag = "MODEL"
+status = "ported-as-is"
+legacy = "SRK's heterogeneity ('normal_frac_sd'): the parameter is P(1 + v Z) with Z standard Normal, so P(param <= 0) = Phi(-1/v) > 0 for every v > 0 (1.4e-3 at v = 1/3, 3e-7 at v = 0.2); the model does not say what an individual with a non-positive eta, beta, epsilon, kappa or xc is"
+new = "identical in both numerics (ported as-is: needed for T1 with fp_loglik_het_physical); 'normal_frac_sd' is the only definition in spec 002 and its name says what it is. How non-positive values are treated (truncation, a log-normal) is the shared heterogeneity definition of spec 004 (B21)"
+source = "sr-manager gate of spec 002 (specs/002-fp-engine/review/sr-manager_T064.md, condition 7): the model half of D-116"
+impact = "none: not fixed"
+downstream = ["spec 004: the shared heterogeneity definition (B21)", "superseded as the default by D-401"]
+regression_test = "tests/unit/engine/test_mixture.py::test_d117_the_definition_puts_mass_on_non_positive_values"
+
+# ---- spec 003: the jax2 1.0.0 port (compat.jax2) against v0.3.3 and against the spec 002 engine --------------
+
+[[divergence]]
+id = "D-201"
+title = "jax2 early-death masses come from the absorbed mass F (fix B), where v0.3.3 subtracts survivals"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: an interval death's mass is clip(S(t) - S(t+delta), 0), floored at -700 after the log; where S ~ 1 the two survivals agree to 14-16 digits, so head deaths score -700 or about -31..-37 nats depending only on rounding (D-004, numerics 'v033')"
+new = "profile_jax2 and profile_jax2_h 1.0.0 (the verbatim port): the march carries F, the absorbed mass, from the scheme's own mass balance (_F_next: (a F + b Fm + dt bc q[-1])/alpha + h sum(min(q,0))), and _death_mass takes m_F = F(t+delta) - F(t) wherever F(t+delta) < S(t), else m_S = S(t) - S(t+delta); same formula as sraging D-004 without a hazard. Applies on the uniform and the graded mesh (_F_next_g); not selected by any switch"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/fp_jax.py:221-228 (_F_next), 494-499 (_F_next_g), 657-666 (_death_mass); module docstring fp_jax.py:5-9; D-004; tester reports/basin/likelihood_fix/v2 (not in this clone)"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d201_death_mass_from_absorbed_mass"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: bytes (value and value+gradient bytes of the port against the jax2 oracle on panel_003.toml [bytes]). No phase computes the jax2-vs-v0.3.3 value at those points (corrected after the sr-manager gate, 2026-10-05: it had said the bytes run reads it)"
+reference = "D-004 impact, Sweden_F_1910 at its stored theta-hat: v033 - exact(mpmath 60 digits) = +83.25 nats, F route - exact = -3.1e-9 (tests/reference/data/t7_mpref.json); the arithmetic is the same as jax2's with no hazard"
+dtheta_dex = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, by claim point (measured 2026-10-05 from stored records, observation digests equal): on 600 WEXAC cohorts (mle_profile_jax2) median |shift| eta 0.007, beta 0.12, epsilon 0.009 dex, kappa 0.19 dex (109 with a kappa point); 90th percentile 2.6, 3.9, 2.9, 2.2 dex (a tail: censor, window, het and human hazard cohorts); the pure arm (285) about 0.00 dex for eta and epsilon. On 16 Mac cohorts: median 0.001, 0.013, 0.002 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+claim_shape_changes = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, on 600 WEXAC cohorts: shape changes eta 59, beta 123, epsilon 49, kappa 64, in both directions (eta closed <-> lower_bound 30/26; beta lower_bound -> closed 27, lower_bound -> upper_bound 22, closed -> upper_bound 21, none -> upper_bound 20; kappa bounds -> none 29). On 16 Mac cohorts: 2 beta changes, none for eta, epsilon and kappa (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-202"
+title = "jax2 exact-time densities come from the absorbed mass F (EXACT_F), where v0.3.3 differences S"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: exact-time density p = -gradient(S) on the grid; where S ~ 1 the central difference is round-off, so the value of an exact-time cohort spreads by 1e4-1e5 nats under +-3-ulp moves of theta (hazard-free; tester I4 on hazard-k0.01-p00-c0-s0 read as exact times; D-106, numerics 'v033')"
+new = "profile_jax2 and profile_jax2_h with EXACT_F on (the shipped setting): _density_F applies the same stencil to Fc = clip(cummax(F_raw), 0, 1) at every grid node where F's larger operand (Fc[min(i+1,k)]) is below S's (S[max(i-1,0)]); elsewhere the density is the S stencil's, bit for bit. Same formula as sraging D-106. Uniform grid only: make_loglik refuses it with a graded mesh, which is never built for exact-time data (no sampling_dt)"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/fp_jax.py:669-692 (_density_F), 774-777 (the refusal), 813-816 and 875-876 (use in hw_parts and the plain assembly); estimator.py:1559-1560 (fit passes exact_from_F); __init__.py:629 (EXACT_F = True); R:I4/I4_REPORT.txt section (c); R:RATIFICATION.txt R-4 (EXACT_F on, conditional on A2); D-106"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d202_exact_time_density_from_F"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: none. No library cohort is exact-time (estimator.py docstring on the graded mesh, O:estimator.py:95-106), so no panel entry exercises EXACT_F; the regression test does (tests/unit/test_asis_defects.py)"
+tester = "I4_REPORT (c), hazard-k0.01-p00-c0-s0 with exact ages, 60 points: value spread under +-3-ulp changes of z 1e4-1e5 nats hazard-free (v0.3.3's own exact path) and 2.1e-5 with the hazard, against <= 7.4e-10 with F on both paths; forward- vs reverse-mode AD 0.46 -> 7.4e-14 (hazard-free) and 1.56e-7 -> 4.5e-11 (hazard); terms with S < 1 - 1e-3 unchanged to 1.2e-12 nats"
+dtheta_dex = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, by claim point (measured 2026-10-05 from stored records, observation digests equal): on 600 WEXAC cohorts (mle_profile_jax2) median |shift| eta 0.007, beta 0.12, epsilon 0.009 dex, kappa 0.19 dex (109 with a kappa point); 90th percentile 2.6, 3.9, 2.9, 2.2 dex (a tail: censor, window, het and human hazard cohorts); the pure arm (285) about 0.00 dex for eta and epsilon. On 16 Mac cohorts: median 0.001, 0.013, 0.002 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+claim_shape_changes = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, on 600 WEXAC cohorts: shape changes eta 59, beta 123, epsilon 49, kappa 64, in both directions (eta closed <-> lower_bound 30/26; beta lower_bound -> closed 27, lower_bound -> upper_bound 22, closed -> upper_bound 21, none -> upper_bound 20; kappa bounds -> none 29). On 16 Mac cohorts: 2 beta changes, none for eta, epsilon and kappa (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-203"
+title = "jax2 re-fits the MLE when a profile node beats it by more than half the chi-square threshold, and re-walks every profile"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: one 4-D MLE (two starts), then the four profiles around it; a profile node found above the MLE only recentres that profile's grid (grid.recentred, gain_nats) and the reported theta-hat stays; an MLE that stopped short (D-002, D-017) stays reported"
+new = "profile_jax2 and profile_jax2_h 1.0.0: after the profile stage, while some profile's recentring gain exceeds thr/2 (1.92 nats) and fewer than _REFIT_MAX = 3 re-fits have run, _basin_refit runs the MLE stage's own L-BFGS-B from the best node of every profile that beats the MLE by more than thr/2 and from an eta ladder (up to _LADDER_RUNGS = 3 rungs, 1 dex apart, stopping at the first rung that does not climb); the best start becomes theta-hat (accepted only if it gains more than thr/2), the seed is replaced by it (_REFIT_RESEED), and all four profiles are redone with _library_starts (_LIB_K = 3 nearest library points within 2 x _DEV_STOP of the new MLE) added to the edge polish. When the trigger never fires nothing runs and the fit is the stock fit. Records basin_fix (rounds, stock, stop) in diagnostics"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:1678-1721 (fit loop), 933-1021 (_basin_refit), 755-781 (_library_starts), 179-183 (_REFIT_MAX, _REFIT_RESEED, _LADDER_DEX, _LADDER_RUNGS, _LIB_K), module docstring items 7-8 (estimator.py:65-74); R:I1-selfconsistency/I1_REPORT.txt section 3 (stale-MLE log); R:I4/I4_REPORT.txt (d); R:RATIFICATION.txt"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d203_basin_refit_loop_constants_and_library_starts"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: fits (quick tier plus the R5 mechanism list: records where basin_fix.fired, port against the oracle by bytes)"
+tester = "docstring of _basin_refit: on 49 of the 52 truth-witnessed MLE failures a profile node reaches >= 90% of the truth's gap; I1_REPORT section 3 (STALE MLE LOG): frozen v0.3.3 records have 23 major stale MLEs (gap 2.1 to 44,390 nats) and 18 minor, rc1 cand 0 major and 73 of 189 minor, 'the re-fit removes every major case in rc1'; I4_REPORT (d): realfull-real-Denmark_M_1900_homo-c1-s0 recovered a 16-nat MLE-stage shortfall (final ll 0.10 nats above the from-truth optimum); cost: the fit redoes all four profiles per accepted round (up to 3)"
+dtheta_dex = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, by claim point (measured 2026-10-05 from stored records, observation digests equal): on 600 WEXAC cohorts (mle_profile_jax2) median |shift| eta 0.007, beta 0.12, epsilon 0.009 dex, kappa 0.19 dex (109 with a kappa point); 90th percentile 2.6, 3.9, 2.9, 2.2 dex (a tail: censor, window, het and human hazard cohorts); the pure arm (285) about 0.00 dex for eta and epsilon. On 16 Mac cohorts: median 0.001, 0.013, 0.002 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py); the tester's gaps up to 44,390 nats on FIRING_OTHER/HAZ_HUMAN are re-fits; the shift above includes them"
+claim_shape_changes = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, on 600 WEXAC cohorts: shape changes eta 59, beta 123, epsilon 49, kappa 64, in both directions (eta closed <-> lower_bound 30/26; beta lower_bound -> closed 27, lower_bound -> upper_bound 22, closed -> upper_bound 21, none -> upper_bound 20; kappa bounds -> none 29). On 16 Mac cohorts: 2 beta changes, none for eta, epsilon and kappa (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-204"
+title = "Nelder-Mead fallback on a zero gradient: identical in jax2 and v0.3.3"
+tag = "CODE"
+status = "ported-as-is"
+legacy = "v0.3.3 _lbfgs: a start whose value is non-finite or whose gradient is exactly zero (every term on the -700 floor) tries L-BFGS-B from the seed start z_alt if it is resolved, then runs Nelder-Mead on the same JAX function from z0 (unless no_nm), counting n_fallback and n_fallback_improved; measured v0.2: the fallback rescued 30/53 and 21/23 plateau nodes"
+new = "identical (ported as-is): the plateau test, the z_alt start and the Nelder-Mead call are the same statements in jax2's _lbfgs; only the swallowed-exception sites differ (D-210)"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:355-400 (_lbfgs), 108-115 (docstring SAFETY NET); src/sraging/compat/v033/estimator.py:145-188 (checked: the code from 'if no_nm:' to the end of the function is textually identical)"
+impact = "none: identical in both"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d204_nelder_mead_fallback_identical_to_v033"
+
+[[divergence]]
+id = "D-205"
+title = "jax2 relabels end-of-study censor-tie deaths as censored; v0.3.3 only warns"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: deaths recorded at the censoring age are scored over [t, t+delta) although they died before follow-up ended; this biases eta upward once they are >= 0.5% of n (D-006); sraging warns (CENSOR_TIE) and does not correct"
+new = "profile_jax2 and profile_jax2_h with RELABEL on (the shipped setting): observation_model.censor_tie_relabel flips events 1 -> 0 (ages never move) for every death recorded at age x <= tc with tc - x < delta (1 - 1e-9), but ONLY when delta is set, there is at least one censored record, ALL censored records share one age tc, and tc is the maximum recorded age. Any other cohort (censoring at several ages, a record beyond tc, no delta, no tied death) is left unchanged and the record says why. Runs after the window snap. The relabelled deaths enter the likelihood as 'alive at b'"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/observation_model.py:54-111 (censor_tie_relabel), 1-36 (module docstring, step c); __init__.py:621 (RELABEL = True in _MleProfileJax2Base); R:I1-selfconsistency/I1_REPORT.txt section 3 (CENSOR_TIE paragraph); R:I1-selfconsistency/I1_REPORT.txt section 3 ('D2, which Naveh has decided: relabel ON'); D-006"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d205_censor_tie_relabel_trigger"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: fits (realfull-real-Denmark_M_1900_homo-c1-s1, where the relabel fires in the port and in the oracle, compared by bytes). Relabel on against off is run by no phase; the tester's I1/I2 numbers stand (corrected after the sr-manager gate, 2026-10-05)"
+tester = "I1_REPORT section 3: censor-k0.01-p05-c0-s0, cand (relabel OFF) eta [1.994e-4, 2.97e-4] misses the truth 3.701e-4 ('that is the tie bias, not a cap'); with the relabel eta closed coverage on CENSOR_TIE goes 16/18 -> 17/18 (after widening); I2_REPORT item 3: censor-real-Sweden_F_1910_homo-c0-s0 best-node gain 3.0 nats with relabel OFF vs 0.06 with it ON"
+dtheta_dex = "removes the upward eta bias of D-006 on the cohorts the trigger covers (>= 0.5% tied deaths); on every other cohort 0 (data unchanged)"
+claim_shape_changes = "none by construction where the trigger does not fire; elsewhere not separable per mechanism: the censor arm (272 WEXAC cohorts) shows 41 eta, 90 beta, 28 epsilon and 33 kappa shape changes and a beta median |shift| of 0.88 dex, jax2 1.0.0 against v0.3.3 with every mechanism on (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py, summary wexac/jax2 by_arm censor)"
+
+[[divergence]]
+id = "D-206"
+title = "jax2 widens each claim to contain every evaluated point within thr/2 of the best log-likelihood (self-consistency)"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: claims are the profile intervals as the walk found them; a claim can exclude a point the fit itself evaluated within 1.92 nats of the maximum (a false cap), mostly from above on the human ridge where a kappa walk carries beta to the raw 1e3 box (D-018)"
+new = "profile_jax2 and profile_jax2_h with SELF_CONSISTENT on (the shipped setting): _sc_archive reads every point the objective evaluated from the two memo caches (no likelihood call) and sc_extents returns, per parameter, [qmin, qmax] over the in-box points with l >= ll_best - thr/2 (ll_best = the maximum over the MLE and every evaluated point); sc_widen_claim takes the union of each claim with [qmin, qmax]: a stated edge with a point beyond it moves out to that point, a moved edge landing within SC_EDGE_DEX = 0.01 dex of the box edge OPENS that side (closed -> lower_bound / upper_bound -> none when both open; a one-sided claim -> none), the point estimate never moves. The profile claims are kept as claims_profile; the stale-MLE gap is logged (none <= 0.01 < minor <= thr/2 < major), not acted on"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:1425-1444 (_sc_archive), 1447-1504 (sc_extents), 1741-1744 (fit adds diagnostics.self_consistency); __init__.py:166 (SC_EDGE_DEX = 0.01), 622 (SELF_CONSISTENT = True), 440-495 (sc_widen_claim), 497-509 (sc_widen_claims), 511-531 (final_claim_kwargs); R:I1-selfconsistency/I1_REPORT.txt sections 1-3; D-018"
+downstream = ["spec 003: claims_profile (the claims before widening) is recorded with every widened claim; the coverage phase reports the widened subset against it"]
+regression_test = "tests/unit/test_asis_defects.py::test_d206_self_consistency_widening"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: coverage (width and shape mix against claims_profile, the widened subset) and fits (archive bytes)"
+tester = "I1_REPORT section 3, false caps (a qualifying point beyond a stated edge by more than 0.01 dex): FROZEN v0.3.3 on 62 SELECTED hard records (not a random sample) 32 of 225 stated claims (14.2%) on 17 of 62 records, 23 caps from above and 9 from below; HEALTHY 0 of 19 records, HUMAN_OK 10 of 20 (23 claims), FIRING_OTHER 7 of 20 (9 claims), HAZ_HUMAN 0 of 3; stored v0.3.3 full tier (truth-free lower bound) 158 of 1,990 records (7.9%) exclude their own point estimate. rc1 candidate (189 records): 91 of 647 stated claims false (14.1%) on 39 records; 75 edges widen (median 1.09 dex, max 3.01), 16 sides open, 16 closed -> lower_bound (all beta on human cohorts, the upper side reaching the raw 1e3 box); stated-claim coverage 362/647 -> 381/647, 19 flips all above -> in, none in -> out (the union cannot lose coverage)"
+dtheta_dex = "none: the point estimate never moves"
+claim_shape_changes = "closed -> lower_bound / upper_bound -> none where a widened side lands within 0.01 dex of the box edge (rc1 candidate: 16 closed -> lower_bound; sensitivity at 0.05 dex: 20 sides open instead of 16)"
+
+[[divergence]]
+id = "D-207"
+title = "jax2 raises the space grid N with n and the Kaplan-Meier CV (the N rule), capped at 3,600"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: N = 900 space cells on every cohort (solver_grid); measured on the tester's 166 cohorts the grid misplaces the deviance of claim-relevant points by 0.6-3.1 nats on human cohorts at n = 1e5 and up to 4.8 nats on sharp synthetic cohorts, the interval edge sitting at 1.92"
+new = "profile_jax2 and profile_jax2_h with N_RULE on (the shipped setting; DT_RULE off, R-6): in _grid, N = max(N_base, N_rule) with N_rule = 900 * 2^k for the smallest k >= 0 with E900 * 0.6^k <= 0.2 nats, E900 = 10^(-3.034 + 0.428 log10 n - 0.900 log10 CV), CV the Kaplan-Meier lifetime CV from _km_cv, stopping at N = 3,600 (capped=True when the target is not met); a non-finite or non-positive CV takes the cap. N_base is 900, or 1,800 where the floored ceiling binds (D-209). The record is diagnostics.dt_floor.grid_rule"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:200-208 (_NR_* constants), 1295-1366 (_grid, N rule at 1337-1340), 1389-1402 (_km_cv), 1404-1422 (_n_rule); __init__.py:623 (N_RULE = True); R:I2/I2_REPORT.txt (BOTTOM LINE and results 1-5); R:RATIFICATION.txt R-6"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d207_n_rule"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: bytes (value+gradient at the port's grid against the oracle's, the N chosen by _grid on each panel cohort) and fits (N = 1,800 and 3,600 on the mechanism list). The N rule's own accuracy and cost are the tester's (I2_REPORT): the speed phase compares the port with the frozen code, not N rules (corrected after the sr-manager gate, 2026-10-05)"
+tester = "I2_REPORT: share of the 134 fitted cohorts within 0.2 nats 42 -> 76 and within 0.5 nats 83 -> 115, median grid error 0.32 -> 0.17 nats; full-tier CPU x1.57 (858 -> about 1,350 CPU-h; 675 of 1,990 cohorts raised). NOT reachable by N alone: n = 1e5 human cohorts need N >= 14,400 (median error 0.63 at 3,600) but the value's round-off at box-corner points grows about 2.5x per doubling (sd median 0.36, max 2.3 nats at 7,200), which is why the cap is 3,600; sharp cohorts (CV < 0.05) are dominated by the time error past N ~ 1,800 (DT_RULE would fix it, off)"
+dtheta_dex = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, by claim point (measured 2026-10-05 from stored records, observation digests equal): on 600 WEXAC cohorts (mle_profile_jax2) median |shift| eta 0.007, beta 0.12, epsilon 0.009 dex, kappa 0.19 dex (109 with a kappa point); 90th percentile 2.6, 3.9, 2.9, 2.2 dex (a tail: censor, window, het and human hazard cohorts); the pure arm (285) about 0.00 dex for eta and epsilon. On 16 Mac cohorts: median 0.001, 0.013, 0.002 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+claim_shape_changes = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, on 600 WEXAC cohorts: shape changes eta 59, beta 123, epsilon 49, kappa 64, in both directions (eta closed <-> lower_bound 30/26; beta lower_bound -> closed 27, lower_bound -> upper_bound 22, closed -> upper_bound 21, none -> upper_bound 20; kappa bounds -> none 29). On 16 Mac cohorts: 2 beta changes, none for eta, epsilon and kappa (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-208"
+title = "jax2 marches a graded early-time mesh (20 backward-Euler steps of 1e-8, then x1.05) on every grid with a sampling step"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: the uniform grid, 20 backward-Euler start steps of size dt then BDF2; a death recorded in the first sampling bins carries a mass of 1e-5..1e-7 that the first few steps decide, and a step of dt cannot resolve the delta-start's initial layer (tester I3: one early death is the entire grid error of the failing records, 5.7 and 5.3 nats on two n = 1e5 Denmark cohorts and 3.1 nats on a synthetic pure cohort)"
+new = "profile_jax2 and profile_jax2_h with EARLY_ALL on (the shipped setting, ratified R-8 and the x1.05 addendum): where delta is set, _grid puts solver_kw['early'] = _EARLY_ALL_MESH = {dt0 = 1e-8, ratio = 1.05} on every grid, replacing the floor-only mesh (x1.02); early_schedule builds nstart = 20 backward-Euler steps of size dt0, then steps dt0 * ratio^j while below dt, then the uniform dt for int((tau_max - Tg)/dt) steps (the tail rounded down, so tau_nsteps <= tau_max), with variable-step BDF2 (alpha, a, b from the step ratio w); the absorbed-mass recursion and the custom VJP take the same per-step coefficients. Exact-time data keep the uniform grid"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/fp_jax.py:445-475 (early_schedule), 430-444 (comment block), 494-499 (_F_next_g), 564-639 (_make_march_g), 642-654 (_truncate_g), 761-767 (make_loglik early=); estimator.py:194-198 (_FLOOR_EARLY, _EARLY_ALL_MESH, _EARLY_NSTART), 1356-1364 (_grid early_all); __init__.py:626 (EARLY_ALL = True); R:RATIFICATION.txt R-8 and the ADDENDUM; R:I3-floor/I3_REPORT.txt sections 0-1; R:dev6/E1_REPORT.txt section 0"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d208_graded_early_mesh"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: bytes (value+gradient bytes at the port's graded grid against the oracle's). The mesh's own accuracy and cost are the tester's (E1_REPORT): the speed phase compares the port with the frozen code, not meshes (corrected after the sr-manager gate, 2026-10-05)"
+tester = "E1_REPORT: early-term errors on the 19 non-floor records with early observations dev4 (uniform) up to 5.67 nats -> dev6 (this mesh) <= 0.021 nats; the four flagged records PASS (time error 0.011-0.022 nats); cost per value+grad evaluation x1.33 median (0.97-1.62; steps x1.249), floor-bound grids x0.97, per fit x1.06-1.29; materially worse than the uniform grid on two sharp cohorts (pure-k0.01-p05-c0-s0 +0.645, pure-k0.01-p05-c1-s0 +0.122 nats; KM CV 0.023-0.024, DT_RULE's regime). Part (A) on dev6 FAILED the registered N2r nesting gate on 3 sharp pure cohorts (0.021, 0.027, 0.123 nats beyond 0.011); Naveh 2026-10-04: proceed, on record (RATIFICATION.txt)"
+dtheta_dex = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, by claim point (measured 2026-10-05 from stored records, observation digests equal): on 600 WEXAC cohorts (mle_profile_jax2) median |shift| eta 0.007, beta 0.12, epsilon 0.009 dex, kappa 0.19 dex (109 with a kappa point); 90th percentile 2.6, 3.9, 2.9, 2.2 dex (a tail: censor, window, het and human hazard cohorts); the pure arm (285) about 0.00 dex for eta and epsilon. On 16 Mac cohorts: median 0.001, 0.013, 0.002 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+claim_shape_changes = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, on 600 WEXAC cohorts: shape changes eta 59, beta 123, epsilon 49, kappa 64, in both directions (eta closed <-> lower_bound 30/26; beta lower_bound -> closed 27, lower_bound -> upper_bound 22, closed -> upper_bound 21, none -> upper_bound 20; kappa bounds -> none 29). On 16 Mac cohorts: 2 beta changes, none for eta, epsilon and kappa (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-209"
+title = "jax2 floors the dt ceiling at 3e-4 and doubles N to 1,800 where the floor binds"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: where 0 < delta/L < dt, dt = min(dt, (delta/L)/3) at N = 900 (solver_grid); on cohorts with delta/L ~ 1e-4 that is dt ~ 3e-5..1e-5 and about 4x the CPU"
+new = "profile_jax2 and profile_jax2_h: inside the same guard, where the ceiling (delta/L)/3 would fall below _DT_FLOOR = 3e-4, the ceiling becomes 3e-4 and N becomes _N_FLOOR = 1,800 (dt = min(dt_ord, max(dl/3, 3e-4))); outside the guard, or where dl/3 >= 3e-4, the grid is v0.3.3's bit for bit. Records diagnostics.dt_floor (binds, raw_ceiling, dt, N). Binds on the 48 E. coli and C. elegans cohorts of the tester's first library (all other ceiling cohorts have dl/3 >= 3.18e-4); E. coli cohorts are deprecated (Naveh 2026-10-03), so the evidence rests on C. elegans. Composes with the N rule (D-207) and the graded mesh (D-208)"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:189-191 (_DT_FLOOR, _N_FLOOR), 1295-1366 (_grid, the floor at 1326-1330), module docstring item 9 (estimator.py:75-80); R:I3-floor/I3_REPORT.txt sections 0-1; R:RATIFICATION.txt (E. coli deprecated)"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d209_floored_dt_ceiling"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: bytes (value+gradient bytes at C. elegans theta points exercise the floored rule through the same _grid call; research R21: no full C. elegans fit side by side)"
+tester = "I3_REPORT section 0: with the graded mesh the 3-grid check passes 22/22 floor records (uniform floor 20/22), largest error 0.159 nats (uniform floor 1.873, production ceiling 1.10 on het-real-ecoli-c0-s1); +8.6% CPU per evaluation against the uniform floor; the floor costs about 41.9 CPU-h on the 21 floor cohorts against about 157 CPU-h for v0.3.3's grid (cross-host)"
+dtheta_dex = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, by claim point (measured 2026-10-05 from stored records, observation digests equal): on 600 WEXAC cohorts (mle_profile_jax2) median |shift| eta 0.007, beta 0.12, epsilon 0.009 dex, kappa 0.19 dex (109 with a kappa point); 90th percentile 2.6, 3.9, 2.9, 2.2 dex (a tail: censor, window, het and human hazard cohorts); the pure arm (285) about 0.00 dex for eta and epsilon. On 16 Mac cohorts: median 0.001, 0.013, 0.002 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+claim_shape_changes = "not separable per mechanism (the frozen code runs every mechanism). jax2 1.0.0 against v0.3.3, all mechanisms together, on 600 WEXAC cohorts: shape changes eta 59, beta 123, epsilon 49, kappa 64, in both directions (eta closed <-> lower_bound 30/26; beta lower_bound -> closed 27, lower_bound -> upper_bound 22, closed -> upper_bound 21, none -> upper_bound 20; kappa bounds -> none 29). On 16 Mac cohorts: 2 beta changes, none for eta, epsilon and kappa (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-210"
+title = "Exception policy: jax2 counts every swallowed solver exception and re-raises (strict), v0.3.3 swallows silently"
+tag = "CODE"
+status = "diverged"
+legacy = "profile_v033: every 'except Exception: pass' site in the estimator (the L-BFGS-B runs in _lbfgs, the restarts, the polish, the MLE starts) swallows the error and carries on from the previous point; nothing records that it happened"
+new = "profile_jax2 and profile_jax2_h: _note_exc counts each swallowed exception once per object, by type name, in obj.exc_counts (returned as diagnostics.exc_counts) and tells the site to re-raise when _strict() holds or the exception is an IndexError, ValueError or TypeError (_ALWAYS_RAISE, programming errors). The tester reads SRB_STRICT from the environment; the port fixes _strict() to True (Phase C ran with SRB_STRICT=1, phaseC/cluster/env.sh:23) and reads no environment variable, so a swallowed solver exception raises out of the fit"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:129-150 (_ALWAYS_RAISE at 130, _strict at 133-135, _note_exc at 138-150), 1736 (exc_counts in diagnostics); src/sraging/compat/jax2/estimator.py:137 (the port's fixed _strict) and VERBATIM.toml (the declared edit); R:PREREG_C.txt (CI7: exc_counts == {} on every record); R:RATIFICATION.txt"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d210_exception_policy"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: fits (every quick-tier fit finishes with exc_counts == {} in the port, as in the oracle under SRB_STRICT=1)"
+tester = "PREREG_C CI7 and the L5 gate X: exc_counts == {} on every Phase C record (the registered pass condition); a record with a counted exception would have been a hard failure rather than a silently different fit"
+dtheta_dex = "none on a fit that completes (it follows the same path as v0.3.3 where nothing is swallowed); a fit that v0.3.3 would have continued after a swallowed error raises instead"
+claim_shape_changes = "none on a fit that completes; see dtheta_dex"
+
+[[divergence]]
+id = "D-211"
+title = "profile_jax2_h fits a constant external hazard h as a nuisance (never claimed)"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "profile_v033: no external hazard; z has 4 entries (eta, beta, epsilon, kappa), survival is S(t), and background mortality is absorbed by the four parameters"
+new = "profile_jax2_h 1.0.0 only (profile_jax2 is unchanged): z has 5 entries, h = exp(z[4]) with box (max(1e-6/L, 1e-12), min(10/L, 1e6)) from _h_box, survival S(t) e^{-ht}; the MLE stage starts from the Makeham h and an h ladder (hL = 0.01, 0.1, 0.5), the profile stage has an h profile and shadow chains in the other kappa basin (SHADOW on), the KKT scan flags a node at the h floor with dl/d(hL) above 1, and _triggers does not count a free h at its floor as a degenerate corner (the h floor is the no-hazard limit); no profile_v033 behaviour changes for the four SR parameters, whose boxes and triggers are v0.3.3's. h is never claimed: diagnostics.hazard carries h, hL, the interval, the verdict and a would-be h_claim (widened like the others)"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:212-224 (the h constants), 232-238 (_h_box), 421-422 (_triggers skips h@lo), 440-470 (_hazard_starts), 1078-1184 (_hazard_mle), 1217-1257 (_shadow_for), 1259-1291 (_kkt_scan), 1747-1770 (_hazard_diag); fp_jax.py:695-715 (z_size, hazard cores); R:I4/I4_REPORT.txt (a), (d); R:RATIFICATION.txt R-1, R-7"
+downstream = []
+regression_test = "tests/unit/test_asis_defects.py::test_d211_external_hazard_box_and_triggers"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: bytes (value and value+gradient bytes of _h at the h points: the floor of the box and hL = 0.1) and coverage (the hazard arm)"
+tester = "I4_REPORT (a): the 4 reproduced L5 N2 shortfalls (profile below jax2's at the h floor, kappa-basin path effects) fixed by SHADOW at +26..+53% gradient evaluations; (d): realfull-real-Denmark_M_1900_homo-c1-s0 recovered a 16-nat MLE-stage shortfall; all 3 human HW cohorts witness <= -0.43, every non-declined claim covers the truth, h covered; RATIFICATION R-1: HB9 median _h CPU <= 2.5x jax2; the Makeham x10 MLE start stays NOT implemented (R-7)"
+dtheta_dex = "h is the only difference between jax2_h and jax2, so it is separable here: jax2_h against jax2 on 94 WEXAC cohorts, median |shift| eta 0.0005, beta 0.13, epsilon 0.002 dex (hazard arm 16: eta 2.5 dex; pure arm 67: 0.0 dex); on 16 Mac cohorts eta 1.5, epsilon 2.1 dex (hazard 3: eta 4.3 dex). Against v0.3.3, every mechanism and h together: 546 WEXAC cohorts, median eta 0.77, beta 2.5, epsilon 1.4 dex; hazard arm (268) eta 3.5, beta 5.0, epsilon 4.2 dex; pure arm (67) 0.00, 0.03, 0.00 dex (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+claim_shape_changes = "jax2_h against v0.3.3 on 546 WEXAC cohorts: 134 eta, 321 beta, 104 epsilon and 235 kappa shape changes (hazard arm 268: 63, 213, 48, 197; kappa upper_bound -> none 185 times); jax2_h against jax2 on 94 cohorts: 17, 26, 11, 23. One tester note: on pure-k0.01-p05-c0-s0 _h gives no eta claim ('flat') where jax2 closes and covers (RATIFICATION.txt) (results/jax2_vs_v033_003.json, tools/jax2_vs_v033.py)"
+
+[[divergence]]
+id = "D-212"
+title = "With an external hazard jax2 applies the bracket on both mass routes and e^{-ht} in log space; sraging's engine only on the F route"
+tag = "CODE"
+status = "diverged"
+legacy = "sraging engine (spec 002), numerics 'v1' and 'v033': S_obs = S e^{-H} is formed in linear space and an interval death scores clip(S_obs(t) - S_obs(t+delta), 0) on the S route; the cancellation-free bracket e^{-H(ts)} [m + S(t+delta)(-expm1(-h dl))] is used only where use_F holds (D-004)"
+new = "profile_jax2_h (as ported): hazard_interval_core(m, S_hi, h, dl) = m + S_hi (-expm1(-h dl)) is applied to the mass of whichever route _death_mass chose (m_F or m_S, both hazard-free survivals), and the factor e^{-ht} is applied in log space (log(core) - h t, floored at -700; censored terms log(S_i) - h t); exact deaths score log(p/L + h S_i) - h t. The two assemblies are equal in exact arithmetic and differ by rounding, and by underflow of e^{-ht} in the engine at large h t"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/fp_jax.py:700-715 (hazard_interval_core, hazard_exact_core), 801-850 (hw_parts: 826-830 the bracket on _death_mass's m, 834-836 the log-space e^{-ht}); src/sraging/engine/observation.py:196-232 (the engine's assembly); D-004; D-115"
+downstream = ["spec 006: impact on theta-hat and claim shapes is measured where the engine's hazard fitting is decided"]
+regression_test = "tests/unit/test_asis_defects.py::test_d212_hazard_bracket_on_both_routes"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: none (no side by side of jax2 against the engine in spec 003; the calibrators use their own ported numerics)"
+dtheta_dex = "not measured; spec 006"
+claim_shape_changes = "not measured; spec 006"
+
+[[divergence]]
+id = "D-213"
+title = "With an external hazard, jax2 floors a death past the march's early stop at -700; the engine scores a hazard-only mass"
+tag = "CODE"
+status = "diverged"
+legacy = "sraging engine and SRK fp_loglik (D-115, ported as-is): past the early stop S is held at S_k (< Gtol), so an interval death there scores S_k (e^{-ht} - e^{-h(t+delta)}), and S_k jumps whenever the discrete stop index moves with theta (a sawtooth in theta; FD error 5.8e-5 vs 5.7e-6 without the hazard, jax2 B5)"
+new = "profile_jax2_h (as ported, B5): a death with t/L >= tau[k] (interval) or t/L > tau[k] (exact) has its core set to 0, so its term is the -700 floor, as the hazard-free path scores it; censored terms keep log S[k] - h t. The sawtooth is removed"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/fp_jax.py:801-831 (hw_parts, 'past' at 813, 820, 829-830; docstring 804-812), module docstring B5 (fp_jax.py:14-15); D-115"
+downstream = ["spec 006: hazard fitting decides whether the engine floors these (D-115)"]
+regression_test = "tests/unit/test_asis_defects.py::test_d213_hazard_death_past_the_stop_is_floored"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: none (no side by side against the engine in spec 003)"
+tester = "B5 post hoc (quoted in hw_parts' docstring): hazard-on FD error 5.8e-5 vs 5.7e-6 hazard-off at the same SR point with the sawtooth; the floor removes it"
+dtheta_dex = "not measured; spec 006"
+claim_shape_changes = "not measured; spec 006"
+
+[[divergence]]
+id = "D-214"
+title = "jax2's graded mesh and window conditioning floor differ from the engine's graded_start and D-108"
+tag = "CODE"
+status = "diverged"
+legacy = "sraging engine (spec 002): engine/grid.py graded_start has no backward-Euler prefix (the first step dt0 is a single step of the stepper's own start) and rounds the uniform tail UP (n = ceil((tau_max - t_last)/dt)); under numerics 'v033' the window conditions on log(min(max(S_lo, 1e-12), 1)), under 'v1' on the common log+ floor only (D-108; since spec 006 'v1' clips at 1e-12 too, so only the mesh differs)"
+new = "profile_jax2 and profile_jax2_h (as ported): early_schedule starts with nstart = 20 backward-Euler steps of dt0 (so the delta-start layer is 20 steps of 1e-8), grows by the ratio, and rounds the uniform tail DOWN (int((tau_max - Tg)/dt), so the last node is <= tau_max); a fit window conditions on -n log(clip(S_lo e^{-h lo}, 1e-12, 1)), the 1e-12 floor of v0.3.3 and SRK's _windowed_ll"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/fp_jax.py:445-475 (early_schedule: 456 the backward-Euler prefix, 463 the rounded-down tail), 840-848 (window conditioning, 847 the 1e-12 floor); src/sraging/engine/grid.py:169-180 (graded_start); D-108"
+downstream = ["spec 006: whether the engine adopts jax2's mesh or keeps its own is decided with the impact on theta-hat and claim shapes"]
+regression_test = "tests/unit/test_asis_defects.py::test_d214_mesh_and_window_floor_vs_engine"
+
+[divergence.impact]
+measured_here = "spec 003 acceptance: none (no side by side against the engine in spec 003)"
+dtheta_dex = "not measured; spec 006"
+claim_shape_changes = "not measured; spec 006"
+
+[[divergence]]
+id = "D-215"
+title = "The raw box's unit dependence: eta, beta, epsilon are bounded to [1e-12, 1e3] in raw time units"
+tag = "ESTIMATOR/CONVENTION"
+status = "ported-as-is"
+legacy = "v0.3.3 box_for(kappa_max): eta, beta, epsilon in [1e-12, 1e3] and kappa in [1e-3, kappa_max], all in the cohort's raw time units; rho_beta = beta L, so the box on the dimensionless rho_beta is [1e-12 L, 1e3 L] and moves 365 times between a cohort in days and the same cohort in years (L the Kaplan-Meier mean). A fit that ends on this edge is box-limited and its label depends on the unit chosen (D-018)"
+new = "identical in jax2 (ported as-is): the same box_for; jax2 adds only the h box (D-211). Re-expressing a cohort in other time units changes which fits are box-limited and, with them, the open claim shapes"
+source = "tests/oracle/jax2_3bc5775/mle_profile_jax2/estimator.py:227-229 (box_for); src/sraging/compat/v033/estimator.py:67-69 (box_for); D-018; D-009"
+impact = "none: not fixed (box-limited labels depend on the time unit; the unit-free box is a spec 006 question). Spec 003 reports the box beside it in L_SR units for the jax2 names (FR-021: diagnostics.box_lsr, printed by fit-cohort)"
+downstream = ["spec 006: the box is expressed in dimensionless units there (UNVERIFIED: spec 006's scope is not written; the entry only records the dependence)"]
+regression_test = "tests/unit/test_asis_defects.py::test_d215_raw_box_depends_on_time_unit"
+
+# ---- spec 004: samplers (one heterogeneity definition at a known cost; the Langevin engine) ---------------------------
+
+[[divergence]]
+id = "D-401"
+title = "The default heterogeneity is the truncated normal (gen-1's), with a Gauss rule for the truncated measure"
+tag = "MODEL"
+status = "diverged"
+kind = "likelihood"
+legacy = "spec 002's engine and SRK's fp_loglik_het_physical: Heterogeneity(v=, M=) meant 'normal_frac_sd', the parameter P(1 + vZ) on M probabilists' Gauss-Hermite nodes, the nodes with a non-positive value dropped and the weights renormalised (D-116, D-117), with M fixed by the caller and never checked: M = 11, the count in use, is 2-138 nats off at spread 0.2 on sharp and human cohorts (docs/planning/het_tradeoff/NOTE.md, finding 2)"
+new = "Heterogeneity(parameter=, sd=) is 'truncated_normal' by default: the parameter is P s with s = 1 + sd Z, Z standard normal truncated to s > 0 (gen-1's law, generator._het_z), on the M-node Gauss rule of the truncated measure (sraging.engine.quadrature: the discretized Stieltjes procedure on 4,000 Gauss-Legendre points, then Golub-Welsch), with M chosen per cohort by the checked ladder (sraging.engine.mixture: |l(M) - l(next rung)| < 0.05 nats, cap 192, HET_UNCONVERGED otherwise). 'normal_frac_sd' stays selectable by name, byte for byte; a spread given as v without the definition's name is refused (OD-8)"
+source = "spec 004 FR-001, FR-002 (Naveh, Da = (a), 2026-10-28); research R1-R3; docs/planning/het_tradeoff/NOTE.md; contracts/register-and-panel.md §1"
+downstream = ["spec 006"]
+regression_test = "tests/unit/engine/test_quadrature.py::test_default_is_truncated_normal"
+
+[divergence.impact]
+measured_here = "results/d401_004.json (phase d401, T054): l(truncated_normal, sd 0.2, checked M 25-57) - l(normal_frac_sd, v 0.2, M 7) on spec 002's 4 heterogeneous T1 cohorts (xc, n 1,000 and 10,000) x 5 theta. Nearly all of it is M = 7's error, not the definition: a dev check (not an acceptance run, 2026-10-29) put normal_frac_sd at M 31, 64 and 128 within 0.012 nats of truncated_normal's checked value at the truth and at eta x 1.5 on het-k0.01-p00-c0-s0 and c1-s0, where P(s <= 0) = 3e-7"
+dloglik = "per cohort at fixed theta (results/d401_004.json#cohorts): truth +10.3 and +12.5 nats (n 1,000), +145 and +161 (n 10,000); beta x 1.5 +11.6 to +150; epsilon x 1.5 +0.1 to +43; eta x 1.5 +15,156 and +18,522 (n 1,000), +136,099 and +196,269 (n 10,000), where M = 7's nodes leave late deaths on the -700 floor; eta x 10: 0 (every death on the floor under both)"
+dtheta_dex = "none: no calibrator consumes engine heterogeneity until spec 006"
+claim_shape_changes = "none: no calibrator consumes engine heterogeneity until spec 006"
+
+[[divergence]]
+id = "D-402"
+title = "B1: the bridge kernel froze the age at t_j for every substep"
+tag = "CODE"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK's bridge kernel runs m = time_step_multiplier substeps of Delta t / m per outer step j with the drift's age frozen at the outer grid's t[j]: drift = eta * t[j] - beta * x / (x + kappa) (tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:476-478), so the age does not advance within an outer step"
+new = "sraging.langevin's kernels take one step dt with no substep (no time_step_multiplier); the age at step k is k dt, computed from k (sraging.langevin.kernels.step); HR-9 (gate C3) checks the fix like for like against SRK"
+source = "spec 004 FR-010 (B1); research R13, R14; algorithms App. A B1; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:478"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_kernels.py::test_the_age_at_step_k_is_k_dt_from_k_with_no_substep"
+
+[divergence.impact]
+sup_abs_dS = 0.02216000000000007
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.hr9]: preset mice_F, dt 2.3566223919972233, m 16, n 25000, t_end 214, alpha {plant 0.05, twin 0.025, fix 0.025}, predicted_lag 0.02, fix_dt 0.0002518150688961322"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-402] (phase plants, T121, 508d7fe)"
+measure = "two-sample KS D, like for like (gate C3): SRK at (Delta t, m 16) against SRK at (Delta t / 16, m 1), both on the Delta t grid; p 9.17e-06; predicted lag 0.02"
+twin_D = 0.006679999999999908
+fix_D = 0.005562627975682799
+
+[[divergence]]
+id = "D-403"
+title = "B2: two Δt conventions (t_end/((N−1)m) against t_end/(Nm))"
+tag = "CODE"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK's kernels step t_end / ((N - 1) m): dt = t[1] - t[0] on t = linspace(t_start, t_end, N) (tests/oracle/v033/SRtools_kappa/SRK/SRmodellib.py:71, SR_hetro.py:108) and ndt = dt / time_step_multiplier (SR_hetro.py:458), while step_size_to_grid, SR.dt and the rejector mean t_end / (N m) (tests/oracle/v033/SRtools_kappa/SRK/stepsize.py:52, 82)"
+new = "one dt: sraging.langevin takes dt itself (nsteps, step_size and time_step_multiplier are refused by name), and the realised step is the stated one bit for bit"
+source = "spec 004 FR-010 (B2); research R14; algorithms App. A B2; tests/oracle/v033/SRtools_kappa/SRK/stepsize.py:52, 82, SR_hetro.py:108"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_sample.py::test_d403_the_realised_step_is_the_stated_dt"
+
+[divergence.impact]
+sup_abs_dS = 0.013000000000000012
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.b2]: preset mice_F, n 25000, step_size 0.04280856171234247, t_end 214"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-403] (phase plants, T121, 508d7fe)"
+measure = "sup|dS| between SRK at its realised step for the requested step_size and SRK at the requested step"
+realised_step_mismatch = { requested = 0.04280856171234247, realised = 0.042817126850740295, relative = 0.0002000800320127727, nsteps = 4999, time_step_multiplier = 1 }
+
+[[divergence]]
+id = "D-404"
+title = "B4: the parallel Euler path dropped n mod n_jobs and padded them as censored"
+tag = "CODE"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK's parallel Euler path simulates n_jobs x floor(n / n_jobs) individuals with n_jobs = os.cpu_count() (tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:434-435), and SR_lf pads the missing n mod n_jobs as censored at t_end (tests/oracle/v033/SRtools_kappa/SRK/SRmodellib_lifelines.py:30-35)"
+new = "every one of the n individuals is drawn, at any worker count and chunk size (per-individual keys, research R15, R17); HR-8 checks the bytes at W 1, 7 and 15 with n not divisible by any"
+source = "spec 004 FR-010 (B4), FR-013; research R14, R17; algorithms App. A B4; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:434-435"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_pool.py::test_one_worker_and_two_are_bit_identical"
+
+[divergence.impact]
+sup_abs_dS = 0.01296111665004995
+n = 1003
+panel = "plants"
+step = "langevin_004.toml [plants.b4]: preset mice_F, n 1003, t_end 214, nsteps 5000"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-404] (phase plants, T121, 508d7fe)"
+measure = "sup|dS| (Kaplan-Meier) of SRK's padded sample against its 990 real individuals"
+n_jobs = 15
+padded = 13
+
+[[divergence]]
+id = "D-405"
+title = "B11: negative parameter draws were unfiltered"
+tag = "MODEL"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK draws xc = xc0 * np.random.normal(1.0, xc_var), unfiltered (tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:471): at xc sd 0.5, P(s <= 0) = 2.3 %, and those individuals die at the first step"
+new = "s comes from the truncated normal by gen-1's own inverse CDF (generator._het_z, the shared definition, D-401), so no draw is non-positive"
+source = "spec 004 FR-010 (B11); research R14, R27; algorithms App. A B11; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:471"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_sample.py::test_b11_no_draw_is_non_positive_at_sd_05"
+
+[divergence.impact]
+sup_abs_dS = 0.02396
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.b11]: preset mice_F, n 25000, t_end 214, nsteps 5000, sd_plant 0.5, sd_twin 0.2"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-405] (phase plants, T121, 508d7fe)"
+measure = "sup|dS| of SRK at xc sd 0.5 against sraging's truncated normal at the same sd; SRK's first-step deaths 0.02416 (predicted 0.02275), 0.0 at sd 0.2"
+
+[[divergence]]
+id = "D-406"
+title = "Seeding could not reach numba's generator; forked workers reseeded from the OS"
+tag = "CODE"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK's kernels draw from numba's own generator inside @jit (np.random at tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:447, 467-471, 479), which a Python-side seed does not reach, and its joblib workers (SR_hetro.py:529-553) each start from an OS-seeded state: two runs with 'the same' seed differ (algorithms §9.4)"
+new = "per-individual keys (research R15): individual i's stream is xoshiro256** seeded from hash64(key, i), so a sample depends only on (key, i), identical for any worker count and chunk size"
+source = "spec 004 FR-010 (seeding), Dd; research R14, R15; algorithms §9.4; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:447, 529-553"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_kernels.py::test_a_draw_is_a_function_of_the_key_and_the_individual_only"
+
+[divergence.impact]
+sup_abs_dS = "none: reproducibility, not a distribution shift"
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.seeding]: preset mice_F, n 25000, t_end 214, nsteps 5000, W 7"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-406] (phase plants, T121, 508d7fe)"
+measure = "identical or not: SRK's two parallel runs (n_jobs 7) with one seed differ (true); sraging's two runs with one key and its W 7 run are byte-identical (true)"
+
+[[divergence]]
+id = "D-407"
+title = "The external kill was first order (h·δ per substep)"
+tag = "CODE"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK kills with probability h ndt per substep: chance_to_die_externally = exp(-external_hazard) * ndt (tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:462), tested at each substep (:484), a first-order approximation of 1 - exp(-h ndt), recorded at the end of the outer step"
+new = "an exact competing exponential time t_ext = -log(1 - u) / h from its own stream (gen-1's _hazard_times), which stops the path where it falls; the recording then applies gen-1's transform"
+source = "spec 004 FR-011; research R14; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:462, 484"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_kernels.py::test_the_hazard_is_a_competing_time_that_stops_the_path"
+
+[divergence.impact]
+sup_abs_dS = 0.017359999999999987
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.hazard]: preset mice_F, n 25000, nsteps 5000, dt 0.04280856171234247, h_delta_plant 0.05, h_delta_twin 0.0001"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-407] (phase plants, T121, 508d7fe)"
+measure = "two-sample KS D of SRK's per-substep kill at h delta 0.05 against SRK with an exact exponential placed as SRK records a death; p 0.00106; predicted 0.00939 (below the two-sample crit 0.0121, yet detected)"
+twin_D = 0.010000000000000009
+
+[[divergence]]
+id = "D-408"
+title = "Deaths were recorded on the outer grid ((j+1)Δt)"
+tag = "ESTIMATOR/CONVENTION"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK records a death at (j + 1) Delta t on its outer grid whatever m is: j += 1 after the substeps, then death_times.append(j * dt) (tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:511-513), so with delta < Delta t every recorded age is a multiple of Delta t (algorithms §9.1)"
+new = "every sample is recorded by gen-1's transform: the age is floor(t / delta) delta, first bin at 0 (generator._record), on the recording grid delta whatever the step"
+source = "spec 004 FR-011; research R14; algorithms §9.1; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:511-513; langevin_004.toml [amendments].A8 (m 16)"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_sample.py::test_d408_deaths_are_recorded_on_delta_not_on_the_step_grid"
+
+[divergence.impact]
+sup_abs_dS = 0.0242
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.recording]: preset mice_F, n 25000, dt 1.0, delta 0.25, nsteps 215, m 16"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-408] (phase plants, T121, 508d7fe)"
+measure = "sup|dS| of SRK's outer-grid ages against sraging's at Delta t / m on delta; SRK's on the Delta t grid 1.0, sraging's off it 0.74816"
+
+[[divergence]]
+id = "D-409"
+title = "`getSrHetro` was heterogeneous in xc (0.2) by default (B3/B21)"
+tag = "MODEL"
+kind = "sampler"
+status = "diverged"
+legacy = "SRK's getSrHetro defaults to xc_var = 0.2 and hetro = True (tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:145, 148), so a call that names no heterogeneity draws xc at sd 0.2; only hetro=False zeroes the spreads (:221-226)"
+new = "homogeneous unless named: a LangevinConfig with no heterogeneity draws every individual at theta exactly; a spread is named (Heterogeneity(parameter=, sd=)) or absent"
+source = "spec 004 B3/B21; research R14; algorithms App. A B3; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:145, 148, 221-226"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_sample.py::test_d409_homogeneous_unless_named"
+
+[divergence.impact]
+sup_abs_dS = 0.06112000000000001
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.d409]: preset mice_F, n 25000, t_end 214, nsteps 5000"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-409] (phase plants, T121, 508d7fe)"
+measure = "two-sample KS D of getSrHetro's default (xc_var 0.2) against the named homogeneous call; p 4.91e-41"
+
+[[divergence]]
+id = "D-412"
+title = "gen-1's 161-node heterogeneous law sits 0.11-0.54 nats from the converged truncated normal on 4 v6 cohorts above n = 20,000, and pooled replicate cohorts past n = 20,000 see it too"
+tag = "MODEL"
+status = "diverged"
+kind = "likelihood"
+legacy = "sraging-gen-1 (the tester's library v6 generator) draws heterogeneous cohorts from a 161-node hat-function law (generator._het_nodes: nodes uniform in z, exact hat weights of the truncated normal, the mass beyond either end at the end node, s < 0.05 at s = 0.05), accepted at n <= HET_N_CAP = 20,000 (spec 003d SC-001, Naveh 2026-10-13); a cohort above it carries gen-1's caveat"
+new = "sraging's engine evaluates the truncated normal itself (D-401) on a checked Gauss rule; FR-009 compares it, converged (the pinned reference's l(192), |l(128) - l(192)| < 0.01), with the same mixture at gen-1's 161 nodes and hat weights"
+source = "spec 004 FR-009; research R20; Naveh 2026-10-29 (spec.md Clarifications: FR-009 stays FAIL, OD-9's response by analogy); Naveh 2026-11-05 (spec.md Clarifications, T141: sr-naveh_004.md finding 2, the limit covers analyses that pool replicate cohorts past n = 20,000); OPEN_TASKS [T-GEN1-NCAP-FR009]"
+downstream = ["the tester: v6 heterogeneous cohorts above n = 20,000", "the tester: analyses that pool replicate v6 heterogeneous cohorts past n = 20,000 in all (S5 of spec 004 is one)", "README (spec 004 T136, T141)"]
+regression_test = "tests/acceptance/test_results_004.py::test_fr009_misses_only_above_gen1s_n_cap"
+
+[divergence.impact]
+measured_here = "results/hr1_004.json#fr009 (phase hr1, T048, 7f2b8df): l at gen-1's 161-node law minus the converged reference l(192), at the truth, sd 0.2, on the 40 panel cohorts; FR-009's bar 0.1 nats per cohort, 36/40 within it (FAIL as written)"
+dloglik = "per cohort: +0.542 (het-real-Denmark_M_1890_homo-c0-s1, n 100,000), +0.197 (Denmark_M_1890_hetro-c1-s0, 25,000), +0.139 (Denmark_M_1900_hetro-c0-s1, 100,000), +0.114 (Denmark_M_1890_homo-c1-s1, 25,000); the 27 cohorts at n <= 20,000 within 0.061; 9 of the 13 above it within 0.1. Pooled replicates: at S5's configuration (langevin_004.toml [s5].spec, n 2,000 per cohort) gen-1's binned law is 4.70e-6 nats per individual from the converged mixture (M 192), 0.094 nats per 20,000 pooled individuals and 2.6 nats at S5's pooled 548,000, 25 % of the plant's KL (specs/004-samplers/review/evidence/sr_naveh_004/s5_binned_kl.json, T141)"
+dtheta_dex = "not measured: the gap's level at the truth is at most 0.54 nats, and theta-hat's shift depends on its slope; the tester decides whether v6 scores above n = 20,000 carry the limit"
+claim_shape_changes = "none in sraging: no calibrator consumes the v6 heterogeneous cohorts' law; the tester's scores are the tester's"
+
+[[divergence]]
+id = "D-410"
+title = "The wall at 0 stays SRK's clamp `max(0, ·)` by default; `wall=\"reflect\"` is selectable"
+tag = "CODE"
+kind = "sampler"
+status = "ported-as-is"
+legacy = "SRK's Langevin clamps at 0: x = np.maximum(x, 0) (SR_hetro.py:383, 420) and x_new = max(x_new, 0.0) (:481), the projected Euler scheme. A step that crosses 0 lands exactly on 0, so young-age damage carries a lump of exact zeros that the FP density (a reflecting wall with zero flux) does not have, and the scheme is weak order 1/2 at the wall; the bridge test is skipped at x = 0 exactly"
+new = "sraging.langevin keeps the clamp as the default (wall='clamp'), with the same arithmetic; wall='reflect' (|.|, the symmetrized Euler, weak order 1 under its conditions: Bossy, Gobet & Talay 2004) is selectable, and the wall is recorded in every sample's provenance. What reflect changes (the step bias and CPU per m, and the clamp's lump p0 at the HR-10 ages) is measured by pilot P1 (tests/acceptance/results/p1_langevin_004.json, tasks T072, T111)"
+source = "spec 004 OD-12 (Naveh 2026-10-29: allow for both, default clamp); research R30; FR-025; tests/oracle/v033/SRtools_kappa/SRK/SR_hetro.py:383, 420, 481"
+impact = "none: not fixed"
+downstream = []
+regression_test = "tests/unit/langevin/test_kernels.py::test_d410_default_wall_is_clamp"
+
+[[divergence]]
+id = "D-411"
+title = "getISR's path recorder stored 0 for the dead and recorded at the outer step within dt/2 of the age"
+tag = "CODE"
+kind = "sampler"
+status = "diverged"
+legacy = "getISR's recorder allocates trajectories = np.zeros(...) (tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/intervention_SR.py:433), writes x only while x < xc, at the outer step within dt / 2 of the age (tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/intervention_SR.py:461-463), so a dead individual's damage reads 0"
+new = "sraging.langevin records X at ages on the dt grid (refused off it), NaN iff dead by the age, recording draws nothing (research R24)"
+source = "spec 004 FR-021; research R24; contracts/register-and-panel.md §1; tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/intervention_SR.py:433, 461-463"
+downstream = ["PHASE_PLAN 1xx-migrate-*: SRK's Langevin call sites (tests/acceptance/results/p5_inventory_004.json, 226 rows) take the fix when they move to sraging.langevin"]
+regression_test = "tests/unit/langevin/test_paths.py::test_x_is_nan_iff_dead_external_deaths_included"
+
+[divergence.impact]
+sup_abs_dS = 0.00691067343940116
+n = 25000
+panel = "plants"
+step = "langevin_004.toml [plants.d411]: preset mice_F, n 25000, dt 0.04280856171234247, age 109.1618323664733"
+measured_in = "tests/acceptance/results/plants_004.json#plants[D-411] (phase plants, T121, 508d7fe)"
+measure = "sup|dF| of the living's X at the age 109.1618323664733, SRK against sraging; zeros among the dead: SRK 5999 of 5999, sraging 0 (NaN instead)"
+
+[[divergence]]
+id = "D-413"
+title = "Paths of a heterogeneity tuple with two or more spreads are recorded, not checked"
+tag = "CODE"
+kind = "sampler"
+status = "ported-as-is"
+legacy = "SRK's getISR recorded damage paths (save_trajectory) under any heterogeneity and never checked them against a reference"
+new = "sraging.langevin checks paths against the FP damage density (sraging.engine.damage_density, research R25) for no heterogeneity or one spread; a tuple with two or more spreads records its paths (NaN iff dead, bit-identical across workers) but no tensor damage density is built in spec 004, so its paths statement reads 'not checked', with LANGEVIN_NO_FP_REFERENCE, and the sample is not clean"
+source = "spec 004 spec.md Clarifications 2026-10-30 (Naveh: state the limit); research R25, R28; src/sraging/langevin/sample.py paths_statement"
+impact = "none: not fixed"
+downstream = ["a later spec builds the tensor damage density (R25 with R28)", "README (spec 004 T136)"]
+regression_test = "tests/unit/langevin/test_multi_het.py::test_multi_spread_paths_are_recorded_not_checked"
+
+[[divergence]]
+id = "D-505"
+title = "A cohort set selects by exact column name and typed value; getKeys matched substrings and string values only"
+tag = "CODE"
+status = "diverged"
+legacy = "SRK's DatasetCollection.getKeys (tests/oracle/v033/SRtools_kappa/SRK/deathTimesDataSet.py:1581-1623) splits each key 'prop:_value,...' and matches a property when its name is a substring of the key's field (`if prop in d`), so asking for age = '1' also returns the cage = 1 dataset ('age' is in 'cage:_1'); values compare as strings (`d.split(':_')[1] == value`), so the integer 1 matches nothing"
+new = "sraging.cohorts.CohortSet.select matches exact design-column names (an unknown column is refused, naming it) and typed values: numbers compare as numbers (1 matches 1 and 1.0), strings only equal strings, bools only bools; no substring of a name or a value ever matches (FR-004)"
+source = "spec 005 FR-004, FR-006, US2, HR-10; research R12; legacy brief §1.1 (16 projects use the class, 20 its loader: workbook 12.1)"
+impact = "selection only, no likelihood or fit changes: on a design with columns age and cage, getKeys(['age'], ['1']) returns the cage = 1 row beside the age = 1 row and getKeys(['age'], [1]) returns nothing; select(age=1) returns exactly the age = 1 rows (tests/unit/test_cohorts.py, side by side with the frozen getKeys)"
+downstream = ["PHASE_PLAN 1xx-migrate-*: projects that select with getKeys take exact typed selection when they move to sraging.cohorts"]
+regression_test = "tests/unit/test_cohorts.py::test_hr10_select_is_exact_and_typed"
+
+[[divergence]]
+id = "D-501"
+title = "Summary-statistic steepness defaults to first-crossing quartiles; SRK Dataset's quartiles are nearest"
+tag = "ESTIMATOR/CONVENTION"
+status = "diverged"
+legacy = "SRK's Dataset.getSteepness takes each quartile age as the KM-timeline age minimising |S - q| (q1 = t[argmin |s - 0.25|], q3 = t[argmin |s - 0.75|]; tests/oracle/v033/SRtools_kappa/SRK/deathTimesDataSet.py:697-699), and so do the mosquito and fly cleaning records (C11: SRK Dataset matches the stored scores on every cage)"
+new = "sraging.survival.summary takes first-crossing quartile ages by default (the first age where S <= q), and 'nearest' by name (quartiles=\"nearest\"); every Stat carries its definition string. sraging.cleaning.clean asks for 'nearest' by name, the records' definition (C2), and its report names it"
+source = "spec 005 FR-011, FR-014; research R3, R12; the gate's M4 and C2 (docs/planning/spec005_seed_gate.md); C11 (docs/planning/spec005_c11_sr-naveh.md); Naveh 2026-11-08 (Di: first-crossing default)"
+impact = "measured on the two cleaning records (gate M4, confirmed by C11): first-crossing quartiles change steepness on most mosquito cages, some by more than half, and on about half of the fly cages; with the cleaning rule they flip a few mosquito decisions and more fly decisions at k = 2.5 and k = 3, with the floor recomputed or held fixed, and also under the fly's D19 as applied (release 0.1.1 states these without the unpublished records' counts). Some fly cages (2-8 LONG) cross 0.75 and 0.25 within one 2-day census, so their first-crossing IQR is zero and the steepness non-finite (nearest stays finite). The census-grid limit: on a coarse census (the fly's every 2 days) either definition snaps the quartile ages to the grid, so a one-step change is a large share of the IQR (workbook flag 12.1.2); neither is the textbook value there"
+downstream = ["sraging.cleaning (spec 005 US1): quartiles=\"nearest\" by name, to reproduce the records (HR-1)", "PHASE_PLAN 1xx-migrate-*: projects that call getSteepness keep nearest by naming it"]
+regression_test = "tests/unit/test_survival.py::test_every_stat_names_its_definition_and_quartiles_default_to_first_crossing"
+
+[[divergence]]
+id = "D-503"
+title = "A cage with a non-finite score on an axis the cleaning rule uses is refused; the legacy rule kept it at distance 0"
+tag = "CODE"
+status = "refused-input"
+legacy = "cage_cleaning.clean_by_mad replaces every non-finite distance by 0 ('a cage whose score could not be computed at all cannot be judged; keep it and flag it', <A>/code_5/mosquitos/cage_cleaning.py:248-250), so such a cage is kept silently, and the finite-only centres and MADs of its peers ignore it"
+new = "sraging.cleaning.clean refuses the call, naming the cage and the axis (CohortDataError), when a cage's median or steepness is not finite on an axis the rule uses; a non-finite steepness under axes=\"median\" (the fly's 2-8 LONG, 1-D) is reported, not refused (C4 as amended by C11)"
+source = "spec 005 FR-017, US1 scenario 6; research R4, R12; the gate's C4 amended by C11 (docs/planning/spec005_seed_gate.md, 'C11 result')"
+impact = "none on the two records at their definitions (nearest quartiles), whose scores the gate and C11 recomputed finite on every cage (gate M1, M2); with first-crossing quartiles some fly cages (2-8 LONG, one census through both quartiles) have a zero IQR and a non-finite steepness, so axes=\"both\" refuses them where the legacy rule would have kept them at distance 0 (C11)"
+downstream = ["PHASE_PLAN 1xx-migrate-*: projects that clean with cage_cleaning.py see the refusal instead of a silent keep"]
+regression_test = "tests/unit/test_cleaning.py::test_a_zero_iqr_cage_is_refused_on_both_axes_and_reported_on_the_median_axis"
+
+[[divergence]]
+id = "D-504"
+title = "Cleaning flags and never drops; removal is a separate call that names the report"
+tag = "CODE"
+status = "diverged"
+legacy = "cage_cleaning.clean_by_mad returns kept and dropped key lists, and each project pools the kept cages at once (the mosquito reanalysis' pool.py, the fly redo's clean.py writes data/cohorts/ from the k = 2.5 verdicts), so a cleaning run is a removal"
+new = "sraging.cleaning.clean returns a CleaningReport (verdict 'kept' or 'flagged' per cage, with the noise baseline's two nulls) and removes nothing; sraging.cleaning.drop(set, report) returns the set without the flagged cages, refuses a report computed on another set (keys or data differ), and records the report's sha256 in the new set's notes"
+source = "spec 005 FR-015, FR-016, US1 scenario 4; research R4, R12; Naveh's Da, 2026-11-08 (docs/planning/spec005_seed_gate.md: 'Flag by default; k required')"
+impact = "none on the verdicts: a flag is the legacy rule's drop (HR-1 compares them on every cage of the two records). What changes is the default action: at k = 2.5, a large share of the fly's drops are at noise level, how large depending on the null (C11), so nothing is removed until the user asks"
+downstream = ["PHASE_PLAN 1xx-migrate-*: the mosquito and fly pipelines call drop() explicitly when they move to sraging.cleaning"]
+regression_test = "tests/unit/test_cleaning.py::test_clean_flags_and_drop_removes_exactly_the_flagged_recording_the_report"
+
+[[divergence]]
+id = "D-502"
+title = "Legacy presets are returned in days with the unit stated; getTheta's time_unit=\"auto\" guessed the unit from the name"
+tag = "CODE"
+status = "diverged"
+legacy = "SRK's presets.getTheta(time_unit='auto') converts from the tables' days to a unit picked by a substring of the name (human, sweden, denmark, dog, cat, labrador, staffy, german, jack, pig -> years; ecoli -> hours; mice, mouse -> weeks; yeast -> generations; else days: tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/presets.py:391-416) and states nothing, so mice come back in weeks; ExtH is returned unconverted at every unit (its time power is 0 in params_and_time_powers_dict)"
+new = "sraging.presets.get returns an SRParams in days with time_unit='days' and PresetInfo(kappa_rule, time_unit, file sha256); nothing converts unless sraging.units.convert is called. The table's ExtH was fitted in the preset's auto unit (getTheta's rule, presets.py:391-403, kept as sraging.presets.auto_unit; years for all 16 presets that have one), so with ExtH=True the external hazard is SRK's rate exp(-ExtH) per auto unit (SRK's kill rule, spec 004's presets), stored per day as h_ext = exp(-ExtH) / UNITS[auto unit], which convert scales like any rate; the raw ExtH is PresetInfo.ext_h and its unit PresetInfo.ext_h_unit"
+source = "spec 005 FR-024, US7; research R9, R12; legacy brief §1.3, §1.8 (Mice_F in days in one folder and weeks in another, §4); sr-naveh_005 B1 (the first build read ExtH per day, 365 times too large)"
+impact = "none on the values: eta, beta, epsilon, xc and kappa equal getTheta's exactly in days, and convert to getTheta's auto unit equals its values within 1e-15 relative (35 presets x 3 types: tests/unit/test_presets.py, HR-7); convert(get(name, ExtH=True), to=info.ext_h_unit).h_ext equals exp(-ExtH) within 1e-15 relative for every preset and type with an ExtH, and Jack Russell in years equals spec 004's preset (HR-7's h_ext cells). What differs is the reading: getTheta returns the raw ExtH unchanged at every unit, so at a unit other than the auto unit its number no longer names the rate it was fitted as; sraging's h_ext converts with the unit"
+downstream = ["PHASE_PLAN 1xx-migrate-*: projects that call getTheta (rapa's baselines, itp's 'never call getTheta()') state the unit by calling convert", "spec 004's tools/presets_004.py read h_ext = exp(-ExtH) in the auto unit, as sraging does (its own pinned values; unchanged)"]
+regression_test = "tests/unit/test_presets.py::test_presets_are_in_days_with_the_unit_stated"
+
+[[divergence]]
+id = "D-601"
+title = "A window open to the right (t_hi = inf) assembles no S(t_hi) term: a finite gradient"
+tag = "CODE"
+status = "diverged"
+legacy = "SRK _windowed_ll and the engine before spec 006 interpolate S at [t_lo, t_hi] together; at t_hi = inf the value is finite (right = S_end) but jnp.interp's derivative is NaN, and with the external hazard the unused log S_hi adds 0 x NaN through jnp.where, so the whole gradient is NaN"
+new = "spec 006 (FR-014; [T-ENGINE-WINDOW-INF-GRAD]): with t_hi = inf, a host-side switch (the module's rule: an absent feature adds no traced operation) interpolates S at t_lo alone and assembles no S_hi term; no row can reach past an infinite t_hi, so nothing else changes. Both numerics"
+source = "spec 006 research R8; src/sraging/engine/observation.py"
+impact = "the value is unchanged, bit for bit, and equals a large finite t_hi's; the gradient is finite and equals a large finite t_hi's to round-off (bit for bit on tests/unit/engine/test_engine_window_006.py's cohort, with and without the hazard, in both numerics; within 1e-13 relative (8.5e-14 measured) on spec 006's two parity cases: different compiled programs order the sums differently); no stored result used t_hi = inf"
+downstream = []
+regression_test = "tests/unit/engine/test_engine_window_006.py::test_hi_inf_gives_a_finite_gradient_equal_to_a_large_finite_hi"
+

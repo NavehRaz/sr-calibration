@@ -1,0 +1,149 @@
+{
+ "phase": "age0-bytes",
+ "written_at": "2026-10-17T21:36:04Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 18.33452010154724,
+ "cpu_s": 0.08629,
+ "status": "PASS",
+ "optional": true,
+ "cohorts": {
+  "hazard-k0.01-p00-c0-s0": {
+   "name": "jax2_h",
+   "arrays_sha256": "14bec4329e582a971fd77c47320c3897a30036c3d5fd9b4ddf2b3971d7cfd94f",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -3971.530052805732
+  },
+  "hazard-k0.01-p02-c1-s0": {
+   "name": "jax2_h",
+   "arrays_sha256": "b7f2b361edafa65c4a849e4c0e146af510c263c7f41a00ae3ad38e79943fcf8d",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -45682.9356624591
+  },
+  "hazard-k0.01-p04-c1-s1": {
+   "name": "jax2_h",
+   "arrays_sha256": "a84a0a09c9270f6db8a68461771ad0bd12ebb0ed7ef9c990638796bf4d2c553f",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -51630.409994978545
+  },
+  "hazard-k0.0316-p00-c0-s1": {
+   "name": "jax2_h",
+   "arrays_sha256": "3b268dd9f0c2b5f7297cbbfeff64e69bbfba88d946896fa87fcb6b5092915f74",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -3989.3512005112766
+  },
+  "hazard-k0.0316-p02-c0-s0": {
+   "name": "jax2_h",
+   "arrays_sha256": "c73d72a0fc4e332e1565efbf64e2355c81309378e9f25f42c1d6bf3ace5fd778",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -4563.0443862718985
+  },
+  "hazard-k0.0316-p03-c0-s1": {
+   "name": "jax2_h",
+   "arrays_sha256": "0ac6e01f5b2eadec075ee49702bbc14e62a2e051bbbc484c05d3cae5af390d9c",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -4805.200631945443
+  },
+  "pure-k0.01-p19-c1-s0": {
+   "name": "jax2",
+   "arrays_sha256": "5ed60d47894d8ffb4b7987e23bbe7b6d557dc5d5319aa83f2f36ce3bbeefdf62",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -53417.33236383587
+  },
+  "pure-k0.01-p19-c1-s1": {
+   "name": "jax2",
+   "arrays_sha256": "fd37c5e8287fd5b4e6e4d06eacef1ccc9c06b62d2ec554f711a683aee3c52300",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -53411.03524637531
+  },
+  "pure-k10-p09-c1-s0": {
+   "name": "jax2",
+   "arrays_sha256": "bc64aea63902b5385efb13138855491c10a22002f2322d8a8feddb9463116ef0",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -5748.768393241041
+  },
+  "pure-k2-p09-c1-s0": {
+   "name": "jax2",
+   "arrays_sha256": "b0d3de34c22048547717609a966af2e3fd99bcccf8751dd42291325e1fb34c5f",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -5710.9384253400785
+  },
+  "pure-real-celegans-c1-s0": {
+   "name": "jax2",
+   "arrays_sha256": "625202ad7b28129702fc65361a4f1563ac0d61724b75f2ca17f4ea15753d08ce",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -5187.1969275144775
+  },
+  "censor-real-celegans-c0-s0": {
+   "name": "jax2",
+   "arrays_sha256": "75735a956e210c95c53ae6ada894e5815c0ebe7ae9ff7e64b580f5ff29f37624",
+   "grid_equal": true,
+   "bytes_equal": true,
+   "diffs": [],
+   "value": -15133.06755466635
+  }
+ },
+ "arrays_identical_across_processes": true,
+ "planted_one_ulp_caught": true,
+ "bytes_equal": 12,
+ "of": 12,
+ "theta": "the library truth (with its external hazard for the hazard cohorts, under jax2_h)",
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

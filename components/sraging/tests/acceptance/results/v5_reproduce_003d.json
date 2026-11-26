@@ -1,0 +1,70 @@
+{
+ "phase": "v5-reproduce",
+ "written_at": "2026-10-14T15:04:31Z",
+ "repo_head": "cee96aa48d7111dee6f9002195462e13640d3c28",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "docs/planning/spec003d_seed.md": "f4804fd4872203788edb483f1c4d5dbe03069740"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84c40a04c6ffa86ffca163329af77cca3c81221f"
+ },
+ "wall_s": 68.09712409973145,
+ "cpu_s": 67.538974,
+ "status": "written",
+ "n": 2078,
+ "n_match": 2078,
+ "by_arm": {
+  "pure": {
+   "n": 1100,
+   "match": 1100
+  },
+  "hazard": {
+   "n": 296,
+   "match": 296
+  },
+  "window": {
+   "n": 294,
+   "match": 294
+  },
+  "censor": {
+   "n": 296,
+   "match": 296
+  },
+  "realfull": {
+   "n": 92,
+   "match": 92
+  }
+ },
+ "n_points": 194,
+ "mismatches": [],
+ "grid": {
+  "N": 1500,
+  "dt": 0.0005,
+  "tau_max": 30.0,
+  "Gtol": 1e-12
+ },
+ "v5": {
+  "manifest": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester/data/library/v5/manifest.json",
+  "manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "library_version": "v5",
+  "generator": {
+   "package": "SRK",
+   "resolved_path": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/SRtools_kappa",
+   "revision": "cb191f5",
+   "dirty": true
+  },
+  "tester_main_head": "ddaa931566da6be62a3315e059cb3e738dd307b6"
+ },
+ "not_covered": "the 332 heterogeneous cohorts"
+}

@@ -1,0 +1,95 @@
+{
+ "phase": "unchanged",
+ "written_at": "2026-10-29T01:07:14Z",
+ "repo_head": "9d6c2ece131226809eea96f533af6fc4fdd5f22c",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 530.5726430416107,
+ "cpu_s": 0.08387600000000006,
+ "status": "PASS",
+ "groups": {
+  "unit": {
+   "tests": 949,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 949,
+   "returncode": 0,
+   "summary": "949 passed, 14 deselected in 351.02s (0:05:51)",
+   "wall_s": 353.7,
+   "paths": [
+    "tests/unit"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "parity": {
+   "tests": 497,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 497,
+   "returncode": 0,
+   "summary": "497 passed, 1 deselected in 170.96s (0:02:50)",
+   "wall_s": 174.3,
+   "paths": [
+    "tests/parity"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "results_001_to_003f": {
+   "tests": 133,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 2,
+   "passed": 131,
+   "returncode": 1,
+   "summary": "131 passed, 1 skipped, 1 xfailed in 1.90s",
+   "wall_s": 2.4,
+   "paths": [
+    "tests/acceptance/test_results.py",
+    "tests/acceptance/test_results_002.py",
+    "tests/acceptance/test_results_003.py",
+    "tests/acceptance/test_results_003b.py",
+    "tests/acceptance/test_results_003e.py",
+    "tests/acceptance/test_results_003f.py"
+   ],
+   "skipped_list": [
+    [
+     "tests.acceptance.test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch",
+     "NOT APPLICABLE: the fit path changed since spec 002's claims re-run (['src/sraging/adapters/observation.py', 'src/sraging/adapters/srbench.py', 'src/sraging/labels.py', 'src/sraging/registry.py', 'src/sraging/result.py']); spec 003's re-run (results/claims-001_003.json, test_results_003.py) is the c"
+    ],
+    [
+     "tests.acceptance.test_results_003::test_coverage_no_combination_loses_on_a_gated_arm",
+     "SC-005 fails as recorded: [['profile_jax2|censor', 'eta_over_eps', 'vs_eta'], ['profile_jax2|censor', 'eta_over_eps', 'vs_epsilon']] (Naveh 2026-10-10, [coverage_result])"
+    ]
+   ],
+   "failed_list": []
+  }
+ },
+ "skips_unlisted": [],
+ "superseded": {
+  "test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch": "spec 002's claims re-run; once spec 003 changed the fit path it is NOT APPLICABLE for good, and spec 003's re-run (results/claims-001_003.json, test_results_003.py) is the check, as its own comment rules"
+ },
+ "recorded_skips": {
+  "test_results_003::test_coverage_no_combination_loses_on_a_gated_arm": "xfail: spec 003 SC-005 fails as recorded (eta/eps on censored cohorts; Naveh 2026-10-10, [coverage_result])"
+ }
+}

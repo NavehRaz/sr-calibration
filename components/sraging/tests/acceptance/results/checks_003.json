@@ -1,0 +1,150 @@
+{
+ "phase": "checks",
+ "written_at": "2026-10-06T08:23:34Z",
+ "repo_head": "15f21916b7fce485a265f557d7bc608da1bdffff",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003.toml": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "a6f1e8373128f9daaadf26196699248857c3754c"
+ },
+ "wall_s": 5444.517874240875,
+ "cpu_s": 5300.06945,
+ "status": "pass",
+ "itp_age0": {
+  "ok": true,
+  "rule": "SC-009 as amended 2026-10-06 (Naveh): AGE0_DEATHS fires on the fit with the age-0 death; FLOORED_DEATHS at the theta-hat fitted without it lists it with refined mass < 1e-12 and its share of the log-likelihood",
+  "death": {
+   "row": 1,
+   "age": 0.0,
+   "term_fit": -83.68035546805665,
+   "term_refined": -83.68035546805665,
+   "mass_refined": 4.550754178405762e-37,
+   "converged": true,
+   "category": "impossible",
+   "ll_share": 0.04101947365741036,
+   "screened": false
+  },
+  "listed_at": "theta_hat_without",
+  "floor_report_without": {
+   "calibrator": "profile_jax2",
+   "deaths": [
+    {
+     "row": 1,
+     "age": 0.0,
+     "term_fit": -83.68035546805665,
+     "term_refined": -83.68035546805665,
+     "mass_refined": 4.550754178405762e-37,
+     "converged": true,
+     "category": "impossible",
+     "ll_share": 0.04101947365741036,
+     "screened": false
+    }
+   ],
+   "counts": {
+    "horizon": 0,
+    "impossible": 1,
+    "grid": 0
+   },
+   "loglik_terms_total": -2040.0153392250902,
+   "grid": {
+    "N": 900,
+    "dt": 0.0003844224830681495,
+    "tau_max": 2.0,
+    "early": {
+     "dt0": 1e-08,
+     "ratio": 1.05
+    },
+    "L": 867.101556269384
+   },
+   "refinement": {
+    "N": 900,
+    "steps": [
+     {
+      "dt": 9.610562076703737e-05,
+      "node_steps": 24300.0,
+      "max_moved": 0.0,
+      "group": "candidates"
+     }
+    ],
+    "refine_max": 6,
+    "budget_node_steps": 4000000000.0
+   },
+   "rules": {
+    "list_nats": 1.0,
+    "candidate_mass": 1e-12,
+    "impossible_mass": 1e-12,
+    "screen_mass": 1e-06
+   },
+   "n_screened": 0,
+   "cost_s": 1.1045500000000175
+  },
+  "absorbed": {
+   "theta_hat_with": {
+    "eta": 0.0008579307799090451,
+    "beta": 1.3762978120404292,
+    "epsilon": 0.09041066797772547,
+    "kappa": 0.0010094340144849727,
+    "xc": 1.0,
+    "h_ext": 0.0,
+    "time_unit": "days"
+   },
+   "theta_hat_without": {
+    "eta": 3.57913138545272e-05,
+    "beta": 0.03166671731968555,
+    "epsilon": 0.002369154067613347,
+    "kappa": 0.0010000000000000002,
+    "xc": 1.0,
+    "h_ext": 0.0,
+    "time_unit": "days"
+   },
+   "loglik_with": -1974.748240129554,
+   "loglik_without": -1956.3349841006857,
+   "shift_dex": {
+    "eta": 1.3796746081598643,
+    "beta": 1.6381093742073969,
+    "epsilon": 1.5816263738460672
+   },
+   "shift_fold": {
+    "eta": 23.970362848262027,
+    "beta": 43.46196664928247,
+    "epsilon": 38.161582319044335
+   },
+   "age0_term_at_with": -12.9981722729103,
+   "age0_mass_at_with": 2.264464449983773e-06,
+   "age0_term_at_without": -83.68035546805665,
+   "age0_mass_at_without": 4.550754178405762e-37,
+   "others_loglik_at_with": -1961.7500678566435,
+   "others_loglik_at_without": -1956.3349837570336,
+   "others_cost_nats": 5.415084099609885,
+   "others": "the cohort's other deaths and censorings, on the with-age0 cohort's grid at both points",
+   "listed_at_own_theta_hat": false,
+   "age0_deaths_fires": true
+  }
+ },
+ "censor_tie": {
+  "ok": true,
+  "cohort": "censor-k0.01-p00-c0-s0+staggered",
+  "message": "33 deaths (3.3% of the cohort) are recorded at the censoring age 103. They are scored as dying anywhere in [103, 104) although they died before follow-up ended, which biases eta upward. If follow-up ended inside that bin, refit with those deaths relabelled as censored at 103 ([T-TESTER-DEFECTS] 7). jax2's censor-tie relabel did not apply here: censored records at more than one age (it fires only when every censored record shares one age, the maximum; register D-205).",
+  "constructed": {
+   "base": "censor-k0.01-p00-c0-s0",
+   "rule": "every 10th censored row (row order) censored at the median death age on the recording grid",
+   "rows_moved": 20,
+   "censored_at": 99.0,
+   "v033_rule_fires": true,
+   "relabel_applied": false
+  },
+  "rule": "first medium censor-arm cohort where v0.3.3's rule fires and the relabel does not; else the recorded construction"
+ }
+}

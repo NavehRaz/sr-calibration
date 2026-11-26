@@ -1,0 +1,364 @@
+{
+ "phase": "floors",
+ "written_at": "2026-10-04T08:13:27Z",
+ "repo_head": "638e8b40019f5106aec48e2a71b859d0404a597e",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/expected_floors_002.json": "79554802629442c59bed536517dc11f5be751fe2",
+  "tests/acceptance/panel_v1.toml": "c2c8f0fe2c5baf354fae3ba59a35a49b3f15f729"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "head": "dbe504a91a34ffe6656f5a662e1a33a6cbecba09"
+ },
+ "wall_s": 2563.6699731349945,
+ "cpu_s": 90.687504,
+ "status": "fail",
+ "results": {
+  "itp_plus_age0": {
+   "got": [
+    [
+     1,
+     "impossible"
+    ],
+    [
+     75,
+     "impossible"
+    ]
+   ],
+   "expected": [
+    [
+     1,
+     "impossible"
+    ]
+   ],
+   "ok": false,
+   "cli_exit": 0,
+   "fired": true,
+   "theta_hat_fit": {
+    "eta": 6.4712757966395514e-06,
+    "beta": 0.0028544648364677147,
+    "epsilon": 0.0002221763204640231,
+    "kappa": 0.001001410131567111
+   },
+   "theta_hat_expected_at": {
+    "eta": 3.58088451358447e-05,
+    "beta": 0.03168620431375733,
+    "epsilon": 0.002370584208801515,
+    "kappa": 0.0010000000000000002
+   },
+   "cli_stdout_tail": "e eta point 6.4713e-06 lies outside its own interval [0.0002166, 0.012064] ([T-JAX-BASIN]).\nWARNING BASIN_OUTSIDE the epsilon point 0.00022218 lies outside its own interval [0.013932, 15.406] ([T-JAX-BASIN]).\nWARNING BASIN_OUTSIDE the kappa point 0.0010014 lies outside its own interval [0.43891, 1.3504] ([T-JAX-BASIN]).\nWARNING FLOORED_DEATHS 2 death(s) are scored by the arithmetic or the time grid rather than by the model: each shows its log-likelihood term with v0.3.3's arithmetic (this fit), with the corrected arithmetic, and on a refined time grid (register D-004, D-105). 2 impossible (age 0: -32.8 in this fit, -114.5 corrected, -700.0 refined; age 53: -29.5 in this fit, -29.5 corrected, -29.6 refined): at theta-hat the model gives these deaths essentially zero probability; they are not ageing deaths it describes. Check the rows (recording errors, a different population); if they are real, fit a window that starts after them (state the cut-off) and compare fits with and without them.\nchecks: BASIN_GAIN=ran/fired BASIN_OUTSIDE=ran/fired CENSOR_TIE=ran/quiet DELTA_GRID=ran/quiet BOX_EDGE=ran/quiet FLOORED_DEATHS=ran/fired\nRESULT ok \u2014 5 WARNING(S): BASIN_GAIN, BASIN_OUTSIDE, BASIN_OUTSIDE, BASIN_OUTSIDE, FLOORED_DEATHS \u2014 read before using these numbers\nprovenance: sraging 0.1.0 @ 638e8b40019f \u00b7 numerics v033 \u00b7 engine fp \u00b7 grid N=900 dt=0.0003844224830681495 tau_max=2.0 dt_ceiling=0.0003844224830681495\n-> /Users/navehr/code/sraging/.cache/wt/run/var/floors_itp_plus_age0.json\n",
+   "wall_s": 2536.971245765686
+  },
+  "pure-real-Sweden_F_1910_homo-c0-s0": {
+   "got": [
+    [
+     1,
+     "impossible"
+    ],
+    [
+     2,
+     "impossible"
+    ],
+    [
+     3,
+     "impossible"
+    ],
+    [
+     4,
+     "impossible"
+    ],
+    [
+     5,
+     "impossible"
+    ],
+    [
+     6,
+     "impossible"
+    ],
+    [
+     7,
+     "impossible"
+    ],
+    [
+     8,
+     "impossible"
+    ],
+    [
+     9,
+     "impossible"
+    ],
+    [
+     10,
+     "impossible"
+    ],
+    [
+     11,
+     "impossible"
+    ],
+    [
+     12,
+     "impossible"
+    ],
+    [
+     13,
+     "impossible"
+    ],
+    [
+     14,
+     "impossible"
+    ]
+   ],
+   "expected": [
+    [
+     1,
+     "impossible"
+    ],
+    [
+     2,
+     "impossible"
+    ],
+    [
+     3,
+     "impossible"
+    ],
+    [
+     4,
+     "impossible"
+    ],
+    [
+     5,
+     "impossible"
+    ],
+    [
+     6,
+     "impossible"
+    ],
+    [
+     7,
+     "impossible"
+    ],
+    [
+     8,
+     "impossible"
+    ],
+    [
+     9,
+     "impossible"
+    ],
+    [
+     10,
+     "impossible"
+    ],
+    [
+     11,
+     "impossible"
+    ],
+    [
+     12,
+     "impossible"
+    ],
+    [
+     13,
+     "impossible"
+    ],
+    [
+     14,
+     "impossible"
+    ]
+   ],
+   "ok": true,
+   "cost_s": 6.936884000000001
+  },
+  "pure-k0.01-p00-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.767462
+  },
+  "pure-k0.01-p00-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.716398
+  },
+  "pure-k0.01-p00-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.6866869999999974
+  },
+  "pure-k0.01-p00-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.6525309999999998
+  },
+  "pure-k0.01-p01-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.698063000000001
+  },
+  "pure-k0.01-p01-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7056390000000015
+  },
+  "pure-k0.01-p01-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7958870000000005
+  },
+  "pure-k0.01-p01-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.6856870000000015
+  },
+  "pure-k0.01-p02-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.889572000000001
+  },
+  "pure-k0.01-p02-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.674160999999998
+  },
+  "pure-k0.01-p02-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.633223000000001
+  },
+  "pure-k0.01-p02-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.6679089999999945
+  },
+  "pure-k0.01-p03-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7696150000000017
+  },
+  "pure-k0.01-p03-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.713056999999999
+  },
+  "pure-k0.01-p03-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.860794999999996
+  },
+  "pure-k0.01-p03-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.652355
+  },
+  "pure-k0.01-p04-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.844852000000003
+  },
+  "pure-k0.01-p04-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.8419979999999967
+  },
+  "pure-k0.01-p04-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.815894
+  },
+  "pure-k0.01-p04-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.848509
+  },
+  "pure-k0.01-p05-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.6968069999999997
+  },
+  "pure-k0.01-p05-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7198429999999973
+  },
+  "pure-k0.01-p05-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.796020999999996
+  },
+  "pure-k0.01-p05-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.6838630000000023
+  },
+  "pure-k0.01-p06-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7077560000000034
+  },
+  "pure-k0.01-p06-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7771589999999975
+  },
+  "pure-k0.01-p06-c1-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7338889999999907
+  },
+  "pure-k0.01-p06-c1-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7346999999999895
+  },
+  "pure-k0.01-p07-c0-s0": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.708663999999999
+  },
+  "pure-k0.01-p07-c0-s1": {
+   "got": [],
+   "expected": [],
+   "ok": true,
+   "cost_s": 2.7142490000000095
+  }
+ },
+ "n_not_applicable": 0
+}

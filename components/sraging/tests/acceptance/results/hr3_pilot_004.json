@@ -1,0 +1,576 @@
+{
+ "phase": "hr3-pilot",
+ "written_at": "2026-10-29T18:10:06Z",
+ "repo_head": "7477094d162aee2c5a910d365e9c3342ea1dabc4",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_004.toml": "3c935c1419dabe2ea4b74727301deb3afe8e8eb0",
+  "tests/acceptance/panel_004_ids.tsv": "c9cb9ef085cbf4129cdc9095d996c82f7385e57c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 3735.5888698101044,
+ "cpu_s": 3735.179471,
+ "status": "capped",
+ "cells": [
+  {
+   "pairs": [
+    {
+     "id": "het-k1-p00-c0-s1/sd0.2",
+     "kind": "max",
+     "sharp": true,
+     "M_common": 57,
+     "ll_adaptive": -12188.140774420339,
+     "ll_full": -12188.104949438331,
+     "ll_final_adaptive": -12188.142092813305,
+     "ll_final_full": -12188.104949438331,
+     "M_final": [
+      25,
+      57
+     ],
+     "M_low": 17,
+     "cpu_adaptive": 592.582085,
+     "cpu_full": 1487.69188,
+     "checked": true,
+     "verdicts": [
+      "converged",
+      "converged"
+     ],
+     "phases": {
+      "adaptive": [
+       {
+        "name": "A explore",
+        "M": 17,
+        "n_evals": 101,
+        "cpu_s": 272.159352,
+        "wall_s": 270.61062162500093,
+        "stated_cpu_s": 177.33121560433128,
+        "termination": {
+         "status": "converged",
+         "nit": 73,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.178967380238
+       },
+       {
+        "name": "B check",
+        "M": 25,
+        "n_evals": 1,
+        "cpu_s": 3.567229999999995,
+        "wall_s": 3.1368422499999724,
+        "stated_cpu_s": 1.9792793934319393,
+        "termination": {
+         "status": "converged",
+         "nit": 2,
+         "message": "M = 25"
+        },
+        "ll": -12188.17567272357
+       },
+       {
+        "name": "C polish",
+        "M": 25,
+        "n_evals": 82,
+        "cpu_s": 310.191226,
+        "wall_s": 310.5566220420005,
+        "stated_cpu_s": 211.72335002264433,
+        "termination": {
+         "status": "converged",
+         "nit": 69,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.142092813305
+       },
+       {
+        "name": "D check",
+        "M": 25,
+        "n_evals": 2,
+        "cpu_s": 2.6450310000000172,
+        "wall_s": 2.645641125000111,
+        "stated_cpu_s": 1.807168141829162,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "|l(25) - l(38)| = 0.00125"
+        },
+        "ll": -12188.142092813305
+       }
+      ],
+      "full": [
+       {
+        "name": "B check",
+        "M": 38,
+        "n_evals": 1,
+        "cpu_s": 3.719396999999958,
+        "wall_s": 3.4913554590002605,
+        "stated_cpu_s": 2.8835010487340997,
+        "termination": {
+         "status": "converged",
+         "nit": 2,
+         "message": "M = 38"
+        },
+        "ll": -18115.22528790189
+       },
+       {
+        "name": "C polish",
+        "M": 38,
+        "n_evals": 182,
+        "cpu_s": 1041.795497,
+        "wall_s": 1042.9290885420014,
+        "stated_cpu_s": 710.9034274495525,
+        "termination": {
+         "status": "converged",
+         "nit": 133,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12187.03132791497
+       },
+       {
+        "name": "D check",
+        "M": 38,
+        "n_evals": 2,
+        "cpu_s": 3.8609879999999066,
+        "wall_s": 3.861909834000471,
+        "stated_cpu_s": 2.712203956730094,
+        "termination": {
+         "status": "unconverged",
+         "nit": 1,
+         "message": "|l(38) - l(57)| = 1.19"
+        },
+        "ll": -12187.03132791497
+       },
+       {
+        "name": "C polish",
+        "M": 57,
+        "n_evals": 51,
+        "cpu_s": 431.730603,
+        "wall_s": 432.1239244999997,
+        "stated_cpu_s": 298.8138032961027,
+        "termination": {
+         "status": "converged",
+         "nit": 40,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.104949438331
+       },
+       {
+        "name": "D check",
+        "M": 57,
+        "n_evals": 2,
+        "cpu_s": 6.26167200000009,
+        "wall_s": 6.027099082999484,
+        "stated_cpu_s": 4.05403117742814,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "|l(57) - l(85)| = 0.00281"
+        },
+        "ll": -12188.104949438331
+       }
+      ]
+     },
+     "theta_hat": {
+      "adaptive": {
+       "eta": 0.00025434460910054793,
+       "beta": 0.007107876438052344,
+       "epsilon": 4.0337347679120984e-05,
+       "kappa": 0.3248756274715843,
+       "xc": 1.0,
+       "h_ext": 0.0,
+       "time_unit": "input units"
+      },
+      "full": {
+       "eta": 0.0002683648443815585,
+       "beta": 0.0136476504537271,
+       "epsilon": 1.4993809174029709e-05,
+       "kappa": 0.7995976100491043,
+       "xc": 1.0,
+       "h_ext": 0.0,
+       "time_unit": "input units"
+      }
+     }
+    },
+    {
+     "id": "het-k1-p00-c0-s1/sd0.2/profile0.8",
+     "kind": "profile",
+     "sharp": true,
+     "M_common": 57,
+     "ll_adaptive": -12188.113432526803,
+     "ll_full": -12188.113432526803,
+     "ll_final_adaptive": -12188.113432526803,
+     "ll_final_full": -12188.113432526803,
+     "M_final": [
+      57,
+      57
+     ],
+     "M_low": 25,
+     "cpu_adaptive": 310.85996300000033,
+     "cpu_full": 297.4210390000003,
+     "checked": true,
+     "verdicts": [
+      "converged",
+      "converged"
+     ],
+     "phases": {
+      "adaptive": [
+       {
+        "name": "A explore",
+        "M": 25,
+        "n_evals": 3,
+        "cpu_s": 13.348723000000064,
+        "wall_s": 13.354978375000428,
+        "stated_cpu_s": 9.04769858717946,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12212.042697431192
+       },
+       {
+        "name": "B check",
+        "M": 57,
+        "n_evals": 1,
+        "cpu_s": 6.187171000000035,
+        "wall_s": 6.1904345829989325,
+        "stated_cpu_s": 4.958858233463507,
+        "termination": {
+         "status": "converged",
+         "nit": 2,
+         "message": "M = 57"
+        },
+        "ll": -12188.15043523128
+       },
+       {
+        "name": "C polish",
+        "M": 57,
+        "n_evals": 35,
+        "cpu_s": 285.0035359999997,
+        "wall_s": 285.3091897079994,
+        "stated_cpu_s": 240.6687824189734,
+        "termination": {
+         "status": "converged",
+         "nit": 27,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.113432526803
+       },
+       {
+        "name": "D check",
+        "M": 57,
+        "n_evals": 2,
+        "cpu_s": 5.942210000000159,
+        "wall_s": 5.945057790999272,
+        "stated_cpu_s": 4.757823440214987,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "|l(57) - l(85)| = 0.0143"
+        },
+        "ll": -12188.113432526803
+       }
+      ],
+      "full": [
+       {
+        "name": "B check",
+        "M": 57,
+        "n_evals": 1,
+        "cpu_s": 6.230438999999933,
+        "wall_s": 6.242814332999842,
+        "stated_cpu_s": 4.952164032334519,
+        "termination": {
+         "status": "converged",
+         "nit": 2,
+         "message": "M = 57"
+        },
+        "ll": -12188.15043523128
+       },
+       {
+        "name": "C polish",
+        "M": 57,
+        "n_evals": 35,
+        "cpu_s": 284.8702800000001,
+        "wall_s": 285.1023013749982,
+        "stated_cpu_s": 240.3438920593118,
+        "termination": {
+         "status": "converged",
+         "nit": 27,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.113432526803
+       },
+       {
+        "name": "D check",
+        "M": 57,
+        "n_evals": 2,
+        "cpu_s": 5.906598000000031,
+        "wall_s": 5.907828874998813,
+        "stated_cpu_s": 4.751400625618254,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "|l(57) - l(85)| = 0.0143"
+        },
+        "ll": -12188.113432526803
+       }
+      ]
+     },
+     "theta_hat": {
+      "adaptive": {
+       "eta": 0.000266916968422179,
+       "beta": 0.014009445865224273,
+       "epsilon": 1.1995047339223768e-05,
+       "kappa": 0.8669324528130574,
+       "xc": 1.0,
+       "h_ext": 0.0,
+       "time_unit": "input units"
+      },
+      "full": {
+       "eta": 0.000266916968422179,
+       "beta": 0.014009445865224273,
+       "epsilon": 1.1995047339223768e-05,
+       "kappa": 0.8669324528130574,
+       "xc": 1.0,
+       "h_ext": 0.0,
+       "time_unit": "input units"
+      }
+     }
+    },
+    {
+     "id": "het-k1-p00-c0-s1/sd0.2/profile1.25",
+     "kind": "profile",
+     "sharp": true,
+     "M_common": 57,
+     "ll_adaptive": -12188.108820693353,
+     "ll_full": -12188.108820693353,
+     "ll_final_adaptive": -12188.108820693353,
+     "ll_final_full": -12188.108820693353,
+     "M_final": [
+      57,
+      57
+     ],
+     "M_low": 25,
+     "cpu_adaptive": 383.4346479999999,
+     "cpu_full": 370.5147569999999,
+     "checked": true,
+     "verdicts": [
+      "converged",
+      "converged"
+     ],
+     "phases": {
+      "adaptive": [
+       {
+        "name": "A explore",
+        "M": 25,
+        "n_evals": 3,
+        "cpu_s": 13.493558000000121,
+        "wall_s": 13.500960499997746,
+        "stated_cpu_s": 9.371602438426319,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12191.834198233028
+       },
+       {
+        "name": "B check",
+        "M": 57,
+        "n_evals": 1,
+        "cpu_s": 6.289515999999821,
+        "wall_s": 6.290934584001661,
+        "stated_cpu_s": 5.136383298443236,
+        "termination": {
+         "status": "converged",
+         "nit": 2,
+         "message": "M = 57"
+        },
+        "ll": -12188.170175757026
+       },
+       {
+        "name": "C polish",
+        "M": 57,
+        "n_evals": 41,
+        "cpu_s": 357.231984,
+        "wall_s": 357.62911675000214,
+        "stated_cpu_s": 292.0191319813643,
+        "termination": {
+         "status": "converged",
+         "nit": 31,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.108820693353
+       },
+       {
+        "name": "D check",
+        "M": 57,
+        "n_evals": 2,
+        "cpu_s": 6.028812000000016,
+        "wall_s": 6.030361416000233,
+        "stated_cpu_s": 4.928151543100943,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "|l(57) - l(85)| = 0.000222"
+        },
+        "ll": -12188.108820693353
+       }
+      ],
+      "full": [
+       {
+        "name": "B check",
+        "M": 57,
+        "n_evals": 1,
+        "cpu_s": 6.3036809999998695,
+        "wall_s": 6.305090000001655,
+        "stated_cpu_s": 5.254947899486669,
+        "termination": {
+         "status": "converged",
+         "nit": 2,
+         "message": "M = 57"
+        },
+        "ll": -12188.170175757026
+       },
+       {
+        "name": "C polish",
+        "M": 57,
+        "n_evals": 41,
+        "cpu_s": 357.72579099999984,
+        "wall_s": 358.0565612089995,
+        "stated_cpu_s": 298.7598929154075,
+        "termination": {
+         "status": "converged",
+         "nit": 31,
+         "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        },
+        "ll": -12188.108820693353
+       },
+       {
+        "name": "D check",
+        "M": 57,
+        "n_evals": 2,
+        "cpu_s": 6.059402000000318,
+        "wall_s": 6.06938949999676,
+        "stated_cpu_s": 5.041909471129101,
+        "termination": {
+         "status": "converged",
+         "nit": 1,
+         "message": "|l(57) - l(85)| = 0.000222"
+        },
+        "ll": -12188.108820693353
+       }
+      ]
+     },
+     "theta_hat": {
+      "adaptive": {
+       "eta": 0.00026420474780237935,
+       "beta": 0.012163379457131604,
+       "epsilon": 1.8742261467537137e-05,
+       "kappa": 0.7230976045368088,
+       "xc": 1.0,
+       "h_ext": 0.0,
+       "time_unit": "input units"
+      },
+      "full": {
+       "eta": 0.00026420474780237935,
+       "beta": 0.012163379457131604,
+       "epsilon": 1.8742261467537137e-05,
+       "kappa": 0.7230976045368088,
+       "xc": 1.0,
+       "h_ext": 0.0,
+       "time_unit": "input units"
+      }
+     }
+    }
+   ],
+   "plant": {
+    "id": "het-k1-p00-c0-s1/sd0.2",
+    "sharp": true,
+    "ll_plant": -12188.176301855605,
+    "ll_full": -12188.104949438331,
+    "M_common": 57,
+    "M_plant": 17,
+    "cpu_plant": 273.9010309999999
+   },
+   "cohort_id": "het-k1-p00-c0-s1",
+   "stratum": "syn-sharp",
+   "sd": 0.2,
+   "cpu_s": 3734.9648
+  }
+ ],
+ "hr3_projection_cpu_h": 24.899765333333335,
+ "hr3_cells": 24,
+ "per_cell_cpu_h": 1.0374902222222222,
+ "rules": {
+  "threshold": 0.05,
+  "cap": 10.0,
+  "sds": [
+   0.2,
+   0.3
+  ],
+  "pass": "every |l_adaptive - l_full| < 0.05 at a common M (the larger final M), maximisations and profile points alike; the CPU saving is claimed iff the upper 95 % bound of the mean paired log(cpu_adaptive / cpu_full) is < 0",
+  "plant": "an adaptive run that never raises M (phase A only, at M_low): it must exceed 0.05 on the sharp cells",
+  "incomplete": [
+   "the never-raise plant does not exceed 0.05 on every sharp cell",
+   "a pair lacks a checked final value",
+   "no pair"
+  ],
+  "capped": "the run reaches its cap (10 CPU-h less hr3-pilot's)",
+  "start": {
+   "eta": 1.5
+  },
+  "profile": {
+   "parameter": "epsilon",
+   "factors": [
+    0.8,
+    1.25
+   ]
+  },
+  "sharp_strata": [
+   "syn-sharp",
+   "human-10k",
+   "human-25k",
+   "human-100k"
+  ]
+ },
+ "cap": {
+  "key": "hr3-pilot",
+  "frozen_cpu_h": 1.0,
+  "spent_by": {},
+  "left_cpu_h": 1.0
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/panel_004.toml": "c5f36a55ad8973409287dd4f7b0dbb717a537e9ecdcb877c89b20915f80077a3",
+  "tests/acceptance/panel_004_ids.tsv": "23328a8e2bfe6ed5425291a8dd028eb93251692a51440ac3c34fa55ce0dfcdfd"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.8629925161290263,
+  "projected_from": "tests/acceptance/results/p0_het_cost_004.json per_node_cpu_s x 100 evaluations x M ~ 64 per maximisation",
+  "cap_cpu_h": 1.0,
+  "cap_frozen_cpu_h": 1.0,
+  "naveh_ok": null,
+  "cpu_spent_h": 1.0375446455555557,
+  "parent_cpu_s": 3735.160734,
+  "worker_cpu_s": 0.0,
+  "capped": true
+ }
+}

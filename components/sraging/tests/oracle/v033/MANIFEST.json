@@ -1,0 +1,368 @@
+{
+ "created": "2026-10-02T18:00:16",
+ "purpose": "Byte-level oracle for the MVP-a port of mle_profile_jax v0.3.3 (the srbench reference). NEVER EDIT. Compare side by side on the same host only.",
+ "host": {
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "node": "naveh-mac"
+ },
+ "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+ "sources": {
+  "SRtools_kappa": {
+   "head": "cb191f5f410a59e1e97c2937758518c182b94ec5",
+   "status": [
+    " M SRK/benchmark/_eta_cache.json",
+    " M SRK/benchmark/cohorts.py",
+    " M SRK/benchmark/coverage.py",
+    " M SRK/benchmark/emcee_production.py",
+    " M SRK/benchmark/interval_estimators.py",
+    " M SRK/benchmark/kappa_ranges.py",
+    " M SRK/benchmark/methods.py",
+    " M SRK/benchmark/report.py",
+    " M SRK/benchmark/representativeness.py",
+    " M SRK/benchmark/selftest.py",
+    " M SRK/benchmark/space_search.py",
+    " M SRK/benchmark/two_stage.py",
+    " M SRK/fp_gof.py",
+    " M SRK/fp_likelihood.py",
+    " M tools/sync_to_cluster.sh",
+    "?? SRK/benchmark/_kdense_points.py",
+    "?? SRK/benchmark/beta_slice.py",
+    "?? SRK/benchmark/combo_vol.py",
+    "?? SRK/benchmark/dip_test.py",
+    "?? SRK/benchmark/explorer.py",
+    "?? SRK/benchmark/kappa_dense.py",
+    "?? SRK/benchmark/kappa_feasible.py",
+    "?? SRK/benchmark/kappa_value.py",
+    "?? SRK/benchmark/likelihood_maps.py",
+    "?? SRK/benchmark/likelihood_vol.py",
+    "?? SRK/benchmark/likelihood_vol_render.py",
+    "?? SRK/benchmark/manifold_map.py",
+    "?? SRK/benchmark/mle_report.py",
+    "?? SRK/benchmark/perf_plots.py",
+    "?? SRK/benchmark/ratio_invariant.py",
+    "?? SRK/fit_cohort.py",
+    "?? tools/rebuild.sh",
+    "?? tools/submit_combo_run.sh"
+   ]
+  },
+  "sr_calibration_tester": {
+   "head": "f8eaed2d56d7b237d01e38f140fe1d71a8c83717",
+   "status": []
+  }
+ },
+ "files": [
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SR_hetro.py",
+   "md5": "745c8035221f96c7520da22d0c27d36e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib.py",
+   "md5": "91f4ec22aeba277bb39c05ff98753b33",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib_lifelines.py",
+   "md5": "acd403bc2d8fc522b50998ed70499ed8",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/__init__.py",
+   "md5": "24251f2847bd338fd4276adda8022620",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/benchmark/__init__.py",
+   "md5": "f34ff6fa54037947150efdb049890f4e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/benchmark/space_search.py",
+   "md5": "6c1998b235cc8a23549f1449a89bf194",
+   "tracked": true,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/deathTimesDataSet.py",
+   "md5": "64ad1a3b5c3b4ca9631d53d03912e50e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/distance_metrics.py",
+   "md5": "b06c95c66b3ec2680b9f02e48f593d89",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fit_cohort.py",
+   "md5": "39778f62ebffeb66a498a9f401a8e84d",
+   "tracked": false,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_curvefit.py",
+   "md5": "cf64615780a5dc36cfc8f079f9c4c073",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_gof.py",
+   "md5": "e406e5265d54c9d7921f7b440bd16428",
+   "tracked": true,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_likelihood.py",
+   "md5": "f059235ac088d006ab5797681ecdbcd4",
+   "tracked": true,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/initialParamsFinder.py",
+   "md5": "c9a85bfa7de4cdc371e753cd07214988",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/joint_posterior.py",
+   "md5": "38c2709dbbed5c24f932fcf6b1c05056",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/life_table.py",
+   "md5": "6d1fdd419c047e667466b6076d3e88c6",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/makhamGompertzFitter.py",
+   "md5": "c39ada303109ae4d79b189257fd4bd52",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/prior_gen.py",
+   "md5": "f5dfca52dc67896809bc414fd97961f4",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/samples_utils.py",
+   "md5": "9b6bf5817f2fbe9cf44ba859fd01e572",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/sr_mcmc.py",
+   "md5": "c55ec3406b8b1793ef8e4a9be74e9e1c",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/stepsize.py",
+   "md5": "002adf6f934f8cfc9abe9acdad2f38f6",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/weibullFitter.py",
+   "md5": "5f223392fe3687d4615243a953c0308f",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "methods/mle_profile_jax/__init__.py",
+   "md5": "b5d4c10b78912ecd09d21ca3389ba402",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "methods/mle_profile_jax/estimator.py",
+   "md5": "cbda4a6ac91cf4832e0e03c5eb08fe93",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "methods/mle_profile_jax/fp_jax.py",
+   "md5": "66327b6481e1290339111891c2afec6e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/__init__.py",
+   "md5": "d41d8cd98f00b204e9800998ecf8427e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/__init__.py",
+   "md5": "d41d8cd98f00b204e9800998ecf8427e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/method.py",
+   "md5": "552f6b9cfcf24efc8ef30893ac825d00",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/types.py",
+   "md5": "4f9a20c3f34d53ebef6e75335705a969",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/validate.py",
+   "md5": "2075e161788590ac0956a1e8c0ede741",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/__init__.py",
+   "md5": "d41d8cd98f00b204e9800998ecf8427e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/build.py",
+   "md5": "9d20359563f69c3e0e20730831bd134c",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/load.py",
+   "md5": "13f4160b9ad98fa9aab5c57c6c5a7eec",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/observation.py",
+   "md5": "5b3e375b44962a3359adf0ca08b5d9f3",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/order.py",
+   "md5": "650c94e76630e0505537a3025894a51b",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/spec.py",
+   "md5": "e39a23ebe1ae55de98b9d5fe107f0622",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/npcompat.py",
+   "md5": "d6457a89de31f1e553bec4942cd0c47e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/provenance.py",
+   "md5": "40cf590efdf5156f9fa58186d4ee72db",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "tools/fit_cohort_jax.py",
+   "md5": "d8fde63fe8668b8dce487162ffce57d3",
+   "tracked": true,
+   "dirty_vs_head": false
+  }
+ ],
+ "verification": {
+  "cohort": "pure-k0.01-p00-c0-s0",
+  "n": 1000,
+  "cpu_s": 188.8,
+  "status": "ok",
+  "result": "claims identical (shape, bounds, point) to the stored reference record of mle_profile_jax-full",
+  "claims": [
+   {
+    "p": "eta",
+    "shape": "closed",
+    "lo": 0.00019484121898491412,
+    "hi": 0.012253132475163171,
+    "point": 0.0024643307848450525
+   },
+   {
+    "p": "beta",
+    "shape": "upper_bound",
+    "lo": null,
+    "hi": 192.64108103949195,
+    "point": 0.18386864471573383
+   },
+   {
+    "p": "epsilon",
+    "shape": "closed",
+    "lo": 3.848730503032917e-05,
+    "hi": 0.01621483900570107,
+    "point": 0.001717377025345654
+   },
+   {
+    "p": "kappa",
+    "shape": "none",
+    "lo": null,
+    "hi": null,
+    "point": null
+   }
+  ]
+ },
+ "environment_pins": {
+  "jax": "0.11.1",
+  "jaxlib": "0.11.1",
+  "numpy": "2.4.3",
+  "scipy": "1.17.1",
+  "lifelines": "0.30.3",
+  "numba": "0.64.0",
+  "pandas": "2.3.3"
+ }
+}

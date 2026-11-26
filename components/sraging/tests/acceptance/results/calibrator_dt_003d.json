@@ -1,0 +1,2577 @@
+{
+ "phase": "calibrator-dt",
+ "written_at": "2026-10-14T19:51:53Z",
+ "repo_head": "640829a98b424a44776db8c9abe83ce2bac863da",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "4146e03bb56d0e3183663731917530a2cd53625c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "5e5ce197b8c708d440f2a83771fc7833aa259935"
+ },
+ "wall_s": 205.30130791664124,
+ "cpu_s": 274.49708699999996,
+ "status": "written",
+ "cases": [
+  {
+   "name": "censor-k0.01-p00-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -25459.56689679389,
+    "ll_theta_hat": -25459.627345739074
+   },
+   "calibrator": {
+    "L": 99.20717071707155,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -25460.083433224263,
+       -25459.755423674575
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -25459.581979999726,
+       -25459.59776439371
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -25459.580462298658,
+       -25459.623481130613
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -25459.56595826926,
+       -25459.633771653662
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0004652424756045252,
+     "ll": [
+      -25459.57954462152,
+      -25459.59876081683
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 5.1658808918098886e-05,
+   "calibrator_deficit_at_theta_hat_per_individual": 1.2809074457464434e-05,
+   "refined_deficit_at_truth_per_individual": -9.386184921773925e-08,
+   "dt_rule_deficit_at_truth_per_individual": 1.2649092538079133e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.01-p00-c1",
+   "n_expected_cohort": 100001,
+   "generator": {
+    "ll_truth": -254736.96925990743,
+    "ll_theta_hat": -254738.5312700332
+   },
+   "calibrator": {
+    "L": 99.20907290927103,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -254739.87215056343,
+       -254737.85995434926
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -254736.99117082043,
+       -254738.12052404502
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -254736.96708034436,
+       -254738.37574605897
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -254736.97150141717,
+       -254738.60976073
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0004637708734586979,
+     "ll": [
+      -254736.98884606938,
+      -254738.15147050284
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 2.902861627381634e-05,
+   "calibrator_deficit_at_theta_hat_per_individual": -6.713089708644538e-06,
+   "refined_deficit_at_truth_per_individual": 2.2414873188484255e-08,
+   "dt_rule_deficit_at_truth_per_individual": 1.958596608349171e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.01-p01-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -30364.610217480607,
+    "ll_theta_hat": -30364.57521131963
+   },
+   "calibrator": {
+    "L": 98.65316531653133,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -30364.636453281542,
+       -30364.567924631076
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -30364.6111012673,
+       -30364.573554803086
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -30364.611658395384,
+       -30364.575044623976
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -30364.610301717406,
+       -30364.575733236517
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0009020293292564431,
+     "ll": [
+      -30364.614564471085,
+      -30364.57223432554
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 2.6238424777433222e-06,
+   "calibrator_deficit_at_theta_hat_per_individual": -7.287417294724219e-07,
+   "refined_deficit_at_truth_per_individual": 8.424522353405885e-09,
+   "dt_rule_deficit_at_truth_per_individual": 4.347425220164992e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.01-p01-c1",
+   "n_expected_cohort": 100001,
+   "generator": {
+    "ll_truth": -303739.76097504527,
+    "ll_theta_hat": -303739.8161590486
+   },
+   "calibrator": {
+    "L": 98.6554634453658,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -303739.8190917984,
+       -303739.76032942435
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -303739.7674870541,
+       -303739.8011754423
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -303739.7610376056,
+       -303739.815237035
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -303739.7608784763,
+       -303739.82107172476
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.000900846277975617,
+     "ll": [
+      -303739.77019697573,
+      -303739.78973610775
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 5.811617195825575e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": -5.582906594729887e-07,
+   "refined_deficit_at_truth_per_individual": -9.656798849731581e-10,
+   "dt_rule_deficit_at_truth_per_individual": 9.221838245881547e-08,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.01-p02-c0",
+   "n_expected_cohort": 9996,
+   "generator": {
+    "ll_truth": -33185.95918593246,
+    "ll_theta_hat": -33185.88115894616
+   },
+   "calibrator": {
+    "L": 98.22814125650324,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -33185.969976638684,
+       -33185.88068898709
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -33185.95815554411,
+       -33185.88072515251
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -33185.9602516726,
+       -33185.88127564362
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -33185.95954789985,
+       -33185.88131432147
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0012939059151921737,
+     "ll": [
+      -33185.962824850496,
+      -33185.88090529409
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 1.0795024236238484e-06,
+   "calibrator_deficit_at_theta_hat_per_individual": -4.701471306314105e-08,
+   "refined_deficit_at_truth_per_individual": 3.621122401886705e-08,
+   "dt_rule_deficit_at_truth_per_individual": 3.640374188307578e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.01-p02-c1",
+   "n_expected_cohort": 99997,
+   "generator": {
+    "ll_truth": -332087.7316335652,
+    "ll_theta_hat": -332087.7339344812
+   },
+   "calibrator": {
+    "L": 98.22616178485787,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -332087.75248198735,
+       -332087.7278789782
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -332087.7329695537,
+       -332087.72993947205
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -332087.7328588077,
+       -332087.73508216
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -332087.7321458996,
+       -332087.7357327824
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0012937559248209125,
+     "ll": [
+      -332087.73856776266,
+      -332087.727292983
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 2.0849047608051653e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": -6.055684706436719e-08,
+   "refined_deficit_at_truth_per_individual": 5.123497722124385e-09,
+   "dt_rule_deficit_at_truth_per_individual": 6.934405477098711e-08,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.01-p03-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -36385.625976219846,
+    "ll_theta_hat": -36385.53226313017
+   },
+   "calibrator": {
+    "L": 97.63026302630195,
+    "production": {
+     "N": 1800,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 1800,
+      "dt": 0.002,
+      "ll": [
+       -36385.629086652494,
+       -36385.532443748656
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.0005,
+      "ll": [
+       -36385.62257741546,
+       -36385.530294455675
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -36385.62475726977,
+       -36385.53129929109
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.000125,
+      "ll": [
+       -36385.62434030014,
+       -36385.53115484378
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 1800,
+     "dt": 0.0019070570355017673,
+     "ll": [
+      -36385.62844720458,
+      -36385.53223585978
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 3.110743722472206e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 1.806365518849997e-08,
+   "refined_deficit_at_truth_per_individual": -1.6360833117346613e-07,
+   "dt_rule_deficit_at_truth_per_individual": 2.471231858013454e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.01-p03-c1",
+   "n_expected_cohort": 100003,
+   "generator": {
+    "ll_truth": -364000.6647959134,
+    "ll_theta_hat": -364000.63901813526
+   },
+   "calibrator": {
+    "L": 97.62542123735791,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -364000.6832781223,
+       -364000.64646372956
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -364000.6657386562,
+       -364000.6377676653
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -364000.66593986476,
+       -364000.640244609
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -364000.664703366,
+       -364000.6395636103
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0019080101490646915,
+     "ll": [
+      -364000.68254153914,
+      -364000.6466743628
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 1.8481654442604118e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 7.445370934731295e-08,
+   "refined_deficit_at_truth_per_individual": -9.254461054637294e-10,
+   "dt_rule_deficit_at_truth_per_individual": 1.774509339875673e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.01-p04-c0",
+   "n_expected_cohort": 9998,
+   "generator": {
+    "ll_truth": -42823.82876749852,
+    "ll_theta_hat": -42823.79886444229
+   },
+   "calibrator": {
+    "L": 94.1451290258072,
+    "production": {
+     "N": 900,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 900,
+      "dt": 0.002,
+      "ll": [
+       -42823.835613627176,
+       -42823.80761077316
+      ]
+     },
+     {
+      "N": 900,
+      "dt": 0.0005,
+      "ll": [
+       -42823.82029607654,
+       -42823.79272464366
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.0005,
+      "ll": [
+       -42823.823505619366,
+       -42823.79464132886
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.000125,
+      "ll": [
+       -42823.82227085796,
+       -42823.79343263437
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 900,
+     "dt": 0.002,
+     "ll": [
+      -42823.835613627176,
+      -42823.80761077316
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 6.847498156975192e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 8.748080489789434e-07,
+   "refined_deficit_at_truth_per_individual": -6.49794014329821e-07,
+   "dt_rule_deficit_at_truth_per_individual": 6.847498156975192e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.01-p04-c1",
+   "n_expected_cohort": 100000,
+   "generator": {
+    "ll_truth": -428397.1938077026,
+    "ll_theta_hat": -428397.2038033183
+   },
+   "calibrator": {
+    "L": 94.12477000000379,
+    "production": {
+     "N": 1800,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 1800,
+      "dt": 0.002,
+      "ll": [
+       -428397.2438751414,
+       -428397.2332046424
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.0005,
+      "ll": [
+       -428397.2048951234,
+       -428397.1941406985
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -428397.1949695394,
+       -428397.19901538093
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.000125,
+      "ll": [
+       -428397.1916124177,
+       -428397.19565017254
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 1800,
+     "dt": 0.002,
+     "ll": [
+      -428397.2438751414,
+      -428397.2332046424
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 5.006743874400854e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 2.9401324107311665e-07,
+   "refined_deficit_at_truth_per_individual": -2.1952849347144366e-08,
+   "dt_rule_deficit_at_truth_per_individual": 5.006743874400854e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.01-p05-c0",
+   "n_expected_cohort": 10001,
+   "generator": {
+    "ll_truth": -19392.206234805188,
+    "ll_theta_hat": -19392.40049450256
+   },
+   "calibrator": {
+    "L": 99.42190780921894,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -19403.76382085467,
+       -19392.318699469426
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -19392.28601505499,
+       -19392.365287227265
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -19392.251100365545,
+       -19392.372168974092
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -19392.206801388165,
+       -19392.40471994524
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00022980310022999474,
+     "ll": [
+      -19392.220573470833,
+      -19392.39178571335
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0011556430406442135,
+   "calibrator_deficit_at_theta_hat_per_individual": -8.178685444750369e-06,
+   "refined_deficit_at_truth_per_individual": 5.665263249937405e-08,
+   "dt_rule_deficit_at_truth_per_individual": 1.4337231922290023e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.01-p05-c1",
+   "n_expected_cohort": 99999,
+   "generator": {
+    "ll_truth": -193897.91836236048,
+    "ll_theta_hat": -193899.85800525197
+   },
+   "calibrator": {
+    "L": 99.42652926529307,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -194013.80937069358,
+       -193899.08193860837
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -193898.7279468454,
+       -193899.50203642
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -193898.36674043944,
+       -193899.5703500759
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -193897.92278251325,
+       -193899.90019816515
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0002276232772769567,
+     "ll": [
+      -193898.07090728323,
+      -193899.77177800922
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0011589216725477185,
+   "calibrator_deficit_at_theta_hat_per_individual": -7.760744043374106e-06,
+   "refined_deficit_at_truth_per_individual": 4.420196980008555e-08,
+   "dt_rule_deficit_at_truth_per_individual": 1.5254644821282988e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p00-c0",
+   "n_expected_cohort": 9995,
+   "generator": {
+    "ll_truth": -25456.686647315313,
+    "ll_theta_hat": -25456.730289488456
+   },
+   "calibrator": {
+    "L": 99.20485242621312,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -25457.233769239,
+       -25456.895675304757
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -25456.703808301398,
+       -25456.703316517636
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -25456.70211438035,
+       -25456.72874475533
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -25456.685477890715,
+       -25456.736373039792
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00046610994470903006,
+     "ll": [
+      -25456.701078414648,
+      -25456.70387247636
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 5.473956214968118e-05,
+   "calibrator_deficit_at_theta_hat_per_individual": 1.6546855057612887e-05,
+   "refined_deficit_at_truth_per_individual": -1.1700096034308362e-07,
+   "dt_rule_deficit_at_truth_per_individual": 1.4438318493862215e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p00-c1",
+   "n_expected_cohort": 99999,
+   "generator": {
+    "ll_truth": -254814.8900194459,
+    "ll_theta_hat": -254816.35366797572
+   },
+   "calibrator": {
+    "L": 99.2065870658715,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -254817.87290648022,
+       -254815.89252604384
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -254814.91770462366,
+       -254815.96019642596
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -254814.89496946332,
+       -254816.21240506833
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -254814.89176261792,
+       -254816.42976677793
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00046471326441251397,
+     "ll": [
+      -254814.91464153104,
+      -254815.9887965496
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 2.9829168634730747e-05,
+   "calibrator_deficit_at_theta_hat_per_individual": -4.611465433480273e-06,
+   "refined_deficit_at_truth_per_individual": 1.7431894362476175e-08,
+   "dt_rule_deficit_at_truth_per_individual": 2.462233134919753e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p01-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -30366.32149408477,
+    "ll_theta_hat": -30366.287910329356
+   },
+   "calibrator": {
+    "L": 98.64676467646733,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -30366.34657566252,
+       -30366.280497622305
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -30366.32204327445,
+       -30366.28630252539
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -30366.323004710972,
+       -30366.287789337017
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -30366.32165184832,
+       -30366.2884242977
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0009040680196487925,
+     "ll": [
+      -30366.325464374582,
+      -30366.28501127168
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 2.5084086159441034e-06,
+   "calibrator_deficit_at_theta_hat_per_individual": -7.413448395956336e-07,
+   "refined_deficit_at_truth_per_individual": 1.5777933005738495e-08,
+   "dt_rule_deficit_at_truth_per_individual": 3.970686882566737e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.0316-p01-c1",
+   "n_expected_cohort": 99999,
+   "generator": {
+    "ll_truth": -303757.50680638227,
+    "ll_theta_hat": -303757.55921863625
+   },
+   "calibrator": {
+    "L": 98.64904649046657,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -303757.5772324021,
+       -303757.50403404277
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -303757.51145185495,
+       -303757.5442555597
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -303757.5083464948,
+       -303757.55836823035
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -303757.50724165316,
+       -303757.5641572062
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0009028692333739298,
+     "ll": [
+      -303757.5163407179,
+      -303757.5327942988
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 7.042672410718353e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": -5.518514533386201e-07,
+   "refined_deficit_at_truth_per_individual": 4.352752456742919e-09,
+   "dt_rule_deficit_at_truth_per_individual": 9.534430981309271e-08,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p02-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -33203.726895261636,
+    "ll_theta_hat": -33203.69954759024
+   },
+   "calibrator": {
+    "L": 98.21157115711524,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -33203.73468560031,
+       -33203.70006169508
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -33203.72701964693,
+       -33203.69925326588
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -33203.7274885226,
+       -33203.699790511906
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -33203.72696589843,
+       -33203.69970538013
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0012982884937478925,
+     "ll": [
+      -33203.729716688875,
+      -33203.69925064656
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 7.791117789074857e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 5.1415626155977215e-08,
+   "refined_deficit_at_truth_per_individual": 7.064385806582999e-09,
+   "dt_rule_deficit_at_truth_per_individual": 2.8217094097550425e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.0316-p02-c1",
+   "n_expected_cohort": 100000,
+   "generator": {
+    "ll_truth": -332111.2772499133,
+    "ll_theta_hat": -332111.2808815767
+   },
+   "calibrator": {
+    "L": 98.21428500000111,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -332111.2959023688,
+       -332111.27394205926
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -332111.2803157576,
+       -332111.2766875607
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -332111.27759278135,
+       -332111.28191903216
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -332111.27720862965,
+       -332111.2827038277
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0012970338187375408,
+     "ll": [
+      -332111.2853331148,
+      -332111.27464615146
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 1.8652455473784358e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": -6.939517450518906e-08,
+   "refined_deficit_at_truth_per_individual": -4.128366708755493e-10,
+   "dt_rule_deficit_at_truth_per_individual": 8.083201479166746e-08,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p03-c0",
+   "n_expected_cohort": 10000,
+   "generator": {
+    "ll_truth": -36391.05976775951,
+    "ll_theta_hat": -36391.00619821341
+   },
+   "calibrator": {
+    "L": 97.60610000000094,
+    "production": {
+     "N": 1800,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 1800,
+      "dt": 0.002,
+      "ll": [
+       -36391.06549051552,
+       -36391.00702858731
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.0005,
+      "ll": [
+       -36391.05958510129,
+       -36391.00422508313
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -36391.05943204688,
+       -36391.005224869135
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.000125,
+      "ll": [
+       -36391.05910709298,
+       -36391.005099537026
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 1800,
+     "dt": 0.0019130597013604107,
+     "ll": [
+      -36391.064984752535,
+      -36391.0067746609
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 5.722756010072772e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 8.303739014081657e-08,
+   "refined_deficit_at_truth_per_individual": -6.606665265280754e-08,
+   "dt_rule_deficit_at_truth_per_individual": 5.216993027715944e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.0316-p03-c1",
+   "n_expected_cohort": 99995,
+   "generator": {
+    "ll_truth": -363938.0159606517,
+    "ll_theta_hat": -363938.0010231669
+   },
+   "calibrator": {
+    "L": 97.60973048653165,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -363938.03199963213,
+       -363938.0086272863
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -363938.016102433,
+       -363937.99968028336
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -363938.0170948158,
+       -363938.0021718176
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -363938.01609077444,
+       -363938.0016168682
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0019125088672443408,
+     "ll": [
+      -363938.0310869935,
+      -363938.0083548282
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 1.6039782440534526e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 7.604499651087726e-08,
+   "refined_deficit_at_truth_per_individual": 1.301292667741078e-09,
+   "dt_rule_deficit_at_truth_per_individual": 1.512709819236793e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.0316-p04-c0",
+   "n_expected_cohort": 10003,
+   "generator": {
+    "ll_truth": -39649.47093885346,
+    "ll_theta_hat": -39649.415191760076
+   },
+   "calibrator": {
+    "L": 96.49795061481447,
+    "production": {
+     "N": 900,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 900,
+      "dt": 0.002,
+      "ll": [
+       -39649.47778406512,
+       -39649.41473617987
+      ]
+     },
+     {
+      "N": 900,
+      "dt": 0.0005,
+      "ll": [
+       -39649.470230515675,
+       -39649.408486893706
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.0005,
+      "ll": [
+       -39649.468855011815,
+       -39649.41071533038
+      ]
+     },
+     {
+      "N": 1800,
+      "dt": 0.000125,
+      "ll": [
+       -39649.46840951836,
+       -39649.410355086984
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 900,
+     "dt": 0.002,
+     "ll": [
+      -39649.47778406512,
+      -39649.41473617987
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 6.84315871351567e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": -4.554435748542306e-08,
+   "refined_deficit_at_truth_per_individual": -2.528576526139965e-07,
+   "dt_rule_deficit_at_truth_per_individual": 6.84315871351567e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.0316-p04-c1",
+   "n_expected_cohort": 100002,
+   "generator": {
+    "ll_truth": -396457.383499266,
+    "ll_theta_hat": -396457.38606293855
+   },
+   "calibrator": {
+    "L": 96.49804003919712,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -396457.3984477004,
+       -396457.3986050138
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -396457.38483352994,
+       -396457.38542883075
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -396457.3836808314,
+       -396457.38672379265
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -396457.38273168716,
+       -396457.38580330083
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.002,
+     "ll": [
+      -396457.3984477004,
+      -396457.3986050138
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 1.4948135466533877e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": 1.2541824408221686e-07,
+   "refined_deficit_at_truth_per_individual": -7.675634852607418e-09,
+   "dt_rule_deficit_at_truth_per_individual": 1.4948135466533877e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p05-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -19524.488727723976,
+    "ll_theta_hat": -19524.629957349665
+   },
+   "calibrator": {
+    "L": 99.4116911691168,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -19534.967781076222,
+       -19524.612778920917
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -19524.601764282073,
+       -19524.602058096236
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -19524.55983844945,
+       -19524.60867790952
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -19524.483490217972,
+       -19524.63328560054
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00023435454225072716,
+     "ll": [
+      -19524.513506640586,
+      -19524.62185325976
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0010480101362382649,
+   "calibrator_deficit_at_theta_hat_per_individual": -1.7180146763269759e-06,
+   "refined_deficit_at_truth_per_individual": -5.238029807031077e-07,
+   "dt_rule_deficit_at_truth_per_individual": 2.478139474912306e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.0316-p05-c1",
+   "n_expected_cohort": 100000,
+   "generator": {
+    "ll_truth": -195299.58680492814,
+    "ll_theta_hat": -195301.46568804103
+   },
+   "calibrator": {
+    "L": 99.41609500000015,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -195399.83186153194,
+       -195300.54077914648
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -195300.30899507907,
+       -195301.13644546544
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -195299.98296138263,
+       -195301.20181119442
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -195299.588386578,
+       -195301.50554121277
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00023233125935324725,
+     "ll": [
+      -195299.7273230857,
+      -195301.38342995997
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0010024505660380237,
+   "calibrator_deficit_at_theta_hat_per_individual": -9.249088945507537e-06,
+   "refined_deficit_at_truth_per_individual": 1.5816498489584773e-08,
+   "dt_rule_deficit_at_truth_per_individual": 1.4051815756829456e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.1-p00-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -21019.913316614693,
+    "ll_theta_hat": -21020.596075492038
+   },
+   "calibrator": {
+    "L": 99.21527152715258,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -21022.641590918836,
+       -21021.146848122688
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -21019.950437762862,
+       -21020.573375351567
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -21019.932757754133,
+       -21020.59024271363
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -21019.91182405954,
+       -21020.60004333593
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00030359200343767125,
+     "ll": [
+      -21019.927357543493,
+      -21020.578661397936
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.00027285471588591554,
+   "calibrator_deficit_at_theta_hat_per_individual": 5.5082771342093176e-05,
+   "refined_deficit_at_truth_per_individual": -1.4927044217864555e-07,
+   "dt_rule_deficit_at_truth_per_individual": 1.404233303296231e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.1-p00-c1",
+   "n_expected_cohort": 100000,
+   "generator": {
+    "ll_truth": -210258.4630148712,
+    "ll_theta_hat": -210264.72195008487
+   },
+   "calibrator": {
+    "L": 99.21905500000027,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -210284.02844653855,
+       -210269.65350835875
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -210258.6874248978,
+       -210264.4549620616
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -210258.5432671777,
+       -210264.61960527452
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -210258.46565596096,
+       -210264.76470227423
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003015119197452981,
+     "ll": [
+      -210258.54339402812,
+      -210264.5449173369
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.00025565431667346275,
+   "calibrator_deficit_at_theta_hat_per_individual": 4.9315582738781815e-05,
+   "refined_deficit_at_truth_per_individual": 2.6410897553432734e-08,
+   "dt_rule_deficit_at_truth_per_individual": 8.037915691966191e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "censor-k0.1-p01-c0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -30374.119997398004,
+    "ll_theta_hat": -30374.086870529372
+   },
+   "calibrator": {
+    "L": 98.6321632163213,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -30374.144133009097,
+       -30374.079325415853
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -30374.12011967331,
+       -30374.085312728494
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -30374.121611857925,
+       -30374.086783840394
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -30374.120260837622,
+       -30374.08737284009
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0009084931810718297,
+     "ll": [
+      -30374.123153908396,
+      -30374.083580605035
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 2.4138024895277694e-06,
+   "calibrator_deficit_at_theta_hat_per_individual": -7.545868106692521e-07,
+   "refined_deficit_at_truth_per_individual": 2.634659653169719e-08,
+   "dt_rule_deficit_at_truth_per_individual": 3.1568260753353294e-07,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "censor-k0.1-p01-c1",
+   "n_expected_cohort": 99998,
+   "generator": {
+    "ll_truth": -303828.5538133154,
+    "ll_theta_hat": -303828.5957972619
+   },
+   "calibrator": {
+    "L": 98.63324266485583,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -303828.6384068015,
+       -303828.5400544692
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -303828.5584143499,
+       -303828.5810657918
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -303828.55646872387,
+       -303828.5949302234
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -303828.5543537415,
+       -303828.60066469834
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0009073967355141488,
+     "ll": [
+      -303828.56540982996,
+      -303828.5691299647
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 8.459517800259833e-07,
+   "calibrator_deficit_at_theta_hat_per_individual": -5.574390760511213e-07,
+   "refined_deficit_at_truth_per_individual": 5.404369261065646e-09,
+   "dt_rule_deficit_at_truth_per_individual": 1.1596746487295734e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "pure-k2-p05-c0-s0",
+   "n_expected_cohort": 19995,
+   "generator": {
+    "ll_truth": -89030.9026589354,
+    "ll_theta_hat": -89031.14664768925
+   },
+   "calibrator": {
+    "L": 99.94261565391365,
+    "production": {
+     "N": 3600,
+     "dt": 0.0003335247243154181,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.0003335247243154181,
+      "ll": [
+       -89031.26058741957,
+       -89030.84189893515
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 8.338118107885453e-05,
+      "ll": [
+       -89031.26662306592,
+       -89030.90158906388
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 8.338118107885453e-05,
+      "ll": [
+       -89030.89228443013,
+       -89031.28195248812
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 2.0845295269713632e-05,
+      "ll": [
+       -89030.89551916737,
+       -89031.28875588757
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00026088006507294243,
+     "ll": [
+      -89031.25365701073,
+      -89030.85628824604
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 1.7900899433305895e-05,
+   "calibrator_deficit_at_theta_hat_per_individual": -1.5241248017222631e-05,
+   "refined_deficit_at_truth_per_individual": -3.570776708900582e-07,
+   "dt_rule_deficit_at_truth_per_individual": 1.7554292339569824e-05,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "pure-k0.01-p05-c0-s0",
+   "n_expected_cohort": 10001,
+   "generator": {
+    "ll_truth": -20945.91875498198,
+    "ll_theta_hat": -20946.029729580383
+   },
+   "calibrator": {
+    "L": 99.50849915008484,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -21683.512481322337,
+       -20946.329565573527
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -20945.98466438824,
+       -20945.99288160584
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -20945.963015193287,
+       -20945.994544116613
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -20945.922862068313,
+       -20946.034368860222
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.000249014450872309,
+     "ll": [
+      -20945.940321389862,
+      -20946.02416626013
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.07375199743429232,
+   "calibrator_deficit_at_theta_hat_per_individual": 2.9980601254311585e-05,
+   "refined_deficit_at_truth_per_individual": 4.1066756659669196e-07,
+   "dt_rule_deficit_at_truth_per_individual": 2.156425145720082e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "pure-k0.01-p10-c0-s0",
+   "n_expected_cohort": 10000,
+   "generator": {
+    "ll_truth": -13483.521338645849,
+    "ll_theta_hat": -13488.52713967203
+   },
+   "calibrator": {
+    "L": 99.51085000000006,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -15627.947268985357,
+       -13506.855527244585
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -13483.92030901233,
+       -13488.785775178752
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -13483.920705176744,
+       -13488.694182265182
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -13483.517866507027,
+       -13488.515575062847
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0001192961812302309,
+     "ll": [
+      -13483.51832153433,
+      -13488.607531734764
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.21444259303395083,
+   "calibrator_deficit_at_theta_hat_per_individual": 0.0018328387572553765,
+   "refined_deficit_at_truth_per_individual": -3.4721388219622894e-07,
+   "dt_rule_deficit_at_truth_per_individual": -3.0171115195116724e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "pure-k0.0316-p05-c0-s0",
+   "n_expected_cohort": 10000,
+   "generator": {
+    "ll_truth": -21201.402564928307,
+    "ll_theta_hat": -21201.431309788313
+   },
+   "calibrator": {
+    "L": 99.50795000000012,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -22615.758169726905,
+       -21201.92231701411
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -21201.519153699184,
+       -21201.408220183876
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -21201.500049403654,
+       -21201.409777669163
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -21201.398895596256,
+       -21201.434229643317
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00025539698406079755,
+     "ll": [
+      -21201.428899393475,
+      -21201.426906251516
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.14143556047985986,
+   "calibrator_deficit_at_theta_hat_per_individual": 4.9100722579532884e-05,
+   "refined_deficit_at_truth_per_individual": -3.6693320507765746e-07,
+   "dt_rule_deficit_at_truth_per_individual": 2.6334465168474707e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "pure-k0.1-p10-c0-s0",
+   "n_expected_cohort": 10003,
+   "generator": {
+    "ll_truth": -18930.02091926574,
+    "ll_theta_hat": -18930.111425080744
+   },
+   "calibrator": {
+    "L": 99.50454863540931,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -19697.920822120675,
+       -18931.757954162633
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -18930.115960872834,
+       -18930.083883329517
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -18930.123977509193,
+       -18930.085496984837
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -18930.0226997246,
+       -18930.115202807036
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00020403733897466137,
+     "ll": [
+      -18930.016205157022,
+      -18930.109664122116
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.07676696019743447,
+   "calibrator_deficit_at_theta_hat_per_individual": 0.00016460352713073374,
+   "refined_deficit_at_truth_per_individual": 1.7799248831291421e-07,
+   "dt_rule_deficit_at_truth_per_individual": -4.7126949076712265e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "pure-k0.1-p05-c0-s0",
+   "n_expected_cohort": 9999,
+   "generator": {
+    "ll_truth": -23506.22552734118,
+    "ll_theta_hat": -23506.314421582334
+   },
+   "calibrator": {
+    "L": 99.49969996999687,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -23515.6395777769,
+       -23506.21627703143
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -23506.262565167846,
+       -23506.289024871094
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -23506.231477256457,
+       -23506.28982117091
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -23506.224259355447,
+       -23506.317549531967
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.00032111736453993046,
+     "ll": [
+      -23506.252691300142,
+      -23506.306266182713
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.000941499193491362,
+   "calibrator_deficit_at_theta_hat_per_individual": -9.815436633899542e-06,
+   "refined_deficit_at_truth_per_individual": -1.2681125430832661e-07,
+   "dt_rule_deficit_at_truth_per_individual": 2.7166675630336936e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "nlad-k0.1-p00-n150-s0",
+   "n_expected_cohort": 1498,
+   "generator": {
+    "ll_truth": -3674.0672259734847,
+    "ll_theta_hat": -3674.035784974866
+   },
+   "calibrator": {
+    "L": 99.46762349799731,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -3675.152391065314,
+       -3674.0873544136084
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -3674.085619857852,
+       -3674.036559786367
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -3674.0809889353886,
+       -3674.0365490446284
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -3674.0655086742245,
+       -3674.0357248584305
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003656855824269715,
+     "ll": [
+      -3674.0775850733926,
+      -3674.036261524162
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0007244092735843573,
+   "calibrator_deficit_at_theta_hat_per_individual": 3.4425526530215434e-05,
+   "refined_deficit_at_truth_per_individual": -1.1463946997566421e-06,
+   "dt_rule_deficit_at_truth_per_individual": 6.915286987899409e-06,
+   "generator_prefers_truth": false
+  },
+  {
+   "name": "nlad-k0.1-p00-n500-s0",
+   "n_expected_cohort": 5001,
+   "generator": {
+    "ll_truth": -12279.83195604484,
+    "ll_theta_hat": -12279.863408059708
+   },
+   "calibrator": {
+    "L": 99.48870225954819,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -12283.073341122783,
+       -12279.883158447232
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -12279.842765322326,
+       -12279.855943429424
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -12279.845490290296,
+       -12279.856192284758
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -12279.83261026038,
+       -12279.864324848288
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003583407671313147,
+     "ll": [
+      -12279.833836660178,
+      -12279.859930126402
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0006481473861113878,
+   "calibrator_deficit_at_theta_hat_per_individual": 3.949287647321459e-06,
+   "refined_deficit_at_truth_per_individual": 1.3081694473806243e-07,
+   "dt_rule_deficit_at_truth_per_individual": 3.7604785811843585e-07,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "nlad-k0.1-p00-n1000-s0",
+   "n_expected_cohort": 9997,
+   "generator": {
+    "ll_truth": -24530.912292521876,
+    "ll_theta_hat": -24530.987691868624
+   },
+   "calibrator": {
+    "L": 99.49264779433811,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -24536.30604557295,
+       -24530.88159271914
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -24530.9318429158,
+       -24530.968421949237
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -24530.901165794407,
+       -24530.968805771372
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -24530.911970365676,
+       -24530.990026700398
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003557131588711624,
+     "ll": [
+      -24530.933461539767,
+      -24530.979479572983
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0005395371662572644,
+   "calibrator_deficit_at_theta_hat_per_individual": -1.061309887817241e-05,
+   "refined_deficit_at_truth_per_individual": -3.2225287599000744e-08,
+   "dt_rule_deficit_at_truth_per_individual": 2.117537050237565e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "nlad-k0.1-p00-n3000-s0",
+   "n_expected_cohort": 30000,
+   "generator": {
+    "ll_truth": -73647.18376452595,
+    "ll_theta_hat": -73647.43281671607
+   },
+   "calibrator": {
+    "L": 99.49691666666696,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -73666.43880672913,
+       -73647.46302564553
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -73647.26454891358,
+       -73647.38341460007
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -73647.24077451469,
+       -73647.38469692497
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -73647.18368417709,
+       -73647.43907354052
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003547633123363811,
+     "ll": [
+      -73647.22142498803,
+      -73647.41095584822
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0006418347401059388,
+   "calibrator_deficit_at_theta_hat_per_individual": 1.0069643152140392e-06,
+   "refined_deficit_at_truth_per_individual": -2.678295519823829e-09,
+   "dt_rule_deficit_at_truth_per_individual": 1.255348736109833e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "nlad-k0.1-p00-n10000-s0",
+   "n_expected_cohort": 100001,
+   "generator": {
+    "ll_truth": -245501.56233882534,
+    "ll_theta_hat": -245502.35001160228
+   },
+   "calibrator": {
+    "L": 99.49839501604988,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -245567.83939228137,
+       -245502.60064993956
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -245501.8341158475,
+       -245502.1933634316
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -245501.77702987782,
+       -245502.19808503427
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -245501.5631936681,
+       -245502.36993638886
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003542848763916156,
+     "ll": [
+      -245501.6776528651,
+      -245502.2806861912
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0006627639069211898,
+   "calibrator_deficit_at_theta_hat_per_individual": 2.5063583092368902e-06,
+   "refined_deficit_at_truth_per_individual": 8.548341947959033e-09,
+   "dt_rule_deficit_at_truth_per_individual": 1.1531288662208978e-06,
+   "generator_prefers_truth": true
+  },
+  {
+   "name": "nlad-k0.1-p00-n10000-s1",
+   "n_expected_cohort": 100001,
+   "generator": {
+    "ll_truth": -245501.56233882534,
+    "ll_theta_hat": -245502.35001160228
+   },
+   "calibrator": {
+    "L": 99.49839501604988,
+    "production": {
+     "N": 3600,
+     "dt": 0.002,
+     "tau_max": 2.0
+    },
+    "grids": [
+     {
+      "N": 3600,
+      "dt": 0.002,
+      "ll": [
+       -245567.83939228137,
+       -245502.60064993956
+      ]
+     },
+     {
+      "N": 3600,
+      "dt": 0.0005,
+      "ll": [
+       -245501.8341158475,
+       -245502.1933634316
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.0005,
+      "ll": [
+       -245501.77702987782,
+       -245502.19808503427
+      ]
+     },
+     {
+      "N": 7200,
+      "dt": 0.000125,
+      "ll": [
+       -245501.5631936681,
+       -245502.36993638886
+      ]
+     }
+    ],
+    "dt_rule": {
+     "N": 3600,
+     "dt": 0.0003542848763916156,
+     "ll": [
+      -245501.6776528651,
+      -245502.2806861912
+     ]
+    }
+   },
+   "calibrator_deficit_at_truth_per_individual": 0.0006627639069211898,
+   "calibrator_deficit_at_theta_hat_per_individual": 2.5063583092368902e-06,
+   "refined_deficit_at_truth_per_individual": 8.548341947959033e-09,
+   "dt_rule_deficit_at_truth_per_individual": 1.1531288662208978e-06,
+   "generator_prefers_truth": true
+  }
+ ],
+ "refine": [
+  [
+   1,
+   1
+  ],
+  [
+   1,
+   4
+  ],
+  [
+   2,
+   4
+  ],
+  [
+   2,
+   16
+  ]
+ ],
+ "summary": {
+  "n": 40,
+  "generator_prefers_truth": 28,
+  "worst": {
+   "name": "pure-k0.01-p10-c0-s0",
+   "calibrator_deficit_at_truth_per_individual": 0.21444259303395083,
+   "refined_deficit_at_truth_per_individual": -3.4721388219622894e-07
+  },
+  "max_abs_refined_deficit": 1.1463946997566421e-06,
+  "max_abs_dt_rule_deficit": 1.7554292339569824e-05
+ },
+ "read_as": "deficit = generator ll - calibrator ll, per individual of the expected-count cohort; a production deficit that vanishes on the refined grid is the calibrator's time step"
+}

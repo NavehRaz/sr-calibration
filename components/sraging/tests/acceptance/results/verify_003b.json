@@ -1,0 +1,120 @@
+{
+ "phase": "verify",
+ "written_at": "2026-10-20T16:27:28Z",
+ "repo_head": "06f889509eb0549c8a444c7d78457fc20436147a",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003b.toml": "06f889509eb0549c8a444c7d78457fc20436147a"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84b17b77025c2792ccd0816adac9a5efe9672664"
+ },
+ "wall_s": 0.9775228500366211,
+ "cpu_s": 0.10868,
+ "status": "pass",
+ "failed": [],
+ "n_checks": 16,
+ "checks": [
+  {
+   "check": "tag",
+   "ok": true,
+   "detail": "mle_profile_jax2-1.0.1 -> tag object 71e79f34, commit 6884fc8b"
+  },
+  {
+   "check": "version_lock",
+   "ok": true,
+   "detail": "sha256 e3e6e2fe; snapshot equal True; versions {'mle_profile_jax2': '1.0.1', 'mle_profile_jax2_h': '1.0.1'}; pins the 4 files True"
+  },
+  {
+   "check": "runtime:__init__.py",
+   "ok": true,
+   "detail": "sha256 7e9e5380; snapshot equal True"
+  },
+  {
+   "check": "runtime:estimator.py",
+   "ok": true,
+   "detail": "sha256 e0335a53; snapshot equal True"
+  },
+  {
+   "check": "runtime:fp_jax.py",
+   "ok": true,
+   "detail": "sha256 e5b9db25; snapshot equal True"
+  },
+  {
+   "check": "runtime:observation_model.py",
+   "ok": true,
+   "detail": "sha256 deff521c; snapshot equal True"
+  },
+  {
+   "check": "listing_digest",
+   "ok": true,
+   "detail": "39 files, digest c47dc9b2; the snapshot records c47dc9b2"
+  },
+  {
+   "check": "srbench",
+   "ok": true,
+   "detail": "tree f94ec2b8; 46/46 at the commit and 46/46 in tests/oracle/tester_f94ec2b match the sums file"
+  },
+  {
+   "check": "srk",
+   "ok": true,
+   "detail": "18/18 SRK files a 1.0.1 fit loads equal tests/oracle/v033's"
+  },
+  {
+   "check": "file:census_rows_v6",
+   "ok": true,
+   "detail": "sha256 a39e87d3"
+  },
+  {
+   "check": "file:defect_register",
+   "ok": true,
+   "detail": "sha256 20ba3bc9"
+  },
+  {
+   "check": "file:g1_cohorts",
+   "ok": true,
+   "detail": "sha256 51695d33"
+  },
+  {
+   "check": "file:handoff",
+   "ok": true,
+   "detail": "sha256 a424d48f"
+  },
+  {
+   "check": "file:library_v6_manifest",
+   "ok": true,
+   "detail": "sha256 399c9c55"
+  },
+  {
+   "check": "file:switches_tsv",
+   "ok": true,
+   "detail": "sha256 a592141d"
+  },
+  {
+   "check": "file:switches_tsv(copy)",
+   "ok": true,
+   "detail": "tests/data/jax2_101_SWITCHES.tsv"
+  }
+ ],
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.1",
+  "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": null,
+  "manifest_sha256": null,
+  "panel_commit": "06f889509eb0549c8a444c7d78457fc20436147a"
+ }
+}

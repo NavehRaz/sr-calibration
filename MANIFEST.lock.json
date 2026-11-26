@@ -1,0 +1,126 @@
+{
+ "release": "0.1.0",
+ "components": [
+  {
+   "id": "sraging",
+   "include": true,
+   "repo": "~/code/sraging",
+   "ref": "v0.1.1",
+   "commit": "d3681575844b9b191a26b02f70c45296ed5ceebf",
+   "paths": [
+    "src",
+    "pyproject.toml",
+    "uv.lock",
+    "README.md",
+    "docs/algorithms",
+    "examples",
+    "divergences",
+    "tests",
+    "tools"
+   ],
+   "exclude": [
+    "tests/acceptance/cleaning_records_005.toml",
+    "tests/acceptance/rules_005.toml",
+    "tests/acceptance/results/exit_005.json",
+    "tests/acceptance/results/km_005.json",
+    "tests/acceptance/results/noise_005.json",
+    "tests/acceptance/results/presets_005.json",
+    "tests/acceptance/results/unchanged_005.json",
+    "tests/acceptance/results/units_005.json",
+    "tests/acceptance/results/workers_005.json",
+    "tests/acceptance/results/p5_inventory_004.json",
+    "tests/acceptance/test_results_005.py",
+    "tests/unit/test_p5_inventory_004.py",
+    "tools/p5_inventory_004.py",
+    "**/__pycache__/**"
+   ],
+   "files": 996,
+   "archive_sha256": "4bc53a0e44f77d2a5c1b642725aa555ec34fd24752672dcf8232ae1621b6aa2f"
+  },
+  {
+   "id": "calibrator-1.0.1",
+   "include": true,
+   "repo": "aging:code_5/sr_calibration_tester_jax2_freeze",
+   "ref": "mle_profile_jax2-1.0.1",
+   "commit": "6884fc8b4d34932d2e5b6d65720dd0685f5915cd",
+   "paths": [
+    "methods/mle_profile_jax2"
+   ],
+   "exclude": [],
+   "files": 39,
+   "archive_sha256": "d9832f83133912c9d39d92d60f58c7d88e0c53d6f17d62e6581bb32567ecf77b"
+  },
+  {
+   "id": "calibrator-1.0.0",
+   "include": true,
+   "repo": "aging:code_5/sr_calibration_tester_jax2_freeze",
+   "ref": "mle_profile_jax2-1.0.0",
+   "commit": "3bc57751a6617e5bbdc76205e58d158c9d434990",
+   "paths": [
+    "methods/mle_profile_jax2"
+   ],
+   "exclude": [],
+   "files": 28,
+   "archive_sha256": "ecbf56f101c232f0926fd38411f289f0edbd5e6077bbc388955547bb0eda9e26"
+  },
+  {
+   "id": "benchmark-harness",
+   "include": true,
+   "repo": "aging:code_5/sr_calibration_tester",
+   "ref": "e137c85",
+   "commit": "e137c85a950e77d4904e8aacb15190be588f2317",
+   "paths": [
+    "srbench",
+    "tools",
+    "pyproject.toml",
+    "README.md"
+   ],
+   "exclude": [],
+   "files": 52,
+   "archive_sha256": "304f937d36badfeca5e2e28d2ce10efd4cd0ef092961ecfd668c230f7276a67b"
+  },
+  {
+   "id": "group-comparison-mouse",
+   "include": false,
+   "repo": "aging:code_5/alibek_mouse",
+   "ref": "f4f078f"
+  },
+  {
+   "id": "group-comparison-mosquito",
+   "include": false,
+   "repo": "aging:code_5/mosquitos",
+   "ref": "9cff079"
+  },
+  {
+   "id": "paper",
+   "include": true,
+   "repo": "aging:code_5/sr_methods_preprint",
+   "ref": "HEAD",
+   "commit": "dbb262cf05dfe33f3e2926d4b026d23c5171c09f",
+   "paths": [
+    "verify_claims.py",
+    "claims.toml",
+    "paper_paths.py",
+    "paper_inputs.py",
+    "release_inputs.json",
+    "script_inputs.txt",
+    "build.sh",
+    "README.md",
+    "paper",
+    "tables",
+    "figures",
+    "sources/CLAIMS_FORMAT.md"
+   ],
+   "exclude": [
+    "tables/bridge_mouse.py",
+    "tables/bridge_mouse.csv",
+    "tables/bridge_mosq.py",
+    "tables/bridge_mosq.csv",
+    "paper/*.pdf",
+    "**/__pycache__/**"
+   ],
+   "files": 86,
+   "archive_sha256": "a41c9c954bd001864df70ee9e79a7072031fe017422e2b092ee12230d568e8d0"
+  }
+ ]
+}

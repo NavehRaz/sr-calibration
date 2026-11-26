@@ -1,0 +1,255 @@
+% Section for specs/004-samplers (T133; FR-020; research R13-R18, R20, R21, R24-R30). Paths are relative to
+% src/sraging/ unless they start with tests/ or tools/. SRK citations are to the read-only oracle snapshot
+% tests/oracle/v033/SRtools_kappa/SRK/. Every measured number carries a \verify marker (macros.tex).
+\section{The Langevin engine (\texttt{sraging.langevin})}\label{sec:lgv}
+
+\subsection{Overview}\label{sec:lgv-overview}
+
+\code{sraging.langevin.simulate} draws a seeded sample of $n$ first-passage times from the SR model's stochastic
+differential equation, records it through gen-1's observation transform, and attaches an error statement at the
+sample's own $n$ \src{langevin/sample.py:simulate, run}. It replaces SRK's Langevin samplers (\code{getSrHetro},
+\code{getISR}), re-implemented from SRK's code and compared with it by distribution, never edited (FR-010). numba is an
+optional extra that the FP path never imports (FR-014). Every option is named; SRK's (\code{nsteps},
+\code{time_step_multiplier}, \code{step_size}, \code{parallel}, \code{n_jobs}, \code{seed}, \ldots) are refused by
+name.
+
+\subsection{The kernels and the two walls}\label{sec:lgv-kernels}
+
+Each individual $i$, with its own parameters, follows
+\begin{equation}\label{eq:lgv-sde}
+  \dd X=\Big(\eta\,t-\frac{\beta X}{X+\kappa}\Big)\dd t+\sqrt{2\eps}\,\dd W,\qquad X(0)=0,
+\end{equation}
+killed when $X\ge\xc$ \src{langevin/kernels.py:run_chunk}. One step of length $h$ (the step $dt$, or $dt/2$ on the
+coupled rung) from age $kh$ is
+\begin{equation}\label{eq:lgv-step}
+  \tilde x=x+h\Big(\eta\,(kh)-\frac{\beta x}{x+\kappa}\Big)+\sqrt{2\eps h}\,\xi,\qquad
+  x'=\begin{cases}\max(\tilde x,0)&\text{clamp (default)}\\ |\tilde x|&\text{reflect}\end{cases}
+\end{equation}
+\src{langevin/kernels.py:step}. The age $kh$ is computed from $k$, never accumulated, and there is no outer/inner
+split. The kill is $x'\ge\xc$ at the step's end; with the bridge kernel (the default) also the Brownian-bridge crossing
+probability
+\begin{equation}
+  p=\exp\!\Big(-\frac{2(\xc-x)(\xc-x')}{2\eps h}\Big)
+\end{equation}
+when both ends are below $\xc$ and $x>0$, evaluated (and one uniform drawn from the bridge stream) only while
+$2(\xc-x)(\xc-x')<30\cdot2\eps h$, SRK's $e^{-30}$ cutoff, after the wall \src{langevin/kernels.py:bridge_p}. The death
+time is the end of the kill step. A competing external death time $t_{\rm ext}$, drawn outside the kernel, stops the
+path at $t_{\rm ext}$ if it comes first; a survivor at $t_{\max}$ is censored there.
+
+\paragraph{The walls.} The default \code{wall="clamp"} is SRK's $\max(0,\cdot)$ (\src{SR_hetro.py:383, 420, 481}), the
+projected Euler scheme: a step that crosses 0 lands on 0 exactly, so young-age damage carries a lump of exact zeros
+that the FP density does not have, and the scheme is weak order $\frac12$ at the wall. \code{wall="reflect"} is the
+symmetrized Euler scheme $|\cdot|$ (Bossy, Gobet and Talay 2004), weak order 1 under its conditions. The wall is
+recorded in every sample's provenance. Keeping the clamp as the default is register D-410 (ported as is; OD-12).
+Which wall needs the finer step depends on the configuration. In P1's ladders (one key per rung, $n=25{,}000$, KS
+against FP, crit \verify{tests/acceptance/results/p1_langevin_004.json}{cells[8].ladder[2].crit_95}{.4f}{0.0086}), reflect was further from FP than the clamp at coarse
+steps for E.~coli and the human (E.~coli homogeneous at $m=4$: clamp \verify{tests/acceptance/results/p1_langevin_004.json}{cells[8].ladder[2].ks_D}{.4f}{0.0065}, reflect \verify{tests/acceptance/results/p1_langevin_004.json}{cells[9].ladder[2].ks_D}{.4f}{0.0345}), about equal for Jack Russell (homogeneous, $m=16$:
+\verify{tests/acceptance/results/p1_langevin_004.json}{cells[4].ladder[4].ks_D}{.4f}{0.0399} and \verify{tests/acceptance/results/p1_langevin_004.json}{cells[5].ladder[4].ks_D}{.4f}{0.0388}), and closer for mice\_F
+(homogeneous, $m=2$: \verify{tests/acceptance/results/p1_langevin_004.json}{cells[0].ladder[1].ks_D}{.4f}{0.0109} and \verify{tests/acceptance/results/p1_langevin_004.json}{cells[1].ladder[1].ks_D}{.4f}{0.0045})
+and the README's $\theta$. The advice is therefore to halve $dt$ until the sample reads clean; reflect's advantage is
+near the wall at a converged step (E.~coli's homogeneous reflect met its bar at
+$m=\verify{tests/acceptance/results/p1_pooled_004.json}{frozen.ecoli|hom|reflect.m}{d}{133}$, its clamp at no step tried).
+
+\subsection{The fixes and their register entries}\label{sec:lgv-fixes}
+
+Each fix is a sampler entry in \code{divergences/register.toml}, measured by phase \code{plants} against SRK's own code
+through an oracle worker, with a planted case that can fail on SRK beside its twin (research R14; the result
+\code{tests/acceptance/results/plants_004.json},
+\verify{tests/acceptance/results/plants_004.json}{status}{}{pass}). The impact is $\sup|\Delta S|$ at
+$n=25{,}000$ unless stated.
+
+\begin{longtable}{@{}p{1.2cm}p{5.6cm}p{4.4cm}>{\raggedright\arraybackslash}p{3.0cm}@{}}
+\toprule
+entry & SRK (legacy) & sraging & $\sup|\Delta S|$\\
+\midrule\endhead
+D-402 & B1: the bridge kernel froze the drift's age at $t_j$ for all $m$ substeps (\src{SR_hetro.py:478}) & one step,
+  age $kh$ from $k$ & \verify{tests/acceptance/results/plants_004.json}{plants[0].sup_abs_dS}{.3g}{0.0222}\\
+D-403 & B2: kernels step $t_{\rm end}/((N-1)m)$, the grid helpers mean $t_{\rm end}/(Nm)$ (\src{stepsize.py:52},
+  \src{SR_hetro.py:108}) & one $dt$, realised bit for bit &
+  \verify{tests/acceptance/results/plants_004.json}{plants[1].sup_abs_dS}{.3g}{0.013}\\
+D-404 & B4: $n\bmod n_{\rm jobs}$ individuals dropped and padded as censored (\src{SR_hetro.py:434-435}) & every one
+  of $n$ drawn & \verify{tests/acceptance/results/plants_004.json}{plants[2].sup_abs_dS}{.3g}{0.013} at
+  $n=\verify{tests/acceptance/results/plants_004.json}{plants[2].n}{,}{1,003}$\\
+D-405 & B11: $\xc\,\mathcal N(1,\sigma)$ unfiltered (\src{SR_hetro.py:471}) & the truncated normal
+  (Section~\ref{sec:het-def}) & \verify{tests/acceptance/results/plants_004.json}{plants[3].sup_abs_dS}{.3g}{0.024}
+  at $\sigma=0.5$\\
+D-406 & numba's generator unreachable by the seed; workers reseeded from the OS & per-individual keys
+  (Section~\ref{sec:lgv-rng}) & reproducibility, not $\Delta S$\\
+D-407 & a first-order kill, probability $h\,\delta$ per substep (\src{SR_hetro.py:462}) & an exact competing
+  exponential & \verify{tests/acceptance/results/plants_004.json}{plants[5].sup_abs_dS}{.3g}{0.0174}\\
+D-408 & deaths recorded at $(j+1)\Delta t$ on the outer grid (\src{SR_hetro.py:511-513}) & $\lfloor t/\delta\rfloor\delta$
+  (Section~\ref{sec:lgv-obs}) & \verify{tests/acceptance/results/plants_004.json}{plants[6].sup_abs_dS}{.3g}{0.0242}\\
+D-409 & \code{getSrHetro} heterogeneous in $\xc$ (0.2) by default (\src{SR_hetro.py:145, 148}) & homogeneous unless
+  named & \verify{tests/acceptance/results/plants_004.json}{plants[7].sup_abs_dS}{.3g}{0.0611}\\
+D-411 & \code{getISR} stored 0 for the dead, at the outer step within $dt/2$ of the age & NaN iff dead, ages on the
+  $dt$ grid (Section~\ref{sec:lgv-paths}) & \verify{tests/acceptance/results/plants_004.json}{plants[9].sup_abs_dS}{.3g}{0.00691}
+  ($\sup|\Delta F|$ of $X$)\\
+\bottomrule
+\end{longtable}
+B1's plant is like for like (gate C3): SRK at $(\Delta t,m=16)$ against SRK at $(\Delta t/16,m=1)$, both on the
+$\Delta t$ grid, so only the frozen age differs; HR-9 reads
+\verify{tests/acceptance/results/plants_004.json}{hr9.status}{}{pass}. Each entry names its regression test, which
+fails on SRK's behaviour and passes on the fix.
+
+\subsection{The random streams and the seed}\label{sec:lgv-rng}
+
+A sample depends only on $(\text{key},i)$ \src{langevin/rng.py}. Individual $i$'s stream is xoshiro256**, seeded by
+four SplitMix64 outputs from $\mathrm{hash64}(\text{key},i,\text{label})$; the key has 63 bits. The label names the
+stream: the path's normals (empty label), the bridge's uniforms (\code{"bridge"}), each heterogeneous parameter
+(\code{"het:<parameter>"}) and the external hazard (\code{"hazard"}), so heterogeneity and the hazard never shift the
+path stream. Uniforms are 53-bit; normals come in Marsaglia polar pairs. Two implementations, numba's
+(\code{next_u64}, \code{uniform}, \code{normal_pair}) and a pure NumPy reference (\code{RefStream}), agree bit for bit
+on the first 1,000 draws. What follows: a sample is the same for any worker count and chunk size, and the first $n'$
+individuals of a draw of $n>n'$ are the draw of $n'$. HR-8 checks the bytes at $W=1$, 7 and 15 with
+$n=\verify{tests/acceptance/results/hr8_004.json}{config.n}{,}{25,013}$, not divisible by any of them:
+\verify{tests/acceptance/results/hr8_004.json}{status}{}{pass}.
+
+\subsection{gen-1's observation transform}\label{sec:lgv-obs}
+
+The parameters of individual $i$ are $P\,s_i$ with $s_i=1+\sigma z_i$ from gen-1's own inverse CDF of the truncated
+normal (\code{generator._het_z}), so no draw is $\le0$; the external death time is gen-1's \code{_hazard_times} with
+rate $h_{\rm ext}$ \src{langevin/sample.py:draw_parameters}. The raw times are the kernel's, after the competing hazard.
+The recorded sample is gen-1's own functions, called through the module, so the cohort generator and the Langevin share
+one transform (C8) \src{langevin/sample.py:observe}:
+\begin{enumerate}[nosep]
+  \item the censoring time $C$ from \code{_censor_time} with the FP observed survival, when \code{censor_frac} $>0$;
+  \item the recording \code{_record}: a death at $t<C$ is recorded at $\lfloor t/\delta\rfloor\delta$ (first bin at 0),
+    $t\ge C$ censored at $C$;
+  \item gen-1's sort, then the window \code{_apply_time_range}.
+\end{enumerate}
+The default $t_{\max}$ is the age where the FP observed survival falls below $0.01/n$; a survivor there is censored at
+$t_{\max}$ and counted, with \code{LANGEVIN_SURVIVORS_AT_TMAX}.
+
+\subsection{The error statement}\label{sec:lgv-error}
+
+Every sample carries an \code{ErrorStatement} at its own $n$ \src{langevin/sample.py:ErrorStatement}:
+\begin{itemize}[nosep]
+  \item \textbf{KS} of the raw times (before recording, so binning, censoring and windows are never read as model
+    disagreement) against the FP observed survival, its node count by R26's curve check
+    (Section~\ref{sec:het-ladder}); $D$, ${\rm crit}_{95}=1.358/\sqrt n$, the $p$-value and the verdict
+    ``consistent at $n$'' or ``inconsistent at $n$''.
+  \item \textbf{The step bias} by a coupled half-step rung: the same streams at $dt/2$, the $dt$ path stepping with
+    $(\xi_a+\xi_b)/\sqrt2$ and the $dt/2$ rung with $\xi_a$ then $\xi_b$, so both follow one Brownian path. It reports
+    $D=\sup|\hat S_{dt}-\hat S_{dt/2}|$ with a paired bootstrap SE.
+\end{itemize}
+For a scheme of weak order $p$, $D=b(dt)-b(dt/2)=b(dt)(1-2^{-p})$, so the bias of the user's own sample is
+\begin{equation}\label{eq:lgv-bdt}
+  \hat b(dt)=\frac{D}{1-2^{-\hat p}},
+\end{equation}
+with $\hat p=\frac12$ for every configuration ($\hat b=3.41\,D$; the library reads no test result, Naveh
+2026-11-05, T142 C4). $\hat b$ is an
+estimate from one halving, not a bound: on the README's $\theta$ (the ITP fit, days) under the clamp at $dt=0.5$ and
+$n=25{,}000$ it reads
+\verify{specs/004-samplers/review/evidence/sr_naveh_004/clamp_vs_reflect.json}{rows[0].bias_at_dt}{.4f}{0.0132} while the sample's own KS distance
+from FP is \verify{specs/004-samplers/review/evidence/sr_naveh_004/clamp_vs_reflect.json}{rows[0].ks_D}{.4f}{0.0242}. \code{error="ks"} skips the rung:
+the step bias reads NOT MEASURED and the sample is never clean.
+
+\paragraph{The step bias against the crit.} A sample whose $\hat b(dt)$ exceeds its own ${\rm crit}_{95}$ carries
+\code{LANGEVIN_STEP_BIAS_ABOVE_CRIT} and is not clean \src{langevin/sample.py:run} (FR-012, Naveh 2026-11-05, T141):
+at small $n$ the KS has no power to see the step. On the same $\theta$ under the clamp at $dt=4$ and $n=2{,}000$, the
+KS passes ($D=\verify{specs/004-samplers/review/evidence/sr_naveh_004/clean_vs_bias.json}{rows[2].ks_D}{.4f}{0.0290}$ against
+${\rm crit}_{95}=\verify{specs/004-samplers/review/evidence/sr_naveh_004/clean_vs_bias.json}{rows[2].crit_95}{.4f}{0.0304}$) with
+$\hat b=\verify{specs/004-samplers/review/evidence/sr_naveh_004/clean_vs_bias.json}{rows[2].bias_at_dt}{.4f}{0.1093}$, and the sample is not clean.
+The warning is never given under \code{error="ks"}, where the bias is NOT MEASURED. A clean sample therefore certifies
+the KS at $n$, an FP reference, no survivor at $t_{\max}$ and a stated bias within the crit; it does not certify a
+converged step, since $\hat b$ is not a bound.
+
+\paragraph{The judged rung (gate C1).} The acceptance phases judge the $dt/2$ rung, whose bias is
+\begin{equation}\label{eq:lgv-judged}
+  \hat b(dt/2)=\frac{D}{2^{\hat p}-1},
+\end{equation}
+and a row is assessable iff $\hat b(dt/2)\le{\rm crit}/10$. Because P1's noise floor exceeded ${\rm crit}/30$, each
+cell's step was frozen once from a measurement at pooled $n$ (\code{p1-pooled}: 18 keys at $n=25{,}000$) and not
+re-measured per row \src{tools/acceptance_004.py:frozen_steps}; for example mice\_F's homogeneous clamp step is
+$m=\verify{tests/acceptance/results/p1_pooled_004.json}{frozen.mice_F|hom|clamp.m}{d}{170}$
+(amendment A1, \code{langevin_004.toml}).
+
+\subsection{Paths and the FP damage density}\label{sec:lgv-paths}
+
+With \code{record_ages} the kernel stores $X_{ij}$, individual $i$'s damage at the end of step
+$\mathrm{round}(a_j/dt)$, NaN iff $i$ is dead by $a_j$, read with no draw, so the times are the same with and without
+paths \src{langevin/kernels.py:run_chunk; langevin/sample.py:Paths}. The ages must lie on the $dt$ grid
+(\code{grid_dt} offers a step that divides them), and the block is capped by \code{max_path_bytes}.
+
+\paragraph{The reference.} \code{damage_density} runs the engine's own march with every step stored, only to the
+oldest age, and returns the conditional CDF of damage among the living \src{engine/density.py:damage_density}:
+\begin{equation}
+  F(x\mid\text{alive},a)=\frac{\sum_kw_kG_k(x/x_{c,k},a)}{\sum_kw_kS_k(a)},
+\end{equation}
+with $G_k$ node $k$'s living mass below $y$ on its grid, interpolated linearly in $\tau=a/L$, and $x_{c,k}=\xc s_k$
+under $\xc$ heterogeneity. The external hazard does not enter: it kills independently of $X$. Its node count comes from
+R26's check at $10^{-4}$; its grid error $\sup_x|F_{(N,dt)}-F_{(2N,dt/2)}|$ is recorded beside it.
+
+\paragraph{The censored statistic.} Under the clamp, the lump at $X=0$ is not in the FP density. The test therefore
+censors on the left \src{sampler_rules.py:hr10_censoring}: with $p_0$ the share of the living at exactly 0,
+\begin{equation}
+  u_c=\max(0.01,\,3p_0),\qquad x_c=\max\big(F^{-1}(u_c),\,5\sqrt{2\eps_{\max}dt}\big),
+\end{equation}
+and $D_c$ is the KS distance above $x_c$. Under reflect the full $D$ is used. The ages are Bonferroni-corrected, and
+the coupled rung's $\sup|F_{dt}-F_{dt/2}|$ on the same range is reported beside each. HR-10 reads
+\verify{tests/acceptance/results/paths_004.json}{verdicts[0].status}{}{pass} on the clamp
+(\verify{tests/acceptance/results/paths_004.json}{verdicts[0].n_valid}{d}{11} tests; E.~coli has no clamp
+configuration, amendments A0 and A2) and \verify{tests/acceptance/results/paths_004.json}{verdicts[1].status}{}{pass}
+on reflect (\verify{tests/acceptance/results/paths_004.json}{verdicts[1].n_valid}{d}{16} tests).
+
+\subsection{Multi-parameter heterogeneity}\label{sec:lgv-multi}
+
+The Langevin accepts a tuple of \code{Heterogeneity} objects: independent truncated normals, one per parameter,
+canonicalised by parameter name \src{langevin/sample.py:HetTuple}. Each parameter draws from its own stream, so a member
+at $\sigma=0$ (\code{Heterogeneity.zero}) is $s=1$ exactly with no draw, and a tuple whose other spreads are 0 is the
+single-parameter draw bit for bit (the exact reduction). FP's likelihood and curves refuse a tuple. The reference for a
+tuple's error statement is the tensor product (Section~\ref{sec:het-tensor}) at $d=2$ or 3 within 20,000 nodes;
+otherwise the statement reads ``no FP reference''. A tuple's paths are recorded, not checked (register D-413).
+
+HR-11 reads \verify{tests/acceptance/results/multi_004.json}{status}{}{pass} on its pre-declared re-run at fresh keys (amendment A9): every
+one of its six cells is below crit, the largest
+$D=\verify{tests/acceptance/results/multi_004.json}{cells[4].D}{.3g}{0.00709}$ (xc+$\eta$+$\epsilon$) against
+${\rm crit}=\verify{tests/acceptance/results/multi_004.json}{cells[4].crit}{.4g}{0.01047}$, and the tensor reference built at
+$10^{-4}$ agrees with the composite rule to \verify{tests/acceptance/results/multi_004.json}{composite.sup_dS}{.2g}{2.6e-05}. The reductions
+are exact, and the above-reference statement (a 4-parameter cell, past $d\le3$: amendment A7) reads ``no FP
+reference'' and is not clean. The first run failed one cell, xc+$\eta$ at
+$D=\verify{specs/004-samplers/review/evidence/multi_004_first_252ad3a.json}{cells[0].D}{.4g}{0.01112}$, diagnosed as chance (step bias and the reference ruled out;
+four fresh draws pass), and compared the composite with the cells' coarser reference (bar crit/10); both runs are
+kept.
+
+\subsection{The engine switch}\label{sec:lgv-switch}
+
+\code{population(params, ages, heterogeneity=, engine=, n=, ...)} chooses the engine \src{population.py:population}:
+\begin{center}
+\begin{tabular}{@{}lp{4.4cm}p{6.6cm}@{}}
+\toprule
+engine & $n=$ None & $n=$ int\\
+\midrule
+\code{fp} & the FP curves & gen-1 inside its domain, else refused naming why\\
+\code{langevin} & refused: ``pass $n$'' & \code{simulate}\\
+\code{auto} & the FP curves (a tuple: ``pass $n$'') & gen-1 inside its domain, else the Langevin\\
+\bottomrule
+\end{tabular}
+\end{center}
+gen-1's domain is $\xc$ or no heterogeneity, $n\le$ \code{HET_N_CAP} $=20{,}000$ when heterogeneous, and a valid
+\code{CohortSpec} \src{population.py:gen1_spec}. Outside it \code{auto} draws with the Langevin and the warning
+\code{ENGINE_AUTO_LANGEVIN} names the reason \src{population.py:auto_engine, P3_RULE}. The boundary is pilot P3's
+committed rule (C10): gen-1's domain, not the cost. P3 timed both engines on the human preset with $\xc$ sd 0.2,
+the Langevin at the preset's frozen heterogeneous clamp step with its rung, in one process, one timing each: gen-1's
+heterogeneous draw took
+\verify{tests/acceptance/results/p3_cost_004.json}{boundary.rows[3].cpu_gen1_s}{.0f}{690} CPU-s at
+$n=2{,}000$ against the Langevin's
+\verify{tests/acceptance/results/p3_cost_004.json}{boundary.rows[3].cpu_langevin_s}{.0f}{127}, and
+\verify{tests/acceptance/results/p3_cost_004.json}{boundary.rows[4].cpu_gen1_s}{,.0f}{691} against \verify{tests/acceptance/results/p3_cost_004.json}{boundary.rows[4].cpu_langevin_s}{,.0f}{1,254} at $n=20{,}000$. gen-1 is exact up to its stated grid error, so \code{auto} keeps it wherever it can draw. A sample's $S$ is the Kaplan-Meier estimate at
+the ages with Greenwood's 95\,\% bands \src{population.py:kaplan_meier}.
+
+\paragraph{JAX.} Pilot P4 priced a JAX kernel at
+\verify{tests/acceptance/results/p4_jax_004.json}{ratio_geomean}{.3g}{5.81} times numba's CPU (geometric mean over
+\verify{tests/acceptance/results/p4_jax_004.json}{n_pairs}{d}{20} pairs, threshold
+\verify{tests/acceptance/results/p4_jax_004.json}{threshold}{}{1.2}), so the kernels stay in numba.
+
+\subsection{Known issues}\label{sec:lgv-issues}
+
+\begin{itemize}[nosep]
+  \item The default clamp is not shown to agree with FP for E.~coli at any affordable step: E.~coli has no clamp
+    configuration in S4's or HR-10's families (amendment A0, \code{langevin_004.toml [limits]}).
+  \item Paths of a tuple with two or more spreads are not checked (D-413): no tensor damage density in spec 004.
+  \item Reflect's coverage: S4's \verify{specs/004-samplers/review/evidence/sr_naveh_004/s4_aggregate.json}{walls.reflect.rows}{d}{8} reflect rows are each preset's
+    homogeneous row and its $\xc$ sd 0.2 row; no $\eta$, $\beta$, $\eps$ or $\kappa$ row and no HR-11 cell ran on
+    reflect.
+\end{itemize}

@@ -1,0 +1,208 @@
+% Section for specs/006-calibrator-capabilities (T070; FR-029). Paths are relative to src/sraging/ unless they start with
+% tests/, tools/ or docs/. Measured numbers carry \verify markers against the acceptance results; a result not yet
+% recorded carries a TODO(T073) comment.
+\section{Fitting a time range: the window $W$ and $H$ (\texttt{profile\_jax2\_w}, \texttt{profile\_jax2\_h})}\label{sec:win}
+
+\subsection{Purpose and order of steps}\label{sec:win-order}
+
+A fit window $[\mathrm{lo},\mathrm{hi}]$ says which part of the lifetimes a cohort shows. \code{profile_jax2_w} ($W$) fits
+it with no external hazard; \code{profile_jax2_h} ($H$) fits it with the external hazard $h$ as a nuisance, as jax2
+shipped it. Every other calibrator refuses a window; the other jax2 names do so naming $W$ and $H$
+\src{calibrators/profile_jax2.py:WINDOW_FITTERS, fits_window}, and \code{profile_v033} without naming them
+\src{calibrators/profile_v033.py:fit}. \code{window_path} turns the cohort into what the frozen
+code is given, in this order \src{calibrators/profile_jax2.py:window_path}:
+\begin{enumerate}[nosep]
+  \item $\mathrm{hi}=\infty$ with no recording resolution $\delta$ is refused by name: the frozen snap cannot place it.
+  \item $\mathrm{hi}=\infty$ with $\delta$ is mapped to the first grid point past every record,
+    $\mathrm{hi}=(\lfloor a_{\max}/\delta+10^{-9}\rfloor+1)\,\delta$ (\code{HI_INF_RULE}), and the mapping is recorded
+    (\code{hi_mapped_from}, \code{hi_rule}).
+  \item The tester's \code{apply_window} \src{compat/tester_f94ec2b/observation.py:apply_window}, verbatim: records with
+    age below lo are \emph{dropped}, not censored (a censored record would say it was known alive at lo, which is not
+    what happened: it was never seen); records with age above hi are censored at hi.
+  \item The minimum-deaths rule: if fewer deaths are left to fit than the calibrator has free parameters (4 for $W$, 5
+    for $H$), the fit is refused and the count is named. The count is the deaths the frozen \code{prepare} leaves, after
+    its edge tie (Section~\ref{sec:win-snap}).
+  \item The windowed cohort, with the window (lo, hi used), and the row map: the kept rows' indices in the cohort given.
+    The fit, its floor report and its leverage check all see the windowed rows, and the rows they name are mapped back
+    to the cohort given through the map \src{calibrators/profile_jax2.py:map_window_rows}.
+  \item The frozen \code{prepare(window_on=True)}, whose snap record (the effective window and the edge tie) goes to the
+    fit's diagnostics.
+\end{enumerate}
+
+\subsection{The frozen snap and the edge tie}\label{sec:win-snap}
+
+With a recording resolution $\delta$ and ages on its grid, the frozen \code{window_snap} puts the window on the grid
+\src{compat/jax2_101/observation_model.py:window_snap}:
+\begin{itemize}[nosep]
+  \item $\mathrm{hi}_{\rm eff}$ is hi floored to the grid;
+  \item $\mathrm{lo}_{\rm eff}$ is lo ceiled to the grid; if $\mathrm{lo}\le\delta/2$ then $\mathrm{lo}_{\rm eff}=0$ and
+    there is no left truncation (the $\delta/2$ clamp keeps every record);
+  \item every record in the bin of $\mathrm{hi}_{\rm eff}$ or later is censored at $\mathrm{hi}_{\rm eff}$.
+\end{itemize}
+Without $\delta$, or with off-grid ages, the window is used as given and nothing is snapped; an empty snapped window is
+also used as given. The snap never moves an age up, never turns a censored record into a death and never changes $n$.
+It counts the deaths it censors (\code{n_deaths_censored}) and the records it censors at $\mathrm{hi}_{\rm eff}$
+(\code{n_censored_at_hi_eff}).
+
+\paragraph{The edge tie.} Ages are recorded as the floor of the age at death: a death recorded at $\mathrm{hi}_{\rm eff}$
+happened in $[\mathrm{hi}_{\rm eff},\mathrm{hi}_{\rm eff}+\delta)$, after the window closes. It is therefore known alive at
+$\mathrm{hi}_{\rm eff}$ and no more, and is censored there. On a grid window this equals the engine's rule for a death
+recorded at the window close (register D-107). It is a convention of the data, not a rare case: in spec 006's
+\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{edge_tie.n_fits}{d}{260} gate fits it fired on \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{edge_tie.fired}{d}{159}, its censored deaths came to more than 1\,\% of the records on \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{edge_tie.above_1pc}{d}{67} and more than
+10\,\% on \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{edge_tie.above_10pc}{d}{4}, with a median of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{edge_tie.median_pc}{.2f}{0.13}\,\% and a maximum of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{edge_tie.max_pc}{.1f}{46.7}\,\% (\code{window-k2-p01-c1-s1}, where $W$'s $\eta$ and
+$\varepsilon$ claims were lower bounds only; \code{review/evidence/windows_counts_006.json}). On v6 every windowed record
+has both ends on the $\delta$ grid, so no age is moved and the $\delta/2$ clamp does not act (gate M5,
+\code{docs/planning/spec006_seed_gate.md}).
+
+\subsection{The windowed likelihood}\label{sec:win-lik}
+
+The frozen likelihood conditions every at-risk row on being alive at lo \src{compat/jax2_101/fp_jax.py:make_loglik}. With
+$\ell_i(\theta)$ the terms of the unwindowed likelihood on the same prepared data (deaths, censorings at their ages, the
+edge tie as above), $n$ the rows at risk, and $S(\mathrm{lo})$ the survival at the window's start,
+\begin{equation}\label{eq:win-cond}
+  \ell_W(\theta)=\sum_i\ell_i(\theta)\;-\;n\,\log\operatorname{clip}\!\big(S(\mathrm{lo}),\,10^{-12},\,1\big),
+\end{equation}
+with $S(\mathrm{lo})$ replaced by $S(\mathrm{lo})\,e^{-h\,\mathrm{lo}}$ under $H$ (the nuisance hazard acts on the time
+before lo too) \src{compat/jax2_101/fp_jax.py:850}. Here lo is $\mathrm{lo}_{\rm eff}$ of the snap. So the windowed value
+is $J$'s terms plus one conditioning term; this decomposition is tested at four $\theta$, one near the clip (the terms
+bit for bit, the value within a few ulp), with a planted wrong conditioning term failing it \src{tests/unit/test_profile_jax2_w.py:test_ws_windowed_value_is_js_terms_plus_the_conditioning_term}.
+
+\paragraph{The clip.} Where $S(\mathrm{lo})<10^{-12}$ the conditioning term is constant in $\theta$, so it carries no
+information about the time before lo there. Spec 006 reports it: the warning \code{WINDOW_S_LO_CLIPPED} is raised when $S(\mathrm{lo})$ at
+$\hat\theta$ is below the clip \src{calibrators/profile_jax2.py:s_lo_warning; warnings.py}. The fit itself is the frozen one
+and is not changed.
+
+\subsection{$W$ as a composition}\label{sec:win-w}
+
+$W$ is \code{MleProfileJax2W}, version \code{1.0.1+w1}: jax2 1.0.1's class $J$ with \code{WINDOW = True} and the hazard
+off, under its own port so that its version never reads as a jax2 release
+\src{calibrators/profile_jax2.py:MleProfileJax2W, PORT_W}. It is sraging's composition; jax2 never ran it, and
+\code{compat/jax2_101/settings.py} stays verbatim. It is not the default, and it is registered at its own version only.
+$H$ is the 1.0.1 class as shipped, whose window switch is already on.
+
+Because no jax2 release ran $W$, it is checked against the oracle snapshot run with the same switches (the \emph{identity}
+phase, \code{tools/acceptance_006.py}). The phase compares, side by side in one process on the same host: for the window
+path, $W$'s or $H$'s public \code{window_path} and port run against the 1.0.1 oracle's \code{run_fit} on the tester's own
+observation, after comparing the two observations first; and $W$ against $J$ on an unwindowed cohort, by $\hat\theta$,
+log-likelihood, warning codes and the claims, each float by its hex.
+The recorded phase passed (\verify{tests/acceptance/results/identity_006.json}{status}{}{pass}, at 966bbe7): $W$ equals $J$ on \verify{tests/acceptance/results/identity_006.json}{equal_by_rule.R-5}{d}{3}
+unwindowed cohorts, and the window path equals the oracle's on \verify{tests/acceptance/results/identity_006.json}{equal_by_rule.R-6}{d}{4} pairs ($W$ and $H$ on two
+window cohorts); none of the \verify{tests/acceptance/results/identity_006.json}{pairs}{d}{7} pairs has a differing path.
+
+\subsection{The engine's window}\label{sec:win-engine}
+
+The spec 002 engine has its own window \src{engine/observation.py}, which the fits above do not use. Spec 006 changed it
+in two places.
+\begin{itemize}[nosep]
+  \item \textbf{D-601.} With $\mathrm{hi}=\infty$ no $S(\mathrm{hi})$ term is assembled, by a host-side switch. The value
+    was already finite, but \code{jnp.interp} at $\infty$ has a NaN derivative, and with the hazard the unused term adds
+    $0\times\mathrm{NaN}$, so the whole gradient was NaN. The value now equals a large finite hi's bit for bit, and the gradient to round-off
+    (bit for bit in \code{tests/unit/engine/test_engine_window_006.py}; within $10^{-13}$ relative ($8.5\times10^{-14}$ measured) on the parity phase's two cases,
+    where the two compiled programs order the sums differently).
+  \item \textbf{D-108 (retired).} Numerics v1 now clips $S(\mathrm{lo})$ at $10^{-12}$, as v033, SRK and jax2 do. Before
+    spec 006 its common $\log$ floor gave a spurious maximum where $S(\mathrm{lo})$ underflows: the windowed value was
+    $0.0$ against $-34.2$ at a sensible $\theta$ in \code{tests/unit/engine/test_engine_clip_006.py}.
+    \code{Evaluator.window_report} reports where the clip binds, with the warning \code{ENGINE_S_LO_CLIPPED}
+    \src{engine/evaluator.py:window_report}.
+\end{itemize}
+D-107 (a death recorded in the bin of hi is censored at hi) is the engine's form of the edge tie of
+Section~\ref{sec:win-snap}. D-214 records that jax2's mesh differs from the engine's.
+
+\subsection{What a window cannot tell you}\label{sec:win-limits}
+
+By eq.~(\ref{eq:win-cond}), a record that enters at lo is conditioned on being alive at lo, so the data say nothing about
+survival before lo except through $S(\mathrm{lo})$: two parameter values with the same $S(\mathrm{lo})$ and the same
+conditional survival after lo fit equally well. A narrow window leaves fewer deaths and constrains fewer combinations of
+the parameters, and the minimum-deaths rule (Section~\ref{sec:win-order}) refuses only the case with fewer deaths than
+parameters, not a window that is merely short.
+
+\subsection{Gate}\label{sec:win-gate}
+
+Whether the windowed fits cover the truth is the window arm's coverage in spec 006's acceptance run (\code{tools/gate_006.py};
+the rules are \code{tests/acceptance/rules_006.toml}). The cohorts are generated, with known truth. Counts that the records
+hold only as lists are in \code{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}, built from the
+records by the script beside it. A1 and A2 split the window arm at $n=25{,}000$: the panel's split, set before the run, not
+a measured change (below).
+
+On A1, the \verify{tests/acceptance/results/a1_006.json}{n_cohorts}{d}{196} cohorts with $n<25{,}000$ (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.eta.n_cohorts}{d}{112} at SR parameter grids and \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.n_a1_real}{d}{84} planted at real life tables,
+\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.n_a1_human}{d}{22} of them human), $W$'s closed intervals cover the truth for $\eta$ on \verify{tests/acceptance/results/a1_006.json}{R-1.gated.eta.hits}{d}{172} of \verify{tests/acceptance/results/a1_006.json}{R-1.gated.eta.claimed}{d}{175} cohorts and for
+$\varepsilon$ on \verify{tests/acceptance/results/a1_006.json}{R-1.gated.epsilon.hits}{d}{158} of \verify{tests/acceptance/results/a1_006.json}{R-1.gated.epsilon.claimed}{d}{160}, above the pre-registered cut (\verify{tests/acceptance/results/a1_006.json}{R-1.gated.eta.cut}{.3f}{0.913}). Its truth witness fails on none (R-3 passes:
+\verify{tests/acceptance/results/a1_006.json}{R-3.passes}{}{True}). Against $H$ (R-2), the paired median of $\log_{10}(\text{width}_W/\text{width}_H)$ is at most 0.1 dex: \verify{tests/acceptance/results/a1_006.json}{R-2.eta.vs_H.median_dex}{.3f}{-0.006} dex for
+$\eta$ over the \verify{tests/acceptance/results/a1_006.json}{R-2.eta.vs_H.n_paired}{d}{66} cohorts where both claims are closed and $W$'s upper end is not truncated, and \verify{tests/acceptance/results/a1_006.json}{R-2.epsilon.vs_H.median_dex}{.3f}{-0.051} for
+$\varepsilon$ over \verify{tests/acceptance/results/a1_006.json}{R-2.epsilon.vs_H.n_paired}{d}{85}. $W$'s fit costs \verify{tests/acceptance/results/a1_006.json}{r.fit_over_j}{.2f}{1.28}, \verify{tests/acceptance/results/a2_006.json}{r.fit_over_j}{.2f}{0.52} and \verify{tests/acceptance/results/realfull_006.json}{r.fit_over_j}{.2f}{0.70}\,$\times$ $J$'s stored CPU on A1, A2 and realfull; with the
+lead pair, which a default fit computes, a pilot cohort cost \verify{tests/acceptance/results/pilot_006.json}{r.element_over_j}{.3f}{3.627}\,$\times$, the gate's own evaluations included (the gate's
+price \code{r_lead}).
+
+\paragraph{A stale $\hat\theta$, more frequent on windows.} $J$ 1.0.1 keeps $\hat\theta$ when a profile walk finds a point
+better by less than 1.92 nats (``stale: minor''), and stores that point in \code{diagnostics.estimate.best_point}. So
+$\hat\theta$ can sit up to 1.92 nats below the best point the fit saw. The claims contain that point: $J$ widens each claim
+to its union with the extents of every evaluated point within $\mathrm{thr}/2=1.92$ nats of the best log-likelihood
+\src{compat/jax2_101/claims.py:sc_widen_claim}. The gate's R-4 asks that $W$'s $\hat\theta$ score within 0.1 nats of $H$'s
+stored fit at $H$'s smallest $h$. It failed on \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.a1.failures}{d}{15} of A1's \verify{tests/acceptance/results/a1_006.json}{R-4.n}{d}{196} cohorts (largest gap \verify{tests/acceptance/results/a1_006.json}{R-4.max_gap}{.2f}{1.80} nats), \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.a2.failures}{d}{3} of A2's \verify{tests/acceptance/results/a2_006.json}{R-4.n}{d}{44} (\verify{tests/acceptance/results/a2_006.json}{R-4.max_gap}{.2f}{0.54}) and
+\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.realfull.failures}{d}{2} of realfull's \verify{tests/acceptance/results/realfull_006.json}{R-4.n}{d}{20} (\verify{tests/acceptance/results/realfull_006.json}{R-4.max_gap}{.2f}{0.81}), every gap below 1.92 nats. The mechanism is $J$'s, and the window makes it more frequent: on A1's
+\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.j_vs_w_synthetic.n}{d}{112} SR-grid cohorts $W$'s gap exceeds 0.1 nats on \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.j_vs_w_synthetic.w_above}{d}{11}, and $J$'s own gap on its stored, unwindowed fits of their pure twins
+on \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.j_vs_w_synthetic.j_above}{d}{3} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.j_vs_w_synthetic.both_above}{d}{1} both; Fisher $p=\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{r4.j_vs_w_synthetic.fisher_p}{.3f}{0.050}$). A Mac refit of one failing cohort per cell
+(\code{review/evidence/r4_refits_006.json}) reads a better point in $W$'s own self-consistency check, ``stale:
+\verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.realfull-real-drosophila_217-c0-s0.stale}{}{minor}'', at about R-4's gap: \verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.realfull-real-drosophila_217-c0-s0.self_consistency_gap_nats}{.2f}{0.81} against \verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.realfull-real-drosophila_217-c0-s0.r4_gap_wexac}{.2f}{0.81} nats on realfull, \verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.window-real-Sweden_M_1910_hetro-c1-s1.self_consistency_gap_nats}{.2f}{0.58} against \verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.window-real-Sweden_M_1910_hetro-c1-s1.r4_gap_wexac}{.2f}{0.54} on A2, and \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{refits_by_cell.a1.self_consistency_gap_nats}{.3f}{0.349} against \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{refits_by_cell.a1.r4_gap_wexac}{.3f}{0.346} on A1.
+Naveh shipped $W$ with the limit stated, and extended the decision to realfull and A2 (spec 006, Clarifications);
+re-centring $\hat\theta$ on the best point goes to jax2's next release.
+
+\paragraph{Host dependence.} $W$ inherits 1.0.1's host dependence on human cohorts. A2's worst R-4 cohort
+(\code{window-real-Sweden_M_1910_hetro-c1-s1}) ran on an \verify{tests/acceptance/results/gate_006/a2/window-real-Sweden_M_1910_hetro-c1-s1.json}{cpu_model}{}{AMD EPYC 9754 128-Core Processor}. Its Mac refit found a $\hat\theta$
+\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{host.mac_minus_wexac_loglik}{.3f}{0.047} nats better, with $\eta$ \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{host.eta_pc_apart}{.0f}{5}\,\% and $\kappa$ \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{host.kappa_ratio}{.0f}{5}\,$\times$ apart, both inside WEXAC's claims, and $\kappa\ll1$ on both
+(\verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.window-real-Sweden_M_1910_hetro-c1-s1.wexac_theta.kappa}{.2g}{0.0028} and \verify{specs/006-calibrator-capabilities/review/evidence/r4_refits_006.json}{refits.window-real-Sweden_M_1910_hetro-c1-s1.mac_theta.kappa}{.2g}{0.014}: saturated removal). All three refits put the Mac's $\hat\theta$ inside WEXAC's claims (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{host.refits_inside_wexac_claims}{d}{3} of
+\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{host.n_refits}{d}{3}); their own claims were not recorded. On a human life table, compare claims across machines, not $\hat\theta$.
+
+\paragraph{Large cohorts.} A2 is the \verify{tests/acceptance/results/a2_006.json}{n_cohorts}{d}{44} cohorts planted at human life tables, with $n\ge25{,}000$, judged under the
+collapse rule (too few claims separate 0.95 from 0.88, so the rule asks only that coverage did not collapse to 0.70). $W$'s
+closed intervals cover the truth for $\eta$ on \verify{tests/acceptance/results/a2_006.json}{R-1.gated.eta.hits}{d}{31} of \verify{tests/acceptance/results/a2_006.json}{R-1.gated.eta.claimed}{d}{32} cohorts and for $\varepsilon$ on \verify{tests/acceptance/results/a2_006.json}{R-1.gated.epsilon.hits}{d}{28} of \verify{tests/acceptance/results/a2_006.json}{R-1.gated.epsilon.claimed}{d}{29}, and the truth
+witness fails on none (R-3 passes: \verify{tests/acceptance/results/a2_006.json}{R-3.passes}{}{True}). But the data did not set the upper ends of most of them:
+\verify{tests/acceptance/results/a2_006.json}{truncation.eta.truncated}{d}{28} of the \verify{tests/acceptance/results/a2_006.json}{truncation.eta.closed}{d}{32} for $\eta$ (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.box_limited}{d}{14} at the box, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.widened}{d}{13} widened, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.contradicted}{d}{1} below the lead pair's walk) and \verify{tests/acceptance/results/a2_006.json}{truncation.epsilon.truncated}{d}{29} of
+the \verify{tests/acceptance/results/a2_006.json}{truncation.epsilon.closed}{d}{29} for $\varepsilon$ (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.epsilon.box_limited}{d}{13} at the box, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.epsilon.widened}{d}{16} widened), against a pre-registered 10\,\%. So $W$'s windowed
+fits of 25{,}000 rows or more carry the warning \code{W_LARGE_N}.
+
+\paragraph{The life table, not $n$.} A claim is truncated above when its upper end sits at the
+box, was widened, or ends below the lead pair's walk or more than 0.3 dex below $H$'s. The records show that the variable
+is the life table (Table~\ref{tab:win-trunc}). A1 holds A2's human tables at $n=10{,}000$, and they truncate as A2 does.
+Below the split, the real-table cohorts' $\eta$ share (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.eta.truncated}{d}{56} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.eta.closed}{d}{67}) does not differ from A2's (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.truncated}{d}{28} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.closed}{d}{32}; Fisher
+$p=\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.fisher_p_eta_a1_real_vs_a2}{.2f}{0.77}$), and inside A1 it does not rise with $n$ (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_eta_by_n.0-1999.truncated}{d}{43} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_eta_by_n.0-1999.closed}{d}{61} below 2{,}000, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_eta_by_n.2000-9999.truncated}{d}{36} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_eta_by_n.2000-9999.closed}{d}{67} at 2{,}000--9{,}999, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_eta_by_n.10000-24999.truncated}{d}{28} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_eta_by_n.10000-24999.closed}{d}{47} at
+10{,}000--24{,}999). The two main causes differ. A box-limited end (label \texttt{open above: box-limited}) is the
+model's: on these windows $\eta$, $\varepsilon$ and $\beta/\kappa$ slide together along a ridge, the box ends it, and more
+deaths do not close it. A widened end (label \texttt{edge not found}) is the code's: $J$ 1.0.1's frozen profile walk
+stopped short of points the fit had already evaluated, and the end moved out to them. Such an end can sit below the
+truth: A2's only $\eta$ miss and only $\varepsilon$ miss are truths \verify{tests/acceptance/results/a2_006.json}{misses.eta.above.window-real-Sweden_F_1910_hetro-c0-s1}{.2f}{0.28} and \verify{tests/acceptance/results/a2_006.json}{misses.epsilon.above.window-real-Sweden_F_1910_hetro-c0-s1}{.2f}{0.31} dex above a widened end
+(\code{window-real-Sweden_F_1910_hetro-c0-s1}). The rule at every $n$: an upper end labelled either way is ``at least
+this'', not the interval's end; read the lead pair. \code{W_LARGE_N}'s message says so, gives A2's counts by cause and
+the real-table rate below 25{,}000, and calls 25{,}000 the panel's split \src{warnings.py:WINDOW_WARNINGS}.
+
+\begin{table}[H]\centering\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Cohorts & $n$ & $\eta$ truncated & $\varepsilon$ truncated\\\midrule
+A1, SR parameter grids & $<25{,}000$ & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.eta.truncated}{d}{51} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.eta.closed}{d}{108} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.eta.box_limited}{d}{47}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.eta.widened}{d}{3}) & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.epsilon.truncated}{d}{36} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.epsilon.closed}{d}{109} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.epsilon.box_limited}{d}{30}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_synthetic.epsilon.widened}{d}{3})\\
+A1, real life tables & $<25{,}000$ & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.eta.truncated}{d}{56} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.eta.closed}{d}{67} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.eta.box_limited}{d}{50}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.eta.widened}{d}{5}) & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.epsilon.truncated}{d}{37} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.epsilon.closed}{d}{51} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.epsilon.box_limited}{d}{32}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_real.epsilon.widened}{d}{5})\\
+A1, A2's human tables & $10{,}000$ & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.eta.truncated}{d}{14} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.eta.closed}{d}{15} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.eta.box_limited}{d}{8}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.eta.widened}{d}{5}) & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.epsilon.truncated}{d}{8} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.epsilon.closed}{d}{8} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.epsilon.box_limited}{d}{4}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a1_same_tables_as_a2_n10000.epsilon.widened}{d}{4})\\
+A2, human life tables & $\ge25{,}000$ & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.truncated}{d}{28} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.closed}{d}{32} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.box_limited}{d}{14}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.eta.widened}{d}{13}) & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.epsilon.truncated}{d}{29} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.epsilon.closed}{d}{29} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.epsilon.box_limited}{d}{13}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.a2.epsilon.widened}{d}{16})\\
+realfull & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull_drosophila_n_range[0]}{,d}{400}--\verify{tests/acceptance/results/gate_006/realfull/realfull-real-combined_human_F-c0-s0.json}{n}{,d}{100,000} & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.eta.truncated}{d}{18} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.eta.closed}{d}{18} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.eta.box_limited}{d}{16}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.eta.widened}{d}{2}) & \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.epsilon.truncated}{d}{15} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.epsilon.closed}{d}{16} (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.epsilon.box_limited}{d}{13}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.epsilon.widened}{d}{2})\\
+\bottomrule
+\end{tabular}
+\caption{Closed claims truncated above, of all closed claims, by population; in brackets, those at the box and those
+widened (\texttt{windows\_counts\_006.json}, \texttt{truncation}).}\label{tab:win-trunc}
+\end{table}
+
+\paragraph{The lead pair on windows.} $W$'s lead pair was truth-scored on windows (\code{Dg} in each record). On A1,
+$\eta/\varepsilon$'s closed intervals cover the truth on \verify{tests/acceptance/results/a1_006.json}{Dg.by_quantity.eta_over_eps.hits}{d}{52} of \verify{tests/acceptance/results/a1_006.json}{Dg.by_quantity.eta_over_eps.claimed}{d}{54} cohorts and $\bar r/\eta$'s on \verify{tests/acceptance/results/a1_006.json}{Dg.by_quantity.rbar_over_eta.hits}{d}{20} of \verify{tests/acceptance/results/a1_006.json}{Dg.by_quantity.rbar_over_eta.claimed}{d}{21}, plus \verify{tests/acceptance/results/a1_006.json}{Dg.by_quantity.rbar_over_eta.one_sided[0]}{d}{32} of \verify{tests/acceptance/results/a1_006.json}{Dg.by_quantity.rbar_over_eta.one_sided[1]}{d}{32}
+one-sided. On A2 $\eta/\varepsilon$ covers on \verify{tests/acceptance/results/a2_006.json}{Dg.by_quantity.eta_over_eps.hits}{d}{11} of \verify{tests/acceptance/results/a2_006.json}{Dg.by_quantity.eta_over_eps.claimed}{d}{11} and $\bar r/\eta$ on \verify{tests/acceptance/results/a2_006.json}{Dg.by_quantity.rbar_over_eta.hits}{d}{11} of \verify{tests/acceptance/results/a2_006.json}{Dg.by_quantity.rbar_over_eta.claimed}{d}{11}, all closed, on the human tables whose
+$\eta$ and $\varepsilon$ upper ends the box or the search set. That count passes the collapse rule (cut \verify{tests/acceptance/results/a2_006.json}{Dg.by_quantity.eta_over_eps.cut}{.3f}{0.777}) and is too
+small to show 0.95.
+
+\paragraph{realfull.} The \verify{tests/acceptance/results/realfull_006.json}{n_cohorts}{d}{20} realfull window-only cohorts are generated cohorts planted at real life tables
+(\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.realfull_human.n}{d}{12} human; \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull_drosophila.eta.n_cohorts}{d}{8} Drosophila, at $n=\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull_drosophila_n_range[0]}{d}{400}$--\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull_drosophila_n_range[1]}{,d}{1,116}), reported, not gated. Their closed intervals cover the
+truth for $\eta$ on \verify{tests/acceptance/results/realfull_006.json}{R-1.gated.eta.hits}{d}{17} of \verify{tests/acceptance/results/realfull_006.json}{R-1.gated.eta.claimed}{d}{18} and for $\varepsilon$ on \verify{tests/acceptance/results/realfull_006.json}{R-1.gated.epsilon.hits}{d}{16} of \verify{tests/acceptance/results/realfull_006.json}{R-1.gated.epsilon.claimed}{d}{16}, but \verify{tests/acceptance/results/realfull_006.json}{truncation.eta.truncated}{d}{18} of the \verify{tests/acceptance/results/realfull_006.json}{truncation.eta.closed}{d}{18} closed $\eta$ intervals are
+truncated above (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.eta.box_limited}{d}{16} at the box, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.eta.widened}{d}{2} widened) and \verify{tests/acceptance/results/realfull_006.json}{truncation.epsilon.truncated}{d}{15} of \verify{tests/acceptance/results/realfull_006.json}{truncation.epsilon.closed}{d}{16} for $\varepsilon$ (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.epsilon.box_limited}{d}{13}, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{truncation.realfull.epsilon.widened}{d}{2}). The data set
+$\eta$'s upper end on \verify{tests/acceptance/results/realfull_006.json}{shapes.eta.capped_by_data}{d}{0} of the \verify{tests/acceptance/results/realfull_006.json}{shapes.eta.n}{d}{20} cohorts and $\varepsilon$'s on \verify{tests/acceptance/results/realfull_006.json}{shapes.epsilon.capped_by_data}{d}{1}.
+
+\paragraph{The leverage check on windows.} It raised no flag on the \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.assessed_total}{d}{209} fits it assessed (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.flags_total}{d}{0} flags; \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.slides_total}{d}{52} of
+them flat-valley slides). No case was planted on windows, so its detection there is untested. On cohorts planted at
+human life tables it could not assess \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.not_assessed_total}{d}{47} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.n_total}{d}{78} fits (\verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.a1_human_n10000.not_assessed}{d}{13} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.a1_human_n10000.n}{d}{22} at $n=10{,}000$ in A1, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.a2.not_assessed}{d}{26} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.a2.n}{d}{44} in A2, \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.realfull_human.not_assessed}{d}{8} of \verify{specs/006-calibrator-capabilities/review/evidence/windows_counts_006.json}{leverage.human.realfull_human.n}{d}{12}
+in realfull): $\hat\theta$ was not stationary there.

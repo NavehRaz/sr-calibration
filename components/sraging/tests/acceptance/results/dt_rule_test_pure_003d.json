@@ -1,0 +1,176 @@
+{
+ "phase": "dt-rule-test",
+ "written_at": "2026-10-15T22:08:07Z",
+ "repo_head": "4c77d8be42729c5a0c809aa9e7ace2e8a13ca721",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "4146e03bb56d0e3183663731917530a2cd53625c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "a5e3b88ecaf189566f6f7d7f3d361e55a76ce5e9"
+ },
+ "wall_s": 2931.0472180843353,
+ "cpu_s": 0.07283499999999998,
+ "status": "attribution holds",
+ "fails": [],
+ "cut": 9.49,
+ "rule": "the sr-naveh review's falsifier: D on the DT_RULE grid above the cut means the attribution to 1.0.0's time step fails",
+ "cohorts": [
+  "pure-k0.01-p10-c0-s0",
+  "pure-k0.1-p10-c0-s0"
+ ],
+ "verdicts": {
+  "pure-k0.01-p10-c0-s0": {
+   "D_production": 15.229019255586081,
+   "D_dt_rule": 2.6463725153257656,
+   "D_full_fit_production": 15.255335731272226,
+   "attribution_holds": true
+  },
+  "pure-k0.1-p10-c0-s0": {
+   "D_production": 1402.7916749953201,
+   "D_dt_rule": 7.402733858113152,
+   "D_full_fit_production": 1402.7917118419796,
+   "attribution_holds": true
+  }
+ },
+ "fits": [
+  {
+   "cohort_id": "pure-k0.1-p10-c0-s0",
+   "dt_rule": false,
+   "D": 1402.7916749953201,
+   "loglik": -1834.5108517413842,
+   "loglik_truth": -2535.906689239044,
+   "theta": {
+    "eta": 0.0018335435771496724,
+    "beta": 51.59957178935807,
+    "epsilon": 4.569744708230141e-05,
+    "kappa": 296.52933418650315
+   },
+   "truth": {
+    "eta": 0.0007928924313475199,
+    "beta": 0.05379838403443687,
+    "epsilon": 3.9810717055349735e-05,
+    "kappa": 0.1
+   },
+   "cpu_s": 247.148018,
+   "grid": {
+    "N": 3600,
+    "dt": 0.002,
+    "tau_max": 2.0
+   },
+   "dex_from_truth": {
+    "eta": 0.36407696387541505,
+    "beta": 2.981876866782583,
+    "epsilon": 0.05989193860292878,
+    "kappa": 3.472067662439479
+   },
+   "eta_over_eps_dex": 0.30418502527248614
+  },
+  {
+   "cohort_id": "pure-k0.01-p10-c0-s0",
+   "dt_rule": false,
+   "D": 15.229019255586081,
+   "loglik": -1346.0188727424909,
+   "loglik_truth": -1353.633382370284,
+   "theta": {
+    "eta": 0.005959173338720532,
+    "beta": 2.4019340198113146,
+    "epsilon": 6.749444563255473e-05,
+    "kappa": 3.1052204740772154
+   },
+   "truth": {
+    "eta": 0.0067802796940122576,
+    "beta": 0.5878016072274912,
+    "epsilon": 0.00031622776601683794,
+    "kappa": 0.01
+   },
+   "cpu_s": 305.300181,
+   "grid": {
+    "N": 3600,
+    "dt": 0.002,
+    "tau_max": 2.0
+   },
+   "dex_from_truth": {
+    "eta": -0.056061591121219854,
+    "beta": 0.6113303041003038,
+    "epsilon": -0.6707319653968999,
+    "kappa": 2.4920924409943557
+   },
+   "eta_over_eps_dex": 0.61467037427568
+  },
+  {
+   "cohort_id": "pure-k0.1-p10-c0-s0",
+   "dt_rule": true,
+   "D": 7.402733858113152,
+   "loglik": -1832.900460642632,
+   "loglik_truth": -1836.6018275716885,
+   "theta": {
+    "eta": 0.00019904307505246748,
+    "beta": 4.976999625945014e-09,
+    "epsilon": 4.351858772678624e-06,
+    "kappa": 299.99999999999994
+   },
+   "truth": {
+    "eta": 0.0007928924313475199,
+    "beta": 0.05379838403443687,
+    "epsilon": 3.9810717055349735e-05,
+    "kappa": 0.1
+   },
+   "cpu_s": 1303.909016,
+   "grid": {
+    "N": 3600,
+    "dt": 0.0002101626987599733,
+    "tau_max": 2.0
+   },
+   "dex_from_truth": {
+    "eta": -0.6002671997030711,
+    "beta": -7.033801622665357,
+    "epsilon": -0.9613252068856054,
+    "kappa": 3.477121254719662
+   },
+   "eta_over_eps_dex": 0.36105800718253445
+  },
+  {
+   "cohort_id": "pure-k0.01-p10-c0-s0",
+   "dt_rule": true,
+   "D": 2.6463725153257656,
+   "loglik": -1345.5664430585823,
+   "loglik_truth": -1346.8896293162452,
+   "theta": {
+    "eta": 0.014636018624983442,
+    "beta": 2.020338262247083,
+    "epsilon": 0.0003818248692731783,
+    "kappa": 0.4053619143944806
+   },
+   "truth": {
+    "eta": 0.0067802796940122576,
+    "beta": 0.5878016072274912,
+    "epsilon": 0.00031622776601683794,
+    "kappa": 0.01
+   },
+   "cpu_s": 2886.0861609999997,
+   "grid": {
+    "N": 3600,
+    "dt": 0.0001322136257567355,
+    "tau_max": 2.0
+   },
+   "dex_from_truth": {
+    "eta": 0.3341753441111827,
+    "beta": 0.5361933195864381,
+    "epsilon": 0.0818642117380227,
+    "kappa": 1.6078429423211875
+   },
+   "eta_over_eps_dex": 0.25231113237316005
+  }
+ ]
+}

@@ -1,0 +1,270 @@
+{
+ "created": "2026-10-05T13:04:14",
+ "purpose": "Byte-level oracle for spec 003's port of mle_profile_jax2 / mle_profile_jax2_h 1.0.0 (the tester's successor candidate). NEVER EDIT. Compare side by side on the same host only.",
+ "source": {
+  "repo": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "method_dir": "methods/mle_profile_jax2",
+  "frozen_commit": "3bc57751a6617e5bbdc76205e58d158c9d434990",
+  "head": "5578de259eb2165d5fbb0823b8f1c81b0216238f",
+  "diff_empty": true
+ },
+ "host": {
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "node": "MC06268844"
+ },
+ "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+ "files": [
+  {
+   "path": "mle_profile_jax2/__init__.py",
+   "md5": "ae2e8b43136e54c60ba8695d485ef0fe",
+   "sha256": "cf4a214d66d3b3a13338774c00b886183ce4dada936bd7f0dd0e8f0c8dc86e73"
+  },
+  {
+   "path": "mle_profile_jax2/estimator.py",
+   "md5": "04706ced638dbcd064d544054c0423dd",
+   "sha256": "b2e9b34bdd6037fa98a45d450f3a119128d3b07fd2d99a95bb82ead9c7978fd0"
+  },
+  {
+   "path": "mle_profile_jax2/fp_jax.py",
+   "md5": "f265532d8c6b740792510d4afbefe823",
+   "sha256": "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253"
+  },
+  {
+   "path": "mle_profile_jax2/observation_model.py",
+   "md5": "2a7c61a6fb7cfe4527601d854fedd998",
+   "sha256": "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0"
+  },
+  {
+   "path": "mle_profile_jax2/VERSION_LOCK.json",
+   "md5": "49720b5ae06b6f29ae458736a77cb80f",
+   "sha256": "e6437e3ea03ce4752f48806c21041cc02b3a444ba7836080a7abd14c347d81b0"
+  }
+ ],
+ "cited": [
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SR_hetro.py",
+   "sha256": "46811f0bb9322ea9175b40808c32d5af3cc2d3294dcf9b4b52ad3cd5841eca16",
+   "v033_path": "SRtools_kappa/SRK/SR_hetro.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib.py",
+   "sha256": "08bda3648cebb92242fef6a4242c7536f0cc593e5f730e96cb318ea61c877460",
+   "v033_path": "SRtools_kappa/SRK/SRmodellib.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib_lifelines.py",
+   "sha256": "8b6ceffb91316ab5215028b3bd586484bad4e57e1fb1350f366c7281aba85d26",
+   "v033_path": "SRtools_kappa/SRK/SRmodellib_lifelines.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/__init__.py",
+   "sha256": "946c5e65c0c9724e15686db6b4005111ed15dd6f5fc6700007da7476033ad4d0",
+   "v033_path": "SRtools_kappa/SRK/__init__.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/deathTimesDataSet.py",
+   "sha256": "add34073e9d82fb779067e0218735b87553a976379952a1bde704b77c1d89fa9",
+   "v033_path": "SRtools_kappa/SRK/deathTimesDataSet.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/distance_metrics.py",
+   "sha256": "efaced8124f39f355f825b70733d698cff69776a7c13bbe49e6ef2b9b8f8d82b",
+   "v033_path": "SRtools_kappa/SRK/distance_metrics.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_curvefit.py",
+   "sha256": "716b67c893bddb75a63eaf41d6924e3ed150280b7f0cf6c0353c113e15dbfa0a",
+   "v033_path": "SRtools_kappa/SRK/fp_curvefit.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_gof.py",
+   "sha256": "9928908c46aaca06d60f472b4c93456cd25096db18ceddd3577710e5bf79d12b",
+   "v033_path": "SRtools_kappa/SRK/fp_gof.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_likelihood.py",
+   "sha256": "5331ae00c65b249ae771cbc6ededf004ee6eb8f558582c5ed3208935102bd6ae",
+   "v033_path": "SRtools_kappa/SRK/fp_likelihood.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/initialParamsFinder.py",
+   "sha256": "63472a5b70b498df61e8bebcc3656b22fa296b472a43c516252d09921e104b78",
+   "v033_path": "SRtools_kappa/SRK/initialParamsFinder.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/joint_posterior.py",
+   "sha256": "849394c849b952ad420f2096b069cb88ce2178e25f267a7af1cf9b4d1e4f564f",
+   "v033_path": "SRtools_kappa/SRK/joint_posterior.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/life_table.py",
+   "sha256": "c27769f268f92edd50a053c81a7605af259df0ef2bd1bd4856ff817a450a7a64",
+   "v033_path": "SRtools_kappa/SRK/life_table.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/makhamGompertzFitter.py",
+   "sha256": "d9dfc2be5515b788317debc57808d9220d7fb4c1bcc0e32753a08ee9533362bf",
+   "v033_path": "SRtools_kappa/SRK/makhamGompertzFitter.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/prior_gen.py",
+   "sha256": "c7d4f36d6babc4f8825d46d40fd040a1ec3e2e70f4210119231d8bc099650933",
+   "v033_path": "SRtools_kappa/SRK/prior_gen.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/samples_utils.py",
+   "sha256": "2081a9e9578c804a9bd0d4aae4fcb4b8dff31891874fbf290d761cc580889cfb",
+   "v033_path": "SRtools_kappa/SRK/samples_utils.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/sr_mcmc.py",
+   "sha256": "bbece2c99cc1458c5dffd78c0700a80a52ae382ddddc481a5b1cf781787de604",
+   "v033_path": "SRtools_kappa/SRK/sr_mcmc.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/stepsize.py",
+   "sha256": "be897557455bb8164c1adf2dc062df740dfa5f6cbc4ea5df91b365c65638c2b5",
+   "v033_path": "SRtools_kappa/SRK/stepsize.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/weibullFitter.py",
+   "sha256": "a3e3390bba1bca266605e3cadaf2bb7a4834610c79a433e247c659d09c6f514b",
+   "v033_path": "SRtools_kappa/SRK/weibullFitter.py",
+   "source": "srk_sha of reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "v033_path": "sr_calibration_tester/srbench/__init__.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "v033_path": "sr_calibration_tester/srbench/contract/__init__.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/method.py",
+   "sha256": "9179a3cc67cfa4a353289cf99026a5ae1c48c8bc71cf8e48a62a694b0c7728af",
+   "v033_path": "sr_calibration_tester/srbench/contract/method.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/types.py",
+   "sha256": "a657ca23bb8329557cd488b1baa3bf86eaf250e0f0ab6832a5d85ec59b4e39f0",
+   "v033_path": "sr_calibration_tester/srbench/contract/types.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/contract/validate.py",
+   "sha256": "e8f9de0a8cbc42b30d1291962d0cf49867276a474672b534d9934ac84a3846cb",
+   "v033_path": "sr_calibration_tester/srbench/contract/validate.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "v033_path": "sr_calibration_tester/srbench/library/__init__.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/build.py",
+   "sha256": "ce248c241d32fa568e02b8d8478d8423cef797192abc1eaadfc4ab7a415bb999",
+   "v033_path": "sr_calibration_tester/srbench/library/build.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/load.py",
+   "sha256": "30c97961c57dc0e1267ee45194ea79fe403a1da77960fe30e2bbc5e2fa8a4323",
+   "v033_path": "sr_calibration_tester/srbench/library/load.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/observation.py",
+   "sha256": "3e1a45d6c19420ca75c57f024a3943efc767504b62ec6f232d67b2052f9c847f",
+   "v033_path": "sr_calibration_tester/srbench/library/observation.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/order.py",
+   "sha256": "0d9fbf469df4c2af4a7272bd5648dda89a10ec49758e364ce69ba932f22cd85e",
+   "v033_path": "sr_calibration_tester/srbench/library/order.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/library/spec.py",
+   "sha256": "3d7ae751732144418ac79edfceac7bd3056102b6f0d123957a25129fccb196be",
+   "v033_path": "sr_calibration_tester/srbench/library/spec.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/npcompat.py",
+   "sha256": "08a61b8cd1c04c9dd106a3442da13777b762277f866473531190fa4a07f4939a",
+   "v033_path": "sr_calibration_tester/srbench/npcompat.py",
+   "source": "J2 working tree"
+  },
+  {
+   "repo": "sr_calibration_tester",
+   "path": "srbench/provenance.py",
+   "sha256": "3d9984d60d81287759d95dd77b021902faeed944788c54f6065af5c1aa769c19",
+   "v033_path": "sr_calibration_tester/srbench/provenance.py",
+   "source": "J2 working tree"
+  }
+ ],
+ "environment_pins": "tests/oracle/v033/pip_freeze.txt (the same pinned environment)",
+ "version_lock_check": {
+  "__init__.py": "cf4a214d66d3b3a13338774c00b886183ce4dada936bd7f0dd0e8f0c8dc86e73",
+  "estimator.py": "b2e9b34bdd6037fa98a45d450f3a119128d3b07fd2d99a95bb82ead9c7978fd0",
+  "fp_jax.py": "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253",
+  "observation_model.py": "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0"
+ }
+}

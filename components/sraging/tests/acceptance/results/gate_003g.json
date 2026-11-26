@@ -1,0 +1,937 @@
+{
+ "phase": "gate",
+ "written_at": "2026-10-29T00:46:37Z",
+ "repo_head": "e26ebf0602f5650b4f6baba8f23bbed574c9732b",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 0.14473915100097656,
+ "cpu_s": 0.030756000000000006,
+ "status": "blocked; decided (11 of 11)",
+ "blocking": [
+  {
+   "stratum": "BASIN-P15/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "eta",
+   "reasons": [
+    "lower bound -0.432 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 3 cannot pass PR-3 (pr3_power, before W3); every closed claim covered (eta 3/3, epsilon 3/3, beta 1/1)"
+   }
+  },
+  {
+   "stratum": "BASIN-P15/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "beta",
+   "reasons": [
+    "lower bound -0.698 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 3 cannot pass PR-3 (pr3_power, before W3); every closed claim covered (eta 3/3, epsilon 3/3, beta 1/1)"
+   }
+  },
+  {
+   "stratum": "BASIN-P15/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "epsilon",
+   "reasons": [
+    "lower bound -0.433 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 3 cannot pass PR-3 (pr3_power, before W3); every closed claim covered (eta 3/3, epsilon 3/3, beta 1/1)"
+   }
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "eta",
+   "reasons": [
+    "lower bound -0.688 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 1 cannot pass PR-3; the one closed claim covered"
+   }
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "epsilon",
+   "reasons": [
+    "lower bound -0.689 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 1 cannot pass PR-3; the one closed claim covered"
+   }
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "censor",
+   "quantity": "eta",
+   "reasons": [
+    "lower bound -0.102 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "43/45 against 194/199 inside (lower bound -0.102); a count this low has p = 0.31 under exactly equal coverage (N3)"
+   }
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "censor",
+   "quantity": "beta",
+   "reasons": [
+    "lower bound -0.808 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "too few closed beta claims to test (1/2)"
+   }
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "rule": "PR-1",
+   "verdict": "incomplete",
+   "arm": "pure",
+   "quantity": null,
+   "reasons": [
+    "1 without a fresh witness"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "pure-k0.0316-p15-c0-s1 not stored: stopped after repeated preemption (jax2 20261028-160206-jax2-960a); named"
+   }
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "beta",
+   "reasons": [
+    "lower bound -0.612 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "too few closed beta claims to test (3/4)"
+   }
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "eta",
+   "reasons": [
+    "lower bound -0.688 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 1 cannot pass PR-3; the one closed claim covered"
+   }
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "rule": "PR-3",
+   "verdict": "FAIL",
+   "arm": "pure",
+   "quantity": "epsilon",
+   "reasons": [
+    "lower bound -0.689 <= -0.1"
+   ],
+   "decision": {
+    "decision": "stated limit",
+    "decided": "Naveh 2026-10-28 (T050)",
+    "reason": "N = 1 cannot pass PR-3; the one closed claim covered"
+   }
+  }
+ ],
+ "not_covered": [
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-1",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no valid informative cohort"
+   ]
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-4",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no valid cohort"
+   ]
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-1",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no valid informative cohort"
+   ]
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-4",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no valid cohort"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-1",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no valid informative cohort"
+   ]
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-1",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no valid informative cohort"
+   ]
+  },
+  {
+   "stratum": "BASIN-P15/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": "kappa",
+   "reasons": [
+    "no closed claim among 3 valid outside"
+   ]
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": "beta",
+   "reasons": [
+    "no closed claim among 1 valid outside"
+   ]
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": "kappa",
+   "reasons": [
+    "no closed claim among 1 valid outside"
+   ]
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": "kappa",
+   "reasons": [
+    "no closed claim among 56 valid outside"
+   ]
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": "kappa",
+   "reasons": [
+    "no closed claim among 171 valid outside"
+   ]
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": "beta",
+   "reasons": [
+    "no closed claim among 1 valid outside"
+   ]
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "rule": "PR-3",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": "kappa",
+   "reasons": [
+    "no closed claim among 1 valid outside"
+   ]
+  },
+  {
+   "stratum": "P-ROUNDOFF",
+   "rule": "PR-5",
+   "verdict": "reported",
+   "arm": null,
+   "quantity": null,
+   "reasons": [
+    "DV-4 (Naveh 2026-10-29): shown through the basin mechanism only: the 19 shown are human, 15 of them BASIN-J cohorts and 4 more human cohorts with the basin's W33 (270-1,883); on the 112 non-human round-off cohorts v0.3.3 is shown on none (109 not shown, 3 no point; largest W33 -0.034), so the round-off defect itself is not shown on v6 (sr-naveh N7)"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL",
+   "rule": "PR-5",
+   "verdict": "reported",
+   "arm": null,
+   "quantity": null,
+   "reasons": [
+    "no cohort shows the predecessor's defect",
+    "DV-1 (Naveh 2026-10-28): a library gap, like E. coli: v0.3.3's step cap delta/(3L) costs more than 1.0.1's floor only below delta/L ~ 4.4e-4 [I]; v6's 16 C. elegans cohorts sit at ~6e-4 [M], so no v6 cohort is in the defect's regime (constitution V deviation)"
+   ]
+  },
+  {
+   "stratum": "P-CENSORTIE",
+   "rule": "PR-5",
+   "verdict": "empty",
+   "arm": null,
+   "quantity": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": null,
+   "reasons": [
+    "no measured axis has the 3 cells at which 'loses' can occur"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "realfull",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-1/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-1b/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-2/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  }
+ ],
+ "n_verdicts": 96,
+ "required": [
+  [
+   "BASIN-J/inside",
+   "PR-1"
+  ],
+  [
+   "BASIN-J/inside",
+   "PR-2"
+  ],
+  [
+   "BASIN-J/inside",
+   "PR-4"
+  ],
+  [
+   "LB-1x/inside",
+   "PR-1"
+  ],
+  [
+   "LB-1x/inside",
+   "PR-2"
+  ],
+  [
+   "LB-1x/inside",
+   "PR-4"
+  ],
+  [
+   "LB-2/inside",
+   "PR-1"
+  ],
+  [
+   "LB-2/inside",
+   "PR-2"
+  ],
+  [
+   "LB-2/inside",
+   "PR-4"
+  ],
+  [
+   "P-DTCEIL/inside",
+   "PR-1"
+  ],
+  [
+   "P-DTCEIL/inside",
+   "PR-2"
+  ],
+  [
+   "P-DTCEIL/inside",
+   "PR-4"
+  ],
+  [
+   "P-ROUNDOFF/inside",
+   "PR-1"
+  ],
+  [
+   "P-ROUNDOFF/inside",
+   "PR-2"
+  ],
+  [
+   "P-ROUNDOFF/inside",
+   "PR-4"
+  ],
+  [
+   "SRK-1/inside",
+   "PR-1"
+  ],
+  [
+   "SRK-1/inside",
+   "PR-2"
+  ],
+  [
+   "SRK-1/inside",
+   "PR-4"
+  ],
+  [
+   "SRK-1b/inside",
+   "PR-1"
+  ],
+  [
+   "SRK-1b/inside",
+   "PR-2"
+  ],
+  [
+   "SRK-1b/inside",
+   "PR-4"
+  ],
+  [
+   "SRK-2/inside",
+   "PR-1"
+  ],
+  [
+   "SRK-2/inside",
+   "PR-2"
+  ],
+  [
+   "SRK-2/inside",
+   "PR-4"
+  ],
+  [
+   "BASIN-P15/outside",
+   "PR-1"
+  ],
+  [
+   "BASIN-P15/outside",
+   "PR-3"
+  ],
+  [
+   "BASIN-P15/outside",
+   "PR-4"
+  ],
+  [
+   "LB-1x/outside",
+   "PR-1"
+  ],
+  [
+   "LB-1x/outside",
+   "PR-3"
+  ],
+  [
+   "LB-1x/outside",
+   "PR-4"
+  ],
+  [
+   "SRK-1/outside",
+   "PR-1"
+  ],
+  [
+   "SRK-1/outside",
+   "PR-3"
+  ],
+  [
+   "SRK-1/outside",
+   "PR-4"
+  ],
+  [
+   "SRK-2/outside",
+   "PR-1"
+  ],
+  [
+   "SRK-2/outside",
+   "PR-3"
+  ],
+  [
+   "SRK-2/outside",
+   "PR-4"
+  ],
+  [
+   "BASIN-J",
+   "PR-5"
+  ],
+  [
+   "BASIN-P15",
+   "PR-5"
+  ],
+  [
+   "P-ROUNDOFF",
+   "PR-5"
+  ],
+  [
+   "P-DTCEIL",
+   "PR-5"
+  ],
+  [
+   "P-CENSORTIE",
+   "PR-5"
+  ]
+ ],
+ "deviations": [
+  {
+   "id": "DV-1",
+   "kind": "verdict",
+   "stratum": "P-DTCEIL",
+   "rule": "PR-5",
+   "as": "reported",
+   "reason": "a library gap, like E. coli: v0.3.3's step cap delta/(3L) costs more than 1.0.1's floor only below delta/L ~ 4.4e-4 [I]; v6's 16 C. elegans cohorts sit at ~6e-4 [M], so no v6 cohort is in the defect's regime (constitution V deviation)",
+   "decided": "Naveh 2026-10-28",
+   "n_applied": 1
+  },
+  {
+   "id": "DV-2",
+   "kind": "rule-code",
+   "rule": "PR-2",
+   "code": "sraging.default_gate.coverage_inside",
+   "change": "every axis 'not measured' -> 'reported' (listed under Not Covered), not PASS; a stratum with one measured axis is unchanged",
+   "decided": "Naveh 2026-10-28",
+   "n_applied": 0
+  },
+  {
+   "id": "DV-3",
+   "kind": "rule-code",
+   "rule": "FR-011",
+   "code": "sraging.leverage.not_assessed, sraging.leverage_rule.G_CRIT_PER_IND",
+   "change": "not_assessed iff g0 == 0 and |g|/n > 5e-5 (n = all individuals), replacing [rules] g_crit = 1.0 on the summed norm, which grows with n",
+   "decided": "Naveh 2026-10-28",
+   "n_applied": 0
+  },
+  {
+   "id": "DV-4",
+   "kind": "verdict",
+   "stratum": "P-ROUNDOFF",
+   "rule": "PR-5",
+   "as": "reported",
+   "reason": "shown through the basin mechanism only: the 19 shown are human, 15 of them BASIN-J cohorts and 4 more human cohorts with the basin's W33 (270-1,883); on the 112 non-human round-off cohorts v0.3.3 is shown on none (109 not shown, 3 no point; largest W33 -0.034), so the round-off defect itself is not shown on v6 (sr-naveh N7)",
+   "decided": "Naveh 2026-10-29",
+   "n_applied": 1
+  },
+  {
+   "id": "DV-5",
+   "kind": "rule-code",
+   "rule": "PR-2",
+   "code": "sraging.default_gate.coverage_inside, sraging.default_gate.PR2_N_MIN_LOSES",
+   "change": "a PASS whose measured axes all have fewer than 3 paired cells, where srbench's calibration axis cannot read 'loses' (z < -2.0), reads 'reported' (Not Covered), as DV-2 (sr-naveh N13)",
+   "decided": "Naveh 2026-10-29",
+   "n_applied": 0
+  }
+ ],
+ "decisions": {
+  "decided": 11,
+  "of": 11
+ },
+ "pr3_notes": [
+  {
+   "stratum": "BASIN-P15/outside",
+   "arm": "pure",
+   "quantity": "eta",
+   "n_out": 3,
+   "k_out": 3,
+   "min_k_out": null,
+   "k_equal": 3,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "BASIN-P15/outside",
+   "arm": "pure",
+   "quantity": "beta",
+   "n_out": 1,
+   "k_out": 1,
+   "min_k_out": null,
+   "k_equal": 1,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "BASIN-P15/outside",
+   "arm": "pure",
+   "quantity": "epsilon",
+   "n_out": 3,
+   "k_out": 3,
+   "min_k_out": null,
+   "k_equal": 3,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "arm": "pure",
+   "quantity": "eta",
+   "n_out": 1,
+   "k_out": 1,
+   "min_k_out": null,
+   "k_equal": 1,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "arm": "pure",
+   "quantity": "epsilon",
+   "n_out": 1,
+   "k_out": 1,
+   "min_k_out": null,
+   "k_equal": 1,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "arm": "censor",
+   "quantity": "eta",
+   "n_out": 45,
+   "k_out": 43,
+   "min_k_out": 44,
+   "k_equal": 44,
+   "p_at_most_k_out_if_equal": 0.31277064602468596,
+   "reading": "consistent with equal coverage (p = 0.31)"
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "arm": "censor",
+   "quantity": "beta",
+   "n_out": 2,
+   "k_out": 1,
+   "min_k_out": null,
+   "k_equal": 2,
+   "p_at_most_k_out_if_equal": 0.1409875074360499,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "arm": "pure",
+   "quantity": "beta",
+   "n_out": 4,
+   "k_out": 3,
+   "min_k_out": null,
+   "k_equal": 4,
+   "p_at_most_k_out_if_equal": 0.12208931159112028,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "arm": "pure",
+   "quantity": "eta",
+   "n_out": 1,
+   "k_out": 1,
+   "min_k_out": null,
+   "k_equal": 1,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "arm": "pure",
+   "quantity": "epsilon",
+   "n_out": 1,
+   "k_out": 1,
+   "min_k_out": null,
+   "k_equal": 1,
+   "p_at_most_k_out_if_equal": 1.0,
+   "reading": "cannot pass at this N"
+  }
+ ],
+ "pr4_declines": [
+  {
+   "stratum": "BASIN-J/inside",
+   "arm": "censor",
+   "eta_open_above": "1 of 8",
+   "epsilon_open_above": "1 of 8",
+   "beta_upper_end_at_kappa_box": "0 of 8"
+  },
+  {
+   "stratum": "BASIN-J/inside",
+   "arm": "pure",
+   "eta_open_above": "3 of 24",
+   "epsilon_open_above": "1 of 24",
+   "beta_upper_end_at_kappa_box": "0 of 24"
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "arm": "censor",
+   "eta_open_above": "1 of 3",
+   "epsilon_open_above": "2 of 3",
+   "beta_upper_end_at_kappa_box": "0 of 3"
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "arm": "pure",
+   "eta_open_above": "3 of 15",
+   "epsilon_open_above": "4 of 15",
+   "beta_upper_end_at_kappa_box": "0 of 15"
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "arm": "realfull",
+   "eta_open_above": "0 of 8",
+   "epsilon_open_above": "0 of 8",
+   "beta_upper_end_at_kappa_box": "2 of 8"
+  },
+  {
+   "stratum": "LB-2/inside",
+   "arm": "censor",
+   "eta_open_above": "30 of 66",
+   "epsilon_open_above": "24 of 66",
+   "beta_upper_end_at_kappa_box": "0 of 66"
+  },
+  {
+   "stratum": "LB-2/inside",
+   "arm": "pure",
+   "eta_open_above": "16 of 66",
+   "epsilon_open_above": "19 of 66",
+   "beta_upper_end_at_kappa_box": "0 of 66"
+  },
+  {
+   "stratum": "LB-2/inside",
+   "arm": "realfull",
+   "eta_open_above": "0 of 30",
+   "epsilon_open_above": "0 of 30",
+   "beta_upper_end_at_kappa_box": "12 of 30"
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "arm": "censor",
+   "eta_open_above": "0 of 4",
+   "epsilon_open_above": "0 of 4",
+   "beta_upper_end_at_kappa_box": "2 of 4"
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "arm": "het",
+   "eta_open_above": "0 of 4",
+   "epsilon_open_above": "0 of 4",
+   "beta_upper_end_at_kappa_box": "0 of 4"
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "arm": "pure",
+   "eta_open_above": "0 of 4",
+   "epsilon_open_above": "0 of 4",
+   "beta_upper_end_at_kappa_box": "1 of 4"
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "arm": "realfull",
+   "eta_open_above": "0 of 4",
+   "epsilon_open_above": "0 of 4",
+   "beta_upper_end_at_kappa_box": "2 of 4"
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "arm": "censor",
+   "eta_open_above": "7 of 39",
+   "epsilon_open_above": "17 of 39",
+   "beta_upper_end_at_kappa_box": "0 of 39"
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "arm": "het",
+   "eta_open_above": "0 of 28",
+   "epsilon_open_above": "5 of 28",
+   "beta_upper_end_at_kappa_box": "0 of 28"
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "arm": "pure",
+   "eta_open_above": "9 of 85",
+   "epsilon_open_above": "18 of 85",
+   "beta_upper_end_at_kappa_box": "10 of 85"
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "arm": "realfull",
+   "eta_open_above": "1 of 54",
+   "epsilon_open_above": "9 of 54",
+   "beta_upper_end_at_kappa_box": "12 of 54"
+  },
+  {
+   "stratum": "SRK-1/inside",
+   "arm": "pure",
+   "eta_open_above": "0 of 1",
+   "epsilon_open_above": "0 of 1",
+   "beta_upper_end_at_kappa_box": "1 of 1"
+  },
+  {
+   "stratum": "SRK-1b/inside",
+   "arm": "pure",
+   "eta_open_above": "0 of 1",
+   "epsilon_open_above": "0 of 1",
+   "beta_upper_end_at_kappa_box": "1 of 1"
+  },
+  {
+   "stratum": "SRK-2/inside",
+   "arm": "pure",
+   "eta_open_above": "0 of 3",
+   "epsilon_open_above": "0 of 3",
+   "beta_upper_end_at_kappa_box": "3 of 3"
+  },
+  {
+   "stratum": "BASIN-P15/outside",
+   "arm": "pure",
+   "eta_open_above": "0 of 3",
+   "epsilon_open_above": "0 of 3",
+   "beta_upper_end_at_kappa_box": "0 of 3"
+  },
+  {
+   "stratum": "LB-1x/outside",
+   "arm": "pure",
+   "eta_open_above": "0 of 1",
+   "epsilon_open_above": "0 of 1",
+   "beta_upper_end_at_kappa_box": "0 of 1"
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "arm": "censor",
+   "eta_open_above": "11 of 56",
+   "epsilon_open_above": "6 of 56",
+   "beta_upper_end_at_kappa_box": "41 of 56"
+  },
+  {
+   "stratum": "SRK-1/outside",
+   "arm": "pure",
+   "eta_open_above": "38 of 171",
+   "epsilon_open_above": "8 of 171",
+   "beta_upper_end_at_kappa_box": "131 of 171"
+  },
+  {
+   "stratum": "SRK-2/outside",
+   "arm": "pure",
+   "eta_open_above": "0 of 1",
+   "epsilon_open_above": "0 of 1",
+   "beta_upper_end_at_kappa_box": "0 of 1"
+  }
+ ]
+}

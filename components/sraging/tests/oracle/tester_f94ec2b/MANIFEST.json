@@ -1,0 +1,201 @@
+{
+ "created": "2026-10-20T14:03:30",
+ "purpose": "The srbench tree jax2 1.0.1 runs against (spec 003b). NEVER EDIT.",
+ "repo": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2_freeze",
+ "commit": "6884fc8b4d34932d2e5b6d65720dd0685f5915cd",
+ "tree": "f94ec2b8a97c65178542e22553033dc00e2d1a26",
+ "read_from": "git objects",
+ "sums_file": "SRBENCH_FILES.sha256",
+ "sums_sha256": "85d8634bb2aa87fe46168f41c9e1be777d970689407ae7fadfc7961f50427a86",
+ "listing_digest": "280fb07b571eb10889e3f1e480ecfbd0706b9c7c8c6efdd1eceb0a27f160bc85",
+ "files": [
+  {
+   "path": "srbench/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/cli.py",
+   "sha256": "ac7733deca3528da81b82492fb28f23fffaba1bacad2d32c854cf1185cad42cf"
+  },
+  {
+   "path": "srbench/contract/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/contract/method.py",
+   "sha256": "9179a3cc67cfa4a353289cf99026a5ae1c48c8bc71cf8e48a62a694b0c7728af"
+  },
+  {
+   "path": "srbench/contract/types.py",
+   "sha256": "a6153897aed4feb868f0529b1006b1b309f422a2cf60f8f1455b9c9510b74f64"
+  },
+  {
+   "path": "srbench/contract/validate.py",
+   "sha256": "50206231a7c931d7e19c5f7fdf72c6436fcda230a2e6e0004b879e8f74b262e9"
+  },
+  {
+   "path": "srbench/explorer/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/explorer/assemble.py",
+   "sha256": "662e415de43e4a034485099d61e394fd5a2c4d739210225d552762de9028cc9d"
+  },
+  {
+   "path": "srbench/explorer/payload.py",
+   "sha256": "9f78fa216b3d21cfb1466c673cc78bff2d790492cc194d4eb1f13b49aecd5384"
+  },
+  {
+   "path": "srbench/explorer/registry.py",
+   "sha256": "5216abcff7217cdd2f692cffd8a897573001670e63294361796d0cf1a5eea17d"
+  },
+  {
+   "path": "srbench/explorer/views.py",
+   "sha256": "0f58e9fc80644998a4d9275f12f9febacdec588271f9d8ba2806bd191c0bf4cd"
+  },
+  {
+   "path": "srbench/gates/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/gates/checks.py",
+   "sha256": "bbba3f292845b58fbe6bb764764c5d6b397d5ae27a7ba435d2658ea3caebf8eb"
+  },
+  {
+   "path": "srbench/gates/registry.py",
+   "sha256": "c1345a0df45696e564601e7ea008ad9d231c6c358a08310681a3d1ba9342f874"
+  },
+  {
+   "path": "srbench/library/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/library/build.py",
+   "sha256": "f1cd3495f5b918eadcb0eb5339b1a42e0f067227b99ede2828dce35d6c4b4ee2"
+  },
+  {
+   "path": "srbench/library/feasible.py",
+   "sha256": "1a2770650932452871d3da75697c15233953f3364073fa2e32cd5bdc74799b15"
+  },
+  {
+   "path": "srbench/library/load.py",
+   "sha256": "a2ac626864ed7ed0b27abd3984f6d83fa56748573620e90b027014555083bf18"
+  },
+  {
+   "path": "srbench/library/observation.py",
+   "sha256": "63820997f7ef39723ca2fe4356b70b9d23797570f5a3e389b0789a8d8110762f"
+  },
+  {
+   "path": "srbench/library/order.py",
+   "sha256": "701e55930cdfa9ff8a1376ff5487fa99baf79a1f2abb348461d4ada3b845cf24"
+  },
+  {
+   "path": "srbench/library/plan.py",
+   "sha256": "81591f108b2b82e8a42e74941a49e867c4e8a52500f8d3edf63fb09969cbd56a"
+  },
+  {
+   "path": "srbench/library/select.py",
+   "sha256": "5c368a54de2327cebe944696c2ab9b271d7066b4a720842e02579af843619375"
+  },
+  {
+   "path": "srbench/library/spec.py",
+   "sha256": "6bdbbc55db495e5d0b4e24346d9214eed028657d5d86a5f7876b889a39784745"
+  },
+  {
+   "path": "srbench/npcompat.py",
+   "sha256": "08a61b8cd1c04c9dd106a3442da13777b762277f866473531190fa4a07f4939a"
+  },
+  {
+   "path": "srbench/provenance.py",
+   "sha256": "3d9984d60d81287759d95dd77b021902faeed944788c54f6065af5c1aa769c19"
+  },
+  {
+   "path": "srbench/reference/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/reference/pointer.py",
+   "sha256": "9b031a44c49880f0ef1d84de0ec1732ed7fca0decf24503cb971ad3c99004e43"
+  },
+  {
+   "path": "srbench/report/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/report/comparison.py",
+   "sha256": "b793d22d7349e3a4c3116dd196c7b66de4f4f9e1ec48b87d71851a1e26de5e1b"
+  },
+  {
+   "path": "srbench/report/verify.py",
+   "sha256": "409d1cefad258e114ee007ebff6e31d9572038bf6059fe3003856c76dce94d72"
+  },
+  {
+   "path": "srbench/run/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/run/execute.py",
+   "sha256": "7d0a84d17fe7e4d1d6a1a4d676c5f588df2daee205d7a31d0f41c892a432fa7f"
+  },
+  {
+   "path": "srbench/run/probe.py",
+   "sha256": "9b416473ce678eb32fe9fde17ad872b0f54c02d45d68e2693e285be2716fb0d0"
+  },
+  {
+   "path": "srbench/run/sizing.py",
+   "sha256": "c88bee1b326eb24ab8be13923240cca6fbe03ea7f83cba34cadbb335cb6dff40"
+  },
+  {
+   "path": "srbench/score/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/score/claims.py",
+   "sha256": "7565ff9caf9a558bf2d9c42dd27a58aa17ce0fef994c04509bfa8c334908ffee"
+  },
+  {
+   "path": "srbench/score/combos.py",
+   "sha256": "fe244e272426368e22d9e55339d2d8fd067366973d70d251121152a6eabdc825"
+  },
+  {
+   "path": "srbench/score/crosscheck.py",
+   "sha256": "87a5522d1529c9dcc99885d61246faaa7b88855aebc754df3c9b536ec52dbf3a"
+  },
+  {
+   "path": "srbench/score/floors.py",
+   "sha256": "c1bb8bbec23eaa7762c038300c9619472c7e0f69baca0d8ef303f11721429a81"
+  },
+  {
+   "path": "srbench/score/pairing.py",
+   "sha256": "6b8299d71fe031efadc45850018c9c80fa9e00bb82566a3be438ea4d3b974a6a"
+  },
+  {
+   "path": "srbench/score/verdict.py",
+   "sha256": "be165d16604288a026bbb0c426afd7d08eb8ddf2117976370b4e62533ba93129"
+  },
+  {
+   "path": "srbench/store/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "srbench/store/key.py",
+   "sha256": "b75cc53aba0ab041b0b387664a25129cd58c2627f66d2ef6820ec65f93fb6836"
+  },
+  {
+   "path": "srbench/store/merge.py",
+   "sha256": "ae72bcd0a3c365fecc5cb48557f4a2b6b4444ff88f33fab86481c9939142de38"
+  },
+  {
+   "path": "srbench/store/migrate.py",
+   "sha256": "d0089f2c101069c602275d226040e73f81d753c104f03abfa6012378d6f15ee5"
+  },
+  {
+   "path": "srbench/store/store.py",
+   "sha256": "85fcdf70539821653f8852d831fe4f2abaf1d4b037fd2aa2493e10603e564a7b"
+  }
+ ],
+ "host": {
+  "node": "MC06268844",
+  "machine": "arm64"
+ }
+}

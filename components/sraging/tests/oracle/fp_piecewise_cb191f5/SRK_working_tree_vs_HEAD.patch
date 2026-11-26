@@ -1,0 +1,218 @@
+diff --git a/SRK/benchmark/space_search.py b/SRK/benchmark/space_search.py
+index 80ab4b8..279b6ce 100644
+--- a/SRK/benchmark/space_search.py
++++ b/SRK/benchmark/space_search.py
+@@ -64,11 +64,111 @@ KAPPA_NEG_COEF = 0.364    # kappa_neg / xc  = KAPPA_NEG_COEF / sqrt(n_eff)
+ N_EFF_CAP = 2000
+ 
+ 
++# REGIME UNCERTAINTY ON `BETA_NEG_COEF`. Read this before treating the floor as a threshold.
++#
++# 3.03 is a single closed-form fit across the four regimes `negligible.REGIMES` sweeps. Their OWN
++# measured coefficients (floor * sqrt(n), from `negligible.py --summarise`) are not close together:
++#
++#     sharp       (rho_eps 0.10, kappa 0.05)   c = 0.93
++#     mid         (rho_eps 0.30, kappa 0.15)   c = 2.21
++#     kappa_large (rho_eps 0.30, kappa 1.00)   c = 5.07
++#     diffuse     (rho_eps 0.50, kappa 0.50)   c > 16.8   (right-censored at the top of the grid)
++#     PRODUCTION                               c = 3.03
++#
++# an 18-fold spread, so the floor carries roughly -0.5 to >+0.75 dex of regime uncertainty. Against
++# each regime's own value the production floor is up to **3.3x too LENIENT** in the sharp corner
++# (~11x in nats, since KL is quadratic in the perturbation) and at least **5.5x too STRICT** in the
++# diffuse corner. `negligible.py`'s own summary already says as much: median measured floor 0.173 at
++# n=130 against the closed form's 0.269.
++#
++# Worse for the cohorts we actually fit: the sweep covered rho_eps in {0.10, 0.30, 0.50}, while the
++# six real species fitted here sit at rho_eps = 0.113, 0.42, 1.36, 15.7, 117 and **6242**. Four of
++# six are OUTSIDE the calibrated range, Denmark by ~10^4. And the sweep varies rho_eps and kappa
++# TOGETHER, so their effects cannot be separated and the DIRECTION of the error outside the box is
++# not known.
++#
++# DECISION (owner, 2026-09-10): keep the single coefficient and label the uncertainty, rather than
++# re-calibrating now. Consequence for callers: **a "negligible" verdict within a factor of ~3 of the
++# floor is approximate, not a test.** Do not build a hard accept/reject on it, and do not compare
++# clamped accuracies across cohorts in different regimes as if the bar were the same. The principled
++# fix -- computing each cohort's floor at its OWN (rho_eps, kappa) -- is logged as an open item in
++# `benchmark_reports/REMAINING_WORK.md`; it is affordable (a mean-one solve is 12 ms) and would
++# remove the question rather than bounding it.
++BETA_NEG_COEF_REGIME_RANGE = (0.93, 16.8)     # measured across negligible.REGIMES
++
++
+ def negligibility_floors(n, n_cap=N_EFF_CAP):
+     n_eff = min(max(float(n), 1.0), float(n_cap))
+     return BETA_NEG_COEF / math.sqrt(n_eff), KAPPA_NEG_COEF / math.sqrt(n_eff)
+ 
+ 
++def beta_floor_regime_band(n, n_cap=N_EFF_CAP):
++    """The floor's plausible range over the calibrated regimes, as (lo, hi) on the RATIO.
++
++    Use this to decide whether a cohort is *safely* inside or outside the negligible region rather
++    than reading the single value as a boundary. A cohort between `lo` and `hi` is one the
++    calibration cannot classify.
++    """
++    n_eff = min(max(float(n), 1.0), float(n_cap))
++    lo, hi = BETA_NEG_COEF_REGIME_RANGE
++    return lo / math.sqrt(n_eff), hi / math.sqrt(n_eff)
++
++
++def beta_floor_physical(n, eta_phys, L_phys, n_cap=N_EFF_CAP):
++    """`beta`'s negligibility floor in PHYSICAL units. THE `L` FACTOR IS NOT OPTIONAL.
++
++    The calibration in `negligible.py` ran at tau-mean = 1, i.e. in dimensionless time, so what it
++    measured is a bound on the DIMENSIONLESS ratio
++
++        rho_beta / rho_eta  <  BETA_NEG_COEF / sqrt(n_eff)
++
++    and `rho_beta/rho_eta = beta/(eta*L)`, so the physical floor carries an `L`:
++
++        beta_neg = BETA_NEG_COEF / sqrt(n_eff) * eta * L
++
++    Physical `beta/eta` has units of TIME, so comparing it to a dimensionless coefficient is only
++    correct at L = 1 -- and 57% of the benchmark library and 100% of the manifold arm have L != 1.
++    Dropping the `L` has now caused this bug twice in opposite directions: once 926x too STRICT in
++    `fit_cohort` (making "negligible" unreachable on any real cohort), and once L times too LENIENT
++    in `interval_estimators._floors_for`, where it flagged 0 of 2400 manifold cohorts as
++    negligible-beta against 185 under the correct rule. Convert to the dimensionless ratio and the
++    ambiguity disappears, which is why `negligible_beta` below is the preferred entry point.
++    """
++    bcoef, _k = negligibility_floors(n, n_cap=n_cap)
++    if eta_phys is None or not (eta_phys > 0) or not math.isfinite(float(eta_phys)):
++        return float("nan")
++    # NO `L = 1` FALLBACK. Defaulting a missing L to 1 returns a finite floor that is wrong by
++    # exactly the factor this function exists to carry -- the same silent-factor-of-L bug in a new
++    # costume. nan is the honest answer and every caller already treats it as "no floor applies",
++    # which under-claims negligibility rather than mis-scoring it.
++    try:
++        Lv = float(L_phys)
++    except (TypeError, ValueError):
++        return float("nan")
++    if not math.isfinite(Lv) or Lv <= 0:
++        return float("nan")
++    return bcoef * float(eta_phys) * Lv
++
++
++def kappa_floor(n, n_cap=N_EFF_CAP):
++    """`kappa`'s floor. `kappa` is dimensionless already, so there is no `L` and no ratio."""
++    _b, k = negligibility_floors(n, n_cap=n_cap)
++    return k
++
++
++def negligible_beta(n, rho_beta, rho_eta, n_cap=N_EFF_CAP):
++    """The unit-free form of the same test: is removal indistinguishable from zero at this n?
++
++    Prefer this wherever the dimensionless parameters are in hand -- it cannot be got wrong by an
++    `L`, because no `L` appears.
++    """
++    bcoef, _k = negligibility_floors(n, n_cap=n_cap)
++    try:
++        return bool(float(rho_beta) / float(rho_eta) < bcoef)
++    except Exception:
++        return False
++
++
+ def pooled_log_draws(ckpt, name, k=50, burn_frac=0.4, thin=20, max_draws=200000,
+                      floor_n=None):
+     """Pooled PHYSICAL draws in log space. Thinned hard -- covariance needs shape, not sample size.
+diff --git a/SRK/fp_gof.py b/SRK/fp_gof.py
+index d9aa2dc..db79d77 100644
+--- a/SRK/fp_gof.py
++++ b/SRK/fp_gof.py
+@@ -480,8 +480,42 @@ def profile_ci(rows, level=0.95):
+             prev = i
+         return float("nan")
+ 
+-    lo = cross(range(imax, -1, -1))            # walk left from the max
+-    hi = cross(range(imax, len(v)))            # walk right
++    # THE INTERVAL IS THE WHOLE 1.92-NAT SET, NOT THE COMPONENT AROUND THE MAXIMUM.
++    #
++    # The likelihood-ratio region is { value : deviance(value) <= thr }. Nothing says that set is
++    # connected, and for the SR model it frequently is NOT: measured on the six real cohorts in
++    # `run7_inputs/vol/`, 20 of 72 one-dimensional profiles (28%) have a DISJOINT 95% set, and on 4
++    # of 24 volumes the planted truth sits in a component other than the one containing the MLE.
++    #
++    # The earlier version walked outward from `imax` and returned the FIRST crossing on each side,
++    # i.e. the connected component around the maximum. Where the profile is multimodal that reports a
++    # strictly narrower interval than the definition, always in the same direction, so it depresses
++    # coverage -- and it does so most on exactly the flat/multimodal parameters (beta, kappa) where
++    # coverage matters most. The same bug was found and fixed independently in
++    # `benchmark/kappa_value._interval`, where a yeast cohort's truth sat 0.0797 nats inside the
++    # threshold but in the other component; this is that fix at the source.
++    #
++    # IS THE PROFILE REALLY MULTIMODAL, OR IS SOMETHING BROKEN? Tested, because the answer changes
++    # what to do (`benchmark/dip_test.py`): re-solving a dipped node with a 16x larger optimiser
++    # budget, warm-started from its better neighbour, recovers 0.0003 nats of 9.3; and refining the
++    # solver grid 16x in dt and 3x in N moves the value by 0.016 nats of 41-47. Neither the optimiser
++    # nor the integrator: the surface genuinely has secondary modes.
++    #
++    # STRICT GENERALISATION. When the set IS connected, the outermost accepted nodes are the
++    # boundaries of the single run containing `imax`, so `lo`/`hi` are bit-identical to before. This
++    # can only widen an interval, never narrow one.
++    acc = np.flatnonzero(d <= thr)
++    if acc.size:
++        iL, iR = int(acc[0]), int(acc[-1])
++        n_comp = 1 + int((np.diff(acc) > 1).sum())
++    else:
++        iL = iR = imax
++        n_comp = 0
++    lo = cross(range(iL, -1, -1))              # outward from the LEFTMOST accepted node
++    hi = cross(range(iR, len(v)))              # outward from the RIGHTMOST accepted node
++    # the component around the maximum, kept so the widening is auditable rather than invisible
++    lo_conn = cross(range(imax, -1, -1))
++    hi_conn = cross(range(imax, len(v)))
+     has_lo, has_hi = np.isfinite(lo), np.isfinite(hi)
+     if has_lo and has_hi:
+         verdict = "identified"
+@@ -492,4 +526,5 @@ def profile_ci(rows, level=0.95):
+     else:
+         verdict = "flat"
+     return dict(ci_lo=lo, ci_hi=hi, ci_level=float(level), ci_thr=thr, verdict=verdict,
+-                argmax_value=float(v[imax]), max_deviance=float(np.nanmax(d)))
++                argmax_value=float(v[imax]), max_deviance=float(np.nanmax(d)),
++                n_components=int(n_comp), ci_lo_connected=lo_conn, ci_hi_connected=hi_conn)
+diff --git a/SRK/fp_likelihood.py b/SRK/fp_likelihood.py
+index c5a3c33..1321e46 100644
+--- a/SRK/fp_likelihood.py
++++ b/SRK/fp_likelihood.py
+@@ -28,6 +28,8 @@ Public API
+ Gotcha: `to_dimensionless(...)` returns (rho_beta, rho_eta, rho_eps, kappa) but the solver
+ `fpt_full`/`fpt_full_density` take rho_eta FIRST -- reorder (as the bodies below do).
+ """
++import os as _os
++
+ import numpy as np
+ from scipy.linalg import solve_banded
+ 
+@@ -221,7 +223,31 @@ def auto_grid(death_times, L, tau_max_cap=40.0, tau_min=2.0, dt_floor=2e-3, targ
+     """
+     t = np.asarray(death_times, float)
+     tm = float(min(tau_max_cap, max(tau_min, 1.15 * float(np.max(t)) / float(L))))
+-    return tm, max(dt_floor, tm / float(target_steps))
++    dt = max(dt_floor, tm / float(target_steps))
++    # OPTIONAL ABSOLUTE CEILING on dt, off by default (SRK_DT_CEILING unset => behaviour unchanged).
++    #
++    # WHY IT EXISTS. `target_steps` is a fixed step COUNT, so dt scales with tau_max -- and tau_max grows
++    # with the spread of the observed ages. A BROAD cohort therefore gets a COARSER step, which is exactly
++    # backwards: accuracy is set by the dynamics, not by how long the tail is.
++    #
++    # MEASURED (2026-08-20), worst |dlogL| against a dt=5e-4 reference INSIDE the posterior support, on
++    # the four noise-dominated probes (observed cv 0.72-0.82, tau_max 4.7-6.4):
++    #
++    #     dt      5e-3      4e-3      2e-3      1e-3
++    #     err   1.44-1.66  0.97-1.24  0.24-0.36  0.048-0.072   nats
++    #     %edge   75-87%     51-64%     12-19%      2.5-3.8%
++    #
++    # chi2_1(0.95)/2 = 1.921 nats sets an interval edge, so at the dt those cells actually receive
++    # (4.1e-3 to 6.9e-3) the SOLVER error is a large fraction of the statistical threshold. 7 of 111
++    # parameter points in the benchmark library are above 4e-3, all four noise probes among them.
++    #
++    # Left opt-in rather than made the default deliberately: flipping it silently would make already-
++    # computed runs incomparable with new ones, and choosing the right rule (an absolute cap vs a
++    # cv-adaptive one) is a solver-design decision that deserves its own measurement, not a side effect.
++    _ceil = _os.environ.get("SRK_DT_CEILING")
++    if _ceil:
++        dt = min(dt, float(_ceil))
++    return tm, dt
+ 
+ 
+ def _interp_S_p(tau_eval, tau, S, p, tail_extrap=False, n_fit=12):

@@ -1,0 +1,160 @@
+% Section for specs/003f-leverage-check (T026; constitution X and XII). Paths are relative to src/sraging/ unless they
+% start with tests/ or tools/.
+\section{The leverage check on the jax2 calibrators (\texttt{sraging.leverage})}\label{sec:lev}
+
+\subsection{Purpose}\label{sec:lev-purpose}
+
+Constitution X requires that every fit ask whether its estimate rests on one individual. Spec 003f implements the
+check for \code{profile_jax2} and \code{profile_jax2_h}; \code{profile_v033}'s check is spec 005's. It runs inside the
+calibrator's \code{fit}, after the fit and after the floor report, on the fit's own likelihood and grid
+\src{calibrators/profile_jax2.py:_make_fit}. It never changes $\hat\theta$, the claims or the likelihood: its result goes
+to \code{diagnostics["leverage"]}, which the reference comparison does not read \src{result.py:SRAGING_DIAGNOSTICS}.
+
+\subsection{The free statistics}\label{sec:lev-free}
+
+With the per-individual terms $\ell_i(z)$ of the port's own likelihood at $z=\log\theta$ (the value march with
+\code{with_terms=True}, on the prepared data and grid of \code{profile_jax2.fit_inputs}):
+\begin{itemize}[nosep]
+  \item gap/sd on the death times, flag when $g>2$ and $n_D\ge 20$ \src{leverage.py:gap_sd};
+  \item the worst individual's share in the absolute form, $|\ell_w|/\sum_i|\ell_i|$ with $w=\arg\min_i\ell_i$
+    \src{leverage.py:share}.
+\end{itemize}
+The share does not pick the individual: on the ITP cohort with one added age-0 death, that death carries 0.66\,\% of the
+log-likelihood at its own $\hat\theta$, and the worst term belongs to another individual (pilot P1,
+\code{tests/acceptance/results/p1_003f.json}).
+
+\subsection{Influence}\label{sec:lev-influence}
+
+Let $g_i=\partial\ell_i/\partial z$ (forward-mode differentiation of the terms) and $H$ the Hessian of the total
+(central differences of the port's analytic gradient, step $10^{-4}$ in $z$; forward-over-forward agrees to
+$\le 10^{-7}$ relative on P1). Coordinates within $10^{-6}$ (in $\log$) of a box bound are fixed. On the free coordinates,
+$I=-H$; its eigen-directions with eigenvalue at or below $10^{-6}$ times the largest, including non-positive ones, are
+cut. The cut sits above the Hessian's accuracy ($9\times10^{-8}$ relative); the $\kappa$ ridge makes $I$ near-singular,
+and on ITP one eigenvalue is $-1.7\times10^{-3}$. The negative eigenvalues, the distance of each coordinate to its box
+bound and the gradient at $\hat\theta$ are recorded. If no direction survives the cut, the result is
+\code{not_assessable}. The one-step shift of dropping $i$ is
+\begin{equation}
+  \Delta z_i \approx -I^{+} g_i ,
+\end{equation}
+since $\sum_k g_k=0$ at $\hat\theta$. Its effect on a quantity $q$ is $\nabla q\cdot\Delta z_i$, for
+$q\in\{\log\eta,\ \log\eps,\ \log(\eta/\eps),\ \log(\bar r/\eta)\}$ with $\bar r=\beta(1-\kappa\ln(1+1/\kappa))$
+\src{leverage.py:influence, shifts}. The individual dropped is the one with the largest shift on the rule's quantities
+(all four); a tie keeps the lowest row and is counted \src{leverage.py:ranking}. The one-step shift ranks; it does not measure: on ITP it predicts 0.028\,dex on $\eta/\eps$
+against the refit's 0.20.
+
+\subsection{The drop-one refit}\label{sec:lev-refit}
+
+The cohort without the dropped individual is refitted twice.
+\begin{itemize}[nosep]
+  \item The calibrator's own MLE stage: the two steps of \code{compat.jax2.claims.run_fit}, with its exact keywords,
+    plus \code{stages=("mle",)} \src{leverage.py:refit_mle}. A unit test compares the two calls. The MLE stage
+    re-seeds and starts twice, the second start with $\eps\times4$.
+  \item The estimator's own L-BFGS-B (\code{estimator._lbfgs}, with the MLE stage's options and fallbacks), started at
+    the reported $\hat\theta$ on the same reduced objective (the warm start) \src{leverage.py:refit_warm}.
+    \code{_lbfgs} never returns a point worse than its start.
+\end{itemize}
+Both points, and $\hat\theta$, are evaluated on the reduced cohort's objective by the value march, never from an
+optimiser's stored value \src{leverage.py:reduced_loglik}. The MLE stage stands unless the warm start beats it by more
+than $10^{-3}$ nats, the estimator's own optimiser noise; this keeps the calibrator's path wherever it is as good. The
+point that stands is compared with the reported $\hat\theta$, the one the user gets, on every fit, including those whose
+basin re-fit moved $\hat\theta$:
+\begin{equation}
+  R=\exp\max_{q}\bigl|q(\hat\theta_{(-j)})-q(\hat\theta)\bigr|,\qquad
+  \Delta_j=\ell^{(-j)}(\hat\theta_{(-j)})-\ell^{(-j)}(\hat\theta)\ \text{(total nats)},
+\end{equation}
+with $q$ over $\log(\eta/\eps)$, $\log(\bar r/\eta)$, $\log\eta$ and $\log\eps$ \src{leverage.py:_drop}.
+
+\subsection{The rule (Naveh, 2026-10-18; revised 2026-10-19; constitution X)}\label{sec:lev-rule}
+
+\begin{itemize}[nosep]
+  \item \code{failed} when $R$ or $\Delta_j$ is not finite, or $\Delta_j<-0.1$ nats: the refit stopped short of
+    $\hat\theta$ on its own objective, so its move is not a measurement;
+  \item \code{flag} when $R>1.5$ and $\Delta_j>1.92$ nats, the claims' one-parameter 95\,\% threshold (the joint
+    four-parameter one is 4.74);
+  \item \code{flat_valley_slide} when $R>1.5$ at a smaller gain;
+  \item \code{no_flag} otherwise \src{leverage.py:label}, \src{leverage_rule.py:RULE};
+  \item \code{not_assessed} (spec 003g, Naveh 2026-10-22; per individual since 2026-10-28, deviation DV-3) in place of
+    \code{no_flag} or \code{flat_valley_slide} when the optimiser could not move from $\hat\theta$ (its warm start on the
+    full data stopped where it began, $g_0=0$) at a free-gradient norm above $5\times10^{-5}$ per individual
+    (\code{leverage_rule.py:G_CRIT_PER_IND}): no refit without one row can be compared with that point. The evidence
+    does not say whether $\hat\theta$ is non-stationary or the objective is kinked there. The block records L-BFGS-B's
+    termination (scipy's integer status, iterations, message) and the gradient per individual
+    \src{leverage.py:not_assessed}, \src{leverage.py:warm_termination}. Measured per individual: $5.9\times10^{-6}$ at
+    ITP+age0 and $1.9\times10^{-6}$ at spec 003g's fit 1 (assessed); $4.0\times10^{-4}$ to $2.6\times10^{-2}$ at the seven
+    human hazard pilot cohorts and $2.8\times10^{-2}$ at fit 2 (not assessed). The registered criterion, a summed norm
+    above 1, grew with $n$ and would have read the same pathology as \code{no_flag} at $n=1{,}000$. scipy's status is 2
+    (ABNORMAL) on all eight pilot fits, the stationary one included, so the termination does not discriminate
+    (\code{tests/acceptance/results/lev_pilot_003g.json}).
+\end{itemize}
+A flag, a failed refit, a fit not assessable, or a check that did not run raises the warning \code{LEVERAGE}
+\src{warnings.py:leverage_warnings}.
+
+The rule of 2026-10-18 read the lead pair ($\eta/\eps$, $\bar r/\eta$) with $10^{-3}$ nats per individual, and compared
+the MLE stage with the MLE stage where the basin re-fit had fired. The sr-naveh review and a re-score of pilot P3's
+stored drops changed it (\code{specs/003f-leverage-check/review/}):
+\begin{itemize}[nosep]
+  \item Nine MLE-stage refits ended 0.1--38 nats below $\hat\theta$, all on hazard cohorts with $n\ge25{,}000$, and had
+    been labelled \code{no_flag}.
+  \item On the 12 cohorts with $n\le10{,}000$, $\bar r/\eta$ crossed $1.5\times$ on 12 of 24 drops at $\le0.17$ nats in
+    total: removal negligible on both sides, or a slide along a flat direction. Raw $\eta$ and $\eps$ never exceeded
+    $1.40\times$ there.
+  \item The library's negligibility floor cannot repair $\bar r/\eta$: it is not computable below $\rho_\eps=0.1$, which
+    covers 10 of those 12.
+  \item A per-individual guard is $10^{-3}n$ nats in total: 0.3 nats at $n=304$, and costless slides become flags below
+    $n\approx170$.
+\end{itemize}
+
+\subsection{Evidence (the rule of 2026-10-19, all phases re-run at the final code)}\label{sec:lev-evidence}
+
+\begin{itemize}[nosep]
+  \item \textbf{ITP with an added age-0 death} (\code{itp_003f.json}).
+    \begin{itemize}[nosep]
+      \item The check drops that death and flags: $\eta$ moves $24\times$ and $\eps$ $38\times$, $\eta/\eps$ $1.59\times$,
+        and the refit gains 5.42 nats.
+      \item The MLE stage stood, and equals the stored fit without the death bit for bit; the warm start reached the
+        same point.
+      \item $\hat\theta$ and the log-likelihood are bit-equal with and without the check.
+      \item The check cost 74 CPU-s, 4.9\,\% of the fit.
+    \end{itemize}
+  \item \textbf{Pilot P3}, 26 library v6 cohorts with $n$ from 1,000 to 100,000 (\code{p3_003f.json},
+    \code{panel_003f.json}).
+    \begin{itemize}[nosep]
+      \item The median-influence drops flagged 0 of 26 (Wilson 95\,\% upper bound 0.13). Only the 12 cohorts with
+        $n\le10{,}000$ are an informative null: 0 of 12, upper bound 0.24.
+      \item No refit failed. The warm start stood on 11 of 52 drops. On 7 of them, on five human hazard cohorts with
+        $n\ge25{,}000$, the MLE stage had ended 0.72--12.3 nats below $\hat\theta$ and would have failed; there every
+        ratio was at most $1.0005\times$. On the other 4 the warm start was better by 0.002--0.14 nats.
+      \item Raw $\eta$ and $\eps$ never passed $1.5\times$. The 9 slides are all $\bar r/\eta$ moves on cohorts with
+        $n\le10{,}000$, at gains of at most 0.17 nats.
+      \item The overhead was a median 8.7\,\% and a p90 of 19.6\,\% of the fit.
+    \end{itemize}
+  \item \textbf{The README example} (\code{readme_example_003f.json}). The check drops the death at day 53 in the CSV
+    (recorded day 54). $\eta$ and $\eps$ move about $2\times$ at a gain of 0.51 nats: a slide, inside both intervals.
+\end{itemize}
+
+\subsection{Limits}\label{sec:lev-limits}
+
+\begin{itemize}[nosep]
+  \item The 1.5 threshold is a convention, measured but not calibrated. The positive evidence is one cohort ($N=1$).
+    The held-out null, the small-$n$ null ($n\approx100$--300) and a planted panel are spec 003b's re-acceptance
+    (AC11).
+  \item Influence is a first-order ranking: on ITP it predicts 0.028\,dex on $\eta/\eps$ against the refit's 0.20.
+  \item Drop-one cannot see a cluster: dropping one of $k$ similar deaths moves nothing while the others remain
+    (masking). \code{AGE0_DEATHS} fires on 10 of P3's 14 human cohorts; the README example's three early deaths act
+    together.
+  \item $\hat\theta$ is re-evaluated at $\log\hat\theta$, not at the fit's exact $z$. On box-corner human cohorts the
+    likelihood can move about 1 nat under 1--4\,ulp. That figure is the jax2 session's (sesync note of 2026-10-19,
+    from its C1 record); it is NOT RE-MEASURED here. $\Delta_j$ there may carry that term.
+  \item $\Delta_j$ also carries $\hat\theta$'s own position against the box.
+    \begin{itemize}[nosep]
+      \item On all seven human hazard cohorts of P3, fitted without a hazard term, $\beta$ sits 0.000--0.009 (in
+        $\log$) below its upper bound with a free-gradient norm of 10--640. The optimiser could not move from
+        $\hat\theta$ there (DV-3's wording: a kink fits the evidence as well as a non-stationary point), and the
+        one-step shift's $\sum_k g_k=0$ fails.
+      \item Three drops on Sweden\_F\_1910 gained 1.87--3.09 nats with every ratio at most $1.013\times$; two of them
+        exceed 1.92 nats, one by the MLE stage.
+      \item On those fits the ratio, not the gain, decides. The gain of a warm start on the full data, beside
+        $\Delta_j$, is spec 003b's measurement.
+    \end{itemize}
+  \item gap/sd is $0$ on cohorts whose top death ages tie on the grid (14 of P3's 26).
+\end{itemize}

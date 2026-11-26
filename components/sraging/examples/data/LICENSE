@@ -1,0 +1,15 @@
+The data in this directory are derived from the Mouse Phenome Database (MPD), project ITP1
+(https://phenome.jax.org/projects/ITP1), file ITP_C2016_Lifespan.xlsx.
+
+MPD's terms of use (https://phenome.jax.org/about/termsofuse, read 2026-10-03), verbatim:
+
+  "The Mouse Phenome Database (MPD) is an NIH-funded data sharing repository and adheres to the NIH
+  Genomic Data Sharing Policy. MPD data contributors waive copyright and related rights, making their
+  data freely available whereby MPD users may freely build upon, enhance and reuse those data for any
+  purpose without restriction. Scholarly citation norms must be followed for content reuse."
+
+  "THE SOFTWARE AND DATA ARE PROVIDED "AS IS"."
+
+These terms are a waiver, not a named licence (such as CC0). Reuse requires citation: see CITATION.
+The derived file itp_c2016_het3_control_female.csv is offered on the same terms. How it was derived:
+SOURCE.md.

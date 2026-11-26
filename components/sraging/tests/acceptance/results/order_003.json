@@ -1,0 +1,340 @@
+{
+ "phase": "order",
+ "written_at": "2026-10-05T14:15:53Z",
+ "repo_head": "12264a1b643272aa2541d29e3eeeade7c1f4bca9",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "11c2fa14a7aff09c34aab20ea5c170769754597c"
+ },
+ "wall_s": 0.11573290824890137,
+ "cpu_s": 0.012093999999999994,
+ "status": "written",
+ "order": [
+  "eta_over_eps",
+  "rbar_over_eta",
+  "sqrt_eta_over_eps",
+  "rbar",
+  "beta_over_eta_kp1",
+  "beta_over_kp1"
+ ],
+ "lead_group": [
+  "eta_over_eps",
+  "rbar_over_eta"
+ ],
+ "spread_valid_panel_dex": {
+  "eta_over_eps": 0.003,
+  "sqrt_eta_over_eps": 0.003,
+  "rbar_over_eta": 0.026,
+  "rbar": 0.032,
+  "beta_over_eta_kp1": 0.292,
+  "beta_over_kp1": 0.295
+ },
+ "all_sets": {
+  "quick valid": {
+   "beta_over_kp1": [
+    0.0,
+    0.268,
+    10
+   ],
+   "beta_over_k": [
+    0.0,
+    0.958,
+    10
+   ],
+   "rbar": [
+    0.0,
+    0.0,
+    10
+   ],
+   "beta_over_eta_kp1": [
+    0.0,
+    0.276,
+    10
+   ],
+   "beta_over_k_eta": [
+    0.0,
+    0.965,
+    10
+   ],
+   "rbar_over_eta": [
+    0.0,
+    0.0,
+    10
+   ],
+   "eta": [
+    0.0,
+    0.003,
+    10
+   ],
+   "eta_over_eps": [
+    0.0,
+    0.001,
+    10
+   ],
+   "epsilon": [
+    0.0,
+    0.004,
+    10
+   ],
+   "sqrt_eta_over_eps": [
+    0.0,
+    0.002,
+    10
+   ],
+   "beta": [
+    0.455,
+    2.743,
+    10
+   ],
+   "beta_over_eta": [
+    0.474,
+    2.75,
+    10
+   ],
+   "beta_over_eps": [
+    0.479,
+    2.735,
+    10
+   ]
+  },
+  "quick": {
+   "rbar": [
+    0.0,
+    1.249,
+    29
+   ],
+   "rbar_over_eta": [
+    0.0,
+    0.602,
+    29
+   ],
+   "eta": [
+    0.002,
+    0.529,
+    29
+   ],
+   "sqrt_eta_over_eps": [
+    0.003,
+    0.657,
+    29
+   ],
+   "epsilon": [
+    0.004,
+    0.922,
+    29
+   ],
+   "eta_over_eps": [
+    0.005,
+    0.392,
+    29
+   ],
+   "beta_over_k_eta": [
+    0.119,
+    1.846,
+    29
+   ],
+   "beta_over_eta_kp1": [
+    0.126,
+    0.605,
+    29
+   ],
+   "beta_over_kp1": [
+    0.232,
+    1.417,
+    29
+   ],
+   "beta_over_k": [
+    0.38,
+    2.486,
+    29
+   ],
+   "beta": [
+    2.035,
+    3.26,
+    29
+   ],
+   "beta_over_eta": [
+    2.428,
+    3.084,
+    29
+   ],
+   "beta_over_eps": [
+    2.707,
+    3.041,
+    29
+   ]
+  },
+  "panel valid": {
+   "eta_over_eps": [
+    0.003,
+    0.07,
+    19
+   ],
+   "sqrt_eta_over_eps": [
+    0.003,
+    0.257,
+    19
+   ],
+   "eta": [
+    0.003,
+    0.194,
+    19
+   ],
+   "epsilon": [
+    0.003,
+    0.363,
+    19
+   ],
+   "rbar_over_eta": [
+    0.026,
+    0.139,
+    19
+   ],
+   "rbar": [
+    0.032,
+    0.216,
+    19
+   ],
+   "beta_over_eta_kp1": [
+    0.292,
+    0.333,
+    19
+   ],
+   "beta_over_kp1": [
+    0.295,
+    0.486,
+    19
+   ],
+   "beta_over_k_eta": [
+    2.692,
+    2.725,
+    19
+   ],
+   "beta_over_k": [
+    2.693,
+    2.728,
+    19
+   ],
+   "beta_over_eta": [
+    2.769,
+    2.785,
+    19
+   ],
+   "beta": [
+    2.77,
+    2.808,
+    19
+   ],
+   "beta_over_eps": [
+    2.771,
+    2.788,
+    19
+   ]
+  },
+  "panel": {
+   "eta": [
+    0.006,
+    0.477,
+    36
+   ],
+   "sqrt_eta_over_eps": [
+    0.013,
+    0.357,
+    36
+   ],
+   "eta_over_eps": [
+    0.013,
+    0.191,
+    36
+   ],
+   "epsilon": [
+    0.013,
+    0.573,
+    36
+   ],
+   "rbar_over_eta": [
+    0.052,
+    0.462,
+    36
+   ],
+   "rbar": [
+    0.073,
+    1.222,
+    36
+   ],
+   "beta_over_eta_kp1": [
+    0.3,
+    0.636,
+    36
+   ],
+   "beta_over_kp1": [
+    0.32,
+    1.116,
+    36
+   ],
+   "beta_over_k": [
+    2.594,
+    2.722,
+    36
+   ],
+   "beta_over_k_eta": [
+    2.634,
+    2.708,
+    36
+   ],
+   "beta_over_eta": [
+    2.77,
+    3.114,
+    36
+   ],
+   "beta": [
+    2.772,
+    3.298,
+    36
+   ],
+   "beta_over_eps": [
+    2.773,
+    3.072,
+    36
+   ]
+  }
+ },
+ "hypothesis": [
+  "eta_over_eps",
+  "rbar_over_eta",
+  "sqrt_eta_over_eps",
+  "beta_over_eta_kp1",
+  "rbar",
+  "beta_over_kp1"
+ ],
+ "departures_from_hypothesis": [
+  [
+   3,
+   "rbar",
+   "beta_over_eta_kp1"
+  ],
+  [
+   4,
+   "beta_over_eta_kp1",
+   "rbar"
+  ]
+ ],
+ "ties": [],
+ "source": {
+  "path": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_kfix/reports/kfix/invariance.md",
+  "md5": "9bc61f55abb5b317441dd4d111e08316",
+  "kf_commit": ""
+ },
+ "rule": "lead = ridge-invariant by construction and <= 0.05 dex on the validity-valid panel; rest by spread"
+}

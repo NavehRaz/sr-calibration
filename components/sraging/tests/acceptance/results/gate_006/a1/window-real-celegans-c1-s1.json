@@ -1,0 +1,157 @@
+{
+ "cell": "a1",
+ "claims": [
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "kappa<=300",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": 0.008153166696899118,
+   "n_components": 1,
+   "parameter": "eta",
+   "point": 0.008381800719209936,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.04794894527356264,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "only an upper bound is supported by the data; the lower side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target; its upper end is set by the kappa box (kappa_max = 300), not by the data (spec 003's kappa_max = 3000 study): the data bound raw beta on neither side; the data determine combinations such as r-bar and beta/(1+kappa) \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+   "label_info": {
+    "edge": "kappa<=300",
+    "kind": "box_limited",
+    "log10_cap_over_floor": null,
+    "regime": null,
+    "side": "upper"
+   },
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "beta",
+   "point": 7.014391112551149e-06,
+   "scored": true,
+   "shape": "upper_bound",
+   "upper": 249.12709132439346,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "two-sided 95% profile-likelihood interval",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 0.003512632278198413,
+   "n_components": 1,
+   "parameter": "epsilon",
+   "point": 0.004019684904274493,
+   "scored": true,
+   "shape": "closed",
+   "upper": 0.03583085214741405,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "kappa",
+   "point": null,
+   "scored": true,
+   "shape": "none",
+   "upper": null,
+   "widening": null
+  }
+ ],
+ "cluster": "real|celegans",
+ "cohort_id": "window-real-celegans-c1-s1",
+ "combinations": {
+  "cost_s": 0.0,
+  "on": false,
+  "order": [],
+  "order_source": "off (combinations=False)"
+ },
+ "cpu_model": "AMD EPYC 9754 128-Core Processor",
+ "element_cpu_s": 5649.928854,
+ "fit_cpu_s": 5438.178480236999,
+ "h_node": {
+  "loglik": -4609.40094985545,
+  "run": "jax2h-v6-full-bign",
+  "value": 7.014411880284955e-08
+ },
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn834.wexac.weizmann.ac.il",
+ "kappa_true": 0.977,
+ "leverage": {
+  "R": {
+   "all4": 1.0093874785500219,
+   "lead_pair": 1.0089370665036632,
+   "raw": 1.0093874785500219
+  },
+  "cost": {
+   "cpu_s": 196.20180856800016,
+   "share_of_fit": 0.03607858941758189
+  },
+  "delta_nats": 1.3749197757503332e-05,
+  "delta_total": 0.009473197254919796,
+  "dropped": {
+   "age": 9.7104,
+   "event": 1,
+   "row": 38,
+   "row_windowed": 1
+  },
+  "label": "no_flag",
+  "reason": null
+ },
+ "leverage_flag": "no_flag",
+ "loglik_H_at_theta_w": -4609.400949855512,
+ "loglik_hat": -4609.400946926542,
+ "loglik_truth": -4610.872175187841,
+ "lsf_index": "18",
+ "lsf_jobid": "694777",
+ "n": 727,
+ "negligible_labels": [],
+ "status": "ok",
+ "theta_hat": {
+  "beta": 7.014391112551149e-06,
+  "epsilon": 0.004019684904274493,
+  "eta": 0.008381800719209936,
+  "h_ext": 0.0,
+  "kappa": 5.000012697046002,
+  "time_unit": "input units",
+  "xc": 1.0
+ },
+ "warnings": [],
+ "window": {
+  "S_lo_at_theta_hat": 0.9644058993581808,
+  "hi_mapped_from": null,
+  "hi_rule": null,
+  "hi_used": 18.2196,
+  "lo_rule": "on the grid",
+  "min_deaths": 4,
+  "n_censored_above_hi": 36,
+  "n_censored_at_hi_eff": 38,
+  "n_deaths_censored": 2,
+  "n_deaths_fitted": 652,
+  "n_dropped_below_lo": 37,
+  "n_rows_given": 727,
+  "n_rows_kept": 690,
+  "row_map": "the kept rows (age >= lo), in the cohort's order",
+  "rule": "the tester's apply_window, then the frozen snap",
+  "window_eff": [
+   9.6852,
+   18.2196
+  ],
+  "window_given": [
+   9.6852,
+   18.2196
+  ]
+ }
+}

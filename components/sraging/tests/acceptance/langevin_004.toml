@@ -1,0 +1,484 @@
+# Spec 004's freeze-L (tasks T115; data-model "freeze-L, langevin_004.toml"; contracts/register-and-panel.md §2-§3;
+# contracts/acceptance.md; research R14-R30), with Naveh's decisions of 2026-11-03 on sr-naveh's findings and the
+# draft's open items (spec.md Clarifications 2026-11-03 (ff794f5); specs/004-samplers/review/sr-naveh_rules_freezeL.md (b3ae194)): the amendments A0-A9 below are named in contracts/register-and-panel.md §3.
+# naveh_ok_l records Naveh's OK of freeze-L (T119). Every value from a committed result
+# carries its source (file#key), P2's from tests/acceptance/results/p2_s5_power_004.json (685a72e). The few computed from
+# code (the plants' delta, HR-11's plant sizes and the above-budget cell's reason) name the function and the commit it ran
+# at (3e42ef8). P3's result is not in this file: its `auto` boundary is encoded in src/sraging/population.py (T130).
+# Written by tools/lang_004_fill.py from the results and that code, so no number is typed.
+
+naveh_ok_l = "2026-11-04: OK freeze-L (Recommended), with S5 at m 64 + re-check (A6) and HR-11 (iii) on the 4-parameter cell (A7); spec.md Clarifications 2026-11-04"
+
+[limits]   # stated in the README (T136) and in every affected result (spec.md Clarifications 2026-11-03 (ff794f5))
+ecoli_clamp = "the default clamp is not shown to agree with FP for E. coli at any affordable step"
+
+[amendments]   # of contracts/register-and-panel.md §3 and of the 2026-10-30 decision, before the run (spec.md Clarifications 2026-11-03 (ff794f5))
+A0 = "E. coli leaves the clamp family: every E. coli clamp row leaves S4's clamp family and HR-10's clamp tests; it stays in the reflect family ([limits].ecoli_clamp)"
+A1 = "HR-6, HR-10, HR-11 at frozen steps (research R18's branch: P1's floor exceeds crit/30): each row runs ONCE at its frozen step, with no per-row ladder; its assessability is its frozen cell's pooled bias, so m <= m_max (2 x the frozen m) is vacuous; HR-11 checks its own bar (1.655 / sqrt(n) / 10); a borrowed row (a step measured on another configuration) reads unassessable when its own coupled D exceeds 3 x its cell's mean per-key D"
+A2 = "HR-10: E. coli has no clamp configuration; the clamp path tests that exceed crit at P1's m 64 are judged on reflect only (see [paths].reflect_only); the other clamp tests run at their frozen steps; assessability is the death-time frozen step's pooled bias, and the path bias is reported, not gating"
+A3 = "HR-6: G is each family's actual row count, from this file's grid ([s4].G), and crit = kstwobign.isf(0.05 / G) / sqrt(n)"
+A4 = "HR-9: the fix arm runs sraging at mice_F hom clamp's frozen step, recorded through the same Delta t grid"
+A5 = "HR-7 / gate C5: S5's step bias is the halving difference x 1/(1 - 2^-p), p from S5's p1-pooled cell, reported as an upper bound ((|mean| + 2 SE) x the factor)"
+A6 = "HR-7 / S5: S5 runs at m 64 (dt = the frozen m 16's dt / 4); s5-het re-runs P2's 100-cohort coupled halving at that step before its replicates and cites the bias it measures; C2's m_max does not bind S5's step, because S5's step serves the score's bias, not KS's bar; Naveh 2026-11-04 (spec.md Clarifications 2026-11-04)"   # tools/lang_004_fill.py --s5-m 64
+A7 = "HR-11 (iii) runs the 4-parameter cell (xc + eta + beta + epsilon at sd 0.2, n 25,000), above the tensor reference's d <= 3 limit (research R28), so it reads \"no FP reference\" and is not clean; the node-budget path (d = 3, a product above 20,000) rests on T104's planted unit test; Naveh 2026-11-04 (spec.md Clarifications 2026-11-04)"   # tools/lang_004_fill.py --a7-text
+A8 = "Plants, D-408 (recording): [plants.recording] runs at m = 16, SRK at (Delta t, 16 substeps) as in gate C3 and sraging at Delta t / 16 recorded on delta; at the default m 1 sraging stepped at Delta t and every death fell on the Delta t grid, so the plant could not be informative (plants_004.json at 252ad3a: 0 % off the grid); Naveh 2026-11-04 during the run (spec.md Clarifications 2026-11-04, T121)"   # tools/lang_004_fill.py --a8-text
+A9 = "HR-11, after its first run (multi_004.json at 252ad3a, kept as specs/004-samplers/review/evidence/multi_004_first_252ad3a.json): (a) the composite cross-check compares the composite rule with the tensor reference built at bar 1e-4 ([multi].composite.bar, the plants' bar), not at the cells' crit/10, where the reference (M 8 x 5) sits 6.3e-4 from the converged one, inside its own bar; the tensor code agrees with the composite to 1.9e-6 at M 25 x 17; (b) multi re-runs once at fresh keys ([multi].key 60600, from 40600), pre-declared: the first run's one failing cell, xc+eta (D 0.01112 above crit 0.01047), was diagnosed as chance (step bias and the reference ruled out; four fresh draws pass; pooled n 100,000 D 0.0024, p 0.60); both runs are recorded and a fail in the re-run stands; Naveh 2026-11-05 (spec.md Clarifications 2026-11-05, T126)"   # tools/lang_004_fill.py --a9-text
+
+[rules]   # src/sraging/sampler_rules.py (HR-6 to HR-11 freeze here; a later change is named in RULE_CHANGES)
+"HR-6" = { G = "per family, [s4].G (A3)", bar = 10.0, cap = 35.0, guard_x = 3.0 }   # assessable iff the frozen pooled b <= crit / bar (A1)
+"HR-7" = { alpha = 0.05, components = 4 }   # two-sided Bonferroni over the score components
+"HR-8" = { W = [1, 7, 15], n = 25013 }   # research R17
+"HR-9" = { alpha = { plant = 0.05, twin = 0.025, fix = 0.025 } }
+"HR-10" = { crit = 1.797, G = 16, bar = 10.0, cap = 6.0, u_min = 0.01, u_lump = 3.0, x_steps = 5.0 }   # G stays 16 per wall: conservative where fewer are judged
+"HR-11" = { crit = 1.655, G = 6, bar = 10.0, detect = 1.86, informative = 2.0, composite = 0.0001, budget = 20000, cap = 4.0, guard_x = 3.0 }
+
+[judged]   # gate C1 (research R18, "the noise floor"); Naveh 2026-11-01 (8f0f269): steps measured at pooled n; A1
+rung = "dt/2"   # the judged sample: the dt/2 rung of the row's one coupled draw
+branch = "frozen from P1 at pooled n"   # P1's floor exceeds crit/30: each step frozen, not re-measured (A1)
+noise_floor_p1 = { "mice_F|hom|clamp" = 0.0017866666666666586, "human|het|clamp" = 0.0016533333333333584 }   # tests/acceptance/results/p1_langevin_004.json#noise_floor (2 cells x 3 keys, m 16, n 25,000)
+crit_over_30 = 0.0004159449215674808   # p1_langevin_004.json#noise_floor[0].crit_over_30 (clamp)
+pooled = { K = 18, n_per_key = 25000, n_pooled = 450000 }   # p1_pooled_004.json#K
+m_max_rule = "2 x the frozen m (gate C2); vacuous at a frozen step (A1)"
+
+[judged.p_hat]   # each cell's weak order in [1/2, 1]: P1's fit (p1_langevin_004.json#p_hat); S5's from its own ladder (p1_pooled_b_004.json#frozen)
+"mice_F|hom|clamp" = 0.5
+"mice_F|hom|reflect" = 0.5
+"mice_F|het|clamp" = 0.5
+"mice_F|het|reflect" = 0.5
+"Jack_Russell|hom|clamp" = 1.0
+"Jack_Russell|hom|reflect" = 1.0
+"Jack_Russell|het|clamp" = 1.0
+"Jack_Russell|het|reflect" = 1.0
+"ecoli|hom|clamp" = 1.0
+"ecoli|hom|reflect" = 0.9185008412874622
+"ecoli|het|clamp" = 1.0
+"ecoli|het|reflect" = 0.985358028583613
+"human|hom|clamp" = 0.9323582118698996
+"human|hom|reflect" = 1.0
+"human|het|clamp" = 0.7005988838884837
+"human|het|reflect" = 0.6825925079678219
+"s5|het|clamp" = 0.5
+"s5|het|reflect" = 0.5
+
+[judged.steps."mice_F|hom|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.mice_F|hom|clamp, #cells.mice_F|hom|clamp.tried[-1]
+m = 170
+dt = 0.0002518150688961322
+m_max = 340
+steps_per_individual = 493319.76064
+draw_cpu_s = 420.6517535   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0009281309917568171
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.00016603914787861928
+D_key_mean = 0.0007044444444444458   # the guard's reference (A1): mean of #cells.mice_F|hom|clamp.tried[-1].D_per_key
+tried_m = [170]
+
+[judged.steps."mice_F|hom|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.mice_F|hom|reflect, #cells.mice_F|hom|reflect.tried[-1]
+m = 81
+dt = 0.0005285007618807713
+m_max = 162
+steps_per_individual = 235015.46228
+draw_cpu_s = 192.03949999999998   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0003916390890073443
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.0001508494466531369
+D_key_mean = 0.0006400000000000287   # the guard's reference (A1): mean of #cells.mice_F|hom|reflect.tried[-1].D_per_key
+tried_m = [81]
+
+[judged.steps."mice_F|het|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.mice_F|het|clamp, #cells.mice_F|het|clamp.tried[-1]
+m = 170
+dt = 0.0002518150688961322
+m_max = 340
+steps_per_individual = 480598.80098
+draw_cpu_s = 391.11666949999994   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0008315624492619307
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.00014927809825049837
+D_key_mean = 0.0006333333333333545   # the guard's reference (A1): mean of #cells.mice_F|het|clamp.tried[-1].D_per_key
+tried_m = [170]
+
+[judged.steps."mice_F|het|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.mice_F|het|reflect, #cells.mice_F|het|reflect.tried[-1]
+m = 75
+dt = 0.000570780822831233
+m_max = 150
+steps_per_individual = 211720.46584
+draw_cpu_s = 173.29997749999984   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0003111653035946487
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.00014980188105137712
+D_key_mean = 0.0006355555555555759   # the guard's reference (A1): mean of #cells.mice_F|het|reflect.tried[-1].D_per_key
+tried_m = [75]
+
+[judged.steps."Jack_Russell|hom|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.Jack_Russell|hom|clamp, #cells.Jack_Russell|hom|clamp.tried[-1]
+m = 261
+dt = 9.197241747200016e-06
+m_max = 522
+steps_per_individual = 1952427.7181600002
+draw_cpu_s = 1674.2302074999998   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0007622222222222197
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.00044102511834005905
+D_key_mean = 0.001871111111111132   # the guard's reference (A1): mean of #cells.Jack_Russell|hom|clamp.tried[-1].D_per_key
+tried_m = [261]
+
+[judged.steps."Jack_Russell|hom|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.Jack_Russell|hom|reflect, #cells.Jack_Russell|hom|reflect.tried[-1]
+m = 335
+dt = 7.165612226922996e-06
+m_max = 670
+steps_per_individual = 2504448.27718
+draw_cpu_s = 2146.6507495000005   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0010399999999999854
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.0004541196883620329
+D_key_mean = 0.0019266666666666907   # the guard's reference (A1): mean of #cells.Jack_Russell|hom|reflect.tried[-1].D_per_key
+tried_m = [335]
+
+[judged.steps."Jack_Russell|het|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.Jack_Russell|het|clamp, #cells.Jack_Russell|het|clamp.tried[-1]
+m = 138
+dt = 1.7394783304486984e-05
+m_max = 276
+steps_per_individual = 989289.4372
+draw_cpu_s = 854.9120225000006   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0006777777777777771
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.0003776473994337073
+D_key_mean = 0.001602222222222235   # the guard's reference (A1): mean of #cells.Jack_Russell|het|clamp.tried[-1].D_per_key
+tried_m = [138]
+
+[judged.steps."Jack_Russell|het|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.Jack_Russell|het|reflect, #cells.Jack_Russell|het|reflect.tried[-1]
+m = 180
+dt = 1.3336000533440021e-05
+m_max = 360
+steps_per_individual = 1292211.61816
+draw_cpu_s = 1062.5784350000013   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0007755555555555849
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.00038602792424776973
+D_key_mean = 0.001637777777777789   # the guard's reference (A1): mean of #cells.Jack_Russell|het|reflect.tried[-1].D_per_key
+tried_m = [90, 180]
+
+[judged.steps."ecoli|hom|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.ecoli|hom|clamp, #cells.ecoli|hom|clamp.tried[-1]
+met = false   # no step: E. coli leaves the clamp family ([limits])
+pooled_b = 0.0014222222222222136
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.0004494056431541226
+D_key_mean = 0.0019066666666666908   # the guard's reference (A1): mean of #cells.ecoli|hom|clamp.tried[-1].D_per_key
+tried_m = [142, 284, 568]
+
+[judged.steps."ecoli|hom|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.ecoli|hom|reflect, #cells.ecoli|hom|reflect.tried[-1]
+m = 133
+dt = 0.00022560903158075224
+m_max = 266
+steps_per_individual = 307446.07354
+draw_cpu_s = 250.17863849999958   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.000993590180235748
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.00037817118223458886
+D_key_mean = 0.0016044444444444684   # the guard's reference (A1): mean of #cells.ecoli|hom|reflect.tried[-1].D_per_key
+tried_m = [133]
+
+[judged.steps."ecoli|het|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.ecoli|het|clamp, #cells.ecoli|het|clamp.tried[-1]
+m = 166
+dt = 0.00018075904337494004
+m_max = 332
+steps_per_individual = 369101.90772
+draw_cpu_s = 314.18029150000075   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0011511111111111583
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.00040174140827413824
+D_key_mean = 0.001704444444444459   # the guard's reference (A1): mean of #cells.ecoli|het|clamp.tried[-1].D_per_key
+tried_m = [83, 166]
+
+[judged.steps."ecoli|het|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.ecoli|het|reflect, #cells.ecoli|het|reflect.tried[-1]
+m = 51
+dt = 0.0005883529647105892
+m_max = 102
+steps_per_individual = 112504.47884
+draw_cpu_s = 91.5810190000011   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0008958702601748503
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.0004504532087558755
+D_key_mean = 0.0019111111111111143   # the guard's reference (A1): mean of #cells.ecoli|het|reflect.tried[-1].D_per_key
+tried_m = [51]
+
+[judged.steps."human|hom|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.human|hom|clamp, #cells.human|hom|clamp.tried[-1]
+m = 106
+dt = 2.9655526792690077e-05
+m_max = 212
+steps_per_individual = 2552347.9407
+draw_cpu_s = 2160.3166325000057   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.00034003886903882894
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.00026189140043946516
+D_key_mean = 0.0011111111111111243   # the guard's reference (A1): mean of #cells.human|hom|clamp.tried[-1].D_per_key
+tried_m = [106]
+
+[judged.steps."human|hom|reflect"]   # tests/acceptance/results/p1_pooled_004.json#frozen.human|hom|reflect, #cells.human|hom|reflect.tried[-1]
+m = 16
+dt = 0.00019646786500157176
+m_max = 32
+steps_per_individual = 384992.08806
+draw_cpu_s = 315.08758549999766   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0009933333333334016
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.0004394537699374207
+D_key_mean = 0.0018644444444444587   # the guard's reference (A1): mean of #cells.human|hom|reflect.tried[-1].D_per_key
+tried_m = [16]
+
+[judged.steps."human|het|clamp"]   # tests/acceptance/results/p1_pooled_004.json#frozen.human|het|clamp, #cells.human|het|clamp.tried[-1]
+m = 97
+dt = 3.2407070515723174e-05
+m_max = 194
+steps_per_individual = 2257954.2559399996
+draw_cpu_s = 2111.4788095000004   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.000686025427887312
+bar = 0.0012478347647024424
+pooled_noise_floor = 0.0002252266043779453
+D_key_mean = 0.0009555555555555891   # the guard's reference (A1): mean of #cells.human|het|clamp.tried[-1].D_per_key
+tried_m = [97]
+
+[judged.steps."human|het|reflect"]   # tests/acceptance/results/p1_pooled_b_004.json#frozen.human|het|reflect, #cells.human|het|reflect.tried[-1]
+m = 36
+dt = 8.731905111180967e-05
+m_max = 72
+steps_per_individual = 837934.53052
+draw_cpu_s = 738.4686820000001   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0010614868366047513
+bar = 0.0010739094933931814
+pooled_noise_floor = 0.00028074758127110696
+D_key_mean = 0.0011911111111111265   # the guard's reference (A1): mean of #cells.human|het|reflect.tried[-1].D_per_key
+tried_m = [36]
+
+[judged.steps."s5|het|clamp"]   # tests/acceptance/results/p1_pooled_b_004.json#frozen.s5|het|clamp, #cells.s5|het|clamp.tried[-1]
+m = 16
+dt = 0.00078125
+m_max = 32
+steps_per_individual = 127312.9939
+draw_cpu_s = 114.60785349999969   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.0003540846558146279
+bar = 0.0012478347647024424
+pooled_noise_floor = 9.847116656524026e-05
+D_key_mean = 0.0004177777777777885   # the guard's reference (A1): mean of #cells.s5|het|clamp.tried[-1].D_per_key
+tried_m = [16]
+
+[judged.steps."s5|het|reflect"]   # tests/acceptance/results/p1_pooled_b_004.json#frozen.s5|het|reflect, #cells.s5|het|reflect.tried[-1]
+m = 16
+dt = 0.00078125
+m_max = 32
+steps_per_individual = 127323.33906
+draw_cpu_s = 114.5099325000001   # median CPU of one key's coupled pair (dt and dt/2 rungs), under W = 5
+met = true
+pooled_b = 0.00023605643720975194
+bar = 0.0010739094933931814
+pooled_noise_floor = 9.061442455205619e-05
+D_key_mean = 0.00038444444444445423   # the guard's reference (A1): mean of #cells.s5|het|reflect.tried[-1].D_per_key
+tried_m = [16]
+
+[s4]   # research R18; tasks T077, T081; A1, A3; spec.md Clarifications 2026-11-03 (ff794f5)
+parameters = ["eta", "beta", "epsilon", "kappa", "xc"]
+het_presets = ["mice_F", "Jack_Russell", "ecoli", "human"]
+cvs = [0.1, 0.2, 0.3]   # item 5 (spec.md Clarifications 2026-11-03 (ff794f5))
+v0_presets = ["Jack_Russell", "ecoli"]   # C13
+clamp_excluded = ["ecoli"]   # [limits].ecoli_clamp: E. coli's clamp rows leave the family; its reflect rows stay
+n = 25000
+G = { clamp = 46, reflect = 8 }   # A3: the actual rows per family, from S4.build_grid over this table and the frozen steps
+crit_x = { clamp = 1.9387522856778925, reflect = 1.6982816264206875 }   # kstwobign.isf(0.05 / G)
+borrowed = "every heterogeneous row other than xc cv 0.2 borrows its preset's xc-0.2 step (item 6), guarded (A1)"
+bar = "crit / 10"
+key = 40400
+plant_cells = ["Jack_Russell/v0/clamp", "mice_F/xc/cv0.2/clamp"]   # item 7
+plant_target_sup_dS = 0.033   # 2 x 0.0165 (gate C2)
+plant_delta = { "Jack_Russell/v0/clamp" = 0.011749267578125, "mice_F/xc/cv0.2/clamp" = 0.021514892578125 }   # s4_fp_langevin_004.plant_delta(params, het)["delta"] per plant cell, at 3e42ef8: eta (1 + delta) whose predicted sup|dS| is the target
+plant_predicted_sup_dS = { "Jack_Russell/v0/clamp" = 0.03296438102265026, "mice_F/xc/cv0.2/clamp" = 0.03300188925419478 }   # the same calls' predicted_sup_dS, at 3e42ef8
+
+[s5]   # research R20, R21; gate C5; spec.md Clarifications 2026-11-01 (8f0f269); A5; A6; P2's values from tests/acceptance/results/p2_s5_power_004.json (685a72e)
+spec = { name = "s5-pure-k0.01-p00-c0-s0-xc0.2", rho_eta = 2.125427697723628, rho_beta = 0.1, rho_eps = 0.003981071705534973, kappa = 0.01, n = 2000, L_phys = 100.0, seed = 100000, delta = 1.0, het_param = "xc", het_var = 0.2 }   # tools/presets_004.py ROLES["s5"]
+key = 100000
+p_hat = { clamp = 0.5, reflect = 0.5 }   # p1_pooled_b_004.json#frozen.s5|het|*.p_hat
+R = 274   # p2_s5_power_004.json#R.R_score: any component, Bonferroni over 4, 90 % power
+branch = { branch = 1, wall = "clamp", action = "run", reason = "clamp projected at 0.333515 <= 86" }   # p2_s5_power_004.json#branch: gate C5, the wall and its reason; at A6's m 64 s5-het projects 2.795 CPU-h with its re-check (<= 86), so branch 1 holds
+m = 64   # A6: S5's step, not its frozen m 16 ([judged.steps."s5|het|clamp"].m); above gate C2's m_max 32, which A6 says does not bind S5's step
+dt = 0.0001953125   # A6: [judged.steps."s5|het|clamp"].dt x 16 / 64
+cpu_per_cohort_s = 17.527807999999823   # [I] p2_s5_power_004.json#halving.clamp.cpu_per_cohort_s at m 16 x 4 (the CPU scales with m); the re-check measures it
+step_bias_in_se_at_frozen_m = [0.6051792267969914, 0.6252399830499422, 0.4379195451817026, 0.6361671056757864]   # p2_s5_power_004.json#halving.clamp.bias_in_se at m 16; the bias cited at m 64 is s5-het's re-check's (A6)
+sd_per_replicate = [222.72296177637418, 17.35716850169343, 5.521388139343248, 1.105944283942256]   # p2_s5_power_004.json#R.sd_per_replicate: the re-check's SE units at R (A5)
+recheck_at_step = true   # A6: P2's coupled halving at this step runs first in s5-het, reusing its law and gradient
+plant_sd = 0.20102844238281253   # p2_s5_power_004.json#plant.plant_sd
+smallest_detectable_nats_per_1e5 = 0.0074459683240626715   # p2_s5_power_004.json#smallest_detectable_nats_per_1e5
+recheck = "s5-het runs P2's coupled halving at its own step before its replicates and cites that bias (item 3, A6)"
+od9_fail_response = ["record it in OPEN_TASKS and the register", "send it to the tester's owner by sesync", "state a limit on the v6 heterogeneous cohorts", "no gen-2 in spec 004"]   # OD-9 (a), Naveh 2026-10-29
+
+[paths]   # HR-10; tasks T098; research R24, R25; contracts/acceptance.md §4; A1, A2; spec.md Clarifications 2026-11-03 (ff794f5)
+presets = ["mice_F", "Jack_Russell", "ecoli", "human"]
+n = 25000
+G = 16
+W = [1, 7, 15]
+key = 40500
+clamp_excluded = ["ecoli"]   # [limits].ecoli_clamp: no E. coli clamp configuration (A2)
+censoring = "u_c = max(0.01, 3 p0); x_c = max(FP quantile at u_c, 5 sqrt(2 eps_max dt))"
+walls = ["clamp", "reflect"]   # each configuration once at its frozen step ([judged.steps]; A1)
+srk_n = 2000   # item 9
+plant = { preset = "mice_F", het = "hom", age = 131.97879575915184, delta = 0.043121337890625 }   # item 9: mice_F hom at its second HR-10 age, tests/acceptance/results/p1_langevin_004.json#cell_ages.mice_F|hom|clamp[1]; delta: paths_004.plant_delta(params, age, n)["delta"] at 3e42ef8, predicted sup|dF| 0.040356068947673684 against the target 0.04038371201029425
+
+[paths.ages]   # item 8: per preset and class, P1's own ages (S near 0.75 and 0.4 on the base grid): tests/acceptance/results/p1_langevin_004.json#cell_ages
+"mice_F|hom" = [109.1618323664733, 131.97879575915184]
+"mice_F|het" = [103.5111022204441, 131.37947589517904]
+"Jack_Russell|hom" = [16.680936187237446, 19.367073414682938]
+"Jack_Russell|het" = [11.771954390878175, 19.983996799359872]
+"ecoli|hom" = [57.46149229845969, 76.63532706541308]
+"ecoli|het" = [41.85837167433487, 78.49569913982796]
+"human|hom" = [71.79092961449433, 78.16906238390536]
+"human|het" = [66.03835052724831, 78.83862486783072]
+
+# A2: the clamp path tests whose censored D at P1's m 64 exceeds crit (1.797 / sqrt(n_alive)) are judged on reflect only; computed here from tests/acceptance/results/p1_langevin_004.json#cells[clamp].ladder|extension[m 64].paths
+[[paths.reflect_only]]
+cell = "Jack_Russell|het|clamp"
+ages = [0]
+Dc_m64 = [0.017235629085921522]
+crit = [0.013140262792502112]
+
+[[paths.reflect_only]]
+cell = "ecoli|hom|clamp"
+ages = [0, 1]
+Dc_m64 = [0.017228769981819714, 0.024218915156376197]
+crit = [0.013057441529758513, 0.017769448502640773]
+
+[[paths.reflect_only]]
+cell = "ecoli|het|clamp"
+ages = [0, 1]
+Dc_m64 = [0.02708668232815986, 0.018141351538066286]
+crit = [0.013036465154118325, 0.01768920147539762]
+
+[paths.lump_p0_p1]   # the clamp's lump p0 at the HR-10 ages, P1's finest rung (m 64): tests/acceptance/results/p1_langevin_004.json#cells[].ladder|extension[-1].paths[].p0
+"mice_F|hom|clamp" = [0.004170899951874231, 0.0017081993569131833]
+"mice_F|het|clamp" = [0.004262120404901438, 0.002002002002002002]
+"Jack_Russell|hom|clamp" = [0.010796365579903796, 0.005695108308756229]
+"Jack_Russell|het|clamp" = [0.02630734680782804, 0.006500761808024378]
+"ecoli|hom|clamp" = [0.04630411826821542, 0.035885401388481473]
+"ecoli|het|clamp" = [0.056997000157886425, 0.03187984496124031]
+"human|hom|clamp" = [0.007568892916155855, 0.0049445005045408675]
+"human|het|clamp" = [0.010498827542101897, 0.004339678469277049]
+
+[multi]   # HR-11; tasks T109; research R27-R29; A1; A7; A9; item 10 (spec.md Clarifications 2026-11-03 (ff794f5))
+preset = "mice_F"
+cells = [
+  { id = "xc+eta", members = { xc = 0.2, eta = 0.2 } },
+  { id = "xc+epsilon", members = { xc = 0.2, epsilon = 0.2 } },
+  { id = "eta+beta", members = { eta = 0.2, beta = 0.2 } },
+  { id = "epsilon+kappa", members = { epsilon = 0.2, kappa = 0.2 } },
+  { id = "xc+eta+epsilon", members = { xc = 0.2, eta = 0.2, epsilon = 0.2 } },
+  { id = "eta+beta+kappa", members = { eta = 0.2, beta = 0.2, kappa = 0.2 } },
+]
+n = 25000
+G = 6
+budget = 20000
+key = 60600   # A9: the re-run's fresh keys (the first run's base, 40600, kept as evidence)
+step = "mice_F|het|clamp"   # borrowed by every cell (A1, guarded); HR-11's own bar checked by the rule
+composite = { cell = "xc+eta", panels = [16, 32, 64], order = 8, agree = 0.0001, bar = 0.0001 }   # A9: the tensor reference cross-checked at 1e-4, not the cells' crit/10
+plants = [
+  { cell = "xc+eta", drop = "xc", predicted_sup_dS = 0.05376198971945245 },   # multi_004.plant_size(params, members, drop) at 3e42ef8 (bar 0.0001, M { eta = 17, xc = 11 })
+  { cell = "xc+epsilon", drop = "xc", predicted_sup_dS = 0.05569965295797008 },   # multi_004.plant_size(params, members, drop) at 3e42ef8 (bar 0.0001, M { epsilon = 5, xc = 8 })
+  { cell = "eta+beta", drop = "eta", predicted_sup_dS = 0.06545350255113955 },   # multi_004.plant_size(params, members, drop) at 3e42ef8 (bar 0.0001, M { beta = 8, eta = 8 })
+  { cell = "epsilon+kappa", drop = "epsilon", predicted_sup_dS = 0.014186714267955702 },   # multi_004.plant_size(params, members, drop) at 3e42ef8 (bar 0.0001, M { epsilon = 5, kappa = 5 })
+  { cell = "xc+eta+epsilon", drop = "xc", predicted_sup_dS = 0.04944744227293807 },   # multi_004.plant_size(params, members, drop) at 3e42ef8 (bar 0.0001, M { epsilon = 5, eta = 17, xc = 8 })
+  { cell = "eta+beta+kappa", drop = "eta", predicted_sup_dS = 0.06540667419620526 },   # multi_004.plant_size(params, members, drop) at 3e42ef8 (bar 0.0001, M { beta = 8, eta = 8, kappa = 5 })
+]
+reductions = [ { single = { xc = 0.2 }, zero = ["eta"] }, { single = { eta = 0.2 }, zero = ["xc"] } ]
+reduction_n = 2000
+reduction_t_max = 214.0   # mice_F's own horizon (wk)
+above_budget = { members = { xc = 0.2, eta = 0.2, beta = 0.2, epsilon = 0.2 }, n = 25000, t_max = 214.0, reason = "4 heterogeneous parameters with a spread: the tensor reference takes d <= 3 (research R28)" }   # A7: sample.prepare at 3e42ef8 reads kind "none" (no climb); the node-budget path rests on T104's unit test
+
+[plants]   # research R14; register D-402 to D-411; tools/presets_004.py ROLES["plants"] (Naveh 2026-10-30); A4
+key = 40700
+[plants.hr9]   # dt: tests/acceptance/results/p1_langevin_004.json#b1.mice_F.hom.dt_for_target; predicted_lag: #b1.mice_F.hom.target; fix_dt (A4): [judged.steps."mice_F|hom|clamp"].dt
+preset = "mice_F"
+dt = 2.3566223919972233
+m = 16
+n = 25000
+t_end = 214
+alpha = { plant = 0.05, twin = 0.025, fix = 0.025 }
+predicted_lag = 0.02
+fix_dt = 0.0002518150688961322
+[plants.b2]   # item 11: mice_F's base step
+preset = "mice_F"
+n = 25000
+step_size = 0.04280856171234247
+t_end = 214
+[plants.b4]
+preset = "mice_F"
+n = 1003
+t_end = 214
+nsteps = 5000
+[plants.b11]
+preset = "mice_F"
+n = 25000
+t_end = 214
+nsteps = 5000
+sd_plant = 0.5
+sd_twin = 0.2
+[plants.seeding]
+preset = "mice_F"
+n = 25000
+t_end = 214
+nsteps = 5000
+W = 7
+[plants.hazard]
+preset = "mice_F"
+n = 25000
+nsteps = 5000
+dt = 0.04280856171234247
+h_delta_plant = 0.05
+h_delta_twin = 0.0001
+[plants.recording]   # m: A8 (tools/lang_004_fill.py A8_M): SRK at (Delta t, m), sraging at Delta t / m on delta
+preset = "mice_F"
+n = 25000
+dt = 1.0
+delta = 0.25
+nsteps = 215
+m = 16
+[plants.d409]
+preset = "mice_F"
+n = 25000
+t_end = 214
+nsteps = 5000
+[plants.d410]   # item 11: 10 base steps, at the base step
+preset = "mice_F"
+n = 25000
+age = 0.4280856171234247
+dt = 0.04280856171234247
+t_max = 214.0
+[plants.d411]   # age: tests/acceptance/results/p1_langevin_004.json#cell_ages.mice_F|hom|clamp[0]
+preset = "mice_F"
+n = 25000
+dt = 0.04280856171234247
+age = 109.1618323664733
+
+[caps]   # CPU-h; contracts/acceptance.md "The caps"; the pilots' as run, with the OKs that changed them
+"s4" = 35.0
+"s5-hom" = 1.5
+"s5-het" = 86.0
+"paths" = 6.0
+"multi" = 4.0
+"plants" = 3.0
+"hr8" = 0.5
+"p1-langevin" = 6.0
+"p1-pooled" = 45.0   # run under Naveh's --naveh-ok 65 (2a7a12e); capped at 73.1 (p1_pooled_004.json#stop_rule)
+"p1-pooled-b" = 15.0   # the ceiling; its computed cap 8.07 (p1_pooled_b_004.json#stop_rule.cap_cpu_h)
+"p2-s5-power" = 6.0
+"p3-cost" = 3.0   # raised to 7 by Naveh (spec.md Clarifications 2026-11-02, 18223de), given as --naveh-ok
+"p4-jax" = 1.0

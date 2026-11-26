@@ -1,0 +1,51 @@
+{
+ "label": "POST HOC, not pre-registered: the independent prediction (acceptance_002_floors.predict: the rule re-implemented, converged terms from a graded start) at the theta-hat the CLI fit reached, after the registered prediction (at the example's theta-hat) failed because one age-0 death moved theta-hat (eta 3.6e-5 -> 6.5e-6, epsilon 2.4e-3 -> 2.2e-4, BASIN warnings)",
+ "written_at": "2026-10-04T08:17:05.869247+00:00",
+ "repo_head": "f08192c82a293bfe1d0841adf291a6ba190f393a",
+ "floors_result_head": "638e8b40019f5106aec48e2a71b859d0404a597e",
+ "theta_hat_fit": {
+  "eta": 6.4712757966395514e-06,
+  "beta": 0.0028544648364677147,
+  "epsilon": 0.0002221763204640231,
+  "kappa": 0.001001410131567111
+ },
+ "predicted": [
+  [
+   1,
+   "impossible"
+  ],
+  [
+   75,
+   "impossible"
+  ]
+ ],
+ "fit_reported": [
+  [
+   1,
+   "impossible"
+  ],
+  [
+   75,
+   "impossible"
+  ]
+ ],
+ "match": true,
+ "deaths": [
+  {
+   "row": 1,
+   "age": 0.0,
+   "category": "impossible",
+   "term_v033": -32.804974936952775,
+   "term_v1": -114.52089563594073,
+   "term_graded": -662.1636544671295
+  },
+  {
+   "row": 75,
+   "age": 53.0,
+   "category": "impossible",
+   "term_v033": -29.463014251832206,
+   "term_v1": -29.46010598351767,
+   "term_graded": -29.64274505106853
+  }
+ ]
+}

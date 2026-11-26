@@ -1,0 +1,119 @@
+\section{Comparing groups: which parameter changed}\label{sec:effects}
+
+Most applications ask not for one cohort's parameters but for what differs between two groups: a treated arm and its
+control, two strains, the two sexes. This section gives the general procedure; Section~\ref{sec:val-effects} gives
+the evidence for its error rates. Studies that cite it should state their own design numbers (groups, housing units such as cages, vials or plates,
+onset age) and any deviation.
+
+\paragraph{Effect models.} A reference group $R$ and a test group $T$ share $\theta$ before the onset age $t_0$. From
+$t_0$ on, the test group differs by a multiplier $m$ on one parameter (Section~\ref{sec:model}). We compare
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item $M_0$, no difference;
+  \item the \emph{singles} $M_p$, one multiplier on $p\in\{\eta,\beta,\eps,\xc,A\}$ or on time (time rescaling), and
+    where relevant $\kappa$ or an added external hazard;
+  \item $M_\text{full}$, the unconstrained model: from $t_0$ on, each group has its own $(\eta,\beta,\eps)$ (with $\kappa$ at
+    its fixed value, and its own $h$ where the reference fit has an external hazard). For $t_0=0$ this is two independent
+    fits. Every single is a special case of $M_\text{full}$, so $M_\text{full}$ is the yardstick for asking whether one
+    multiplier describes the difference adequately (condition 3 below). With $\kappa$ fixed and no external hazard it
+    has two more free parameters than a single.
+\end{itemize}
+Pairs of multipliers ($M_{pq}$) can also be fitted. Whether a pair is identifiable depends strongly on the design
+(Section~\ref{sec:val-effects}). With arms that each have their own effect size, two-parameter truths were named in only
+\C{itp-ident-pair-1}--\C{itp-ident-pair-8} of replicates from one to eight arms. With eight arms spread over four dosing
+ages and one effect size shared by all arms, some pairs became identifiable, but production against removal
+($\eta+\beta$) never did. A pair is therefore reported only when simulations at the study's own design show that it
+can be named (condition 6). For $t_0>0$ the likelihood of each individual alive at $t_0$ is conditioned on survival to $t_0$
+(left truncation at the switch), and the test group's parameters change on an engine segment that starts at $t_0$
+(Section~\ref{sec:likelihood}). Each model is maximised in log space with L-BFGS-B on exact gradients
+\citep{byrd1995limited}, from several starts; the value at the returned point is recomputed rather than taken from
+the optimiser.
+
+\paragraph{The reference parameters.} One direction in $\log(\eta,\beta,\eps)$ is not pinned by survival data
+(Section~\ref{sec:identifiability}), and an effect estimate can depend on where along it the reference sits. Three
+treatments are in use, and a result is reported only if it survives the one chosen:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item \emph{Joint refit:} $\theta$ is refitted jointly with $m$ for every model, so the comparison is between
+    maximised likelihoods of both groups together.
+  \item \emph{Pinned ends:} the analysis is repeated with $\theta$ at the two 95\,\% ends of the reference's
+    unidentified profile; a label must survive both ends.
+  \item \emph{Integration:} the effect is computed along a grid of positions on the unidentified direction and
+    averaged, with the identified directions integrated by a Laplace approximation; the result then depends on the
+    weighting, which must be stated.
+\end{enumerate}
+
+\paragraph{Effect sizes.} The multiplier of a single is reported with its profile-likelihood interval: the set of
+$m$ whose profile log-likelihood (all other parameters re-maximised) lies within $\chi^2_{1,0.95}/2=1.92$ nats of
+the maximum \citep{venzon1988method}. The profile is walked outward in $\log m$ with doubling steps, the crossing is
+bisected, and the interval is widened to every evaluated point inside the cut. An interval that reaches the search box
+is reported as a one-sided bound.
+
+\paragraph{Testing and naming.} For a single $p$ we write $\Lambda_p=2[\ell(M_p)-\ell(M_0)]$. A parameter is
+\emph{named} as the one that changed only if every condition below holds:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item a difference exists: a model-free test on survival (log-rank, or a permutation test over housing units
+    when individuals are clustered) rejects no difference;
+  \item $M_p$ beats $M_0$ at a threshold corrected for choosing the best of $K$ singles (Šidák
+    \citep{sidak1967rectangular}, then Benjamini--Hochberg across the contrasts reported together
+    \citep{benjamini1995controlling});
+  \item $M_p$ is not rejected against $M_\text{full}$ (likelihood-ratio test with degrees of freedom equal to the
+    difference in free parameters, at level 0.05);
+  \item $M_p$ is clear of the runner-up single by a fixed margin (2 nats in the studies below);
+  \item the label is stable: it holds under the alternative reference treatments above, under the alternative fits
+    of the reference (with and without a fit window or external hazard), and when each housing unit is left out in
+    turn;
+  \item the design can identify it: in simulations at the study's design, data generated by a change of $p$ are
+    labelled $p$ in at least 80\,\% of replicates (recall), and a $p$ label is correct in at least 80\,\% (precision);
+  \item the model fits each group, not only both together. For each group $g$ the \emph{cost} of the joint fit is
+    $c_g=\ell_g(\text{own})-\ell_g(\text{joint})$: the log-likelihood that group loses at the joint fit's parameters,
+    against the same group fitted alone over the parameters the joint fit moves (divided by the design effect when
+    individuals are clustered). A poor fit to either group, the reference or the treated one, makes it a poor model,
+    so $M_p$ fails if either cost exceeds its bar. The bar is the 95th percentile of the cost when $M_p$ is true,
+    simulated at the study's design and the fitted effect size; where that simulation has not been run, a model fails
+    if $2c_g$ exceeds the 99th percentile of $\chi^2$ with as many degrees of freedom as the joint fit moves.
+\end{enumerate}
+Condition 3 tests the two costs together: with the same free parameters, $2[\ell(M_\text{full})-\ell(M_p)]=2(c_R+c_T)$.
+Condition 7 tests them one group at a time, so a model that fits the treated group well by distorting the reference,
+or the reverse, cannot pass on the strength of the other group. Every model's two costs are reported beside its
+likelihood, and a figure of a joint fit shows, for each group, the curve of its own fit and that of the joint fit.
+When condition 6 cannot be met, results are reported at the level the design supports. The first fallback is a
+\emph{confusion set}: the singles that the design cannot tell apart from the best one. The second is a \emph{group}.
+The parameters fall into three groups of interest by the process they describe: \emph{production} $\{\eta, A\}$,
+\emph{removal} $\{\beta, \kappa\}$, and \emph{noise and threshold} $\{\eps, \xc\}$; an added external hazard $h$ belongs
+to none. Confusions are mostly within a group ($\eta$ with $A$, $\beta$ with $\kappa$), so a group can often be named when
+the parameter cannot (Section~\ref{sec:val-effects}). For a pair, the question becomes which groups changed. Coarser
+partitions (for example production against everything else) can be used; a study states the partition it uses and
+applies condition 6 to it, with recall and precision computed for groups instead of parameters. An analytic version of condition 6 avoids most simulations: for each true single at the observed effect size, the
+expected value $D_{pq}$ of $2[\ell(M_p)-\ell(M_q)]$ under $M_p$ is computed exactly from the model's predicted death
+distribution. $D<1$ means the two labels are confusable, and $D\ge 9$ means they separate (validated against
+recovery simulations, Section~\ref{sec:val-effects}).
+
+\paragraph{Clustered individuals.} Individuals kept together share conditions: mice in a cage, flies in a vial,
+mosquitoes in a cage, worms on a plate. These housing units, not the individuals, are then the independent units, and
+likelihood-ratio statistics computed as if individuals were independent overstate the evidence. Below we write
+\emph{cage} for any such unit. Two corrections are in use:
+\begin{enumerate}[leftmargin=1.5em,itemsep=1pt]
+  \item \emph{Whole-cage permutation.} Group labels are permuted among cages (or swapped within cage, for two sexes
+    housed together), and the observed statistic is compared with its permutation distribution. This is valid under
+    exchangeability of cages, at the price of coarse $p$-values when there are few cages; when cages differ in size,
+    the permutations can be restricted to relabellings with similar group sizes, which makes the test conservative.
+  \item \emph{Design-effect scaling.} The statistic is divided by a factor $c$ estimated from the between-cage
+    variance (a cluster sandwich, or a Pearson dispersion $\phi$), and the interval cut becomes $1.92\,c$. When there
+    are few cages $c$ is poorly determined, so it is estimated only from cohorts with many cages and pooled.
+\end{enumerate}
+Scaling by $c$ is approximate. In the one design where it was calibrated by simulation it rejected a true null in a fraction
+\C{fly-null-rate} of replicates at a nominal 0.05 (Section~\ref{sec:val-effects}). We therefore recommend that the
+threshold in condition 2 be calibrated by simulating the null at the study's design (cages, group sizes, measured
+between-cage variance), and that design-effect scaling be used only where that simulation has been done.
+
+This calibration has not yet been run for designs with few housing units (cages, vials, plates) per group; it is planned as an update
+(Section~\ref{sec:limitations}).
+
+\paragraph{One animal driving the fit.} Before the parameters of any group are interpreted, each cohort fit is checked
+for leverage: the individual with the largest first-order influence on the reported quantities ($\eta$, $\eps$,
+$\eta/\eps$, $\beta\rbar/\eta$) is dropped and the cohort refitted, and the cohort is flagged if any of these quantities
+moves by more than $1.5\times$ \emph{and} the refit gains more than 1.92 nats. A flagged cohort keeps its data and its fit; its statements carry a caveat. Evidence for the check's error
+rates is in Section~\ref{sec:val-leverage}.
+
+\paragraph{Comparing across cohorts.} Log-likelihood differences grow with the number of individuals. Whenever two
+cohorts of different size are compared, or a numerical agreement is judged negligible, the difference is quoted per
+individual ($\Delta\ell/n$); decision thresholds within one comparison remain absolute.

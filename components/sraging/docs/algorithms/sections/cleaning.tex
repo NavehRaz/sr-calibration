@@ -1,0 +1,98 @@
+% Section for specs/005-data-plots-cli (T056; FR-013 to FR-017; research R4, R5; register D-501, D-503, D-504).
+% Paths relative to src/sraging/. SRK/lab citations are to the legacy brief docs/planning/spec005_brief_legacy.md.
+% Measured numbers carry \verify markers against the acceptance results (exit_005, noise_005) or the development
+% checks of the sr-naveh review (review/evidence/devchecks_005.json).
+\section{MAD cage cleaning and its noise baseline (\texttt{sraging.cleaning})}\label{sec:clean}
+
+\subsection{Overview}\label{sec:clean-overview}
+
+\code{clean} judges every cage against the other cages of its cohort and returns a report; \code{drop} removes the
+flagged cages by naming that report \src{cleaning.py:clean, drop}. Cleaning \emph{flags by default} and \code{k} and
+\code{seed} are required; removal is the separate call \code{drop}, which refuses a report not computed on the same
+set (D-504). The rule is the lab's \code{cage\_cleaning.clean\_by\_mad} (mosquito reanalysis, fly redo), reimplemented
+formula for formula; its score KM replaces SRK \code{Dataset}'s, and \code{noise\_baseline} replaces the fly redo's
+\code{null\_drops} and \code{null\_by\_group} constructions.
+
+\subsection{The rule}\label{sec:clean-rule}
+
+\paragraph{Scores.} Cage $i$ of a cohort is scored by $(x_i,y_i)=$ (KM median, IQR steepness), from
+Section~\ref{sec:surv}: median by first crossing, quartiles \code{nearest} (SRK \code{Dataset}'s, which the stored
+records use), both named in the report \src{cleaning.py:cage_scores, definitions}.
+
+\paragraph{Geometry.} On one axis with finite values $v$: centre $c=\mathrm{med}(v)$, scale
+$\sigma=1.4826\,\mathrm{MAD}(v)=1.4826\,\mathrm{med}|v-c|$, and radius
+\begin{equation}\label{eq:clean-radius}
+  \rho=\max\big(k\sigma,\;k\,\varphi\,|c|\big),
+\end{equation}
+the floor $k\varphi|c|$ taking over when it is larger or when $\sigma$ is not finite; $\rho=\infty$ if it is still not
+positive (every cage tied, no floor) \src{cleaning.py:axis_geometry}. The floors $\varphi=(\varphi_{\rm ml},
+\varphi_{\rm st})$ are pooled over the cohorts with at least \code{min\_cages}$=10$ cages as
+$\varphi=\mathrm{med}_{\rm cohorts}\,|\sigma/c|$ per axis, or given \src{cleaning.py:pooled_floors}; if no cohort
+qualifies and none are given, cleaning is refused.
+
+\paragraph{Distance and flag.} With more than two cages the geometry of cage $i$ uses the \emph{other} cages
+(leave-one-out); with two or fewer, the whole group (\code{cage\_cleaning.py:232}). With $u_i=(x_i-c_x)/\rho_x$ and
+$v_i=(y_i-c_y)/\rho_y$,
+\begin{equation}\label{eq:clean-dist}
+  D_i=\sqrt{u_i^2+v_i^2}\quad(\text{or }|u_i|\text{ for }\code{axes="median"}),\qquad
+  \text{flagged}\iff D_i>1,
+\end{equation}
+an axis-aligned ellipse, not oriented and not the bootstrap ellipse of SRK's \code{clean\_DatasetCollection}
+\src{cleaning.py:judge}. A non-finite score on an axis the rule uses is refused, naming
+the cage and axis; the legacy code kept such a cage at distance 0 (D-503).
+
+\subsection{The noise baseline}\label{sec:clean-noise}
+
+Flags are expected even without a real outlier, so each cohort row carries the flags the same rule gives exchangeable
+cages whose scores scatter under two named nulls, always both (FR-016). The scatter is Gaussian, independent on the two
+axes and independent of the number of animals per cage; it is not the sampling noise of a KM median. For a cohort of $m$ cages, draw $R$ (default 4000) samples of $m$
+scores per axis $1+s\,\xi$, $\xi\sim N(0,1)$, with the same $k$, floors and leave-one-out, and report the flag rate
+per cage and the expected flags $=$ rate$\times m$ \src{cleaning.py:noise_baseline, _flags_batch}. The generator is
+\code{numpy.random.default_rng} seeded from \code{(seed, m, null)} so each null is reproducible and independent.
+\begin{itemize}[nosep]
+  \item \textbf{floor null:} $s=\varphi$ on each axis.
+  \item \textbf{own-spread null:} $s$ is the leave-one-out corrected spread \emph{pooled} over a group of cohorts:
+    those sharing the value of the design column \code{spread\_by}, or every cohort of the set by default (Naveh,
+    2026-11-09; the fly redo's \code{group\_spreads}) \src{cleaning.py:pooled_spread, clean}. With $e_i=x_i/\mathrm{med}(x_{-i})-1$ the leave-one-out
+    relative deviations of a cohort of $m$ cages \src{cleaning.py:loo_relative_deviations},
+    \begin{equation}\label{eq:clean-own}
+      s=1.4826\,\mathrm{MAD}\big(\{e_i/r(m_c)\}_{i\in c,\;c\in\text{group}}\big),
+    \end{equation}
+    where $r(m)$ is the robust sd of $x_i-\mathrm{med}(x_{-i})$ over $m$ i.i.d.\ $N(0,1)$ cages (20\,000
+    replicates). $r(m)>1$ ($r(3)\approx1.22$): a leave-one-out deviation carries the noise of the others' median too,
+    and dividing by $r(m)$ removes that inflation \src{cleaning.py:loo_correction}. A single cohort cannot be its own
+    group: with three cages two ties give $s=0$, a null with no scatter. A pooled $s$ that is $0$ or not finite is
+    reported as not measurable, with no expected flags.
+\end{itemize}
+Neither null is the analytic $e^{-k^2/2}$, which understates the rate at small $m$ (research R5). The reading of how
+many flags are noise depends on the null, which is why both are shown.
+
+\subsection{Acceptance and stated limit}\label{sec:clean-accept}
+
+\paragraph{HR-1 (the exit).} The code is compared with the \emph{stored} mosquito and fly cleaning records (read-only,
+pinned by sha256) at every recorded $k$ (mosquito 2.5; fly 2.5 and 3.0) with floors pooled over the record's cleaned
+cohorts: verdicts identical, median exact, distances and floors within $10^{-12}$ (relative for floors), steepness
+within $10^{-12}$, with data parsed with round-trip floats. Four planted defects must each fail first: no
+leave-one-out, no floors, $k$ swapped, first-crossing quartiles.
+The recorded run (phase \code{exit}) reproduced both records: every verdict identical at each recorded $k$, the
+largest distance difference \verify{tests/acceptance/results/exit_005.json}{records[0].per_k[0].max_abs_distance}{g}{0} (mosquito), \verify{tests/acceptance/results/exit_005.json}{records[1].per_k[0].max_abs_distance}{g}{0} and \verify{tests/acceptance/results/exit_005.json}{records[1].per_k[1].max_abs_distance}{g}{0} (fly, $k=2.5$ and 3), and the pooled floors equal to the record's. The four planted defects each fail first;
+for the mosquito record, without leave-one-out or without floors the rule's flags differ from the record's.
+\paragraph{HR-4 (the noise baseline).} The floor null's flag rate per $(m,k)$ is compared with the fly's
+\code{null\_drops.csv} (its cells with multiplier 1) and the own-spread null's expected drops per group and $k$ with
+\code{null\_by\_group.csv}, each within 4 binomial standard errors at $R=4000$; two planted nulls (no leave-one-out, no
+floors) must fail.
+HR-4's group cells pool as \code{clean} does, through the same function. In the recorded run (phase \code{noise})
+the floor null's rate at $m=3$, $k=2.5$ is \verify{tests/acceptance/results/noise_005.json}{floor_cells[0].ours}{.3f}{0.091} against the fly's \verify{tests/acceptance/results/noise_005.json}{floor_cells[0].theirs}{.3f}{0.090}, within \verify{tests/acceptance/results/noise_005.json}{se_multiple}{.0f}{4} binomial standard errors, as are all its floor cells and all its groups (phase status \verify{tests/acceptance/results/noise_005.json}{status}{}{pass}).
+That run replays pilot P2 with the same seed, so it locks the construction rather than testing it afresh; with another
+seed the floor cells stay within \verify{specs/005-data-plots-cli/review/evidence/devchecks_005.json}{n2_floor_seed1.max_z}{.2f}{2.28} standard errors (development check). The planted nulls fail: without leave-one-out the rate is \verify{tests/acceptance/results/noise_005.json}{planted[0].ours}{.3f}{0.032} against \verify{tests/acceptance/results/noise_005.json}{planted[0].theirs}{.3f}{0.090}, and a rule without floors judging scatter of size $\varphi$ flags \verify{tests/acceptance/results/noise_005.json}{planted[1].ours}{.3f}{0.514}, both far outside the 4-SE band.
+
+\paragraph{Stated limit.} The cleaning is tested against \emph{stored records}, not side by side against the old code
+(no new oracle, Db). A defect shared by a record and the code that wrote it would not show. Without the records the
+exit reports \code{not\_applicable}, never a pass; a synthetic fixture (a planted outlier cage, ties, a three-cage
+cohort, a zero-IQR cage) runs everywhere. The score is a pair of KM statistics, so the rule is only as good as those
+definitions; changing \code{quartiles} changes which cages flag. The records hold small cohorts of cages judged on
+both axes with pooled floors: the two-cage whole-group path, \code{axes="median"}, given floors and \code{min\_cages}
+other than 10 are tested on synthetic data only. The fly record's \code{kept} column predates the fly redo's final
+choices (its D19: median-only for 2--8 LONG, flag-only for SWITCH), which were not reproduced. The mosquito record's
+scores come from cages already shifted (its D2) and spike-censored (D8). Verdicts near the radius are fragile: removing
+one animal from a cage flips its own verdict for a few cages of each record (gate C11; not re-measured here).

@@ -1,0 +1,207 @@
+% Section for specs/003d-cohort-generator (T049, research R14). Paths are relative to src/sraging/ unless they start
+% with tests/ or tools/.
+\section{The cohort generator (\texttt{sraging.generator})}\label{sec:gen}
+
+\subsection{Overview}\label{sec:gen-overview}
+
+\code{sraging.generator} draws a synthetic cohort from the SR model as the lab benchmark's library specifies one. It
+replaces SRK's \code{benchmark.cohorts.materialize} (SRK \code{cb191f5}), whose backward-Euler grid biased the
+coefficient of variation (CV) of sharp cohorts. The version is \code{"sraging-gen-1"} (git tag \code{sraging-gen-1})
+\src{generator.py:GENERATOR_VERSION}. For a fixed (spec, seed, version) the output bytes never change; any change to
+them is a new version. The call \src{generator.py:CohortSpec, materialize} is
+\begin{verbatim}
+  materialize(CohortSpec(name=, rho_eta=, rho_beta=, rho_eps=, kappa=,
+                         n=, L_phys=, seed=, delta=, censor_frac=0,
+                         external_hazard=None, het_param=None, het_var=0,
+                         time_range=None))
+\end{verbatim}
+ The fields are the benchmark's own and are keyword-only. Anything else
+is refused by name: the benchmark's organisational fields, a positional call, $\delta=$ \code{None}, heterogeneity in
+anything but $\xc$, an off-grid window, and out-of-range values \src{generator.py:_validate}.
+\code{materialize} runs, in order:
+\begin{enumerate}[nosep]
+  \item the model's absorbed-mass curve (one, or $K$ node curves under heterogeneity; Sections~\ref{sec:gen-curve}
+    and \ref{sec:gen-het});
+  \item the uniforms (Section~\ref{sec:gen-draws});
+  \item the death times by inverse CDF, then the external hazard as a competing risk;
+  \item the administrative censoring time $C$ and the recording on the $\delta$ grid (Section~\ref{sec:gen-obs});
+  \item \code{time_range}, then the grid error and the caveats (Section~\ref{sec:gen-err}).
+\end{enumerate}
+It returns \code{death_times}, \code{events} (1 death, 0 censored), \code{censor_time},
+\code{realised_censored_fraction}, \code{grid_error}, \code{caveats} and \code{provenance}
+\src{generator.py:GeneratedCohort}.
+
+\subsection{The curve}\label{sec:gen-curve}
+
+Time is $\tau=t/L_{\rm phys}$, and $(\rho_\eta,\rho_\beta,\rho_\eps,\kappa)$ are the dimensionless groups of
+Eq.~\eqref{eq:pv-groups} at $\xc=1$: the benchmark's $\tau$-mean $=1$ convention, SRK's. The curve is the spec 002
+engine's uniform value march (Section~\ref{sec:fp-mesh}), numerics \code{"v1"}: \code{nstart} backward-Euler steps,
+then BDF2. Its coefficients are $(\rho_\eta,\rho_\eps,\rho_\beta\,y_f/(y_f+\kappa))$ at the faces $y_f=(j+\frac12)/N$.
+With \code{carry_F} it returns both $S(\tau_n)$ and the absorbed mass $F(\tau_n)$
+\src{generator.py:_march, _solve_curve}. The march stops at the first $\tau_n>0.3$ with $S<G_{\rm tol}$. If none
+exists before $\tau_{\max}$, the horizon does not absorb, and the call is refused rather than truncating the draws.
+The CDF that is sampled is $F$, piecewise linear between the grid nodes. $\max_n|S+F-1|$ is recorded with every
+cohort.
+
+\paragraph{The grid.} One grid per version: $N=6000$, $\Delta\tau=2\times10^{-4}$, $\tau_{\max}=30$,
+$G_{\rm tol}=10^{-12}$, \code{nstart} $=20$, and $K=161$ heterogeneity nodes \src{generator.py:GRID}. It was fixed
+by a refinement sweep over every library configuration, before any acceptance run
+\src{tools/acceptance_003d.py:sweep}. A configuration is what fixes a cohort's law
+\src{generator.py:configuration_key}:
+\begin{equation}
+  (\rho_\eta,\rho_\beta,\rho_\eps,\kappa,\ \delta/L_{\rm phys},\ \text{censor\_frac},\ h L_{\rm phys},\
+  \sigma_{\rm het}).
+\end{equation}
+The reference grid doubles $N$ and $K$ and halves $\Delta\tau$ \src{generator.py:reference_grid}. Each
+configuration's binned law (Section~\ref{sec:gen-err}) is compared with the reference's, under the generator's own
+$C$:
+\begin{equation}
+  \lambda=2\,n\,\mathrm{KL}_{\ge5}\!\left(P_{\rm gen}\,\Vert\,P_{\rm ref}\right),\qquad
+  \Delta\ln\mathrm{CV}=\ln\frac{\mathrm{CV}(P_{\rm gen})}{\mathrm{CV}(P_{\rm ref})}.
+\end{equation}
+Here $\mathrm{KL}_{\ge5}$ merges cells from the left until $n\,P_{\rm ref}\ge5$, the G-test's binning
+\src{generator.py:kl_binned}. The bars (spec 003d SC-001) are:
+\begin{itemize}[nosep]
+  \item homogeneous: $\lambda\le0.05$ and $\tfrac43|\Delta\ln\mathrm{CV}|\le\tfrac12\sqrt{0.1/(2n)}$, at the
+    configuration's largest library $n$;
+  \item heterogeneous (Naveh, 2026-10-14): $\lambda\le0.2$ at $\min(n,20{,}000)$, and the benchmark's own rule
+    $|\Delta\ln\mathrm{CV}|\le\sqrt{0.1/(2n)}$ at the real $n$.
+\end{itemize}
+The sweep's rungs and every configuration's numbers are in \code{tests/acceptance/results/sweep_003d.json}.
+
+\subsection{The draws}\label{sec:gen-draws}
+
+Each cohort has one PCG64 generator, \code{numpy.random.default_rng(seed)}, used only through \code{.random(n)}
+\src{generator.py:_uniforms}. It draws the death uniforms first, then the hazard uniforms, then the heterogeneity
+uniforms, each only when its feature is on; the order is recorded in \code{provenance}. The death uniforms are SRK's
+first draw. So a homogeneous cohort without a hazard is an individual-level twin of its SRK cohort in the SR death
+time.
+
+\paragraph{Inverse CDF.} For uniform $u$ and an individual's CDF $F_i$ (piecewise linear on the grid), the death
+time is $\tau=\tau_{k-1}+\frac{u-F_i(\tau_{k-1})}{F_i(\tau_k)-F_i(\tau_{k-1})}(\tau_k-\tau_{k-1})$. Here $k$ is the
+smallest node with $F_i(\tau_k)\ge u$, found by bisection \src{generator.py:_inverse}. A $u$ above the CDF's last
+value is placed at the last node and counted (\code{n_beyond_cdf}). The death age is $t=\tau L_{\rm phys}$.
+
+\paragraph{External hazard.} A competing exponential at rate $h=e^{-\text{external\_hazard}}$ per age unit:
+$t\leftarrow\min\bigl(t,\,-\log(1-u_h)/h\bigr)$ \src{generator.py:_hazard_times}.
+
+\subsection{Heterogeneity in $\xc$}\label{sec:gen-het}
+
+$\xc\to\xc s$ with $s=1+\sigma z$, where $\sigma$ is \code{het_var} and $z$ is a standard normal truncated to
+$s>0$. In dimensionless terms a node at $s$ is $(\rho_\eta/s,\ \rho_\beta/s,\ \rho_\eps/s^2,\ \kappa/s)$
+\src{generator.py:_node_point}. An individual's $z$ is continuous, from its own uniform:
+$z=\Phi^{-1}\bigl(a+u_s(1-a)\bigr)$ with $a=\Phi(-1/\sigma)$ \src{generator.py:_het_z}.
+
+There are $K$ node curves, uniform in $z$ on
+$[z_a,z_b]=[\max(\Phi^{-1}(10^{-9}),\,-(1-s_{\min})/\sigma),\ \Phi^{-1}(1-10^{-9})]$ with $s_{\min}=0.05$
+\src{generator.py:_het_nodes}. The individual's CDF is the linear interpolation in $z$ between the two bracketing
+node CDFs, $F_i=(1-w)F_j+wF_{j+1}$; outside $[z_a,z_b]$ it is the end node's, counted as \code{n_outside_het_nodes}
+\src{generator.py:_bracket}. The cohort's law is then exactly the hat-weighted mixture
+$\sum_jW_jF_j$, with
+\begin{equation}
+  W_j=\frac{1}{1-\Phi(-1/\sigma)}\int\mathrm{hat}_j(z)\,\phi(z)\,\dd z,
+\end{equation}
+and the truncated mass beyond either end assigned to the end node. The convergence check and the G-test compute
+this mixture. SRK used 40 equal-weight midpoint nodes, whose CV is 0.7--1.9\% lower (the hand-off message,
+\code{docs/planning/handoff_2026-10-14_generator_to_tester.md}).
+
+\subsection{Censoring, recording and the window}\label{sec:gen-obs}
+
+The observed survival is $S_{\rm obs}(t)=\bigl(1-\sum_jW_jF_j(t/L_{\rm phys})\bigr)\,e^{-ht}$
+\src{generator.py:_S_obs}.
+
+\paragraph{Administrative censoring (R7).} $t^*$ solves $S_{\rm obs}(t^*)=$ \code{censor_frac} by bisection. $C$
+is whichever of the grid points $\lfloor t^*/\delta\rfloor\delta$ and $(\lfloor t^*/\delta\rfloor+1)\delta$ (excluding
+0) has $S_{\rm obs}$ closer to \code{censor_frac}; a tie goes to the earlier one
+\src{generator.py:_censor_time}. The call is refused if $S_{\rm obs}(C)<10^{-12}$. \code{censor_frac} is thus a
+target for the model, not for the sample: on a sharp cohort with a coarse $\delta$, no grid point may come near it,
+and the cohort then says so (Section~\ref{sec:gen-err}). Nearest in probability replaced nearest in time on
+2026-10-14 (Naveh), when the latter missed by up to 0.33.
+
+\paragraph{Recording.} With censoring, $t\ge C$ gives $(C,0)$, and otherwise
+$(\min(\lfloor t/\delta\rfloor,\,C/\delta-1)\,\delta,\ 1)$. Without censoring every row is
+$(\lfloor t/\delta\rfloor\delta,\ 1)$ \src{generator.py:_record}. There is no clamp: a death in the first bin is
+recorded at 0, and no death is recorded at $C$. Rows are sorted by (age, event).
+
+\paragraph{The window.} \code{time_range} $=(lo,hi)$ must lie on the $\delta$ grid, or it is refused. Ages below
+$lo$ are dropped; ages above $hi$ become $(hi,0)$; a death recorded at $hi$ stays a death. A window that keeps no
+one is refused \src{generator.py:_apply_time_range}. This is the benchmark's \code{apply_window}, closed at both
+ends.
+
+\subsection{The binned law, the grid error and the caveats}\label{sec:gen-err}
+
+The exact law of the recorded outcome, before the window, is \src{generator.py:binned_distribution}:
+\begin{equation}
+  P_k=S_{\rm obs}(k\delta)-S_{\rm obs}((k+1)\delta)\ \ (k<C/\delta),\qquad P_C=S_{\rm obs}(C).
+\end{equation}
+Without censoring, the tail beyond the march's end joins the last cell. Every cohort carries its configuration's
+$\lambda$ (at its own $n$) and $\Delta\ln\mathrm{CV}$ in \code{grid_error}. They come from the packaged point table
+when the configuration is in it, and otherwise are computed against the reference grid at the call
+\src{generator.py:_grid_error_for}. \code{caveats} lists, with numbers:
+\begin{itemize}[nosep]
+  \item $\lambda$ or $|\Delta\ln\mathrm{CV}|$ above its bar at the cohort's own $n$;
+  \item a heterogeneous cohort above $n=20{,}000$;
+  \item a realised censored fraction more than 0.1 from \code{censor_frac}.
+\end{itemize}
+An empty tuple means none. Each configuration's converged and binned CV, $C$ and censored mass are in
+\code{tests/acceptance/results/point_table_full_003d.json}.
+
+\subsection{The backward-Euler control}\label{sec:gen-be}
+
+SRK \code{cb191f5}'s \code{materialize} is kept as an acceptance tool, never as a generator version
+\src{tools/v5_reproduce_003d.py:curve, materialize_srk}. It is defined by:
+\begin{itemize}[nosep]
+  \item a backward-Euler march on $N=1500$, $\Delta\tau=5\times10^{-4}$;
+  \item inverse CDF from $S$ interpolated linearly;
+  \item censoring at the sample's $(1-f)$ quantile;
+  \item flooring, then a clamp to $\delta/2$, which the benchmark's \code{correct_first_bin} undoes.
+\end{itemize}
+It rebuilds the benchmark's library v5 homogeneous cohorts from sraging alone
+(\code{tests/acceptance/results/v5_reproduce_003d.json}), and v2's 55 censored coverage cohorts byte for byte.
+It is the positive control of the CV-fidelity check and the G-test, both of which it must fail. Its $n\to\infty$
+law gives the fit-free prediction \src{tools/acceptance_003d.py:be_law}. Under that law, the deaths in
+$[\lfloor C\rfloor_\delta, C]$ share the censored records' age.
+
+\subsection{Validation evidence}\label{sec:gen-evidence}
+
+Each check, run on a clean committed tree, and where its result is recorded:
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.5\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+\toprule
+check & result file, in \code{tests/acceptance/results/} \\
+\midrule
+grid refinement, every library configuration (SC-001) & \code{sweep_003d.json}, \code{het_nodes_all_003d.json} \\
+CV of recorded ages against the binned reference (SC-002) & \code{fidelity_003d.json} \\
+G-test of every library cohort, with a null control (SC-003) & \code{gtest_003d.json} \\
+recording and \code{time_range} against \code{apply_window} (SC-004, SC-005) & \code{gtest_003d.json}, \code{window_003d.json} \\
+determinism on the Mac and on WEXAC AMD EPYC (SC-006) & \code{determinism_003d.json}, \code{determinism_epyc_003d.json} \\
+cost (SC-008) and the per-configuration table (FR-015) & \code{cost_003d.json}, \code{point_table_full_003d.json} \\
+an independent FP code at the truth & \code{calibrator_dt_003d.json} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{An independent code.} \code{tools/calibrator_dt_003d.py} evaluates \code{profile_jax2}'s own objective
+(jax2's \code{fp_jax}, independent of the spec 002 engine) at the truth. It does this on the expected-count cohorts
+of 40 configurations, and compares with the generator's binned law. On a grid refined to $(2N,\Delta t/16)$ the two
+agree to $1.15\times10^{-6}$ nats per individual or better. On \code{profile_jax2} 1.0.0's production grid
+($\Delta t=0.002$ at $\delta=1$, $L\approx100$) its likelihood at the truth is up to 0.214 nats per individual too
+low at sharp, small-$\kappa$ points. That is a defect of the calibrator's time step, not of the generator: its own
+\code{DT_RULE} grid ($\Delta t\le\mathrm{CV}/80$, built and off) brings it to $1.8\times10^{-5}$ or better
+(\code{calibrator_dt_003d.json}).
+
+\subsection{Assumptions and validity limits}\label{sec:gen-limits}
+
+\begin{itemize}[nosep]
+  \item \textbf{One model.} The generator and the calibrators solve the same Fokker--Planck model, so an error in its
+    equations would be common to both. Only the discretisations are checked independently.
+  \item \textbf{Heterogeneity.} Only $\xc$ at $\sigma=0.2$ is verified. Heterogeneous cohorts are accepted at
+    $n\le20{,}000$; above that they say so.
+  \item \textbf{Validated sizes.} The grid is validated at each configuration's library $n$. A configuration
+    outside the packaged table is checked at the call (a heterogeneous one costs about 1.3 CPU-h, inferred) and not
+    at the version level.
+  \item \textbf{Process state.} Importing the module sets JAX to float64 and \code{PJRT_NPROC=1} for the whole
+    process \src{generator.py:_runtime.configure}.
+  \item \textbf{Not provided.} SRK's planted defects, $\delta=$ \code{None}, and heterogeneity in $\eta$, $\beta$,
+    $\eps$ or $\kappa$.
+\end{itemize}

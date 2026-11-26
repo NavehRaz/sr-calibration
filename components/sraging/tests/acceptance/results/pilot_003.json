@@ -1,0 +1,81 @@
+{
+ "phase": "pilot",
+ "written_at": "2026-10-05T14:18:37Z",
+ "repo_head": "17de2ec1fbb54388c5339302eafd181f2eccb684",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_v1.toml": "c2c8f0fe2c5baf354fae3ba59a35a49b3f15f729"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "11c2fa14a7aff09c34aab20ea5c170769754597c"
+ },
+ "wall_s": 1.2473788261413574,
+ "cpu_s": 1.120503,
+ "status": "written",
+ "panel": "tests/acceptance/panel_003.toml",
+ "prices_cpu_s_stored": {
+  "pure-k0.01-p02-c1-s1__jax2": 289.756944,
+  "pure-k0.01-p02-c1-s1__jax2_h": 491.000699,
+  "pure-k0.01-p03-c0-s1__jax2": 168.93831500000002,
+  "pure-k0.01-p03-c0-s1__jax2_h": 379.066759,
+  "pure-k0.01-p04-c0-s0__jax2": 186.034862,
+  "pure-k0.01-p04-c0-s0__jax2_h": 309.10328200000004,
+  "hazard-k0.01-p00-c0-s0__jax2": 166.24703200000002,
+  "hazard-k0.01-p00-c0-s0__jax2_h": 733.057141,
+  "hazard-k0.316-p03-c1-s0__jax2": 298.41947100000004,
+  "hazard-k0.316-p03-c1-s0__jax2_h": 996.179028,
+  "hazard-real-German_Shepherd_vetCompass-c0-s0__jax2": 391.06586,
+  "hazard-real-German_Shepherd_vetCompass-c0-s0__jax2_h": 1058.5609060000002,
+  "pure-k0.01-p00-c0-s0__jax2": 437.870842,
+  "pure-k0.01-p00-c0-s0__jax2_h": 1491.3664099999999,
+  "pure-k0.01-p05-c0-s0__jax2": 2308.283061,
+  "pure-k0.01-p05-c0-s0__jax2_h": 4358.3107469999995,
+  "pure-k0.01-p07-c0-s0__jax2": 223.742922,
+  "pure-k0.01-p07-c0-s0__jax2_h": 375.920642,
+  "realfull-real-Denmark_M_1900_homo-c1-s0__jax2": 136.5222,
+  "realfull-real-Denmark_M_1900_homo-c1-s0__jax2_h": 695.069144,
+  "realfull-real-Denmark_M_1900_homo-c1-s1__jax2": 143.701058,
+  "realfull-real-Denmark_M_1900_homo-c1-s1__jax2_h": 711.3524369999999,
+  "realfull-real-Labradors_vetCompass-c1-s0__jax2": 268.785555,
+  "realfull-real-Labradors_vetCompass-c1-s0__jax2_h": 1088.4364799999998,
+  "realfull-real-Sweden_F_1910_homo-c1-s0__jax2": 434.935076,
+  "realfull-real-Sweden_F_1910_homo-c1-s0__jax2_h": 1433.082932,
+  "realfull-real-Sweden_F_1910_homo-c1-s1__jax2": 840.146896,
+  "realfull-real-Sweden_F_1910_homo-c1-s1__jax2_h": 1675.118034,
+  "window-k0.01-p01-c0-s1__jax2": 241.817474,
+  "window-k0.01-p01-c0-s1__jax2_h": 974.9664829999999,
+  "window-k0.0316-p00-c0-s1__jax2": 1518.570111,
+  "window-k0.0316-p00-c0-s1__jax2_h": 2788.993508
+ },
+ "celegans": {
+  "pure-real-celegans-c1-s0": "timed in the bytes phase",
+  "censor-real-celegans-c0-s0": "timed in the bytes phase"
+ },
+ "counts": {
+  "quick": 30,
+  "coverage_jax2": 160,
+  "coverage_h": 55,
+  "excluded_window": 82,
+  "coverage_cut": {
+   "het": 55,
+   "hazard_under_profile_jax2": 55,
+   "realfull_celegans": 4
+  },
+  "kmax_candidates": 104,
+  "kmax_draw": 104,
+  "kmax_negative": 3,
+  "pilot": 20,
+  "walker": 20,
+  "walker_kappa300_shortfall": 0
+ }
+}

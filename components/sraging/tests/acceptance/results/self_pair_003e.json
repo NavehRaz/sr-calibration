@@ -1,0 +1,336 @@
+{
+ "phase": "self-pair",
+ "written_at": "2026-10-17T21:35:39Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 1.6726601123809814,
+ "cpu_s": 1.2243000000000002,
+ "status": "PASS",
+ "paired": 1776,
+ "cohort_set_expected": "1776 paired",
+ "failing_axes": [],
+ "axes": {
+  "eta.calibration": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 1666,
+   "cohort_set": "1776 paired"
+  },
+  "eta.calibration_one_sided": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 110,
+   "cohort_set": "1776 paired"
+  },
+  "eta.availability": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "eta.information": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1666,
+   "cohort_set": "1776 paired"
+  },
+  "eta.accuracy": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "eta.cost": {
+   "outcome": "no difference",
+   "statistic": 1.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "beta.calibration": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 578,
+   "cohort_set": "1776 paired"
+  },
+  "beta.calibration_one_sided": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 1158,
+   "cohort_set": "1776 paired"
+  },
+  "beta.availability": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "beta.information": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 578,
+   "cohort_set": "1776 paired"
+  },
+  "beta.accuracy": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1736,
+   "cohort_set": "1776 paired"
+  },
+  "beta.cost": {
+   "outcome": "no difference",
+   "statistic": 1.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon.calibration": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 1632,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon.calibration_one_sided": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 144,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon.availability": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon.information": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1632,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon.accuracy": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon.cost": {
+   "outcome": "no difference",
+   "statistic": 1.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "kappa.calibration": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 9,
+   "cohort_set": "1776 paired"
+  },
+  "kappa.calibration_one_sided": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": 0.0,
+   "denominator": 450,
+   "cohort_set": "1776 paired"
+  },
+  "kappa.availability": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "kappa.information": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 9,
+   "cohort_set": "1776 paired"
+  },
+  "kappa.accuracy": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 459,
+   "cohort_set": "1776 paired"
+  },
+  "kappa.cost": {
+   "outcome": "no difference",
+   "statistic": 1.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard.calibration": {
+   "outcome": "not measured",
+   "statistic": null,
+   "uncertainty": null,
+   "denominator": 0,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard.calibration_one_sided": {
+   "outcome": "not measured",
+   "statistic": null,
+   "uncertainty": null,
+   "denominator": 0,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard.availability": {
+   "outcome": "no difference",
+   "statistic": 0.0,
+   "uncertainty": null,
+   "denominator": 318,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard.information": {
+   "outcome": "not measured",
+   "statistic": null,
+   "uncertainty": null,
+   "denominator": 0,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard.accuracy": {
+   "outcome": "not measured",
+   "statistic": null,
+   "uncertainty": null,
+   "denominator": 0,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard.cost": {
+   "outcome": "no difference",
+   "statistic": 1.0,
+   "uncertainty": null,
+   "denominator": 1776,
+   "cohort_set": "1776 paired"
+  }
+ },
+ "expected_denominators": {
+  "eta": {
+   "calibration": 1666,
+   "calibration_one_sided": 110,
+   "availability": 1776,
+   "information": 1666,
+   "accuracy": 1776,
+   "cost": 1776
+  },
+  "beta": {
+   "calibration": 578,
+   "calibration_one_sided": 1158,
+   "availability": 1776,
+   "information": 578,
+   "accuracy": 1736,
+   "cost": 1776
+  },
+  "epsilon": {
+   "calibration": 1632,
+   "calibration_one_sided": 144,
+   "availability": 1776,
+   "information": 1632,
+   "accuracy": 1776,
+   "cost": 1776
+  },
+  "kappa": {
+   "calibration": 9,
+   "calibration_one_sided": 450,
+   "availability": 1776,
+   "information": 9,
+   "accuracy": 459,
+   "cost": 1776
+  },
+  "external_hazard": {
+   "calibration": 0,
+   "calibration_one_sided": 0,
+   "availability": 318,
+   "information": 0,
+   "accuracy": 0,
+   "cost": 1776
+  }
+ },
+ "overall": {
+  "eta": "no difference detected",
+  "beta": "no difference detected",
+  "epsilon": "no difference detected",
+  "kappa": "no difference detected",
+  "external_hazard": "not measured"
+ },
+ "round_trip": {
+  "equal_to_self_pair": true,
+  "differing_quantities": [],
+  "records": 1776,
+  "path": "stored ClaimSet -> to_dict claims -> claimset_from_kwargs -> compare_v5 sets"
+ },
+ "reading": "SC-002's 'denominator 1,776' is the paired cohort set on every axis (spec erratum): the tester's n is per claim class, checked here against an independent count",
+ "sraging_provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs": {
+   "method": "jax2-v5-full-bign",
+   "reference": "jax2-v5-full-bign",
+   "null": "null_prior-v5-full-bign"
+  },
+  "cohort_ids": null,
+  "computed_on_manifest_sha256": {},
+  "runs_sha256": {
+   "method": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "reference": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "null": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  }
+ },
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

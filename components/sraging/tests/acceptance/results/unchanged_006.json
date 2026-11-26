@@ -1,0 +1,140 @@
+{
+ "phase": "unchanged",
+ "written_at": "2026-11-15T18:36:24Z",
+ "repo_head": "75042f3564b305b593d2e36fda1ba59e66299c50",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "dc451e0e511eca02c67617b2669e7d494c9dd608"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 931.1172978878021,
+ "cpu_s": 0.234798,
+ "status": "pass",
+ "groups": {
+  "unit": {
+   "tests": 1999,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 1999,
+   "returncode": 0,
+   "summary": "1999 passed, 22 deselected in 708.24s (0:11:48)",
+   "wall_s": 712.9,
+   "paths": [
+    "tests/unit"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "parity": {
+   "tests": 497,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 497,
+   "returncode": 0,
+   "summary": "497 passed, 1 deselected in 92.85s (0:01:32)",
+   "wall_s": 94.9,
+   "paths": [
+    "tests/parity"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "results": {
+   "tests": 365,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 2,
+   "passed": 363,
+   "returncode": 1,
+   "summary": "363 passed, 1 skipped, 1 xfailed in 121.87s (0:02:01)",
+   "wall_s": 122.4,
+   "paths": [
+    "tests/acceptance/test_results.py",
+    "tests/acceptance/test_results_002.py",
+    "tests/acceptance/test_results_003.py",
+    "tests/acceptance/test_results_003b.py",
+    "tests/acceptance/test_results_003e.py",
+    "tests/acceptance/test_results_003f.py",
+    "tests/acceptance/test_results_003g.py",
+    "tests/acceptance/test_results_004.py",
+    "tests/acceptance/test_results_005.py"
+   ],
+   "skipped_list": [
+    [
+     "tests.acceptance.test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch",
+     "NOT APPLICABLE: the fit path changed since spec 002's claims re-run (['src/sraging/adapters/observation.py', 'src/sraging/adapters/srbench.py', 'src/sraging/calibrators/profile_v033.py', 'src/sraging/labels.py', 'src/sraging/registry.py', 'src/sraging/result.py']); spec 003's re-run (results/claims-"
+    ],
+    [
+     "tests.acceptance.test_results_003::test_coverage_no_combination_loses_on_a_gated_arm",
+     "SC-005 fails as recorded: [['profile_jax2|censor', 'eta_over_eps', 'vs_eta'], ['profile_jax2|censor', 'eta_over_eps', 'vs_epsilon']] (Naveh 2026-10-10, [coverage_result])"
+    ]
+   ],
+   "failed_list": []
+  },
+  "closure": {
+   "tests": 2,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 2,
+   "returncode": 0,
+   "summary": "2 passed in 0.50s",
+   "wall_s": 0.7,
+   "paths": [
+    "tests/acceptance/test_results_006.py::test_closure_edits_are_listed",
+    "tests/acceptance/test_results_006.py::test_the_listed_engine_files_are_the_engine_files_edited"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  }
+ },
+ "groups_ok": true,
+ "skips_unlisted": [],
+ "claims": {
+  "claims_head": "fcb2c9b7678d7dad08a6f030826c56ab6a1c7ff2",
+  "claims_status": "pass",
+  "claims_acceptance": "acceptance",
+  "checks_40_of_40": true,
+  "closure_changed_since": [],
+  "violations": [],
+  "spec_exempt": [
+   {
+    "path": "src/sraging/engine/evaluator.py",
+    "status": "M",
+    "spec": "004",
+    "task": "T020, T034"
+   },
+   {
+    "path": "src/sraging/engine/observation.py",
+    "status": "M",
+    "spec": "006",
+    "task": "T034"
+   }
+  ],
+  "docstring_only": [],
+  "ok": true
+ },
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "8ce25965b31ea7158e77e3752f259c8a1f3367aa9b14340452ebc94efefe47ff"
+ },
+ "cap": {
+  "cap_cpu_h": 1.0,
+  "cpu_spent_h": 0.43587330194444446,
+  "capped": false,
+  "where": "mac"
+ }
+}

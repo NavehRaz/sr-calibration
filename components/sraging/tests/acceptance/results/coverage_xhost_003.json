@@ -1,0 +1,204 @@
+{
+ "phase": "coverage-xhost",
+ "written_at": "2026-10-10T07:14:49Z",
+ "repo_head": "d903979764194c5b7afa7b048710210c15e9179b",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003.toml": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "076663b30d91bcef0813dd05fd964dea16ca667e"
+ },
+ "wall_s": 0.07736611366271973,
+ "cpu_s": 0.024535,
+ "status": "reported",
+ "gating": false,
+ "jobs": [
+  [
+   "pure-k0.01-p18-c0-s1",
+   "profile_jax2"
+  ],
+  [
+   "pure-k0.01-p15-c0-s0",
+   "profile_jax2"
+  ],
+  [
+   "pure-k0.01-p10-c0-s1",
+   "profile_jax2"
+  ],
+  [
+   "pure-k0.01-p03-c1-s0",
+   "profile_jax2"
+  ],
+  [
+   "pure-k0.01-p02-c0-s1",
+   "profile_jax2"
+  ],
+  [
+   "censor-k0.0316-p04-c0-s1",
+   "profile_jax2"
+  ],
+  [
+   "censor-k0.0316-p00-c1-s0",
+   "profile_jax2"
+  ],
+  [
+   "censor-k0.0316-p03-c0-s1",
+   "profile_jax2"
+  ],
+  [
+   "censor-k0.01-p05-c1-s0",
+   "profile_jax2"
+  ],
+  [
+   "censor-k0.0316-p00-c0-s0",
+   "profile_jax2"
+  ],
+  [
+   "hazard-k0.01-p05-c0-s1",
+   "profile_jax2_h"
+  ],
+  [
+   "hazard-k0.01-p00-c0-s1",
+   "profile_jax2_h"
+  ],
+  [
+   "hazard-k0.0316-p00-c0-s0",
+   "profile_jax2_h"
+  ],
+  [
+   "hazard-k0.01-p03-c0-s1",
+   "profile_jax2_h"
+  ],
+  [
+   "hazard-k0.0316-p05-c1-s0",
+   "profile_jax2_h"
+  ]
+ ],
+ "per_cell": 5,
+ "seed": 20261008,
+ "n_pairs": 15,
+ "missing": {
+  "mac": [],
+  "cluster": []
+ },
+ "hosts": {
+  "mac": {
+   "n_nodes": 1,
+   "rows_by_cpu": {
+    "Apple M5 Pro": 15
+   },
+   "rows_without_host": 0
+  },
+  "cluster": {
+   "n_nodes": 3,
+   "rows_by_cpu": {
+    "AMD EPYC 7702 64-Core Processor": 8,
+    "AMD EPYC 9634 84-Core Processor": 7
+   },
+   "rows_without_host": 0
+  }
+ },
+ "compare": {
+  "eta": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 26,
+   "end_shift_dex_median": 1.15565909842494e-07,
+   "end_shift_dex_max": 0.03708676567978017
+  },
+  "beta": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 14,
+   "end_shift_dex_median": 0.00012114705207943568,
+   "end_shift_dex_max": 0.41636042529557726
+  },
+  "epsilon": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 30,
+   "end_shift_dex_median": 1.6170650732058116e-06,
+   "end_shift_dex_max": 0.0758551852563357
+  },
+  "kappa": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 1,
+   "end_shift_dex_median": 0.0014417027211578355,
+   "end_shift_dex_max": 0.0014417027211578355
+  },
+  "eta_over_eps": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 27,
+   "end_shift_dex_median": 2.089190362452735e-08,
+   "end_shift_dex_max": 5.489866595023138e-05
+  },
+  "rbar_over_eta": {
+   "n": 15,
+   "shape_differs": 2,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 17,
+   "end_shift_dex_median": 1.1806874019955965e-06,
+   "end_shift_dex_max": 3.5686139564106145e-05
+  },
+  "sqrt_eta_over_eps": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 30,
+   "end_shift_dex_median": 4.0683724382110417e-07,
+   "end_shift_dex_max": 2.4140485067304494
+  },
+  "beta_over_eta_kp1": {
+   "n": 15,
+   "shape_differs": 0,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 18,
+   "end_shift_dex_median": 1.3970964526907437e-06,
+   "end_shift_dex_max": 0.004213952466093745
+  },
+  "rbar": {
+   "n": 15,
+   "shape_differs": 1,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 17,
+   "end_shift_dex_median": 1.4458975058381312e-06,
+   "end_shift_dex_max": 3.9067165952702986e-05
+  },
+  "beta_over_kp1": {
+   "n": 15,
+   "shape_differs": 1,
+   "hit_flips": 0,
+   "failed_on_one_host": 0,
+   "n_ends": 18,
+   "end_shift_dex_median": 8.82971450829715e-07,
+   "end_shift_dex_max": 0.0012860834950113485
+  }
+ }
+}

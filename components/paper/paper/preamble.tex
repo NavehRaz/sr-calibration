@@ -1,0 +1,36 @@
+% Shared preamble for main.tex and si.tex. TinyTeX: no microtype, siunitx, cleveref, algorithm2e, biblatex.
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{lineno}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit}
+\usepackage{xr-hyper}
+\usepackage[colorlinks=true,linkcolor=MidnightBlue,citecolor=MidnightBlue,urlcolor=MidnightBlue]{hyperref}
+\graphicspath{{../figures/out/}}
+
+\definecolor{opencol}{RGB}{190,30,30}
+
+% \C{id}: a number from claims.toml (macros generated into claims.tex by verify_claims.py).
+\newcommand{\C}[1]{\ifcsname claim@#1\endcsname\csname claim@#1\endcsname\else\textcolor{opencol}{\textbf{??\detokenize{#1}}}\fi}
+% \MISSING{what}{why it matters}{how to get it}: evidence that does not exist yet. Listed in sources/MISSING.md.
+\newcommand{\MISSING}[3]{\par\smallskip\noindent\fcolorbox{opencol}{opencol!6}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\small
+  \textcolor{opencol}{\textbf{MISSING:}} #1\\ \textit{Why it matters:} #2\\ \textit{How to get it:} #3}}\par\smallskip}
+% \NOTE{...}: an editorial note for Naveh (removed before posting).
+\newcommand{\NOTE}[1]{{\color{Plum}[\textbf{NOTE:} #1]}}
+
+% Model notation
+\newcommand{\eps}{\varepsilon}
+\newcommand{\xc}{X_c}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\rbar}{\bar r}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}

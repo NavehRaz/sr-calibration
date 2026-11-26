@@ -1,0 +1,297 @@
+{
+ "phase": "identity",
+ "written_at": "2026-11-12T20:12:45Z",
+ "repo_head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "85b860405cb7961890366a9288edbebcc2336e7a"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": "MC06268844",
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 14085.65455198288,
+ "cpu_s": 0.08350199999999999,
+ "status": "pass",
+ "rows": [
+  {
+   "cohort_id": "tests/data/itp_plus_age0.csv",
+   "name": "profile_jax2_w",
+   "rule": "R-5",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded": [
+    "/diagnostics/switches/window",
+    "/diagnostics/observation_model/window_on"
+   ],
+   "w_cpu_s": 2198.2810590000004,
+   "j_cpu_s": 2176.698222999999
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s0",
+   "name": "profile_jax2_w",
+   "rule": "R-5",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded": [
+    "/diagnostics/switches/window",
+    "/diagnostics/observation_model/window_on"
+   ],
+   "w_cpu_s": 355.677252,
+   "j_cpu_s": 355.840401
+  },
+  {
+   "cohort_id": "pure-k1-p01-c0-s0",
+   "name": "profile_jax2_w",
+   "rule": "R-5",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded": [
+    "/diagnostics/switches/window",
+    "/diagnostics/observation_model/window_on"
+   ],
+   "w_cpu_s": 3281.0730329999997,
+   "j_cpu_s": 3278.338358
+  },
+  {
+   "cohort_id": "window-k0.01-p01-c0-s0",
+   "name": "profile_jax2_w",
+   "rule": "R-6",
+   "level": "run_fit",
+   "observation_equal": true,
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "window": {
+    "window_given": [
+     86.0,
+     113.0
+    ],
+    "hi_mapped_from": null,
+    "hi_used": 113.0,
+    "hi_rule": null,
+    "n_rows_given": 1000,
+    "n_dropped_below_lo": 46,
+    "n_censored_above_hi": 33,
+    "n_rows_kept": 954,
+    "row_map": "the kept rows (age >= lo), in the cohort's order",
+    "window_eff": [
+     86.0,
+     113.0
+    ],
+    "lo_rule": "on the grid",
+    "n_deaths_censored": 20,
+    "n_censored_at_hi_eff": 53,
+    "n_deaths_fitted": 901,
+    "min_deaths": 4,
+    "rule": "the tester's apply_window, then the frozen snap"
+   },
+   "oracle_switches": {
+    "relabel": true,
+    "hazard": false,
+    "window": true,
+    "shadow": true,
+    "exact_from_F": true,
+    "self_consistent": true,
+    "floor_early": true,
+    "n_rule": true,
+    "dt_rule": true,
+    "early_all": true,
+    "inner_polish_j": true,
+    "bracket_bisect": true,
+    "extent_z": true,
+    "box_flag": false
+   },
+   "port_cpu_s": 243.984841,
+   "oracle_cpu_s": 241.120044
+  },
+  {
+   "cohort_id": "window-k0.01-p01-c0-s0",
+   "name": "profile_jax2_h",
+   "rule": "R-6",
+   "level": "run_fit",
+   "observation_equal": true,
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "window": {
+    "window_given": [
+     86.0,
+     113.0
+    ],
+    "hi_mapped_from": null,
+    "hi_used": 113.0,
+    "hi_rule": null,
+    "n_rows_given": 1000,
+    "n_dropped_below_lo": 46,
+    "n_censored_above_hi": 33,
+    "n_rows_kept": 954,
+    "row_map": "the kept rows (age >= lo), in the cohort's order",
+    "window_eff": [
+     86.0,
+     113.0
+    ],
+    "lo_rule": "on the grid",
+    "n_deaths_censored": 20,
+    "n_censored_at_hi_eff": 53,
+    "n_deaths_fitted": 901,
+    "min_deaths": 5,
+    "rule": "the tester's apply_window, then the frozen snap"
+   },
+   "oracle_switches": {
+    "relabel": true,
+    "hazard": true,
+    "window": true,
+    "shadow": true,
+    "exact_from_F": true,
+    "self_consistent": true,
+    "floor_early": true,
+    "n_rule": true,
+    "dt_rule": true,
+    "early_all": true,
+    "inner_polish_j": true,
+    "bracket_bisect": true,
+    "extent_z": true,
+    "box_flag": false
+   },
+   "port_cpu_s": 386.617255,
+   "oracle_cpu_s": 386.73175899999995
+  },
+  {
+   "cohort_id": "window-k0.316-p03-c1-s0",
+   "name": "profile_jax2_w",
+   "rule": "R-6",
+   "level": "run_fit",
+   "observation_equal": true,
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "window": {
+    "window_given": [
+     70.0,
+     120.0
+    ],
+    "hi_mapped_from": null,
+    "hi_used": 120.0,
+    "hi_rule": null,
+    "n_rows_given": 2000,
+    "n_dropped_below_lo": 87,
+    "n_censored_above_hi": 87,
+    "n_rows_kept": 1913,
+    "row_map": "the kept rows (age >= lo), in the cohort's order",
+    "window_eff": [
+     70.0,
+     120.0
+    ],
+    "lo_rule": "on the grid",
+    "n_deaths_censored": 182,
+    "n_censored_at_hi_eff": 269,
+    "n_deaths_fitted": 1644,
+    "min_deaths": 4,
+    "rule": "the tester's apply_window, then the frozen snap"
+   },
+   "oracle_switches": {
+    "relabel": true,
+    "hazard": false,
+    "window": true,
+    "shadow": true,
+    "exact_from_F": true,
+    "self_consistent": true,
+    "floor_early": true,
+    "n_rule": true,
+    "dt_rule": true,
+    "early_all": true,
+    "inner_polish_j": true,
+    "bracket_bisect": true,
+    "extent_z": true,
+    "box_flag": false
+   },
+   "port_cpu_s": 248.896771,
+   "oracle_cpu_s": 247.53148000000002
+  },
+  {
+   "cohort_id": "window-k0.316-p03-c1-s0",
+   "name": "profile_jax2_h",
+   "rule": "R-6",
+   "level": "run_fit",
+   "observation_equal": true,
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "window": {
+    "window_given": [
+     70.0,
+     120.0
+    ],
+    "hi_mapped_from": null,
+    "hi_used": 120.0,
+    "hi_rule": null,
+    "n_rows_given": 2000,
+    "n_dropped_below_lo": 87,
+    "n_censored_above_hi": 87,
+    "n_rows_kept": 1913,
+    "row_map": "the kept rows (age >= lo), in the cohort's order",
+    "window_eff": [
+     70.0,
+     120.0
+    ],
+    "lo_rule": "on the grid",
+    "n_deaths_censored": 182,
+    "n_censored_at_hi_eff": 269,
+    "n_deaths_fitted": 1644,
+    "min_deaths": 5,
+    "rule": "the tester's apply_window, then the frozen snap"
+   },
+   "oracle_switches": {
+    "relabel": true,
+    "hazard": true,
+    "window": true,
+    "shadow": true,
+    "exact_from_F": true,
+    "self_consistent": true,
+    "floor_early": true,
+    "n_rule": true,
+    "dt_rule": true,
+    "early_all": true,
+    "inner_polish_j": true,
+    "bracket_bisect": true,
+    "extent_z": true,
+    "box_flag": false
+   },
+   "port_cpu_s": 380.87986,
+   "oracle_cpu_s": 381.667478
+  }
+ ],
+ "errors": [],
+ "stopped": false,
+ "equal_by_rule": {
+  "R-5": 3,
+  "R-6": 4
+ },
+ "differences": [],
+ "pairs": 7,
+ "cpu": "Apple M5 Pro",
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "217e6c0132d26af8df180c06d43b0e1fc6784d0d4ff1236a5ec3b9439472d993"
+ },
+ "cap": {
+  "cap_cpu_h": 5.0,
+  "cpu_spent_h": 3.9371264258333336,
+  "capped": false,
+  "where": "mac"
+ }
+}

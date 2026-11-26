@@ -1,0 +1,5959 @@
+{
+ "phase": "fits",
+ "written_at": "2026-10-06T10:48:33Z",
+ "repo_head": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003.toml": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "a6f1e8373128f9daaadf26196699248857c3754c"
+ },
+ "wall_s": 73747.68617987633,
+ "cpu_s": 5.652496,
+ "status": "fail",
+ "checks": {
+  "theta_bytes_equal": {
+   "passed": 66,
+   "total": 66
+  },
+  "result_equal": {
+   "passed": 66,
+   "total": 66
+  },
+  "claims_equal": {
+   "passed": 66,
+   "total": 66
+  },
+  "sc_equal": {
+   "passed": 66,
+   "total": 66
+  },
+  "stored_result_equal": {
+   "passed": 6,
+   "total": 18
+  },
+  "stored_claims_equal": {
+   "passed": 18,
+   "total": 18
+  },
+  "mechanisms_fire": {
+   "passed": 6,
+   "total": 6
+  }
+ },
+ "mechanisms": {
+  "realfull-real-Sweden_F_1910_homo-c1-s1__jax2": true,
+  "realfull-real-Denmark_M_1900_homo-c1-s1__jax2": true,
+  "pure-k0.01-p00-c0-s0__jax2": true,
+  "pure-k0.01-p05-c0-s0__jax2": true,
+  "pure-k0.01-p05-c0-s0__jax2_h": true,
+  "hazard-k0.01-p00-c0-s0__jax2_h": true
+ },
+ "errors": [],
+ "rows": [
+  {
+   "cohort_id": "hazard-k0.01-p00-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 231.98359499999788,
+   "oracle_cpu_s": 229.41038000000117,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 13,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 1.869560552962336,
+     "upper": 3.7729147101058773,
+     "point": 3.6143820980355876
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 493.0549618037022,
+     "point": 999.9999999999998
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 28.529226461385445,
+     "upper": 56.42291422224659,
+     "point": 55.47580960685673
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.058879450527888955,
+     "point": 0.0010000000000000002
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 1.869560552962336,
+     "upper": 3.7729147101058773,
+     "point": 3.6143820980355876
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 493.0549618037022,
+     "point": 999.9999999999998
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 28.529226461385445,
+     "upper": 56.42291422224659,
+     "point": 55.47580960685673
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.058879450527888955,
+     "point": 0.0010000000000000002
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/hazard-k0.01-p00-c0-s0__jax2.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[1]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "hazard-k0.01-p00-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 651.6856209999969,
+   "oracle_cpu_s": 626.955028999997,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": [
+     "eta",
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019648388859569936,
+     "upper": 0.007517808981718146,
+     "point": 0.0001978056386672022
+    },
+    {
+     "parameter": "beta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1385659407823346e-05,
+     "upper": 0.004652674637702763,
+     "point": 3.546477872108446e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019648388859569936,
+     "upper": 0.007517808981718146,
+     "point": 0.0001978056386672022
+    },
+    {
+     "parameter": "beta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1385659407823346e-05,
+     "upper": 0.004652674637702763,
+     "point": 3.546477872108446e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/hazard-k0.01-p00-c0-s0__jax2_h.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/beta@0.95[1]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 583.142818,
+   "oracle_cpu_s": 582.6118470000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 14,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001947608148993729,
+     "upper": 0.01222651466722185,
+     "point": 0.002452098546229241
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 192.18900889811675,
+     "point": 0.18278200876874656
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.873196042480705e-05,
+     "upper": 0.016159944962140314,
+     "point": 0.001704873719690724
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001947608148993729,
+     "upper": 0.01222651466722185,
+     "point": 0.002452098546229241
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 192.18900889811675,
+     "point": 0.18278200876874656
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.873196042480705e-05,
+     "upper": 0.016159944962140314,
+     "point": 0.001704873719690724
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/pure-k0.01-p00-c0-s0__jax2.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1928.7402399999999,
+   "oracle_cpu_s": 2167.619483,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 9,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019486654637800637,
+     "upper": 0.012152089108897358,
+     "point": 0.002162406679977243
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 192.16452826178522,
+     "point": 64.55391748769463
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.883851667119625e-05,
+     "upper": 0.01563967293661268,
+     "point": 0.0005972130209625758
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019486654637800637,
+     "upper": 0.012152089108897358,
+     "point": 0.002162406679977243
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 192.16452826178522,
+     "point": 64.55391748769463
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.883851667119625e-05,
+     "upper": 0.01563967293661268,
+     "point": 0.0005972130209625758
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/pure-k0.01-p00-c0-s0__jax2_h.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/h@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 709.274797,
+   "oracle_cpu_s": 707.5171449999999,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 15,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019515479536695666,
+     "upper": 0.003324414544524576,
+     "point": 0.00019611893320280112
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 66.45034831583759,
+     "point": 7.986434278424038e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1784314527166525e-05,
+     "upper": 0.001725642494158766,
+     "point": 3.455438096438821e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019515479536695666,
+     "upper": 0.003324414544524576,
+     "point": 0.00019611893320280112
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 66.45034831583759,
+     "point": 7.986434278424038e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1784314527166525e-05,
+     "upper": 0.001725642494158766,
+     "point": 3.455438096438821e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 856.0036339999999,
+   "oracle_cpu_s": 849.7689100000002,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": [
+     "eta",
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019510455055676455,
+     "upper": 0.00314108523166803,
+     "point": 0.00019611893483682574
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 66.84561787786365,
+     "point": 3.0230359695039245e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1664196604386864e-05,
+     "upper": 0.0016196910252319876,
+     "point": 3.455434642764589e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019510455055676455,
+     "upper": 0.00314108523166803,
+     "point": 0.00019611893483682574
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 66.84561787786365,
+     "point": 3.0230359695039245e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1664196604386864e-05,
+     "upper": 0.0016196910252319876,
+     "point": 3.455434642764589e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1573.435661,
+   "oracle_cpu_s": 1553.579907,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 20,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019536116427522717,
+     "upper": 0.0011082458064888925,
+     "point": 0.0001956318449023223
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 30.26458160198335,
+     "point": 8.04631352311911e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.876269358568988e-05,
+     "upper": 0.00034770697418961676,
+     "point": 3.9705052829280786e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019536116427522717,
+     "upper": 0.0011082458064888925,
+     "point": 0.0001956318449023223
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 30.26458160198335,
+     "point": 8.04631352311911e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.876269358568988e-05,
+     "upper": 0.00034770697418961676,
+     "point": 3.9705052829280786e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2739.3778019999995,
+   "oracle_cpu_s": 2683.1879869999993,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 7,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019537100149059843,
+     "upper": 0.0010983668271563206,
+     "point": 0.0001956318423496332
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 30.235322615342636,
+     "point": 9.644667593783267e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.876252611410626e-05,
+     "upper": 0.0003416108881678404,
+     "point": 3.970502046757017e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019537100149059843,
+     "upper": 0.0010983668271563206,
+     "point": 0.0001956318423496332
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 30.235322615342636,
+     "point": 9.644667593783267e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.876252611410626e-05,
+     "upper": 0.0003416108881678404,
+     "point": 3.970502046757017e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1483.945005,
+   "oracle_cpu_s": 1468.0015219999998,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 13,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019497247976066237,
+     "upper": 0.0015142860452040708,
+     "point": 0.00019529813738367816
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.82759571699065,
+     "point": 5.80634818685663e-08
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.790830729852071e-05,
+     "upper": 0.0005137750132803417,
+     "point": 3.8943422363512616e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019497247976066237,
+     "upper": 0.0015142860452040708,
+     "point": 0.00019529813738367816
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.82759571699065,
+     "point": 5.80634818685663e-08
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.790830729852071e-05,
+     "upper": 0.0005137750132803417,
+     "point": 3.8943422363512616e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1959.7891570000002,
+   "oracle_cpu_s": 1735.8263029999998,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": [
+     "eta",
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019496087899552048,
+     "upper": 0.0013432962112239358,
+     "point": 0.0001952981163107192
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.79177256275831,
+     "point": 3.2286372587011225e-08
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.7876087904931064e-05,
+     "upper": 0.00031449147901482636,
+     "point": 3.894333970902113e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019496087899552048,
+     "upper": 0.0013432962112239358,
+     "point": 0.0001952981163107192
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.79177256275831,
+     "point": 3.2286372587011225e-08
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.7876087904931064e-05,
+     "upper": 0.00031449147901482636,
+     "point": 3.894333970902113e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 299.3446450000001,
+   "oracle_cpu_s": 309.05688599999985,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 13,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018510049861359038,
+     "upper": 0.002235522565822215,
+     "point": 0.000230463773595615
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 70.73207555825925,
+     "point": 0.002579064072885251
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00014189848606437373,
+     "upper": 0.004145839568426584,
+     "point": 0.00019921065230667806
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018510049861359038,
+     "upper": 0.002235522565822215,
+     "point": 0.000230463773595615
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 70.73207555825925,
+     "point": 0.002579064072885251
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00014189848606437373,
+     "upper": 0.004145839568426584,
+     "point": 0.00019921065230667806
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1134.3418220000003,
+   "oracle_cpu_s": 879.0360769999998,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 13,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018510051487211627,
+     "upper": 0.0023932193329869148,
+     "point": 0.00023046340023034063
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 70.73018505924072,
+     "point": 0.0025790418947666586
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00014220142078213527,
+     "upper": 0.004438376662796398,
+     "point": 0.0001992101541314487
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018510051487211627,
+     "upper": 0.0023932193329869148,
+     "point": 0.00023046340023034063
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 70.73018505924072,
+     "point": 0.0025790418947666586
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00014220142078213527,
+     "upper": 0.004438376662796398,
+     "point": 0.0001992101541314487
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 269.1886169999998,
+   "oracle_cpu_s": 276.876088,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 11,
+    "widened": [
+     "eta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018585804250941697,
+     "upper": 0.0015819249413615054,
+     "point": 0.00018782429495238167
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 47.69276280737403,
+     "point": 1.1593294810195291e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00012645356743216224,
+     "upper": 0.0023362262694808784,
+     "point": 0.00013770489955649366
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018585804250941697,
+     "upper": 0.0015819249413615054,
+     "point": 0.00018782429495238167
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 47.69276280737403,
+     "point": 1.1593294810195291e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00012645356743216224,
+     "upper": 0.0023362262694808784,
+     "point": 0.00013770489955649366
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 449.01275499999974,
+   "oracle_cpu_s": 455.90085200000067,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 13,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001858580340569684,
+     "upper": 0.0016521336645412337,
+     "point": 0.00018782428643629751
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 47.7734336363688,
+     "point": 8.155284364156349e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00012645347500537897,
+     "upper": 0.0022917939600452385,
+     "point": 0.0001377048039654794
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001858580340569684,
+     "upper": 0.0016521336645412337,
+     "point": 0.00018782428643629751
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 47.7734336363688,
+     "point": 8.155284364156349e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00012645347500537897,
+     "upper": 0.0022917939600452385,
+     "point": 0.0001377048039654794
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1297.7725209999999,
+   "oracle_cpu_s": 1318.2219510000004,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": [
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001868925781682022,
+     "upper": 0.0006022055147781798,
+     "point": 0.00018784683016646926
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 11.294375793481068,
+     "point": 1.8204162755994744e-05
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00014477187437406908,
+     "upper": 0.0005859234473094031,
+     "point": 0.00014903808830178816
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001868925781682022,
+     "upper": 0.0006022055147781798,
+     "point": 0.00018784683016646926
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 11.294375793481068,
+     "point": 1.8204162755994744e-05
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00014477187437406908,
+     "upper": 0.0005859234473094031,
+     "point": 0.00014903808830178816
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2282.6292940000003,
+   "oracle_cpu_s": 2248.275635,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": [
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018689256721313334,
+     "upper": 0.0006127545188405777,
+     "point": 0.00018784380294423176
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 14.970469780213723,
+     "point": 1.802928469687668e-05
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001447717059498048,
+     "upper": 0.0005858218254180481,
+     "point": 0.00014903518429725457
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018689256721313334,
+     "upper": 0.0006127545188405777,
+     "point": 0.00018784380294423176
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 14.970469780213723,
+     "point": 1.802928469687668e-05
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001447717059498048,
+     "upper": 0.0005858218254180481,
+     "point": 0.00014903518429725457
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1566.9928409999993,
+   "oracle_cpu_s": 1542.8949059999995,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 10,
+    "widened": [
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018800401503819465,
+     "upper": 0.0008722797788681089,
+     "point": 0.0002590104773891065
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.984564496984182e-05,
+     "upper": 23.358201537486668,
+     "point": 0.004275224374985827
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00015044901880972283,
+     "upper": 0.0009190203703852976,
+     "point": 0.00022304415555998212
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018800401503819465,
+     "upper": 0.0008722797788681089,
+     "point": 0.0002590104773891065
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.984564496984182e-05,
+     "upper": 23.358201537486668,
+     "point": 0.004275224374985827
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00015044901880972283,
+     "upper": 0.0009190203703852976,
+     "point": 0.00022304415555998212
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2475.8145640000002,
+   "oracle_cpu_s": 2488.290626,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 4,
+    "widened": [
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018968542701801373,
+     "upper": 0.0008486037446869655,
+     "point": 0.0002589970469725188
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.92971743527303e-05,
+     "upper": 23.433836842630722,
+     "point": 0.0042743815124977515
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001504524203131236,
+     "upper": 0.0009190966501477866,
+     "point": 0.00022302776810667553
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018968542701801373,
+     "upper": 0.0008486037446869655,
+     "point": 0.0002589970469725188
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.92971743527303e-05,
+     "upper": 23.433836842630722,
+     "point": 0.0042743815124977515
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001504524203131236,
+     "upper": 0.0009190966501477866,
+     "point": 0.00022302776810667553
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 244.98989400000028,
+   "oracle_cpu_s": 245.81410999999935,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 6,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001771506294321585,
+     "upper": 0.0007770348663884763,
+     "point": 0.00017981466802026487
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 22.514841019802056,
+     "point": 4.425680035612761e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00024673795031438536,
+     "upper": 0.0014871504553967505,
+     "point": 0.0002681419519699441
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001771506294321585,
+     "upper": 0.0007770348663884763,
+     "point": 0.00017981466802026487
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 22.514841019802056,
+     "point": 4.425680035612761e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00024673795031438536,
+     "upper": 0.0014871504553967505,
+     "point": 0.0002681419519699441
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 507.43720099999973,
+   "oracle_cpu_s": 507.8239740000008,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017715061542840488,
+     "upper": 0.0007769924866937439,
+     "point": 0.00017981465551824373
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 22.542488278394387,
+     "point": 2.074004805330917e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00024673762100398355,
+     "upper": 0.0014496900037938806,
+     "point": 0.00026814163171706224
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017715061542840488,
+     "upper": 0.0007769924866937439,
+     "point": 0.00017981465551824373
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 22.542488278394387,
+     "point": 2.074004805330917e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00024673762100398355,
+     "upper": 0.0014496900037938806,
+     "point": 0.00026814163171706224
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 224.62320999999974,
+   "oracle_cpu_s": 223.22391099999913,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": [
+     "eta",
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017593295041043003,
+     "upper": 0.0004729140134972384,
+     "point": 0.0001785734555552077
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 11.160466606570012,
+     "point": 1.000000000000001e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0002449491874635262,
+     "upper": 0.000852303594032364,
+     "point": 0.0002661986183483226
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017593295041043003,
+     "upper": 0.0004729140134972384,
+     "point": 0.0001785734555552077
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 11.160466606570012,
+     "point": 1.000000000000001e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0002449491874635262,
+     "upper": 0.000852303594032364,
+     "point": 0.0002661986183483226
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 367.04563699999926,
+   "oracle_cpu_s": 376.4275010000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": [
+     "eta",
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001759329368870209,
+     "upper": 0.0004730400326918182,
+     "point": 0.00017857344190383214
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 11.458244133356185,
+     "point": 1.000000000000001e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00024494895953968977,
+     "upper": 0.0008526006221558995,
+     "point": 0.0002661983694742232
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001759329368870209,
+     "upper": 0.0004730400326918182,
+     "point": 0.00017857344190383214
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 11.458244133356185,
+     "point": 1.000000000000001e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00024494895953968977,
+     "upper": 0.0008526006221558995,
+     "point": 0.0002661983694742232
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 419.74733000000015,
+   "oracle_cpu_s": 424.7976290000006,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": [
+     "eta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.000179733196263625,
+     "upper": 0.00026931280168905207,
+     "point": 0.00020003048957475825
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 3.95961841800772,
+     "point": 0.0012011001791003043
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00028651808931128497,
+     "upper": 0.0005057109740299787,
+     "point": 0.00032959523648244687
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.000179733196263625,
+     "upper": 0.00026931280168905207,
+     "point": 0.00020003048957475825
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 3.95961841800772,
+     "point": 0.0012011001791003043
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00028651808931128497,
+     "upper": 0.0005057109740299787,
+     "point": 0.00032959523648244687
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 865.481205,
+   "oracle_cpu_s": 852.4551439999996,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017973309936702788,
+     "upper": 0.0002771555252659128,
+     "point": 0.0002000275137550436
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 3.9735832201989782,
+     "point": 0.001200916289470955
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0002865176675830792,
+     "upper": 0.0005057279573406639,
+     "point": 0.00032958898188435856
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017973309936702788,
+     "upper": 0.0002771555252659128,
+     "point": 0.0002000275137550436
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 3.9735832201989782,
+     "point": 0.001200916289470955
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0002865176675830792,
+     "upper": 0.0005057279573406639,
+     "point": 0.00032958898188435856
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 401.34117200000037,
+   "oracle_cpu_s": 389.7773129999987,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001792558838223381,
+     "upper": 0.0002111589410904499,
+     "point": 0.00018012576000560551
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.2845527377026609,
+     "point": 7.827820599156975e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0002804890600800937,
+     "upper": 0.0003546441656208731,
+     "point": 0.000288004468906592
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001792558838223381,
+     "upper": 0.0002111589410904499,
+     "point": 0.00018012576000560551
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.2845527377026609,
+     "point": 7.827820599156975e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0002804890600800937,
+     "upper": 0.0003546441656208731,
+     "point": 0.000288004468906592
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2__v100on.json",
+    "result_equal": true,
+    "claims_equal": true,
+    "diffs": []
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 626.0878619999985,
+   "oracle_cpu_s": 626.345288999999,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": [
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017925586979444834,
+     "upper": 0.00021115535403337513,
+     "point": 0.0001801257465832812
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.296481698008756,
+     "point": 6.632290861065251e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00028048839415433484,
+     "upper": 0.0003555381518891213,
+     "point": 0.0002880039277308077
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00017925586979444834,
+     "upper": 0.00021115535403337513,
+     "point": 0.0001801257465832812
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.296481698008756,
+     "point": 6.632290861065251e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00028048839415433484,
+     "upper": 0.0003555381518891213,
+     "point": 0.0002880039277308077
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/C/freeze_1.0.0/identity/pure-k0.01-p02-c1-s1__jax2_h__v100on.json",
+    "result_equal": true,
+    "claims_equal": true,
+    "diffs": []
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 241.24420199999986,
+   "oracle_cpu_s": 239.02190100000007,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": [
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016226817000332543,
+     "upper": 0.000332523770517545,
+     "point": 0.00016594729367599192
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 6.986316676375982,
+     "point": 1.715673593430063e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005191209353344983,
+     "upper": 0.0012424847661443846,
+     "point": 0.0005620426985733769
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016226817000332543,
+     "upper": 0.000332523770517545,
+     "point": 0.00016594729367599192
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 6.986316676375982,
+     "point": 1.715673593430063e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005191209353344983,
+     "upper": 0.0012424847661443846,
+     "point": 0.0005620426985733769
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 490.5651600000001,
+   "oracle_cpu_s": 469.0180540000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016226815522868247,
+     "upper": 0.000332497980592195,
+     "point": 0.00016594727460390497
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 7.013399310856629,
+     "point": 1.0948806653136529e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005191188384160527,
+     "upper": 0.0012466844762328174,
+     "point": 0.0005620408967457047
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016226815522868247,
+     "upper": 0.000332497980592195,
+     "point": 0.00016594727460390497
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 7.013399310856629,
+     "point": 1.0948806653136529e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005191188384160527,
+     "upper": 0.0012466844762328174,
+     "point": 0.0005620408967457047
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 199.750508000001,
+   "oracle_cpu_s": 210.643696000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016064352091639877,
+     "upper": 0.00037685975842353774,
+     "point": 0.0001905569838537914
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 9.027639019622873,
+     "point": 0.0017962603101934263
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005962991567351065,
+     "upper": 0.0016198035192760976,
+     "point": 0.0007481295998493449
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016064352091639877,
+     "upper": 0.00037685975842353774,
+     "point": 0.0001905569838537914
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 9.027639019622873,
+     "point": 0.0017962603101934263
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005962991567351065,
+     "upper": 0.0016198035192760976,
+     "point": 0.0007481295998493449
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/dev6/identity/pure-k0.01-p03-c0-s1__jax2__dev6on.json",
+    "result_equal": true,
+    "claims_equal": true,
+    "diffs": []
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 464.99201900000116,
+   "oracle_cpu_s": 446.0510320000012,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016064337044777746,
+     "upper": 0.0003768737301480688,
+     "point": 0.00019051283115452993
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 9.02673969083623,
+     "point": 0.0018258944440936297
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005963860814638313,
+     "upper": 0.0016344427794309589,
+     "point": 0.0007479761664419941
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016064337044777746,
+     "upper": 0.0003768737301480688,
+     "point": 0.00019051283115452993
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 9.02673969083623,
+     "point": 0.0018258944440936297
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005963860814638313,
+     "upper": 0.0016344427794309589,
+     "point": 0.0007479761664419941
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/dev6/identity/pure-k0.01-p03-c0-s1__jax2_h__dev6on.json",
+    "result_equal": true,
+    "claims_equal": true,
+    "diffs": []
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 443.0351009999995,
+   "oracle_cpu_s": 451.96570600000086,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016537567170424945,
+     "upper": 0.00021254624708945023,
+     "point": 0.0001812376467894347
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.0595621599792544,
+     "point": 0.0010034306064558313
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005614453188394147,
+     "upper": 0.0007662648058991793,
+     "point": 0.000626816034854879
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016537567170424945,
+     "upper": 0.00021254624708945023,
+     "point": 0.0001812376467894347
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.0595621599792544,
+     "point": 0.0010034306064558313
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005614453188394147,
+     "upper": 0.0007662648058991793,
+     "point": 0.000626816034854879
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 795.8519410000008,
+   "oracle_cpu_s": 810.3461029999999,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016537540747240417,
+     "upper": 0.00021329493318025924,
+     "point": 0.00018123402951076135
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.059407388746497,
+     "point": 0.001003199915793755
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005614421095342962,
+     "upper": 0.000766234506062906,
+     "point": 0.0006268011820293785
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016537540747240417,
+     "upper": 0.00021329493318025924,
+     "point": 0.00018123402951076135
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.059407388746497,
+     "point": 0.001003199915793755
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005614421095342962,
+     "upper": 0.000766234506062906,
+     "point": 0.0006268011820293785
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 472.19497799999954,
+   "oracle_cpu_s": 448.33223200000066,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 5,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016560022586666732,
+     "upper": 0.00020031695601783496,
+     "point": 0.00017140299872741408
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.4858550540267306,
+     "point": 0.0003323150957286085
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005652426067969607,
+     "upper": 0.0007160000519864995,
+     "point": 0.000596088248775868
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016560022586666732,
+     "upper": 0.00020031695601783496,
+     "point": 0.00017140299872741408
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.4858550540267306,
+     "point": 0.0003323150957286085
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005652426067969607,
+     "upper": 0.0007160000519864995,
+     "point": 0.000596088248775868
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 849.221379999999,
+   "oracle_cpu_s": 864.2860299999993,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016560017980531318,
+     "upper": 0.0002003141204531314,
+     "point": 0.0001714002895628794
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.4857073563990382,
+     "point": 0.00033212095914715134
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005652409086108809,
+     "upper": 0.0007186591669017188,
+     "point": 0.0005960772879894856
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00016560017980531318,
+     "upper": 0.0002003141204531314,
+     "point": 0.0001714002895628794
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.4857073563990382,
+     "point": 0.00033212095914715134
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0005652409086108809,
+     "upper": 0.0007186591669017188,
+     "point": 0.0005960772879894856
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 246.76650999999947,
+   "oracle_cpu_s": 232.45277999999962,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002359547849595852
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.364494399630007e-05,
+     "upper": 0.00012238448707338614,
+     "point": 0.00010038685593108237
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.353899511970652,
+     "point": 1.0345113534825189e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0023164216354529146,
+     "upper": 0.002874394555680533,
+     "point": 0.002477842619344655
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.364494399630007e-05,
+     "upper": 0.00012238448707338614,
+     "point": 0.00010038685593108237
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.353899511970652,
+     "point": 1.0345113534825189e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0023164216354529146,
+     "upper": 0.002874394555680533,
+     "point": 0.002477842619344655
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/dev6/identity/pure-k0.01-p04-c0-s0__jax2__dev6on.json",
+    "result_equal": true,
+    "claims_equal": true,
+    "diffs": []
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 386.0369600000013,
+   "oracle_cpu_s": 385.1078359999992,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002359547849595852
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.364498807945697e-05,
+     "upper": 0.0001223839614277839,
+     "point": 0.00010038598464545844
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.353960425781228,
+     "point": 1.4123864289766843e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.002316419876199126,
+     "upper": 0.002874373770282912,
+     "point": 0.002477824949888148
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.364498807945697e-05,
+     "upper": 0.0001223839614277839,
+     "point": 0.00010038598464545844
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.353960425781228,
+     "point": 1.4123864289766843e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.002316419876199126,
+     "upper": 0.002874373770282912,
+     "point": 0.002477824949888148
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/dev6/identity/pure-k0.01-p04-c0-s0__jax2_h__dev6on.json",
+    "result_equal": true,
+    "claims_equal": true,
+    "diffs": []
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 230.51577999999972,
+   "oracle_cpu_s": 240.54814499999884,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.0024599966312952677
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.399497763904537e-05,
+     "upper": 0.00013606987049946505,
+     "point": 0.00010035574167472543
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.218762164055004,
+     "point": 1.010848012346065e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0021680677847629093,
+     "upper": 0.0029310219792750684,
+     "point": 0.0023199664189263954
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.399497763904537e-05,
+     "upper": 0.00013606987049946505,
+     "point": 0.00010035574167472543
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.218762164055004,
+     "point": 1.010848012346065e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0021680677847629093,
+     "upper": 0.0029310219792750684,
+     "point": 0.0023199664189263954
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 394.58222300000125,
+   "oracle_cpu_s": 400.0803990000004,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.0024599966312952677
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.39949558578266e-05,
+     "upper": 0.0001361421768004326,
+     "point": 0.00010035572275020482
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.218751354627843,
+     "point": 1.0108620608259591e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0021680645664900796,
+     "upper": 0.002933992582548632,
+     "point": 0.0023199635150444892
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.39949558578266e-05,
+     "upper": 0.0001361421768004326,
+     "point": 0.00010035572275020482
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 2.218751354627843,
+     "point": 1.0108620608259591e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0021680645664900796,
+     "upper": 0.002933992582548632,
+     "point": 0.0023199635150444892
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 356.2604229999997,
+   "oracle_cpu_s": 365.13739299999907,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002433610812642762
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.563851791140079e-05,
+     "upper": 0.00011221107469157342,
+     "point": 0.0001030631339908492
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.9932545494390866,
+     "point": 0.0009914139455169688
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.002339442814728232,
+     "upper": 0.002635024645905447,
+     "point": 0.002471824878139084
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.563851791140079e-05,
+     "upper": 0.00011221107469157342,
+     "point": 0.0001030631339908492
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.9932545494390866,
+     "point": 0.0009914139455169688
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.002339442814728232,
+     "upper": 0.002635024645905447,
+     "point": 0.002471824878139084
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 601.060875000001,
+   "oracle_cpu_s": 588.1175630000016,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002433610812642762
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.563881002801975e-05,
+     "upper": 0.00011221050895856164,
+     "point": 0.00010306249538233171
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.9932175082269329,
+     "point": 0.000991276671006018
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0023394325471349816,
+     "upper": 0.0026350158048274205,
+     "point": 0.0024718105847835
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.563881002801975e-05,
+     "upper": 0.00011221050895856164,
+     "point": 0.00010306249538233171
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.9932175082269329,
+     "point": 0.000991276671006018
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0023394325471349816,
+     "upper": 0.0026350158048274205,
+     "point": 0.0024718105847835
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 255.21040999999968,
+   "oracle_cpu_s": 257.85513900000115,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002753202661420761
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.7585416051174e-05,
+     "upper": 0.00011491045947460614,
+     "point": 0.00010552510833070379
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.0326545123967772,
+     "point": 0.0007127257758150029
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0023241917246877263,
+     "upper": 0.002624472374784068,
+     "point": 0.002461024430021105
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.7585416051174e-05,
+     "upper": 0.00011491045947460614,
+     "point": 0.00010552510833070379
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.0326545123967772,
+     "point": 0.0007127257758150029
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0023241917246877263,
+     "upper": 0.002624472374784068,
+     "point": 0.002461024430021105
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 457.9733930000002,
+   "oracle_cpu_s": 451.94767500000125,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002753202661420761
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.758524999350789e-05,
+     "upper": 0.00011493731871646162,
+     "point": 0.00010552449168144242
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.0326198040650327,
+     "point": 0.0007128172569644996
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.002324182307819059,
+     "upper": 0.002624426074796193,
+     "point": 0.0024610063227124153
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.758524999350789e-05,
+     "upper": 0.00011493731871646162,
+     "point": 0.00010552449168144242
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 1.0326198040650327,
+     "point": 0.0007128172569644996
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.002324182307819059,
+     "upper": 0.002624426074796193,
+     "point": 0.0024610063227124153
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2493.2505,
+   "oracle_cpu_s": 2564.479230000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 41,
+    "widened": [
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019776101233122414,
+     "upper": 0.03486878339672294,
+     "point": 0.004383112651697004
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 4.656923358419541,
+     "point": 0.47684080602536905
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.843192833529264e-06,
+     "upper": 0.019794135329946293,
+     "point": 0.0007330178566920477
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019776101233122414,
+     "upper": 0.03486878339672294,
+     "point": 0.004383112651697004
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 4.656923358419541,
+     "point": 0.47684080602536905
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.843192833529264e-06,
+     "upper": 0.019794135329946293,
+     "point": 0.0007330178566920477
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/pure-k0.01-p05-c0-s0__jax2.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 4380.468190000003,
+   "oracle_cpu_s": 3942.1664280000005,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 17,
+    "widened": [
+     "beta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 180.75433665507182,
+     "point": 0.4768429040505798
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.843215617971725e-06,
+     "upper": 0.019043722514304997,
+     "point": 0.0007330012645895455
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 180.75433665507182,
+     "point": 0.4768429040505798
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 9.843215617971725e-06,
+     "upper": 0.019043722514304997,
+     "point": 0.0007330012645895455
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/pure-k0.01-p05-c0-s0__jax2_h.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/eta@0.95[0]: type float nan != str 'nan'",
+     "/ci/eta@0.95[1]: type float nan != str 'nan'",
+     "/ci/h@0.95[0]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2670.38868,
+   "oracle_cpu_s": 2740.139364999999,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 53,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00031630978329487793,
+     "upper": 0.0069025837869720365,
+     "point": 0.001044926456584457
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.023594213822209588,
+     "upper": 102.83506167588283,
+     "point": 28.255036616197454
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.104431514051317e-05,
+     "upper": 0.0014230236920924383,
+     "point": 6.081218689398999e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00031630978329487793,
+     "upper": 0.0069025837869720365,
+     "point": 0.001044926456584457
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.023594213822209588,
+     "upper": 102.83506167588283,
+     "point": 28.255036616197454
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.104431514051317e-05,
+     "upper": 0.0014230236920924383,
+     "point": 6.081218689398999e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 3561.786830000001,
+   "oracle_cpu_s": 3200.4151920000004,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.00031711816815319793,
+     "point": 0.0010505631315539299
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 103.10862393010913,
+     "point": 28.427555034925177
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.1054645867701073e-05,
+     "upper": 0.0014228531349432865,
+     "point": 6.111962349312507e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.00031711816815319793,
+     "point": 0.0010505631315539299
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 103.10862393010913,
+     "point": 28.427555034925177
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.1054645867701073e-05,
+     "upper": 0.0014228531349432865,
+     "point": 6.111962349312507e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 4201.483275999999,
+   "oracle_cpu_s": 4192.920364000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 40,
+    "widened": [
+     "eta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00039772974493560505,
+     "upper": 0.00524982927632442,
+     "point": 0.0013291775811447408
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.059381243642833974,
+     "upper": 81.36000793466809,
+     "point": 0.345335567008408
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.644066896501038e-05,
+     "upper": 0.0008760905046284835,
+     "point": 9.846657321992547e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.05116287251032759,
+     "point": 1.921600830619616
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00039772974493560505,
+     "upper": 0.00524982927632442,
+     "point": 0.0013291775811447408
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.059381243642833974,
+     "upper": 81.36000793466809,
+     "point": 0.345335567008408
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.644066896501038e-05,
+     "upper": 0.0008760905046284835,
+     "point": 9.846657321992547e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.05116287251032759,
+     "point": 1.921600830619616
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 3914.190165,
+   "oracle_cpu_s": 3811.751164000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 19,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.00039748412534229745,
+     "point": 0.0013292080562332833
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.059382868105373035,
+     "point": 0.3453517559208003
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.644266268041639e-05,
+     "upper": 0.0008760486822391803,
+     "point": 9.846841057963757e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.05155118426333841,
+     "point": 1.9216585558480699
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.00039748412534229745,
+     "point": 0.0013292080562332833
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.059382868105373035,
+     "point": 0.3453517559208003
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 2.644266268041639e-05,
+     "upper": 0.0008760486822391803,
+     "point": 9.846841057963757e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.05155118426333841,
+     "point": 1.9216585558480699
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2616.715597000002,
+   "oracle_cpu_s": 2654.393887000002,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 41,
+    "widened": [
+     "beta",
+     "kappa"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0006609902602077394,
+     "upper": 0.001527278077392099,
+     "point": 0.0009934483842967729
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.4125603876526944,
+     "upper": 42.78724624231531,
+     "point": 26.66378851547334
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 4.122086358866418e-05,
+     "upper": 9.854467915862818e-05,
+     "point": 5.8650032417594605e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 3.1350065678748944,
+     "point": 299.99999999999994
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0006609902602077394,
+     "upper": 0.001527278077392099,
+     "point": 0.0009934483842967729
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.4125603876526944,
+     "upper": 42.78724624231531,
+     "point": 26.66378851547334
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 4.122086358866418e-05,
+     "upper": 9.854467915862818e-05,
+     "point": 5.8650032417594605e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 3.1350065678748944,
+     "point": 299.99999999999994
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 3780.115396000001,
+   "oracle_cpu_s": 3574.390769999998,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0006593197637549749,
+     "upper": 0.0015281589242692288,
+     "point": 0.0010052673187638812
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 42.80931608535006,
+     "point": 13.516204629240438
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 4.11696004812834e-05,
+     "upper": 9.906040365253265e-05,
+     "point": 5.942275945729898e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0006593197637549749,
+     "upper": 0.0015281589242692288,
+     "point": 0.0010052673187638812
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 42.80931608535006,
+     "point": 13.516204629240438
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 4.11696004812834e-05,
+     "upper": 9.906040365253265e-05,
+     "point": 5.942275945729898e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 463.8709669999989,
+   "oracle_cpu_s": 450.4945799999987,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 12,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019180904926332202,
+     "upper": 0.002197493685964091,
+     "point": 0.00019323993686879836
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 53.44009279680141,
+     "point": 3.573189774664802e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.42700477722303e-05,
+     "upper": 0.002050420444615297,
+     "point": 7.006944938839966e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019180904926332202,
+     "upper": 0.002197493685964091,
+     "point": 0.00019323993686879836
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 53.44009279680141,
+     "point": 3.573189774664802e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.42700477722303e-05,
+     "upper": 0.002050420444615297,
+     "point": 7.006944938839966e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1001.5552399999979,
+   "oracle_cpu_s": 990.892437999999,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 11,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019180904379136434,
+     "upper": 0.00234737083260023,
+     "point": 0.00019323992959567062
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 53.43420854087171,
+     "point": 3.6255093256229215e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.426999308850239e-05,
+     "upper": 0.0021414662463086847,
+     "point": 7.006938640060529e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019180904379136434,
+     "upper": 0.00234737083260023,
+     "point": 0.00019323992959567062
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 53.43420854087171,
+     "point": 3.6255093256229215e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.426999308850239e-05,
+     "upper": 0.0021414662463086847,
+     "point": 7.006938640060529e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 483.11689000000115,
+   "oracle_cpu_s": 467.84250599999723,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 14,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001929592861742731,
+     "upper": 0.007344504629621123,
+     "point": 0.0015608217738912896
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 144.80498168844548,
+     "point": 0.10628851373261014
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.513232815711285e-05,
+     "upper": 0.012599006381954407,
+     "point": 0.00142217612974926
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001929592861742731,
+     "upper": 0.007344504629621123,
+     "point": 0.0015608217738912896
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 144.80498168844548,
+     "point": 0.10628851373261014
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.513232815711285e-05,
+     "upper": 0.012599006381954407,
+     "point": 0.00142217612974926
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1127.8341639999999,
+   "oracle_cpu_s": 1183.4563479999997,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 23,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019296020727703996,
+     "upper": 0.007537153812844891,
+     "point": 0.0015607887637469479
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 144.76091977312313,
+     "point": 0.10628478495914147
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.525628805038605e-05,
+     "upper": 0.012471584501787007,
+     "point": 0.001422129923038549
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019296020727703996,
+     "upper": 0.007537153812844891,
+     "point": 0.0015607887637469479
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 144.76091977312313,
+     "point": 0.10628478495914147
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.525628805038605e-05,
+     "upper": 0.012471584501787007,
+     "point": 0.001422129923038549
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1295.4032050000023,
+   "oracle_cpu_s": 1281.9025870000005,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 19,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001925366268600545,
+     "upper": 0.0013032476928103184,
+     "point": 0.00021643088177456202
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 35.68966097051955,
+     "point": 0.0013225553136727458
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.599551603514953e-05,
+     "upper": 0.0006837079019709746,
+     "point": 7.814140328644917e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001925366268600545,
+     "upper": 0.0013032476928103184,
+     "point": 0.00021643088177456202
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 35.68966097051955,
+     "point": 0.0013225553136727458
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.599551603514953e-05,
+     "upper": 0.0006837079019709746,
+     "point": 7.814140328644917e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2290.1232280000004,
+   "oracle_cpu_s": 2374.0681299999997,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 7,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019254916518572472,
+     "upper": 0.0012867334131652247,
+     "point": 0.00021642801704153315
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 35.7116025377235,
+     "point": 0.0013224259894963216
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.59853642281484e-05,
+     "upper": 0.000737702080356232,
+     "point": 7.814014259234319e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019254916518572472,
+     "upper": 0.0012867334131652247,
+     "point": 0.00021642801704153315
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 35.7116025377235,
+     "point": 0.0013224259894963216
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.59853642281484e-05,
+     "upper": 0.000737702080356232,
+     "point": 7.814014259234319e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 885.6674080000012,
+   "oracle_cpu_s": 974.2350960000003,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 16,
+    "widened": [
+     "eta"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019265555265297966,
+     "upper": 0.0016533692453430074,
+     "point": 0.0003729644748543118
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 39.59235356922144,
+     "point": 0.011118911074823
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.556971653642943e-05,
+     "upper": 0.0011583033680262565,
+     "point": 0.00016696702962181188
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019265555265297966,
+     "upper": 0.0016533692453430074,
+     "point": 0.0003729644748543118
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 39.59235356922144,
+     "point": 0.011118911074823
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.556971653642943e-05,
+     "upper": 0.0011583033680262565,
+     "point": 0.00016696702962181188
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2409.7094240000006,
+   "oracle_cpu_s": 2478.6904060000015,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 3600,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 21,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019264860645823862,
+     "upper": 0.0016647815136082132,
+     "point": 0.00037260164554283297
+    },
+    {
+     "parameter": "beta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.557155317345747e-05,
+     "upper": 0.0011581665625115386,
+     "point": 0.00016698142242193624
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019264860645823862,
+     "upper": 0.0016647815136082132,
+     "point": 0.00037260164554283297
+    },
+    {
+     "parameter": "beta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 6.557155317345747e-05,
+     "upper": 0.0011581665625115386,
+     "point": 0.00016698142242193624
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s0",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 203.5206459999972,
+   "oracle_cpu_s": 204.3266560000011,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 13,
+    "widened": [
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001815141922191032,
+     "upper": 0.0012580579524887245,
+     "point": 0.00018720904964932063
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.26414754063472,
+     "point": 0.00020177532391167283
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018369164707995623,
+     "upper": 0.002109398731823057,
+     "point": 0.0002040182804034768
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001815141922191032,
+     "upper": 0.0012580579524887245,
+     "point": 0.00018720904964932063
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.26414754063472,
+     "point": 0.00020177532391167283
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018369164707995623,
+     "upper": 0.002109398731823057,
+     "point": 0.0002040182804034768
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/pure-k0.01-p07-c0-s0__jax2.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s0",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 507.46211100000073,
+   "oracle_cpu_s": 491.7584300000017,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 8,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001815141647970632,
+     "upper": 0.00125804906667228,
+     "point": 0.0001872159847941041
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.263532113613856,
+     "point": 0.00020147649886104933
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018369146166208564,
+     "upper": 0.0022866435903914806,
+     "point": 0.00020402283469929953
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0001815141647970632,
+     "upper": 0.00125804906667228,
+     "point": 0.0001872159847941041
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 38.263532113613856,
+     "point": 0.00020147649886104933
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018369146166208564,
+     "upper": 0.0022866435903914806,
+     "point": 0.00020402283469929953
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/pure-k0.01-p07-c0-s0__jax2_h.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/h@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 247.10275600000386,
+   "oracle_cpu_s": 247.6119500000059,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 9,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018288849513817298,
+     "upper": 0.0010721742937987195,
+     "point": 0.0001853367494898265
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 32.06190652511757,
+     "point": 1.9597524683666306e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019968289227307204,
+     "upper": 0.0014881602261749031,
+     "point": 0.00021717465288378218
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018288849513817298,
+     "upper": 0.0010721742937987195,
+     "point": 0.0001853367494898265
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 32.06190652511757,
+     "point": 1.9597524683666306e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019968289227307204,
+     "upper": 0.0014881602261749031,
+     "point": 0.00021717465288378218
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 432.8232480000006,
+   "oracle_cpu_s": 437.0262520000033,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 6,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018288848314445955,
+     "upper": 0.0010721537117844699,
+     "point": 0.00018533673540740004
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 32.11198013029053,
+     "point": 1.8391124502566015e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019968245472296798,
+     "upper": 0.0019611387515976932,
+     "point": 0.00021717425916693877
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00018288848314445955,
+     "upper": 0.0010721537117844699,
+     "point": 0.00018533673540740004
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 32.11198013029053,
+     "point": 1.8391124502566015e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.00019968245472296798,
+     "upper": 0.0019611387515976932,
+     "point": 0.00021717425916693877
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ]
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 187.14986800000042,
+   "oracle_cpu_s": 183.57885000000533,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 2,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 0,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1288663597822258e-09,
+     "upper": 3.180713324313858e-09,
+     "point": 3.1548516227592742e-09
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.00012795987404023775,
+     "point": 4.787418263270721e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 5.805248603021889e-06,
+     "upper": 6.004845186452984e-06,
+     "point": 5.904064770457607e-06
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 3.1288663597822258e-09,
+     "upper": 3.180713324313858e-09,
+     "point": 3.1548516227592742e-09
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.00012795987404023775,
+     "point": 4.787418263270721e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 5.805248603021889e-06,
+     "upper": 6.004845186452984e-06,
+     "point": 5.904064770457607e-06
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/realfull-real-Denmark_M_1900_homo-c1-s1__jax2.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 905.6817480000027,
+   "oracle_cpu_s": 904.0730530000001,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 900,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 68,
+    "widened": [
+     "eta",
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 9.269245433282857e-08,
+     "point": 4.526887155507669e-06
+    },
+    {
+     "parameter": "beta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.00048065077838349384,
+     "point": 0.034141130619094316
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 9.269245433282857e-08,
+     "point": 4.526887155507669e-06
+    },
+    {
+     "parameter": "beta",
+     "shape": "none",
+     "level": 0.95
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.00048065077838349384,
+     "point": 0.034141130619094316
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/realfull-real-Denmark_M_1900_homo-c1-s1__jax2_h.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[0]: type float nan != str 'nan'",
+     "/ci/beta@0.95[1]: type float nan != str 'nan'",
+     "/ci/epsilon@0.95[1]: type float nan != str 'nan'",
+     "/ci/eta@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+   "name": "jax2",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 1089.6199500000002,
+   "oracle_cpu_s": 1161.1473849999966,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": true,
+     "rounds": 1
+    },
+    "relabelled_rows": 6,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 57,
+    "widened": []
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0061179451766738766,
+     "upper": 0.010348749536791305,
+     "point": 0.010227465563755719
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 559.0193746915904,
+     "point": 995.1280071768501
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 21.41707908234319,
+     "upper": 37.41601519220498,
+     "point": 37.12331376829135
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.013433497134752845,
+     "point": 0.0010023148957881483
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0061179451766738766,
+     "upper": 0.010348749536791305,
+     "point": 0.010227465563755719
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 559.0193746915904,
+     "point": 995.1280071768501
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 21.41707908234319,
+     "upper": 37.41601519220498,
+     "point": 37.12331376829135
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "level": 0.95,
+     "upper": 0.013433497134752845,
+     "point": 0.0010023148957881483
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/realfull-real-Sweden_F_1910_homo-c1-s1__jax2.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[1]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/diagnostics/basin_fix/stock/ci/beta@0.95[1]: type float nan != str 'nan'",
+     "/diagnostics/basin_fix/stock/ci/kappa@0.95[0]: type float nan != str 'nan'"
+    ]
+   }
+  },
+  {
+   "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+   "name": "jax2_h",
+   "theta_bytes_equal": true,
+   "result_equal": true,
+   "claims_equal": true,
+   "sc_equal": true,
+   "diffs": [],
+   "port_cpu_s": 2203.248796,
+   "oracle_cpu_s": 2141.002609999996,
+   "mechanisms": {
+    "basin_refit": {
+     "fired": false,
+     "rounds": 0
+    },
+    "relabelled_rows": 0,
+    "N": 1800,
+    "dt_floor": {
+     "binds": false,
+     "dt": 0.002
+    },
+    "n_fallback": 64,
+    "widened": [
+     "eta",
+     "epsilon"
+    ]
+   },
+   "port_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 1.1232291668082545e-06,
+     "upper": 0.0004587427338107091,
+     "point": 3.3477189854653153e-06
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.05343372233910866,
+     "point": 0.18264097835738932
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0027444976244168254,
+     "upper": 1.13114356206352,
+     "point": 0.008719074695006745
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 1.1232291668082545e-06,
+     "upper": 0.0004587427338107091,
+     "point": 3.3477189854653153e-06
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "level": 0.95,
+     "lower": 0.05343372233910866,
+     "point": 0.18264097835738932
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "level": 0.95,
+     "lower": 0.0027444976244168254,
+     "upper": 1.13114356206352,
+     "point": 0.008719074695006745
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "level": 0.95
+    }
+   ],
+   "stored": {
+    "path": "reports/rc2/R3d6/L5/realfull-real-Sweden_F_1910_homo-c1-s1__jax2_h.json",
+    "result_equal": false,
+    "claims_equal": true,
+    "diffs": [
+     "/ci/beta@0.95[1]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[0]: type float nan != str 'nan'",
+     "/ci/kappa@0.95[1]: type float nan != str 'nan'"
+    ]
+   }
+  }
+ ],
+ "cpu_ratio_port_over_oracle": [
+  1.0112166459076382,
+  1.0394455596591123,
+  1.0009113632047375,
+  0.8897965049338874,
+  1.0024842535794665,
+  1.0073369641165146,
+  1.0127806454695607,
+  1.0209414380476654,
+  1.010860671982328,
+  1.1290237701853745,
+  0.9685745846801818,
+  1.2904383013167282,
+  0.9722349768247225,
+  0.9848912390275575,
+  0.9844871116093252,
+  1.0152800032456877,
+  1.0156186496606399,
+  0.9949860913071656,
+  0.9966469947555123,
+  0.9992383719166416,
+  1.0062685892104122,
+  0.9750765712518946,
+  0.9881112825137721,
+  1.0152806409717676,
+  1.029667860633032,
+  0.9995890014589054,
+  1.0092974785603424,
+  1.0459408882371082,
+  0.9482861903448563,
+  1.0424637219536796,
+  0.9802405251516996,
+  0.9821136154707971,
+  1.0532255865110294,
+  0.9825698328133335,
+  1.0615769361846301,
+  1.0024126333279857,
+  0.958293733672321,
+  0.9862573222438744,
+  0.9756886854916024,
+  1.0220080351519776,
+  0.9897433535346315,
+  1.0133327779593047,
+  0.9722248754574625,
+  1.1111829675395943,
+  0.9745448403497539,
+  1.112913986567528,
+  1.002042231012427,
+  1.0268745247505875,
+  0.9858053131509492,
+  1.0575551581339842,
+  1.0296926702203615,
+  1.0107608067143197,
+  1.032648559727072,
+  0.9530002233762155,
+  1.0105317035295147,
+  0.9646409043871882,
+  0.9090900252273408,
+  0.9721703921421476,
+  0.9960552870791177,
+  1.0319337301446951,
+  0.9979435806712802,
+  0.9903827196174873,
+  1.019452229927331,
+  1.001779386073575,
+  0.9383993488475224,
+  1.029073381652722
+ ]
+}

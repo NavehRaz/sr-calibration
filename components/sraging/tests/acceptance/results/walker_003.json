@@ -1,0 +1,3997 @@
+{
+ "phase": "walker",
+ "written_at": "2026-10-09T09:56:50Z",
+ "repo_head": "01799edbdb6b2b6a9d29854075c078f5af243461",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003.toml": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b",
+  "/Users/navehr/code/sraging/.cache/wt/w2/tests/acceptance/results/walker_step1_003.json": "01799edbdb6b2b6a9d29854075c078f5af243461",
+  "/Users/navehr/code/sraging/.cache/wt/w2/tests/acceptance/decisions_003.toml": "e24eb9bd037212a1ccf646f173afaa133a3c2dfc"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "3a95c8fdb772cdf79aaa1927a003e91d2e4dbfa2"
+ },
+ "wall_s": 39994.20061182976,
+ "cpu_s": 5.130488,
+ "status": "pass",
+ "step": 2,
+ "checks": {
+  "passed": 182,
+  "total": 182
+ },
+ "failures": [],
+ "archive_checks": {
+  "passed": 182,
+  "total": 182
+ },
+ "archive_failures": [],
+ "errors": [],
+ "cost_ratio_median": 7.542128201374618,
+ "cost_ratio_cpu_median": 6.633445226902301,
+ "cost_limit": 2.0,
+ "cost_decision": {
+  "default": "lead",
+  "flag": "--combinations all (Python: combinations='all') adds the other four; --no-combinations (False) none",
+  "scored": "all six, in the coverage phase, before any of them ships",
+  "decision": "The lead group on by default, the other four behind a flag; all six truth-scored in coverage (about 250 CPU-h for 215 fits).",
+  "date": "2026-10-06",
+  "by": "Naveh (AskUserQuestion: 'Lead pair on, rest by flag (Recommended)')"
+ },
+ "median_widths_dex_by_stratum": {
+  "eta_over_eps": {
+   "real/Denmark_M_1900_homo": 0.01734470843164266,
+   "ratio-lo/cv-broad/n-1000": 0.09727734586002192,
+   "ratio-lo/cv-broad/n-10000": 0.043453616543990034,
+   "ratio-lo/cv-mid/n-1000": 0.6556983534927987,
+   "ratio-hi/cv-broad/n-1000": 0.16164694428472323,
+   "ratio-hi/cv-broad/n-10000": 0.054732768594187894,
+   "ratio-lo/cv-sharp/n-1000": 0.7389403171935925,
+   "ratio-mid/cv-broad/n-1000": 0.10920327033309873,
+   "ratio-mid/cv-mid/n-1000": 0.5980350919946316,
+   "ratio-lo/cv-sharp/n-10000": 0.30657468202286986,
+   "ratio-lo/cv-mid/n-10000": 0.12954121414615322,
+   "ratio-mid/cv-broad/n-10000": 0.11250643731926707,
+   "ratio-mid/cv-mid/n-10000": 0.33933646236413173
+  },
+  "sqrt_eta_over_eps": {
+   "real/Denmark_M_1900_homo": 0.015675089256790734,
+   "ratio-lo/cv-broad/n-1000": 0.23091921927125772,
+   "ratio-lo/cv-broad/n-10000": 0.07234959114708409,
+   "ratio-lo/cv-mid/n-1000": 1.4049930483862259,
+   "ratio-hi/cv-broad/n-1000": 0.9998486424783697,
+   "ratio-lo/cv-sharp/n-1000": 1.2703400440423167,
+   "ratio-hi/cv-broad/n-10000": 0.12676943836024254,
+   "ratio-mid/cv-broad/n-1000": 0.259864082568921,
+   "ratio-mid/cv-mid/n-1000": 1.1371771012511764,
+   "ratio-lo/cv-sharp/n-10000": 0.7005254456560845,
+   "ratio-lo/cv-mid/n-10000": 0.3564036728098,
+   "ratio-mid/cv-broad/n-10000": 0.2881101770291598,
+   "ratio-mid/cv-mid/n-10000": 0.46024739809864146
+  },
+  "rbar_over_eta": {
+   "ratio-hi/cv-broad/n-1000": 0.4372580126279861,
+   "ratio-mid/cv-broad/n-1000": 0.21817597704364428,
+   "ratio-mid/cv-mid/n-1000": 0.3651217110332566,
+   "ratio-lo/cv-mid/n-10000": 0.8564917193125893,
+   "ratio-mid/cv-mid/n-10000": 0.19532985234083372
+  },
+  "rbar": {
+   "ratio-hi/cv-broad/n-1000": 2.162327410350721,
+   "ratio-mid/cv-broad/n-1000": 0.5832093758865197,
+   "ratio-mid/cv-mid/n-1000": 1.6313800707368338,
+   "ratio-mid/cv-broad/n-10000": 0.6088981894993201,
+   "ratio-lo/cv-mid/n-10000": 1.4687722911030112,
+   "ratio-mid/cv-mid/n-10000": 0.44075020279418603
+  },
+  "beta_over_eta_kp1": {
+   "ratio-hi/cv-broad/n-1000": 0.5906330333290825,
+   "ratio-hi/cv-broad/n-10000": 0.3182610606947996,
+   "ratio-mid/cv-broad/n-1000": 0.435779283666785,
+   "ratio-mid/cv-broad/n-10000": 0.30563214997831706,
+   "ratio-lo/cv-mid/n-10000": 1.1351502530483493,
+   "ratio-mid/cv-mid/n-10000": 0.1617607544989527
+  },
+  "beta_over_kp1": {
+   "ratio-hi/cv-broad/n-1000": 2.1254919640381496,
+   "ratio-hi/cv-broad/n-10000": 0.5239155790774107,
+   "ratio-mid/cv-broad/n-1000": 0.8205834891580608,
+   "ratio-mid/cv-broad/n-10000": 0.8944280751349392,
+   "ratio-lo/cv-mid/n-10000": 1.7622135134558983,
+   "ratio-mid/cv-mid/n-10000": 0.4434719205486441
+  }
+ },
+ "n_sobol": 32,
+ "starts_converged_fraction": 0.9219803427828771,
+ "step1_repo_head": "a9727f4de6c744eef8d1f5eddb329d090db168ae",
+ "rows": [
+  {
+   "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s0",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.0005272721297719698,
+     "outward": {
+      "best_dev": 17.581862195773283,
+      "ok": true,
+      "starts": 99,
+      "converged": 99,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.0052579455077648e-05,
+      "ok": true,
+      "starts": 99,
+      "converged": 1,
+      "dex": 0.00870557123758033
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.0005487563069473331,
+     "outward": {
+      "best_dev": 18.03690937763895,
+      "ok": true,
+      "starts": 99,
+      "converged": 99,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.0052579455077648e-05,
+      "ok": true,
+      "starts": 99,
+      "converged": 1,
+      "dex": 0.008639137194062323
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 71.63714834767406,
+     "outward": {
+      "best_dev": 3.931353259657044,
+      "ok": true,
+      "starts": 108,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4221728385891765,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 9.386450802464465,
+     "outward": {
+      "best_dev": 19.69836578538525,
+      "ok": true,
+      "starts": 99,
+      "converged": 99,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.0048795957118273e-05,
+      "ok": true,
+      "starts": 99,
+      "converged": 1,
+      "dex": 0.007859348424893622
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 9.73142629014474,
+     "outward": {
+      "best_dev": 20.100118160102284,
+      "ok": true,
+      "starts": 99,
+      "converged": 99,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.0048795957118273e-05,
+      "ok": true,
+      "starts": 99,
+      "converged": 1,
+      "dex": 0.00781574083189705
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 2.2785211554896977e-07,
+     "outward": {
+      "best_dev": 3.9309391351998784,
+      "ok": true,
+      "starts": 108,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4236482239502948,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 143.11554363568047,
+     "outward": {
+      "best_dev": 3.9313532589003444,
+      "ok": true,
+      "starts": 108,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4221728377742693,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 4.5519929541982265e-07,
+     "outward": {
+      "best_dev": 3.930939134937944,
+      "ok": true,
+      "starts": 108,
+      "converged": 107,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.423648224794306,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 1054.100568,
+   "evals": 18914,
+   "starts_tried": 836,
+   "starts_converged": 835,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.03623459548190123,
+     "outward": {
+      "best_dev": 5.507479966909159,
+      "ok": true,
+      "starts": 113,
+      "converged": 113,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 4.3515683501027524e-08,
+      "ok": true,
+      "starts": 113,
+      "converged": 1,
+      "dex": 0.048479044231040665
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.04533157027063805,
+     "outward": {
+      "best_dev": 5.496082863211996,
+      "ok": true,
+      "starts": 113,
+      "converged": 113,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 4.3515683501027524e-08,
+      "ok": true,
+      "starts": 113,
+      "converged": 1,
+      "dex": 0.04879830162898129
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 19.0161023574252,
+     "outward": {
+      "best_dev": 3.9913051421062846,
+      "ok": true,
+      "starts": 103,
+      "converged": 103,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.1820528810931137,
+      "ok": true,
+      "starts": 103,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 3.7078297435554775,
+     "outward": {
+      "best_dev": 5.881177941670103,
+      "ok": true,
+      "starts": 114,
+      "converged": 114,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 4.373214324004948e-08,
+      "ok": true,
+      "starts": 114,
+      "converged": 1,
+      "dex": 0.037646135965178754
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 4.388618044706061,
+     "outward": {
+      "best_dev": 6.379707246960606,
+      "ok": true,
+      "starts": 114,
+      "converged": 114,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 4.3975887820124626e-08,
+      "ok": true,
+      "starts": 114,
+      "converged": 1,
+      "dex": 0.035561864544673964
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.002306379464987395,
+     "outward": {
+      "best_dev": 3.9654689543785935,
+      "ok": true,
+      "starts": 105,
+      "converged": 105,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.279323237040444,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 37.99006374302962,
+     "outward": {
+      "best_dev": 3.9913051426665334,
+      "ok": true,
+      "starts": 102,
+      "converged": 102,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.182052881553318,
+      "ok": true,
+      "starts": 102,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.004607647836808997,
+     "outward": {
+      "best_dev": 3.9654689542076085,
+      "ok": true,
+      "starts": 105,
+      "converged": 105,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.2793232369294856,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 1305.1583289999999,
+   "evals": 21773,
+   "starts_tried": 877,
+   "starts_converged": 877,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s0",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.2609142593946033,
+     "outward": {
+      "best_dev": 5.002692029842365,
+      "ok": true,
+      "starts": 124,
+      "converged": 124,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.03710703373508295,
+      "ok": true,
+      "starts": 124,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.321601690551291,
+     "outward": {
+      "best_dev": 6.233614220067466,
+      "ok": true,
+      "starts": 124,
+      "converged": 124,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 5.657057045027614e-10,
+      "ok": true,
+      "starts": 124,
+      "converged": 1,
+      "dex": 0.03711745915963826
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 35.24320203260935,
+     "outward": {
+      "best_dev": 4.01724185454259,
+      "ok": true,
+      "starts": 103,
+      "converged": 101,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.08649804484412,
+      "ok": true,
+      "starts": 103,
+      "converged": 2,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 14.616195523579762,
+     "outward": {
+      "best_dev": 4.100007554372496,
+      "ok": true,
+      "starts": 151,
+      "converged": 151,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.316941497110747,
+      "ok": true,
+      "starts": 151,
+      "converged": 33,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 24.87445438000508,
+     "outward": {
+      "best_dev": 6.349672458307396,
+      "ok": true,
+      "starts": 151,
+      "converged": 151,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 5.966285243630409e-10,
+      "ok": true,
+      "starts": 151,
+      "converged": 1,
+      "dex": 0.03553778652242093
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.011716685990993844,
+     "outward": {
+      "best_dev": 3.9247990648782434,
+      "ok": true,
+      "starts": 109,
+      "converged": 109,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4422820217860135,
+      "ok": true,
+      "starts": 109,
+      "converged": 4,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 70.40628438828595,
+     "outward": {
+      "best_dev": 4.017016699806845,
+      "ok": true,
+      "starts": 103,
+      "converged": 103,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.086331747363147,
+      "ok": true,
+      "starts": 103,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.023407421664513765,
+     "outward": {
+      "best_dev": 3.9248013468968566,
+      "ok": true,
+      "starts": 106,
+      "converged": 106,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.442284117640156,
+      "ok": true,
+      "starts": 106,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 2580.774964,
+   "evals": 50146,
+   "starts_tried": 1015,
+   "starts_converged": 1013,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 6.17295897471266,
+     "outward": {
+      "best_dev": 6.045794615351042,
+      "ok": true,
+      "starts": 117,
+      "converged": 117,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.8218161446893646,
+      "ok": true,
+      "starts": 117,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 74.73749874676115,
+     "outward": {
+      "best_dev": 4.247655443446092,
+      "ok": true,
+      "starts": 110,
+      "converged": 102,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.520194377948428,
+      "ok": true,
+      "starts": 113,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 31.247104538907482,
+     "outward": {
+      "best_dev": 3.9208071614639266,
+      "ok": true,
+      "starts": 128,
+      "converged": 128,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4691720358905513,
+      "ok": true,
+      "starts": 134,
+      "converged": 9,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 440.59507950228027,
+     "outward": {
+      "best_dev": 6.058216746161634,
+      "ok": true,
+      "starts": 128,
+      "converged": 128,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.8408575453731828,
+      "ok": true,
+      "starts": 128,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.22892095150153027,
+     "outward": {
+      "best_dev": 3.917234191796524,
+      "ok": true,
+      "starts": 122,
+      "converged": 106,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4799837194650536,
+      "ok": true,
+      "starts": 122,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 98.86440420858267,
+     "outward": {
+      "best_dev": 6.476436091356845,
+      "ok": true,
+      "starts": 108,
+      "converged": 69,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.14457705715358316,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.30787092272849664,
+     "outward": {
+      "best_dev": 3.93820750242503,
+      "ok": true,
+      "starts": 132,
+      "converged": 106,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.380955329303106,
+      "ok": true,
+      "starts": 132,
+      "converged": 26,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 5571.036584,
+   "evals": 75874,
+   "starts_tried": 899,
+   "starts_converged": 800,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s0",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.7496633207648928,
+     "outward": {
+      "best_dev": 4.280979004778601,
+      "ok": true,
+      "starts": 150,
+      "converged": 150,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.2371107992103134,
+      "ok": true,
+      "starts": 150,
+      "converged": 13,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 5.04278092666988,
+     "outward": {
+      "best_dev": 5.60699140846009,
+      "ok": true,
+      "starts": 150,
+      "converged": 150,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.3029527084381698,
+      "ok": true,
+      "starts": 150,
+      "converged": 33,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 90.79387855527072,
+     "outward": {
+      "best_dev": 5.976895909303494,
+      "ok": true,
+      "starts": 128,
+      "converged": 128,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.450071628495607,
+      "ok": true,
+      "starts": 128,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 6.925704757288534,
+     "outward": {
+      "best_dev": 4.02118515561051,
+      "ok": true,
+      "starts": 121,
+      "converged": 121,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.0383188305368094,
+      "ok": true,
+      "starts": 125,
+      "converged": 12,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 360.3873125344995,
+     "outward": {
+      "best_dev": 5.61831329677625,
+      "ok": true,
+      "starts": 125,
+      "converged": 125,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.8552946548861655,
+      "ok": true,
+      "starts": 129,
+      "converged": 56,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 1.0728229347001503,
+     "outward": {
+      "best_dev": 3.981983344215223,
+      "ok": true,
+      "starts": 116,
+      "converged": 103,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.2352472778438823,
+      "ok": true,
+      "starts": 122,
+      "converged": 36,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 107.61832420173153,
+     "outward": {
+      "best_dev": 6.230863397015128,
+      "ok": true,
+      "starts": 104,
+      "converged": 79,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.024731910881200747,
+      "ok": true,
+      "starts": 104,
+      "converged": 1,
+      "dex": 0.03546749216463343
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 1.178136721007545,
+     "outward": {
+      "best_dev": 3.9951288742231554,
+      "ok": true,
+      "starts": 200,
+      "converged": 183,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.1334326854139363,
+      "ok": true,
+      "starts": 203,
+      "converged": 33,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 4722.031687,
+   "evals": 61194,
+   "starts_tried": 1285,
+   "starts_converged": 1224,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p08-c1-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.3058467951625434,
+     "outward": {
+      "best_dev": 9.326748255989514,
+      "ok": true,
+      "starts": 108,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -1.424603397026658e-06,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.017882936547703655
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.33002781704627016,
+     "outward": {
+      "best_dev": 12.906360049819341,
+      "ok": true,
+      "starts": 108,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -1.424603397026658e-06,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.015163676169002124
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 13.917829207297627,
+     "outward": {
+      "best_dev": 4.070645523344865,
+      "ok": true,
+      "starts": 116,
+      "converged": 116,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.8546751768153626,
+      "ok": true,
+      "starts": 116,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 21.34605387325346,
+     "outward": {
+      "best_dev": 5.296749716449995,
+      "ok": true,
+      "starts": 112,
+      "converged": 112,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.004436609771801159,
+      "ok": true,
+      "starts": 112,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 25.38035963605187,
+     "outward": {
+      "best_dev": 13.352012426097644,
+      "ok": true,
+      "starts": 112,
+      "converged": 112,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 6.025336915627122e-06,
+      "ok": true,
+      "starts": 112,
+      "converged": 1,
+      "dex": 0.023580526446282186
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.002897937196794534,
+     "outward": {
+      "best_dev": 4.024623311546748,
+      "ok": true,
+      "starts": 118,
+      "converged": 118,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.794202670818777,
+      "ok": true,
+      "starts": 118,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 27.80783376621392,
+     "outward": {
+      "best_dev": 4.070758119021775,
+      "ok": true,
+      "starts": 118,
+      "converged": 118,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.85449388762936,
+      "ok": true,
+      "starts": 121,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.005790186922635191,
+     "outward": {
+      "best_dev": 4.024699115936528,
+      "ok": true,
+      "starts": 107,
+      "converged": 107,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.019324494380271,
+      "ok": true,
+      "starts": 111,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 6196.590683,
+   "evals": 59242,
+   "starts_tried": 907,
+   "starts_converged": 907,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.5815208595907135,
+     "outward": {
+      "best_dev": 4.3030280256925835,
+      "ok": true,
+      "starts": 147,
+      "converged": 147,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.1061904691805466,
+      "ok": true,
+      "starts": 147,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 3.015205055817966,
+     "outward": {
+      "best_dev": 5.477860318474995,
+      "ok": true,
+      "starts": 147,
+      "converged": 147,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.6727671522558012,
+      "ok": true,
+      "starts": 147,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 88.4663321728728,
+     "outward": {
+      "best_dev": 5.496667586244257,
+      "ok": true,
+      "starts": 119,
+      "converged": 117,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.584109175647427,
+      "ok": true,
+      "starts": 119,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 6.857792420323495,
+     "outward": {
+      "best_dev": 4.029903667865256,
+      "ok": true,
+      "starts": 126,
+      "converged": 126,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.9987906077722073,
+      "ok": true,
+      "starts": 126,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 216.57706599937265,
+     "outward": {
+      "best_dev": 5.509548682939567,
+      "ok": true,
+      "starts": 117,
+      "converged": 117,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.8177769346684727,
+      "ok": true,
+      "starts": 117,
+      "converged": 2,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.6416422387705832,
+     "outward": {
+      "best_dev": 3.9852223588213747,
+      "ok": true,
+      "starts": 117,
+      "converged": 84,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.1799697746018865,
+      "ok": true,
+      "starts": 117,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 109.44039108894123,
+     "outward": {
+      "best_dev": 5.709868621719579,
+      "ok": true,
+      "starts": 109,
+      "converged": 72,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.001259419047528354,
+      "ok": true,
+      "starts": 109,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.7293645754668938,
+     "outward": {
+      "best_dev": 3.999994330257323,
+      "ok": true,
+      "starts": 135,
+      "converged": 113,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.108120244782185,
+      "ok": true,
+      "starts": 138,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 7068.609246999999,
+   "evals": 92877,
+   "starts_tried": 1045,
+   "starts_converged": 938,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "hazard-k0.01-p04-c1-s1",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.03933563953704623,
+     "outward": {
+      "best_dev": 6.992686268204125,
+      "ok": true,
+      "starts": 127,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.0031055033614393324,
+      "ok": true,
+      "starts": 127,
+      "converged": 1,
+      "dex": 0.027176640492454527
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.04452939923242167,
+     "outward": {
+      "best_dev": 7.489719246717868,
+      "ok": true,
+      "starts": 127,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.0031055033614393324,
+      "ok": true,
+      "starts": 127,
+      "converged": 1,
+      "dex": 0.02668397987881976
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 26.83648234860914,
+     "outward": {
+      "best_dev": 4.186393154726829,
+      "ok": true,
+      "starts": 119,
+      "converged": 119,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.5326501057861606,
+      "ok": true,
+      "starts": 123,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 3.6917394438092654,
+     "outward": {
+      "best_dev": 6.158626035525231,
+      "ok": true,
+      "starts": 122,
+      "converged": 122,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.003255256509874016,
+      "ok": true,
+      "starts": 122,
+      "converged": 1,
+      "dex": 0.03584691139645281
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 4.332614546465284,
+     "outward": {
+      "best_dev": 7.061685495194979,
+      "ok": true,
+      "starts": 122,
+      "converged": 122,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.003255256509874016,
+      "ok": true,
+      "starts": 122,
+      "converged": 1,
+      "dex": 0.03367210037071531
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.003446096095351966,
+     "outward": {
+      "best_dev": 4.102533260287601,
+      "ok": true,
+      "starts": 122,
+      "converged": 122,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.8048003677249653,
+      "ok": true,
+      "starts": 122,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 53.61268281258056,
+     "outward": {
+      "best_dev": 4.1861585637088865,
+      "ok": true,
+      "starts": 119,
+      "converged": 119,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.4416167964955093,
+      "ok": true,
+      "starts": 119,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.006884596897679755,
+     "outward": {
+      "best_dev": 4.102603375111357,
+      "ok": true,
+      "starts": 125,
+      "converged": 125,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.7135350561729865,
+      "ok": true,
+      "starts": 125,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 2520.0608759999996,
+   "evals": 41198,
+   "starts_tried": 991,
+   "starts_converged": 991,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "hazard-k0.0316-p03-c0-s1",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.1412435926077608,
+     "outward": {
+      "best_dev": 4.127280463464558,
+      "ok": true,
+      "starts": 135,
+      "converged": 135,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.6081626485884044,
+      "ok": true,
+      "starts": 135,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.300036406622848,
+     "outward": {
+      "best_dev": 5.0796390162377065,
+      "ok": true,
+      "starts": 135,
+      "converged": 135,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.35189991846345947,
+      "ok": true,
+      "starts": 135,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 74.50390797717924,
+     "outward": {
+      "best_dev": 4.088282069022171,
+      "ok": true,
+      "starts": 122,
+      "converged": 119,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.8110417246007273,
+      "ok": true,
+      "starts": 122,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 4.6439859778844905,
+     "outward": {
+      "best_dev": 3.963181498063932,
+      "ok": true,
+      "starts": 151,
+      "converged": 151,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.267517534284707,
+      "ok": true,
+      "starts": 151,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 23.25462520685284,
+     "outward": {
+      "best_dev": 5.086360987457738,
+      "ok": true,
+      "starts": 148,
+      "converged": 148,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.34491487747254723,
+      "ok": true,
+      "starts": 148,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.07170389701757741,
+     "outward": {
+      "best_dev": 3.920357282338955,
+      "ok": true,
+      "starts": 112,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.5611931487510446,
+      "ok": true,
+      "starts": 112,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 132.19637198646075,
+     "outward": {
+      "best_dev": 4.141326938351995,
+      "ok": true,
+      "starts": 118,
+      "converged": 118,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.5301618891753606,
+      "ok": true,
+      "starts": 122,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.1432313223143962,
+     "outward": {
+      "best_dev": 3.9203632919470692,
+      "ok": true,
+      "starts": 109,
+      "converged": 109,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.45677428343879,
+      "ok": true,
+      "starts": 109,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 3780.87802,
+   "evals": 65671,
+   "starts_tried": 1042,
+   "starts_converged": 1035,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "hazard-k0.0316-p02-c0-s0",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.19413181095782645,
+     "outward": {
+      "best_dev": 4.203320900034669,
+      "ok": true,
+      "starts": 151,
+      "converged": 151,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.3743531346899545,
+      "ok": true,
+      "starts": 151,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.7669055099189893,
+     "outward": {
+      "best_dev": 4.975405991757725,
+      "ok": true,
+      "starts": 151,
+      "converged": 151,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.3398190117477498,
+      "ok": true,
+      "starts": 151,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 98.01281524780741,
+     "outward": {
+      "best_dev": 4.400361918464114,
+      "ok": true,
+      "starts": 117,
+      "converged": 105,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.7685173249155923,
+      "ok": true,
+      "starts": 117,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 2.8069816821997198,
+     "outward": {
+      "best_dev": 3.9735039328570565,
+      "ok": true,
+      "starts": 115,
+      "converged": 115,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.2203557589637057,
+      "ok": true,
+      "starts": 115,
+      "converged": 6,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 57.38488882235911,
+     "outward": {
+      "best_dev": 4.981941809206546,
+      "ok": true,
+      "starts": 121,
+      "converged": 121,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.3867123325053399,
+      "ok": true,
+      "starts": 121,
+      "converged": 14,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.4752233579367968,
+     "outward": {
+      "best_dev": 3.928561076774713,
+      "ok": true,
+      "starts": 124,
+      "converged": 114,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.421141289134539,
+      "ok": true,
+      "starts": 127,
+      "converged": 2,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 150.35429677740606,
+     "outward": {
+      "best_dev": 4.285354361685677,
+      "ok": true,
+      "starts": 123,
+      "converged": 120,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.916168417670633,
+      "ok": true,
+      "starts": 123,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.8619097738127622,
+     "outward": {
+      "best_dev": 3.91192166271685,
+      "ok": true,
+      "starts": 111,
+      "converged": 98,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.495150680113511,
+      "ok": true,
+      "starts": 111,
+      "converged": 42,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 3220.9158469999993,
+   "evals": 64118,
+   "starts_tried": 1087,
+   "starts_converged": 1043,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p19-c1-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.02060927399631301,
+     "outward": {
+      "best_dev": 9.159299868973903,
+      "ok": true,
+      "starts": 112,
+      "converged": 112,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.15800474031129852,
+      "ok": true,
+      "starts": 112,
+      "converged": 1,
+      "dex": 0.0392671178924795
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.023377359834078033,
+     "outward": {
+      "best_dev": 10.647188650720636,
+      "ok": true,
+      "starts": 112,
+      "converged": 111,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.15800474031129852,
+      "ok": true,
+      "starts": 112,
+      "converged": 1,
+      "dex": 0.015465650701708413
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 347.1806028247578,
+     "outward": {
+      "best_dev": 5.916201360640116,
+      "ok": true,
+      "starts": 130,
+      "converged": 118,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.4796353916899534,
+      "ok": true,
+      "starts": 130,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 0.49482557949565076,
+     "outward": {
+      "best_dev": 4.884691359853605,
+      "ok": true,
+      "starts": 121,
+      "converged": 118,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.6606315493991133,
+      "ok": true,
+      "starts": 121,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 0.6625544577330911,
+     "outward": {
+      "best_dev": 5.61760789170512,
+      "ok": true,
+      "starts": 121,
+      "converged": 120,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.30778524100605864,
+      "ok": true,
+      "starts": 121,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.6131357385095655,
+     "outward": {
+      "best_dev": 4.310279627257842,
+      "ok": true,
+      "starts": 108,
+      "converged": 88,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.8918396857043263,
+      "ok": true,
+      "starts": 108,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "lower",
+     "end": 302.9604462581854,
+     "outward": {
+      "best_dev": 6.664359937130939,
+      "ok": true,
+      "starts": 132,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.47828276437940076,
+      "ok": true,
+      "starts": 132,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 630.4446919506411,
+     "outward": {
+      "best_dev": 6.090885648038238,
+      "ok": true,
+      "starts": 132,
+      "converged": 102,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -3.033419488929212e-06,
+      "ok": true,
+      "starts": 132,
+      "converged": 1,
+      "dex": 0.03477136733541946
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "lower",
+     "end": 0.3579056590508744,
+     "outward": {
+      "best_dev": 4.540006266368437,
+      "ok": true,
+      "starts": 137,
+      "converged": 134,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.4282469695754116,
+      "ok": true,
+      "starts": 137,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 1.1958704770191821,
+     "outward": {
+      "best_dev": 4.328673370167962,
+      "ok": true,
+      "starts": 137,
+      "converged": 88,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.7569844445970375,
+      "ok": true,
+      "starts": 137,
+      "converged": 2,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 9503.103265,
+   "evals": 153626,
+   "starts_tried": 1255,
+   "starts_converged": 1129,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p11-c0-s0",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.35887649472816135,
+     "outward": {
+      "best_dev": 4.4990123968300395,
+      "ok": true,
+      "starts": 142,
+      "converged": 142,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.514770184477129,
+      "ok": true,
+      "starts": 142,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 1.4222636362490295,
+     "outward": {
+      "best_dev": 4.816977025080632,
+      "ok": true,
+      "starts": 142,
+      "converged": 140,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.041106850732831,
+      "ok": true,
+      "starts": 142,
+      "converged": 5,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "lower",
+     "end": 40.78887920595513,
+     "outward": {
+      "best_dev": 3.905832766316962,
+      "ok": true,
+      "starts": 177,
+      "converged": 100,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4753846174335195,
+      "ok": true,
+      "starts": 177,
+      "converged": 9,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 94.55042449492801,
+     "outward": {
+      "best_dev": 5.598184804401171,
+      "ok": true,
+      "starts": 168,
+      "converged": 165,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.249003346990321,
+      "ok": true,
+      "starts": 171,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 3.7886113789465727,
+     "outward": {
+      "best_dev": 4.081764739032224,
+      "ok": true,
+      "starts": 118,
+      "converged": 116,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.1442883577783505,
+      "ok": true,
+      "starts": 118,
+      "converged": 4,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 51.95856648547835,
+     "outward": {
+      "best_dev": 3.894782745594057,
+      "ok": true,
+      "starts": 131,
+      "converged": 131,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.5718960059502933,
+      "ok": true,
+      "starts": 134,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "lower",
+     "end": 0.020050274122981847,
+     "outward": {
+      "best_dev": 3.870429400330977,
+      "ok": true,
+      "starts": 164,
+      "converged": 122,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.692877857714848,
+      "ok": true,
+      "starts": 164,
+      "converged": 18,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.8580258759769448,
+     "outward": {
+      "best_dev": 4.010358331482166,
+      "ok": true,
+      "starts": 122,
+      "converged": 58,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.059930420709861,
+      "ok": true,
+      "starts": 122,
+      "converged": 17,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 124.55849540290134,
+     "outward": {
+      "best_dev": 5.204925736916266,
+      "ok": true,
+      "starts": 103,
+      "converged": 98,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.0467634111737425,
+      "ok": true,
+      "starts": 103,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 1.039802085384123,
+     "outward": {
+      "best_dev": 4.000779955197686,
+      "ok": true,
+      "starts": 153,
+      "converged": 96,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.3118876637390713,
+      "ok": true,
+      "starts": 157,
+      "converged": 15,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 7896.683765,
+   "evals": 194818,
+   "starts_tried": 1542,
+   "starts_converged": 1240,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "hazard-k0.0316-p00-c0-s1",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 1.29264848852765,
+     "outward": {
+      "best_dev": 3.9795383455111732,
+      "ok": true,
+      "starts": 149,
+      "converged": 149,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.223126463673907,
+      "ok": true,
+      "starts": 149,
+      "converged": 39,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 5.775069803621831,
+     "outward": {
+      "best_dev": 5.346021442939673,
+      "ok": true,
+      "starts": 149,
+      "converged": 149,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.3211020603785073,
+      "ok": true,
+      "starts": 149,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 78.22422188322255,
+     "outward": {
+      "best_dev": 4.2653518547322165,
+      "ok": true,
+      "starts": 114,
+      "converged": 113,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.5510404367805677,
+      "ok": true,
+      "starts": 114,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 22.118276408482174,
+     "outward": {
+      "best_dev": 3.910831674531437,
+      "ok": true,
+      "starts": 135,
+      "converged": 135,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.5468912233054652,
+      "ok": true,
+      "starts": 135,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 412.18418565538343,
+     "outward": {
+      "best_dev": 5.348799210930338,
+      "ok": true,
+      "starts": 135,
+      "converged": 135,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.3208596144395415,
+      "ok": true,
+      "starts": 135,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.2784567157049928,
+     "outward": {
+      "best_dev": 3.9022838499531645,
+      "ok": true,
+      "starts": 134,
+      "converged": 121,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.690514343842551,
+      "ok": true,
+      "starts": 134,
+      "converged": 44,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 98.34419434472157,
+     "outward": {
+      "best_dev": 5.5907648202528435,
+      "ok": true,
+      "starts": 100,
+      "converged": 78,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.3674165538095622,
+      "ok": true,
+      "starts": 103,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.33644635797498385,
+     "outward": {
+      "best_dev": 3.9147975366040555,
+      "ok": true,
+      "starts": 133,
+      "converged": 119,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.490318611602561,
+      "ok": true,
+      "starts": 133,
+      "converged": 94,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 2361.767072999999,
+   "evals": 53248,
+   "starts_tried": 1242,
+   "starts_converged": 1187,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p19-c0-s0",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.01742922574196349,
+     "outward": {
+      "best_dev": 3.886048639056753,
+      "ok": true,
+      "starts": 123,
+      "converged": 121,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.0476664201796666,
+      "ok": true,
+      "starts": 123,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.025288614679589903,
+     "outward": {
+      "best_dev": 5.747571458514358,
+      "ok": true,
+      "starts": 123,
+      "converged": 123,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.09713759053374815,
+      "ok": true,
+      "starts": 123,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "lower",
+     "end": 245.13520706322495,
+     "outward": {
+      "best_dev": 4.966168948139966,
+      "ok": true,
+      "starts": 150,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.6026679919614253,
+      "ok": true,
+      "starts": 150,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 670.9091316737745,
+     "outward": {
+      "best_dev": 3.8553521741032455,
+      "ok": true,
+      "starts": 150,
+      "converged": 99,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.717834792783833,
+      "ok": true,
+      "starts": 150,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 0.07795935562713172,
+     "outward": {
+      "best_dev": 3.84528971623331,
+      "ok": true,
+      "starts": 129,
+      "converged": 128,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.818992026595879,
+      "ok": true,
+      "starts": 149,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 0.7793219046754025,
+     "outward": {
+      "best_dev": 4.561501746051363,
+      "ok": true,
+      "starts": 132,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.3576795592471171,
+      "ok": true,
+      "starts": 145,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "lower",
+     "end": 0.2315332823659215,
+     "outward": {
+      "best_dev": 4.1629649197220715,
+      "ok": true,
+      "starts": 123,
+      "converged": 107,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.481005866668056,
+      "ok": true,
+      "starts": 126,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 33.646573180602324,
+     "outward": {
+      "best_dev": 3.8432930008439143,
+      "ok": true,
+      "starts": 101,
+      "converged": 78,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.831775072063465,
+      "ok": true,
+      "starts": 101,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "lower",
+     "end": 271.1210966289783,
+     "outward": {
+      "best_dev": 4.9584068545682385,
+      "ok": true,
+      "starts": 145,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.5479378323016135,
+      "ok": true,
+      "starts": 145,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 1056.3220507516992,
+     "outward": {
+      "best_dev": 3.8721497926217125,
+      "ok": true,
+      "starts": 145,
+      "converged": 135,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.581823334996443,
+      "ok": true,
+      "starts": 145,
+      "converged": 10,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "lower",
+     "end": 0.2535258920673156,
+     "outward": {
+      "best_dev": 4.162892824484516,
+      "ok": true,
+      "starts": 115,
+      "converged": 114,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.4781996019173675,
+      "ok": true,
+      "starts": 115,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 33.84654035072549,
+     "outward": {
+      "best_dev": 3.8432925483666622,
+      "ok": true,
+      "starts": 149,
+      "converged": 115,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.8351983301126893,
+      "ok": true,
+      "starts": 149,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 10755.259435000002,
+   "evals": 177142,
+   "starts_tried": 1613,
+   "starts_converged": 1407,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p18-c0-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.032268037560827724,
+     "outward": {
+      "best_dev": 5.35921164726642,
+      "ok": true,
+      "starts": 107,
+      "converged": 107,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.016041494758610497,
+      "ok": true,
+      "starts": 107,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.04149309440355783,
+     "outward": {
+      "best_dev": 5.970375842265639,
+      "ok": true,
+      "starts": 107,
+      "converged": 107,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.0036795470223296434,
+      "ok": true,
+      "starts": 107,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "lower",
+     "end": 120.97662669060064,
+     "outward": {
+      "best_dev": 4.991447533466271,
+      "ok": true,
+      "starts": 129,
+      "converged": 109,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.4392089194188884,
+      "ok": true,
+      "starts": 129,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 199.92976132321246,
+     "outward": {
+      "best_dev": 4.4397485861045425,
+      "ok": true,
+      "starts": 129,
+      "converged": 124,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.224543927490231,
+      "ok": true,
+      "starts": 129,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 0.9921253821193398,
+     "outward": {
+      "best_dev": 4.2055991175602685,
+      "ok": true,
+      "starts": 142,
+      "converged": 140,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.076737724315535,
+      "ok": true,
+      "starts": 142,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 1.8048064864401374,
+     "outward": {
+      "best_dev": 4.823236353859102,
+      "ok": true,
+      "starts": 142,
+      "converged": 140,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.7759955356050341,
+      "ok": true,
+      "starts": 142,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "lower",
+     "end": 0.05771790452265433,
+     "outward": {
+      "best_dev": 4.247252788563856,
+      "ok": true,
+      "starts": 136,
+      "converged": 130,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.1599564096122776,
+      "ok": true,
+      "starts": 139,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.22106497085375446,
+     "outward": {
+      "best_dev": 4.011142742643642,
+      "ok": true,
+      "starts": 139,
+      "converged": 138,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.001918408461279,
+      "ok": true,
+      "starts": 139,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "lower",
+     "end": 132.50724607132852,
+     "outward": {
+      "best_dev": 4.945283193794239,
+      "ok": true,
+      "starts": 133,
+      "converged": 130,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.4971416028765816,
+      "ok": true,
+      "starts": 133,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 361.42560086017113,
+     "outward": {
+      "best_dev": 4.449065995884666,
+      "ok": true,
+      "starts": 133,
+      "converged": 133,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.184721277862991,
+      "ok": true,
+      "starts": 133,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "lower",
+     "end": 0.06302222956453955,
+     "outward": {
+      "best_dev": 4.240394987722539,
+      "ok": true,
+      "starts": 137,
+      "converged": 137,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.184883352898396,
+      "ok": true,
+      "starts": 137,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.4169435429724668,
+     "outward": {
+      "best_dev": 4.006249819774894,
+      "ok": true,
+      "starts": 146,
+      "converged": 144,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.0245771198970033,
+      "ok": true,
+      "starts": 146,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 10564.582451999999,
+   "evals": 176624,
+   "starts_tried": 1592,
+   "starts_converged": 1551,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "hazard-k0.01-p02-c1-s0",
+   "name": "profile_jax2_h",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.5158887734492197,
+     "outward": {
+      "best_dev": 4.55228672438534,
+      "ok": true,
+      "starts": 129,
+      "converged": 129,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.0301263241708511,
+      "ok": true,
+      "starts": 129,
+      "converged": 40,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.6470082252640955,
+     "outward": {
+      "best_dev": 9.11671430034039,
+      "ok": true,
+      "starts": 129,
+      "converged": 129,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.1825038604438305e-08,
+      "ok": true,
+      "starts": 129,
+      "converged": 1,
+      "dex": 0.018587220506483624
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 36.397386294538876,
+     "outward": {
+      "best_dev": 3.9303974693029886,
+      "ok": true,
+      "starts": 100,
+      "converged": 94,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.573218640856794,
+      "ok": true,
+      "starts": 100,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 25.558793949854877,
+     "outward": {
+      "best_dev": 3.9441168442135677,
+      "ok": true,
+      "starts": 140,
+      "converged": 140,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.5053040303610032,
+      "ok": true,
+      "starts": 140,
+      "converged": 9,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 48.07896326203028,
+     "outward": {
+      "best_dev": 9.163298840867355,
+      "ok": true,
+      "starts": 140,
+      "converged": 140,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.208697307854891e-08,
+      "ok": true,
+      "starts": 140,
+      "converged": 1,
+      "dex": 0.018436648329564684
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.014874812714905098,
+     "outward": {
+      "best_dev": 3.8751335220149485,
+      "ok": true,
+      "starts": 110,
+      "converged": 106,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.704792241624091,
+      "ok": true,
+      "starts": 110,
+      "converged": 7,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 72.7086098016033,
+     "outward": {
+      "best_dev": 3.9300684766931226,
+      "ok": true,
+      "starts": 94,
+      "converged": 93,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.5730799757293426,
+      "ok": true,
+      "starts": 94,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.02971745542704277,
+     "outward": {
+      "best_dev": 3.875174254848389,
+      "ok": true,
+      "starts": 106,
+      "converged": 87,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.7048193090886343,
+      "ok": true,
+      "starts": 106,
+      "converged": 5,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 3591.4946959999997,
+   "evals": 72365,
+   "starts_tried": 1018,
+   "starts_converged": 983,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 2.543717357724505,
+     "outward": {
+      "best_dev": 4.135002017588704,
+      "ok": true,
+      "starts": 154,
+      "converged": 154,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.4939668599981815,
+      "ok": true,
+      "starts": 154,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 5.152802958980605,
+     "outward": {
+      "best_dev": 12.586936374369543,
+      "ok": true,
+      "starts": 154,
+      "converged": 154,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.5187089019600535,
+      "ok": true,
+      "starts": 154,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 56.925896600449015,
+     "outward": {
+      "best_dev": 4.4642236404979485,
+      "ok": true,
+      "starts": 111,
+      "converged": 93,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.3934122655773535,
+      "ok": true,
+      "starts": 111,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 73.4680388881354,
+     "outward": {
+      "best_dev": 4.04741948103765,
+      "ok": true,
+      "starts": 164,
+      "converged": 164,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.971272070266423,
+      "ok": true,
+      "starts": 164,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 368.6581953951223,
+     "outward": {
+      "best_dev": 12.654405367808067,
+      "ok": true,
+      "starts": 164,
+      "converged": 164,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.39637777116149664,
+      "ok": true,
+      "starts": 164,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.08239182936962514,
+     "outward": {
+      "best_dev": 4.035316180670634,
+      "ok": true,
+      "starts": 156,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.944138178565481,
+      "ok": true,
+      "starts": 156,
+      "converged": 27,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 94.54900052358232,
+     "outward": {
+      "best_dev": 8.97797320895188,
+      "ok": true,
+      "starts": 106,
+      "converged": 63,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.018605442077387124,
+      "ok": true,
+      "starts": 106,
+      "converged": 3,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.13822074913709786,
+     "outward": {
+      "best_dev": 4.107671178193414,
+      "ok": true,
+      "starts": 152,
+      "converged": 112,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.64043523689179,
+      "ok": true,
+      "starts": 152,
+      "converged": 22,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 13868.720903,
+   "evals": 107691,
+   "starts_tried": 1230,
+   "starts_converged": 1088,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p17-c1-s0",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.110813413957498,
+     "outward": {
+      "best_dev": 7.470093973097391,
+      "ok": true,
+      "starts": 125,
+      "converged": 125,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -2.117152325809002e-05,
+      "ok": true,
+      "starts": 125,
+      "converged": 1,
+      "dex": 0.025792431709854197
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.14358159459005548,
+     "outward": {
+      "best_dev": 6.251545233011711,
+      "ok": true,
+      "starts": 125,
+      "converged": 120,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.38841800863156095,
+      "ok": true,
+      "starts": 125,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 130.3008802872124,
+     "outward": {
+      "best_dev": 6.684067093403428,
+      "ok": true,
+      "starts": 155,
+      "converged": 133,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -2.447306178510189e-05,
+      "ok": true,
+      "starts": 155,
+      "converged": 1,
+      "dex": 0.030392845602227873
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 0.9092193020437972,
+     "outward": {
+      "best_dev": 4.293901338474825,
+      "ok": true,
+      "starts": 147,
+      "converged": 142,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.508064574794844,
+      "ok": true,
+      "starts": 147,
+      "converged": 6,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 1.7651386477017612,
+     "outward": {
+      "best_dev": 4.659827053226763,
+      "ok": true,
+      "starts": 147,
+      "converged": 134,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.9703792039363179,
+      "ok": true,
+      "starts": 147,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "lower",
+     "end": 0.5660439660036938,
+     "outward": {
+      "best_dev": 4.298700448605814,
+      "ok": true,
+      "starts": 172,
+      "converged": 116,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.9618587367294822,
+      "ok": true,
+      "starts": 172,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 2.30010866839714,
+     "outward": {
+      "best_dev": 4.079800588981016,
+      "ok": true,
+      "starts": 172,
+      "converged": 128,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.790194536035415,
+      "ok": true,
+      "starts": 172,
+      "converged": 24,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "lower",
+     "end": 114.08796238753861,
+     "outward": {
+      "best_dev": 6.865458365806262,
+      "ok": true,
+      "starts": 141,
+      "converged": 124,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 6.741902325302362e-08,
+      "ok": true,
+      "starts": 141,
+      "converged": 1,
+      "dex": 0.029912934369449716
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 230.60672794535336,
+     "outward": {
+      "best_dev": 5.759480997294304,
+      "ok": true,
+      "starts": 141,
+      "converged": 119,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.0396232070634142,
+      "ok": true,
+      "starts": 141,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "lower",
+     "end": 0.5857425306933621,
+     "outward": {
+      "best_dev": 4.306233516952489,
+      "ok": true,
+      "starts": 135,
+      "converged": 101,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.9336673539655749,
+      "ok": true,
+      "starts": 139,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 4.593406010872745,
+     "outward": {
+      "best_dev": 4.080277109140297,
+      "ok": true,
+      "starts": 144,
+      "converged": 109,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.7888180822483264,
+      "ok": true,
+      "starts": 147,
+      "converged": 19,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 16660.175162,
+   "evals": 209336,
+   "starts_tried": 1688,
+   "starts_converged": 1408,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p16-c1-s0",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.28959213602227046,
+     "outward": {
+      "best_dev": 6.873704659199575,
+      "ok": true,
+      "starts": 125,
+      "converged": 125,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.03306772767973598,
+      "ok": true,
+      "starts": 125,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.6325913172457065,
+     "outward": {
+      "best_dev": 5.10952319385251,
+      "ok": true,
+      "starts": 125,
+      "converged": 122,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.0968429716158425,
+      "ok": true,
+      "starts": 125,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "lower",
+     "end": 65.65855307522862,
+     "outward": {
+      "best_dev": 7.658041814953322,
+      "ok": true,
+      "starts": 123,
+      "converged": 120,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.177664084112621,
+      "ok": true,
+      "starts": 123,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 102.9487695436995,
+     "outward": {
+      "best_dev": 10.931880366406403,
+      "ok": true,
+      "starts": 123,
+      "converged": 104,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -0.008581986665376462,
+      "ok": true,
+      "starts": 123,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 2.091014920709623,
+     "outward": {
+      "best_dev": 4.675907996090245,
+      "ok": true,
+      "starts": 137,
+      "converged": 130,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.9216218518704409,
+      "ok": true,
+      "starts": 137,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 6.033989219162648,
+     "outward": {
+      "best_dev": 4.2968748680723365,
+      "ok": true,
+      "starts": 137,
+      "converged": 137,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.329571047841455,
+      "ok": true,
+      "starts": 137,
+      "converged": 2,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "lower",
+     "end": 0.7190941188925702,
+     "outward": {
+      "best_dev": 4.161685153347207,
+      "ok": true,
+      "starts": 150,
+      "converged": 95,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.5904811309010256,
+      "ok": true,
+      "starts": 150,
+      "converged": 25,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 1.983973832185492,
+     "outward": {
+      "best_dev": 4.332224389072508,
+      "ok": true,
+      "starts": 150,
+      "converged": 119,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.7137433320604032,
+      "ok": true,
+      "starts": 150,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "lower",
+     "end": 97.04273141444264,
+     "outward": {
+      "best_dev": 10.650562688635546,
+      "ok": true,
+      "starts": 130,
+      "converged": 124,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": -0.00049138322356157,
+      "ok": true,
+      "starts": 130,
+      "converged": 1,
+      "dex": 0.04926418074552444
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 140.83927033776698,
+     "outward": {
+      "best_dev": 7.066659360702033,
+      "ok": true,
+      "starts": 130,
+      "converged": 79,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.6804035775567172,
+      "ok": true,
+      "starts": 130,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "lower",
+     "end": 1.0447520322901158,
+     "outward": {
+      "best_dev": 4.402137545257574,
+      "ok": true,
+      "starts": 152,
+      "converged": 128,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.629016329505248,
+      "ok": true,
+      "starts": 152,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 2.900581984015521,
+     "outward": {
+      "best_dev": 4.192118356062565,
+      "ok": true,
+      "starts": 152,
+      "converged": 101,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.306263512436999,
+      "ok": true,
+      "starts": 152,
+      "converged": 4,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 24481.528554,
+   "evals": 190890,
+   "starts_tried": 1684,
+   "starts_converged": 1424,
+   "ll_rebuilt_minus_fit": 0.0
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c1-s1",
+   "name": "profile_jax2",
+   "checks": [
+    {
+     "key": "eta_over_eps",
+     "side": "lower",
+     "end": 0.6076265835914215,
+     "outward": {
+      "best_dev": 4.647293459187495,
+      "ok": true,
+      "starts": 138,
+      "converged": 138,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.8867515729216393,
+      "ok": true,
+      "starts": 138,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "eta_over_eps",
+     "side": "upper",
+     "end": 0.8797625472329124,
+     "outward": {
+      "best_dev": 6.932900286221411,
+      "ok": true,
+      "starts": 138,
+      "converged": 137,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.5870525101927342,
+      "ok": true,
+      "starts": 138,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "lower",
+     "end": 7.031919922656976,
+     "outward": {
+      "best_dev": 3.9204784786124947,
+      "ok": true,
+      "starts": 177,
+      "converged": 152,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.435316658447846,
+      "ok": true,
+      "starts": 177,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar_over_eta",
+     "side": "upper",
+     "end": 50.53190090428084,
+     "outward": {
+      "best_dev": 4.948587274033343,
+      "ok": true,
+      "starts": 169,
+      "converged": 169,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.3021000963926781,
+      "ok": true,
+      "starts": 173,
+      "converged": 17,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "lower",
+     "end": 22.088960865351403,
+     "outward": {
+      "best_dev": 4.333820206709788,
+      "ok": true,
+      "starts": 145,
+      "converged": 145,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.7510765022598207,
+      "ok": true,
+      "starts": 145,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "sqrt_eta_over_eps",
+     "side": "upper",
+     "end": 60.613295074681616,
+     "outward": {
+      "best_dev": 4.7378774119133595,
+      "ok": true,
+      "starts": 145,
+      "converged": 145,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.2378242507111281,
+      "ok": true,
+      "starts": 145,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "lower",
+     "end": 0.0014704930001902153,
+     "outward": {
+      "best_dev": 3.911385079656611,
+      "ok": true,
+      "starts": 129,
+      "converged": 109,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4859209616843145,
+      "ok": true,
+      "starts": 129,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "rbar",
+     "side": "upper",
+     "end": 0.043274818257435954,
+     "outward": {
+      "best_dev": 4.237899065527017,
+      "ok": true,
+      "starts": 131,
+      "converged": 118,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 2.1178747576777823,
+      "ok": true,
+      "starts": 131,
+      "converged": 24,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "lower",
+     "end": 7.079898469779622,
+     "outward": {
+      "best_dev": 3.9205363484215923,
+      "ok": true,
+      "starts": 127,
+      "converged": 127,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4350596888107248,
+      "ok": true,
+      "starts": 127,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_eta_kp1",
+     "side": "upper",
+     "end": 96.64453097280816,
+     "outward": {
+      "best_dev": 6.619015177100664,
+      "ok": true,
+      "starts": 113,
+      "converged": 108,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 0.0006584010261576623,
+      "ok": true,
+      "starts": 113,
+      "converged": 2,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "lower",
+     "end": 0.0014809798205059268,
+     "outward": {
+      "best_dev": 3.91142954400857,
+      "ok": true,
+      "starts": 136,
+      "converged": 136,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 3.4857333885593107,
+      "ok": true,
+      "starts": 136,
+      "converged": 1,
+      "dex": 0.05
+     },
+     "ok": true
+    },
+    {
+     "key": "beta_over_kp1",
+     "side": "upper",
+     "end": 0.0856569594815942,
+     "outward": {
+      "best_dev": 4.304509503068402,
+      "ok": true,
+      "starts": 112,
+      "converged": 69,
+      "dex": 0.01
+     },
+     "inward": {
+      "best_dev": 1.9988533422874752,
+      "ok": true,
+      "starts": 112,
+      "converged": 17,
+      "dex": 0.05
+     },
+     "ok": true
+    }
+   ],
+   "cpu_s": 29433.366812000004,
+   "evals": 205857,
+   "starts_tried": 1774,
+   "starts_converged": 1621,
+   "ll_rebuilt_minus_fit": 0.0
+  }
+ ],
+ "rule": {
+  "outward_dex": 0.01,
+  "inward_dex": 0.05,
+  "inward_cap": "the profile's maximum, when nearer",
+  "thr": 3.8415,
+  "cube_dex": 1.5,
+  "box_sobol": [
+   "beta",
+   "kappa"
+  ],
+  "ridge_dex": [
+   -1.5,
+   -1.0,
+   -0.5,
+   0.5,
+   1.0,
+   1.5
+  ]
+ }
+}

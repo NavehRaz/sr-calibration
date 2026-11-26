@@ -1,0 +1,6247 @@
+{
+ "phase": "predecessor",
+ "written_at": "2026-10-29T00:46:35Z",
+ "repo_head": "37bf03bcf668445ec5789fb0527bd5fd5bac03a5",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 1080.3491830825806,
+ "cpu_s": 2034.232803,
+ "status": "written",
+ "seal": "GATE-V6 registered run 2026-10-27 10:00:07 IST: mle_profile_jax2 1.0.1 PASS (G1-G5); out/GATE_V6.txt sha256 f8c428431bdd337b1cab51325b27e432fa52861fdb5cf75b8b4440685667f7c0; jax2 sesync 20261027-100208-jax2-dccf: the no-peek on runs/jax033-v6-full-bign.json is LIFTED",
+ "verdicts": [
+  {
+   "stratum": "BASIN-J",
+   "rule": "PR-5",
+   "verdict": "shown",
+   "arm": null,
+   "quantity": null,
+   "n_valid": 32,
+   "n_all": 32,
+   "statistic": {
+    "measure": "W33 > w_thr",
+    "n": 32,
+    "k_shown": 29,
+    "n_null": 2,
+    "shown_ids": [
+     "censor-real-Denmark_F_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c0-s0",
+     "censor-real-Denmark_M_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c1-s0",
+     "censor-real-Denmark_M_1900_hetro-c0-s0",
+     "censor-real-Denmark_M_1900_hetro-c1-s0",
+     "pure-real-Denmark_F_1890_hetro-c0-s0",
+     "pure-real-Denmark_F_1890_hetro-c0-s1",
+     "pure-real-Denmark_F_1890_hetro-c1-s0",
+     "pure-real-Denmark_F_1890_hetro-c1-s1",
+     "pure-real-Denmark_F_1900_hetro-c0-s0",
+     "pure-real-Denmark_F_1900_hetro-c0-s1",
+     "pure-real-Denmark_F_1900_hetro-c1-s0",
+     "pure-real-Denmark_F_1900_hetro-c1-s1",
+     "pure-real-Denmark_M_1890_hetro-c0-s0",
+     "pure-real-Denmark_M_1890_hetro-c0-s1",
+     "pure-real-Denmark_M_1890_hetro-c1-s1",
+     "pure-real-Denmark_M_1900_hetro-c0-s0",
+     "pure-real-Denmark_M_1900_hetro-c0-s1",
+     "pure-real-Denmark_M_1900_hetro-c1-s1",
+     "pure-real-Sweden_F_1910_homo-c0-s0",
+     "pure-real-Sweden_F_1910_homo-c0-s1",
+     "pure-real-Sweden_F_1910_homo-c1-s0",
+     "pure-real-Sweden_M_1910_hetro-c0-s0",
+     "pure-real-combined_human_F-c0-s0",
+     "pure-real-combined_human_F-c0-s1",
+     "pure-real-combined_human_M-c0-s0",
+     "pure-real-combined_human_M-c0-s1",
+     "pure-real-combined_human_M-c1-s1"
+    ],
+    "rows": [
+     {
+      "cohort_id": "censor-real-Denmark_F_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.0182029840618533e-08,
+       0.00013455337725633846,
+       1.0214752697472344e-05,
+       0.0021214073807095785
+      ],
+      "W33": 2358.649000880483,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "3dae8483c866036001a0ef705c2e60e34c526dbf62d348239019971f125bdc51",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_F_1900_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       3.847655664333325e-05,
+       1.9826573409179253,
+       0.09095945573093427,
+       0.0010000000000001663
+      ],
+      "W33": -0.05646327801514417,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "8614caf3d75271e4fb4dfe2046ac8372956a3febfc00b41745af5a15831c4654",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.4033652229618305e-08,
+       0.00018156992618656933,
+       1.4956759970740419e-05,
+       0.002177257450573916
+      ],
+      "W33": 2096.0822153218323,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "1009f0423527e12d5cff5a18f79c127c05faa7c6c37dcfb400b6f1cc72233ff4",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.4124699700753051e-08,
+       0.00018301864155839272,
+       1.521615212456841e-05,
+       0.001507008322970411
+      ],
+      "W33": 2217.8054581567994,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "78a2ba3b4855c6b566af278ae84fa90af5e5af8661c50caa411ef75c09a99302",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_hetro-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.1871690070907981e-08,
+       0.00014081136069445037,
+       1.2510613466093753e-05,
+       0.0018365016563377785
+      ],
+      "W33": 586.0329479166103,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "8f55e28705cef9919d79b1ef44345e70d80f4dd6824f06c4fee289a70bd30354",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2666430285051408e-08,
+       0.0001793942865920881,
+       1.4715405030487575e-05,
+       0.00227431881383303
+      ],
+      "W33": 2104.2550695377286,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "a74831913879961c9e3c03892ab341e9090653eace5bdf8dc8daa94a06c580ec",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_hetro-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2760200371290765e-08,
+       0.00018174282074891,
+       1.4988806994078796e-05,
+       0.0016972658114417609
+      ],
+      "W33": 475.05347890240955,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "8590c8b4296e3034d9a614bc7307e819c0b9531da6e23ef15872a97417707cab",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Sweden_F_1910_homo-c0-s0",
+      "source": "recon_failed",
+      "recon_dll": -27.236980673624203,
+      "point": null,
+      "W33": null,
+      "human": true,
+      "robust": null,
+      "shown": null,
+      "record_sha256": "cf3fa918a56fa2896219c9fb7d10e73f9d7a88b744dafe3731a9931deaeea7d3",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1890_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       9.509125632697485e-09,
+       0.00011786501884923341,
+       8.640165180246405e-06,
+       0.006243471252067895
+      ],
+      "W33": 5112.8817495411495,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "24904da82e0e95f4a25acc22b2844ddb0f73e809c255a263b2f05f3dbc564160",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.671548030623604e-09,
+       0.00010027971409845449,
+       7.747252688224844e-06,
+       0.00165387943540994
+      ],
+      "W33": 5340.951930721058,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "54f43161e9cb4c7ff64d9b23b4e5a2636afa76b041628af9c693df9e3c090799",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1890_hetro-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       9.68227095820058e-09,
+       0.00012011167970987152,
+       8.305049338230085e-06,
+       0.005660102356323801
+      ],
+      "W33": 1264.357889907973,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "2ad6329893e665f822f3b78881d18fef61a4802f9123c39bfeec0e1e31330654",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1890_hetro-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       7.060327988241091e-09,
+       6.679928874112652e-05,
+       4.800917905061623e-06,
+       0.0033514394755633707
+      ],
+      "W33": 1637.4623123400524,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "3012935972a79feb71cede21c71572ffcf38903d906e8fa9d22d245c7852102c",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1900_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       7.056605616621247e-09,
+       0.00012321619850780993,
+       4.872163244134343e-06,
+       0.20721792987937235
+      ],
+      "W33": 5374.584993646771,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "024448e09704cb2975c1d05135215a841a30f6e1ff6b2d22b724b5c4165f5f7b",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1900_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       6.629211797054589e-09,
+       7.173328223553944e-05,
+       4.658036341715873e-06,
+       0.0019049292007665927
+      ],
+      "W33": 5554.528254588426,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "afb068280e8b039483750069dc86e8677348d95d7fd41f564de0956b69c17f8a",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1900_hetro-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       7.126761611053126e-09,
+       0.00012516782920971004,
+       4.95711651418581e-06,
+       0.2067317574671265
+      ],
+      "W33": 1247.4566211357305,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "5e918dd448c8de5ec92a456f235298aaad894f1f3e4083be6f4a3b8559abd6e4",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1900_hetro-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       5.1149519750532165e-09,
+       4.260108329093689e-05,
+       3.284147467342289e-06,
+       0.001993814990557471
+      ],
+      "W33": 1623.4774033738067,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "e2925c90c4c2e1d270f61abcfe9c1f9a7dc1c6f7d7485dbaefe8039073cd32dd",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2229660636434315e-08,
+       0.000138675567510683,
+       1.0892590854910243e-05,
+       0.001586471540270578
+      ],
+      "W33": 4713.02952355484,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "d82e31690af236964ae6a2f0551869fcc57e98ff8483830adf9db88e501300d5",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       9.133900243412646e-09,
+       8.28343564029207e-05,
+       6.959713700135232e-06,
+       0.0015954449197908835
+      ],
+      "W33": 6278.09915868449,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "30f4145b4971c308c6681915b1382221d1d07a357363273bf8b5fb1f5a41b1a2",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_hetro-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2257609400245687e-08,
+       0.00014065443853837994,
+       1.1258538966550907e-05,
+       0.0023876688235876017
+      ],
+      "W33": 1323.0689043702296,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "cce8dfd6be6c95ce61a7525f1c63d48c5a1d35f936cdb4aa6624c15393d9f843",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.390375083904283e-09,
+       8.626155586157428e-05,
+       6.783281525740204e-06,
+       0.0023489159636108105
+      ],
+      "W33": 6562.372610967548,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "9c8a01ff9aa3cdda63adf133b96c04d6159e6663742c29d0ee663cefdff91b5a",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.184012706261755e-09,
+       8.217267432647191e-05,
+       6.568162517959818e-06,
+       0.0016351996018031216
+      ],
+      "W33": 5774.7927717251005,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "e815354a013f75ef312805267f94565b7990cf760f83ed69d4320a85708379db",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_hetro-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.0802127474947942e-08,
+       0.000134532604416071,
+       1.027744392415506e-05,
+       0.0015079470175784779
+      ],
+      "W33": 1243.487758260293,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "e83cd795c4f0cb892adcd9408c7b4816c9b5e4009052b899a92456534d7e7716",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Sweden_F_1910_homo-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       4.665557170365553e-09,
+       9.973565851904109e-05,
+       3.6740917335950877e-06,
+       0.20665078614735088
+      ],
+      "W33": 4896.7209221913945,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "35b164f5b0e0b4e7cbfd56fbf7c90ff7140c16e3d2066f3e9d1f5d3e6fe2ee2c",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Sweden_F_1910_homo-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       4.636657820617385e-09,
+       9.89050029541241e-05,
+       3.6600740483338163e-06,
+       0.2077955285151228
+      ],
+      "W33": 5020.233169334941,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "66372ac12543045085200bf05240abf0ca4ef2bba515d9158867988949567225",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Sweden_F_1910_homo-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       4.634031580226313e-09,
+       9.909694789631972e-05,
+       3.6913256252937483e-06,
+       0.2075807751352423
+      ],
+      "W33": 1249.4682085181994,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "c578d18331ae6459e5ef505aee1129cd2838ac6ed530c46d4f5f1d873c5d1dd3",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Sweden_M_1910_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       4.705807745101817e-09,
+       7.037525026430864e-05,
+       1.5643269257811782e-06,
+       0.23903270253616682
+      ],
+      "W33": 5783.866285227414,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "35d1c59789b42f768cf866ad29c8b271b425a98e1dd1990ce09aa60c69b7de7c",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Sweden_M_1910_hetro-c0-s1",
+      "source": "recon_failed",
+      "recon_dll": -0.544934663688764,
+      "point": null,
+      "W33": null,
+      "human": true,
+      "robust": null,
+      "shown": null,
+      "record_sha256": "f7a18b588b779a29bf3e975728d53d17fa009b32c633decec40b6c16810c3f9e",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_F-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.066016971083208e-09,
+       0.0001355152033454292,
+       3.0670026845767325e-06,
+       0.19740715231677577
+      ],
+      "W33": 5961.633042065136,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "50d522ef2841b376ecb03f893793bb75e5c8b7af67d8a8e7e5b50fe6c8b5ddf9",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_F-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.08392831575417e-09,
+       0.00013559067885885628,
+       3.0963477898237975e-06,
+       0.19733011094906863
+      ],
+      "W33": 5928.806182409055,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "0a1fbc077702806268dcdaf07359b7be491ebf2bf12c8e01e202386b770e49de",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_M-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.5101384319812424e-08,
+       0.00018047064154963816,
+       1.5313213790911126e-05,
+       0.0013035400223556533
+      ],
+      "W33": 4192.155915063224,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "361636f5c03b62350cab8901bf62d1d406d37a73a9e4211ce447f1ec0576e6ab",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_M-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.5616716377405878e-08,
+       0.00019040121787943464,
+       1.6077621767902937e-05,
+       0.0014260684712458112
+      ],
+      "W33": 4399.002019118052,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "943251bf9cc3061d10275c0efbe38688087687f5be3adac1f7dfe501825b4276",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_M-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.514072595115615e-08,
+       0.0001824843996307102,
+       1.6081179276735805e-05,
+       0.0020300531333870488
+      ],
+      "W33": 1088.1948096518317,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "2c0c4877e6a7fcaeb31e98232d5b1a49bceac8d102faa49782a869f83afe00d1",
+      "window_set_aside": null
+     }
+    ],
+    "excluded_not_valid_or_informative": [],
+    "shown_also_basin_j": [
+     "censor-real-Denmark_F_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c0-s0",
+     "censor-real-Denmark_M_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c1-s0",
+     "censor-real-Denmark_M_1900_hetro-c0-s0",
+     "censor-real-Denmark_M_1900_hetro-c1-s0",
+     "pure-real-Denmark_F_1890_hetro-c0-s0",
+     "pure-real-Denmark_F_1890_hetro-c0-s1",
+     "pure-real-Denmark_F_1890_hetro-c1-s0",
+     "pure-real-Denmark_F_1890_hetro-c1-s1",
+     "pure-real-Denmark_F_1900_hetro-c0-s0",
+     "pure-real-Denmark_F_1900_hetro-c0-s1",
+     "pure-real-Denmark_F_1900_hetro-c1-s0",
+     "pure-real-Denmark_F_1900_hetro-c1-s1",
+     "pure-real-Denmark_M_1890_hetro-c0-s0",
+     "pure-real-Denmark_M_1890_hetro-c0-s1",
+     "pure-real-Denmark_M_1890_hetro-c1-s1",
+     "pure-real-Denmark_M_1900_hetro-c0-s0",
+     "pure-real-Denmark_M_1900_hetro-c0-s1",
+     "pure-real-Denmark_M_1900_hetro-c1-s1",
+     "pure-real-Sweden_F_1910_homo-c0-s0",
+     "pure-real-Sweden_F_1910_homo-c0-s1",
+     "pure-real-Sweden_F_1910_homo-c1-s0",
+     "pure-real-Sweden_M_1910_hetro-c0-s0",
+     "pure-real-combined_human_F-c0-s0",
+     "pure-real-combined_human_F-c0-s1",
+     "pure-real-combined_human_M-c0-s0",
+     "pure-real-combined_human_M-c0-s1",
+     "pure-real-combined_human_M-c1-s1"
+    ]
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF",
+   "rule": "PR-5",
+   "verdict": "shown",
+   "arm": null,
+   "quantity": null,
+   "n_valid": 178,
+   "n_all": 178,
+   "statistic": {
+    "measure": "W33 > w_thr",
+    "n": 178,
+    "k_shown": 19,
+    "n_null": 3,
+    "shown_ids": [
+     "censor-real-Denmark_F_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c0-s0",
+     "censor-real-Denmark_M_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c1-s0",
+     "censor-real-Denmark_M_1900_hetro-c0-s0",
+     "censor-real-Denmark_M_1900_hetro-c2-s1",
+     "censor-real-combined_human_M-c0-s1",
+     "censor-real-combined_human_M-c1-s0",
+     "pure-real-Denmark_F_1890_hetro-c0-s1",
+     "pure-real-Denmark_F_1890_hetro-c1-s0",
+     "pure-real-Denmark_M_1890_hetro-c0-s0",
+     "pure-real-Denmark_M_1890_hetro-c0-s1",
+     "pure-real-Denmark_M_1890_hetro-c1-s1",
+     "pure-real-Denmark_M_1900_hetro-c0-s0",
+     "pure-real-Denmark_M_1900_hetro-c0-s1",
+     "pure-real-Denmark_M_1900_hetro-c2-s0",
+     "pure-real-combined_human_M-c0-s0",
+     "pure-real-combined_human_M-c0-s1",
+     "pure-real-combined_human_M-c1-s1"
+    ],
+    "rows": [
+     {
+      "cohort_id": "censor-real-Denmark_F_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.0182029840618533e-08,
+       0.00013455337725633846,
+       1.0214752697472344e-05,
+       0.0021214073807095785
+      ],
+      "W33": 2358.649000880483,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "3dae8483c866036001a0ef705c2e60e34c526dbf62d348239019971f125bdc51",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.4033652229618305e-08,
+       0.00018156992618656933,
+       1.4956759970740419e-05,
+       0.002177257450573916
+      ],
+      "W33": 2096.0822153218323,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "1009f0423527e12d5cff5a18f79c127c05faa7c6c37dcfb400b6f1cc72233ff4",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.4124699700753051e-08,
+       0.00018301864155839272,
+       1.521615212456841e-05,
+       0.001507008322970411
+      ],
+      "W33": 2217.8054581567994,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "78a2ba3b4855c6b566af278ae84fa90af5e5af8661c50caa411ef75c09a99302",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_hetro-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.1871690070907981e-08,
+       0.00014081136069445037,
+       1.2510613466093753e-05,
+       0.0018365016563377785
+      ],
+      "W33": 586.0329479166103,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "8f55e28705cef9919d79b1ef44345e70d80f4dd6824f06c4fee289a70bd30354",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_homo-c0-s0",
+      "source": "recon",
+      "recon_dll": 3.0061928555369377e-06,
+      "point": [
+       4.3272150587939506e-05,
+       6.720877334395,
+       0.40604155877436143,
+       0.0010295204020886997
+      ],
+      "W33": 0.009529210045002401,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "1240e123be0038d2277af696059fd17f4817de79285a99b24df2e43d8e52fd96",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_homo-c0-s1",
+      "source": "recon",
+      "recon_dll": -1.589301973581314e-06,
+      "point": [
+       2.097676288505342e-06,
+       0.2418399707228633,
+       0.018624050341571347,
+       0.001002139885413751
+      ],
+      "W33": -0.2300157051649876,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "36a16ad989c4cf48a9c704c741021d127eb82af8c0902ba202fa3e0f8ae8f0f6",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_homo-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.5700527001172304e-05,
+      "point": [
+       6.030178658787464e-05,
+       9.551233225948348,
+       0.5639114565653434,
+       0.0010334812282244256
+      ],
+      "W33": -0.8170972985972185,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "dafaa487666ba75b4fc523b0d64aaecf51078c3b450a5c52bc436cc4aaef3c34",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_homo-c1-s1",
+      "source": "recon",
+      "recon_dll": -2.2992026060819626e-09,
+      "point": [
+       1.5180842870539452e-06,
+       0.1674293488716821,
+       0.013280061590444363,
+       0.001013340437740494
+      ],
+      "W33": -0.4703324648871785,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "41fcafd58719e09cf33e8bbc4e15c9d8a407dac9e2fa3542682872266268509f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_homo-c2-s0",
+      "source": "recon",
+      "recon_dll": 1.0851363185793161e-07,
+      "point": [
+       1.1904299491078976e-06,
+       0.12774031485706694,
+       0.010394278180782954,
+       0.001003633730372551
+      ],
+      "W33": -0.3721106471057283,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "3f9f8c7ec162a856756255c138cc8aa18908ba2a9af590f998a4f323b0124546",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1890_homo-c2-s1",
+      "source": "recon",
+      "recon_dll": 4.645844455808401e-07,
+      "point": [
+       1.4214604300922636e-07,
+       0.010659946517299337,
+       0.0011087236295212895,
+       0.0010112239266725628
+      ],
+      "W33": -1.3898177512310212,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "9c52292fde03fe48e08b0e7a4fcee25d895841e8f69a1b8d1135b83858626aed",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2666430285051408e-08,
+       0.0001793942865920881,
+       1.4715405030487575e-05,
+       0.00227431881383303
+      ],
+      "W33": 2104.2550695377286,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "a74831913879961c9e3c03892ab341e9090653eace5bdf8dc8daa94a06c580ec",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_hetro-c2-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2455936005151739e-08,
+       0.0001766516888783848,
+       1.4832342013173194e-05,
+       0.002110619030947339
+      ],
+      "W33": 269.83072532010556,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "5348f829a192a1548920c0413f24caa4a7038d11b1b9e34ed3b7732c5142f7ef",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_homo-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.439483068883419e-07,
+      "point": [
+       9.924014874008586e-07,
+       0.08002933659500179,
+       0.007068366058184634,
+       0.0010039203070482806
+      ],
+      "W33": -0.84369701880496,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "6d06c2f542eba998bf65c304d299d3565a2d3339957d9575658844e16a7bc0de",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_homo-c0-s1",
+      "source": "recon",
+      "recon_dll": -1.6287551261484623e-05,
+      "point": [
+       6.515187033068312e-05,
+       8.259556859390543,
+       0.5056737854149785,
+       0.0010012421678535965
+      ],
+      "W33": 0.2838997150538489,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "e41ee3f0aa0359799d049e020d2e7d2c45994cec489c084ed236e8503d01d5d2",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_homo-c1-s0",
+      "source": "recon",
+      "recon_dll": 3.903303877450526e-06,
+      "point": [
+       0.00042516718785545727,
+       62.58463071472677,
+       3.3891504431925052,
+       0.0010041963687514874
+      ],
+      "W33": -1.7307508738304023,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "e51aa5230fcccd169f300dc9645b101945014f914f7a79d3f4d855a6a8e66ffe",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_homo-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.1209340300410986e-07,
+      "point": [
+       6.596893403702981e-07,
+       0.04986123743477826,
+       0.0046078376307934965,
+       0.0010027126727537553
+      ],
+      "W33": -1.329315738970763,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "94871d64e38e748a4582ad16353df0f7bde7ee7101c1ffc2bc8c04aa62206d8a",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_homo-c2-s0",
+      "source": "recon",
+      "recon_dll": -2.5247572921216488e-08,
+      "point": [
+       2.4948331370490153e-06,
+       0.23111022004180934,
+       0.018587599315136434,
+       0.001002839197536119
+      ],
+      "W33": -1.5903501812572358,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "c29d0ab53eec46c0dcc2d2529b1172727dc5507bd8227187cdaa720aaeff54e0",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Denmark_M_1900_homo-c2-s1",
+      "source": "recon",
+      "recon_dll": 1.4551915228366852e-11,
+      "point": [
+       2.593223243158447e-07,
+       8.652907565374843,
+       0.0015880248742448895,
+       299.99999999999994
+      ],
+      "W33": -2.8714113878377248,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "9331fc2efcf9ff585f187faee04a59dcfa6c9a1ea0375c24ae3970fc5f741705",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Guiniea_pig_VC-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.2737367544323206e-13,
+      "point": [
+       2.0325534246055556e-06,
+       0.002391690190242599,
+       0.0012866252213133591,
+       0.0010000000000000002
+      ],
+      "W33": -0.8835757014758201,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "df2b881528bce59849b24ad65517aa99ecbdfa06e837629fb36022d6bb9fb4d1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Guiniea_pig_VC-c0-s1",
+      "source": "recon",
+      "recon_dll": 4.433786671143025e-11,
+      "point": [
+       4.2799944043454075e-06,
+       0.00834805870400337,
+       0.002258771039253519,
+       0.04290737575446174
+      ],
+      "W33": -1.8824306000144588,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "b4d275faf67e5559ed208d480101d737562cc6a18ad7c1cc801cd8d647ebcab7",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Guiniea_pig_VC-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.9952040020143613e-10,
+      "point": [
+       2.266367551317925e-06,
+       0.00445204292567961,
+       0.001788278904195571,
+       0.0010154830775370375
+      ],
+      "W33": -1.8907658058471952,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "f384ce39d96a3ca2ddd4d8a82c54c5432c6a84daef64ba4416cdd31578b90eb5",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Guiniea_pig_VC-c1-s1",
+      "source": "recon",
+      "recon_dll": 7.003109203651547e-11,
+      "point": [
+       3.41859149693833e-06,
+       0.005378234782093626,
+       0.0018496204447397112,
+       0.019711312128731263
+      ],
+      "W33": -0.3601275167559379,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "f1192e20040003d879133cb9bf808530971630f63b5b04275cb6c59fdbe769ec",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Labradors_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.2282620193436742e-10,
+      "point": [
+       8.212799675797188e-06,
+       0.039346418917174227,
+       0.0035645781046870105,
+       0.0010003021275059316
+      ],
+      "W33": -0.2618627196170564,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "62aa2ae3e18cafb7f6e9192c681530d2e41ca6d2f235d7de7cef39365da52806",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Labradors_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": 1.9911567505914718e-08,
+      "point": [
+       6.300994107209542e-05,
+       0.4211584625995819,
+       0.031400218042727746,
+       0.0010076169680959801
+      ],
+      "W33": -0.8645731598871862,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "825a3b8d5482bed29fac2d190c7810f7f6ae07dfb052fa9af19b496c9901be22",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Labradors_vetCompass-c1-s0",
+      "source": "no_points",
+      "recon_dll": null,
+      "point": null,
+      "W33": null,
+      "human": false,
+      "robust": null,
+      "shown": null,
+      "record_sha256": "ef025c6df4c7cabf4d52519cca8fc68f121a8aa947913baf39a55db3ff1e1960",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Labradors_vetCompass-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.6668764146743342e-09,
+      "point": [
+       1.288249496751582e-05,
+       0.06792995595391556,
+       0.005907813919738634,
+       0.0010168419115123809
+      ],
+      "W33": -0.033789435536391466,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "0730069d5730131f4ddb79e29ed9b0de016056623e23ee469c24c3f35965e387",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Staffy_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": -1.8189894035458565e-12,
+      "point": [
+       1.4954550715987768e-06,
+       4.8947864328187505,
+       0.0009454534859843037,
+       299.99999999999994
+      ],
+      "W33": -1.5649193283734348,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "eb2b2f6b45447b6716e541fac1062094051b28ba819e08354159ee5d9cf40ef1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-Staffy_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": -1.7935235518962145e-09,
+      "point": [
+       3.2829356297082936e-05,
+       0.3942106077682791,
+       0.029654685329327954,
+       0.010061337126553417
+      ],
+      "W33": -2.2528455372785174,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "3cd5a4f4f9318b0c6e2520173ce34f74096f115041a62c58412f0852e8917aa1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-cats_vp_M-c0-s0",
+      "source": "recon",
+      "recon_dll": 3.1377567211166024e-08,
+      "point": [
+       3.3645869954300326e-06,
+       0.03308062401713806,
+       0.0029888636956926073,
+       0.0010600031345290237
+      ],
+      "W33": -0.3661569489795511,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ee8c0ad0a9d8b4de50096b690ee62dd02aa5628f45ea8354d4b6e97206390b87",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-cats_vp_M-c0-s1",
+      "source": "recon",
+      "recon_dll": 5.4569682106375694e-11,
+      "point": [
+       1.3907125246444546e-06,
+       0.011044110348970819,
+       0.0010849213167709191,
+       0.0010000171947285392
+      ],
+      "W33": -2.195732713335019,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6b8c619be733c6347fd67a248db8c33951ee7da1c8c54bb6e76aae03e142fe85",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-cats_vp_M-c1-s0",
+      "source": "recon",
+      "recon_dll": 4.890807758783922e-09,
+      "point": [
+       4.031073745051908e-06,
+       0.0412435666188322,
+       0.0036463991337979795,
+       0.0010249452800310782
+      ],
+      "W33": -0.03805589219973626,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "5441a14df9026817b637fae63c6b593d535817a1a1b7a51938825c0ed108c750",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-cats_vp_M-c1-s1",
+      "source": "recon",
+      "recon_dll": 8.185452315956354e-12,
+      "point": [
+       1.0981775285487496e-06,
+       4.285397057421228,
+       0.0007778260675729791,
+       299.99999999999994
+      ],
+      "W33": -1.294558426634012,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "7066d6ba0dc4c32657c69110364f492fa6ed32517193ba8a7b484459de573464",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-combined_human_M-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.6429159799253167e-05,
+       0.7418590078735455,
+       0.040819283059168654,
+       0.002290475704112025
+      ],
+      "W33": -1.6716632498428226,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "bc4e9b72d49ab4b427447d0c0351242b05fe24cb9d535f462e46b8258aa1a97d",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-combined_human_M-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.7733379433494736e-08,
+       0.00023961325120761164,
+       2.1383512426452614e-05,
+       0.001065878372481998
+      ],
+      "W33": 1883.0572080162237,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "783211a828003fc9d87908034f8058b6dd609eb30dc28d66d287ac8d0f7f4e95",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-combined_human_M-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.7688592855538885e-08,
+       0.00023940849251217976,
+       2.1650930703963782e-05,
+       0.001015349880672445
+      ],
+      "W33": 624.9816812258941,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "bac9db98d9b830b173d11362398b5d89c5573eaad7c3a6f2ada138122d5c6eb2",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-drosophila_853-c0-s0",
+      "source": "recon",
+      "recon_dll": 4.551111487671733e-09,
+      "point": [
+       0.22253358383189673,
+       9.846995991220775,
+       1.0920611520356212,
+       0.0010101175655378757
+      ],
+      "W33": -0.2106393530330024,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "8a70417eb8628d94a5a0aa8c4d9db23ceae917c1825cc87eee102945929c0d53",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-drosophila_853-c0-s1",
+      "source": "recon",
+      "recon_dll": 3.1759554985910654e-08,
+      "point": [
+       0.3096955617200917,
+       14.800337845755546,
+       1.561214364147173,
+       0.0010082699718456357
+      ],
+      "W33": -0.06387597509910847,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "2af3d2bc0f962ad6123b7d7df55b8845a9786aeabde810003028b88f21ff4336",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-drosophila_853-c1-s0",
+      "source": "recon",
+      "recon_dll": 5.065658115199767e-09,
+      "point": [
+       0.4523308764213318,
+       23.861823871063844,
+       2.3894378045611777,
+       0.001000104982684394
+      ],
+      "W33": -0.300037116778185,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "bbdcd29106995cf38674b8ab2d055852a67b48685db72107ef80d01729e96c92",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "censor-real-drosophila_853-c1-s1",
+      "source": "recon",
+      "recon_dll": -4.652088136936072e-08,
+      "point": [
+       12.18099650696299,
+       999.9999999999998,
+       71.51858426496013,
+       0.0010485420281976725
+      ],
+      "W33": -0.774771103840294,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "508e841c6f91c8ba4d109f20d51cd234e40b78fcda55af26b6d1a64d8a35a3c1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.01-p19-c1-s0",
+      "source": "recon",
+      "recon_dll": -9.880750440061092e-09,
+      "point": [
+       0.001652315125485318,
+       0.5520924131090552,
+       0.07677428860822512,
+       0.0010000303659895514
+      ],
+      "W33": -0.717559839511523,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ac8cf64ec779cc9f91d32bafb96901ab912c272687aa005ff76068e6d0a80263",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.01-p19-c1-s1",
+      "source": "recon",
+      "recon_dll": 2.1890446078032255e-07,
+      "point": [
+       0.0013402546198589965,
+       0.42633998209146823,
+       0.062372643587626085,
+       0.0010217555833943507
+      ],
+      "W33": -1.6393042413546937,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "f7eeea3b09c1b7a2902191cc85825e3f86d98e10ea1108ab12bd33ee382bbca1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.0316-p21-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.361331669613719e-08,
+      "point": [
+       0.001253615083030039,
+       0.5441997033889228,
+       0.07801300481227201,
+       0.0099413709634456
+      ],
+      "W33": -0.7998787320830161,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "cd86e3daeba996d776e2cc3eb57d73f1c330cf1f504601fd93f0322385b9dd82",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.0316-p21-c1-s1",
+      "source": "recon",
+      "recon_dll": 8.33242665976286e-08,
+      "point": [
+       0.00105089692107775,
+       0.43104439444423015,
+       0.06604185689360068,
+       0.0010414578869374425
+      ],
+      "W33": -0.04691536784230266,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "28a2aa8095df15fe503f579b6113245820509e6bf63093de7fe12a7c8bc4e366",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p18-c1-s0",
+      "source": "recon",
+      "recon_dll": -2.000888343900442e-11,
+      "point": [
+       0.00015317158354317983,
+       0.00772847332564677,
+       0.003973827411571713,
+       0.0010000000000000002
+      ],
+      "W33": -4.483748450598796,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "7eb6cffe9bc3315c3211e0fce771be044edb15de03e241172a3efcf3c688a176",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p18-c1-s1",
+      "source": "recon",
+      "recon_dll": 8.21286448626779e-07,
+      "point": [
+       0.0001776095650950917,
+       0.012244620849542472,
+       0.004750611325915142,
+       0.001012301753853541
+      ],
+      "W33": -0.6504919535145746,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "85ad92a7b2cbbd9d6c6b3da2a79a4bba202fcf395cb66b4f2c40e0a058d2361e",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p19-c1-s0",
+      "source": "recon",
+      "recon_dll": 6.002665031701326e-11,
+      "point": [
+       0.00017703612673629392,
+       0.040817986032754584,
+       0.012034164045027473,
+       0.006299703698457619
+      ],
+      "W33": -4.808912720539411,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "284e26f6291288d84916fdf13a69fae5e128fd762d76b3769d3598b10d32c244",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p19-c1-s1",
+      "source": "recon",
+      "recon_dll": 4.092726157978177e-11,
+      "point": [
+       0.0001718273316463613,
+       0.05485161275231369,
+       0.011175429219346404,
+       0.21472640089103373
+      ],
+      "W33": -2.484482118986307,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6993c42e52a145b488183a5573b8df7524ee7279da93966f4e70d3e172e4ee4f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p20-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.1186784831807017e-10,
+      "point": [
+       5.948441323404694e-05,
+       0.12249705309261609,
+       0.019158772730353456,
+       0.4019337990294499
+      ],
+      "W33": -0.48069742441202834,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "af309105f5e424c4f89f550a6486e9a70d031dfadd07463dfc2179972ca9a6bd",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p20-c1-s1",
+      "source": "recon",
+      "recon_dll": 3.938112058676779e-09,
+      "point": [
+       4.0950037333203924e-05,
+       0.0668555204026446,
+       0.01978950232994611,
+       0.008222406601677612
+      ],
+      "W33": -3.6278134375161244,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "287964af202184517a948e7f18ea9c4b0d2f5688058a356e974dd3f7a78968ff",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p21-c1-s0",
+      "source": "recon",
+      "recon_dll": 3.281456883996725e-09,
+      "point": [
+       6.880948927635419e-07,
+       1.888542102226797e-11,
+       0.004991101557050292,
+       42.70324662722002
+      ],
+      "W33": -1.3615466313458455,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "153774736d02592bdbe574e4cfe1c6b5290856b93f8f080fdbc10a1b701cae2f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p21-c1-s1",
+      "source": "recon",
+      "recon_dll": 2.3110260372050107e-09,
+      "point": [
+       1.000000000000001e-12,
+       1.000000000000001e-12,
+       0.004976545246408338,
+       299.99999999999994
+      ],
+      "W33": -2.1461032947536296,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "9fba830836bf742f043f3af80553dc4f5909ccabb1c80ca86fa9a5c6dd7af3ed",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p22-c1-s0",
+      "source": "recon",
+      "recon_dll": 4.918183549307287e-08,
+      "point": [
+       0.005110110912907996,
+       0.9736752636878795,
+       0.09961828253775218,
+       0.0010901325192270862
+      ],
+      "W33": -0.49383035598475544,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "22070b9515379b7d8756b8b9382289ed357a46813a48ea2f49213b2db471a85f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p22-c1-s1",
+      "source": "recon",
+      "recon_dll": -5.111360223963857e-10,
+      "point": [
+       0.003872108484528382,
+       0.6889451006120213,
+       0.07243011746963916,
+       0.0010000000000000002
+      ],
+      "W33": -0.8025576502923286,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "5a112cbc30c4ba6a37773a08445fcc506d6a19f2e9eee1b01b054f82a5f4246c",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p23-c1-s0",
+      "source": "recon",
+      "recon_dll": 2.000888343900442e-11,
+      "point": [
+       8.709150467126955e-05,
+       0.006634375235039924,
+       0.005006287123674917,
+       0.001029053734186676
+      ],
+      "W33": -0.980798915304149,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "da6e1d7c710903aa9841653c857b3c1dcd4b9e0577786679b3fca7ac9a932812",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k0.316-p23-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.737134880386293e-10,
+      "point": [
+       8.422575746006963e-05,
+       0.011303103325094462,
+       0.004962178983623281,
+       0.3575072983150565
+      ],
+      "W33": -0.5510267922045387,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "75e2fd90c21ad58a84719185770fbb028397a5ab72020481f223bfd17e456e18",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p18-c1-s0",
+      "source": "recon",
+      "recon_dll": 2.3214761313283816e-05,
+      "point": [
+       0.00010609548604529755,
+       0.007229876835001445,
+       0.00488145323369632,
+       0.0010992849343024623
+      ],
+      "W33": -2.962827619034215,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "85ca231d49efc55d377ee5e160ba2a4e2dbe47f5d94dea5120a9091f78c6fe71",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p18-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.8189894035458565e-12,
+      "point": [
+       0.00010255177240544856,
+       0.007176346024701375,
+       0.004863136172408902,
+       0.0010000000000000002
+      ],
+      "W33": -0.9684512317053304,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "4e58289b041777e8b470e7090c1cf446ee5830a569618c6a5447fb789b3ccd57",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p19-c1-s0",
+      "source": "recon",
+      "recon_dll": 8.643219189252704e-07,
+      "point": [
+       0.00034428536098337747,
+       0.05218898758404938,
+       0.011739832196901083,
+       0.0010386272878281286
+      ],
+      "W33": -5.072559862895105,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "beac28f120b32b4f299dbc68f6f5f2e150bc1b07e7352d30306d6b7d5dd47a72",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p19-c1-s1",
+      "source": "recon",
+      "recon_dll": 8.296210580738261e-07,
+      "point": [
+       0.00027322166257074515,
+       0.04284945681253493,
+       0.011085937220020553,
+       0.0010081858315069794
+      ],
+      "W33": -3.1227337167047153,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "38df6a0a37cec7064084bb74676b97396260858a5b81e2265b43fa9d9247ffc9",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p20-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.546140993013978e-10,
+      "point": [
+       0.00026407284289564446,
+       0.4068641844971067,
+       0.07025118164270586,
+       0.0042897698761454415
+      ],
+      "W33": -2.4371299887297937,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "4131729c1f2466ae359c7294a92414ca2e8393122f5b09697fc1771a87f7d968",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p20-c1-s1",
+      "source": "recon",
+      "recon_dll": 8.49468051455915e-10,
+      "point": [
+       0.00021157043812802337,
+       0.2333842189416267,
+       0.04530259151800837,
+       0.006361366189050446
+      ],
+      "W33": -0.7989070360017649,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "d6bd2709b1bc1871dcf1eb262081e13dc6ac4f13de1580de890f1c88f7960769",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p21-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.1950760381296277e-09,
+      "point": [
+       9.757148561901616e-07,
+       1.000000000000001e-12,
+       0.004996999880712345,
+       28.914732959960386
+      ],
+      "W33": -0.5377584757279692,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "790b731f27286911634926dd77fe229b225d7d8cd78d6fe89c7f2eff7b573d83",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p21-c1-s1",
+      "source": "recon",
+      "recon_dll": 9.931682143360376e-10,
+      "point": [
+       3.4256512591118045e-06,
+       1.000000000000001e-12,
+       0.004934234620967681,
+       299.99999999999994
+      ],
+      "W33": -0.16610893242250313,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "55d2f6f7317bdd8b33589fee441b27c43bfba9aa0b0a26714111406c88c777dd",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p23-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.7462298274040222e-10,
+      "point": [
+       0.00032214098763215174,
+       59.75359477116228,
+       0.02298688598071504,
+       297.5295108731062
+      ],
+      "W33": -0.976239521255593,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6a6c6cc8990384e7174d6395e5ad9bf10a1970e31886cacdd890109d199236c8",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k1-p23-c1-s1",
+      "source": "recon",
+      "recon_dll": 6.397021934390068e-08,
+      "point": [
+       0.00025364308752289096,
+       0.0867466767544689,
+       0.02020323536716601,
+       0.0010051474144811988
+      ],
+      "W33": -0.9525294057930296,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "09e3d944787ea7c6b3fa5b7e7c39749dc9c256af79903d06f5e0e395642f5766",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p09-c1-s0",
+      "source": "recon",
+      "recon_dll": 6.5994490796583705e-06,
+      "point": [
+       9.594241909649573e-05,
+       0.0004935149742245275,
+       0.0026661192293047737,
+       0.0014568834226649358
+      ],
+      "W33": -1.0643177580368501,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "c3ab3f3d6ed81950126f96f329f29ab2b6bdbd53a238e689bcd38adaa3d5d1d4",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p20-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.6825651982799172e-10,
+      "point": [
+       3.8106309507528097e-06,
+       0.0014514412081189096,
+       0.005019605894000847,
+       0.3354584726269378
+      ],
+      "W33": -1.7717738830324379,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ac591fc4e27ae07d80e439035854660849e0e44e347908496a760db6e60326e7",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p20-c1-s1",
+      "source": "recon",
+      "recon_dll": 6.257323548197746e-09,
+      "point": [
+       5.856667451558755e-06,
+       3.810658380453076e-12,
+       0.004959165274912757,
+       251.50267871565066
+      ],
+      "W33": -2.078570589073024,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "603d2ee72da659d6a7663b1cc8792701e0ed3674a1000d7d23653b5065b503e9",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p22-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.2922100722789764e-08,
+      "point": [
+       0.00562752767311694,
+       1.3157531088028618,
+       0.13842578538890937,
+       0.001003529355854818
+      ],
+      "W33": -0.7545016566609775,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "1ff5f0df2bd664300d2106c892a55797fd07e1c953a2850ccc3747389a42e8f7",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p22-c1-s1",
+      "source": "recon",
+      "recon_dll": -1.8189894035458565e-12,
+      "point": [
+       0.0019775849182963223,
+       0.3353545466957328,
+       0.04091533565770804,
+       0.0010000000000000002
+      ],
+      "W33": -1.8198296891023347,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6509b6165d746cd0fcf75c2f90bf15cbb6d1905eeeb41a9ee6c504f91efcfb85",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p23-c1-s0",
+      "source": "recon",
+      "recon_dll": 2.691922418307513e-08,
+      "point": [
+       5.730248568737089e-05,
+       0.002214799813154529,
+       0.004145368051244052,
+       0.0010000000000000002
+      ],
+      "W33": -3.9999937883985694,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "df9f0a2e984437b7cbdb5df7849da60fc27d704c2a7cbaf96a1de43276f23a9d",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k10-p23-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.2823875294998288e-10,
+      "point": [
+       6.659297094143933e-05,
+       0.010000495826657544,
+       0.0051251503572226605,
+       0.35021689254639454
+      ],
+      "W33": -1.4935988449087745,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ad06bb17180299c3a41a0201a98f8957ccf241b8482346aa8585fbdcd0ef838d",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p09-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.4781817299081013e-06,
+      "point": [
+       0.0001002722068292136,
+       0.0006084106264887065,
+       0.0025174181826074474,
+       0.0010000000000000002
+      ],
+      "W33": -0.08698572785760916,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6c9e259c44c7db3e8baecaa69b185c6dd56140591f5141d207c2f12d8e227aee",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p19-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.2369127944111824e-10,
+      "point": [
+       4.5294976290203374e-05,
+       0.005628234092547885,
+       0.005031830250686094,
+       0.33654683494280485
+      ],
+      "W33": -6.164564344740029,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "cf731ef52943a12061bc2072140e851e7e76b2c5b3e8df0b5c4db9181856eda8",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p19-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.230381712957751e-06,
+      "point": [
+       6.020429494448941e-05,
+       0.0059781056402744325,
+       0.005199554259157352,
+       0.0010000002323063471
+      ],
+      "W33": -2.42744959657648,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "96c33d6d69de028fa3340093eb2a51aa279915256ec109fe236fcbda9a6ffedc",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p20-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.8189894035458565e-12,
+      "point": [
+       6.024271155835177e-05,
+       0.022634951546683765,
+       0.009744514805151218,
+       0.0010000000000000002
+      ],
+      "W33": -0.9043453833401145,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "55593c4d9e9b3a7f5f942a6ffe5531f8bf0a25903aee7daa399a918e9fc31c55",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p20-c1-s1",
+      "source": "recon",
+      "recon_dll": -3.637978807091713e-12,
+      "point": [
+       5.312877500545188e-05,
+       0.024345524761456693,
+       0.01041258885494947,
+       0.0010000000000000002
+      ],
+      "W33": -3.233113346639584,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ec27bf2415c4c920027c60e8f2e054c264e88532bd6d532fe558f2e8488c8a86",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p21-c1-s0",
+      "source": "recon",
+      "recon_dll": 3.550485416781157e-08,
+      "point": [
+       0.0016072274336615278,
+       0.5198082423001473,
+       0.07307267802425309,
+       0.0010057568265821502
+      ],
+      "W33": -0.4273735905135254,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "f243c14298834beccdfad52b99b3e6f926d48789bbec251a4eb0f4b37c9b96ab",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p21-c1-s1",
+      "source": "recon",
+      "recon_dll": 7.732342055533081e-08,
+      "point": [
+       0.0006693885662616788,
+       0.14808085373312663,
+       0.025869555831886114,
+       0.0010123219777941617
+      ],
+      "W33": -2.6677123774124993,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "c89116c8b2a508fd9f2c5e69b5e7cce5d8ec6b04382fce64bf921584a43cf367",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p22-c1-s0",
+      "source": "recon",
+      "recon_dll": 0.0,
+      "point": [
+       0.0004281799524344318,
+       25.68154255246556,
+       0.008876726629086163,
+       299.99999999999994
+      ],
+      "W33": -2.9248065749543457,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "b7560cf89071e7f019065d35da744972fd1da6e911eb2991d8a900f3d4a7c9df",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p22-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.958933353307657e-07,
+      "point": [
+       0.0004284939148666065,
+       0.0450114149919983,
+       0.008977126602910957,
+       0.0010533237211768343
+      ],
+      "W33": -0.3246519468339102,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "9676eee22b78384adf8810b403ca39d07661959db11c6131589cda602edee90e",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p23-c1-s0",
+      "source": "recon",
+      "recon_dll": 3.979948814958334e-09,
+      "point": [
+       5.5376376161526e-06,
+       1.000000000000001e-12,
+       0.004828242819331132,
+       35.30110614309892
+      ],
+      "W33": -1.5155505432940117,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "a93881c95920e2ca578a7ced1a3b0a9a5d8df5bf63bb8a0ecef2373348fcb7b0",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-k2-p23-c1-s1",
+      "source": "recon",
+      "recon_dll": 2.140950527973473e-09,
+      "point": [
+       1.6080385146859128e-09,
+       1.000000000000001e-12,
+       0.0050728747546317935,
+       90.6673069815934
+      ],
+      "W33": -0.3952358468377497,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "28eaa6c73af752aa242b2c51a0cedb92852af58bb64655d2aa322a09bfcdc323",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.671548030623604e-09,
+       0.00010027971409845449,
+       7.747252688224844e-06,
+       0.00165387943540994
+      ],
+      "W33": 5340.951930721058,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "54f43161e9cb4c7ff64d9b23b4e5a2636afa76b041628af9c693df9e3c090799",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_F_1890_hetro-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       9.68227095820058e-09,
+       0.00012011167970987152,
+       8.305049338230085e-06,
+       0.005660102356323801
+      ],
+      "W33": 1264.357889907973,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "2ad6329893e665f822f3b78881d18fef61a4802f9123c39bfeec0e1e31330654",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2229660636434315e-08,
+       0.000138675567510683,
+       1.0892590854910243e-05,
+       0.001586471540270578
+      ],
+      "W33": 4713.02952355484,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "d82e31690af236964ae6a2f0551869fcc57e98ff8483830adf9db88e501300d5",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       9.133900243412646e-09,
+       8.28343564029207e-05,
+       6.959713700135232e-06,
+       0.0015954449197908835
+      ],
+      "W33": 6278.09915868449,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "30f4145b4971c308c6681915b1382221d1d07a357363273bf8b5fb1f5a41b1a2",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_hetro-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.2257609400245687e-08,
+       0.00014065443853837994,
+       1.1258538966550907e-05,
+       0.0023876688235876017
+      ],
+      "W33": 1323.0689043702296,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "cce8dfd6be6c95ce61a7525f1c63d48c5a1d35f936cdb4aa6624c15393d9f843",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_homo-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.0011510133190449068,
+       229.92579522940437,
+       11.133990061224996,
+       0.006183725734710509
+      ],
+      "W33": -1.6939699932700023,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "d00b5cf3d7fb7ec5d308ecb3453a75ed873f636f352e2a202664f18823f262f9",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_homo-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.00041098675612261413,
+       75.5335772806375,
+       3.95074659311588,
+       0.0010054224530672208
+      ],
+      "W33": -1.54065804136917,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "1f7fd72a07f1c009019161c8fe093ce199e0307fa12916a33f30091a4ed105a6",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_homo-c1-s0",
+      "source": "recon",
+      "recon_dll": 2.8000795282423496e-07,
+      "point": [
+       1.0827807152076479e-06,
+       0.11346376216205152,
+       0.009308079092364188,
+       0.001006412905835622
+      ],
+      "W33": -1.1340702869347297,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "544599b7f58b8ef1419ba706ba59514763ec00a1079fc46bac39e8cecaa5c46b",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_homo-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.0008168817790875837,
+       157.6821975704798,
+       7.925680525161196,
+       0.0010101451294927057
+      ],
+      "W33": -0.7137149744958151,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "1f7ddc2ed1ec3d705ddfc245635d83f53b118e66b483166285298ff810e08f14",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_homo-c2-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.002893413466572858,
+       597.5684522801189,
+       27.95664555397554,
+       0.0013685015891417647
+      ],
+      "W33": -2.202375245957228,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "01b34749afcfa2f89e0017b958ffcd472ea5e8186ed87307ee5804f11585e5b8",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1890_homo-c2-s1",
+      "source": "recon",
+      "recon_dll": -0.00017477023357059807,
+      "point": [
+       0.0024494493743793546,
+       506.99621361579085,
+       23.985369463015,
+       0.001170211506405653
+      ],
+      "W33": -0.5856876245670719,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "e8f59e80c89ae95e128911d8c27340849421f1169c71ca36724922408fe68862",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_hetro-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.390375083904283e-09,
+       8.626155586157428e-05,
+       6.783281525740204e-06,
+       0.0023489159636108105
+      ],
+      "W33": 6562.372610967548,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "9c8a01ff9aa3cdda63adf133b96c04d6159e6663742c29d0ee663cefdff91b5a",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_hetro-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       8.184012706261755e-09,
+       8.217267432647191e-05,
+       6.568162517959818e-06,
+       0.0016351996018031216
+      ],
+      "W33": 5774.7927717251005,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "e815354a013f75ef312805267f94565b7990cf760f83ed69d4320a85708379db",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_hetro-c2-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       9.931106549598852e-09,
+       0.00012029306777199384,
+       9.67010176435541e-06,
+       0.0021832994735309654
+      ],
+      "W33": 697.66745847946,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "a5559dab251c31118e06d3820c722034bcd8c87d3478ffaeb63b39b4269195f3",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_homo-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       5.239782921490385e-05,
+       6.571932001262151,
+       0.40869647206723303,
+       0.0010044994848963998
+      ],
+      "W33": -1.0082311702426523,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "f0717df4fff550e0e90ee555350936978dbab9356e3a9d03784881b27369c7e9",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_homo-c0-s1",
+      "source": "recon",
+      "recon_dll": 6.583868525922298e-07,
+      "point": [
+       2.2095714904953047e-06,
+       0.1961348650285636,
+       0.01591560182848225,
+       0.0010376869128252638
+      ],
+      "W33": -3.2792875120067038,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "b03fabe32f9b0eb6042eb461b7184c5bcb6903bf00b54b671ac7b112fae4187f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_homo-c1-s0",
+      "source": "recon",
+      "recon_dll": -7.171183824539185e-08,
+      "point": [
+       9.253393087972716e-07,
+       0.07314277589461375,
+       0.006505207721646031,
+       0.001073170983894349
+      ],
+      "W33": -1.3694718032929813,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "0168f3434db1a3cb410fa7b7b2ddfb4e27834d06b41a48b41fdf868b8f24c0e1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_homo-c1-s1",
+      "source": "recon",
+      "recon_dll": -5.8309524320065975e-08,
+      "point": [
+       2.9282913499271316e-06,
+       0.2724537257432675,
+       0.021541798091449137,
+       0.0010129973636552826
+      ],
+      "W33": -1.229111463209847,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "9cbad07e01cd3e95c4ee03bfd7a0c894d6f59533388adab87c7c38f0c4b92651",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_homo-c2-s0",
+      "source": "recon",
+      "recon_dll": 0.0009602889913367108,
+      "point": [
+       0.003839804287752055,
+       660.4577159874246,
+       31.50453932101281,
+       0.0010483833877049016
+      ],
+      "W33": -1.8625106917825178,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "cd9e23894b9b6efe0d296ed5508faaf33c5e3adffe934f4e50ebe664551e538e",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Denmark_M_1900_homo-c2-s1",
+      "source": "recon",
+      "recon_dll": 3.4108234103769064e-07,
+      "point": [
+       1.2754562222134302e-05,
+       1.4004222264883597,
+       0.09721513054300011,
+       0.0010244384236224174
+      ],
+      "W33": -1.1380080785529572,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "072c1fda7c915db05f0725c701030528b48077332f712287cf29a84143079e28",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-German_Shepherd_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": 1.2461759979487397e-06,
+      "point": [
+       1.4106816757633124e-06,
+       0.006776462156099759,
+       0.0006102842241837321,
+       0.0010123138526615606
+      ],
+      "W33": -0.8758591157989031,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "8ecf41e3837cab204a994ee391cd7fb0e7ad9bf72844c77df169d705bb1cb361",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Guiniea_pig_VC-c0-s0",
+      "source": "recon",
+      "recon_dll": 3.037484930246137e-09,
+      "point": [
+       4.4448733007745385e-06,
+       0.006890074748526368,
+       0.0021028042404265933,
+       0.00407050711422584
+      ],
+      "W33": -1.0650135891226,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "cbfdd710c6d30a7a4b19afeb0c907813be8cfa76acf12c86190a600a146bc1c8",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Guiniea_pig_VC-c0-s1",
+      "source": "recon",
+      "recon_dll": 3.709601514856331e-09,
+      "point": [
+       3.4232502449088065e-06,
+       0.002910824186650968,
+       0.001291812548285799,
+       0.0010103005137783161
+      ],
+      "W33": -2.419160515445128,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "19386beb9679d5aad92c8a0f792d5cf7e50da9e6cdfd74cd006b34194599638c",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Guiniea_pig_VC-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.0680878403945826e-09,
+      "point": [
+       3.846843640813168e-06,
+       0.005732755795444583,
+       0.002016016008391133,
+       0.005718810134870642
+      ],
+      "W33": -1.7343966956166241,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "d255d0724a541cf878d587ea6fa5e934fbce1fd9256a5a274d30111258cfa873",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Guiniea_pig_VC-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.0345502232667059e-11,
+      "point": [
+       2.2994425323729445e-06,
+       0.0020664925814725555,
+       0.0012357618419870304,
+       0.005658836016757353
+      ],
+      "W33": -1.3555426781692859,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "67640fe5800b613cd714fb1caa6d80e3c8c8deee56bfc47b2540c8b6c9d7cba3",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Labradors_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": -6.639311322942376e-10,
+      "point": [
+       1.98733331559286e-05,
+       0.1147305152825948,
+       0.009638304509103234,
+       0.0010293702874587074
+      ],
+      "W33": -1.3105222959566163,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "8ebb8ba03160adb2788d25c08d1f8e95d54ab3321f5703bc768a557f9628042d",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Labradors_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": 8.003553375601768e-11,
+      "point": [
+       9.501474796290963e-06,
+       0.04745601493357432,
+       0.00425020287267261,
+       0.0011527159136498235
+      ],
+      "W33": -0.08736752701952355,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "92ad5d685567ece7611183bc85af7d0dd286924e98c25adf956c07b21dabb894",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Labradors_vetCompass-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.2298869478399865e-08,
+      "point": [
+       3.49954990431083e-06,
+       0.013788860817968427,
+       0.0013931546241614946,
+       0.0010782471298527066
+      ],
+      "W33": -0.9736288837054872,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "289d8e576e7ebaa9669dddcdc42329cacef3b207fc515be6f7d6b0205d148398",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Staffy_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.783162926789373e-07,
+      "point": [
+       2.0922992808697806e-06,
+       0.014567285524271967,
+       0.001522908407297224,
+       0.0010112626284874383
+      ],
+      "W33": -0.7462304873315588,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "4e6bbee780cf697df6d5c12cc61262192e1c20ec6f0a89acfe199d91fb384668",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-Staffy_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": -4.967660061083734e-09,
+      "point": [
+       2.2054391755689306e-05,
+       0.23950941102209053,
+       0.019078633945524514,
+       0.0010428395321787482
+      ],
+      "W33": -3.8169977286952417,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "dc853aed3e7676ed3e971b0a22d0bf83457ebb56d3eb077195aba7a71c95a211",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-cats_vp_M-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.443921403028071e-07,
+      "point": [
+       2.578260499804792e-06,
+       0.024845017932653018,
+       0.0023272579889685773,
+       0.001035310751330175
+      ],
+      "W33": -7.447847323615861,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "f09c792e98154d052262f427519780a817fd6cc14bba804622f4b8b0d7290ffc",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-cats_vp_M-c0-s1",
+      "source": "recon",
+      "recon_dll": 1.4213583199307323e-08,
+      "point": [
+       2.9294860792788903e-06,
+       0.02798895397367725,
+       0.002561337667994338,
+       0.0010740283344005679
+      ],
+      "W33": -0.3049466413558548,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "429f2f4dd7f415f0a93eb29748d50016fa941cbb33ae029d3c3e2feea370c2c6",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-cats_vp_M-c1-s0",
+      "source": "recon",
+      "recon_dll": -2.288743417011574e-09,
+      "point": [
+       1.0325542383483944e-05,
+       0.12282719469374244,
+       0.009842314260323237,
+       0.001001650982430333
+      ],
+      "W33": -0.3252330883074137,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "8ba19800109f43859e9a7dcb1314af2710d3e5ae05cad1f9e3f509e8fdd02d6f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-cats_vp_M-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.265516402781941e-08,
+      "point": [
+       3.826475473657488e-06,
+       0.03970056916963859,
+       0.0036136414545298963,
+       0.0010459716164060537
+      ],
+      "W33": -1.8895036600624735,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "e9ce7b939000132b935b21c1b2b648a3d0d0db2590a18b09c80672a7a702ee81",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_M-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.5101384319812424e-08,
+       0.00018047064154963816,
+       1.5313213790911126e-05,
+       0.0013035400223556533
+      ],
+      "W33": 4192.155915063224,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "361636f5c03b62350cab8901bf62d1d406d37a73a9e4211ce447f1ec0576e6ab",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_M-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.5616716377405878e-08,
+       0.00019040121787943464,
+       1.6077621767902937e-05,
+       0.0014260684712458112
+      ],
+      "W33": 4399.002019118052,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "943251bf9cc3061d10275c0efbe38688087687f5be3adac1f7dfe501825b4276",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-combined_human_M-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       1.514072595115615e-08,
+       0.0001824843996307102,
+       1.6081179276735805e-05,
+       0.0020300531333870488
+      ],
+      "W33": 1088.1948096518317,
+      "human": true,
+      "robust": true,
+      "shown": true,
+      "record_sha256": "2c0c4877e6a7fcaeb31e98232d5b1a49bceac8d102faa49782a869f83afe00d1",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-drosophila_853-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       12.194092834158873,
+       999.9999999999998,
+       71.07043171657034,
+       0.0010000000000000002
+      ],
+      "W33": -2.063691229336655,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ef4c803e2093d835eeeddd5266e0265e8b4d23176b637a7ed40da7ba6cbe2f9f",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-drosophila_853-c0-s1",
+      "source": "recon",
+      "recon_dll": 1.394255377817899e-09,
+      "point": [
+       0.4746944166337399,
+       24.90661674881909,
+       2.4723689548859897,
+       0.0011062023101174995
+      ],
+      "W33": -0.4735162827919339,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "fff1721641a81d83420fd2e1a52ef29403688a3c1d71a0b2e7b6eb57faf7d2ba",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-drosophila_853-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       12.676656456823316,
+       999.9999999999998,
+       70.88834845376414,
+       0.001000807010097314
+      ],
+      "W33": -1.1368669523569679,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "e0bd2e2bf8e13cf08e606cbadbe69677ea6ab43ed16960c980afae490db4fe03",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "pure-real-drosophila_853-c1-s1",
+      "source": "recon",
+      "recon_dll": 4.496723704505712e-08,
+      "point": [
+       11.410054917981329,
+       999.9999999999998,
+       66.33388184742984,
+       0.02678317807699836
+      ],
+      "W33": -0.43504864359761086,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6be52633554e46e662fb52cae9248c6a648a71f888ca0160ba553484d0292983",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1890_homo-c0-s0",
+      "source": "recon",
+      "recon_dll": -5.964015144854784e-06,
+      "point": [
+       1.943670981034594e-09,
+       1.000000000000001e-12,
+       5.84394185907494e-06,
+       299.99999999999994
+      ],
+      "W33": -8923.819555143069,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "d154296900ad7afb11b596d2fc6abdf65fa8145b49f00442401bf257a13be247",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1890_homo-c0-s1",
+      "source": "recon",
+      "recon_dll": 7.326016202569008e-06,
+      "point": [
+       1.9431055436370035e-09,
+       1.000000000000001e-12,
+       5.887378099382388e-06,
+       294.46286672378494
+      ],
+      "W33": -8978.718284492847,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "9de66dfabd509e5f87d96663871634cc91cd980117483a037281bfee8c623ff6",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1890_homo-c1-s0",
+      "source": "recon",
+      "recon_dll": 4.415502189658582e-06,
+      "point": [
+       1.9379459800584223e-09,
+       1.000000000000001e-12,
+       5.925463045510511e-06,
+       282.08090189211896
+      ],
+      "W33": -2205.4004694798205,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "6e91ef70d4111e724a0804c75c58691d34b3441e765e081f2c5e9bd450f2ea9f",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1890_homo-c1-s1",
+      "source": "recon",
+      "recon_dll": 6.664748070761561e-06,
+      "point": [
+       1.941417214858625e-09,
+       1.000000000000001e-12,
+       5.858674651322395e-06,
+       280.1850286253121
+      ],
+      "W33": -2240.9703950452094,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "760e620613792b3191c676325e612725e8873526f5d2e134f89aebac50cea75f",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1890_homo-c2-s0",
+      "source": "recon",
+      "recon_dll": -2.5159926735796034e-05,
+      "point": [
+       1.9812632683038936e-09,
+       1.000000000000001e-12,
+       5.935054591994369e-06,
+       282.9178074231578
+      ],
+      "W33": -881.3774941023221,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "0b27ea5342b0618d861a3489f40b82d10453d7eca9d0ec9b3ac972f00b1381fa",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1890_homo-c2-s1",
+      "source": "recon",
+      "recon_dll": 9.051873348653316e-07,
+      "point": [
+       1.9306792412234247e-09,
+       1.000000000000001e-12,
+       5.901052933186798e-06,
+       299.99999999999994
+      ],
+      "W33": -894.5143980442226,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "9e4f05fa0513b6ddaa1fa69d442682fd985291d678dafe60e15395e176495ad1",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1900_homo-c0-s0",
+      "source": "recon",
+      "recon_dll": 6.113550625741482e-07,
+      "point": [
+       3.1590825595238344e-09,
+       1.237079225208783e-12,
+       5.9298930335115785e-06,
+       299.99999999999994
+      ],
+      "W33": -14246.65606817865,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "28e3a29b64b2aecfe996d87e3b82bf9cd42c170a80ea00fe2e2fa74be7664643",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1900_homo-c0-s1",
+      "source": "recon",
+      "recon_dll": 1.2058066204190254e-05,
+      "point": [
+       3.1405722651273644e-09,
+       1.6413237918448307e-12,
+       5.945079141792488e-06,
+       284.24331238822066
+      ],
+      "W33": -14246.90569711919,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "86ec0ba2761be1e1d1db3a110db0c267b673c72e9249829eefaa44bb0adf6d1d",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s0",
+      "source": "recon",
+      "recon_dll": 2.6921043172478676e-09,
+      "point": [
+       3.1629925178538184e-09,
+       1.000000000000001e-12,
+       5.886408335327698e-06,
+       294.23832412706395
+      ],
+      "W33": -3560.9059181830817,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "2c9bbf0a792ddb145f62daca0acb3fa6dc15e3f78a2da50aa0d9ad2be47e84e7",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1900_homo-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.4301331248134375e-06,
+      "point": [
+       3.1572787297825346e-09,
+       1.028657350005519e-12,
+       5.907654747817917e-06,
+       299.99999999999994
+      ],
+      "W33": -3577.892166525984,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "2f9d3a0ae16fdee7b8e9fe1739f9bf84731d3b8584265f8fea026612c783d246",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1900_homo-c2-s0",
+      "source": "recon",
+      "recon_dll": -1.3096723705530167e-10,
+      "point": [
+       3.151268378559713e-09,
+       1.000000000000001e-12,
+       5.901377578336555e-06,
+       299.99999999999994
+      ],
+      "W33": -1439.917252303363,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "f56b776d736ad5917e5598f10cb8433ecd469c9d62fae486dfe4b0189a4b2fd5",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Denmark_M_1900_homo-c2-s1",
+      "source": "recon",
+      "recon_dll": -7.275957614183426e-12,
+      "point": [
+       3.17875301284299e-09,
+       1.2774590799893993e-12,
+       5.896956587296879e-06,
+       299.99999999999994
+      ],
+      "W33": -1413.4675330467871,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "526ee3a8ee9731c4ef4b5454b36d1aa33d300f457fbf0e00548e2708e87a2aed",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-German_Shepherd_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": 7.806374924257398e-08,
+      "point": [
+       1.274890566206985e-06,
+       0.006080937128129833,
+       0.0006095902042647477,
+       0.00101912210460011
+      ],
+      "W33": -17.86820867001552,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "bfe5470a9ebd774eade53487b4df2a0ca8b1fb2d3abd23f4564b607d96f70825",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-German_Shepherd_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": -6.671143637504429e-10,
+      "point": [
+       2.566329703553608e-06,
+       7.059529714370174,
+       0.0012148741124080253,
+       284.4295458114451
+      ],
+      "W33": -21.931543302140653,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "fbe86ac7abf757555b2f05e9965510bec8ea267b4413e4d5d471650f00e938ff",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-German_Shepherd_vetCompass-c1-s0",
+      "source": "recon",
+      "recon_dll": -7.610196917084977e-10,
+      "point": [
+       1.0539523235231042e-05,
+       43.83112103709719,
+       0.006439646140650228,
+       299.99999999999994
+      ],
+      "W33": -14.627343500188317,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "e353aed060f7cab345c26488e9bafbdfbb7fd6e0c4c0e3497b1eb657f90ba7c9",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-German_Shepherd_vetCompass-c1-s1",
+      "source": "recon",
+      "recon_dll": 3.1578110792906955e-08,
+      "point": [
+       3.0074490411622497e-06,
+       0.018170519801509803,
+       0.0016653912725580178,
+       0.0016188948342804976
+      ],
+      "W33": -6.9476335346512315,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "9692bde6bed2b7454f7c639d385b597498d9b4c2a4f70c222603377a94f98430",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Guiniea_pig_VC-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.251385922136251e-08,
+      "point": [
+       3.321142954786648e-06,
+       0.0035405228510806065,
+       0.001399929156310862,
+       0.015301045110480424
+      ],
+      "W33": -1.080958809068079,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6d4d0ff913d2aae9d6e74a67b4e7c027c2671b0d66b9c95256ba859f09874b24",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-Guiniea_pig_VC-c0-s1",
+      "source": "recon",
+      "recon_dll": 8.124061423586681e-10,
+      "point": [
+       3.615098532344055e-06,
+       0.004586037179527529,
+       0.0017478288374923447,
+       0.0027737490621871828
+      ],
+      "W33": -1.0685434129766236,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "d385cc3cd1f59c88841a8fe4b66d1706b7cf5f7c7ebb5164ac21cd4441fc12ed",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-Guiniea_pig_VC-c1-s0",
+      "source": "recon",
+      "recon_dll": 1.1016254575224593e-10,
+      "point": [
+       3.5798997870503997e-06,
+       0.0036844038160755016,
+       0.001447155906223339,
+       0.0010034704267160807
+      ],
+      "W33": -0.7797975574353586,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6265385da159d602c84ef4acc93d86f13fd49bd0aca022169b759a66552f717b",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-Guiniea_pig_VC-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.4915713109076023e-10,
+      "point": [
+       1.6784601890229383e-05,
+       0.04290472190316035,
+       0.007824199977635863,
+       0.0010042736126991904
+      ],
+      "W33": -3.3439211496971666,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "a065ee118f942a0f005e4c873b0972dc163087da27aa9f0d12a795a66cae497c",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-Jack_Russell_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.9228158382466063e-07,
+      "point": [
+       0.0010909310328546726,
+       12.368396393214725,
+       0.6773642554794584,
+       0.0012249656729809797
+      ],
+      "W33": -13.830707532503766,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "f96266dae4a407de8e75b5dda7d9a0da4a490b45c4c6c3adb546fa0d7bd94e61",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Jack_Russell_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": -1.9501703718560748e-06,
+      "point": [
+       0.0013779961470593075,
+       15.847372033967234,
+       0.8526927318760399,
+       0.001068422934929821
+      ],
+      "W33": -9.568701431279806,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "7a45e0366f09c0989b18bcaa89470d2d7478025e2ff30ea8c8819f449763bff7",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Jack_Russell_vetCompass-c1-s0",
+      "source": "recon",
+      "recon_dll": 9.404857337358408e-08,
+      "point": [
+       1.6923215501441969e-06,
+       0.007744175448270763,
+       0.000661346797182711,
+       0.001003593828133052
+      ],
+      "W33": -3.522277998932168,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "45310ff2bdb2fe01c16cb53fdc153f024118cb4adda277cc89d642c2c9439bd4",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Jack_Russell_vetCompass-c1-s1",
+      "source": "recon",
+      "recon_dll": -6.971504262764938e-09,
+      "point": [
+       3.434218147055698e-05,
+       0.2797947769783041,
+       0.019438058471276946,
+       0.001000016449996104
+      ],
+      "W33": -2.640290273270466,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "98f2cf3382bfbaed2af01c43a0f023d9c907080f5d06565809dde5d1cecebfd5",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Labradors_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": 2.5839090085355565e-06,
+      "point": [
+       4.416614023097287e-07,
+       0.0006583061276816603,
+       9.246646389838816e-05,
+       0.00104510181163728
+      ],
+      "W33": -28.150014856948474,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "29cedc3bd18f1abfdc0c812177b5f0b6ce53ebfce07c2631c375843ed61d7546",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Labradors_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": 2.81190932582831e-06,
+      "point": [
+       4.665613462609192e-07,
+       0.0007239337568048095,
+       0.00010177786645138434,
+       0.0010139653322040435
+      ],
+      "W33": -22.100462721354234,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "901fc56f07f35f6ac9830c66b6fb55a67c1c4e0132446174218f6f1c09e19953",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Labradors_vetCompass-c1-s0",
+      "source": "recon",
+      "recon_dll": 8.358347258763388e-07,
+      "point": [
+       4.5178687653371027e-07,
+       0.0006785615092829377,
+       9.776015520261507e-05,
+       0.0010455616498512407
+      ],
+      "W33": -6.248349664067746,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "ad69b7c9227bb390959eb9dc0923b5fe9881367b92141cf327e88f16b9ea78af",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Labradors_vetCompass-c1-s1",
+      "source": "recon",
+      "recon_dll": 9.413270163349807e-11,
+      "point": [
+       3.89667577053051e-07,
+       0.0005649385207315518,
+       8.477303467816152e-05,
+       0.027283730133444168
+      ],
+      "W33": -6.252680233163119,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "9ea1dedecef266c8bf961a7409c3613eb016927a0d3f03962472328e5f4ff2ae",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Staffy_vetCompass-c0-s0",
+      "source": "recon",
+      "recon_dll": -1.4642864698544145e-10,
+      "point": [
+       2.4999581601020363e-07,
+       0.0007764649240922024,
+       0.00011433118799235196,
+       0.037667729067387426
+      ],
+      "W33": -8.458630394354259,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "68f2ebd7bcc0278148975df75ce8cc553628aff91f0d17dc7eef43bb06c03ed2",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Staffy_vetCompass-c0-s1",
+      "source": "recon",
+      "recon_dll": 3.474269760772586e-10,
+      "point": [
+       2.106413199597886e-07,
+       0.0006134433268559511,
+       9.4416925347507e-05,
+       0.06521319486231111
+      ],
+      "W33": -16.203334736733268,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "9cf220584e6f3f85c359cb9b25f07f41da9bce43d856d3b18ae695bed4447cc8",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Staffy_vetCompass-c1-s0",
+      "source": "recon",
+      "recon_dll": 8.958522812463343e-11,
+      "point": [
+       2.4690355419402226e-07,
+       0.0007822697833974382,
+       0.00011749805575488888,
+       0.04814351691009145
+      ],
+      "W33": -3.2934865460902074,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "c4a3236f3247ef82e81ee4cb71e23b133c870b7456d17963105eb93da293d524",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Staffy_vetCompass-c1-s1",
+      "source": "recon",
+      "recon_dll": 8.670176612213254e-07,
+      "point": [
+       2.7238183941921355e-07,
+       0.0008266258960985351,
+       0.00013028551449297609,
+       0.0010682761791045987
+      ],
+      "W33": -1.1718703036704028,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "68743986c4c49e795c3da38d248739833be4de2e23ed181ff665c75381603b75",
+      "window_set_aside": [
+       1095.75,
+       8766.0
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Sweden_F_1910_homo-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.01016435145545402,
+       999.9999999999998,
+       37.03012816738134,
+       0.0034683119422189543
+      ],
+      "W33": -4191.582936687453,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "c1b88c1bcbff08abac4a17e60aedb270be0e12d54ec26b3ad605df98584e73db",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Sweden_F_1910_homo-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.004856556784096158,
+       460.3404987411248,
+       17.685019778638967,
+       0.001982002454779247
+      ],
+      "W33": -4283.009358558338,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "46eb20de11f217a50d9349f2665a6ae736ae5027a3b12e93d215d6b081d9883b",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.00717194506162785,
+       700.2452592984969,
+       26.621979901943543,
+       0.0016770979487314023
+      ],
+      "W33": -1227.7790237577283,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "e8ffe17615c7ebab4ae6ac6caa6c4d8db74c6fa6e4685a5cdd3dea6bb137bed4",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Sweden_F_1910_homo-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.008269803504649013,
+       799.9661260910767,
+       29.876729466366047,
+       0.0029478986878940924
+      ],
+      "W33": -1019.7436234346678,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "3fac3f68f892adbeff8e0b3236a58a79ecf5a8ec9d82b47c1dc841288e7dc378",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Sweden_F_1910_homo-c2-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.004070716136109102,
+       385.3300780080971,
+       14.92691719039056,
+       0.0022612483726228865
+      ],
+      "W33": -445.13096318724274,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "7b2e6c901394f2eb1cf04f6f8fbd381e529dc4f963fd8d11f2a9e5bb96f7cfea",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-Sweden_F_1910_homo-c2-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       0.00680550426665528,
+       661.2779153391122,
+       25.118452218018128,
+       0.00207744226958455
+      ],
+      "W33": -470.57015432625485,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "03a7490951206358097ff605512127289f762de1d137c2db6579ea73a1cbc7b7",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_F-c0-s0",
+      "source": "recon",
+      "recon_dll": -2.9256989364512265e-06,
+      "point": [
+       8.528943359416918e-10,
+       0.0008030358406275674,
+       0.00011077142744127778,
+       0.5131179916992942
+      ],
+      "W33": -3881.479706393722,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "6f7536115a6d0c7da9bbc311f7400e9c32d61c4dca22970e2bb8fd9423b4d843",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_F-c0-s1",
+      "source": "recon",
+      "recon_dll": -2.2816193450125866e-06,
+      "point": [
+       7.059443131717918e-12,
+       0.0007010874152407159,
+       0.00010197074343919875,
+       0.506782860038364
+      ],
+      "W33": -3767.7629278140603,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "d8a242b808981f1d43b41880b093a02eb2ae5e767ef6c83b02196b924080fe49",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_F-c1-s0",
+      "source": "recon",
+      "recon_dll": 8.652214091853239e-06,
+      "point": [
+       3.229070285772643e-12,
+       0.0007272284422534588,
+       0.00010743003719599103,
+       0.5041485270488332
+      ],
+      "W33": -1023.4749698871929,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "473691c98633e8f34020a2fba9be65b88263bc7561e6a2083476948748075b2f",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_F-c1-s1",
+      "source": "recon",
+      "recon_dll": -5.923512844674406e-06,
+      "point": [
+       2.019829616126738e-09,
+       0.0006651482145988879,
+       0.00010170690390133202,
+       0.49807519481351564
+      ],
+      "W33": -1064.3577564193895,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "b625723e054291abe69137a23d0706e25917f62dc4cb7862d33f2b155e55aa03",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_M-c0-s0",
+      "source": "recon",
+      "recon_dll": -1.8671125872060657e-06,
+      "point": [
+       0.000986828791425261,
+       22.74099319906287,
+       1.3501307821270732,
+       0.001080141094134186
+      ],
+      "W33": -146.11541743120688,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "3b710fa9fb797a1ee1f3ccabbd870f93a603fa9034e7c2c1b346726606b716ea",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_M-c0-s1",
+      "source": "no_points",
+      "recon_dll": null,
+      "point": null,
+      "W33": null,
+      "human": false,
+      "robust": null,
+      "shown": null,
+      "record_sha256": "7af475fb29d519d0517eef8d20523a613161cc781a27b8fd500ca6f460885af8",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_M-c1-s0",
+      "source": "recon",
+      "recon_dll": -0.00015687073573644739,
+      "point": [
+       0.026849427797399662,
+       738.9540098384979,
+       35.69068017047764,
+       0.0010000000000000002
+      ],
+      "W33": -31.072119791840123,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "64ff5d9b67ba36def3545348d73a0fa634b23274ff34b08e782c3f38d89ab0db",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-cats_vp_M-c1-s1",
+      "source": "no_points",
+      "recon_dll": null,
+      "point": null,
+      "W33": null,
+      "human": false,
+      "robust": null,
+      "shown": null,
+      "record_sha256": "e60d7475b4710f05627e347364ee34556e0ee038eb4ac5dbbe83892ee636c803",
+      "window_set_aside": [
+       730.5,
+       9131.25
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-combined_human_M-c0-s0",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       2.910269044811875e-07,
+       3.6243067608890236,
+       0.00039610136138001505,
+       299.99855520087857
+      ],
+      "W33": -1007.3015084567596,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "ce58009d097b7febba5e194a6d7ec51fac6b0dd80fe637381b876f560a3a9cef",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-combined_human_M-c0-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       3.255251324486875e-07,
+       4.128394618402593,
+       0.00044910521338660834,
+       299.99999999999994
+      ],
+      "W33": -997.1508886392112,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "3e86202c1b9d77911c9bf2c64cd73356af605fe1128ac4e1578261c7c757db67",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-combined_human_M-c1-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       3.842787080474459e-07,
+       5.009651611629764,
+       0.000541252126600766,
+       299.99999999999994
+      ],
+      "W33": -247.34052787059045,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "d98b68087c301455d22ba8c1cfe02332f37335a99e5820e375c4c7edbce04c84",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-combined_human_M-c2-s1",
+      "source": "claims",
+      "recon_dll": null,
+      "point": [
+       2.0962537090645828e-07,
+       0.00524536936549631,
+       0.0003476988641426677,
+       0.0017575492813500266
+      ],
+      "W33": -90.19096848364279,
+      "human": true,
+      "robust": false,
+      "shown": false,
+      "record_sha256": "40250105fb66296aa6b815abf5ba3fb7a806f8886daea45f938a162bb4de75a6",
+      "window_set_aside": [
+       10957.5,
+       40177.5
+      ]
+     },
+     {
+      "cohort_id": "realfull-real-drosophila_853-c0-s0",
+      "source": "recon",
+      "recon_dll": 5.291894922265783e-09,
+      "point": [
+       0.10666873567010196,
+       3.892242182115657,
+       0.49079717238935894,
+       0.0010103466529008528
+      ],
+      "W33": -1.4306328849979764,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "5cf6e808a83e4fce5514f09c43e51bf651c91ac562b3b617545939fa8d837ad7",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-drosophila_853-c0-s1",
+      "source": "recon",
+      "recon_dll": 6.471054803114384e-10,
+      "point": [
+       0.08301559155632968,
+       2.849665590855788,
+       0.37307416168329277,
+       0.001000001426901822
+      ],
+      "W33": -0.549899434361123,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "88dc43beef4ec57af1dd2d3c1413ee3d7b2de3f96add2c8d5ba6aa34ba8a2adc",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-drosophila_853-c1-s0",
+      "source": "recon",
+      "recon_dll": 6.578261491085868e-09,
+      "point": [
+       0.304228185992644,
+       13.844919593927266,
+       1.432521104058902,
+       0.0010166636444076393
+      ],
+      "W33": -1.4084529694686125,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "95f7b83bf3e281536fc5a55e3ba14d1fb246f1159c623bf8cf6b4478b9f2f31b",
+      "window_set_aside": null
+     },
+     {
+      "cohort_id": "realfull-real-drosophila_853-c1-s1",
+      "source": "recon",
+      "recon_dll": 1.0691110219340771e-09,
+      "point": [
+       0.38963221725357994,
+       19.752403008722936,
+       2.0014760728173493,
+       0.0032040037524673063
+      ],
+      "W33": -0.08941678028622846,
+      "human": false,
+      "robust": true,
+      "shown": false,
+      "record_sha256": "69b1409fd6ea4b7032388736ad7378e033c7c68a716b937a9f5d2dba21115dad",
+      "window_set_aside": null
+     }
+    ],
+    "excluded_not_valid_or_informative": [
+     "het-k0.316-p04-c1-s0",
+     "het-k0.316-p04-c1-s1",
+     "het-k1-p04-c1-s1",
+     "het-k10-p04-c1-s0",
+     "het-k10-p04-c1-s1",
+     "het-real-Denmark_F_1890_hetro-c0-s0",
+     "het-real-Denmark_F_1890_hetro-c0-s1",
+     "het-real-Denmark_F_1890_hetro-c1-s0",
+     "het-real-Denmark_F_1890_hetro-c1-s1",
+     "het-real-Denmark_F_1890_hetro-c2-s0",
+     "het-real-Denmark_F_1890_hetro-c2-s1",
+     "het-real-Denmark_F_1900_hetro-c0-s0",
+     "het-real-Denmark_F_1900_hetro-c0-s1",
+     "het-real-Denmark_F_1900_hetro-c1-s0",
+     "het-real-Denmark_F_1900_hetro-c1-s1",
+     "het-real-Denmark_F_1900_hetro-c2-s0",
+     "het-real-Denmark_F_1900_hetro-c2-s1",
+     "het-real-Denmark_M_1890_hetro-c0-s0",
+     "het-real-Denmark_M_1890_hetro-c0-s1",
+     "het-real-Denmark_M_1890_hetro-c1-s0",
+     "het-real-Denmark_M_1890_hetro-c1-s1",
+     "het-real-Denmark_M_1890_hetro-c2-s0",
+     "het-real-Denmark_M_1890_hetro-c2-s1",
+     "het-real-Denmark_M_1890_homo-c0-s0",
+     "het-real-Denmark_M_1890_homo-c0-s1",
+     "het-real-Denmark_M_1890_homo-c1-s0",
+     "het-real-Denmark_M_1890_homo-c1-s1",
+     "het-real-Denmark_M_1890_homo-c2-s0",
+     "het-real-Denmark_M_1890_homo-c2-s1",
+     "het-real-Denmark_M_1900_hetro-c0-s0",
+     "het-real-Denmark_M_1900_hetro-c0-s1",
+     "het-real-Denmark_M_1900_hetro-c1-s0",
+     "het-real-Denmark_M_1900_hetro-c1-s1",
+     "het-real-Denmark_M_1900_hetro-c2-s0",
+     "het-real-Denmark_M_1900_hetro-c2-s1",
+     "het-real-Denmark_M_1900_homo-c0-s0",
+     "het-real-Denmark_M_1900_homo-c0-s1",
+     "het-real-Denmark_M_1900_homo-c1-s0",
+     "het-real-Denmark_M_1900_homo-c1-s1",
+     "het-real-Denmark_M_1900_homo-c2-s0",
+     "het-real-Denmark_M_1900_homo-c2-s1",
+     "het-real-German_Shepherd_vetCompass-c1-s0",
+     "het-real-German_Shepherd_vetCompass-c1-s1",
+     "het-real-Guiniea_pig_VC-c0-s0",
+     "het-real-Guiniea_pig_VC-c0-s1",
+     "het-real-Guiniea_pig_VC-c1-s0",
+     "het-real-Guiniea_pig_VC-c1-s1",
+     "het-real-Jack_Russell_vetCompass-c0-s0",
+     "het-real-Jack_Russell_vetCompass-c0-s1",
+     "het-real-Jack_Russell_vetCompass-c1-s0",
+     "het-real-Jack_Russell_vetCompass-c1-s1",
+     "het-real-Labradors_vetCompass-c0-s0",
+     "het-real-Labradors_vetCompass-c0-s1",
+     "het-real-Labradors_vetCompass-c1-s0",
+     "het-real-Labradors_vetCompass-c1-s1",
+     "het-real-Staffy_vetCompass-c0-s0",
+     "het-real-Staffy_vetCompass-c0-s1",
+     "het-real-Staffy_vetCompass-c1-s0",
+     "het-real-Staffy_vetCompass-c1-s1",
+     "het-real-Sweden_F_1910_hetro-c0-s0",
+     "het-real-Sweden_F_1910_hetro-c0-s1",
+     "het-real-Sweden_F_1910_hetro-c1-s0",
+     "het-real-Sweden_F_1910_hetro-c1-s1",
+     "het-real-Sweden_F_1910_hetro-c2-s0",
+     "het-real-Sweden_F_1910_hetro-c2-s1",
+     "het-real-Sweden_F_1910_homo-c0-s0",
+     "het-real-Sweden_F_1910_homo-c0-s1",
+     "het-real-Sweden_F_1910_homo-c1-s0",
+     "het-real-Sweden_F_1910_homo-c1-s1",
+     "het-real-Sweden_F_1910_homo-c2-s0",
+     "het-real-Sweden_F_1910_homo-c2-s1",
+     "het-real-Sweden_M_1910_hetro-c0-s0",
+     "het-real-Sweden_M_1910_hetro-c0-s1",
+     "het-real-Sweden_M_1910_hetro-c1-s0",
+     "het-real-Sweden_M_1910_hetro-c1-s1",
+     "het-real-Sweden_M_1910_hetro-c2-s0",
+     "het-real-Sweden_M_1910_hetro-c2-s1",
+     "het-real-cats_vp_F-c0-s0",
+     "het-real-cats_vp_F-c0-s1",
+     "het-real-cats_vp_F-c1-s0",
+     "het-real-cats_vp_F-c1-s1",
+     "het-real-cats_vp_M-c0-s0",
+     "het-real-cats_vp_M-c0-s1",
+     "het-real-cats_vp_M-c1-s0",
+     "het-real-cats_vp_M-c1-s1",
+     "het-real-combined_human_F-c0-s0",
+     "het-real-combined_human_F-c0-s1",
+     "het-real-combined_human_F-c1-s0",
+     "het-real-combined_human_F-c1-s1",
+     "het-real-combined_human_F-c2-s0",
+     "het-real-combined_human_F-c2-s1",
+     "het-real-combined_human_M-c0-s0",
+     "het-real-combined_human_M-c0-s1",
+     "het-real-combined_human_M-c1-s0",
+     "het-real-combined_human_M-c1-s1",
+     "het-real-combined_human_M-c2-s0",
+     "het-real-combined_human_M-c2-s1",
+     "het-real-drosophila_217-c0-s1",
+     "het-real-drosophila_441-c0-s0",
+     "het-real-drosophila_707-c1-s1",
+     "het-real-drosophila_853-c0-s0",
+     "het-real-drosophila_853-c0-s1",
+     "het-real-drosophila_853-c1-s0",
+     "het-real-drosophila_853-c1-s1",
+     "het-real-yeast-c0-s0",
+     "het-real-yeast-c0-s1",
+     "het-real-yeast-c1-s0",
+     "het-real-yeast-c1-s1",
+     "het-real-yeast-c2-s0",
+     "het-real-yeast-c2-s1",
+     "realfull-real-Denmark_F_1890_hetro-c0-s0",
+     "realfull-real-Denmark_F_1890_hetro-c0-s1",
+     "realfull-real-Denmark_F_1890_hetro-c1-s0",
+     "realfull-real-Denmark_F_1890_hetro-c1-s1",
+     "realfull-real-Denmark_F_1890_hetro-c2-s0",
+     "realfull-real-Denmark_F_1890_hetro-c2-s1",
+     "realfull-real-Denmark_F_1900_hetro-c0-s0",
+     "realfull-real-Denmark_F_1900_hetro-c0-s1",
+     "realfull-real-Denmark_F_1900_hetro-c1-s0",
+     "realfull-real-Denmark_F_1900_hetro-c1-s1",
+     "realfull-real-Denmark_F_1900_hetro-c2-s0",
+     "realfull-real-Denmark_F_1900_hetro-c2-s1",
+     "realfull-real-Denmark_M_1890_hetro-c0-s0",
+     "realfull-real-Denmark_M_1890_hetro-c0-s1",
+     "realfull-real-Denmark_M_1890_hetro-c1-s0",
+     "realfull-real-Denmark_M_1890_hetro-c1-s1",
+     "realfull-real-Denmark_M_1890_hetro-c2-s0",
+     "realfull-real-Denmark_M_1890_hetro-c2-s1",
+     "realfull-real-Denmark_M_1900_hetro-c0-s0",
+     "realfull-real-Denmark_M_1900_hetro-c0-s1",
+     "realfull-real-Denmark_M_1900_hetro-c1-s0",
+     "realfull-real-Denmark_M_1900_hetro-c1-s1",
+     "realfull-real-Denmark_M_1900_hetro-c2-s0",
+     "realfull-real-Denmark_M_1900_hetro-c2-s1",
+     "realfull-real-Sweden_F_1910_hetro-c0-s0",
+     "realfull-real-Sweden_F_1910_hetro-c0-s1",
+     "realfull-real-Sweden_F_1910_hetro-c1-s0",
+     "realfull-real-Sweden_F_1910_hetro-c1-s1",
+     "realfull-real-Sweden_F_1910_hetro-c2-s0",
+     "realfull-real-Sweden_F_1910_hetro-c2-s1",
+     "realfull-real-Sweden_M_1910_hetro-c0-s0",
+     "realfull-real-Sweden_M_1910_hetro-c0-s1",
+     "realfull-real-Sweden_M_1910_hetro-c1-s0",
+     "realfull-real-Sweden_M_1910_hetro-c1-s1",
+     "realfull-real-Sweden_M_1910_hetro-c2-s0",
+     "realfull-real-Sweden_M_1910_hetro-c2-s1"
+    ],
+    "shown_also_basin_j": [
+     "censor-real-Denmark_F_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c0-s0",
+     "censor-real-Denmark_M_1890_hetro-c0-s1",
+     "censor-real-Denmark_M_1890_hetro-c1-s0",
+     "censor-real-Denmark_M_1900_hetro-c0-s0",
+     "pure-real-Denmark_F_1890_hetro-c0-s1",
+     "pure-real-Denmark_F_1890_hetro-c1-s0",
+     "pure-real-Denmark_M_1890_hetro-c0-s0",
+     "pure-real-Denmark_M_1890_hetro-c0-s1",
+     "pure-real-Denmark_M_1890_hetro-c1-s1",
+     "pure-real-Denmark_M_1900_hetro-c0-s0",
+     "pure-real-Denmark_M_1900_hetro-c0-s1",
+     "pure-real-combined_human_M-c0-s0",
+     "pure-real-combined_human_M-c0-s1",
+     "pure-real-combined_human_M-c1-s1"
+    ]
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-DTCEIL",
+   "rule": "PR-5",
+   "verdict": "not shown",
+   "arm": null,
+   "quantity": null,
+   "n_valid": 16,
+   "n_all": 16,
+   "statistic": {
+    "measure": "cpu_s_v033 > cpu_s_j",
+    "n": 16,
+    "k_shown": 0,
+    "n_null": 0,
+    "shown_ids": [],
+    "rows": [
+     {
+      "cohort_id": "censor-real-celegans-c0-s0",
+      "cpu_s_v033": 3909.238696151,
+      "cpu_s_j": 6729.667400354,
+      "shown": false
+     },
+     {
+      "cohort_id": "censor-real-celegans-c0-s1",
+      "cpu_s_v033": 4954.033130737,
+      "cpu_s_j": 6412.927380305,
+      "shown": false
+     },
+     {
+      "cohort_id": "censor-real-celegans-c1-s0",
+      "cpu_s_v033": 4060.366641051,
+      "cpu_s_j": 6950.224917097,
+      "shown": false
+     },
+     {
+      "cohort_id": "censor-real-celegans-c1-s1",
+      "cpu_s_v033": 2321.314196872,
+      "cpu_s_j": 7114.426408699,
+      "shown": false
+     },
+     {
+      "cohort_id": "het-real-celegans-c0-s0",
+      "cpu_s_v033": 4222.179918211,
+      "cpu_s_j": 8348.148731835001,
+      "shown": false
+     },
+     {
+      "cohort_id": "het-real-celegans-c0-s1",
+      "cpu_s_v033": 6771.158771421,
+      "cpu_s_j": 8073.327981471,
+      "shown": false
+     },
+     {
+      "cohort_id": "het-real-celegans-c1-s0",
+      "cpu_s_v033": 6125.197433567,
+      "cpu_s_j": 8059.6539636160005,
+      "shown": false
+     },
+     {
+      "cohort_id": "het-real-celegans-c1-s1",
+      "cpu_s_v033": 5105.883891766,
+      "cpu_s_j": 9756.075046254,
+      "shown": false
+     },
+     {
+      "cohort_id": "pure-real-celegans-c0-s0",
+      "cpu_s_v033": 5902.943200613001,
+      "cpu_s_j": 10440.741094635,
+      "shown": false
+     },
+     {
+      "cohort_id": "pure-real-celegans-c0-s1",
+      "cpu_s_v033": 4309.876343605,
+      "cpu_s_j": 8766.411192470001,
+      "shown": false
+     },
+     {
+      "cohort_id": "pure-real-celegans-c1-s0",
+      "cpu_s_v033": 2813.6500781179993,
+      "cpu_s_j": 4908.105798704,
+      "shown": false
+     },
+     {
+      "cohort_id": "pure-real-celegans-c1-s1",
+      "cpu_s_v033": 6389.63662713,
+      "cpu_s_j": 14646.927878621,
+      "shown": false
+     },
+     {
+      "cohort_id": "realfull-real-celegans-c0-s0",
+      "cpu_s_v033": 3222.760261495,
+      "cpu_s_j": 4738.915062845,
+      "shown": false
+     },
+     {
+      "cohort_id": "realfull-real-celegans-c0-s1",
+      "cpu_s_v033": 3790.60386499,
+      "cpu_s_j": 7294.5052711690005,
+      "shown": false
+     },
+     {
+      "cohort_id": "realfull-real-celegans-c1-s0",
+      "cpu_s_v033": 3654.121438671,
+      "cpu_s_j": 5148.605701064999,
+      "shown": false
+     },
+     {
+      "cohort_id": "realfull-real-celegans-c1-s1",
+      "cpu_s_v033": 5695.815855993,
+      "cpu_s_j": 12366.76922014,
+      "shown": false
+     }
+    ],
+    "excluded_not_valid_or_informative": [],
+    "shown_also_basin_j": []
+   },
+   "interval": null,
+   "reasons": [
+    "no cohort shows the predecessor's defect"
+   ]
+  },
+  {
+   "stratum": "P-CENSORTIE",
+   "rule": "PR-5",
+   "verdict": "empty",
+   "arm": null,
+   "quantity": null,
+   "n_valid": 0,
+   "n_all": 0,
+   "statistic": {
+    "measure": "W33 > w_thr",
+    "rows": [],
+    "excluded_not_valid_or_informative": [],
+    "shown_also_basin_j": []
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "BASIN-J/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 7,
+   "n_all": 7,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.14285714285714285
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 4,
+     "statistic": 0.25
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "BASIN-J/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 19,
+   "n_all": 19,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "wins",
+     "n": 16,
+     "statistic": 0.3125
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 4,
+     "statistic": 0.5
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "wins",
+     "n": 19,
+     "statistic": 0.3157894736842105
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "wins",
+     "n": 9,
+     "statistic": 0.4444444444444444
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 2,
+   "n_all": 2,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no measured axis has the 3 cells at which 'loses' can occur"
+   ]
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 10,
+   "n_all": 10,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.3
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 9,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.1
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.0
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 8,
+   "n_all": 8,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 8,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 6,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 6,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "external_hazard/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "external_hazard/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 40,
+   "n_all": 40,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 35,
+     "statistic": 0.05714285714285714
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 11,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 6,
+     "statistic": 0.16666666666666666
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 40,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "wins",
+     "n": 37,
+     "statistic": 0.08108108108108109
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 35,
+     "statistic": 0.05714285714285714
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 43,
+   "n_all": 43,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "wins",
+     "n": 40,
+     "statistic": 0.15
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 8,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.2857142857142857
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 43,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "wins",
+     "n": 42,
+     "statistic": 0.19047619047619047
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 38,
+     "statistic": 0.13157894736842105
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 30,
+   "n_all": 30,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 30,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 6,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 22,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 28,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 14,
+     "statistic": 0.0
+    },
+    "external_hazard/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "external_hazard/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 30,
+   "n_all": 30,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 30,
+     "statistic": 0.03333333333333333
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 29,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 17,
+     "statistic": 0.11764705882352941
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.2
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "het",
+   "quantity": null,
+   "n_valid": 28,
+   "n_all": 28,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 28,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 13,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 22,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 65,
+   "n_all": 65,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 65,
+     "statistic": 0.046153846153846156
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 38,
+     "statistic": 0.02631578947368421
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 42,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 63,
+     "statistic": 0.07936507936507936
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.16666666666666666
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 49,
+   "n_all": 49,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 49,
+     "statistic": 0.02040816326530612
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 21,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 30,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 43,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.0
+    },
+    "external_hazard/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "external_hazard/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "SRK-1/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 1,
+   "n_all": 1,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-1b/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 1,
+   "n_all": 1,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-2/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 3,
+   "n_all": 3,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  }
+ ],
+ "with_invalid": [
+  {
+   "stratum": "BASIN-J/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 7,
+   "n_all": 7,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.14285714285714285
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 4,
+     "statistic": 0.25
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "BASIN-J/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 19,
+   "n_all": 19,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "wins",
+     "n": 16,
+     "statistic": 0.3125
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 4,
+     "statistic": 0.5
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "wins",
+     "n": 19,
+     "statistic": 0.3157894736842105
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "wins",
+     "n": 9,
+     "statistic": 0.4444444444444444
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 2,
+   "n_all": 2,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no measured axis has the 3 cells at which 'loses' can occur"
+   ]
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 10,
+   "n_all": 10,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.3
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 9,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.1
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.0
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-1x/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 8,
+   "n_all": 8,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 8,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 6,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 6,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "external_hazard/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "external_hazard/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 40,
+   "n_all": 40,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 35,
+     "statistic": 0.05714285714285714
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 11,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 6,
+     "statistic": 0.16666666666666666
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 40,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "wins",
+     "n": 37,
+     "statistic": 0.08108108108108109
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 35,
+     "statistic": 0.05714285714285714
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 43,
+   "n_all": 43,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "wins",
+     "n": 40,
+     "statistic": 0.15
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 8,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 7,
+     "statistic": 0.2857142857142857
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 43,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "wins",
+     "n": 42,
+     "statistic": 0.19047619047619047
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 38,
+     "statistic": 0.13157894736842105
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "LB-2/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 66,
+   "n_all": 66,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 66,
+     "statistic": 0.030303030303030304
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 18,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 46,
+     "statistic": -0.043478260869565216
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 58,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 25,
+     "statistic": -0.04
+    },
+    "external_hazard/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "external_hazard/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "het",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-DTCEIL/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 4,
+   "n_all": 4,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "censor",
+   "quantity": null,
+   "n_valid": 30,
+   "n_all": 30,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 30,
+     "statistic": 0.03333333333333333
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 29,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 17,
+     "statistic": 0.11764705882352941
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.2
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "het",
+   "quantity": null,
+   "n_valid": 103,
+   "n_all": 103,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 103,
+     "statistic": 0.038834951456310676
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 13,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 80,
+     "statistic": -0.025
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 97,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 75,
+     "statistic": 0.0
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 65,
+   "n_all": 65,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 65,
+     "statistic": 0.046153846153846156
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 10,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 38,
+     "statistic": 0.02631578947368421
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 42,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 63,
+     "statistic": 0.07936507936507936
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 5,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 12,
+     "statistic": 0.16666666666666666
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "P-ROUNDOFF/inside",
+   "rule": "PR-2",
+   "verdict": "PASS",
+   "arm": "realfull",
+   "quantity": null,
+   "n_valid": 85,
+   "n_all": 85,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "no difference",
+     "n": 85,
+     "statistic": 0.03529411764705882
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "beta/calibration": {
+     "outcome": "no difference",
+     "n": 33,
+     "statistic": 0.0
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 54,
+     "statistic": -0.037037037037037035
+    },
+    "epsilon/calibration": {
+     "outcome": "no difference",
+     "n": 73,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 4,
+     "statistic": 0.0
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "no difference",
+     "n": 21,
+     "statistic": -0.047619047619047616
+    },
+    "external_hazard/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "external_hazard/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": []
+  },
+  {
+   "stratum": "SRK-1/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 1,
+   "n_all": 1,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-1b/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 1,
+   "n_all": 1,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 1,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  },
+  {
+   "stratum": "SRK-2/inside",
+   "rule": "PR-2",
+   "verdict": "reported",
+   "arm": "pure",
+   "quantity": null,
+   "n_valid": 3,
+   "n_all": 3,
+   "statistic": {
+    "eta/calibration": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "eta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "beta/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 2,
+     "statistic": 0.0
+    },
+    "epsilon/calibration": {
+     "outcome": "not measured",
+     "n": 3,
+     "statistic": 0.0
+    },
+    "epsilon/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    },
+    "kappa/calibration_one_sided": {
+     "outcome": "not measured",
+     "n": 0,
+     "statistic": null
+    }
+   },
+   "interval": null,
+   "reasons": [
+    "no axis measured"
+   ]
+  }
+ ],
+ "tester_head": "0805d36bb92dd9a1a531683bcc21824ca7dadac8",
+ "n_points": 341
+}

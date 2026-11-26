@@ -1,0 +1,5884 @@
+{
+ "phase": "coverage",
+ "written_at": "2026-10-10T07:14:49Z",
+ "repo_head": "d903979764194c5b7afa7b048710210c15e9179b",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003.toml": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "076663b30d91bcef0813dd05fd964dea16ca667e"
+ },
+ "wall_s": 1.9457063674926758,
+ "cpu_s": 1.590531,
+ "status": "fail",
+ "reasons": [
+  "underpowered: profile_jax2|pure beta_over_eta_kp1 vs_eta: ['3 paired cells < 30', '2 clusters < 10']",
+  "underpowered: profile_jax2|pure beta_over_eta_kp1 vs_epsilon: ['3 paired cells < 30', '2 clusters < 10']",
+  "underpowered: profile_jax2|pure rbar vs_eta: ['28 paired cells < 30']",
+  "underpowered: profile_jax2|pure beta_over_kp1 vs_eta: ['14 paired cells < 30', '6 clusters < 10']",
+  "underpowered: profile_jax2|pure beta_over_kp1 vs_epsilon: ['15 paired cells < 30', '6 clusters < 10']",
+  "underpowered: profile_jax2|censor rbar_over_eta vs_eta: ['5 paired cells < 30', '3 clusters < 10']",
+  "underpowered: profile_jax2|censor rbar_over_eta vs_epsilon: ['6 paired cells < 30', '4 clusters < 10']",
+  "underpowered: profile_jax2|censor beta_over_eta_kp1 vs_eta: ['0 paired cells < 30', '0 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2|censor beta_over_eta_kp1 vs_epsilon: ['0 paired cells < 30', '0 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2|censor rbar vs_eta: ['4 paired cells < 30', '3 clusters < 10']",
+  "underpowered: profile_jax2|censor rbar vs_epsilon: ['4 paired cells < 30', '3 clusters < 10']",
+  "underpowered: profile_jax2|censor beta_over_kp1 vs_eta: ['5 paired cells < 30', '3 clusters < 10']",
+  "underpowered: profile_jax2|censor beta_over_kp1 vs_epsilon: ['5 paired cells < 30', '3 clusters < 10']",
+  "underpowered: profile_jax2_h|hazard eta_over_eps vs_eta: ['29 paired cells < 30']",
+  "underpowered: profile_jax2_h|hazard rbar_over_eta vs_eta: ['2 paired cells < 30', '1 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2_h|hazard rbar_over_eta vs_epsilon: ['4 paired cells < 30', '2 clusters < 10']",
+  "underpowered: profile_jax2_h|hazard sqrt_eta_over_eps vs_eta: ['26 paired cells < 30']",
+  "underpowered: profile_jax2_h|hazard beta_over_eta_kp1 vs_eta: ['0 paired cells < 30', '0 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2_h|hazard beta_over_eta_kp1 vs_epsilon: ['0 paired cells < 30', '0 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2_h|hazard rbar vs_eta: ['2 paired cells < 30', '1 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2_h|hazard rbar vs_epsilon: ['4 paired cells < 30', '2 clusters < 10']",
+  "underpowered: profile_jax2_h|hazard beta_over_kp1 vs_eta: ['2 paired cells < 30', '1 clusters < 10', 'the SE is not measured']",
+  "underpowered: profile_jax2_h|hazard beta_over_kp1 vs_epsilon: ['4 paired cells < 30', '2 clusters < 10']"
+ ],
+ "losses": [
+  [
+   "profile_jax2|censor",
+   "eta_over_eps",
+   "vs_eta",
+   "loses"
+  ],
+  [
+   "profile_jax2|censor",
+   "eta_over_eps",
+   "vs_epsilon",
+   "loses"
+  ]
+ ],
+ "underpowered": [
+  [
+   "profile_jax2|pure",
+   "beta_over_eta_kp1",
+   "vs_eta",
+   [
+    "3 paired cells < 30",
+    "2 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|pure",
+   "beta_over_eta_kp1",
+   "vs_epsilon",
+   [
+    "3 paired cells < 30",
+    "2 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|pure",
+   "rbar",
+   "vs_eta",
+   [
+    "28 paired cells < 30"
+   ]
+  ],
+  [
+   "profile_jax2|pure",
+   "beta_over_kp1",
+   "vs_eta",
+   [
+    "14 paired cells < 30",
+    "6 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|pure",
+   "beta_over_kp1",
+   "vs_epsilon",
+   [
+    "15 paired cells < 30",
+    "6 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "rbar_over_eta",
+   "vs_eta",
+   [
+    "5 paired cells < 30",
+    "3 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "rbar_over_eta",
+   "vs_epsilon",
+   [
+    "6 paired cells < 30",
+    "4 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "beta_over_eta_kp1",
+   "vs_eta",
+   [
+    "0 paired cells < 30",
+    "0 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "beta_over_eta_kp1",
+   "vs_epsilon",
+   [
+    "0 paired cells < 30",
+    "0 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "rbar",
+   "vs_eta",
+   [
+    "4 paired cells < 30",
+    "3 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "rbar",
+   "vs_epsilon",
+   [
+    "4 paired cells < 30",
+    "3 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "beta_over_kp1",
+   "vs_eta",
+   [
+    "5 paired cells < 30",
+    "3 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "beta_over_kp1",
+   "vs_epsilon",
+   [
+    "5 paired cells < 30",
+    "3 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "eta_over_eps",
+   "vs_eta",
+   [
+    "29 paired cells < 30"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "rbar_over_eta",
+   "vs_eta",
+   [
+    "2 paired cells < 30",
+    "1 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "rbar_over_eta",
+   "vs_epsilon",
+   [
+    "4 paired cells < 30",
+    "2 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "sqrt_eta_over_eps",
+   "vs_eta",
+   [
+    "26 paired cells < 30"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "beta_over_eta_kp1",
+   "vs_eta",
+   [
+    "0 paired cells < 30",
+    "0 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "beta_over_eta_kp1",
+   "vs_epsilon",
+   [
+    "0 paired cells < 30",
+    "0 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "rbar",
+   "vs_eta",
+   [
+    "2 paired cells < 30",
+    "1 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "rbar",
+   "vs_epsilon",
+   [
+    "4 paired cells < 30",
+    "2 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "beta_over_kp1",
+   "vs_eta",
+   [
+    "2 paired cells < 30",
+    "1 clusters < 10",
+    "the SE is not measured"
+   ]
+  ],
+  [
+   "profile_jax2_h|hazard",
+   "beta_over_kp1",
+   "vs_epsilon",
+   [
+    "4 paired cells < 30",
+    "2 clusters < 10"
+   ]
+  ]
+ ],
+ "absent_gated_cells": [],
+ "missing": [],
+ "frozen_code_failures": [],
+ "scores": {
+  "profile_jax2|censor": {
+   "n": 55,
+   "n_informative": 55,
+   "n_failed": 0,
+   "gated": true,
+   "quantities": {
+    "eta": {
+     "closed_coverage": 0.9565217391304348,
+     "closed_n": 46,
+     "wilson95": [
+      0.8546774097378094,
+      0.9879945544014435
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 52,
+      "upper_bound": 0,
+      "lower_bound": 3,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 6,
+     "labels": {
+      "box_limited": 6,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 3
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 3,
+     "widened": {
+      "n": 4,
+      "widened": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 4,
+       "coverage": 0.5
+      },
+      "shape_moves": {
+       "closed->closed": 4
+      },
+      "median_width_dex": {
+       "widened": 0.8922393481803844,
+       "claims_profile": 0.15269721509207096
+      },
+      "median_upper_moved_dex": 0.3140003259204524,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.10909090909090909,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.05454545454545454
+     },
+     "valid": {
+      "closed_coverage": 0.9,
+      "closed_n": 10,
+      "wilson95": [
+       0.5958499732047615,
+       0.9821237869049271
+      ]
+     }
+    },
+    "beta": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.05454545454545454,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 6,
+      "upper_bound": 46,
+      "lower_bound": 0,
+      "none": 3,
+      "failed": 0
+     },
+     "box_limited_n": 50,
+     "labels": {
+      "box_limited": 50,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 2,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.9090909090909091,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "epsilon": {
+     "closed_coverage": 0.9166666666666666,
+     "closed_n": 48,
+     "wilson95": [
+      0.8044669820963272,
+      0.9671162431819081
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 54,
+      "upper_bound": 0,
+      "lower_bound": 1,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 6,
+     "labels": {
+      "box_limited": 6,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 5
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 7,
+      "widened": {
+       "n": 7,
+       "coverage": 0.8571428571428571
+      },
+      "claims_profile": {
+       "n": 7,
+       "coverage": 0.8571428571428571
+      },
+      "shape_moves": {
+       "closed->closed": 7
+      },
+      "median_width_dex": {
+       "widened": 0.983425813364299,
+       "claims_profile": 0.9785259178871614
+      },
+      "median_upper_moved_dex": 0.008096343226565998,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.10909090909090909,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.09090909090909091
+     },
+     "valid": {
+      "closed_coverage": 0.8666666666666667,
+      "closed_n": 15,
+      "wilson95": [
+       0.6211801716767764,
+       0.9626387408969346
+      ]
+     }
+    },
+    "kappa": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.9636363636363636,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 0,
+      "upper_bound": 0,
+      "lower_bound": 2,
+      "none": 53,
+      "failed": 0
+     },
+     "box_limited_n": 0,
+     "labels": {
+      "box_limited": 0,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 0.5,
+     "one_sided_n": 2,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.0,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "eta_over_eps": {
+     "closed_coverage": 0.8181818181818182,
+     "closed_n": 44,
+     "wilson95": [
+      0.6803944911281533,
+      0.9048719428437227
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 54,
+      "upper_bound": 1,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 10,
+     "labels": {
+      "box_limited": 10,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 1
+     },
+     "one_sided_coverage": 0.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 1,
+      "widened": {
+       "n": 1,
+       "coverage": 0.0
+      },
+      "claims_profile": {
+       "n": 1,
+       "coverage": 0.0
+      },
+      "shape_moves": {
+       "closed->closed": 1
+      },
+      "median_width_dex": {
+       "widened": 0.5694195907960682,
+       "claims_profile": 0.5694149540333202
+      },
+      "median_upper_moved_dex": 4.636762747951649e-06,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.18181818181818182,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.01818181818181818
+     },
+     "upper_bound_dex_inside_null": 14.283854508038916,
+     "closed_median_width_dex": 0.24978102542005076,
+     "null_width_dex": 30.0,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": -0.2,
+       "se": 0.07406560798180412,
+       "z": -2.700308624336609,
+       "ci_lo": -0.34516592413739844,
+       "ci_hi": -0.05483407586260158,
+       "n_cells": 35,
+       "n_clusters": 14,
+       "outcome": "loses",
+       "verdict": "loses",
+       "reasons": [
+        "z = -2.700 < -2"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": -0.18421052631578946,
+       "se": 0.06711558942758084,
+       "z": -2.744675683949056,
+       "ci_lo": -0.3157546643950251,
+       "ci_hi": -0.05266638823655381,
+       "n_cells": 38,
+       "n_clusters": 13,
+       "outcome": "loses",
+       "verdict": "loses",
+       "reasons": [
+        "z = -2.745 < -2"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "loses"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.6251003985015153,
+        "median_dex": [
+         0.24978102542005076,
+         0.8748814239215661
+        ],
+        "closed_share": {
+         "a": 0.9818181818181818,
+         "b": 0.9454545454545454
+        },
+        "n_widths": [
+         54,
+         52
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.8002394758987983,
+        "median_dex": [
+         0.24978102542005076,
+         1.050020501318849
+        ],
+        "closed_share": {
+         "a": 0.9818181818181818,
+         "b": 0.9818181818181818
+        },
+        "n_widths": [
+         54,
+         54
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 0.9333333333333333,
+      "closed_n": 15,
+      "wilson95": [
+       0.7018347012621998,
+       0.9881331045067315
+      ]
+     }
+    },
+    "rbar_over_eta": {
+     "closed_coverage": 0.6666666666666666,
+     "closed_n": 6,
+     "wilson95": [
+      0.299993315138392,
+      0.9032285888942195
+     ],
+     "decline_rate": 0.05454545454545454,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 6,
+      "upper_bound": 46,
+      "lower_bound": 0,
+      "none": 3,
+      "failed": 0
+     },
+     "box_limited_n": 18,
+     "labels": {
+      "box_limited": 18,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 28,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.32727272727272727,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 13.239810585183061,
+     "closed_median_width_dex": 0.6484564203359506,
+     "null_width_dex": 32.77610416477645,
+     "negligible": {
+      "labelled": 0,
+      "costly_errors": 0,
+      "costly_error_rate": null,
+      "truths_above_3x_floor": 2,
+      "labelled_rate_among_truths_above_3x": 0.0,
+      "labelled_without_floor": 0,
+      "floor_mismatch": 0,
+      "x": 3.0
+     },
+     "gate": {
+      "vs_eta": {
+       "mean_difference": -0.2,
+       "se": 0.12000000000000001,
+       "z": -1.6666666666666665,
+       "ci_lo": -0.43519567814480653,
+       "ci_hi": 0.03519567814480648,
+       "n_cells": 5,
+       "n_clusters": 3,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "5 paired cells < 30",
+        "3 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.0,
+       "se": 0.0,
+       "z": 0.0,
+       "ci_lo": 0.0,
+       "ci_hi": 0.0,
+       "n_cells": 6,
+       "n_clusters": 4,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "6 paired cells < 30",
+        "4 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.05454545454545454,
+        "a": {
+         "total": 55,
+         "answered": 52,
+         "declined": 3,
+         "failed": 0,
+         "decline_rate": 0.05454545454545454,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.22642500358561546,
+        "median_dex": [
+         0.6484564203359506,
+         0.8748814239215661
+        ],
+        "closed_share": {
+         "a": 0.10909090909090909,
+         "b": 0.9454545454545454
+        },
+        "n_widths": [
+         6,
+         52
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.05454545454545454,
+        "a": {
+         "total": 55,
+         "answered": 52,
+         "declined": 3,
+         "failed": 0,
+         "decline_rate": 0.05454545454545454,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.4015640809828984,
+        "median_dex": [
+         0.6484564203359506,
+         1.050020501318849
+        ],
+        "closed_share": {
+         "a": 0.10909090909090909,
+         "b": 0.9818181818181818
+        },
+        "n_widths": [
+         6,
+         54
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 1,
+      "wilson95": [
+       0.20654931437723745,
+       1.0
+      ]
+     }
+    },
+    "sqrt_eta_over_eps": {
+     "closed_coverage": 0.9555555555555556,
+     "closed_n": 45,
+     "wilson95": [
+      0.8517248923056439,
+      0.9877258732932802
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 55,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 10,
+     "labels": {
+      "box_limited": 10,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 2
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 3,
+      "widened": {
+       "n": 3,
+       "coverage": 0.6666666666666666
+      },
+      "claims_profile": {
+       "n": 3,
+       "coverage": 0.6666666666666666
+      },
+      "shape_moves": {
+       "closed->closed": 3
+      },
+      "median_width_dex": {
+       "widened": 1.0330673705025604,
+       "claims_profile": 1.023466808738442
+      },
+      "median_upper_moved_dex": 7.933890632020545e-05,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.18181818181818182,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.03636363636363636
+     },
+     "upper_bound_dex_inside_null": null,
+     "closed_median_width_dex": 0.6352431033241288,
+     "null_width_dex": 22.5,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": 0.0,
+       "z": 0.0,
+       "ci_lo": 0.0,
+       "ci_hi": 0.0,
+       "n_cells": 37,
+       "n_clusters": 14,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": -0.02631578947368421,
+       "se": 0.02706595878928366,
+       "z": -0.9722836600232884,
+       "ci_lo": -0.0793640939077255,
+       "ci_hi": 0.02673251496035709,
+       "n_cells": 38,
+       "n_clusters": 13,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "no loss"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.23963832059743728,
+        "median_dex": [
+         0.6352431033241288,
+         0.8748814239215661
+        ],
+        "closed_share": {
+         "a": 1.0,
+         "b": 0.9454545454545454
+        },
+        "n_widths": [
+         55,
+         52
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.41477739799472024,
+        "median_dex": [
+         0.6352431033241288,
+         1.050020501318849
+        ],
+        "closed_share": {
+         "a": 1.0,
+         "b": 0.9818181818181818
+        },
+        "n_widths": [
+         55,
+         54
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 0.8571428571428571,
+      "closed_n": 14,
+      "wilson95": [
+       0.6005862050302965,
+       0.9599060787285351
+      ]
+     }
+    },
+    "beta_over_eta_kp1": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.16363636363636364,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 8,
+      "upper_bound": 38,
+      "lower_bound": 0,
+      "none": 9,
+      "failed": 0
+     },
+     "box_limited_n": 46,
+     "labels": {
+      "box_limited": 46,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 3
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 4,
+      "widened": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "upper_bound->upper_bound": 2,
+       "closed->closed": 2
+      },
+      "median_width_dex": {
+       "widened": 6.712400441778873,
+       "claims_profile": 6.711269524416022
+      },
+      "median_upper_moved_dex": 2.274350166388353e-05,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.8363636363636363,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.05454545454545454
+     },
+     "upper_bound_dex_inside_null": 13.02423665336434,
+     "closed_median_width_dex": 1.160566389054341,
+     "null_width_dex": 32.47813241811453,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": null,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 0,
+       "n_clusters": 0,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "0 paired cells < 30",
+        "0 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": null,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 0,
+       "n_clusters": 0,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "0 paired cells < 30",
+        "0 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.16363636363636364,
+        "a": {
+         "total": 55,
+         "answered": 46,
+         "declined": 9,
+         "failed": 0,
+         "decline_rate": 0.16363636363636364,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.28568496513277486,
+        "median_dex": [
+         1.160566389054341,
+         0.8748814239215661
+        ],
+        "closed_share": {
+         "a": 0.14545454545454545,
+         "b": 0.9454545454545454
+        },
+        "n_widths": [
+         8,
+         52
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.16363636363636364,
+        "a": {
+         "total": 55,
+         "answered": 46,
+         "declined": 9,
+         "failed": 0,
+         "decline_rate": 0.16363636363636364,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.1105458877354919,
+        "median_dex": [
+         1.160566389054341,
+         1.050020501318849
+        ],
+        "closed_share": {
+         "a": 0.14545454545454545,
+         "b": 0.9818181818181818
+        },
+        "n_widths": [
+         8,
+         54
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "rbar": {
+     "closed_coverage": 0.75,
+     "closed_n": 4,
+     "wilson95": [
+      0.30064184258240184,
+      0.9544127391902995
+     ],
+     "decline_rate": 0.09090909090909091,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 5,
+      "upper_bound": 45,
+      "lower_bound": 0,
+      "none": 5,
+      "failed": 0
+     },
+     "box_limited_n": 24,
+     "labels": {
+      "box_limited": 24,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 22,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.43636363636363634,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 4.195287163595525,
+     "closed_median_width_dex": 2.286326875379164,
+     "null_width_dex": 17.776104164776452,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": 0.0,
+       "z": 0.0,
+       "ci_lo": 0.0,
+       "ci_hi": 0.0,
+       "n_cells": 4,
+       "n_clusters": 3,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "4 paired cells < 30",
+        "3 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.25,
+       "se": 0.1875,
+       "z": 1.3333333333333333,
+       "ci_lo": -0.11749324710126013,
+       "ci_hi": 0.6174932471012602,
+       "n_cells": 4,
+       "n_clusters": 3,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "4 paired cells < 30",
+        "3 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.09090909090909091,
+        "a": {
+         "total": 55,
+         "answered": 50,
+         "declined": 5,
+         "failed": 0,
+         "decline_rate": 0.09090909090909091,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 1.411445451457598,
+        "median_dex": [
+         2.286326875379164,
+         0.8748814239215661
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 0.9454545454545454
+        },
+        "n_widths": [
+         5,
+         52
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.09090909090909091,
+        "a": {
+         "total": 55,
+         "answered": 50,
+         "declined": 5,
+         "failed": 0,
+         "decline_rate": 0.09090909090909091,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 1.236306374060315,
+        "median_dex": [
+         2.286326875379164,
+         1.050020501318849
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 0.9818181818181818
+        },
+        "n_widths": [
+         5,
+         54
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "beta_over_kp1": {
+     "closed_coverage": 0.4,
+     "closed_n": 5,
+     "wilson95": [
+      0.11762077423264783,
+      0.769275718723987
+     ],
+     "decline_rate": 0.03636363636363636,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 8,
+      "upper_bound": 45,
+      "lower_bound": 0,
+      "none": 2,
+      "failed": 0
+     },
+     "box_limited_n": 29,
+     "labels": {
+      "box_limited": 29,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 19,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.5272727272727272,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 3.8943865952045145,
+     "closed_median_width_dex": 1.8539678739428158,
+     "null_width_dex": 17.478132418114523,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": -0.4,
+       "se": 0.24,
+       "z": -1.6666666666666667,
+       "ci_lo": -0.870391356289613,
+       "ci_hi": 0.0703913562896129,
+       "n_cells": 5,
+       "n_clusters": 3,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "5 paired cells < 30",
+        "3 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": -0.2,
+       "se": 0.12000000000000001,
+       "z": -1.6666666666666665,
+       "ci_lo": -0.43519567814480653,
+       "ci_hi": 0.03519567814480648,
+       "n_cells": 5,
+       "n_clusters": 3,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "5 paired cells < 30",
+        "3 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.03636363636363636,
+        "a": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.9790864500212497,
+        "median_dex": [
+         1.8539678739428158,
+         0.8748814239215661
+        ],
+        "closed_share": {
+         "a": 0.14545454545454545,
+         "b": 0.9454545454545454
+        },
+        "n_widths": [
+         8,
+         52
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.03636363636363636,
+        "a": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.8039473726239668,
+        "median_dex": [
+         1.8539678739428158,
+         1.050020501318849
+        ],
+        "closed_share": {
+         "a": 0.14545454545454545,
+         "b": 0.9818181818181818
+        },
+        "n_widths": [
+         8,
+         54
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    }
+   },
+   "n_valid": 16
+  },
+  "profile_jax2|pure": {
+   "n": 85,
+   "n_informative": 85,
+   "n_failed": 0,
+   "gated": true,
+   "quantities": {
+    "eta": {
+     "closed_coverage": 0.8985507246376812,
+     "closed_n": 69,
+     "wilson95": [
+      0.8050811424505202,
+      0.9499833618915401
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 82,
+      "upper_bound": 1,
+      "lower_bound": 2,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 13,
+     "labels": {
+      "box_limited": 13,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 6
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 3,
+     "widened": {
+      "n": 9,
+      "widened": {
+       "n": 9,
+       "coverage": 0.8888888888888888
+      },
+      "claims_profile": {
+       "n": 9,
+       "coverage": 0.8888888888888888
+      },
+      "shape_moves": {
+       "closed->closed": 9
+      },
+      "median_width_dex": {
+       "widened": 0.9298112119697547,
+       "claims_profile": 0.8803629846887756
+      },
+      "median_upper_moved_dex": 0.0018585646515999405,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.15294117647058825,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.07058823529411765
+     },
+     "valid": {
+      "closed_coverage": 0.972972972972973,
+      "closed_n": 37,
+      "wilson95": [
+       0.861759301362695,
+       0.9952130255480596
+      ]
+     }
+    },
+    "beta": {
+     "closed_coverage": 0.3333333333333333,
+     "closed_n": 3,
+     "wilson95": [
+      0.06149194472039621,
+      0.7923403991979522
+     ],
+     "decline_rate": 0.023529411764705882,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 39,
+      "upper_bound": 35,
+      "lower_bound": 9,
+      "none": 2,
+      "failed": 0
+     },
+     "box_limited_n": 69,
+     "labels": {
+      "box_limited": 69,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 3
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 11,
+     "widened": {
+      "n": 8,
+      "widened": {
+       "n": 8,
+       "coverage": 0.625
+      },
+      "claims_profile": {
+       "n": 8,
+       "coverage": 0.625
+      },
+      "shape_moves": {
+       "upper_bound->upper_bound": 3,
+       "closed->closed": 3,
+       "lower_bound->lower_bound": 2
+      },
+      "median_width_dex": {
+       "widened": 2.0453985463904294,
+       "claims_profile": 2.0419784909957794
+      },
+      "median_upper_moved_dex": 0.0,
+      "median_lower_moved_dex": 0.0034458380561424263
+     },
+     "label_rates": {
+      "box_limited": 0.8117647058823529,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.03529411764705882
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 1,
+      "wilson95": [
+       0.20654931437723745,
+       1.0
+      ]
+     }
+    },
+    "epsilon": {
+     "closed_coverage": 0.88,
+     "closed_n": 75,
+     "wilson95": [
+      0.7874035979525128,
+      0.9355662817605549
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 84,
+      "upper_bound": 0,
+      "lower_bound": 1,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 9,
+     "labels": {
+      "box_limited": 9,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 3
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 6,
+      "widened": {
+       "n": 6,
+       "coverage": 0.8333333333333334
+      },
+      "claims_profile": {
+       "n": 6,
+       "coverage": 0.8333333333333334
+      },
+      "shape_moves": {
+       "closed->closed": 6
+      },
+      "median_width_dex": {
+       "widened": 0.9229960294847165,
+       "claims_profile": 0.9146809401098799
+      },
+      "median_upper_moved_dex": 0.0026865193492747845,
+      "median_lower_moved_dex": 0.0008553953156534018
+     },
+     "label_rates": {
+      "box_limited": 0.10588235294117647,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.03529411764705882
+     },
+     "valid": {
+      "closed_coverage": 0.95,
+      "closed_n": 40,
+      "wilson95": [
+       0.8349612263085903,
+       0.9861793326138516
+      ]
+     }
+    },
+    "kappa": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.9529411764705882,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 0,
+      "upper_bound": 2,
+      "lower_bound": 2,
+      "none": 81,
+      "failed": 0
+     },
+     "box_limited_n": 0,
+     "labels": {
+      "box_limited": 0,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 0.5,
+     "one_sided_n": 4,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.0,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "eta_over_eps": {
+     "closed_coverage": 0.9347826086956522,
+     "closed_n": 46,
+     "wilson95": [
+      0.8249725891809578,
+      0.9775721385707115
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 81,
+      "upper_bound": 3,
+      "lower_bound": 1,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 38,
+     "labels": {
+      "box_limited": 38,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 2
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "closed->closed": 2
+      },
+      "median_width_dex": {
+       "widened": 0.35922194827400444,
+       "claims_profile": 0.3590118823089351
+      },
+      "median_upper_moved_dex": 0.00021006596506932033,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.4470588235294118,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.023529411764705882
+     },
+     "upper_bound_dex_inside_null": 13.055012928477977,
+     "closed_median_width_dex": 0.18604018970768182,
+     "null_width_dex": 30.0,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": -0.05263157894736842,
+       "se": 0.051691137624112114,
+       "z": -1.018193473126767,
+       "ci_lo": -0.1539443470105315,
+       "ci_hi": 0.048681189115794665,
+       "n_cells": 38,
+       "n_clusters": 15,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": -0.023809523809523808,
+       "se": 0.05476361497268143,
+       "z": -0.4347690308866768,
+       "ci_lo": -0.13114423681919787,
+       "ci_hi": 0.08352518920015026,
+       "n_cells": 42,
+       "n_clusters": 15,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "no loss"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.30393950393634755,
+        "median_dex": [
+         0.18604018970768182,
+         0.4899796936440294
+        ],
+        "closed_share": {
+         "a": 0.9529411764705882,
+         "b": 0.9647058823529412
+        },
+        "n_widths": [
+         81,
+         82
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.3982602113297314,
+        "median_dex": [
+         0.18604018970768182,
+         0.5843004010374132
+        ],
+        "closed_share": {
+         "a": 0.9529411764705882,
+         "b": 0.9882352941176471
+        },
+        "n_widths": [
+         81,
+         84
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 0.9615384615384616,
+      "closed_n": 26,
+      "wilson95": [
+       0.8110722109696524,
+       0.9931780150064564
+      ]
+     }
+    },
+    "rbar_over_eta": {
+     "closed_coverage": 0.8648648648648649,
+     "closed_n": 37,
+     "wilson95": [
+      0.7202258821599021,
+      0.9408670557426799
+     ],
+     "decline_rate": 0.023529411764705882,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 40,
+      "upper_bound": 40,
+      "lower_bound": 3,
+      "none": 2,
+      "failed": 0
+     },
+     "box_limited_n": 20,
+     "labels": {
+      "box_limited": 20,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 1
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 26,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "upper_bound->upper_bound": 1,
+       "lower_bound->lower_bound": 1
+      },
+      "median_width_dex": {
+       "widened": null,
+       "claims_profile": null
+      },
+      "median_upper_moved_dex": 1.7735518390202203e-05,
+      "median_lower_moved_dex": 0.0007020909152755694
+     },
+     "label_rates": {
+      "box_limited": 0.23529411764705882,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.011764705882352941
+     },
+     "upper_bound_dex_inside_null": 13.22111663485191,
+     "closed_median_width_dex": 0.2604136680663316,
+     "null_width_dex": 32.77610416477645,
+     "negligible": {
+      "labelled": 0,
+      "costly_errors": 0,
+      "costly_error_rate": null,
+      "truths_above_3x_floor": 43,
+      "labelled_rate_among_truths_above_3x": 0.0,
+      "labelled_without_floor": 0,
+      "floor_mismatch": 0,
+      "x": 3.0
+     },
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": 0.0459987545121242,
+       "z": 0.0,
+       "ci_lo": -0.09015590217746274,
+       "ci_hi": 0.09015590217746274,
+       "n_cells": 32,
+       "n_clusters": 13,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.029411764705882353,
+       "se": 0.052066993523253814,
+       "z": 0.5648830999382876,
+       "ci_lo": -0.07263766738297539,
+       "ci_hi": 0.13146119679474008,
+       "n_cells": 34,
+       "n_clusters": 14,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "no loss"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.023529411764705882,
+        "a": {
+         "total": 85,
+         "answered": 83,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.023529411764705882,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.22956602557769779,
+        "median_dex": [
+         0.2604136680663316,
+         0.4899796936440294
+        ],
+        "closed_share": {
+         "a": 0.47058823529411764,
+         "b": 0.9647058823529412
+        },
+        "n_widths": [
+         40,
+         82
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.023529411764705882,
+        "a": {
+         "total": 85,
+         "answered": 83,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.023529411764705882,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.3238867329710816,
+        "median_dex": [
+         0.2604136680663316,
+         0.5843004010374132
+        ],
+        "closed_share": {
+         "a": 0.47058823529411764,
+         "b": 0.9882352941176471
+        },
+        "n_widths": [
+         40,
+         84
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 23,
+      "wilson95": [
+       0.8568833815495731,
+       1.0
+      ]
+     }
+    },
+    "sqrt_eta_over_eps": {
+     "closed_coverage": 0.9661016949152542,
+     "closed_n": 59,
+     "wilson95": [
+      0.8845642924988925,
+      0.9906540909083387
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 85,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 26,
+     "labels": {
+      "box_limited": 26,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 1
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "closed->closed": 2
+      },
+      "median_width_dex": {
+       "widened": 2.2030278574097544,
+       "claims_profile": 2.202074349964533
+      },
+      "median_upper_moved_dex": 0.0008959662767072708,
+      "median_lower_moved_dex": 5.7541168513639203e-05
+     },
+     "label_rates": {
+      "box_limited": 0.3058823529411765,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.011764705882352941
+     },
+     "upper_bound_dex_inside_null": null,
+     "closed_median_width_dex": 0.4223638351740011,
+     "null_width_dex": 22.5,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": 0.029652373765582815,
+       "z": 0.0,
+       "ci_lo": -0.05811758463666266,
+       "ci_hi": 0.05811758463666266,
+       "n_cells": 49,
+       "n_clusters": 19,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.018518518518518517,
+       "se": 0.03240790877126037,
+       "z": 0.571419731190459,
+       "ci_lo": -0.04499981548741151,
+       "ci_hi": 0.08203685252444855,
+       "n_cells": 54,
+       "n_clusters": 20,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "no loss"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.06761585847002827,
+        "median_dex": [
+         0.4223638351740011,
+         0.4899796936440294
+        ],
+        "closed_share": {
+         "a": 1.0,
+         "b": 0.9647058823529412
+        },
+        "n_widths": [
+         85,
+         82
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.1619365658634121,
+        "median_dex": [
+         0.4223638351740011,
+         0.5843004010374132
+        ],
+        "closed_share": {
+         "a": 1.0,
+         "b": 0.9882352941176471
+        },
+        "n_widths": [
+         85,
+         84
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 0.972972972972973,
+      "closed_n": 37,
+      "wilson95": [
+       0.861759301362695,
+       0.9952130255480596
+      ]
+     }
+    },
+    "beta_over_eta_kp1": {
+     "closed_coverage": 1.0,
+     "closed_n": 3,
+     "wilson95": [
+      0.4385029682449546,
+      1.0
+     ],
+     "decline_rate": 0.023529411764705882,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 47,
+      "upper_bound": 35,
+      "lower_bound": 1,
+      "none": 2,
+      "failed": 0
+     },
+     "box_limited_n": 79,
+     "labels": {
+      "box_limited": 79,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 4
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 4,
+      "widened": {
+       "n": 4,
+       "coverage": 0.75
+      },
+      "claims_profile": {
+       "n": 4,
+       "coverage": 0.75
+      },
+      "shape_moves": {
+       "closed->closed": 4
+      },
+      "median_width_dex": {
+       "widened": 0.05145047580164866,
+       "claims_profile": 0.04656940042503131
+      },
+      "median_upper_moved_dex": 0.00018476399436360847,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.9294117647058824,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.047058823529411764
+     },
+     "upper_bound_dex_inside_null": 13.02394189944623,
+     "closed_median_width_dex": 0.4189098073551127,
+     "null_width_dex": 32.47813241811453,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.6666666666666666,
+       "se": 0.4444444444444445,
+       "z": 1.4999999999999998,
+       "ci_lo": -0.2044284375733575,
+       "ci_hi": 1.5377617709066906,
+       "n_cells": 3,
+       "n_clusters": 2,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "3 paired cells < 30",
+        "2 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.6666666666666666,
+       "se": 0.4444444444444445,
+       "z": 1.4999999999999998,
+       "ci_lo": -0.2044284375733575,
+       "ci_hi": 1.5377617709066906,
+       "n_cells": 3,
+       "n_clusters": 2,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "3 paired cells < 30",
+        "2 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.023529411764705882,
+        "a": {
+         "total": 85,
+         "answered": 83,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.023529411764705882,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.0710698862889167,
+        "median_dex": [
+         0.4189098073551127,
+         0.4899796936440294
+        ],
+        "closed_share": {
+         "a": 0.5529411764705883,
+         "b": 0.9647058823529412
+        },
+        "n_widths": [
+         47,
+         82
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.023529411764705882,
+        "a": {
+         "total": 85,
+         "answered": 83,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.023529411764705882,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.16539059368230052,
+        "median_dex": [
+         0.4189098073551127,
+         0.5843004010374132
+        ],
+        "closed_share": {
+         "a": 0.5529411764705883,
+         "b": 0.9882352941176471
+        },
+        "n_widths": [
+         47,
+         84
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "rbar": {
+     "closed_coverage": 0.8709677419354839,
+     "closed_n": 31,
+     "wilson95": [
+      0.7114759374369357,
+      0.9486571562537085
+     ],
+     "decline_rate": 0.023529411764705882,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 44,
+      "upper_bound": 38,
+      "lower_bound": 1,
+      "none": 2,
+      "failed": 0
+     },
+     "box_limited_n": 32,
+     "labels": {
+      "box_limited": 32,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 2
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 20,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "closed->closed": 2
+      },
+      "median_width_dex": {
+       "widened": 0.7451080249196727,
+       "claims_profile": 0.7436317555533616
+      },
+      "median_upper_moved_dex": 0.0014762693663110176,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.3764705882352941,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.023529411764705882
+     },
+     "upper_bound_dex_inside_null": 4.498057245940712,
+     "closed_median_width_dex": 0.6979948457590401,
+     "null_width_dex": 17.776104164776452,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.07142857142857142,
+       "se": 0.07058540247151536,
+       "z": 1.0119453729458627,
+       "ci_lo": -0.06691627524986321,
+       "ci_hi": 0.20977341810700606,
+       "n_cells": 28,
+       "n_clusters": 11,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "28 paired cells < 30"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.0967741935483871,
+       "se": 0.06830766511601814,
+       "z": 1.416739883935713,
+       "ci_lo": -0.03710636994703148,
+       "ci_hi": 0.23065475704380567,
+       "n_cells": 31,
+       "n_clusters": 12,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.023529411764705882,
+        "a": {
+         "total": 85,
+         "answered": 83,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.023529411764705882,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.20801515211501076,
+        "median_dex": [
+         0.6979948457590401,
+         0.4899796936440294
+        ],
+        "closed_share": {
+         "a": 0.5176470588235295,
+         "b": 0.9647058823529412
+        },
+        "n_widths": [
+         44,
+         82
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.023529411764705882,
+        "a": {
+         "total": 85,
+         "answered": 83,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.023529411764705882,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.11369444472162693,
+        "median_dex": [
+         0.6979948457590401,
+         0.5843004010374132
+        ],
+        "closed_share": {
+         "a": 0.5176470588235295,
+         "b": 0.9882352941176471
+        },
+        "n_widths": [
+         44,
+         84
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 15,
+      "wilson95": [
+       0.7961166989641515,
+       1.0
+      ]
+     }
+    },
+    "beta_over_kp1": {
+     "closed_coverage": 0.8,
+     "closed_n": 15,
+     "wilson95": [
+      0.5481455128483065,
+      0.9295245065301844
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 47,
+      "upper_bound": 38,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 56,
+     "labels": {
+      "box_limited": 56,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 2
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 14,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "closed->closed": 2
+      },
+      "median_width_dex": {
+       "widened": 0.3559697601837592,
+       "claims_profile": 0.3517826044348177
+      },
+      "median_upper_moved_dex": 0.004184388281424156,
+      "median_lower_moved_dex": 2.7674675172389806e-06
+     },
+     "label_rates": {
+      "box_limited": 0.6588235294117647,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.023529411764705882
+     },
+     "upper_bound_dex_inside_null": 4.20010318834939,
+     "closed_median_width_dex": 0.8944280670307979,
+     "null_width_dex": 17.478132418114523,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.21428571428571427,
+       "se": 0.2039795663137675,
+       "z": 1.0505253940784125,
+       "ci_lo": -0.18550688927136968,
+       "ci_hi": 0.6140783178427982,
+       "n_cells": 14,
+       "n_clusters": 6,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "14 paired cells < 30",
+        "6 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.26666666666666666,
+       "se": 0.13839289213175868,
+       "z": 1.9268812332701548,
+       "ci_lo": -0.004578417627916942,
+       "ci_hi": 0.5379117509612503,
+       "n_cells": 15,
+       "n_clusters": 6,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "15 paired cells < 30",
+        "6 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.40444837338676853,
+        "median_dex": [
+         0.8944280670307979,
+         0.4899796936440294
+        ],
+        "closed_share": {
+         "a": 0.5529411764705883,
+         "b": 0.9647058823529412
+        },
+        "n_widths": [
+         47,
+         82
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 85,
+         "answered": 85,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.3101276659933847,
+        "median_dex": [
+         0.8944280670307979,
+         0.5843004010374132
+        ],
+        "closed_share": {
+         "a": 0.5529411764705883,
+         "b": 0.9882352941176471
+        },
+        "n_widths": [
+         47,
+         84
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 3,
+      "wilson95": [
+       0.4385029682449546,
+       1.0
+      ]
+     }
+    }
+   },
+   "n_valid": 49
+  },
+  "profile_jax2|realfull": {
+   "n": 20,
+   "n_informative": 20,
+   "n_failed": 0,
+   "gated": false,
+   "quantities": {
+    "eta": {
+     "closed_coverage": 0.7692307692307693,
+     "closed_n": 13,
+     "wilson95": [
+      0.49743624053272495,
+      0.9182047128150143
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 20,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 7,
+     "labels": {
+      "box_limited": 7,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 1
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "closed->closed": 2
+      },
+      "median_width_dex": {
+       "widened": 0.11177915954111159,
+       "claims_profile": 0.10654043145924955
+      },
+      "median_upper_moved_dex": 0.002954233712574603,
+      "median_lower_moved_dex": 0.0022844943692874424
+     },
+     "label_rates": {
+      "box_limited": 0.35,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.05
+     },
+     "valid": {
+      "closed_coverage": 0.7692307692307693,
+      "closed_n": 13,
+      "wilson95": [
+       0.49743624053272495,
+       0.9182047128150143
+      ]
+     }
+    },
+    "beta": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 16,
+      "upper_bound": 2,
+      "lower_bound": 2,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 18,
+     "labels": {
+      "box_limited": 18,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 2,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.9,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "epsilon": {
+     "closed_coverage": 0.75,
+     "closed_n": 12,
+     "wilson95": [
+      0.46769466506643426,
+      0.9110583316059453
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 19,
+      "upper_bound": 0,
+      "lower_bound": 1,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 7,
+     "labels": {
+      "box_limited": 7,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.35,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": 0.75,
+      "closed_n": 12,
+      "wilson95": [
+       0.46769466506643426,
+       0.9110583316059453
+      ]
+     }
+    },
+    "kappa": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 1.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 0,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 20,
+      "failed": 0
+     },
+     "box_limited_n": 0,
+     "labels": {
+      "box_limited": 0,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.0,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "eta_over_eps": {
+     "closed_coverage": 1.0,
+     "closed_n": 3,
+     "wilson95": [
+      0.4385029682449546,
+      1.0
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 20,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 17,
+     "labels": {
+      "box_limited": 17,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.85,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": null,
+     "closed_median_width_dex": 0.12311287881635863,
+     "null_width_dex": 30.0,
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 3,
+      "wilson95": [
+       0.4385029682449546,
+       1.0
+      ]
+     }
+    },
+    "rbar_over_eta": {
+     "closed_coverage": 0.7857142857142857,
+     "closed_n": 14,
+     "wilson95": [
+      0.524107694133997,
+      0.9242861328730683
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 15,
+      "upper_bound": 5,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 2,
+     "labels": {
+      "box_limited": 2,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 4,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.1,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 11.98084048968665,
+     "closed_median_width_dex": 0.2114397586543639,
+     "null_width_dex": 32.77610416477645,
+     "negligible": {
+      "labelled": 0,
+      "costly_errors": 0,
+      "costly_error_rate": null,
+      "truths_above_3x_floor": 19,
+      "labelled_rate_among_truths_above_3x": 0.0,
+      "labelled_without_floor": 0,
+      "floor_mismatch": 0,
+      "x": 3.0
+     },
+     "valid": {
+      "closed_coverage": 0.7857142857142857,
+      "closed_n": 14,
+      "wilson95": [
+       0.524107694133997,
+       0.9242861328730683
+      ]
+     }
+    },
+    "sqrt_eta_over_eps": {
+     "closed_coverage": 0.85,
+     "closed_n": 20,
+     "wilson95": [
+      0.6395811352592431,
+      0.9476312541037835
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 20,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 0,
+     "labels": {
+      "box_limited": 0,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.0,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": null,
+     "closed_median_width_dex": 0.22338138007028502,
+     "null_width_dex": 22.5,
+     "valid": {
+      "closed_coverage": 0.85,
+      "closed_n": 20,
+      "wilson95": [
+       0.6395811352592431,
+       0.9476312541037835
+      ]
+     }
+    },
+    "beta_over_eta_kp1": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 18,
+      "upper_bound": 2,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 20,
+     "labels": {
+      "box_limited": 20,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 1.0,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 13.751427696741342,
+     "closed_median_width_dex": 0.4275006140969716,
+     "null_width_dex": 32.47813241811453,
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "rbar": {
+     "closed_coverage": 0.625,
+     "closed_n": 8,
+     "wilson95": [
+      0.30574239460262737,
+      0.8631557141764026
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 16,
+      "upper_bound": 3,
+      "lower_bound": 1,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 10,
+     "labels": {
+      "box_limited": 10,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 2,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.5,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 4.0614898706319105,
+     "closed_median_width_dex": 0.6905478679541863,
+     "null_width_dex": 17.776104164776452,
+     "valid": {
+      "closed_coverage": 0.625,
+      "closed_n": 8,
+      "wilson95": [
+       0.30574239460262737,
+       0.8631557141764026
+      ]
+     }
+    },
+    "beta_over_kp1": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 17,
+      "upper_bound": 2,
+      "lower_bound": 1,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 19,
+     "labels": {
+      "box_limited": 19,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.95,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 3.9448798618222476,
+     "closed_median_width_dex": 0.8891600097137542,
+     "null_width_dex": 17.478132418114523,
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    }
+   },
+   "n_valid": 20
+  },
+  "profile_jax2_h|hazard": {
+   "n": 55,
+   "n_informative": 55,
+   "n_failed": 0,
+   "gated": true,
+   "quantities": {
+    "eta": {
+     "closed_coverage": 0.9375,
+     "closed_n": 32,
+     "wilson95": [
+      0.7985287685584542,
+      0.982689432968359
+     ],
+     "decline_rate": 0.03636363636363636,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 46,
+      "upper_bound": 1,
+      "lower_bound": 6,
+      "none": 2,
+      "failed": 0
+     },
+     "box_limited_n": 14,
+     "labels": {
+      "box_limited": 14,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 7
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 7,
+     "widened": {
+      "n": 7,
+      "widened": {
+       "n": 7,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 7,
+       "coverage": 0.2857142857142857
+      },
+      "shape_moves": {
+       "closed->closed": 7
+      },
+      "median_width_dex": {
+       "widened": 1.2141943277233311,
+       "claims_profile": 0.005916779303485948
+      },
+      "median_upper_moved_dex": 0.8352827407134846,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.2545454545454545,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.12727272727272726
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 3,
+      "wilson95": [
+       0.4385029682449546,
+       1.0
+      ]
+     }
+    },
+    "beta": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.2,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 1,
+      "upper_bound": 43,
+      "lower_bound": 0,
+      "none": 11,
+      "failed": 0
+     },
+     "box_limited_n": 43,
+     "labels": {
+      "box_limited": 43,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 4
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 1,
+     "widened": {
+      "n": 4,
+      "widened": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "upper_bound->upper_bound": 4
+      },
+      "median_width_dex": {
+       "widened": null,
+       "claims_profile": null
+      },
+      "median_upper_moved_dex": 0.023766615194665698,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.7818181818181819,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.07272727272727272
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "epsilon": {
+     "closed_coverage": 0.9090909090909091,
+     "closed_n": 44,
+     "wilson95": [
+      0.7884076083340138,
+      0.9640778067726837
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 55,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 11,
+     "labels": {
+      "box_limited": 11,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 9
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 11,
+      "widened": {
+       "n": 11,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 11,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "closed->closed": 11
+      },
+      "median_width_dex": {
+       "widened": 1.0659667933314934,
+       "claims_profile": 0.4286941452193934
+      },
+      "median_upper_moved_dex": 0.019679572237371466,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.2,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.16363636363636364
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 4,
+      "wilson95": [
+       0.5101091635454027,
+       1.0
+      ]
+     }
+    },
+    "kappa": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 1.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 0,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 55,
+      "failed": 0
+     },
+     "box_limited_n": 0,
+     "labels": {
+      "box_limited": 0,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.0,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "eta_over_eps": {
+     "closed_coverage": 0.9333333333333333,
+     "closed_n": 45,
+     "wilson95": [
+      0.8214339803640811,
+      0.977067967400749
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 52,
+      "upper_bound": 0,
+      "lower_bound": 3,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 7,
+     "labels": {
+      "box_limited": 7,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 3,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.12727272727272726,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": null,
+     "closed_median_width_dex": 0.2965462751157779,
+     "null_width_dex": 30.0,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": -0.10344827586206896,
+       "se": 0.04857848875427263,
+       "z": -2.129507905965279,
+       "ci_lo": -0.19866036424382738,
+       "ci_hi": -0.008236187480310561,
+       "n_cells": 29,
+       "n_clusters": 12,
+       "outcome": "loses",
+       "verdict": "underpowered",
+       "reasons": [
+        "29 paired cells < 30"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": -0.08571428571428572,
+       "se": 0.0445403195614816,
+       "z": -1.924420088544028,
+       "ci_lo": -0.1730117079146945,
+       "ci_hi": 0.0015831364861230712,
+       "n_cells": 35,
+       "n_clusters": 13,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "wins",
+        "statistic": -0.03636363636363636,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.47541224617626554,
+        "median_dex": [
+         0.2965462751157779,
+         0.7719585212920435
+        ],
+        "closed_share": {
+         "a": 0.9454545454545454,
+         "b": 0.8363636363636363
+        },
+        "n_widths": [
+         52,
+         46
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.7950558451686742,
+        "median_dex": [
+         0.2965462751157779,
+         1.0916021202844521
+        ],
+        "closed_share": {
+         "a": 0.9454545454545454,
+         "b": 1.0
+        },
+        "n_widths": [
+         52,
+         55
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 5,
+      "wilson95": [
+       0.5655175352168251,
+       1.0
+      ]
+     }
+    },
+    "rbar_over_eta": {
+     "closed_coverage": 0.25,
+     "closed_n": 4,
+     "wilson95": [
+      0.04558726080970055,
+      0.6993581574175981
+     ],
+     "decline_rate": 0.09090909090909091,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 5,
+      "upper_bound": 45,
+      "lower_bound": 0,
+      "none": 5,
+      "failed": 0
+     },
+     "box_limited_n": 13,
+     "labels": {
+      "box_limited": 13,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 1
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 33,
+     "widened": {
+      "n": 1,
+      "widened": {
+       "n": 1,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 1,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "upper_bound->upper_bound": 1
+      },
+      "median_width_dex": {
+       "widened": null,
+       "claims_profile": null
+      },
+      "median_upper_moved_dex": 0.00023430434680823936,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.23636363636363636,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.01818181818181818
+     },
+     "upper_bound_dex_inside_null": 13.167299500314998,
+     "closed_median_width_dex": 0.3608311120096685,
+     "null_width_dex": 32.77610416477645,
+     "negligible": {
+      "labelled": 0,
+      "costly_errors": 0,
+      "costly_error_rate": null,
+      "truths_above_3x_floor": 4,
+      "labelled_rate_among_truths_above_3x": 0.0,
+      "labelled_without_floor": 0,
+      "floor_mismatch": 0,
+      "x": 3.0
+     },
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 2,
+       "n_clusters": 1,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "2 paired cells < 30",
+        "1 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.25,
+       "se": 0.25,
+       "z": 1.0,
+       "ci_lo": -0.2399909961350135,
+       "ci_hi": 0.7399909961350135,
+       "n_cells": 4,
+       "n_clusters": 2,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "4 paired cells < 30",
+        "2 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.05454545454545455,
+        "a": {
+         "total": 55,
+         "answered": 50,
+         "declined": 5,
+         "failed": 0,
+         "decline_rate": 0.09090909090909091,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.41112740928237496,
+        "median_dex": [
+         0.3608311120096685,
+         0.7719585212920435
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 0.8363636363636363
+        },
+        "n_widths": [
+         5,
+         46
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.09090909090909091,
+        "a": {
+         "total": 55,
+         "answered": 50,
+         "declined": 5,
+         "failed": 0,
+         "decline_rate": 0.09090909090909091,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.7307710082747836,
+        "median_dex": [
+         0.3608311120096685,
+         1.0916021202844521
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 1.0
+        },
+        "n_widths": [
+         5,
+         55
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "sqrt_eta_over_eps": {
+     "closed_coverage": 0.9772727272727273,
+     "closed_n": 44,
+     "wilson95": [
+      0.8819229030178671,
+      0.9959767479399467
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 55,
+      "upper_bound": 0,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 11,
+     "labels": {
+      "box_limited": 11,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.2,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": null,
+     "closed_median_width_dex": 0.6996184584125255,
+     "null_width_dex": 22.5,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": 0.0,
+       "z": 0.0,
+       "ci_lo": 0.0,
+       "ci_hi": 0.0,
+       "n_cells": 26,
+       "n_clusters": 12,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "26 paired cells < 30"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": -0.02857142857142857,
+       "se": 0.028300124772190523,
+       "z": -1.0095866644201035,
+       "ci_lo": -0.08403865388291179,
+       "ci_hi": 0.026895796740054653,
+       "n_cells": 35,
+       "n_clusters": 14,
+       "outcome": "no difference",
+       "verdict": "no loss",
+       "reasons": [],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "wins",
+        "statistic": -0.03636363636363636,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.072340062879518,
+        "median_dex": [
+         0.6996184584125255,
+         0.7719585212920435
+        ],
+        "closed_share": {
+         "a": 1.0,
+         "b": 0.8363636363636363
+        },
+        "n_widths": [
+         55,
+         46
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "wins",
+        "statistic": -0.3919836618719267,
+        "median_dex": [
+         0.6996184584125255,
+         1.0916021202844521
+        ],
+        "closed_share": {
+         "a": 1.0,
+         "b": 1.0
+        },
+        "n_widths": [
+         55,
+         55
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": 1.0,
+      "closed_n": 5,
+      "wilson95": [
+       0.5655175352168251,
+       1.0
+      ]
+     }
+    },
+    "beta_over_eta_kp1": {
+     "closed_coverage": null,
+     "closed_n": 0,
+     "wilson95": [
+      null,
+      null
+     ],
+     "decline_rate": 0.09090909090909091,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 3,
+      "upper_bound": 47,
+      "lower_bound": 0,
+      "none": 5,
+      "failed": 0
+     },
+     "box_limited_n": 50,
+     "labels": {
+      "box_limited": 50,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 2
+     },
+     "one_sided_coverage": null,
+     "one_sided_n": 0,
+     "widened": {
+      "n": 2,
+      "widened": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "claims_profile": {
+       "n": 2,
+       "coverage": 1.0
+      },
+      "shape_moves": {
+       "upper_bound->upper_bound": 2
+      },
+      "median_width_dex": {
+       "widened": null,
+       "claims_profile": null
+      },
+      "median_upper_moved_dex": 6.77782068252517e-05,
+      "median_lower_moved_dex": 0.0
+     },
+     "label_rates": {
+      "box_limited": 0.9090909090909091,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.03636363636363636
+     },
+     "upper_bound_dex_inside_null": 13.0128740675413,
+     "closed_median_width_dex": 0.16964042473228946,
+     "null_width_dex": 32.47813241811453,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": null,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 0,
+       "n_clusters": 0,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "0 paired cells < 30",
+        "0 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": null,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 0,
+       "n_clusters": 0,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "0 paired cells < 30",
+        "0 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.05454545454545455,
+        "a": {
+         "total": 55,
+         "answered": 50,
+         "declined": 5,
+         "failed": 0,
+         "decline_rate": 0.09090909090909091,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.602318096559754,
+        "median_dex": [
+         0.16964042473228946,
+         0.7719585212920435
+        ],
+        "closed_share": {
+         "a": 0.05454545454545454,
+         "b": 0.8363636363636363
+        },
+        "n_widths": [
+         3,
+         46
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "loses",
+        "statistic": 0.09090909090909091,
+        "a": {
+         "total": 55,
+         "answered": 50,
+         "declined": 5,
+         "failed": 0,
+         "decline_rate": 0.09090909090909091,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": -0.9219616955521627,
+        "median_dex": [
+         0.16964042473228946,
+         1.0916021202844521
+        ],
+        "closed_share": {
+         "a": 0.05454545454545454,
+         "b": 1.0
+        },
+        "n_widths": [
+         3,
+         55
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "rbar": {
+     "closed_coverage": 0.25,
+     "closed_n": 4,
+     "wilson95": [
+      0.04558726080970055,
+      0.6993581574175981
+     ],
+     "decline_rate": 0.0,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 5,
+      "upper_bound": 50,
+      "lower_bound": 0,
+      "none": 0,
+      "failed": 0
+     },
+     "box_limited_n": 20,
+     "labels": {
+      "box_limited": 20,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 31,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.36363636363636365,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 4.120445884100184,
+     "closed_median_width_dex": 1.3370095903695645,
+     "null_width_dex": 17.776104164776452,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 2,
+       "n_clusters": 1,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "2 paired cells < 30",
+        "1 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.25,
+       "se": 0.25,
+       "z": 1.0,
+       "ci_lo": -0.2399909961350135,
+       "ci_hi": 0.7399909961350135,
+       "n_cells": 4,
+       "n_clusters": 2,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "4 paired cells < 30",
+        "2 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "wins",
+        "statistic": -0.03636363636363636,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.565051069077521,
+        "median_dex": [
+         1.3370095903695645,
+         0.7719585212920435
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 0.8363636363636363
+        },
+        "n_widths": [
+         5,
+         46
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.0,
+        "a": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.24540747008511232,
+        "median_dex": [
+         1.3370095903695645,
+         1.0916021202844521
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 1.0
+        },
+        "n_widths": [
+         5,
+         55
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    },
+    "beta_over_kp1": {
+     "closed_coverage": 0.0,
+     "closed_n": 4,
+     "wilson95": [
+      0.0,
+      0.4898908364545973
+     ],
+     "decline_rate": 0.01818181818181818,
+     "failure_rate": 0.0,
+     "shape_mix": {
+      "closed": 5,
+      "upper_bound": 49,
+      "lower_bound": 0,
+      "none": 1,
+      "failed": 0
+     },
+     "box_limited_n": 28,
+     "labels": {
+      "box_limited": 28,
+      "negligible": 0,
+      "saturated": 0,
+      "widened": 0
+     },
+     "one_sided_coverage": 1.0,
+     "one_sided_n": 22,
+     "widened": {
+      "n": 0
+     },
+     "label_rates": {
+      "box_limited": 0.509090909090909,
+      "negligible": 0.0,
+      "saturated": 0.0,
+      "widened": 0.0
+     },
+     "upper_bound_dex_inside_null": 3.8603090481304605,
+     "closed_median_width_dex": 1.199682805563522,
+     "null_width_dex": 17.478132418114523,
+     "gate": {
+      "vs_eta": {
+       "mean_difference": 0.0,
+       "se": null,
+       "z": null,
+       "ci_lo": null,
+       "ci_hi": null,
+       "n_cells": 2,
+       "n_clusters": 1,
+       "outcome": "not measured",
+       "verdict": "underpowered",
+       "reasons": [
+        "2 paired cells < 30",
+        "1 clusters < 10",
+        "the SE is not measured"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "vs_epsilon": {
+       "mean_difference": 0.0,
+       "se": 0.0,
+       "z": 0.0,
+       "ci_lo": 0.0,
+       "ci_hi": 0.0,
+       "n_cells": 4,
+       "n_clusters": 2,
+       "outcome": "no difference",
+       "verdict": "underpowered",
+       "reasons": [
+        "4 paired cells < 30",
+        "2 clusters < 10"
+       ],
+       "margin": null,
+       "margin_source": "Naveh 2026-10-05"
+      },
+      "verdict": "underpowered"
+     },
+     "axes": {
+      "vs_eta": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": -0.01818181818181818,
+        "a": {
+         "total": 55,
+         "answered": 54,
+         "declined": 1,
+         "failed": 0,
+         "decline_rate": 0.01818181818181818,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 53,
+         "declined": 2,
+         "failed": 0,
+         "decline_rate": 0.03636363636363636,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.42772428427147857,
+        "median_dex": [
+         1.199682805563522,
+         0.7719585212920435
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 0.8363636363636363
+        },
+        "n_widths": [
+         5,
+         46
+        ]
+       }
+      },
+      "vs_epsilon": {
+       "availability": {
+        "outcome": "no difference",
+        "statistic": 0.01818181818181818,
+        "a": {
+         "total": 55,
+         "answered": 54,
+         "declined": 1,
+         "failed": 0,
+         "decline_rate": 0.01818181818181818,
+         "failure_rate": 0.0
+        },
+        "b": {
+         "total": 55,
+         "answered": 55,
+         "declined": 0,
+         "failed": 0,
+         "decline_rate": 0.0,
+         "failure_rate": 0.0
+        }
+       },
+       "information": {
+        "outcome": "loses",
+        "statistic": 0.10808068527906989,
+        "median_dex": [
+         1.199682805563522,
+         1.0916021202844521
+        ],
+        "closed_share": {
+         "a": 0.09090909090909091,
+         "b": 1.0
+        },
+        "n_widths": [
+         5,
+         55
+        ]
+       }
+      },
+      "gating": false,
+      "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+     },
+     "valid": {
+      "closed_coverage": null,
+      "closed_n": 0,
+      "wilson95": [
+       null,
+       null
+      ]
+     }
+    }
+   },
+   "n_valid": 5
+  }
+ },
+ "power": {
+  "cells": {
+   "profile_jax2|pure": {
+    "n_cohorts": 85,
+    "n_clusters": 22,
+    "cluster_sizes": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     1
+    ],
+    "min_cells_fraction": 0.35294117647058826,
+    "clusters_ok": true,
+    "grid": [
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.01,
+      "inferior": 0.0,
+      "no loss": 0.99,
+      "power": 0.01
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.025,
+      "inferior": 0.0,
+      "no loss": 0.975,
+      "power": 0.025
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0025,
+      "inferior": 0.0,
+      "no loss": 0.9975,
+      "power": 0.0025
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0175,
+      "inferior": 0.0,
+      "no loss": 0.9825,
+      "power": 0.0175
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.02,
+      "inferior": 0.0,
+      "no loss": 0.98,
+      "power": 0.02
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0075,
+      "inferior": 0.0,
+      "no loss": 0.9925,
+      "power": 0.0075
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.03,
+      "inferior": 0.0,
+      "no loss": 0.97,
+      "power": 0.03
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.02,
+      "inferior": 0.0,
+      "no loss": 0.98,
+      "power": 0.02
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.2325,
+      "inferior": 0.0,
+      "no loss": 0.7675,
+      "power": 0.2325
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.33,
+      "inferior": 0.0,
+      "no loss": 0.67,
+      "power": 0.33
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.52,
+      "inferior": 0.0,
+      "no loss": 0.48,
+      "power": 0.52
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0425,
+      "inferior": 0.0,
+      "no loss": 0.9575,
+      "power": 0.0425
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0375,
+      "inferior": 0.0,
+      "no loss": 0.9625,
+      "power": 0.0375
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.025,
+      "inferior": 0.0,
+      "no loss": 0.975,
+      "power": 0.025
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.11,
+      "inferior": 0.0,
+      "no loss": 0.89,
+      "power": 0.11
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.17,
+      "inferior": 0.0,
+      "no loss": 0.83,
+      "power": 0.17
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.41,
+      "inferior": 0.0,
+      "no loss": 0.59,
+      "power": 0.41
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.07,
+      "inferior": 0.0,
+      "no loss": 0.93,
+      "power": 0.07
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0675,
+      "inferior": 0.0,
+      "no loss": 0.9325,
+      "power": 0.0675
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.045,
+      "inferior": 0.0,
+      "no loss": 0.955,
+      "power": 0.045
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.6,
+      "inferior": 0.0,
+      "no loss": 0.4,
+      "power": 0.6
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.7275,
+      "inferior": 0.0,
+      "no loss": 0.2725,
+      "power": 0.7275
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.9125,
+      "inferior": 0.0,
+      "no loss": 0.0875,
+      "power": 0.9125
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.175,
+      "inferior": 0.0,
+      "no loss": 0.825,
+      "power": 0.175
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.1525,
+      "inferior": 0.0,
+      "no loss": 0.8475,
+      "power": 0.1525
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.1375,
+      "inferior": 0.0,
+      "no loss": 0.8625,
+      "power": 0.1375
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.28,
+      "inferior": 0.0,
+      "no loss": 0.72,
+      "power": 0.28
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.45,
+      "inferior": 0.0,
+      "no loss": 0.55,
+      "power": 0.45
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.815,
+      "inferior": 0.0,
+      "no loss": 0.185,
+      "power": 0.815
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.1425,
+      "inferior": 0.0,
+      "no loss": 0.8575,
+      "power": 0.1425
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.1525,
+      "inferior": 0.0,
+      "no loss": 0.8475,
+      "power": 0.1525
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.165,
+      "inferior": 0.0,
+      "no loss": 0.835,
+      "power": 0.165
+     }
+    ]
+   },
+   "profile_jax2|censor": {
+    "n_cohorts": 55,
+    "n_clusters": 14,
+    "cluster_sizes": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3
+    ],
+    "min_cells_fraction": 0.5454545454545454,
+    "clusters_ok": true,
+    "grid": [
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.015,
+      "inferior": 0.0,
+      "no loss": 0.985,
+      "power": 0.015
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0025,
+      "inferior": 0.0,
+      "no loss": 0.9975,
+      "power": 0.0025
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0225,
+      "inferior": 0.0,
+      "no loss": 0.9775,
+      "power": 0.0225
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0225,
+      "inferior": 0.0,
+      "no loss": 0.9775,
+      "power": 0.0225
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0025,
+      "inferior": 0.0,
+      "no loss": 0.9975,
+      "power": 0.0025
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.015,
+      "inferior": 0.0,
+      "no loss": 0.985,
+      "power": 0.015
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.01,
+      "inferior": 0.0,
+      "no loss": 0.99,
+      "power": 0.01
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.16,
+      "inferior": 0.0,
+      "no loss": 0.84,
+      "power": 0.16
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.1775,
+      "inferior": 0.0,
+      "no loss": 0.8225,
+      "power": 0.1775
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.2125,
+      "inferior": 0.0,
+      "no loss": 0.7875,
+      "power": 0.2125
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.035,
+      "inferior": 0.0,
+      "no loss": 0.965,
+      "power": 0.035
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0175,
+      "inferior": 0.0,
+      "no loss": 0.9825,
+      "power": 0.0175
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.005,
+      "inferior": 0.0,
+      "no loss": 0.995,
+      "power": 0.005
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.095,
+      "inferior": 0.0,
+      "no loss": 0.905,
+      "power": 0.095
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.1125,
+      "inferior": 0.0,
+      "no loss": 0.8875,
+      "power": 0.1125
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.2,
+      "inferior": 0.0,
+      "no loss": 0.8,
+      "power": 0.2
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.05,
+      "inferior": 0.0,
+      "no loss": 0.95,
+      "power": 0.05
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.04,
+      "inferior": 0.0,
+      "no loss": 0.96,
+      "power": 0.04
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.015,
+      "inferior": 0.0,
+      "no loss": 0.985,
+      "power": 0.015
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.3825,
+      "inferior": 0.0,
+      "no loss": 0.6175,
+      "power": 0.3825
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.5325,
+      "inferior": 0.0,
+      "no loss": 0.4675,
+      "power": 0.5325
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.6575,
+      "inferior": 0.0,
+      "no loss": 0.3425,
+      "power": 0.6575
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.08,
+      "inferior": 0.0,
+      "no loss": 0.92,
+      "power": 0.08
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.065,
+      "inferior": 0.0,
+      "no loss": 0.935,
+      "power": 0.065
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.05,
+      "inferior": 0.0,
+      "no loss": 0.95,
+      "power": 0.05
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.2425,
+      "inferior": 0.0,
+      "no loss": 0.7575,
+      "power": 0.2425
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.3075,
+      "inferior": 0.0,
+      "no loss": 0.6925,
+      "power": 0.3075
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.575,
+      "inferior": 0.0,
+      "no loss": 0.425,
+      "power": 0.575
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.1125,
+      "inferior": 0.0,
+      "no loss": 0.8875,
+      "power": 0.1125
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0775,
+      "inferior": 0.0,
+      "no loss": 0.9225,
+      "power": 0.0775
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0625,
+      "inferior": 0.0,
+      "no loss": 0.9375,
+      "power": 0.0625
+     }
+    ]
+   },
+   "profile_jax2_h|hazard": {
+    "n_cohorts": 55,
+    "n_clusters": 14,
+    "cluster_sizes": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3
+    ],
+    "min_cells_fraction": 0.5454545454545454,
+    "clusters_ok": true,
+    "grid": [
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.015,
+      "inferior": 0.0,
+      "no loss": 0.985,
+      "power": 0.015
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0025,
+      "inferior": 0.0,
+      "no loss": 0.9975,
+      "power": 0.0025
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.0225,
+      "inferior": 0.0,
+      "no loss": 0.9775,
+      "power": 0.0225
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0225,
+      "inferior": 0.0,
+      "no loss": 0.9775,
+      "power": 0.0225
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0025,
+      "inferior": 0.0,
+      "no loss": 0.9975,
+      "power": 0.0025
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.015,
+      "inferior": 0.0,
+      "no loss": 0.985,
+      "power": 0.015
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.01,
+      "inferior": 0.0,
+      "no loss": 0.99,
+      "power": 0.01
+     },
+     {
+      "delta": 0.0,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0,
+      "inferior": 0.0,
+      "no loss": 1.0,
+      "power": 0.0
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.16,
+      "inferior": 0.0,
+      "no loss": 0.84,
+      "power": 0.16
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.1775,
+      "inferior": 0.0,
+      "no loss": 0.8225,
+      "power": 0.1775
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.2125,
+      "inferior": 0.0,
+      "no loss": 0.7875,
+      "power": 0.2125
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.035,
+      "inferior": 0.0,
+      "no loss": 0.965,
+      "power": 0.035
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0175,
+      "inferior": 0.0,
+      "no loss": 0.9825,
+      "power": 0.0175
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.005,
+      "inferior": 0.0,
+      "no loss": 0.995,
+      "power": 0.005
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.095,
+      "inferior": 0.0,
+      "no loss": 0.905,
+      "power": 0.095
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.1125,
+      "inferior": 0.0,
+      "no loss": 0.8875,
+      "power": 0.1125
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.2,
+      "inferior": 0.0,
+      "no loss": 0.8,
+      "power": 0.2
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.05,
+      "inferior": 0.0,
+      "no loss": 0.95,
+      "power": 0.05
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.04,
+      "inferior": 0.0,
+      "no loss": 0.96,
+      "power": 0.04
+     },
+     {
+      "delta": -0.05,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.015,
+      "inferior": 0.0,
+      "no loss": 0.985,
+      "power": 0.015
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.3825,
+      "inferior": 0.0,
+      "no loss": 0.6175,
+      "power": 0.3825
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.5325,
+      "inferior": 0.0,
+      "no loss": 0.4675,
+      "power": 0.5325
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.6575,
+      "inferior": 0.0,
+      "no loss": 0.3425,
+      "power": 0.6575
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.08,
+      "inferior": 0.0,
+      "no loss": 0.92,
+      "power": 0.08
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.065,
+      "inferior": 0.0,
+      "no loss": 0.935,
+      "power": 0.065
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.95,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.05,
+      "inferior": 0.0,
+      "no loss": 0.95,
+      "power": 0.05
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.2425,
+      "inferior": 0.0,
+      "no loss": 0.7575,
+      "power": 0.2425
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.3075,
+      "inferior": 0.0,
+      "no loss": 0.6925,
+      "power": 0.3075
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 0.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.575,
+      "inferior": 0.0,
+      "no loss": 0.425,
+      "power": 0.575
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.0,
+      "underpowered": 0.0,
+      "loses": 0.1125,
+      "inferior": 0.0,
+      "no loss": 0.8875,
+      "power": 0.1125
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.5,
+      "underpowered": 0.0,
+      "loses": 0.0775,
+      "inferior": 0.0,
+      "no loss": 0.9225,
+      "power": 0.0775
+     },
+     {
+      "delta": -0.1,
+      "p_ref": 0.8,
+      "icc": 1.0,
+      "concordance": 0.9,
+      "underpowered": 0.0,
+      "loses": 0.0625,
+      "inferior": 0.0,
+      "no loss": 0.9375,
+      "power": 0.0625
+     }
+    ]
+   }
+  },
+  "reps": 400,
+  "margin": null,
+  "margin_source": "Naveh 2026-10-05",
+  "model": "every informative cohort a paired cell (an upper bound); the reference covers with p_ref, the combination with p_ref + delta; concordance c: P(both) = (1-c) p_a p_ref + c min(p_a, p_ref); icc: within-cluster copy probability; 'power' = the fraction that reads a loss (z < -2, or a CI lower end <= -margin when a margin is set); at delta = 0 it is the chance of failing a combination that loses nothing"
+ },
+ "prerequisites": [],
+ "validity": {
+  "source": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester/reports/validity/validity.csv",
+  "sha256": "463ef73f07c943f43b0c8cafec910353117a02c69615c619a879d7bf8870c9c3",
+  "n": 1990,
+  "n_valid": 1152,
+  "gate_counts": "all cohorts (Naveh 2026-10-08)"
+ },
+ "gate": {
+  "cells": [
+   [
+    "profile_jax2",
+    "pure"
+   ],
+   [
+    "profile_jax2",
+    "censor"
+   ],
+   [
+    "profile_jax2_h",
+    "hazard"
+   ]
+  ],
+  "min_informative": 50,
+  "rule": "per combination vs eta and vs epsilon: loss if z < -2; underpowered below 30 paired cells or 10 clusters (sraging.scoring.paired.gate)"
+ },
+ "fit_hosts": {
+  "n_nodes": 4,
+  "rows_by_cpu": {
+   "AMD EPYC 7702 64-Core Processor": 145,
+   "AMD EPYC 9634 84-Core Processor": 70
+  },
+  "rows_without_host": 0
+ },
+ "cost": {
+  "fits": 215,
+  "cpu_s_total": 2325882.206695196,
+  "combination_ratio_median": 6.636452782035223
+ }
+}

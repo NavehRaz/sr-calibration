@@ -1,0 +1,226 @@
+{
+ "created": "2026-10-20T14:03:46",
+ "purpose": "Byte-level oracle for spec 003b's port of jax2 (see README). NEVER EDIT. Compare side by side on the same host only.",
+ "source": {
+  "repo": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2_freeze",
+  "method_dir": "methods/mle_profile_jax2",
+  "commit": "6884fc8b4d34932d2e5b6d65720dd0685f5915cd",
+  "tag": "mle_profile_jax2-1.0.1",
+  "tag_object": "71e79f343da9ccc1a176f9f4106e528dcd38e8c5",
+  "read_from": "git objects"
+ },
+ "host": {
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "node": "MC06268844"
+ },
+ "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+ "files": [
+  {
+   "path": "mle_profile_jax2/__init__.py",
+   "md5": "a8c8a826d0835ccb57985c8489c0070c",
+   "sha256": "7e9e5380a4425659c996585e3dc846242313b3cdeda8b0301ff2fa31efe57e78"
+  },
+  {
+   "path": "mle_profile_jax2/estimator.py",
+   "md5": "6eef84d64aacb76806d376f7e43bcbb6",
+   "sha256": "e0335a5366237f5357fc31bbe5ea0e039b94ddca2d7dfd5fe077d6c0eb9a5ee2"
+  },
+  {
+   "path": "mle_profile_jax2/fp_jax.py",
+   "md5": "f265532d8c6b740792510d4afbefe823",
+   "sha256": "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253"
+  },
+  {
+   "path": "mle_profile_jax2/observation_model.py",
+   "md5": "2a7c61a6fb7cfe4527601d854fedd998",
+   "sha256": "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0"
+  },
+  {
+   "path": "mle_profile_jax2/VERSION_LOCK.json",
+   "md5": "6501d064249987672f949a2ea889f9d2",
+   "sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06"
+  }
+ ],
+ "version_lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+ "listing_digest": "c47dc9b20d04f23a229a80953757d26e501a6c579d2f3bfb5c3da557e892399f",
+ "listing": [
+  "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06  methods/mle_profile_jax2/VERSION_LOCK.json",
+  "7e9e5380a4425659c996585e3dc846242313b3cdeda8b0301ff2fa31efe57e78  methods/mle_profile_jax2/__init__.py",
+  "e0335a5366237f5357fc31bbe5ea0e039b94ddca2d7dfd5fe077d6c0eb9a5ee2  methods/mle_profile_jax2/estimator.py",
+  "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253  methods/mle_profile_jax2/fp_jax.py",
+  "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0  methods/mle_profile_jax2/observation_model.py",
+  "01af9feadbb8d5f9d2f02ad40b0ab124ba0cf3c98dba972a9b6b28f60f0f89bd  methods/mle_profile_jax2/tests/_jax2_testlib.py",
+  "f99b8dce42d8993c7be1694aa48dc63bd7ad6807e9d224e7c264d88bb7084949  methods/mle_profile_jax2/tests/conftest.py",
+  "3318a67a96c44adab0f03e1ad769a07ee20465a7e382ca421e797864e1a1466a  methods/mle_profile_jax2/tests/fixtures/adapter_dev5/README.txt",
+  "60041a75afb12a6a0809c6f9ccdb3f36bf477474c57148071c0eb7f5ecc37cf5  methods/mle_profile_jax2/tests/fixtures/adapter_dev5/VERSION_LOCK_dev5.json",
+  "cd454d06e0def405ced19decb22f3b49868dfc3e9dea6eae688c93d886a1544e  methods/mle_profile_jax2/tests/fixtures/adapter_dev5/adapter_dev5.py",
+  "12e3fb679578537081b15a1ae973a40229b4313786eded6180b32c15f2cd6ceb  methods/mle_profile_jax2/tests/fixtures/candidate_rc1/SHA256SUMS.txt",
+  "7c5128bf7fdf33f6689425386b9ae02592eedce282c7cd4e8147e21ef29add65  methods/mle_profile_jax2/tests/fixtures/candidate_rc1/cluster/driver.py",
+  "36896302cfdf294be5a21d1785dcac084a3628171d027c9a1250db7152696a25  methods/mle_profile_jax2/tests/fixtures/candidate_rc1/code/MD5SUMS.txt",
+  "0314862652e64a54efa8a72032c797d381f5b9fd36bdf1f6eef406be4ffd195b  methods/mle_profile_jax2/tests/fixtures/candidate_rc1/code/adapter.py",
+  "81bc092d061e7681576194b90efae19615fa70d96123f8243650131d5fbc5ce3  methods/mle_profile_jax2/tests/fixtures/candidate_rc1/code/estimator.py",
+  "f9df47124cf84239d4437005eba4f131ba00070bab6f4183dd7bbf745056a71b  methods/mle_profile_jax2/tests/fixtures/candidate_rc1/code/fp_jax.py",
+  "ca87bef53b5789042e2c972697fb5a2415ca4c898250e3ee5323a9c52ddc5b8b  methods/mle_profile_jax2/tests/fixtures/dt_rule_dev3/dev3_grids.json",
+  "e92fc72ae6b16f02701c845b9b5ca6d052ad64945daace5180c820bef9a90532  methods/mle_profile_jax2/tests/fixtures/dt_rule_dev3/make_dev3_grids.py",
+  "0445e9e0d07f472d5f95a7a4b9187e48fc154fd3a2c3bd671bd160b8df1a2ff6  methods/mle_profile_jax2/tests/fixtures/dt_rule_dev4/dev4_grids.json",
+  "8caa4428cedae2f3a1106a9dd61eed9fa8613d78ea143f3201bd79d4c8b7a335  methods/mle_profile_jax2/tests/fixtures/dt_rule_dev4/make_dev4_grids.py",
+  "ce83aae5bd4ee53a1454937ad532d4c2a002a76a6f52556bcbc945023e89ad17  methods/mle_profile_jax2/tests/identity_rc1.py",
+  "88394fcdcb2b9c2d0451def79bba26e632a3ccab593ded0328529e19adf0e415  methods/mle_profile_jax2/tests/test_jax2_dt_rule_scope.py",
+  "e4742ddf56147fac46eaba7cf0a8677f1ce219539389bf0f62a8e675285beecb  methods/mle_profile_jax2/tests/test_jax2_early_all.py",
+  "b95495d797321c16d78c7f150ecb6c6ce58e3aecefc00d38d14ca13a9e3d7022  methods/mle_profile_jax2/tests/test_jax2_fixture_rc1.py",
+  "9654d993795b0a95bde735275d00a37e919872f7b4884828671a80fe58026692  methods/mle_profile_jax2/tests/test_jax2_floor_early.py",
+  "7e35362c4ee89882ddb87a7d15d38c681ff5ec5c4d2c60c0a338dd9a739b3191  methods/mle_profile_jax2/tests/test_jax2_freeze.py",
+  "6b84f8281d5e55ad9abb9d91f3b219f21b076b7d4ed94480a1166491a84d0bbd  methods/mle_profile_jax2/tests/test_jax2_grid_floor.py",
+  "228003b9645d40e9d8b944748d464a79303dafd8a83bbd225ab95298eec6618b  methods/mle_profile_jax2/tests/test_jax2_hazard_likelihood.py",
+  "0669ddc4c447fc0bad24e760c3e095a133c5f24ecdcfc92f2c028fa3df0ab3fa  methods/mle_profile_jax2/tests/test_jax2_kfix.py",
+  "949901abf23fb737fa078027712a3df943b9a1f38c157feaaadf49352b4d0ce7  methods/mle_profile_jax2/tests/test_jax2_l0_discovery.py",
+  "b825fd44fcf83a1e2ed7d645640be483f9d7eed12caacfc790b85fe90164b9ad  methods/mle_profile_jax2/tests/test_jax2_l0_source.py",
+  "12c97c191c1b1bf3f2e3dbe9e493bf3296b162ba22990f63106ecb857998adf1  methods/mle_profile_jax2/tests/test_jax2_l0_zshape.py",
+  "a50ac5619faedffae01f1238ca192574aa06663ddd87830448d29a360293a333  methods/mle_profile_jax2/tests/test_jax2_n_rule.py",
+  "5560743d17c0690831b16b1b9401942e4180cc3279b3b0454f313f4164d6da20  methods/mle_profile_jax2/tests/test_jax2_observation_model.py",
+  "d7a17cc7d06176d11b78c4d3a3dd98ad0fd6490fba7695499ee45ff3c7952588  methods/mle_profile_jax2/tests/test_jax2_r101.py",
+  "733725127d73a025728e0b526d3059ef94c0351b289016c5a36b05778860ea9f  methods/mle_profile_jax2/tests/test_jax2_rc2_i4.py",
+  "4777bcd024b1ec17bfa544aefbfa60850eb3464a3673ae74dccb3779b5d5b4b4  methods/mle_profile_jax2/tests/test_jax2_self_consistency.py",
+  "47bfc968769d2b38c5af568ef4d85f677871af942cdf16f478cb1b0e1b34960e  methods/mle_profile_jax2/tests/test_jax2_version_lock.py",
+  "914446c04553c0c88e1d0fb2566bd31299ca62cf9882b64a668469acd9902763  methods/mle_profile_jax2/tests/version_lock.py"
+ ],
+ "cited": [
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SR_hetro.py",
+   "sha256": "46811f0bb9322ea9175b40808c32d5af3cc2d3294dcf9b4b52ad3cd5841eca16",
+   "v033_path": "SRtools_kappa/SRK/SR_hetro.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib.py",
+   "sha256": "08bda3648cebb92242fef6a4242c7536f0cc593e5f730e96cb318ea61c877460",
+   "v033_path": "SRtools_kappa/SRK/SRmodellib.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib_lifelines.py",
+   "sha256": "8b6ceffb91316ab5215028b3bd586484bad4e57e1fb1350f366c7281aba85d26",
+   "v033_path": "SRtools_kappa/SRK/SRmodellib_lifelines.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/__init__.py",
+   "sha256": "946c5e65c0c9724e15686db6b4005111ed15dd6f5fc6700007da7476033ad4d0",
+   "v033_path": "SRtools_kappa/SRK/__init__.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/deathTimesDataSet.py",
+   "sha256": "add34073e9d82fb779067e0218735b87553a976379952a1bde704b77c1d89fa9",
+   "v033_path": "SRtools_kappa/SRK/deathTimesDataSet.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/distance_metrics.py",
+   "sha256": "efaced8124f39f355f825b70733d698cff69776a7c13bbe49e6ef2b9b8f8d82b",
+   "v033_path": "SRtools_kappa/SRK/distance_metrics.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_curvefit.py",
+   "sha256": "716b67c893bddb75a63eaf41d6924e3ed150280b7f0cf6c0353c113e15dbfa0a",
+   "v033_path": "SRtools_kappa/SRK/fp_curvefit.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_gof.py",
+   "sha256": "9928908c46aaca06d60f472b4c93456cd25096db18ceddd3577710e5bf79d12b",
+   "v033_path": "SRtools_kappa/SRK/fp_gof.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_likelihood.py",
+   "sha256": "5331ae00c65b249ae771cbc6ededf004ee6eb8f558582c5ed3208935102bd6ae",
+   "v033_path": "SRtools_kappa/SRK/fp_likelihood.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/initialParamsFinder.py",
+   "sha256": "63472a5b70b498df61e8bebcc3656b22fa296b472a43c516252d09921e104b78",
+   "v033_path": "SRtools_kappa/SRK/initialParamsFinder.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/joint_posterior.py",
+   "sha256": "849394c849b952ad420f2096b069cb88ce2178e25f267a7af1cf9b4d1e4f564f",
+   "v033_path": "SRtools_kappa/SRK/joint_posterior.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/life_table.py",
+   "sha256": "c27769f268f92edd50a053c81a7605af259df0ef2bd1bd4856ff817a450a7a64",
+   "v033_path": "SRtools_kappa/SRK/life_table.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/makhamGompertzFitter.py",
+   "sha256": "d9dfc2be5515b788317debc57808d9220d7fb4c1bcc0e32753a08ee9533362bf",
+   "v033_path": "SRtools_kappa/SRK/makhamGompertzFitter.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/prior_gen.py",
+   "sha256": "c7d4f36d6babc4f8825d46d40fd040a1ec3e2e70f4210119231d8bc099650933",
+   "v033_path": "SRtools_kappa/SRK/prior_gen.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/samples_utils.py",
+   "sha256": "2081a9e9578c804a9bd0d4aae4fcb4b8dff31891874fbf290d761cc580889cfb",
+   "v033_path": "SRtools_kappa/SRK/samples_utils.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/sr_mcmc.py",
+   "sha256": "bbece2c99cc1458c5dffd78c0700a80a52ae382ddddc481a5b1cf781787de604",
+   "v033_path": "SRtools_kappa/SRK/sr_mcmc.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/stepsize.py",
+   "sha256": "be897557455bb8164c1adf2dc062df740dfa5f6cbc4ea5df91b365c65638c2b5",
+   "v033_path": "SRtools_kappa/SRK/stepsize.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/weibullFitter.py",
+   "sha256": "a3e3390bba1bca266605e3cadaf2bb7a4834610c79a433e247c659d09c6f514b",
+   "v033_path": "SRtools_kappa/SRK/weibullFitter.py",
+   "source": "srk_sha of realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json"
+  }
+ ],
+ "srk_record": {
+  "file": "realfull-real-Denmark_M_1900_homo-c1-s1__jax2__on101.json",
+  "sha256": "7aceeca6fa3560b5ff62e82012d09f8d6e3dc4597c2ddfa4d291fe86de60f3e4"
+ },
+ "cited_srbench": {
+  "snapshot": "tester_f94ec2b",
+  "tree": "f94ec2b8a97c65178542e22553033dc00e2d1a26",
+  "listing_digest": "280fb07b571eb10889e3f1e480ecfbd0706b9c7c8c6efdd1eceb0a27f160bc85"
+ },
+ "environment_pins": "tests/oracle/v033/pip_freeze.txt; the handoff's section 5 environment"
+}

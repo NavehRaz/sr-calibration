@@ -1,0 +1,473 @@
+{
+ "phase": "multi",
+ "written_at": "2026-11-05T14:00:55Z",
+ "repo_head": "878872f6bcca5c8b25e3c8349118df91a430571f",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/langevin_004.toml": "3bb031d2b5514c035b5c929c46e542a48c59a4eb"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 6342.464174985886,
+ "cpu_s": 6301.086585,
+ "status": "pass",
+ "verdicts": [
+  {
+   "rule": "HR-11",
+   "wall": "clamp",
+   "status": "pass",
+   "n_valid": 6,
+   "n_unassessable": 0,
+   "statistic": {
+    "reductions_unequal": [],
+    "failing": [],
+    "unassessable": [],
+    "cells": [
+     {
+      "id": "xc+eta",
+      "crit": 0.010467139055157336,
+      "judged_bias": 0.0008315624492619307,
+      "assessable": true,
+      "D": 0.005031434960276249
+     },
+     {
+      "id": "xc+epsilon",
+      "crit": 0.010467139055157336,
+      "judged_bias": 0.0008315624492619307,
+      "assessable": true,
+      "D": 0.005209040423854394
+     },
+     {
+      "id": "eta+beta",
+      "crit": 0.010467139055157336,
+      "judged_bias": 0.0008315624492619307,
+      "assessable": true,
+      "D": 0.0066500061752226
+     },
+     {
+      "id": "epsilon+kappa",
+      "crit": 0.010467139055157336,
+      "judged_bias": 0.0008315624492619307,
+      "assessable": true,
+      "D": 0.005428658603691794
+     },
+     {
+      "id": "xc+eta+epsilon",
+      "crit": 0.010467139055157336,
+      "judged_bias": 0.0008315624492619307,
+      "assessable": true,
+      "D": 0.0070900295559799265
+     },
+     {
+      "id": "eta+beta+kappa",
+      "crit": 0.010467139055157336,
+      "judged_bias": 0.0008315624492619307,
+      "assessable": true,
+      "D": 0.00677036852963242
+     }
+    ],
+    "plant_not_rejecting": [],
+    "plants_informative": [
+     "xc+eta/drop-xc",
+     "xc+epsilon/drop-xc",
+     "eta+beta/drop-eta",
+     "xc+eta+epsilon/drop-xc",
+     "eta+beta+kappa/drop-eta"
+    ],
+    "composite": {
+     "panels": 32,
+     "nodes": 65536,
+     "refinement_sup_dS": 1.1024389410239909e-08,
+     "converged": true,
+     "sup_dS": 2.6246822414588422e-05,
+     "M": {
+      "eta": 17,
+      "xc": 11
+     },
+     "order": 8,
+     "agree": 0.0001
+    },
+    "composite_disagrees": false,
+    "above_budget": {
+     "kind": "none",
+     "clean": false,
+     "reason": "4 heterogeneous parameters with a spread: the tensor reference takes d <= 3 (research R28)",
+     "verdict": "no FP reference",
+     "warnings": [
+      "LANGEVIN_SURVIVORS_AT_TMAX",
+      "LANGEVIN_STEP_BIAS_NOT_MEASURED",
+      "LANGEVIN_NO_FP_REFERENCE"
+     ]
+    },
+    "above_budget_wrong": false,
+    "G": 6
+   },
+   "crit": {
+    "x": 1.655,
+    "G": 6
+   },
+   "incomplete_reasons": [],
+   "cpu_spent": 1.7502939722222224,
+   "cap": 4.0
+  }
+ ],
+ "reductions": [
+  {
+   "id": "xc+eta0/clamp",
+   "kind": "case",
+   "wall": "clamp",
+   "equal": true
+  },
+  {
+   "id": "xc+eta0/reflect",
+   "kind": "case",
+   "wall": "reflect",
+   "equal": true
+  },
+  {
+   "id": "eta+xc0/clamp",
+   "kind": "case",
+   "wall": "clamp",
+   "equal": true
+  },
+  {
+   "id": "eta+xc0/reflect",
+   "kind": "case",
+   "wall": "reflect",
+   "equal": true
+  },
+  {
+   "id": "shared-stream",
+   "kind": "plant",
+   "breaks": true
+  }
+ ],
+ "cells": [
+  {
+   "id": "xc+eta",
+   "n": 25000,
+   "D": 0.005031434960276249,
+   "D_own": 0.00048000000000003595,
+   "D_bias": 0.00048000000000003595,
+   "p_hat": 0.5,
+   "frozen_b": 0.0008315624492619307,
+   "D_key_mean": 0.0006333333333333545,
+   "borrowed": true,
+   "m": 170,
+   "m_max": 340,
+   "crit": 0.010467139055157336,
+   "reference_kind": "tensor",
+   "reference_verdict": "converged",
+   "M": {
+    "eta": 8,
+    "xc": 5
+   },
+   "key": 60700,
+   "dt": 0.0002518150688961322,
+   "step": "mice_F|het|clamp",
+   "cpu_s": 353.28155200000003
+  },
+  {
+   "id": "xc+epsilon",
+   "n": 25000,
+   "D": 0.005209040423854394,
+   "D_own": 0.0004400000000000237,
+   "D_bias": 0.0004400000000000237,
+   "p_hat": 0.5,
+   "frozen_b": 0.0008315624492619307,
+   "D_key_mean": 0.0006333333333333545,
+   "borrowed": true,
+   "m": 170,
+   "m_max": 340,
+   "crit": 0.010467139055157336,
+   "reference_kind": "tensor",
+   "reference_verdict": "converged",
+   "M": {
+    "epsilon": 5,
+    "xc": 5
+   },
+   "key": 60701,
+   "dt": 0.0002518150688961322,
+   "step": "mice_F|het|clamp",
+   "cpu_s": 332.54077900000004
+  },
+  {
+   "id": "eta+beta",
+   "n": 25000,
+   "D": 0.0066500061752226,
+   "D_own": 0.0005200000000000204,
+   "D_bias": 0.0005200000000000204,
+   "p_hat": 0.5,
+   "frozen_b": 0.0008315624492619307,
+   "D_key_mean": 0.0006333333333333545,
+   "borrowed": true,
+   "m": 170,
+   "m_max": 340,
+   "crit": 0.010467139055157336,
+   "reference_kind": "tensor",
+   "reference_verdict": "converged",
+   "M": {
+    "beta": 5,
+    "eta": 5
+   },
+   "key": 60702,
+   "dt": 0.0002518150688961322,
+   "step": "mice_F|het|clamp",
+   "cpu_s": 365.399056
+  },
+  {
+   "id": "epsilon+kappa",
+   "n": 25000,
+   "D": 0.005428658603691794,
+   "D_own": 0.00048000000000003595,
+   "D_bias": 0.00048000000000003595,
+   "p_hat": 0.5,
+   "frozen_b": 0.0008315624492619307,
+   "D_key_mean": 0.0006333333333333545,
+   "borrowed": true,
+   "m": 170,
+   "m_max": 340,
+   "crit": 0.010467139055157336,
+   "reference_kind": "tensor",
+   "reference_verdict": "converged",
+   "M": {
+    "epsilon": 5,
+    "kappa": 5
+   },
+   "key": 60703,
+   "dt": 0.0002518150688961322,
+   "step": "mice_F|het|clamp",
+   "cpu_s": 336.64925600000015
+  },
+  {
+   "id": "xc+eta+epsilon",
+   "n": 25000,
+   "D": 0.0070900295559799265,
+   "D_own": 0.0008400000000000629,
+   "D_bias": 0.0008400000000000629,
+   "p_hat": 0.5,
+   "frozen_b": 0.0008315624492619307,
+   "D_key_mean": 0.0006333333333333545,
+   "borrowed": true,
+   "m": 170,
+   "m_max": 340,
+   "crit": 0.010467139055157336,
+   "reference_kind": "tensor",
+   "reference_verdict": "converged",
+   "M": {
+    "epsilon": 5,
+    "eta": 8,
+    "xc": 5
+   },
+   "key": 60704,
+   "dt": 0.0002518150688961322,
+   "step": "mice_F|het|clamp",
+   "cpu_s": 395.6710770000002
+  },
+  {
+   "id": "eta+beta+kappa",
+   "n": 25000,
+   "D": 0.00677036852963242,
+   "D_own": 0.0007199999999999984,
+   "D_bias": 0.0007199999999999984,
+   "p_hat": 0.5,
+   "frozen_b": 0.0008315624492619307,
+   "D_key_mean": 0.0006333333333333545,
+   "borrowed": true,
+   "m": 170,
+   "m_max": 340,
+   "crit": 0.010467139055157336,
+   "reference_kind": "tensor",
+   "reference_verdict": "converged",
+   "M": {
+    "beta": 5,
+    "eta": 5,
+    "kappa": 5
+   },
+   "key": 60705,
+   "dt": 0.0002518150688961322,
+   "step": "mice_F|het|clamp",
+   "cpu_s": 378.5829010000002
+  }
+ ],
+ "plants": [
+  {
+   "id": "xc+eta/drop-xc",
+   "n": 25000,
+   "D": 0.050643371388252104,
+   "p_value": 3.6492521939800866e-56,
+   "predicted_sup_dS": 0.05376198971945245,
+   "drop": "xc",
+   "M": {
+    "eta": 8,
+    "xc": 5
+   },
+   "dt": 0.0002518150688961322,
+   "key": 61600
+  },
+  {
+   "id": "xc+epsilon/drop-xc",
+   "n": 25000,
+   "D": 0.05204555573454356,
+   "p_value": 2.700695949158184e-59,
+   "predicted_sup_dS": 0.05569965295797008,
+   "drop": "xc",
+   "M": {
+    "epsilon": 5,
+    "xc": 5
+   },
+   "dt": 0.0002518150688961322,
+   "key": 61601
+  },
+  {
+   "id": "eta+beta/drop-eta",
+   "n": 25000,
+   "D": 0.06507490676944805,
+   "p_value": 1.7376582448312418e-92,
+   "predicted_sup_dS": 0.06545350255113955,
+   "drop": "eta",
+   "M": {
+    "beta": 5,
+    "eta": 5
+   },
+   "dt": 0.0002518150688961322,
+   "key": 61602
+  },
+  {
+   "id": "epsilon+kappa/drop-epsilon",
+   "n": 25000,
+   "D": 0.019201214667927846,
+   "p_value": 1.9451647580852123e-08,
+   "predicted_sup_dS": 0.014186714267955702,
+   "drop": "epsilon",
+   "M": {
+    "epsilon": 5,
+    "kappa": 5
+   },
+   "dt": 0.0002518150688961322,
+   "key": 61603
+  },
+  {
+   "id": "xc+eta+epsilon/drop-xc",
+   "n": 25000,
+   "D": 0.0551230379498511,
+   "p_value": 1.8186837510034777e-66,
+   "predicted_sup_dS": 0.04944744227293807,
+   "drop": "xc",
+   "M": {
+    "epsilon": 5,
+    "eta": 8,
+    "xc": 5
+   },
+   "dt": 0.0002518150688961322,
+   "key": 61604
+  },
+  {
+   "id": "eta+beta+kappa/drop-eta",
+   "n": 25000,
+   "D": 0.06383133584413381,
+   "p_value": 5.341977805119152e-89,
+   "predicted_sup_dS": 0.06540667419620526,
+   "drop": "eta",
+   "M": {
+    "beta": 5,
+    "eta": 5,
+    "kappa": 5
+   },
+   "dt": 0.0002518150688961322,
+   "key": 61605
+  }
+ ],
+ "composite": {
+  "panels": 32,
+  "nodes": 65536,
+  "refinement_sup_dS": 1.1024389410239909e-08,
+  "converged": true,
+  "sup_dS": 2.6246822414588422e-05,
+  "M": {
+   "eta": 17,
+   "xc": 11
+  },
+  "order": 8,
+  "agree": 0.0001
+ },
+ "plant_check": {
+  "xc+eta/drop-xc": {
+   "frozen": 0.05376198971945245,
+   "now": 0.05376198971945245
+  },
+  "xc+epsilon/drop-xc": {
+   "frozen": 0.05569965295797008,
+   "now": 0.05569965295797008
+  },
+  "eta+beta/drop-eta": {
+   "frozen": 0.06545350255113955,
+   "now": 0.06545350255113955
+  },
+  "epsilon+kappa/drop-epsilon": {
+   "frozen": 0.014186714267955702,
+   "now": 0.014186714267955702
+  },
+  "xc+eta+epsilon/drop-xc": {
+   "frozen": 0.04944744227293807,
+   "now": 0.04944744227293807
+  },
+  "eta+beta+kappa/drop-eta": {
+   "frozen": 0.06540667419620526,
+   "now": 0.06540667419620526
+  }
+ },
+ "above_budget": {
+  "kind": "none",
+  "clean": false,
+  "reason": "4 heterogeneous parameters with a spread: the tensor reference takes d <= 3 (research R28)",
+  "verdict": "no FP reference",
+  "warnings": [
+   "LANGEVIN_SURVIVORS_AT_TMAX",
+   "LANGEVIN_STEP_BIAS_NOT_MEASURED",
+   "LANGEVIN_NO_FP_REFERENCE"
+  ]
+ },
+ "errors": [],
+ "listed": [],
+ "cap": {
+  "key": "multi",
+  "frozen_cpu_h": 4.0,
+  "spent_by": {},
+  "left_cpu_h": 4.0
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/langevin_004.toml": "15b898b7d4d733844943acaf9f1bc6e270808132d7b724a757af0ef884773d85"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 2.265230936661111,
+  "projected_from": "P1's draw CPU per cell x 3, one draw per plant, the reductions at their n, the composite's and the tensor references' frozen estimates, the plant sizes' re-check (one tensor reference each), and one frozen draw for (iii)'s 4-parameter cell (A7: past d <= 3, no tensor climb)",
+  "cap_cpu_h": 4.0,
+  "cap_frozen_cpu_h": 4.0,
+  "naveh_ok": null,
+  "cpu_spent_h": 1.7502960561111112,
+  "parent_cpu_s": 6301.065815000001,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

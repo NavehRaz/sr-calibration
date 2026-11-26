@@ -1,0 +1,596 @@
+{
+ "phase": "parity",
+ "written_at": "2026-10-21T05:06:35Z",
+ "repo_head": "ceb9b0feb7cc4a00f0e63635610c0d5902856eb3",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003b.toml": "06f889509eb0549c8a444c7d78457fc20436147a"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": "MC06268844",
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "3f9b2daf4b32d35c11de67eb572a845c491ad978"
+ },
+ "wall_s": 40293.826937913895,
+ "cpu_s": 0.111672,
+ "status": "pass",
+ "stopped": false,
+ "pairs": 7,
+ "done": 7,
+ "rows": [
+  {
+   "cohort_id": "censor-k0.01-p04-c0-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "29ea584b91b52fec1a94526b630cdfe1c06fa533f7e45b429ad57b09831ec046",
+   "level": "run_fit",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)"
+   ],
+   "port_cpu_s": 195.85253,
+   "oracle_cpu_s": 206.146056,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 2,
+    "inner_polish_solves": 21,
+    "bracket_bisect_nodes": 0,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.20645674970001,
+     "seed_s": 46.676937874406576,
+     "mle_s": 3.6598635828122497,
+     "wall_s": 206.97391837555915
+    },
+    "oracle": {
+     "compile_s": 1.3464696248993278,
+     "seed_s": 52.14202379062772,
+     "mle_s": 4.042072833515704,
+     "wall_s": 215.27246200013906
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "censor-k0.01-p04-c0-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "29ea584b91b52fec1a94526b630cdfe1c06fa533f7e45b429ad57b09831ec046",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)",
+    "CS-TIMING: the ClaimSet's wall_clock_seconds and cpu_seconds (top level; not in the view)",
+    "code_provenance (SUT location; not in the view)",
+    "diagnostics.code (SUT location)",
+    "sraging's own diagnostics, not ClaimSet fields (not compared): L_SR, assumptions, box_lsr, code, floor_report, leverage"
+   ],
+   "estimate_compared": true,
+   "fitresult_cpu_s": 92.271184,
+   "port_cpu_s": 195.85253,
+   "oracle_cpu_s": 206.146056,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 2,
+    "inner_polish_solves": 21,
+    "bracket_bisect_nodes": 0,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.20645674970001,
+     "seed_s": 46.676937874406576,
+     "mle_s": 3.6598635828122497,
+     "wall_s": 206.97391837555915
+    },
+    "oracle": {
+     "compile_s": 1.3464696248993278,
+     "seed_s": 52.14202379062772,
+     "mle_s": 4.042072833515704,
+     "wall_s": 215.27246200013906
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "684de2e52e24ac1734a0b17cc549bd7aa596ee4bb58b2c7dcba93e97178d7e85",
+   "level": "run_fit",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)"
+   ],
+   "port_cpu_s": 251.480748,
+   "oracle_cpu_s": 259.71156199999996,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 29,
+    "bracket_bisect_nodes": 2,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.3925735000520945,
+     "seed_s": 12.080113042145967,
+     "mle_s": 8.588000541552901,
+     "wall_s": 267.56048191711307
+    },
+    "oracle": {
+     "compile_s": 1.2221936248242855,
+     "seed_s": 14.113229707814753,
+     "mle_s": 9.499867792241275,
+     "wall_s": 269.4744359999895
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "684de2e52e24ac1734a0b17cc549bd7aa596ee4bb58b2c7dcba93e97178d7e85",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)",
+    "CS-TIMING: the ClaimSet's wall_clock_seconds and cpu_seconds (top level; not in the view)",
+    "code_provenance (SUT location; not in the view)",
+    "diagnostics.code (SUT location)",
+    "sraging's own diagnostics, not ClaimSet fields (not compared): L_SR, assumptions, box_lsr, code, floor_report, leverage"
+   ],
+   "estimate_compared": true,
+   "fitresult_cpu_s": 41.98298599999998,
+   "port_cpu_s": 251.480748,
+   "oracle_cpu_s": 259.71156199999996,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 29,
+    "bracket_bisect_nodes": 2,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.3925735000520945,
+     "seed_s": 12.080113042145967,
+     "mle_s": 8.588000541552901,
+     "wall_s": 267.56048191711307
+    },
+    "oracle": {
+     "compile_s": 1.2221936248242855,
+     "seed_s": 14.113229707814753,
+     "mle_s": 9.499867792241275,
+     "wall_s": 269.4744359999895
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "censor-k0.0316-p05-c1-s0",
+   "name": "profile_jax2",
+   "mode": "mle_only",
+   "library": "v6",
+   "prepared_sha256": "ee2adbddd854ebbca3caf6b2c8b0478a133a511ed905f69bbfe459e14eccd21d",
+   "level": "mle_only",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "port_cpu_s": 420.44249399999995,
+   "oracle_cpu_s": 420.20414100000005,
+   "stage_timers": {
+    "port": {
+     "compile_s": 3.4570693746209145,
+     "seed_s": 13.494383624754846,
+     "mle_s": 426.97196400072426,
+     "wall_s": 443.92494795750827
+    },
+    "oracle": {
+     "compile_s": 1.866898249834776,
+     "seed_s": 15.410823582671583,
+     "mle_s": 428.9397728331387,
+     "wall_s": 446.218155332841
+    }
+   },
+   "in_scope": true,
+   "mechanisms": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": true,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "hazard-k0.01-p04-c0-s0",
+   "name": "profile_jax2_h",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "b3ae884dab0d8549a24dd64ef7132dcb1fc75c33846f38e0ac514f19adae8cd2",
+   "level": "run_fit",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)"
+   ],
+   "port_cpu_s": 616.50966,
+   "oracle_cpu_s": 620.7512689999999,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 1,
+    "inner_polish_solves": 49,
+    "bracket_bisect_nodes": 0,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": true
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.5014220001176,
+     "seed_s": 28.707298416644335,
+     "mle_s": 103.56619033310562,
+     "wall_s": 651.7939348751679
+    },
+    "oracle": {
+     "compile_s": 1.3459941241890192,
+     "seed_s": 30.274060582742095,
+     "mle_s": 115.48874999955297,
+     "wall_s": 657.456742208451
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "hazard-k0.01-p04-c0-s0",
+   "name": "profile_jax2_h",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "b3ae884dab0d8549a24dd64ef7132dcb1fc75c33846f38e0ac514f19adae8cd2",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)",
+    "CS-TIMING: the ClaimSet's wall_clock_seconds and cpu_seconds (top level; not in the view)",
+    "code_provenance (SUT location; not in the view)",
+    "diagnostics.code (SUT location)",
+    "sraging's own diagnostics, not ClaimSet fields (not compared): L_SR, box_lsr, code, floor_report, leverage, notes"
+   ],
+   "estimate_compared": true,
+   "fitresult_cpu_s": 161.99912399999994,
+   "port_cpu_s": 616.50966,
+   "oracle_cpu_s": 620.7512689999999,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 1,
+    "inner_polish_solves": 49,
+    "bracket_bisect_nodes": 0,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": false,
+    "hazard": true
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.5014220001176,
+     "seed_s": 28.707298416644335,
+     "mle_s": 103.56619033310562,
+     "wall_s": 651.7939348751679
+    },
+    "oracle": {
+     "compile_s": 1.3459941241890192,
+     "seed_s": 30.274060582742095,
+     "mle_s": 115.48874999955297,
+     "wall_s": 657.456742208451
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "nlad-k0.1-p00-n10000-s1",
+   "name": "profile_jax2",
+   "mode": "mle_only",
+   "library": "v6",
+   "prepared_sha256": "7efe065d5b93a29dddaee20f3d4f09615044427f3dc45ce5eb1f013fb460de42",
+   "level": "mle_only",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+   ],
+   "port_cpu_s": 877.708121,
+   "oracle_cpu_s": 834.8538800000001,
+   "stage_timers": {
+    "port": {
+     "compile_s": 3.2160806246101856,
+     "seed_s": 11.164732166565955,
+     "mle_s": 917.8859977079555,
+     "wall_s": 932.2690197927877
+    },
+    "oracle": {
+     "compile_s": 2.0227068345993757,
+     "seed_s": 11.81592808291316,
+     "mle_s": 863.2174040824175,
+     "wall_s": 877.0573031250387
+    }
+   },
+   "in_scope": true,
+   "mechanisms": {
+    "inner_polish_improved": 0,
+    "inner_polish_solves": 0,
+    "bracket_bisect_nodes": 0,
+    "extent_z": false,
+    "basin_refit": false,
+    "dt_in_scope": true,
+    "hazard": false
+   }
+  },
+  {
+   "cohort_id": "hazard-k0.01-p04-c1-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "5a423d6cb34b5fc8f3c336a76c34345488a43b8f9251176f534a00d5fbfaa636",
+   "level": "run_fit",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)"
+   ],
+   "port_cpu_s": 1849.5267000000001,
+   "oracle_cpu_s": 1605.586223,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 2,
+    "inner_polish_solves": 86,
+    "bracket_bisect_nodes": 4,
+    "extent_z": true,
+    "basin_refit": true,
+    "dt_in_scope": false,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.255080542527139,
+     "seed_s": 34.352330666966736,
+     "mle_s": 7.954255999997258,
+     "wall_s": 1959.274955167435
+    },
+    "oracle": {
+     "compile_s": 0.927864583209157,
+     "seed_s": 22.795549917034805,
+     "mle_s": 6.029731375165284,
+     "wall_s": 1660.9981050007045
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "hazard-k0.01-p04-c1-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v5",
+   "prepared_sha256": "5a423d6cb34b5fc8f3c336a76c34345488a43b8f9251176f534a00d5fbfaa636",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)",
+    "CS-TIMING: the ClaimSet's wall_clock_seconds and cpu_seconds (top level; not in the view)",
+    "code_provenance (SUT location; not in the view)",
+    "diagnostics.code (SUT location)",
+    "sraging's own diagnostics, not ClaimSet fields (not compared): L_SR, assumptions, box_lsr, code, floor_report, leverage"
+   ],
+   "estimate_compared": true,
+   "fitresult_cpu_s": 51.40397100000018,
+   "port_cpu_s": 1849.5267000000001,
+   "oracle_cpu_s": 1605.586223,
+   "in_scope": false,
+   "mechanisms": {
+    "inner_polish_improved": 2,
+    "inner_polish_solves": 86,
+    "bracket_bisect_nodes": 4,
+    "extent_z": true,
+    "basin_refit": true,
+    "dt_in_scope": false,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 2.255080542527139,
+     "seed_s": 34.352330666966736,
+     "mle_s": 7.954255999997258,
+     "wall_s": 1959.274955167435
+    },
+    "oracle": {
+     "compile_s": 0.927864583209157,
+     "seed_s": 22.795549917034805,
+     "mle_s": 6.029731375165284,
+     "wall_s": 1660.9981050007045
+    }
+   },
+   "prepared_matches_record": true
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v6",
+   "prepared_sha256": "10f7b824f32fa58834b04647d6bc63281b53e378ca6922a6addb0cb52e319d46",
+   "level": "run_fit",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)"
+   ],
+   "port_cpu_s": 19653.940198,
+   "oracle_cpu_s": 18703.958948,
+   "in_scope": true,
+   "mechanisms": {
+    "inner_polish_improved": 2,
+    "inner_polish_solves": 28,
+    "bracket_bisect_nodes": 2,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": true,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 3.4116809172555804,
+     "seed_s": 13.479875084012747,
+     "mle_s": 225.62379579246044,
+     "wall_s": 20001.412578583695
+    },
+    "oracle": {
+     "compile_s": 1.7453527078032494,
+     "seed_s": 8.95557695813477,
+     "mle_s": 160.7951993336901,
+     "wall_s": 18797.930582375266
+    }
+   }
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "name": "profile_jax2",
+   "mode": "full",
+   "library": "v6",
+   "prepared_sha256": "10f7b824f32fa58834b04647d6bc63281b53e378ca6922a6addb0cb52e319d46",
+   "level": "fitresult",
+   "equal": true,
+   "diff_paths": [],
+   "n_diffs": 0,
+   "srk": [],
+   "excluded_keys": [
+    "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+    "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)",
+    "CS-TIMING: the ClaimSet's wall_clock_seconds and cpu_seconds (top level; not in the view)",
+    "code_provenance (SUT location; not in the view)",
+    "diagnostics.code (SUT location)",
+    "sraging's own diagnostics, not ClaimSet fields (not compared): L_SR, assumptions, box_lsr, code, floor_report, leverage"
+   ],
+   "estimate_compared": true,
+   "fitresult_cpu_s": 1493.7450869999957,
+   "port_cpu_s": 19653.940198,
+   "oracle_cpu_s": 18703.958948,
+   "in_scope": true,
+   "mechanisms": {
+    "inner_polish_improved": 2,
+    "inner_polish_solves": 28,
+    "bracket_bisect_nodes": 2,
+    "extent_z": true,
+    "basin_refit": false,
+    "dt_in_scope": true,
+    "hazard": false
+   },
+   "stage_timers": {
+    "port": {
+     "compile_s": 3.4116809172555804,
+     "seed_s": 13.479875084012747,
+     "mle_s": 225.62379579246044,
+     "wall_s": 20001.412578583695
+    },
+    "oracle": {
+     "compile_s": 1.7453527078032494,
+     "seed_s": 8.95557695813477,
+     "mle_s": 160.7951993336901,
+     "wall_s": 18797.930582375266
+    }
+   }
+  }
+ ],
+ "errors": [],
+ "differences": [],
+ "full_pair_in_scope_equal": true,
+ "prepared_not_the_records": [],
+ "excluded_keys": {
+  "run_fit": [
+   "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+   "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)"
+  ],
+  "fitresult": [
+   "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s",
+   "diagnostics.srk_sha: .root is a SUT-location key (handoff 7.2 'Any level'); .files compared file by file with the 18 sha256 tests/oracle/jax2_6884fc8 cites; absent on the port, whose run_fit drops the SRK fingerprint (one of the 10 guard deletions tools/port_jax2_101.py asserts)",
+   "CS-TIMING: the ClaimSet's wall_clock_seconds and cpu_seconds (top level; not in the view)",
+   "code_provenance (SUT location; not in the view)",
+   "diagnostics.code (SUT location)",
+   "sraging's own diagnostics, not ClaimSet fields (not compared): "
+  ],
+  "mle_only": [
+   "TIMING at any depth: wall_s, compile_s, seed_s, mle_s, cpu_s, refit_cpu_s, fit_wall_s"
+  ]
+ },
+ "cpu": "Apple M5 Pro",
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.1",
+  "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": "v6",
+  "manifest_sha256": null,
+  "panel_commit": "06f889509eb0549c8a444c7d78457fc20436147a"
+ }
+}

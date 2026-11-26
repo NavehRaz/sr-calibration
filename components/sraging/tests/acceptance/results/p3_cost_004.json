@@ -1,0 +1,358 @@
+{
+ "phase": "p3-cost",
+ "written_at": "2026-11-03T19:28:55Z",
+ "repo_head": "28ec2f2ad518a2ce946837e74dde16600ffac842",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 17265.159443855286,
+ "cpu_s": 17220.776307,
+ "status": "written",
+ "rows": [
+  {
+   "config": "out-of-table",
+   "parameter": "eta",
+   "sd": 0.2,
+   "n": 2000,
+   "gen1": {
+    "in_domain": false,
+    "reason": "gen-1 draws heterogeneity in xc only, not eta"
+   },
+   "langevin": {
+    "cpu_s": 142.28988900000002,
+    "ks_D": 0.011927051434262897,
+    "crit_95": 0.030365803134447145,
+    "verdict": "consistent at n",
+    "step_bias": {
+     "method": "coupled half-step rung",
+     "D_dt_vs_dt2": 0.0030000000000000027,
+     "se": 0.0008833476270998964,
+     "p_hat": 0.5,
+     "p_hat_source": "the conservative 1/2: no P1 cell for this configuration (gate C1)",
+     "bias_at_dt": 0.010242640687119296,
+     "n": 2000,
+     "bootstrap": 100,
+     "ks_D_half": 0.010926712284824808,
+     "p_value_half": 0.9686471902349157
+    },
+    "clean": true,
+    "warnings": [],
+    "t_max": 579.9585741505462
+   }
+  },
+  {
+   "config": "out-of-table",
+   "parameter": "eta",
+   "sd": 0.2,
+   "n": 20000,
+   "gen1": {
+    "in_domain": false,
+    "reason": "gen-1 draws heterogeneity in xc only, not eta"
+   },
+   "langevin": {
+    "cpu_s": 1341.1086380000002,
+    "ks_D": 0.0047065637446088715,
+    "crit_95": 0.009602510088513316,
+    "verdict": "consistent at n",
+    "step_bias": {
+     "method": "coupled half-step rung",
+     "D_dt_vs_dt2": 0.0008500000000000174,
+     "se": 0.0002303373678548581,
+     "p_hat": 0.5,
+     "p_hat_source": "the conservative 1/2: no P1 cell for this configuration (gate C1)",
+     "bias_at_dt": 0.0029020815280171907,
+     "n": 20000,
+     "bootstrap": 100,
+     "ks_D_half": 0.004709302635889978,
+     "p_value_half": 0.7649579516032011
+    },
+    "clean": true,
+    "warnings": [],
+    "t_max": 1349.4520307956066
+   }
+  },
+  {
+   "config": "out-of-table",
+   "parameter": "eta",
+   "sd": 0.2,
+   "n": 100000,
+   "gen1": {
+    "in_domain": false,
+    "reason": "gen-1 draws heterogeneity in xc only, not eta"
+   },
+   "langevin": {
+    "cpu_s": 6713.716834,
+    "ks_D": 0.001768404020025094,
+    "crit_95": 0.0042943730625086595,
+    "verdict": "consistent at n",
+    "step_bias": {
+     "method": "coupled half-step rung",
+     "D_dt_vs_dt2": 0.0005000000000000004,
+     "se": 0.00011776963474804323,
+     "p_hat": 0.5,
+     "p_hat_source": "the conservative 1/2: no P1 cell for this configuration (gate C1)",
+     "bias_at_dt": 0.0017071067811865494,
+     "n": 100000,
+     "bootstrap": 100,
+     "ks_D_half": 0.0014728193074591278,
+     "p_value_half": 0.9815487182755586
+    },
+    "clean": true,
+    "warnings": [],
+    "t_max": 1513.8568889338194
+   }
+  },
+  {
+   "config": "in-table",
+   "parameter": "xc",
+   "sd": 0.2,
+   "n": 2000,
+   "gen1": {
+    "in_domain": true,
+    "cpu_s": 690.2602049999987,
+    "grid_error": {
+     "lambda": 0.00015913163468519044,
+     "dlncv": 0.0002737864197522051,
+     "lambda_tolerance": 0.2,
+     "dlncv_bound": 0.005,
+     "reference_grid": {
+      "N": 12000,
+      "dt": 0.0001,
+      "tau_max": 30.0,
+      "Gtol": 1e-12,
+      "nstart": 20,
+      "K": 322
+     },
+     "source": "computed against the reference grid",
+     "accepted_n": 2000,
+     "caveats": [],
+     "caveat": null,
+     "n_beyond_cdf": 0,
+     "n_outside_het_nodes": 0,
+     "max_abs_S_plus_F_minus_1": 1.0295402308457824e-09
+    },
+    "caveats": []
+   },
+   "langevin": {
+    "cpu_s": 127.01594699999987,
+    "ks_D": 0.028186391327947757,
+    "crit_95": 0.030365803134447145,
+    "verdict": "consistent at n",
+    "step_bias": {
+     "method": "coupled half-step rung",
+     "D_dt_vs_dt2": 0.005500000000000005,
+     "se": 0.0015150757556817236,
+     "p_hat": 0.5,
+     "p_hat_source": "the conservative 1/2: no P1 cell for this configuration (gate C1)",
+     "bias_at_dt": 0.018778174593052043,
+     "n": 2000,
+     "bootstrap": 100,
+     "ks_D_half": 0.025186391327947755,
+     "p_value_half": 0.15542260697867538
+    },
+    "clean": true,
+    "warnings": [],
+    "t_max": 106.72691066983425
+   }
+  },
+  {
+   "config": "in-table",
+   "parameter": "xc",
+   "sd": 0.2,
+   "n": 20000,
+   "gen1": {
+    "in_domain": true,
+    "cpu_s": 691.1621770000002,
+    "grid_error": {
+     "lambda": 0.0016032996079676685,
+     "dlncv": 0.0002737864197522051,
+     "lambda_tolerance": 0.2,
+     "dlncv_bound": 0.0015811388300841897,
+     "reference_grid": {
+      "N": 12000,
+      "dt": 0.0001,
+      "tau_max": 30.0,
+      "Gtol": 1e-12,
+      "nstart": 20,
+      "K": 322
+     },
+     "source": "computed against the reference grid",
+     "accepted_n": 20000,
+     "caveats": [],
+     "caveat": null,
+     "n_beyond_cdf": 0,
+     "n_outside_het_nodes": 0,
+     "max_abs_S_plus_F_minus_1": 1.0295402308457824e-09
+    },
+    "caveats": []
+   },
+   "langevin": {
+    "cpu_s": 1253.850112,
+    "ks_D": 0.005646563469966892,
+    "crit_95": 0.009602510088513316,
+    "verdict": "consistent at n",
+    "step_bias": {
+     "method": "coupled half-step rung",
+     "D_dt_vs_dt2": 0.0012500000000000844,
+     "se": 0.000364024918671975,
+     "p_hat": 0.5,
+     "p_hat_source": "the conservative 1/2: no P1 cell for this configuration (gate C1)",
+     "bias_at_dt": 0.004267766952966658,
+     "n": 20000,
+     "bootstrap": 100,
+     "ks_D_half": 0.004995992040319197,
+     "p_value_half": 0.6983575569104028
+    },
+    "clean": true,
+    "warnings": [],
+    "t_max": 108.54353893655484
+   }
+  },
+  {
+   "config": "in-table",
+   "parameter": "xc",
+   "sd": 0.2,
+   "n": 100000,
+   "gen1": {
+    "in_domain": false,
+    "reason": "n = 100000 > gen-1's HET_N_CAP = 20000 for a heterogeneous cohort"
+   },
+   "langevin": {
+    "cpu_s": 6258.297962999999,
+    "ks_D": 0.0025150667603034416,
+    "crit_95": 0.0042943730625086595,
+    "verdict": "consistent at n",
+    "step_bias": {
+     "method": "coupled half-step rung",
+     "D_dt_vs_dt2": 0.0005999999999999894,
+     "se": 0.00012751941820836663,
+     "p_hat": 0.5,
+     "p_hat_source": "the conservative 1/2: no P1 cell for this configuration (gate C1)",
+     "bias_at_dt": 0.0020485281374238214,
+     "n": 100000,
+     "bootstrap": 100,
+     "ks_D_half": 0.0025579413017045027,
+     "p_value_half": 0.5288972949983447
+    },
+    "clean": true,
+    "warnings": [],
+    "t_max": 109.60323875880852
+   }
+  }
+ ],
+ "errors": [],
+ "boundary": {
+  "rule": "gen-1 inside its domain (xc or no heterogeneity, n <= HET_N_CAP, a valid CohortSpec); the Langevin outside it (Dg), with ENGINE_AUTO_LANGEVIN naming the reason",
+  "rows": [
+   {
+    "config": "out-of-table",
+    "n": 2000,
+    "engine": "langevin",
+    "reason": "gen-1 draws heterogeneity in xc only, not eta",
+    "cpu_gen1_s": null,
+    "cpu_langevin_s": 142.28988900000002
+   },
+   {
+    "config": "out-of-table",
+    "n": 20000,
+    "engine": "langevin",
+    "reason": "gen-1 draws heterogeneity in xc only, not eta",
+    "cpu_gen1_s": null,
+    "cpu_langevin_s": 1341.1086380000002
+   },
+   {
+    "config": "out-of-table",
+    "n": 100000,
+    "engine": "langevin",
+    "reason": "gen-1 draws heterogeneity in xc only, not eta",
+    "cpu_gen1_s": null,
+    "cpu_langevin_s": 6713.716834
+   },
+   {
+    "config": "in-table",
+    "n": 2000,
+    "engine": "gen-1",
+    "reason": "inside gen-1's domain",
+    "cpu_gen1_s": 690.2602049999987,
+    "cpu_langevin_s": 127.01594699999987
+   },
+   {
+    "config": "in-table",
+    "n": 20000,
+    "engine": "gen-1",
+    "reason": "inside gen-1's domain",
+    "cpu_gen1_s": 691.1621770000002,
+    "cpu_langevin_s": 1253.850112
+   },
+   {
+    "config": "in-table",
+    "n": 100000,
+    "engine": "langevin",
+    "reason": "n = 100000 > gen-1's HET_N_CAP = 20000 for a heterogeneous cohort",
+    "cpu_gen1_s": null,
+    "cpu_langevin_s": 6258.297962999999
+   }
+  ]
+ },
+ "config": {
+  "preset": "human",
+  "delta": 1.0,
+  "key": 3003,
+  "ns": [
+   2000,
+   20000,
+   100000
+  ],
+  "configs": [
+   [
+    "out-of-table",
+    "eta"
+   ],
+   [
+    "in-table",
+    "xc"
+   ]
+  ],
+  "sd": 0.2,
+  "source": "spec.md Clarifications 2026-10-30 (4075cd5); research R19"
+ },
+ "dt": 3.2407070515723174e-05,
+ "step_key": "human|het|clamp",
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {},
+ "naveh_ok_arg": {
+  "said": "2026-11-02: Raise P3's cap to 7 (Recommended)",
+  "cap_cpu_h": 7.0
+ },
+ "stop_rule": {
+  "projected_cpu_h": 5.4987298399367965,
+  "projected_from": "P1's human|het|clamp steps x ns per individual-step",
+  "cap_cpu_h": 7.0,
+  "cap_frozen_cpu_h": 3.0,
+  "naveh_ok": {
+   "phase": "p3-cost",
+   "cap_cpu_h": 7.0,
+   "said": "2026-11-02: Raise P3's cap to 7 (Recommended)"
+  },
+  "cpu_spent_h": 4.783544820277778,
+  "parent_cpu_s": 17220.761369,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

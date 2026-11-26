@@ -1,0 +1,31 @@
+{
+  "title": "sr-calibration: code, frozen calibrators, tests and benchmark for calibrating the saturating-removal model of aging from survival data",
+  "upload_type": "software",
+  "description": "Code, frozen calibrator versions, tests and benchmark data for the methods preprint \"Calibrating the saturating-removal model of aging from survival data: exact likelihood, identifiability and intervention effects\" (Raz, Mayo and Alon). The sraging package (exact Fokker-Planck likelihood, profile-likelihood calibrators J, H and W, leverage check, cohort generator), the calibrator versions the citing studies ran, the benchmark harness, and the preprint's scripts and number check. Each version is pinned in VERSIONS.toml and MANIFEST.lock.json. The data record (benchmark library, records, reports) is a separate, linked Zenodo record.",
+  "creators": [
+    {
+      "name": "Raz, Naveh",
+      "affiliation": "Weizmann Institute of Science"
+    },
+    {
+      "name": "Mayo, Avi",
+      "affiliation": "Weizmann Institute of Science"
+    },
+    {
+      "name": "Alon, Uri",
+      "affiliation": "Weizmann Institute of Science"
+    }
+  ],
+  "keywords": [
+    "aging",
+    "survival analysis",
+    "Fokker-Planck",
+    "saturating removal",
+    "profile likelihood",
+    "mortality",
+    "identifiability"
+  ],
+  "license": "BSD-3-Clause",
+  "related_identifiers": [],
+  "version": "0.1.0"
+}

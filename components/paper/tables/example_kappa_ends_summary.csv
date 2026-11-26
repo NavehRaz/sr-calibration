@@ -1,0 +1,14 @@
+key,value
+kappa_lo,0.001
+kappa_hi,300
+box_limited_lo,1
+box_limited_hi,1
+max_abs_dS,0.00979639
+hazard_ratio_min,0.951939
+hazard_ratio_max,2.05831
+hazard_from_day,45.7737
+n_ages,381
+mid_from_day,443.653
+mid_to_day,1183.07
+hazard_ratio_mid_min,0.951939
+hazard_ratio_mid_max,1.19903

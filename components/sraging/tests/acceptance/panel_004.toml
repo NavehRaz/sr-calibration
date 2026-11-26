@@ -1,0 +1,129 @@
+# Spec 004's freeze-H (tasks T041; data-model "freeze-H, panel_004.toml"; contracts/register-and-panel.md §2-§3;
+# contracts/acceptance.md; research R3, R8-R11): the heterogeneity panel, HR-1 to HR-5 with their constants and their
+# incomplete conditions (gate C2), the ladder, the guide, the cost factors, the reference and the heterogeneity caps.
+# Committed with Naveh's OK (naveh_ok_h, tasks T044-T045) after P0, hr2-noise and P5, before any heterogeneity
+# acceptance phase. From then on, a change to HR-1..HR-5's code in src/sraging/sampler_rules.py is named in the
+# results test's RULE_CHANGES. Constants the documents leave open are marked as proposals, for Naveh's decision (T044).
+
+naveh_ok_h = "2026-10-29: Freeze as written; the proposed subset picking, HR-3 start and profile, HR-3 sharp strata, and HR-4 cohort and W accepted as written (T044, AskUserQuestion)"
+
+[sources]   # research R9: read only after its sha256 matches; paths relative to code_5 (panel_004.DROPBOX)
+manifest_v6 = { path = "sr_calibration_tester/data/library/v6/manifest.json", sha256 = "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f" }
+ids = { path = "tests/acceptance/panel_004_ids.tsv", sha256 = "23328a8e2bfe6ed5425291a8dd028eb93251692a51440ac3c34fa55ce0dfcdfd" }   # written by tools/panel_004.py build
+
+[panel]   # research R9; FR-005; Naveh 2026-10-29 (40 cohorts x 4 sd, about 160 cells)
+cells_sd = [0.1, 0.2, 0.3, 0.5]
+strata = { "syn-broad" = 4, "syn-mid" = 4, "syn-sharp" = 4, "real-lo-r" = 6, "real-hi-r" = 6, "human-10k" = 4, "human-25k" = 4, "human-100k" = 4, "realfull" = 4 }
+candidates = "v6's heterogeneous cohorts (het_var 0.2, xc): arm het (synthetic by its cv class; real non-human, split at the median r into real-lo-r and real-hi-r; human life tables Denmark, Sweden and combined human by n) and arm realfull"
+per_cohort = "CV_c: one homogeneous SR march at the truth (no hazard; the model's L, then N 300, dt 1e-3, tau_max 8); CV_data: the recorded death ages (before any window); r = sqrt(CV_data^2 - CV_c^2) / CV_c at sd 0.2"
+selection = "within a stratum, sort by r, cut into k equal-count bins (np.array_split), take from each bin the smallest sha256(cohort_id + 'spec004')"
+held_out = ["het-real-Guiniea_pig_VC-c0-s0", "het-real-German_Shepherd_vetCompass-c0-s0", "het-real-Jack_Russell_vetCompass-c0-s0", "het-real-cats_vp_F-c0-s0", "het-k0.01-p03-c1-s0", "het-k0.01-p01-c1-s0", "het-k0.01-p00-c1-s0", "het-real-combined_human_F-c2-s0", "het-real-Sweden_F_1910_homo-c0-s0"]   # the het-tradeoff pilot's 9, on which the guide was fitted
+
+[subsets]   # roles in panel_004_ids.tsv; sizes from research R9, R11 and spec HR-3
+"subset-hr3" = 12          # HR-3: about 12 cohorts x sd {0.2, 0.3}
+"subset-composite" = 8     # the reference's composite cross-check: 8 cells, 2 per sd, human and sharp first
+"subset-hr2" = 6           # HR-2: six cohorts
+# DECIDED (Naveh 2026-10-29, T044; proposed at T041, not in the docs): the members. Within each stratum the panel cohorts are taken in order of
+# sha256(cohort_id + "spec004:" + subset). subset-hr3: the first of every stratum, then the second of syn-sharp,
+# real-hi-r and human-100k (where most nodes are needed and the never-raise plant must fail). subset-composite@sd: per
+# sd in [0.1, 0.2, 0.3, 0.5], the next of the 12 human cohorts and the next syn-sharp cohort. subset-hr2: the first of
+# syn-broad, syn-mid, syn-sharp, real-lo-r, real-hi-r and human-10k (broad to human at a bounded cost).
+rule = "hash order within stratum; hr3: first per stratum + second of syn-sharp, real-hi-r, human-100k; composite@sd: next human + next syn-sharp per sd; hr2: first of syn-broad, syn-mid, syn-sharp, real-lo-r, real-hi-r, human-10k"
+
+[ladder]   # research R3; Naveh 2026-10-29 (threshold, cap); sraging.engine.mixture
+rungs = [5, 8, 11, 17, 25, 38, 57, 85, 128, 192]
+threshold = 0.05
+cap = 192
+check = "auto: |l(M_j) - l(M_j+1)| < threshold returns l(M_j); at the cap the pair (128, 192) still failing returns l(192) with HET_UNCONVERGED, never clean, no fallback. A fixed M is checked against the smallest rung >= ceil(1.5 M) (M <= 128)"
+
+[guide]   # research R3 (OD-10 (a)): the start rung only, so only the cost
+c_r = 10.0
+g = "1 for n <= 10,000; (n / 10,000)^0.3 above"
+g_n0 = 10000
+g_exponent = 0.3
+r = "sqrt(CV_mix^2 - CV_c^2) / CV_c from the model at (theta, sd): CV_c from the homogeneous march, CV_mix from the 5-node rule"
+start = "the smallest rung >= c_r r g(n)"
+
+[cost]   # research R8; pilot P0 (tasks T039, 59a7b05); sraging.engine.cost reads f_value, f_grad, source, sha256
+f_value = 0.8698286312227221           # the median over P0's 6 cohorts; range 0.722-0.988
+f_grad = 3.131775211895061             # the median; range 2.633-3.541
+noise_log_sd = 0.0674753214617515      # the largest per-cohort sd of log CPU over 20 repeats (median 0.0134)
+compile_cpu_s = 2.257976000000003      # the median per evaluator, stated and measured apart
+per_node_cpu_s = { value = 0.009577306451612857, value_and_grad = 0.034673806451612665 }
+source = "tests/acceptance/results/p0_het_cost_004.json"
+sha256 = "c52c9ba036da20f3e5d058d2342af0d34b79920676f0d4d43cd631c88d41c053"
+
+[reference]   # research R9; OD-6 (a), Naveh 2026-10-29
+M_ref = 192
+M_check = 128
+valid_below = 0.01                     # a cell's reference is valid iff |l(128) - l(192)| < 0.01 nats
+composite = { order = 8, panels = [16, 32, 64, 128], agree = 1e-4, tol = 1e-3 }   # Gauss-Legendre panels on the truncated z-range, refined until two refinements agree to 1e-4; a cross-check missing 1e-3 nats fails the phase
+composite_cells = ["het-k0.1-p05-c0-s0@0.1", "het-real-Denmark_M_1890_homo-c0-s1@0.1", "het-k1-p00-c0-s1@0.2", "het-real-Denmark_M_1900_hetro-c0-s1@0.2", "het-k10-p05-c1-s1@0.3", "het-real-Denmark_M_1890_homo-c1-s1@0.3", "het-k0.316-p05-c0-s1@0.5", "het-real-Denmark_M_1890_homo-c2-s1@0.5"]   # the subset-composite cells (panel_004_ids.tsv roles)
+sha256 = "f155edc0e611b8e86a361b96532d228adc26695e6cf1a465eb38f03d0510ab46"                            # results/reference_004.json, pinned after the reference phase (tasks T047)
+
+[rules.HR-1]   # contracts/register-and-panel.md §3; research R10; spec HR-1
+target = 0.1                           # nats: a converged cell's |l - ref| >= target is a false pass
+threshold = 0.05                       # the check's threshold: the plant's check fires at |l(11) - l(17)| >= it
+sd_strata = 0.3
+plant = "M = 11 with the check off; its check value |l(11) - l(17)|"
+pass = "0 false passes (check passes and |l - ref| >= 0.1) among valid cells, and the plant's check fires on every valid cell where |l(11) - ref| > 0.1; reports N valid, N reference-unconverged, N unconverged (M = 192 and the last check) and the one-sided 95 % Clopper-Pearson bound"
+incomplete = ["a stratum has no valid cell at sd <= 0.3", "no valid cell has M = 11 more than 0.1 off (the plant is not informative)", "no cell"]
+fr009 = { K = 161, sd = 0.2, tol = 0.1, pass = "gen-1's 161-node law (generator._het_nodes) within 0.1 nats of the reference on every panel cohort", incomplete = "a reference invalid, or no cohort" }
+
+[rules.HR-2]   # research R11; hr2-noise (tasks T040, fd36316)
+h = 0.0001                             # the noise pilot's h with the smallest floor (1.75 / 0.060 / 0.37 at 1e-3 / 1e-4 / 1e-5)
+tol = 0.6012549647130072               # 10 x the floor at h
+tol_factor = 10.0
+source = "tests/acceptance/results/hr2_noise_004.json"
+sha256 = "078697e608961297b621a4ec51328c93dcaca9483d8ce0421f524405221d3bce"
+grid = "sd in [0.30, 0.40] by 0.005, plus 0.19-0.21 by 0.005 (D-116's registered point), on the 6 subset-hr2 cohorts at fixed theta"
+M_at = 0.35                            # each cohort at its checked M at sd 0.35, held fixed across the grid
+plant = "normal_frac_sd at M = 5 across v* = 0.35002 (z = -2.857 drops); fallback M = 3 across v* = 0.57735; informative iff its jump > 10 x tol (hr2-noise: 15.9 and 153.8 nats on Jack Russell, both informative)"
+plant_factor = 10.0
+pass = "every |CD - dl/dsd| <= tol and the plant's jump is detected (|CD - grad| > tol across its crossing)"
+incomplete = ["neither the M = 5 plant nor the M = 3 fallback is informative", "no (cohort, sd) cell"]
+
+[rules.HR-3]   # research R7, R10; spec HR-3; gate C4
+threshold = 0.05
+cap = 10.0
+sds = [0.2, 0.3]
+pass = "every |l_adaptive - l_full| < 0.05 at a common M (the larger final M), maximisations and profile points alike; the CPU saving is claimed iff the upper 95 % bound of the mean paired log(cpu_adaptive / cpu_full) is < 0"
+plant = "an adaptive run that never raises M (phase A only, at M_low): it must exceed 0.05 on the sharp cells"
+incomplete = ["the never-raise plant does not exceed 0.05 on every sharp cell", "a pair lacks a checked final value", "no pair"]
+capped = "the run reaches its cap (10 CPU-h less hr3-pilot's)"
+start = { eta = 1.5 }                   # DECIDED (Naveh 2026-10-29, T044; proposed at T041, not in the docs): each maximisation starts at the truth with eta x 1.5, spec 002's T1 theta rule's first move, so phase A has distance to cover
+profile = { parameter = "epsilon", factors = [0.8, 1.25] }   # DECIDED (Naveh 2026-10-29, T044; proposed at T041, not in the docs): 2 profile points per pair, epsilon held at the full arm's theta-hat x 0.8 and x 1.25 (about +-0.1 dex), the contract's own example parameter
+sharp_strata = ["syn-sharp", "human-10k", "human-25k", "human-100k"]   # DECIDED (Naveh 2026-10-29, T044; proposed at T041, not in the docs): the sharp cells are the synthetic sharp and human strata, where M = 11 is 2-138 nats off (het-tradeoff NOTE §2)
+
+[rules.HR-4]   # research R6; spec HR-4; FR-007
+W = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+M = [21, 31, 64]
+pass = "value and gradient bytes equal to in-process for every W and M; the plant (the M mod W remainder dropped) differs on every cell where it drops a node; a wall-time speedup at stated_W is claimed iff the upper 95 % bound of the paired log(wall_pool / wall_serial) is < 0"
+incomplete = ["no cell where the plant drops a node", "no byte comparison"]
+cohort = "het-real-Denmark_M_1900_hetro-c2-s0"   # DECIDED (Naveh 2026-10-29, T044; proposed at T041, not in the docs): subset-hr3's human-10k cohort, a human life table at n = 10,000, so the bytes and walls carry real node costs and transfer sizes at a bounded price
+stated_W = 5                           # DECIDED (Naveh 2026-10-29, T044; proposed at T041, not in the docs): this Mac's 5 performance cores, past which research R6 expects the wall gain to flatten
+
+[rules.HR-5]   # research R8, R10; OD-5 (a), Naveh 2026-10-29
+band = [0.5, 2.0]                      # measured / stated per cell
+share = 0.95                           # of the cells inside the band
+median_band = [0.8, 1.25]
+plant = "an M-blind predictor (cost.blind: every statement at M = 11) must fail the rule"
+pass = "at least 95 % of hr1's cells have measured / stated CPU in [0.5, 2] and the median ratio is in [0.8, 1.25]; the M-blind predictor fails"
+incomplete = ["the M-blind predictor passes too (the plant is not informative)", "no cell"]
+
+[caps]   # CPU-h; contracts/acceptance.md (SR); tasks T041 (the small caps) and T051 (hr3-pilot)
+"p0-het-cost" = 1.0                     # a pilot's: copied for the record (tools/acceptance_004.py PILOT_CAPS)
+"p5-inventory" = 0.1
+"hr2-noise" = 0.2
+panel = 0.1
+reference = 2.0                         # shared by reference, hr1 and hr5 (acceptance_004.CAP_SHARED)
+hr2 = 0.5
+"hr3-pilot" = 1.0                       # tasks T051: counted against hr3's 10
+hr3 = 10.0                              # after its 2-pair pilot; less the pilot's CPU
+hr4 = 1.0
+d401 = 0.5
+
+[[naveh_ok_cap]]   # SR 4 (tasks T052): hr3-pilot capped at 1.04 CPU-h on its sharp cell and projected hr3 at 24.9 CPU-h (4069a5c)
+phase = "hr3"
+cap_cpu_h = 30.0
+said = "2026-10-29: Cap 30, run as frozen (Recommended): hr3's own run up to 30 CPU-h, from the capped pilot's one-cell projection; all 24 cells, about 25-30 h on one core"

@@ -1,0 +1,409 @@
+{
+ "phase": "d401",
+ "written_at": "2026-10-29T15:55:11Z",
+ "repo_head": "a0f100908270bd03571c712cb663b8c4c9a1d72c",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_004.toml": "3c935c1419dabe2ea4b74727301deb3afe8e8eb0",
+  "tests/acceptance/panel_004_ids.tsv": "c9cb9ef085cbf4129cdc9095d996c82f7385e57c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 31.048076152801514,
+ "cpu_s": 36.185153,
+ "status": "written",
+ "cohorts": [
+  {
+   "cohort_id": "het-k0.01-p00-c0-s0",
+   "n": 1000,
+   "het": [
+    "xc",
+    0.2
+   ],
+   "rows": [
+    {
+     "theta": "truth",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -3854.862157126747,
+     "ll_truncated_normal": -3842.4090375120063,
+     "dloglik": 12.4531196147409,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x1.5",
+     "params": {
+      "eta": 0.00031881415465854416,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -22033.71902387609,
+     "ll_truncated_normal": -6878.0618993854805,
+     "dloglik": 15155.657124490608,
+     "M_used": 38,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "beta x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.0015,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -3878.438506863957,
+     "ll_truncated_normal": -3866.8340401418504,
+     "dloglik": 11.604466722106736,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "epsilon x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 5.97160755830246e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -3842.487851560444,
+     "ll_truncated_normal": -3840.4845049678047,
+     "dloglik": 2.0033465926394456,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x10",
+     "params": {
+      "eta": 0.002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -700000.0,
+     "ll_truncated_normal": -700000.0,
+     "dloglik": 0.0,
+     "M_used": 57,
+     "verdict": "converged",
+     "clean": true
+    }
+   ]
+  },
+  {
+   "cohort_id": "het-k0.01-p00-c0-s1",
+   "n": 1000,
+   "het": [
+    "xc",
+    0.2
+   ],
+   "rows": [
+    {
+     "theta": "truth",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -3803.2767280487274,
+     "ll_truncated_normal": -3792.9719393224145,
+     "dloglik": 10.304788726312836,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x1.5",
+     "params": {
+      "eta": 0.00031881415465854416,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -25693.569123665417,
+     "ll_truncated_normal": -7171.2550992289725,
+     "dloglik": 18522.314024436444,
+     "M_used": 38,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "beta x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.0015,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -3814.662232704118,
+     "ll_truncated_normal": -3798.842143305049,
+     "dloglik": 15.820089399069275,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "epsilon x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 5.97160755830246e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -3796.92813547443,
+     "ll_truncated_normal": -3796.8083864213104,
+     "dloglik": 0.11974905311944894,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x10",
+     "params": {
+      "eta": 0.002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -700000.0,
+     "ll_truncated_normal": -700000.0,
+     "dloglik": 0.0,
+     "M_used": 57,
+     "verdict": "converged",
+     "clean": true
+    }
+   ]
+  },
+  {
+   "cohort_id": "het-k0.01-p00-c1-s0",
+   "n": 10000,
+   "het": [
+    "xc",
+    0.2
+   ],
+   "rows": [
+    {
+     "theta": "truth",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -38177.423824890706,
+     "ll_truncated_normal": -38016.61073799718,
+     "dloglik": 160.8130868935259,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x1.5",
+     "params": {
+      "eta": 0.00031881415465854416,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -265569.4756462958,
+     "ll_truncated_normal": -69300.94705786314,
+     "dloglik": 196268.52858843267,
+     "M_used": 38,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "beta x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.0015,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -38350.5891156531,
+     "ll_truncated_normal": -38205.162150333425,
+     "dloglik": 145.42696531967522,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "epsilon x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 5.97160755830246e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -38075.62893509852,
+     "ll_truncated_normal": -38032.5915854373,
+     "dloglik": 43.03734966121556,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x10",
+     "params": {
+      "eta": 0.002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -7000000.0,
+     "ll_truncated_normal": -7000000.0,
+     "dloglik": 0.0,
+     "M_used": 57,
+     "verdict": "converged",
+     "clean": true
+    }
+   ]
+  },
+  {
+   "cohort_id": "het-k0.01-p00-c1-s1",
+   "n": 10000,
+   "het": [
+    "xc",
+    0.2
+   ],
+   "rows": [
+    {
+     "theta": "truth",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -38119.78079898435,
+     "ll_truncated_normal": -37975.12517316805,
+     "dloglik": 144.65562581629638,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x1.5",
+     "params": {
+      "eta": 0.00031881415465854416,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -205040.34994242864,
+     "ll_truncated_normal": -68941.8178249452,
+     "dloglik": 136098.53211748344,
+     "M_used": 38,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "beta x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.0015,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -38329.34732558981,
+     "ll_truncated_normal": -38178.887882640745,
+     "dloglik": 150.45944294906803,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "epsilon x1.5",
+     "params": {
+      "eta": 0.0002125427697723628,
+      "beta": 0.001,
+      "epsilon": 5.97160755830246e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -38027.28889693105,
+     "ll_truncated_normal": -37992.590032813256,
+     "dloglik": 34.69886411779589,
+     "M_used": 25,
+     "verdict": "converged",
+     "clean": true
+    },
+    {
+     "theta": "eta x10",
+     "params": {
+      "eta": 0.002125427697723628,
+      "beta": 0.001,
+      "epsilon": 3.9810717055349735e-05,
+      "kappa": 0.01
+     },
+     "ll_normal_frac_sd": -7000000.0,
+     "ll_truncated_normal": -7000000.0,
+     "dloglik": 0.0,
+     "M_used": 57,
+     "verdict": "converged",
+     "clean": true
+    }
+   ]
+  }
+ ],
+ "max_abs_dloglik": 196268.52858843267,
+ "definition_old": {
+  "name": "normal_frac_sd",
+  "v": 0.2,
+  "M": 7
+ },
+ "definition_new": {
+  "name": "truncated_normal",
+  "sd": 0.2,
+  "M": "auto"
+ },
+ "cap": {
+  "key": "d401",
+  "frozen_cpu_h": 0.5,
+  "spent_by": {},
+  "left_cpu_h": 0.5
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/panel_004.toml": "c5f36a55ad8973409287dd4f7b0dbb717a537e9ecdcb877c89b20915f80077a3",
+  "tests/acceptance/panel_004_ids.tsv": "23328a8e2bfe6ed5425291a8dd028eb93251692a51440ac3c34fa55ce0dfcdfd"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.015605968799283108,
+  "projected_from": "tests/acceptance/results/p0_het_cost_004.json per_node_cpu_s at M ~ 64",
+  "cap_cpu_h": 0.5,
+  "cap_frozen_cpu_h": 0.5,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.010033273611111112,
+  "parent_cpu_s": 36.119802,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

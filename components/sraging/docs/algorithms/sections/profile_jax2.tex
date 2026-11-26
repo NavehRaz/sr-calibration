@@ -1,0 +1,255 @@
+% Section for specs/003-calibrator (T046). Paths are relative to src/sraging/ unless they start with tests/ or tools/.
+\section{The successor calibrator (\texttt{profile\_jax2}) and the claims layer}\label{sec:pj}
+
+\subsection{Overview}\label{sec:pj-overview}
+
+\code{profile_jax2} and \code{profile_jax2_h} 1.0.0 are the tester's successor to v0.3.3, \code{mle_profile_jax2}
+and \code{mle_profile_jax2_h} at \code{sr_calibration_tester_jax2} commit \code{3bc5775}, ported verbatim into
+\code{compat/jax2} \src{compat/jax2/VERBATIM.toml}. \code{profile_v033} stays the default; the switch is spec 003b's.
+On top of them sits a claims layer \src{claims/}: a claim on each combination of constitution X (v1.1.0), new
+shapes and labels for weakly determined quantities, and $L_{\rm SR}$.
+
+\paragraph{What jax2 changes against v0.3.3.} Each difference is a register entry (D-201 to D-215) with its impact
+source and a regression test \src{tests/unit/test_asis_defects.py}:
+\begin{itemize}[nosep]
+  \item fix B: an early death's mass from the absorbed mass $F$ (D-201; the same formula as D-004 without a
+    hazard), and exact-time densities from $F$ (D-202);
+  \item the basin re-fit: a profile node that beats $\hat\theta$ by more than $\chi^2_1(0.95)/2$ restarts the MLE
+    (D-203); the Nelder--Mead fallback is v0.3.3's (D-204);
+  \item the censor-tie relabel, which fires only when every censored record shares one age, the maximum (D-205; so
+    D-006's bias stays live elsewhere, and CENSOR\_TIE still warns there);
+  \item self-consistency widening: each claim becomes its union with the evaluated points within half the threshold
+    of the best (D-206);
+  \item the N rule ($N=900\cdot2^k$, cap 3600; D-207), a graded early mesh (D-208), a floored $\Delta t$ ceiling
+    (D-209), and an exception policy fixed to Phase C's \code{SRB_STRICT=1} (D-210);
+  \item \code{_h}: a constant external hazard fitted as a nuisance, never claimed (D-211).
+\end{itemize}
+Where jax2's arithmetic differs from the spec 002 engine (the hazard bracket, $-700$ past the march's stop, the mesh
+start and the window floor) the difference is recorded, not reconciled (D-212 to D-214).
+
+\paragraph{What 1.0.0's claims are, and are not.} The benchmark's ratification of 1.0.0 (2026-10-08) lists items a
+port must state; the port changes none of them, and the README states them to users (Naveh, 2026-10-08; numbers,
+sources and sha256 in \src{specs/003-calibrator/review/evidence/jax2_reference_notes.json}):
+\begin{itemize}[nosep]
+  \item the 95\,\% intervals under-cover with the model right: on valid pure-arm cohorts the closed $\eta$ intervals
+    covered the truth 0.892 of the time (415/465) and $\eps$ 0.909 (431/474), against v0.3.3's 0.884 and 0.890;
+  \item their ends run narrow: on a selected set of 17 cohorts every end 1.0.1 moved was too narrow under 1.0.0, by
+    up to 0.11 dex;
+  \item $\kappa$'s bounds are not calibrated: one-sided $\kappa$ bounds covered the truth 0.402 of the time (190/473;
+    v0.3.3 0.409), nominal 0.95;
+  \item a human $\eta$ or $\eps$ upper end set at $\beta$'s box edge ($10^3$) is box-conditional and flips open or
+    closed across machines (27 such records under \code{profile_jax2}, 19 under \code{_h}); claims differ between
+    the Mac and the cluster on 17 of 17 cohorts compared, and 3 of 4 human records change shape;
+  \item the censor-tie relabel (D-205) changes how the data are read; it is what lifts $\eta$'s closed coverage on
+    the censor arm from 0.634 to 0.912, and the fit's \code{mechanisms} line counts the rows it relabelled;
+  \item \code{profile_jax2} is misspecified on external deaths and on a fit window: use \code{_h} for external
+    deaths; on the window arm its closed $\eta$ coverage is 0.533 (v0.3.3 0.528). The benchmark's \code{_h} models a
+    window; sraging refuses windows;
+  \item first-bin deaths are recorded at age 0, not $\delta/2$ (AGE0\_DEATHS checks it; the benchmark's library
+    records them so from v5).
+\end{itemize}
+
+\subsection{The port and its proof}\label{sec:pj-port}
+
+\code{tools/port_jax2.py} copies source text out of the frozen snapshot \src{tests/oracle/jax2_3bc5775} by AST
+position and declares every edit; \code{tests/unit/test_verbatim.py} applies the declared edits to the snapshot's
+AST and requires equality with the port, and fails on planted one-token changes. The edits: import rewrites to
+\code{compat.v033}'s hash-equal SRK subsets and a new Makeham subset; \code{PJRT_NPROC} made explicit; the
+\code{SRB_STRICT} read fixed to Phase C's value; the tester's deployment guards (sibling loader, version lock,
+\code{srk_sha}) deleted, their job done by the verbatim test and the snapshot's \code{VERSION_LOCK.json} check.
+The registered names' class constants are ported as data with their inheritance \src{compat/jax2/settings.py}.
+
+\paragraph{The archive, without editing the port.} The estimator's objective and its memo are local to \code{fit}.
+\code{calibrators/profile_jax2.py:capture_objectives} subclasses \code{_Objective} for the duration of a fit to
+record each instance; the archive is read with the port's own \code{_sc_archive}. Each profile's final nodes are
+captured the same way, by wrapping \code{_repair} (output unchanged); jax2 stores a node's free coordinates only,
+so the capture rebuilds the full $z$ as the port's \code{_full_points} does, and since jax2 re-runs \code{_repair}
+after any polish improvement the last capture is final. A slow test fits the same cohort with and
+without the captures and requires identical results, claims and widening records (timing leaves excluded as the
+tester's own identity comparison excludes them).
+
+\subsection{Combination claims}\label{sec:pj-combos}
+
+The combinations, with $\bar r=\beta\bigl(1-\kappa\ln(1+1/\kappa)\bigr)$ (which already contains $\beta$), are
+$\eta/\eps$, $\bar r/\eta$, $\sqrt\eta/\eps$, $\beta/(\eta(\kappa+1))$, $\bar r$ and $\beta/(1+\kappa)$ \src{claims/combinations.py}.
+Their order is frozen by measurement (FR-016): the lead group is the combinations invariant on the scaling ridge
+$(\eta,\beta,\eps)\to\lambda(\eta,\beta,\eps)$ by construction whose median spread along the stored kfix
+$\kappa$-slices is $\le0.05$ dex on the validity-valid panel; the rest follow by that spread
+\src{tools/acceptance_003.py:phase_order}.
+
+\paragraph{The walker} \src{claims/walker.py}. Each node maximises the port's log-likelihood subject to
+$\log g(z)=c$ inside the original rectangular box: SLSQP with the box as bounds and one equality constraint, the
+port's \code{nll_grad} for values and gradients, so every point joins the fit's archive. Four of the six
+combinations make the box a value-dependent interval on one coordinate; $\bar r/\eta$ and $\beta/(\eta(\kappa+1))$
+couple $\eta$ and $\kappa$, which no box expresses, hence the constrained solver. The walk copies jax2's defences
+against false caps:
+\begin{itemize}[nosep]
+  \item the centre node is re-solved at $g(\hat\theta)$ from every start, so a stale $\hat\theta$ does not anchor it;
+  \item its step rule (0.05 dex first, $\times3$ or $\times2$, at most 2 dex) and jump rejection (4 nats); at the
+    minimum step the jumped node is kept, so the profile crosses at a cliff rather than reading open;
+  \item stops at deviance 10, at the box image, after 24 nodes, and, on the lower side of a combination containing
+    $\beta$, once a node's $\beta$ sits at its floor: the combination is then consistent with no removal, and going
+    lower only forces $\eta$ up or $\kappa$ to its cap, so the claim is $[0,\text{cap}]$; and, past the threshold,
+    once its last 3 nodes span less than 0.01 dex (``stalled''; Naveh, 2026-10-08): the crossing is then bracketed
+    at SC-004's resolution. The step rule can crawl when solves past the edge keep failing (each rejection divides
+    the step by 3); on the ITP example the lower side of $\bar r/\eta$ ran to the 24-node limit (at \code{2306641}),
+    and the stop cut the lead pair from 49,825 to 26,726 evaluations with the claims unchanged
+    \src{examples/results/itp_c2016_het3_control_female_jax2.json}. jax2's own \code{_walk_side} crawls the
+    same way (272 of 7,846 final-node profiles have $\ge8$ nodes within 0.01 dex) and is not changed upstream;
+  \item mid-walk starts from the previous node, $\hat\theta$, and, for the combinations the scaling ridge moves
+    ($\sqrt\eta/\eps$, $\bar r$, $\beta/(1+\kappa)$), the previous node carried along the ridge by the step;
+  \item jax2's edge polish: the first node at or past the threshold is re-solved from every start (the seed, the
+    $\kappa$ corners of $\hat\theta$ and of the node, the h starts, the neighbours, ridge starts at $\pm1$ dex, archive
+    points near the node); if it falls inside, the polish moves outward (at most 12 nodes) and walks on once past the
+    last node; the node just inside each edge is re-solved too (\code{profile_ci} interpolates between the two);
+  \item monotonicity repair.
+\end{itemize}
+Walker step 1's archive check found 6 of 183 ends contradicted by points the fit and the walks had already evaluated
+(at \code{6ceb692}); refits traced them to three mechanisms, and four defences were added (Naveh, 2026-10-06):
+\begin{itemize}[nosep]
+  \item for $\eta/\eps$ and $\sqrt\eta/\eps$, whose constraint leaves $\beta$ free, the centre and every polished node
+    also start from $\beta$ spread over its box (6 values): three $\sqrt\eta/\eps$ lower ends were 1.1--1.2 dex too
+    narrow, the inside set on a branch at $\beta\approx10$--$17$, $\kappa\approx160$--$300$, while $\hat\beta$ was
+    $10^{-9}$--$10^{-8}$ (deviance 0.07--0.16 just 0.01 dex past the end);
+  \item before the lower end of a combination containing $\beta$ is closed, the best fit with $\beta$ at its floor is
+    found; inside the threshold, it joins the profile and the side reads open: an $\bar r$ walk had stopped at a solver
+    cliff at 0.041 while $\beta$'s floor sat at deviance 1.7;
+  \item each end's crossing is bisected to 0.01 dex: two ends had been interpolated 0.033 and 0.16 dex short;
+  \item a final pass re-walks any side an archived point contradicts (beyond an end by more than 0.01 dex inside the
+    threshold, or above the reference), from the contradicting points, while the archive grows (at most 3 rounds);
+    the lead pair is reconciled before the other four walk, so \code{"all"} still leaves the default claims as they
+    are. Every walk starts from the archive of every captured objective.
+\end{itemize}
+The archive check is then this pass's convergence check, and the brute force (walker 2) the independent test.
+One deviance reference serves the polish, the repair and the interval: the profile's own maximum, at least the
+fit's log-likelihood. The interval is the port's \code{profile_ci}.
+
+\paragraph{Which combinations a fit computes.} By default the frozen lead group, $\eta/\eps$ and $\bar r/\eta$;
+\code{combinations="all"} (\code{--combinations all}) adds the other four, and \code{False} none (Naveh,
+2026-10-06). Walker step 1 measured the cost on the 20 walker cohorts, with the defences above and the stall stop
+(\code{a9727f4}): all six walks a median $7.5\times$ the fit's own objective evaluations ($6.6\times$ its CPU, range
+$2.5$--$13.1\times$), the lead group $2.3\times$ (range $0.61$--$4.25\times$; Naveh accepted it above the planned $2\times$,
+2026-10-07); before the defences ($6.4\times$ and $1.8\times$) the walks were cheaper and wrong on 6 of 183 ends
+\src{tests/acceptance/results/walker_step1_003.json}. The lead walks run first, and the lead claims are widened over
+the archive as it stands when they end, so \code{"all"} adds four claims and never changes the default two; a later
+walk's point beyond a lead end is reported (\code{combination_claims_contradicted}), as the walks' points are for the
+per-parameter claims. All six are truth-scored before any ships.
+
+\paragraph{Widening and the claim.} The claim is the port's one-quantity mapping (\code{h_claim_kwargs}) with
+$g$'s box image as its box; it is widened by the port's own \code{sc_extents} and \code{sc_widen_claim} over the
+whole archive with a $\log g$ column appended \src{claims/widening.py}. If a walk finds a point more than 1.92 nats
+above $\hat\theta$, $\hat\theta$ and the per-parameter claims stay as the port gives them; the point joins the
+archive and BASIN\_GAIN fires on the archive gap (FR-017).
+
+\subsection{Shapes, labels and $L_{\rm SR}$}\label{sec:pj-shapes}
+
+\src{claims/shapes.py}, \src{claims/lsr.py}.
+\begin{itemize}[nosep]
+  \item \textbf{open above: box-limited}: at the node or archive point that sets an upper endpoint, some
+    coordinate (nuisances included) lies within 0.01 dex of its \emph{upper} box edge; scored apart from
+    data-determined bounds. Lower edges never count: $\beta$, $\kappa$ and $h$ at their floors are the model's own
+    limits (no removal, saturated removal, no external hazard), which a wider box cannot move;
+  \item \textbf{negligible}: an upper bound on $\bar r/\eta$, in $L_{\rm SR}$ units, below its regime's floor
+    $c/\sqrt{n_{\rm eff}}$ ($n_{\rm eff}\le2000$); the coefficients are the \S8b sweep's measured regime values
+    converted by $f(\kappa)$ \src{tools/acceptance_003.py:phase_floor}. The regime is chosen by
+    $\rho_\eps=\eps L_{\rm SR}$ alone ($\kappa$ is not identified when removal is negligible, and $c_{\bar r}$ barely
+    depends on it: mid 1.535, $\kappa$-large 1.556): the smallest coefficient among the regimes nearest any $\rho_\eps$
+    in the $\eps$ claim's range; refused below $\rho_\eps=0.1$, where no floor is measured, and never on a widened
+    upper side. A label on an upper bound, never a shape of its own;
+  \item \textbf{the $\kappa$ box on raw $\beta$} \src{labels.py}: every raw-$\beta$ upper end, of an upper bound or
+    a closed claim, reads ``set by the kappa box ($\kappa_{\max}=300$), not by the data''. The $\kappa_{\max}=3000$
+    study refitted 10 cohorts whose raw-$\beta$ cap sat at $\kappa_{\max}$ and 3 closed negative controls: every cap
+    and every control's upper end moved by about 1 dex, the controls' lower ends by at most 0.0014 dex, the caps on
+    $\bar r$ and $\bar r/\eta$ by at most 0.064 \src{tests/acceptance/results/kmax_003.json};
+  \item \textbf{saturated}: a $\kappa$ cap below $0.364/\sqrt{n_{\rm eff}}$;
+  \item \textbf{widened}: ``at least $X$; edge not found'', with the unwidened claim kept;
+  \item $L_{\rm SR}=\int_0^\infty S\,dt$ at $\hat\theta$ from the engine's curves, refined to $10^{-4}$ relative; the
+    box and each combination's box image are also reported in $L_{\rm SR}$ units (FR-021; the raw box's unit
+    dependence is D-215).
+\end{itemize}
+
+\subsection{Checks for jax2 fits}\label{sec:pj-checks}
+
+FLOORED\_DEATHS evaluates terms with the fit's own likelihood and grid (\code{floors.report_jax2}): candidates are
+deaths with mass below $10^{-12}$ or a term on the floor, refined by $\Delta t/4^k$, and, as a second group with its
+own refinement budget, every death whose fit-grid mass is below $10^{-6}$, since the category is defined on the
+refined mass; categories horizon, impossible and grid (no ``cancellation'' under fix B); each listed death shows its
+share of the log-likelihood, which is not its leverage: the leverage check is not run for jax2 fits until spec 003b. BASIN\_GAIN reads
+the archive gap; CENSOR\_TIE is quiet where the relabel applied and says why it did not elsewhere.
+
+\paragraph{A death the model calls impossible is fitted in, not floored.} Under fix B such a death has a finite term
+that pulls the fit. Added to the ITP example, one age-0 death moves $\hat\eta$, $\hat\beta$ and $\hat\eps$ by 1.38,
+1.64 and 1.58 dex until its mass is $2.3\times10^{-6}$, at a cost of 5.4 nats to the other rows; at that $\hat\theta$
+FLOORED\_DEATHS has nothing impossible to list. At the $\hat\theta$ fitted without it, the death is impossible (mass
+$4.6\times10^{-37}$, term $-83.7$ nats) \src{tests/acceptance/results/checks_003.json}. AGE0\_DEATHS, from the data
+alone, is what fires; no check measures the pull (the leverage check, spec 003b).
+
+\subsection{Verification}\label{sec:pj-verify}
+
+Each phase runs on a clean committed tree in a worktree, priced first; its pass rule is a function of the committed
+result file alone (\code{tests/acceptance/test_results_003.py}). Measured values are quoted only from those files.
+
+\begin{center}\small
+\begin{longtable}{@{}p{1.55cm}p{4.6cm}p{4.2cm}p{4.5cm}@{}}
+\toprule
+Phase & What is measured & Against & Result\\\midrule\endhead
+pilot & the panels and their prices (bytes, fits, walker, kmax, coverage, speed)
+  & ---
+  & \code{pilot_003.json}, \code{panel_003.toml} (at \code{17de2ec}); nothing passes or fails\\
+bytes & value, value $+$ gradient and grid bytes of both names, side by side in one process (SC-001)
+  & the frozen jax2 code \src{tests/oracle/jax2_3bc5775}; spec 001's 40 cohorts $\times$ 6 points, C.~elegans points, the floored $\Delta t$ ceiling binding
+  & \code{bytes_003.json}: pass; \code{jax2} $244/244$, \code{jax2_h} $488/488$ (two $h$ points)\\
+fits & $\hat\theta$, claims, log-likelihood and diagnostics of whole fits, and the mechanisms firing (SC-002)
+  & the frozen code on the quick tier and the named mechanism cohorts
+  & \code{fits_003.json}: $\hat\theta$ bytes, results, claims and widening identical on $66/66$ (33 cohorts $\times$ both names), mechanisms $6/6$; the tester's stored Mac fits equal on $18/18$ with zero diffs (\code{fits_stored_003.json}, R3d6/L5's NaN strings read as floats)\\
+adapter & the tester's scoring of the oracle's quick-tier records (SC-003)
+  & the tester's own functions
+  & \code{adapter_003.json}: pass; the port's ClaimSets valid and equal to the frozen method's, claim for claim, on the quick tier under both names; the tester's scores equal on every parameter and shape\\
+checks & AGE0\_DEATHS and FLOORED\_DEATHS on ITP $+$ age-0; CENSOR\_TIE on staggered censoring (SC-009, amended)
+  & the specified firing
+  & \code{checks_003.json}: pass. The age-0 death is impossible at the $\hat\theta$ fitted without it (mass $4.6\times10^{-37}$, $-83.7$ nats, 4.1\,\% of the log-likelihood) and absorbed by the fit with it (1.38--1.64 dex); CENSOR\_TIE fires on the recorded construction (no library cohort qualifies, 0 of 1,990)\\
+order & spread of each combination along the stored kfix $\kappa$-slices, validity-valid panel (FR-016)
+  & the pre-registered hypothesis order
+  & \code{order_003.json}: lead $\eta/\eps$, $\bar r/\eta$ (0.003, 0.026 dex), then $\sqrt\eta/\eps$, $\bar r$, $\beta/(\eta(\kappa+1))$, $\beta/(1+\kappa)$; frozen in \code{claims/order.json}\\
+floor & negligibility coefficients on $\bar r/(\eta L_{\rm SR})$ by regime, from the stored \S8b sweep (cited by md5)
+  & ---
+  & \code{neg_floor_003.json}: $c_{\bar r}$ sharp 0.790, mid 1.532, $\kappa$-large 1.555, diffuse 7.54 (a lower bound: censored)\\
+walker 1 & cost of the walks; the free archive check (no archived point $>0.01$ dex beyond an unwidened end at deviance $<3.84$)
+  & the fit's own evaluations and archive; 20 cohorts
+  & \code{walker_step1_003.json} (at \code{a9727f4}): all six $7.54\times$ the fit's evaluations ($6.63\times$ CPU), the lead group $2.30\times$ (accepted, 2026-10-07); archive check $182/182$. The first run (\code{6ceb692}: $6.4\times$, $1.8\times$, $177/183$) led to the defences above\\
+walker 2 & each stated end against a brute-force constrained maximisation (SC-004: $\le0.01$ dex narrower, $\le0.05$ dex wider)
+  & Sobol starts in the $\pm1.5$ dex cube and over the whole $\beta$ and $\kappa$ box, the scaling ridge, the $\kappa$ corners
+  & \code{walker_003.json} (at \code{01799ed}): pass, $182/182$ ends and $182/182$ archive checks; the inward point capped at the profile's maximum on 27 narrow ends (Naveh, 2026-10-08); 92\,\% of the starts converged. The thinnest margins are on one cohort whose profiles are flat at the threshold (outward deviance 3.843--3.855, inward 3.72--3.84)\\
+kmax & raw-$\beta$ caps refitted at $\kappa_{\max}=3000$ (SC-007, FR-025)
+  & the same cohorts at $\kappa_{\max}=300$; 3 closed negative controls
+  & \code{kmax_003.json}: box-limited, $10/10$ caps moved 0.998--1.013 dex; controls' upper ends 0.999 dex; $\bar r$ and $\bar r/\eta$ caps $\le0.064$ dex\\
+coverage & paired, cluster-robust coverage gap of each combination against the same fits' $\eta$ and $\eps$ claims (SC-005)
+  & the truth, medium tier
+  & \code{coverage_003.json} (at \code{d903979}; 215 fits on the cluster's AMD EPYC nodes, scored here): \textbf{fail}, recorded and attributed (Naveh, 2026-10-10; \code{decisions_003.toml [coverage_result]}). On censor, $\eta/\eps$ loses to $\eta$ ($z=-2.70$, 35 cells, 14 clusters) and to $\eps$ ($z=-2.74$, 38, 13): closed coverage $36/44$ (Wilson 0.68--0.90), every miss above the upper end. It is $14/15$ on the tester's valid cohorts and falls with its CV-bias statistic: $14/15$, $11/13$, $6/7$, $5/9$ for $2n(\Delta\ln{\rm CV})^2<0.1$, $0.1$--$1$, $1$--$10$, $\ge10$ (\code{coverage_cv_bias_003.json}). 23 of the 36 gaps are underpowered (mostly one-sided claims); 11 pass, both lead combinations on pure among them. On hazard (\code{profile_jax2_h}), $\eta/\eps$ nearly loses: to $\eta$ $z=-2.13$ on 29 cells, one under the floor of 30, so underpowered; to $\eps$ $z=-1.92$, the gap's 95\,\% interval reaching only $+0.002$. Its paired gap is negative on all three arms (pure $z=-1.02$, $-0.43$). Mac against cluster on 15 cohorts: no hit flips (\code{coverage_xhost_003.json})\\
+speed & port against the frozen code, 5 cohorts $\times$ 3 replicates (SC-010)
+  & the frozen code, alternating order; one process; 1-minute load $\le5$ at the start, $\le6$ after
+  & \code{speed_003.json} (at \code{38afa67}): pass; CPU ratio 0.9995, 95\,\% CI 0.996--1.003; cohorts 0.993--1.006 at 142--313 CPU-s per fit; loads 2.33 at the start, 3.23--4.31 after. The bar was 1.0 until the run; this Mac's load read 1.5--7.1 with its CPU about 90\,\% idle, so it is spec 002's (Naveh, 2026-10-10; \code{decisions_003.toml [speed_load]})\\
+unchanged & compat/v033, the engine and the oracles untouched; spec 001's claims re-run (SC-011)
+  & \code{main}; spec 001's oracle
+  & \code{claims-001_003.json} (at \code{d903979}): pass. No untouched path changed against \code{main}; 22 files of the fit path's import closure did, so spec 001's claims were re-run: values, gradients, arrays, $\hat\theta$, claims and warnings identical on $40/40$, roles reconfirmed $10/10$, the tester's tree unchanged\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\paragraph{The coverage fail.} The one loss, $\eta/\eps$ on censored cohorts, is attributed to a defect of the
+panel; the measurements support this but do not prove it. The tester's validity audit, fixed before any coverage was
+looked at, found that its generator over-spreads lifespans: at the truth the generated lifespan CV exceeds the model's
+(median $\Delta\ln{\rm CV}=0.086$, up to 0.17, on sharp cohorts). Data more spread out than the model pull
+$\hat\eta/\hat\eps$ down, which is the side of every miss, and the misses grow with the bias. The direction is the
+stronger evidence: on flagged cohorts the $\eta/\eps$ point lies below the truth in 60, 79 and 80\,\% of fits
+(pure, censor, hazard; median $\log_{10}$ point/truth $-0.009$, $-0.015$, $-0.014$), on valid ones in 38, 47 and
+60\,\% ($+0.009$, $+0.002$, $-0.004$). Coverage alone separates them weakly: on censor valid $14/15$ against flagged
+$22/29$ (Fisher $p=0.23$), over the three arms $44/46$ against $77/89$ ($p=0.14$); $14/15$ has Wilson interval
+0.70--0.99. The walker's precision is not excluded: 9 of the 14 $\eta/\eps$ misses, 6 of the 8 on censor, lie within
+0.01\,dex of the end, inside SC-004's tolerance, and walker step 2 checked no censored cohort. On its 20 $\eta/\eps$
+upper ends (pure, hazard, real) the deviance 0.01\,dex beyond the end was 4.8--18.0, well above 3.84, so the walker
+was not short there; the next spec checks the 8 censor misses' ends by brute force before any re-test (Naveh,
+2026-10-10). All figures: \code{coverage_cv_bias_003.json}. $\eta/\eps$'s intervals are the narrowest here (median 0.25 dex on censor, $\eta$'s
+0.87), so the mismatch shows there while the wider $\eta$ and $\eps$ intervals still cover; the paired gate does not
+cancel it, as \code{[coverage_validity]} had assumed. The order stays as measured (Naveh, 2026-10-10). The re-test
+needs a panel without the bias, which no library version through v5 provides; it is the next spec's.

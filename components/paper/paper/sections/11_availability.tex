@@ -1,0 +1,42 @@
+\section*{Code and data availability}\label{sec:availability}
+
+Everything needed to run the methods described here and to check their validation, including the frozen calibrator
+versions that studies citing this paper used, is released in one public repository, \code{sr-calibration}
+(\url{https://github.com/NavehRaz/sr-calibration}; code, BSD 3-Clause licence), with a linked data record (CC BY 4.0),
+both archived at Zenodo. This paper describes release 0.1.0. Each release is a version with its own DOI; a concept DOI always
+resolves to the newest version. A study cites the version it used (SI Table~\ref{tab:versions}
+maps each study to its version), and later versions add to the same record rather than replacing it.
+\NOTE{Placeholders until the release: the concept and version DOIs of the two Zenodo records.}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Software.} The \code{sraging} Python package at a tagged release: the likelihood engine, the default
+    calibrator (\code{profile_jax2}, version 1.0.1), the leverage check, the cohort generator and the command-line
+    interface used in Section~\ref{sec:example}, with its unit, parity and acceptance tests and their stored results.
+  \item \textbf{Frozen calibrators.} The calibrator packages exactly as the studies ran them, with their version locks:
+    \code{mle_profile_jax2} and \code{mle_profile_jax2_h} 1.0.1 (including the fit window of H), the $\kappa$-fixed
+    variant, and version 1.0.0 for results produced with it.
+  \item \textbf{Group comparisons.} The engine's age segments, on which every effect model of
+    Section~\ref{sec:effects} is built, are part of \code{sraging}. The group-comparison code that each study ran is
+    released with that study.
+  \item \textbf{Tests.} A file at the top of the repository (\code{TESTS.md}) lists every test reported in this paper,
+    with what it checks, where its stored result is and how to rerun it, and gives the result of a rerun of the
+    \code{sraging} unit and parity tests at the released tag.
+  \item \textbf{Benchmark (data record).} The synthetic cohort library (v6, \C{v6-n-cohorts} cohorts), the stored
+    per-cohort calibration records, the $\kappa$-fixed panel, the reports and the interactive results explorer, from
+    which every coverage, error and cost figure in Section~\ref{sec:validation} can be recomputed (SI
+    Section~\ref{si:records}).
+  \item \textbf{Benchmark harness.} The code that generates the library, runs a calibrator on it and scores the records.
+  \item \textbf{This paper.} The scripts that produce every figure, table and number from the stored records, and the
+    check that re-extracts each printed number from its source (\code{verify_claims.py}). Both run from the release.
+    Some numbers come from files that are not public in this version (the studies' own files, those of related
+    projects, and working notes); the check lists each of them with the reason and the recorded checksum of its source.
+  \item \textbf{Worked example.} The cohort in Section~\ref{sec:example} is public NIA Interventions Testing Program
+    data \citep{nadon2008design}.
+\end{itemize}
+The windowed fit W is in \code{sraging}. Future versions are planned to bring the group comparisons into \code{sraging}
+itself, after their own validation, together with a graphical interface and user documentation.
+
+% MISSING-ID: release-scope
+\MISSING{The release itself: the public repository with the contents listed above, its first tagged version and the
+Zenodo deposit.}{A methods paper is citable only if readers can run the methods and check the validation; the
+effect-comparison code and the benchmark records are private today.}{Assemble the repository from the frozen commits
+(no runs); the \code{sraging} session cuts its tag; Naveh makes the repository public and connects it to Zenodo.}

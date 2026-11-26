@@ -1,0 +1,433 @@
+\section{The calibrator \texttt{profile\_v033}}\label{sec:profile-v033}
+
+\subsection{What it is, and what ``verbatim'' means}\label{sec:pv-intro}
+
+\code{profile_v033} is the reference calibrator \code{mle_profile_jax} v0.3.3 behind named objects: a cohort goes
+in, a \code{FitResult} (maximum-likelihood point $\hat\theta$, one confidence claim per parameter, seven
+truth-free checks, provenance) comes out. The \emph{numerics are a verbatim port}. Every function that
+computes a number lives in \code{src/sraging/compat/v033/} and is a copy of the frozen reference in
+\code{tests/oracle/v033/}; \code{VERBATIM.toml} declares, file by file, the only edits allowed (import
+rewrites, removal of environment hooks, \code{runtime.configure()} in place of an \code{os.environ} default), and
+\code{tests/unit/test_verbatim.py} fails if any other statement differs. Value and gradient bytes and the claims
+of a named panel of cohorts are compared side by side with the oracle in \code{tests/parity/} and
+\code{tests/acceptance/}. Nothing in this section is therefore a design: it is a description of what the
+frozen code does, including its known defects (Section~\ref{sec:pv-defects}). Paths below are relative to
+\code{src/sraging/}; \code{compat/v033/} holds the ported numerics and \code{calibrators/profile_v033.py} the thin
+wrapper.
+
+Parameters are $\theta=(\eta,\beta,\eps,\kappa)$ with $\xc=1$ fixed. The estimator works on
+$z=\log\theta$. Inside \code{compat} $\theta$ is a positional vector in the order
+$(\eta,\beta,\eps,\kappa)$; the wrapper converts it to a named \code{SRParams} and asserts its length
+\src{calibrators/profile_v033.py:fit}.
+
+\subsection{The computation end to end}\label{sec:pv-pipeline}
+
+\code{profile_v033.fit} calls \code{runtime.check()} (Section~\ref{sec:pv-runtime}), then
+\code{estimator.fit} \src{compat/v033/estimator.py:547}, then \code{claims.build}
+\src{compat/v033/claims.py:41}, then the seven checks (Section~\ref{sec:pv-checks}). \code{estimator.fit} does,
+in order:
+\begin{enumerate}[nosep]
+  \item \textbf{Scale and grid} (\S\ref{sec:pv-grid}): Kaplan--Meier mean $L$; the automatic grid
+    $(\tau_{\max},\Delta\tau)$; the dt-ceiling rule when a recording resolution $\delta$ is given.
+  \item \textbf{Compile} the value function and the value-and-gradient function of the log-likelihood over $z$
+    (\S\ref{sec:pv-lik}, \S\ref{sec:pv-jax}).
+  \item \textbf{Seed} (\S\ref{sec:pv-seed}): a deterministic curve fit to the Kaplan--Meier curve.
+  \item \textbf{Maximum likelihood} (\S\ref{sec:pv-mle}): two bounded L-BFGS-B starts, keep the better.
+  \item \textbf{Profile each parameter} (\S\ref{sec:pv-profile}): walk outward on each side, repair, polish,
+    repair again if the polish changed anything.
+  \item \textbf{Interval and verdict} (\S\ref{sec:pv-ci}): \code{profile_ci} turns the node list into an
+    interval and a verdict; \code{claims.build} maps verdicts to claim shapes (\S\ref{sec:pv-claims}).
+\end{enumerate}
+If every MLE start fails, \code{estimator.fit} returns the seed with no intervals; the wrapper then reports
+four \code{none} claims with status \code{ok} (D-015) \src{compat/v033/estimator.py:593-595}. sraging keeps the
+status for parity but prints \code{RESULT FAILED} and exits with code 5 (FR-018); it happens in none of the
+1990 stored v0.3.3 benchmark records.
+
+\subsection{Scale, grid and the dt ceiling}\label{sec:pv-grid}
+
+Let $t_i$ be the ages, $e_i\in\{0,1\}$ the event flags, $\delta$ the recording resolution (or none for exact
+times). The time scale is the Kaplan--Meier mean
+\begin{equation}
+  L=\int_0^{t_{(n)}}\hat S_{\mathrm{KM}}(t)\,\dd t \quad\text{(trapezoid rule over the KM vertices)},
+\end{equation}
+\src{compat/v033/fp_likelihood.py:125} so $L$ stops at the last age and depends on censoring; $\tau=t/L$.
+The solver horizon and step come from the data:
+\begin{align}
+  \tau_{\max}&=\min\!\big(40,\ \max(2,\ 1.15\,t_{(n)}/L)\big), &
+  \Delta\tau_{\rm auto}&=\max\!\big(2\times10^{-3},\ \tau_{\max}/1200\big),
+  \label{eq:pv-autogrid}
+\end{align}
+\src{compat/v033/fp_likelihood.py:141} and the dt-ceiling rule \src{compat/v033/estimator.py:530}
+\begin{equation}
+  \Delta\tau=\begin{cases}\min\big(\Delta\tau_{\rm auto},\ \tfrac{\delta/L}{3}\big), & \delta>0\ \text{and}\ \delta/L<\Delta\tau_{\rm auto},\\[2pt]
+  \Delta\tau_{\rm auto}, & \text{otherwise.}\end{cases}
+  \label{eq:pv-ceiling}
+\end{equation}
+The remaining grid settings are fixed: $N=900$ space cells, $G_{\rm tol}=10^{-11}$, scheme \code{bdf2},
+\code{sampling_dt}$=\delta$ \src{compat/v033/estimator.py:541-543}. The environment hook
+\code{SRK_DT_CEILING} of the reference \code{auto_grid} is deleted in the port (register D-103); the
+rule~\eqref{eq:pv-ceiling} is applied in \code{solver_grid} instead, which is the behaviour of the reference
+with the variable unset as it was in the v0.3.3 runs.
+$L$ is used for more than the likelihood's numerical unit: it also sets the grid, the corner trigger
+$\rho_\beta<10^{-3}$ and the seed box (register D-010). Its Kaplan--Meier code does not process deaths before
+censorings at a tie, so $L$ depends on the row order of tied ages (D-007).
+
+\subsection{The likelihood}\label{sec:pv-lik}
+
+\paragraph{Model.} With $y=X/\xc$, the damage process is
+$\dd y=(\rho_\eta\tau-\rho_\beta\,y/(y+\kappa))\,\dd\tau+\sqrt{2\rho_\eps}\,\dd W$, reflecting at $y=0$, death at
+the first passage of $y=1$, with
+\begin{equation}
+  \rho_\eta=L^2\eta,\qquad \rho_\beta=L\beta,\qquad \rho_\eps=L\eps,\qquad\xc=1
+  \label{eq:pv-groups}
+\end{equation}
+\src{compat/v033/fp_jax.py:355}. The density $p(y,\tau)$ of surviving damage obeys
+$\partial_\tau p=-\partial_y(a\,p)+\rho_\eps\,\partial_y^2p$ with drift $a(y,\tau)=\rho_\eta\tau-\rho_\beta y/(y+\kappa)$,
+$p(y,0)=\delta_0$, and survival $S(\tau)=\int_0^1p\,\dd y$.
+
+\paragraph{March.} On $N$ cells of width $h=1/N$ with centres $y_j=(j+\tfrac12)h$, the removal term
+$r_j=\rho_\beta y_j/(y_j+\kappa)$ is time-invariant. Scharfetter--Gummel face coefficients use the
+Bernoulli function $B(z)=z/(e^z-1)$, argument clipped to $[-500,500]$, with
+$P_j=(\rho_\eta\tau_n-r_j)\,h/\rho_\eps$ and $c=\rho_\eps/h^2$. The tridiagonal operator $A(\tau_n)$ has
+\begin{equation}
+  \text{sub}_i=c\,B(-P_{i-1}),\qquad \text{diag}_i=-c\big(B(-P_i)+B(P_{i-1})\big),\qquad \text{super}_i=c\,B(P_i),
+\end{equation}
+with $\text{diag}_0=-cB(-P_0)$ at the reflecting wall and no flux out of the last cell other than through the
+absorbing face \src{compat/v033/fp_jax.py:141-159}. Time stepping is backward Euler for the first
+\code{nstart}$=20$ steps (damping the $\delta$-function start), then BDF2:
+\begin{equation}
+  \big(\tfrac32 I-\Delta\tau\,A(\tau_{n+1})\big)\,p^{n+1}=2p^n-\tfrac12p^{n-1},
+  \qquad p^{n+1}\leftarrow\max(p^{n+1},0),\qquad S_{n+1}=h\sum_jp^{n+1}_j,
+\end{equation}
+\src{compat/v033/fp_jax.py:167-173, 201-202}. The march stops once $S<G_{\rm tol}$ and $\tau>0.3$
+\src{compat/v033/fp_jax.py:206}. The survival array is then made monotone (running minimum, clipped to
+$[0,1]$) and the density is $p=-\nabla_\tau S$, clipped at zero \src{compat/v033/fp_jax.py:312-324}
+(\code{_truncate}).
+
+\paragraph{Terms.} Survival is read by linear interpolation of the $\tau$ grid (value 1 to the left, the
+last value to the right). For individual $i$, with $\tau_i=t_i/L$ and $\tau_i^+=(t_i+\delta)/L$:
+\begin{align}
+  \ell(\theta)&=\sum_{i:\,e_i=1}\log^{\ge}\!\big(P_i\big)+\sum_{i:\,e_i=0}\log^{\ge}\!\big(S(\tau_i)\big),\qquad
+  \log^{\ge}(x)=\max\!\big(\log\max(x,10^{-305}),\,-700\big),\\
+  P_i&=\max\big(S(\tau_i)-S(\tau_i^+),\,0\big)\ \ (\delta\ \text{given}),\\
+  P_i&=p(\tau_i)/L\ \ (\text{exact times; }0\text{ beyond the stop index}),
+\end{align}
+and $\ell=-\infty$ if the sum is not finite \src{compat/v033/fp_jax.py:360-370}. The floor constants are
+\code{_LOG_FLOOR}$=-700$ and \code{_P_FLOOR}$=e^{-700}$ \src{compat/v033/fp_jax.py:74-75}. Two consequences
+are ported as they are: the interval mass is a \emph{difference} of two survival values, which underflows to
+exactly $0$ when $S\approx1$ and such a term then scores $-700$ or a rounding-dependent value (D-004); and a
+region where every term sits on the floor has an exactly zero gradient, which the optimiser handles with its
+fallbacks (\S\ref{sec:pv-mle}).
+
+\subsection{Differentiating the march: the JAX twin and its custom VJP}\label{sec:pv-jax}
+
+\code{fp_jax.make_loglik} returns two compiled functions over $z=\log\theta$: a value function with the
+early-exit march, and \code{jax.value_and_grad} of a second program that uses a hand-written reverse sweep
+\src{compat/v033/fp_jax.py:327-375}. They are different compiled programs, so their values can differ in the
+last bit; the code never mixes them in one comparison and keeps separate memo caches
+\src{compat/v033/estimator.py:72-142}.
+
+The reverse sweep (\code{_march_vjp}) replaces automatic differentiation of the scan.
+For step $n$ let $M_n=\alpha_nI-\Delta\tau A(\tau_{n+1})$ ($\alpha_n=1$ for backward Euler, $\tfrac32$ for BDF2),
+$r_n$ the right-hand side, and $q_{n+1}=M_n^{-1}r_n$, so $p^{n+1}=\max(q_{n+1},0)$. The forward pass stores only
+$q_{n+1}$ per step. The backward pass carries two adjoint vectors $\lambda_{n+1},\lambda_{n+2}$,
+\begin{equation}
+  \bar q=\big(h\,\bar S_{n+1}+a_{n+1}\lambda_{n+1}+b_{n+2}\lambda_{n+2}\big)\odot\mathbf 1[q_{n+1}>0],
+  \qquad \lambda_n=M_n^{-\top}\bar q,
+\end{equation}
+($a=2$, $b=-\tfrac12$ under BDF2; $a=1$, $b=0$ under backward Euler; the indicator has value $\tfrac12$ at a tie,
+as \code{lax.max} defines it), then pulls the band cotangent $-\lambda_n\,q_{n+1}^{\top}$ back through the
+recomputed coefficient function to $(\rho_\eta,\rho_\eps,r)$ \src{compat/v033/fp_jax.py:215-235}. One transposed
+tridiagonal solve per step; steps after the early-stop index $k$ carry their cotangent onto $S_k$
+(\code{_fold_tail}). When the stored $q$ would exceed $64$~MiB (\code{Q_BUDGET_BYTES}
+\src{compat/v033/fp_jax.py:86}) the sweep stores a checkpoint every $\lceil\sqrt{n_{\rm steps}}\rceil$ steps
+and re-marches each block (\code{_march_vjp_ckpt}), which changes memory and CPU but not the gradient.
+The Bernoulli pair $(B(P),B(-P))$ uses one \code{expm1} ($B(-a)=a+B(a)$) with an analytic derivative
+$B'(z)=B(z)(1-B(-z))/z$ and an even series below $|z|=1.5$ \src{compat/v033/fp_jax.py:97-138}.
+
+\subsection{The seed}\label{sec:pv-seed}
+
+\code{fp_curvefit_seed} \src{compat/v033/fp_curvefit.py:276} fits the Kaplan--Meier curve, deterministically.
+The curve is resampled at $60$ survival levels uniform from $1-10^{-6}$ down to $2\times10^{-3}$
+(\code{NGRID}, \code{_empirical_on_taugrid}), and $z=\log(\rho_\eta,\rho_\beta,\rho_\eps,\kappa)$ is fitted by
+bounded trust-region least squares of $G(\tau;z)-S_{\rm emp}$ on a coarser solver grid
+(\code{N_FIT}$=900$, \code{DT_FIT}$=2\times10^{-3}$, \code{TAU_MAX}$=16$), from two starts, the production start
+$(3.5,0.2,0.10,10^{-3})$ and the removal start $(1,6,0.5,0.3)$ \src{compat/v033/fp_curvefit.py:59-62}; the
+lower survival-only RMS wins. Bounds are $\rho\in[10^{-4},\,300]$ and $\kappa\in[10^{-3},5]$
+\src{compat/v033/fp_curvefit.py:27-30, 130}. The result is converted to physical units with $\xc=1$ and the
+Kaplan--Meier $L$. The cap $\rho\le300$ is why large, sharp cohorts are seeded far from the truth (D-001).
+The extra ``surface'' starts and the composite (hazard, CV, mean) residuals exist in the ported code but are off
+in this call: \code{surface_start=False} and all weights zero by default.
+
+\subsection{Maximum likelihood: two bounded L-BFGS-B starts}\label{sec:pv-mle}
+
+The objective is $-\ell$ on $z$, with a box check on $\theta$: $-\ell=+\infty$ outside
+\begin{equation}
+  \eta,\beta,\eps\in[10^{-12},10^3],\qquad\kappa\in[10^{-3},\kappa_{\max}=300]
+\end{equation}
+\src{compat/v033/estimator.py:67-69, 114-127}. Two starts are run from the seed
+$\theta_s$: $\log\theta_s$ and the same with $\eps$ multiplied by $4$ \src{compat/v033/estimator.py:577-579}.
+Each is a bounded L-BFGS-B on the exact gradient with \code{maxiter}$=1000$, \code{maxfun}$=2000$,
+\code{ftol}$=10^{-13}$, \code{gtol}$=10^{-6}$ \src{compat/v033/estimator.py:51}. The best finite result is kept
+\src{compat/v033/estimator.py:583-591}.
+
+Safety net (\code{_lbfgs} \src{compat/v033/estimator.py:145-188}). A gradient method cannot leave a region where the
+gradient is exactly zero. If the start value is not finite or its gradient is identically zero, the search
+first tries L-BFGS-B from the seed (when one is given and it has a nonzero gradient) and then falls back to
+Nelder--Mead on the value function; a fallback never returns something worse than its start. No check is made
+that the MLE stage converged: an \code{ABNORMAL} or false-\code{ftol} stop is accepted (D-002).
+
+\subsection{The profile walk, repair and polish}\label{sec:pv-profile}
+
+For each parameter $p$ (index $i$) with free set $F$ (the other three), the profile
+$\ell_p(v)=\max_{z_F}\ell(z_F,\ \log v)$ is evaluated at nodes $v$ placed by an adaptive walk, then repaired and
+polished. The edge threshold is $\mathrm{thr}=\chi^2_{1,0.95}$ from SciPy \src{compat/v033/estimator.py:598}.
+
+\paragraph{Node solve} (\code{_profile_ll_at} \src{compat/v033/estimator.py:257}). Warm-started bounded L-BFGS-B
+over $z_F$ (\code{maxiter}$=400$ in the walk, $600$ in repair and polish; \code{maxfun}$=800$, same tolerances).
+If the warm start ends in a degenerate corner, the node is re-solved from the seed's nuisance values and the
+better solution is kept. The corner triggers are $\rho_\beta=L\beta<10^{-3}$, or a free parameter within
+$10^{-6}$ (in $\log$) of a box edge \src{compat/v033/estimator.py:191-212}. On a walk side an adaptive rule
+decides whether the restart runs: a $\rho_\beta$ trigger always restarts; otherwise after $2$ consecutive
+restarts gaining less than $10^{-3}$ nats the side stops restarting until the trigger set changes or the walk
+sees a deviance jump, when the skipped restart is run first (\code{_want_restart}, \code{obj.pending}
+\src{compat/v033/estimator.py:215-254}).
+
+\paragraph{Walk} (\code{_walk_side} \src{compat/v033/estimator.py:312-394}). From the MLE value $\hat v$ on each side,
+with $\ell_{\rm ref}=\hat\ell$, step $s$ in decades, initial $s=0.05$:
+\begin{enumerate}[nosep]
+  \item $v'=v\cdot10^{\pm s}$, snapped to $1.01\times$ the box edge if it would pass it (reason \code{box_edge}
+    if already there).
+  \item Solve the node; deviance $D=2(\ell_{\rm ref}-\ell_p(v'))$ and jump if $D-D_{\rm prev}>4$ or not finite.
+  \item On a jump: re-arm the restart rule; if $s>10^{-4}$ then $s\leftarrow\max(s/3,10^{-4})$ and
+    retry (a \emph{rejection}); otherwise record the node and stop with reason \code{cliff}.
+  \item Otherwise accept the node; stop with reason \code{dev_stop} if $D\ge10$; else $s\leftarrow\min(3s,2)$ if
+    $D<1$, or $\min(2s,2)$ if $D-D_{\rm prev}<0.3$ (cap $2$ decades); stop at the box edge.
+\end{enumerate}
+A side ends after $n_{\rm acc}=\texttt{per\_side}$ accepted nodes or $24$ rejections, both reported as
+\code{max_nodes}. The v0.3.3 change (P1) is that rejections no longer use up node slots
+\src{compat/v033/estimator.py:62-64, 344}. The budget is
+$\texttt{per\_side}=\max\big(24,\lfloor(n_{\rm profile}-1)/2\rfloor+3\big)$ \src{compat/v033/estimator.py:601},
+which is $24$ for any $n_{\rm profile}<43$, so the setting $n_{\rm profile}=11$ has no effect (D-012).
+
+\paragraph{Repair} (\code{_repair} \src{compat/v033/estimator.py:397-424}). On the value-sorted nodes, up to $3$
+passes: for a node $j$ left (right) of the best node, if some node further out is higher by more than $0.2$
+nats, re-solve $j$ from that node's solution and keep the result if higher.
+
+\paragraph{Polish} (\code{_polish_edges} \src{compat/v033/estimator.py:460-527}). On each side, the first node outward with
+$D\ge\mathrm{thr}$ places the interval edge. It is re-solved from fresh starts: the MLE's nuisance values, the
+seed's, the next node outward, and the opposite $\kappa$ corners ($\kappa$ at its floor, at $1$ and at its
+ceiling, with $\beta$ rescaled to keep $\beta/(1+\kappa)$; \code{_kappa_corner_starts}
+\src{compat/v033/estimator.py:427-457}). A gain above $10^{-3}$ nats is kept; if the node now falls below
+$\mathrm{thr}$ the edge moves outward (at most $12$ moves per side), and if that passes the last node the walk
+is continued once. A polish can only raise node values. If the polish changed anything the repair runs once more
+\src{compat/v033/estimator.py:621-628}.
+
+\paragraph{Re-centring diagnostic.} If some node has $\ell_p>\hat\ell+0.01$ the parameter is recorded as
+\code{recentred} with \code{gain_nats}$=\max\ell_p-\hat\ell$ \src{compat/v033/estimator.py:631-640}. The point
+$\hat\theta$ is \emph{not} refreshed: it stays at the stale MLE (D-003).
+
+\subsection{From profile to interval and verdict}\label{sec:pv-ci}
+
+\code{profile_ci} \src{compat/v033/fp_gof.py:17-128} takes the nodes $(v_k,\ell_k)$, discards non-finite
+values (fewer than $3$ remaining gives verdict \code{insufficient}), and forms the deviance relative to the
+\emph{profile} maximum,
+$d_k=2(\max_m\ell_m-\ell_k)$, and $\mathrm{thr}=3.8415$ at $95\%$ (table \code{_CHI2_1},
+\src{compat/v033/fp_gof.py:14}; the walk and polish use the SciPy value, which differs in the fifth digit; D-016).
+The interval is the whole set $\{d\le\mathrm{thr}\}$, not the component around the maximum: the edges are
+the first crossings outward from the leftmost and rightmost accepted nodes, interpolated linearly in
+$\sqrt d$ against $\log v$ (linear in $v$ if a value is non-positive); \code{n_components} counts runs of
+accepted nodes. The verdict is
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Crossing found & Verdict \\
+\midrule
+both sides & \code{identified} \\
+above only ($v_{\rm hi}$ finite) & \code{one-sided:<} (upper bound) \\
+below only & \code{one-sided:>} (lower bound) \\
+none & \code{flat} \\
+fewer than $3$ finite nodes & \code{insufficient} \\
+\bottomrule
+\end{tabular}
+\end{center}
+(the function's docstring states the two one-sided cases the other way round; D-013; the code is as tabulated.)
+Because $d$ is taken against the profile maximum, a re-centred profile gives an interval around a different
+centre than $\hat\theta$ (D-003).
+
+\subsection{Claims}\label{sec:pv-claims}
+
+\code{claims.build} \src{compat/v033/claims.py:41-75} maps each parameter's verdict and interval to a claim,
+with fixed constants \code{VERDICT_TO_SHAPE}: \code{identified}$\to$\code{closed},
+\code{one-sided:<}$\to$\code{upper_bound}, \code{one-sided:>}$\to$\code{lower_bound}, \code{flat} and
+\code{insufficient}$\to$\code{none} \src{compat/v033/claims.py:24-30}. Then:
+\begin{enumerate}[nosep]
+  \item A \code{closed} claim missing a finite end is demoted to \code{upper_bound} if only the upper end is
+    finite, \code{lower_bound} if only the lower, else \code{none}; an \code{upper_bound} without a finite upper end
+    and a \code{lower_bound} without a finite lower end become \code{none}.
+  \item Ends are clipped to the box $\mathrm{BOUNDS}$ (\code{claims.py:13-18}): $\eta,\beta,\eps\in[10^{-12},10^3]$,
+    $\kappa\in[10^{-3},300]$. Lower ends apply for \code{closed} and \code{lower_bound}, upper ends for
+    \code{closed} and \code{upper_bound}.
+  \item For every shape other than \code{none} the point is $\hat\theta_p$ clipped to the same box; level $0.95$;
+    \code{n_components} is the \code{Claim} default $1$ (it is never filled from \code{profile_ci}; D-014).
+\end{enumerate}
+Only these four shapes on $\eta,\beta,\eps,\kappa$ exist; the wrapper adds a human-readable label to each claim
+(box-limited raw-$\beta$ upper bounds carry a note; D-009) without changing a number
+\src{calibrators/profile_v033.py:fit}. The diagnostics dictionary is the estimator's diagnostics without the
+profile node lists, plus \code{loglik} and \code{dt_ceiling}.
+
+\subsection{Explicit settings}\label{sec:pv-settings}
+
+Every setting is explicit (FR-011); nothing is read from the environment (D-103). The values below are the
+entries of \code{profile_v033.SETTINGS} \src{calibrators/profile_v033.py:26-38}; the third column gives where the
+number is consumed in the ported code.
+
+\begin{center}\small
+\begin{longtable}{@{}p{3.2cm}p{4.4cm}p{7.2cm}@{}}
+\toprule
+Setting & Value & Defined / consumed at \\
+\midrule
+\endhead
+\code{kappa_max} & $300$ & \code{profile_v033.py:27}; box upper edge for $\kappa$, \code{estimator.py:67-69} \\
+\code{levels} & $(0.95,)$ & \code{profile_v033.py:28}; \code{estimator.py:598}, \code{claims.py:22} \\
+\code{n_profile} & $11$ (inert, D-012; see \S\ref{sec:pv-profile}) & \code{profile_v033.py:29}; \code{estimator.py:547, 601} \\
+\code{polish} & \code{True} & \code{profile_v033.py:30}; \code{estimator.py:621} \\
+\code{box} & $\eta,\beta,\eps:[10^{-12},10^3]$; $\kappa:[10^{-3},300]$ & \code{profile_v033.py:31}; \code{estimator.py:67-69} \\
+\code{dt_ceiling_rule} & $\delta/L/3$ when $\delta/L<\Delta\tau_{\rm auto}$ & \code{profile_v033.py:32}; \code{estimator.py:537-540} \\
+\code{N} & $900$ & \code{profile_v033.py:33}; \code{estimator.py:541} \\
+\code{Gtol} & $10^{-11}$ & \code{profile_v033.py:34}; \code{estimator.py:541}, \code{fp_jax.py:206} \\
+\code{scheme} & \code{bdf2} & \code{profile_v033.py:35}; \code{estimator.py:541} (the JAX march is always BDF2 after $20$ BE steps, \code{fp_jax.py:328}) \\
+\code{pjrt_nproc} & $1$ & \code{profile_v033.py:36}; \code{runtime.py:18} \\
+\code{x64} & \code{True} & \code{profile_v033.py:37}; \code{runtime.py:23-33} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+Constants that are not wrapper settings but fix the result are listed with their source lines in the
+sections above: auto-grid constants $(40,2,1.15,2\times10^{-3},1200)$ \code{fp_likelihood.py:141,155-156};
+$\tau>0.3$ early-stop guard \code{fp_jax.py:206,315}; log floor $-700$ \code{fp_jax.py:74}; walk constants
+\code{_DEV_STOP}$=10$, \code{_DEV_MAX_STEP}$=4$, \code{_STEP0_DEX}$=0.05$, \code{_STEP_MIN_DEX}$=10^{-4}$,
+\code{_STEP_MAX_DEX}$=2$, \code{_REPAIR_MIN_NATS}$=0.2$, \code{_MAX_REJECTIONS}$=24$ (\code{estimator.py:41-46, 64});
+optimiser budgets \code{_LBFGS_MLE}, \code{_LBFGS_NODE} (\code{estimator.py:51-52}); restart and polish
+tolerances (\code{estimator.py:55-60}); re-centring tolerance $0.01$ nats (\code{estimator.py:631}). The
+reference descriptor's declared cost (\code{REFERENCE_COST_SECONDS}, \code{profile_v033.py:42}) is a quotation
+of the reference, not a measurement made here, and is not reproduced.
+
+\subsection{Runtime requirements}\label{sec:pv-runtime}
+
+\code{runtime.py} sets and checks two facts the ported numerics need. (1) \emph{float64}:
+\code{jax_enable_x64} is set at import, and \code{check()} refuses to fit if it is off, because the $-700$ log
+floor and $G_{\rm tol}=10^{-11}$ need double precision \src{compat/v033/runtime.py:23-52}. (2)
+\emph{One CPU thread}: \code{PJRT_NPROC=1} pins XLA's CPU client to a single thread. It is
+\emph{overwritten}, not defaulted, so a shell variable cannot change the runtime
+\src{compat/v033/runtime.py:18, 33}; it is read when the backend initialises, so \code{check()} raises
+\code{RuntimeConfigError} if the backend was already initialised under another value
+\src{compat/v033/runtime.py:44-60}. In practice: import \code{sraging} before any JAX computation, in a fresh
+process. Byte identity with the oracle holds only for the pinned environment on the host that runs the test
+(Python~3.14.6, JAX~0.11.1, NumPy~2.4.3, SciPy~1.17.1; see \code{tests/oracle/v033/pip_freeze.txt}). The
+runtime state is recorded in the fit's provenance.
+
+\subsection{The truth-free checks}\label{sec:pv-checks}
+
+\code{warnings.evaluate} \src{warnings.py} runs the checks after every fit (five in spec 001; seven since spec 002); they never change a
+number. The conditions and thresholds of the first four are verbatim from the reference entry point
+\code{tools/fit_cohort_jax.py} (the module header states the lines); \code{tests/parity/test_warnings_parity.py}
+compares outcomes with the reference functions on stored records.
+\begin{center}\small
+\begin{tabular}{@{}p{2.6cm}p{8.6cm}p{3.2cm}@{}}
+\toprule
+Code & Fires when & Threshold \\
+\midrule
+\code{BASIN_GAIN} & some re-centred parameter has $\mathtt{gain\_nats}>1.92$: the walk found a point that much better than the reported best fit & $1.92$ nats (\code{warnings.py:16}) \\
+\code{BASIN_OUTSIDE} & a \code{closed} claim has its point outside its own interval, $\mathrm{lower}(1-10^{-9})\le\mathrm{point}\le\mathrm{upper}(1+10^{-9})$ violated & relative $10^{-9}$ (\code{warnings.py:38}) \\
+\code{CENSOR_TIE} & $\delta$ given, some censoring, the censoring age is the maximal age, and the number of deaths at that age (\code{isclose}) is at least $0.5\%$ of $n$ & $0.005\,n$ (\code{warnings.py:17, 53}) \\
+\code{DELTA_GRID} & $\delta$ given and some age is not a multiple of $\delta$ ($|t/\delta-\mathrm{round}(t/\delta)|>10^{-6}$) & any, tolerance $10^{-6}$ (\code{warnings.py:67}) \\
+\code{BOX_EDGE} & $\hat\theta$ for some parameter on an \emph{upper} edge of the prior box ($\eta,\beta,\eps$ at $10^3$, $\kappa$ at $\kappa_{\max}=300$); sraging's own (FR-017b), not in the reference & relative $10^{-3}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The first two detect the wrong-basin failures of Section~\ref{sec:pv-defects}; the third detects the
+censor-tie bias (D-006); the fourth is a data check; the fifth flags a fit that ran up the ridge of D-020 to the box (D-018): on
+the 1990 stored v0.3.3 records it fires on at least 215 (a \code{none} claim hides $\hat\theta$, so not every record
+can be scored), and a closed $\eta$ interval of a flagged fit covers the true $\eta$ in 8 of 214 cases. A quiet
+\code{BOX_EDGE} does not make an interval right. No check detects the $N=900$ barrier of D-005. A check
+that does not fire is not evidence that a fit is right; the checks record both whether they ran and whether they
+fired.
+
+\subsection{What \texttt{profile\_v033} does not do}\label{sec:pv-notcovered}
+
+From the Not-Covered section of the spec (\code{specs/001-reference-fit/spec.md}, constitution XII):
+\begin{itemize}[nosep]
+  \item \textbf{Model extensions.} No external (Makeham) hazard, no fit window, no heterogeneity, and $\xc$ is
+    fixed at $1$ (no $\xc\ne1$ fitting): the model is the four-parameter $\theta$ above. Windowed observations
+    are refused (D-104).
+  \item \textbf{Claim shapes.} Only \code{closed}, \code{upper_bound}, \code{lower_bound}, \code{none} on
+    $\eta,\beta,\eps,\kappa$. No combination claims ($\beta/(1+\kappa)$, $\bar r$, $\bar r/\eta$, $\sqrt\eta/\eps$,
+    $\beta/(\eta(\kappa+1))$) and no \code{negligible} or \code{open above: box-limited} shape; both arrive in
+    spec~003. The labels on claims (D-009) cover the gap for users.
+  \item \textbf{Leverage check.} Deferred to spec~005: the reference likelihood returns no per-individual terms.
+  \item \textbf{Times in $L_{\rm SR}$.} No $L$-scaled quantity is reported; the numerics scale by the
+    Kaplan--Meier $L$ as v0.3.3 does (D-010).
+  \item \textbf{Engines and uncertainty.} FP only (no finite-$n$ engine, spec~004); no replicates.
+  \item \textbf{Out of scope entirely:} SRtools compatibility, unit conversions, plots, data cleaning, Langevin,
+    interventions, MCMC, and speed parity (spec~002). The default-versus-\code{v033} comparison test of
+    constitution VII has nothing to compare until the first numerics divergence (spec~002).
+  \item \textbf{Known limitations inherited deliberately:} wrong fits on large sharp human cohorts are warned
+    about, not fixed; the censor-tie bias is warned about, not corrected; the $N=900$ barrier is not detected by
+    any truth-free check; byte identity holds only in the pinned environment on the testing host.
+\end{itemize}
+
+\subsection{Known defects, ported as-is, and sraging differences}\label{sec:pv-defects}
+
+Entries D-001 to D-021 are properties of the reference that sraging keeps on purpose (status
+\emph{ported-as-is}; impact ``none: not fixed''); D-101 to D-105 and D-018's warning are deliberate differences of sraging from
+the reference. The register is \code{divergences/register.toml}; the last column is its \code{regression_test}.
+Measured consequences are in the register entry and its cited source, not repeated here.
+
+\begin{center}\footnotesize
+\begin{longtable}{@{}p{1.1cm}p{7.3cm}p{6.4cm}@{}}
+\toprule
+ID & Description & Pinned by \\
+\midrule
+\endhead
+D-001 & Curve-fit seed caps $\rho$ at $300$ (\code{RHO_CEIL}), so large sharp (human) cohorts are seeded far from the truth; flagged by \code{BASIN_GAIN}/\code{BASIN_OUTSIDE}. & \code{tests/unit/test_asis_defects.py::test_d001_seed_rho_cap} \\
+D-002 & No MLE-stage convergence check; an \code{ABNORMAL} or false-\code{ftol} L-BFGS-B result is accepted. & \code{tests/acceptance/test_results.py::test_basin_cohorts_reproduced} \\
+D-003 & Recentring is diagnostic only: the point stays stale and can lie outside its own interval. & \code{tests/acceptance/test_results.py::test_basin_cohorts_reproduced} \\
+D-004 & Interval-mass cancellation: $S(t)-S(t+\delta)$ underflows to $0$ when $S\approx1$; head deaths score at the floor or a rounding-dependent value. & \code{tests/unit/test_asis_defects.py::test_d004_interval_mass_is_a_difference} \\
+D-005 & At $N=900$ the fit grid invents a barrier on the p15 cohorts; no truth-free warning detects it. & \code{tests/acceptance/test_results.py::test_basin_cohorts_reproduced} \\
+D-006 & Censor-tie deaths are scored over the whole end-of-study recording bin (biases $\eta$ upward); flagged by \code{CENSOR_TIE}. & \code{tests/unit/test_warnings.py::test_censor_tie_at_exactly_half_a_percent_fires_and_just_below_does_not} \\
+D-007 & Kaplan--Meier tie order: with a tied death and censoring the result depends on row order; $L$ sets the grid. & \code{tests/unit/test_asis_defects.py::test_d007_kaplan_meier_depends_on_row_order} \\
+D-008 & \code{fpt_full}: a \code{scheme} other than \code{bdf2} silently runs backward Euler (the match is case-insensitive, \code{str(scheme).lower()=="bdf2"}, \code{fp_likelihood.py:116}); not reachable through the public API. & \code{tests/unit/test_asis_defects.py::test_d008_unknown_scheme_runs_backward_euler} \\
+D-009 & $\kappa_{\max}=300$ box: raw-$\beta$ upper bounds may be set by the box rather than the data; an \code{upper_bound} claim carries the box label, but a \code{closed} $\beta$ whose walk ended at the box (\code{grid.beta.up = box_edge}) carries none. & \code{tests/unit/test_labels.py::test_raw_beta_upper_bound_carries_the_box_note} \\
+D-010 & $L_{\rm KM}$ is load-bearing beyond the likelihood's numerical unit (grid, corner trigger, seed box, box extent). & \code{tests/unit/test_verbatim.py::test_port_is_verbatim} \\
+D-011 & The dt-ceiling rule $\delta/L/3$ rests on one measurement and dominates the cost of the reference; re-measured in spec~002. & \code{tests/unit/test_verbatim.py::test_port_is_verbatim} \\
+D-012 & $n_{\rm profile}=11$ is inert: the walk allows at least $24$ nodes per side whatever $n_{\rm profile}$ is. & \code{tests/unit/test_asis_defects.py::test_d012_n_profile_is_inert} \\
+D-013 & The \code{profile_ci} docstring states the one-sided verdicts the wrong way round; the code (\code{one-sided:<}$\to$\code{upper_bound}) is what runs. & \code{tests/unit/test_asis_defects.py::test_d013_one_sided_mapping_follows_the_code} \\
+D-014 & \code{Claim.n_components} is never filled from \code{profile_ci}: every claim says $1$ and a disconnected region is reported as its hull. & \code{tests/unit/test_asis_defects.py::test_d014_n_components_is_always_one} \\
+D-015 & When every MLE start fails, the result is status \code{ok} with four \code{none} claims; sraging prints \code{RESULT FAILED} and exits 5. & \code{tests/unit/test_asis_defects.py::test_d015_all_starts_failed_maps_to_four_none_claims} \\
+D-016 & Two $\chi^2$ thresholds: polish and walk use $3.841459$ (SciPy) against the MLE, \code{profile_ci} uses $3.8415$ (table) against the profile maximum. & \code{tests/unit/test_asis_defects.py::test_d016_two_chi2_thresholds} \\
+D-017 & \code{make_loglik} normalises only a scalar \code{sampling_dt}; an array is used without shape or positivity checks. & \code{tests/unit/test_asis_defects.py::test_d017_sampling_dt_scalar_branch_only} \\
+D-018 & $\hat\theta$ on an upper box edge: the fit ran up the ridge of D-020 and its intervals sit too high (the true $\eta$ lies below the interval in 143 of 147 stored fits with $\beta$ on the edge and a closed $\eta$); flagged by \code{BOX_EDGE} (8 of 214 flagged fits cover $\eta$). & \code{tests/unit/test_asis_defects.py::test_d018_closed_interval_ends_at_the_beta_box_edge} \\
+D-019 & Results depend on the host (machine and software environment, not separable here): the stored v0.3.3 records of the 10 named panel cohorts (WEXAC) differ from the parity Mac's oracle run on all 10, by up to $3.2$ dex on the 4 basin cohorts and at most $0.15$ dex on the others, with claim shapes flipping on two. & \code{tests/unit/test_asis_defects.py::test_d019_named_cohorts_differ_between_hosts} \\
+D-020 & (model) A Gompertz-like ridge: $\eta,\beta,\eps$ grow together with $\eta/\eps$ nearly fixed; on the Drosophila cohort the log-likelihood changes by $0.42$ nats from $\beta=30$ to $3\times10^4$. & \code{tests/unit/test_asis_defects.py::test_d020_ridge_keeps_eta_over_epsilon} \\
+D-021 & A one-ulp change of $\log\theta$ moves the log-likelihood by 60--200 times what its gradient predicts (up to $1.1\times10^{-6}$ nats); line searches can stall on this noise. & \code{tests/unit/test_asis_defects.py::test_d021_loglik_moves_at_the_ulp_scale} \\
+\midrule
+D-101 & (refused input) CSV rows the reference reader skips or recodes are refused, with every offending row listed. & \code{tests/unit/test_csv_reader.py::test_every_offending_row_is_listed_in_one_error} \\
+D-102 & (refused input) The recording resolution $\delta$ must be stated; continuous times must be said explicitly. & \code{tests/unit/test_cohort_core.py::test_delta_rule_explains_why} \\
+D-103 & (diverged) Environment overrides are not read; their v0.3.3 values are explicit settings (Section~\ref{sec:pv-settings}). & \code{tests/unit/test_env_ignored.py::test_overrides_do_not_change_bytes} \\
+D-104 & (refused input) Windowed observations are refused by the tester adapter. & \code{tests/unit/test_adapter_offline.py::test_window_is_refused} \\
+D-105 & (diverged) With $\delta$, a death at age $0$ (found at the first check) is kept and scored over $[0,\delta)$; the reference reader drops it. The estimator handles it exactly as the oracle's does, but where the first interval carries almost no risk the term is the $-700$ floor (D-004). & \code{tests/unit/test_cohort_core.py::test_a_death_at_age_zero_with_delta_is_the_first_interval} \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+The two behaviours of the claim path noted in Sections~\ref{sec:pv-pipeline} and~\ref{sec:pv-claims} are registered as D-015 (all starts failed) and D-014 (\code{n_components}).
+
+\subsection{Relation to the v0 reference document}\label{sec:pv-v0}
+
+This section is derived from \code{docs/planning/algorithms/} (sections on the solver, grid, JAX likelihood and
+profile estimator). Where the ported code differs from that document in form, the code governs: the dt ceiling
+is applied in \code{solver_grid} (\code{estimator.py:530-544}) rather than by writing and restoring an environment
+variable; \code{fpt_full} compares \code{str(scheme).lower()=="bdf2"} (\code{fp_likelihood.py}, as in the oracle),
+so the scheme match is case-insensitive, as D-008 now states, where the v0 document describes it as an exact comparison;
+and citations here use line numbers of the ported files, not of the oracle.

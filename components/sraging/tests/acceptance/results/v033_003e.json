@@ -1,0 +1,411 @@
+{
+ "phase": "v033",
+ "written_at": "2026-10-17T21:35:41Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 0.278486967086792,
+ "cpu_s": 0.162842,
+ "status": "PASS",
+ "cohorts": 22,
+ "plan": {
+  "reuse": 22,
+  "compute": 0
+ },
+ "run_manifest": {
+  "method": "sraging_profile_v033",
+  "method_version": "0.1.0+v033",
+  "library_version": "v5",
+  "n_cohorts": 22,
+  "n_reused": 22,
+  "n_computed": 0,
+  "n_failed": 0
+ },
+ "run_manifest_path": "var/srbench_runs/sraging_v033-v5-pair22.json",
+ "claims_equal": 22,
+ "per_cohort": {
+  "pure-k0.01-p01-c0-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "933f4901df1cd1b53819d47328fda17081ad61a4ae9c6537993ba9378d4d8c39",
+   "jax033_key": "845bd4e0df036252e6d121523c71c420ecc5bba85bbe2dff5f739d862a9f3ded"
+  },
+  "pure-k0.01-p01-c0-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "2514a41ecf262c2b3df9f44aa4ae6c59b0c541acaf2c718ee4c84896d9bd4685",
+   "jax033_key": "49f7bb9ddedc8c5ed007c685f3e14667e93caa35ee10067b4847c7dfc63b993b"
+  },
+  "pure-k0.01-p01-c1-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "b882459f000de5b618ac093fbce525f79416be46a71540f371d4dc9ad7fdcd41",
+   "jax033_key": "b57c7d4beb19b23a0adbac31e08cbd17957ce7a2b939169a62ecd8d1e5d119bb"
+  },
+  "pure-k0.01-p01-c1-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "5e347ec9dba13701b3cbfff8b4ac54b2901539ac3cc674b375e3ee34762d21dc",
+   "jax033_key": "03c0cde05b4060d5d9a971a56fe781e3198ecc53e7338fc65a87fefb69c4e991"
+  },
+  "pure-k0.01-p02-c0-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "ac217ad742fc5625a00b194d92fe197b35831ab66431528cad82f858c3820de8",
+   "jax033_key": "d7bb7b82d1f5d8fc69e4bb259add01d1a2838e36ba9830f16c3bd35dba52c681"
+  },
+  "pure-k0.01-p02-c0-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "8cbc1855bb175b045f3564bd12b8d28e8984e25965af2564ad80db488571df13",
+   "jax033_key": "cf5fce2da735dc80f4d9e34d78b641b13a566db9ab4a435c060034a5b04eb5cc"
+  },
+  "pure-k0.01-p02-c1-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "478917e05c162962a3582ec1e1995e4d7396cd2da6f402e1abe04b7f649effc3",
+   "jax033_key": "1b83d8a748cdd6c6284e4cc9ef52b0de7d0774cc9566ec88837d49c7ee57eee4"
+  },
+  "pure-k0.01-p02-c1-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "7dc6fec6bb5f00a0deda38f83a4276821b30c893660c7a5630b534f68b5cdd4d",
+   "jax033_key": "b5360237b8ca57a3f7425c1a0df9823766306afa05d13862f7857b27497b0774"
+  },
+  "pure-k0.01-p03-c0-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "f8211b64c30b3b9c997a62dc40062279e0bfcef7201e061478af22a8df9be8fe",
+   "jax033_key": "555faaf7e90d2db2de2f1b86d698580badd52b03182edc6fe8694383ff40a415"
+  },
+  "pure-k0.01-p03-c0-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "981511d38432166bcc9f41627ad92b098901ac39d20a2a5db4c67043e512581d",
+   "jax033_key": "79f596e87fa527cb5b58cf4973308b7b213c39d4783286e8fed7a25da0c37430"
+  },
+  "pure-k0.01-p03-c1-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "3f7a29385e18a3a0ae01900236b9fd7b08af7bf2d010a3f203425380c0dbace8",
+   "jax033_key": "46713478b2ca7161c4e28c1abe995f180ee01246e571bf19c4602d477710a7b1"
+  },
+  "pure-k0.01-p03-c1-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "026f492568a139787f8c1e94cfa53e4fa63117ea688644c474a46d58e8742625",
+   "jax033_key": "fdd05ce7d02af8ac0998d5bdae579f70cd34cfb1eb605c22f7fd97a8eb7b7311"
+  },
+  "pure-k0.01-p04-c0-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "c92259d3517515246498f3be8840867589cabb196fc21ce057e60e7fb74ec5f1",
+   "jax033_key": "c018157a9a59401993dd9cdf7e97a80a697468b009d1ad8e1e21da1acd545970"
+  },
+  "pure-k0.01-p04-c0-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "b4880343408f0f794206e5da667c26fa4f380c6892b563b0a307b505aa8a2695",
+   "jax033_key": "2953be44a97606bea6e4320448de6403688754ce812f8e23bcde2f9ff5332625"
+  },
+  "pure-k0.01-p04-c1-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "f9a9b0b84868dd30dd21ef383d88fe70dc8040202d344240b7dd24a2b1cf645f",
+   "jax033_key": "564035b9d18ce4a442daedc1eacb396a7f8c006c7909acdf3c0e03a3057a2c05"
+  },
+  "pure-k0.01-p04-c1-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "aea53f5b5a9db3579c3ec87b1fc82cb17fb55f0b99f245d1c7f14837d188a349",
+   "jax033_key": "3c0b6fca0691772ac23eccc33cee59c49f5a3fb5cb35f7c3a3d99e0fe3e4a9b6"
+  },
+  "pure-k0.01-p06-c0-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "bb84d7069a539b4bc5fc17d1ebf929293c4d1bedd5ea826e1d99b6e0d9c34699",
+   "jax033_key": "db237db6abb1f17f8b6f881882dd9844ebe68c009d12b1983a008f93774eaeaa"
+  },
+  "pure-k0.01-p06-c0-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "afe58c1150cce1e662ee924bc64a7b1c88703a624d4f19c5e71b60a8b5982138",
+   "jax033_key": "eecd61c7b6b4c02ca463d9b1f27df10df928482a1bc4f6dd385d0bad578cef65"
+  },
+  "pure-k0.01-p06-c1-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "d5b6ca6ec6ab15989599044ba3fd1e7b2b18b7557d598078628edc5b8706b0fa",
+   "jax033_key": "1979e3d4b2bc789fb8450546e0fc9acc16062ac98af9f0c6992ac63acd6e1cf7"
+  },
+  "pure-k0.01-p06-c1-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "a91f15372fa72ff345e0e61443ff2d137c15e4709391fab75d1c74ba657914c8",
+   "jax033_key": "d26cb2d0eea55dd063bca2c48c2f2491d669aa4033b105e101c2f0c29645afe9"
+  },
+  "pure-k0.01-p07-c0-s0": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "b987e55a63a49ed81fdd07448cd8acc1a2bb0584b73487a0e4337e6ea0e65428",
+   "jax033_key": "0841e02a4692fde1fd46dc398c724e19e46e4dcffd7a691847ec595abfbd602a"
+  },
+  "pure-k0.01-p07-c0-s1": {
+   "equal": true,
+   "status": [
+    "ok",
+    "ok"
+   ],
+   "n_claims": [
+    4,
+    4
+   ],
+   "port_key": "0daa776d694d662fab124e89dfeceeb424cc45ed94e6581cd5581fd3ae1f124d",
+   "jax033_key": "a992632b72715b637e2fe0ef502cc59507d09005f8b024e00d2e92a1dd315d69"
+  }
+ },
+ "paired_with_reference": {
+  "paired": 22,
+  "overall": {
+   "eta": "no difference detected",
+   "beta": "does not supersede",
+   "epsilon": "no difference detected",
+   "kappa": "not measured"
+  },
+  "axes": {
+   "eta": {
+    "calibration": "no difference",
+    "calibration_one_sided": "not measured",
+    "availability": "no difference",
+    "information": "no difference",
+    "accuracy": "no difference",
+    "cost": "cheaper"
+   },
+   "beta": {
+    "calibration": "not measured",
+    "calibration_one_sided": "no difference",
+    "availability": "no difference",
+    "information": "loses",
+    "accuracy": "no difference",
+    "cost": "cheaper"
+   },
+   "epsilon": {
+    "calibration": "no difference",
+    "calibration_one_sided": "not measured",
+    "availability": "no difference",
+    "information": "no difference",
+    "accuracy": "no difference",
+    "cost": "cheaper"
+   },
+   "kappa": {
+    "calibration": "not measured",
+    "calibration_one_sided": "not measured",
+    "availability": "no difference",
+    "information": "not measured",
+    "accuracy": "not measured",
+    "cost": "cheaper"
+   }
+  }
+ },
+ "sraging_provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs": {
+   "method": null,
+   "reference": "jax2-v5-full-bign",
+   "null": "null_prior-v5-full-bign"
+  },
+  "cohort_ids": 22,
+  "computed_on_manifest_sha256": {},
+  "runs_sha256": {
+   "reference": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "null": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  }
+ },
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

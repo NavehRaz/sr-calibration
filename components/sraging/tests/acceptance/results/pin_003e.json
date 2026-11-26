@@ -1,0 +1,65 @@
+{
+ "phase": "pin",
+ "written_at": "2026-10-17T21:35:35Z",
+ "repo_head": "1871e3b989a0d673266c2bd1cfdf9be31b9fa5e8",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 0.9333417415618896,
+ "cpu_s": 0.29546700000000004,
+ "status": "written",
+ "pins": "tests/acceptance/pins_003e.json",
+ "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+ "n_records": {
+  "jax2-v5-full-bign": 1776,
+  "jax033-v5-full-bign": 1776,
+  "null_prior-v5-full-bign": 1776
+ },
+ "n_arrays": 15,
+ "drift_from_committed_pins": [],
+ "libraries": {
+  "v5": {
+   "path": "data/library/v5/manifest.json",
+   "sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3"
+  },
+  "v6": {
+   "path": "data/library/v6/manifest.json",
+   "sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f"
+  }
+ },
+ "keys_sha256_cross_check": "all 3 equal the tester-stated values",
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": null,
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

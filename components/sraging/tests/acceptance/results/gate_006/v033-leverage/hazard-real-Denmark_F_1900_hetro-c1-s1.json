@@ -1,0 +1,33 @@
+{
+ "calibrator": "profile_v033",
+ "cell": "v033-leverage",
+ "cluster": "real|Denmark_F_1900_hetro",
+ "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s1",
+ "cpu_model": "AMD EPYC 9634 84-Core Processor",
+ "dropped": {
+  "age": 365.25,
+  "event": 1,
+  "row": 28
+ },
+ "element_cpu_s": 816.414212,
+ "fit_cpu_s": 667.855380952,
+ "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+ "host": "cn116.wexac.weizmann.ac.il",
+ "kappa_true": 0.141,
+ "leverage_cpu_s": 113.49195517299995,
+ "leverage_flag": "flag",
+ "leverage_reason": null,
+ "loglik_hat": -119860.83587712514,
+ "lsf_index": "5",
+ "lsf_jobid": "675423",
+ "n": 25000,
+ "status": "ok",
+ "warnings": [
+  "BASIN_GAIN",
+  "BASIN_OUTSIDE",
+  "BASIN_OUTSIDE",
+  "FLOORED_DEATHS",
+  "AGE0_DEATHS",
+  "LEVERAGE"
+ ]
+}

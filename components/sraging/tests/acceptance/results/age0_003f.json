@@ -1,0 +1,353 @@
+{
+ "phase": "age0",
+ "written_at": "2026-10-19T13:28:11Z",
+ "repo_head": "46bc94cc5916fa5f70d7ea454f609c7043ca9eff",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003f.toml": "2a3b45d85c6f12f4201b7c5461aac5a2d9c901d7"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "7ae6d012875c18b9c489261eb82308a637d709cf"
+ },
+ "wall_s": 0.4509549140930176,
+ "cpu_s": 0.36435,
+ "status": "REPORTED",
+ "n": 3,
+ "cohorts": {
+  "pure-k2-p09-c1-s0": {
+   "production": {
+    "label": "flat_valley_slide",
+    "reason": null,
+    "dropped": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1
+    },
+    "R": {
+     "all4": 4.060374927908165,
+     "lead_pair": 4.060374927908165,
+     "raw": 1.0488039032913428
+    },
+    "delta_total": 0.15503882323719154,
+    "delta_nats": 7.755819071395275e-05,
+    "labels": {
+     "all4": "flat_valley_slide",
+     "lead_pair": "flat_valley_slide",
+     "raw": "no_flag"
+    },
+    "ll_ref": -5698.2374427489085,
+    "ll_new": -5698.082403925671,
+    "ll_by_start": {
+     "mle_stage": -5698.082403925671,
+     "warm": -5698.082403959103
+    },
+    "n_tied_top": 1,
+    "basin_fix_fired": false,
+    "at_theta_hat": {
+     "log_distance_to_bounds": {
+      "eta": [
+       18.431736069258932,
+       16.107040325651752
+      ],
+      "beta": [
+       20.37401926432154,
+       14.164757130589145
+      ],
+      "epsilon": [
+       21.653303951910793,
+       12.88547244299989
+      ],
+      "kappa": [
+       0.01777716257427997,
+       12.593760591064058
+      ]
+     },
+     "gradient": [
+      0.0004638603378292872,
+      -5.2660930735502755e-05,
+      0.0004818598654904705,
+      -0.00011511378955886747
+     ],
+     "free_gradient_norm": 0.0006807199873326237
+    },
+    "cost": {
+     "cpu_s": 52.73415100000011,
+     "share_of_fit": 0.27023103908774176
+    },
+    "gap_sd": {
+     "g": 0.0,
+     "n_deaths": 2000,
+     "applicable": true,
+     "flagged": false
+    },
+    "share": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1,
+     "term": -10.912228671280628,
+     "share": 0.0019113579444405104
+    },
+    "refit_start": "mle_stage",
+    "provenance": {
+     "calibrator": "profile_jax2",
+     "version": "1.0.0",
+     "host": "MC06268844",
+     "machine": "arm64",
+     "cpu": "Apple M5 Pro",
+     "library": "v6",
+     "library_source": "the P3 tool (a calibrator cannot know the library)"
+    }
+   },
+   "influence_top": {
+    "row": 1,
+    "age": 0.0,
+    "event": 1,
+    "shift": {
+     "eta_over_eps": -0.00701473958143134,
+     "rbar_over_eta": -0.7297843396849752,
+     "eta": -0.0468174922851455,
+     "epsilon": -0.03980275270371416
+    }
+   },
+   "warnings": [
+    "AGE0_DEATHS"
+   ]
+  },
+  "pure-k10-p09-c1-s0": {
+   "production": {
+    "label": "flat_valley_slide",
+    "reason": null,
+    "dropped": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1
+    },
+    "R": {
+     "all4": 6.183328505619631,
+     "lead_pair": 6.183328505619631,
+     "raw": 1.0433888951890562
+    },
+    "delta_total": 0.12778809258816182,
+    "delta_nats": 6.392600929873027e-05,
+    "labels": {
+     "all4": "flat_valley_slide",
+     "lead_pair": "flat_valley_slide",
+     "raw": "no_flag"
+    },
+    "ll_ref": -5736.67545727886,
+    "ll_new": -5736.547669186272,
+    "ll_by_start": {
+     "mle_stage": -5736.547669186272,
+     "warm": -5736.547669148384
+    },
+    "n_tied_top": 1,
+    "basin_fix_fired": false,
+    "at_theta_hat": {
+     "log_distance_to_bounds": {
+      "eta": [
+       18.385518340876843,
+       16.15325805403384
+      ],
+      "beta": [
+       20.153531449581635,
+       14.385244945329049
+      ],
+      "epsilon": [
+       21.70887579009164,
+       12.829900604819045
+      ],
+      "kappa": [
+       0.005797745172877455,
+       12.60574000846546
+      ]
+     },
+     "gradient": [
+      5.700054831839435e-05,
+      -3.913012818885355e-06,
+      3.370241183744985e-05,
+      2.2593844124583294e-05
+     ],
+     "free_gradient_norm": 7.00764477831562e-05
+    },
+    "cost": {
+     "cpu_s": 47.700280999999904,
+     "share_of_fit": 0.2709778234532727
+    },
+    "gap_sd": {
+     "g": 0.0,
+     "n_deaths": 2000,
+     "applicable": true,
+     "flagged": false
+    },
+    "share": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1,
+     "term": -10.346741878495026,
+     "share": 0.0018003657318840618
+    },
+    "refit_start": "mle_stage",
+    "provenance": {
+     "calibrator": "profile_jax2",
+     "version": "1.0.0",
+     "host": "MC06268844",
+     "machine": "arm64",
+     "cpu": "Apple M5 Pro",
+     "library": "v6",
+     "library_source": "the P3 tool (a calibrator cannot know the library)"
+    }
+   },
+   "influence_top": {
+    "row": 1,
+    "age": 0.0,
+    "event": 1,
+    "shift": {
+     "eta_over_eps": -0.007097238835031945,
+     "rbar_over_eta": -0.814323868287363,
+     "eta": -0.04179596318334053,
+     "epsilon": -0.034698724348308584
+    }
+   },
+   "warnings": [
+    "AGE0_DEATHS"
+   ]
+  },
+  "censor-real-Denmark_F_1890_hetro-c0-s1": {
+   "production": {
+    "label": "no_flag",
+    "reason": null,
+    "dropped": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1
+    },
+    "R": {
+     "all4": 1.019023567633413,
+     "lead_pair": 1.0013909973449642,
+     "raw": 1.019023567633413
+    },
+    "delta_total": -0.00026005785912275314,
+    "delta_nats": -2.600604597273504e-09,
+    "labels": {
+     "all4": "no_flag",
+     "lead_pair": "no_flag",
+     "raw": "no_flag"
+    },
+    "ll_ref": -375962.4199105813,
+    "ll_new": -375962.4201706392,
+    "ll_by_start": {
+     "mle_stage": -375962.4201706392,
+     "warm": -375962.4192364045
+    },
+    "n_tied_top": 1,
+    "basin_fix_fired": false,
+    "at_theta_hat": {
+     "log_distance_to_bounds": {
+      "eta": [
+       16.807713589571485,
+       17.7310628053392
+      ],
+      "beta": [
+       27.602770756508004,
+       6.936005638402678
+      ],
+      "epsilon": [
+       24.60746634204087,
+       9.931310052869817
+      ],
+      "kappa": [
+       0.7697441875884596,
+       11.841793566049878
+      ]
+     },
+     "gradient": [
+      -0.754377901501379,
+      1.6008642395650836,
+      -0.9921082533425482,
+      -0.02040055373626009
+     ],
+     "free_gradient_norm": 2.028927623335802
+    },
+    "cost": {
+     "cpu_s": 54.09351800000013,
+     "share_of_fit": 0.040460890555173205
+    },
+    "gap_sd": {
+     "g": 0.0,
+     "n_deaths": 79290,
+     "applicable": true,
+     "flagged": false
+    },
+    "share": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1,
+     "term": -11.64623318295133,
+     "share": 3.097616100008566e-05
+    },
+    "refit_start": "mle_stage",
+    "provenance": {
+     "calibrator": "profile_jax2",
+     "version": "1.0.0",
+     "host": "MC06268844",
+     "machine": "arm64",
+     "cpu": "Apple M5 Pro",
+     "library": "v6",
+     "library_source": "the P3 tool (a calibrator cannot know the library)"
+    }
+   },
+   "influence_top": {
+    "row": 1,
+    "age": 0.0,
+    "event": 1,
+    "shift": {
+     "eta_over_eps": 8.454685218902224e-05,
+     "rbar_over_eta": -5.975591131813876e-05,
+     "eta": -0.00012206051727118948,
+     "epsilon": -0.00020660736955196383
+    }
+   },
+   "warnings": [
+    "AGE0_DEATHS"
+   ]
+  }
+ },
+ "rule": {
+  "quantities": "all4",
+  "ratio": 1.5,
+  "delta_total_nats": 1.92,
+  "fail_nats": 0.1,
+  "refit": "mle_stage_and_warm_start",
+  "provisional": false
+ },
+ "p3": {
+  "repo_head": "9c19cff5f2c969efed4db1d9bc1184a09dbda8c9"
+ },
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.0",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": "v6",
+  "rule": {
+   "quantities": "all4",
+   "ratio": 1.5,
+   "delta_total_nats": 1.92,
+   "fail_nats": 0.1,
+   "refit": "mle_stage_and_warm_start",
+   "provisional": false
+  },
+  "panel_commit": "2a3b45d85c6f12f4201b7c5461aac5a2d9c901d7"
+ }
+}

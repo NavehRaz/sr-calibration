@@ -1,0 +1,402 @@
+{
+ "created": "2026-10-03T19:21:06",
+ "purpose": "Frozen SRK (HEAD cb191f5) for T1 of spec 002: fp_piecewise, fp_likelihood and their closure. NEVER EDIT. Used only in a worker subprocess, same host, side by side.",
+ "host": {
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "node": "MC06268844"
+ },
+ "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+ "sources": {
+  "SRtools_kappa": {
+   "head": "cb191f5f410a59e1e97c2937758518c182b94ec5",
+   "status": [
+    " M SRK/benchmark/_eta_cache.json",
+    " M SRK/benchmark/cohorts.py",
+    " M SRK/benchmark/coverage.py",
+    " M SRK/benchmark/emcee_production.py",
+    " M SRK/benchmark/interval_estimators.py",
+    " M SRK/benchmark/kappa_ranges.py",
+    " M SRK/benchmark/methods.py",
+    " M SRK/benchmark/report.py",
+    " M SRK/benchmark/representativeness.py",
+    " M SRK/benchmark/selftest.py",
+    " M SRK/benchmark/space_search.py",
+    " M SRK/benchmark/two_stage.py",
+    " M SRK/fp_gof.py",
+    " M SRK/fp_likelihood.py",
+    " M tools/sync_to_cluster.sh",
+    "?? SRK/benchmark/_kdense_points.py",
+    "?? SRK/benchmark/beta_slice.py",
+    "?? SRK/benchmark/combo_vol.py",
+    "?? SRK/benchmark/dip_test.py",
+    "?? SRK/benchmark/explorer.py",
+    "?? SRK/benchmark/kappa_dense.py",
+    "?? SRK/benchmark/kappa_feasible.py",
+    "?? SRK/benchmark/kappa_value.py",
+    "?? SRK/benchmark/likelihood_maps.py",
+    "?? SRK/benchmark/likelihood_vol.py",
+    "?? SRK/benchmark/likelihood_vol_render.py",
+    "?? SRK/benchmark/manifold_map.py",
+    "?? SRK/benchmark/mle_report.py",
+    "?? SRK/benchmark/perf_plots.py",
+    "?? SRK/benchmark/ratio_invariant.py",
+    "?? SRK/fit_cohort.py",
+    "?? tools/rebuild.sh",
+    "?? tools/submit_combo_run.sh"
+   ]
+  }
+ },
+ "files": [
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/All_config.csv",
+   "md5": "3e07debbd672ff4736f5cba1c3d56d3d",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/old/All_config.csv",
+   "md5": "12be6a129101329df7c5a0beba1d0e29",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/old/summery_max_likelihood.csv",
+   "md5": "4d612df71cfc2030a858a9dabac2cbc9",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/old/summery_mode.csv",
+   "md5": "179926dd2460819eb1fb9af198ffb409",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/old/summery_mode_overall.csv",
+   "md5": "87708f5445dc8334aa52ba99b28d63dd",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/summery_max_likelihood.csv",
+   "md5": "e41096ed06f59c8732535432af1c0c49",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/summery_mode.csv",
+   "md5": "88452cc878afd12725318be0c24efaa0",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/Preset_values/summery_mode_overall.csv",
+   "md5": "23918db543cccbace1530af97c49ff53",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SR_hetro.py",
+   "md5": "745c8035221f96c7520da22d0c27d36e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib.py",
+   "md5": "91f4ec22aeba277bb39c05ff98753b33",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/SRmodellib_lifelines.py",
+   "md5": "acd403bc2d8fc522b50998ed70499ed8",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/__init__.py",
+   "md5": "24251f2847bd338fd4276adda8022620",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/benchmark/__init__.py",
+   "md5": "f34ff6fa54037947150efdb049890f4e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/benchmark/space_search.py",
+   "md5": "6c1998b235cc8a23549f1449a89bf194",
+   "tracked": true,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/config.py",
+   "md5": "6ba799dea811185b7a14ef04a5c29d49",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/curves.py",
+   "md5": "061fdfd57c3bb60f0f51e856dd1e6c86",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/deathTimesDataSet.py",
+   "md5": "64ad1a3b5c3b4ca9631d53d03912e50e",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/distance_metrics.py",
+   "md5": "b06c95c66b3ec2680b9f02e48f593d89",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fit_cohort.py",
+   "md5": "39778f62ebffeb66a498a9f401a8e84d",
+   "tracked": false,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_curvefit.py",
+   "md5": "cf64615780a5dc36cfc8f079f9c4c073",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_curves.py",
+   "md5": "dce72a84ef26e250aaf09d2aad95a3fc",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_gof.py",
+   "md5": "e406e5265d54c9d7921f7b440bd16428",
+   "tracked": true,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_likelihood.py",
+   "md5": "f059235ac088d006ab5797681ecdbcd4",
+   "tracked": true,
+   "dirty_vs_head": true
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/fp_piecewise.py",
+   "md5": "8f2284d1cc1712800e6084d7d46622ee",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/initialParamsFinder.py",
+   "md5": "c9a85bfa7de4cdc371e753cd07214988",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/__init__.py",
+   "md5": "6b806eb5f3fdcf93af4f16f2a98f4786",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/best_pair.py",
+   "md5": "3d249b3dd42c9508489a237be1879fc8",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/constrained_fit.py",
+   "md5": "fb64006b7796089e5a7bb507643395da",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/factor_plots.py",
+   "md5": "a04c3e4e5b02d59bea12b11f4eb5d307",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/io.py",
+   "md5": "4cf066db715a70ee3761097d7dfebab3",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/metrics.py",
+   "md5": "1d157127060f684e51794e966d708b3c",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/param_plane.py",
+   "md5": "459ae946b971e900c22e4e3f32e22c21",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/per_file.py",
+   "md5": "91794da0b25f7c864453ccbe2f525f33",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention/two_population.py",
+   "md5": "1ea9314846f149aaf1d3c1f7b0fe1cc6",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention_SR.py",
+   "md5": "04f59795df99cfd51ab69c76297823a3",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/intervention_sim.py",
+   "md5": "8b4df72653e8f87acb600df0edac4523",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/joint_posterior.py",
+   "md5": "38c2709dbbed5c24f932fcf6b1c05056",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/life_table.py",
+   "md5": "6d1fdd419c047e667466b6076d3e88c6",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/makhamGompertzFitter.py",
+   "md5": "c39ada303109ae4d79b189257fd4bd52",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/presets.py",
+   "md5": "43e5ef63cb04524d8bcf05a9840854c3",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/prior_gen.py",
+   "md5": "f5dfca52dc67896809bc414fd97961f4",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/samples_utils.py",
+   "md5": "9b6bf5817f2fbe9cf44ba859fd01e572",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/sr_mcmc.py",
+   "md5": "c55ec3406b8b1793ef8e4a9be74e9e1c",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/stepsize.py",
+   "md5": "002adf6f934f8cfc9abe9acdad2f38f6",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/theta_utils.py",
+   "md5": "a8d066bffad2b8b5e8587faa7bc93bee",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "SRK/weibullFitter.py",
+   "md5": "5f223392fe3687d4615243a953c0308f",
+   "tracked": true,
+   "dirty_vs_head": false
+  },
+  {
+   "repo": "SRtools_kappa",
+   "path": "tests/test_fp_piecewise.py",
+   "md5": "d27d61d1a99fb6a4104e079dfb2c13b1",
+   "tracked": true,
+   "dirty_vs_head": false
+  }
+ ],
+ "environment_pins": {
+  "jax": "0.11.1",
+  "jaxlib": "0.11.1",
+  "numpy": "2.4.3",
+  "scipy": "1.17.1",
+  "lifelines": "0.30.3",
+  "numba": "0.64.0",
+  "pandas": "2.3.3"
+ },
+ "verification": {
+  "test": "tests/test_fp_piecewise.py",
+  "returncode": 0,
+  "summary": "126 passed, 2 xfailed in 65.46s (0:01:05)",
+  "passed": 126,
+  "failed": 0,
+  "xfailed": 2,
+  "skipped": 0,
+  "wall_s": 66.0,
+  "v033_shared_md5_identical": true,
+  "fingerprint_unchanged_by_verification": true
+ }
+}

@@ -1,0 +1,315 @@
+{
+ "phase": "adapter",
+ "written_at": "2026-10-03T12:39:42Z",
+ "repo_head": "4960dd5b7643c99c3b2b93ecbdf09f4e63647db6",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/code/sraging/.cache/tester_f8eaed2",
+  "head": "f8eaed2d56d7b237d01e38f140fe1d71a8c83717"
+ },
+ "status": "pass",
+ "checks": {
+  "adapter_claims_vs_stored": {
+   "passed": 30,
+   "total": 30,
+   "N": 30,
+   "failures": []
+  },
+  "adapter_axes_no_difference": {
+   "passed": 1,
+   "total": 1,
+   "N": 30,
+   "failures": []
+  },
+  "tester_tree_unchanged": {
+   "passed": 1,
+   "total": 1,
+   "N": 9062,
+   "failures": []
+  }
+ },
+ "comparison": {
+  "N": 30,
+  "port_records": 30,
+  "reference_records": 30,
+  "parameters": {
+   "eta": {
+    "axes": {
+     "calibration": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "calibration_one_sided": {
+      "outcome": "not measured",
+      "statistic": null,
+      "denominator": 0
+     },
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "information": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "accuracy": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "cost": {
+      "outcome": "cheaper",
+      "statistic": 0.9817335699890252,
+      "denominator": 30
+     }
+    },
+    "coverage": {
+     "port": {
+      "closed": {
+       "hits": 28,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "reference": {
+      "closed": {
+       "hits": 28,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     }
+    }
+   },
+   "beta": {
+    "axes": {
+     "calibration": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 4
+     },
+     "calibration_one_sided": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 26
+     },
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "information": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 4
+     },
+     "accuracy": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "cost": {
+      "outcome": "cheaper",
+      "statistic": 0.9817335699890252,
+      "denominator": 30
+     }
+    },
+    "coverage": {
+     "port": {
+      "closed": {
+       "hits": 1,
+       "claimed": 4,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 26,
+       "claimed": 26,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "reference": {
+      "closed": {
+       "hits": 1,
+       "claimed": 4,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 26,
+       "claimed": 26,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     }
+    }
+   },
+   "epsilon": {
+    "axes": {
+     "calibration": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "calibration_one_sided": {
+      "outcome": "not measured",
+      "statistic": null,
+      "denominator": 0
+     },
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "information": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "accuracy": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "cost": {
+      "outcome": "cheaper",
+      "statistic": 0.9817335699890252,
+      "denominator": 30
+     }
+    },
+    "coverage": {
+     "port": {
+      "closed": {
+       "hits": 28,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "reference": {
+      "closed": {
+       "hits": 28,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     }
+    }
+   },
+   "kappa": {
+    "axes": {
+     "calibration": {
+      "outcome": "not measured",
+      "statistic": null,
+      "denominator": 0
+     },
+     "calibration_one_sided": {
+      "outcome": "not measured",
+      "statistic": 0.0,
+      "denominator": 2
+     },
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 30
+     },
+     "information": {
+      "outcome": "not measured",
+      "statistic": null,
+      "denominator": 0
+     },
+     "accuracy": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "denominator": 2
+     },
+     "cost": {
+      "outcome": "cheaper",
+      "statistic": 0.9817335699890252,
+      "denominator": 30
+     }
+    },
+    "coverage": {
+     "port": {
+      "closed": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 2,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "reference": {
+      "closed": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 2,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      }
+     }
+    }
+   }
+  }
+ }
+}

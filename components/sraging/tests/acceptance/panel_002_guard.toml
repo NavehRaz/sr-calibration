@@ -1,0 +1,43 @@
+# The CI guard's frozen panel (spec 002 research R14; FR-024). COMMIT before the `guard` phase.
+# Disjoint from the C_S pilot (tools/acceptance_002.py GUARD_PILOT). Theta points: the six frozen points of
+# each cohort in spec 001's tests/acceptance/panel_v1.toml (truth, optimum, seed, floor, kmax, corner).
+library = "v1"
+tester_head = "f8eaed2d56d7b237d01e38f140fe1d71a8c83717"
+theta_source = "tests/acceptance/panel_v1.toml"
+selection = "quick tier p00-p01 (all 8) + the two named panel cohorts where v0.3.3's round-off is measured to fire (a human basin cohort at n = 1e5; the censor-tie basin cohort)"
+cohorts = ["pure-k0.01-p00-c0-s0", "pure-k0.01-p00-c0-s1", "pure-k0.01-p00-c1-s0", "pure-k0.01-p00-c1-s1",
+           "pure-k0.01-p01-c0-s0", "pure-k0.01-p01-c0-s1", "pure-k0.01-p01-c1-s0", "pure-k0.01-p01-c1-s1",
+           "pure-real-Sweden_F_1910_homo-c0-s0", "censor-k0.0316-p05-c0-s1"]
+
+# Feature configurations (added at review T064, sr-naveh N1 / sr-manager M4: the pure panel cannot see a
+# change that only a feature path makes). Disjoint from panel_002_t1.toml and from both pilots. Theta: the
+# library truth, eta x1.5 and eta x10 (research R14's three points).
+feature_theta = ["truth", "eta x1.5", "eta x10"]
+
+[[feature]]
+kind = "hazard"
+cohort = "hazard-k0.01-p01-c1-s0"
+
+[[feature]]
+kind = "window"
+cohort = "window-k0.01-p01-c1-s0"
+
+[[feature]]
+kind = "het"
+cohort = "het-k0.01-p01-c1-s1"
+M = 7
+
+[[feature]]
+kind = "exact"
+cohort = "censor-k0.01-p01-c1-s0"
+rule = "ages read as exact (continuous)"
+
+[[feature]]
+kind = "entry"
+cohort = "censor-k0.01-p01-c0-s1"
+rule = "e_i = floor(0.5 t_i)"
+
+[[feature]]
+kind = "segments"
+cohort = "synthetic (panel_002_t1.toml [segments])"
+config = "xc lower (62,124)"

@@ -1,0 +1,328 @@
+# Spec 003g's frozen gate panel and pre-registered rules (specs/003g-default-switch; data-model "Panel registration").
+# Committed with the id list (panel_003g_ids.tsv) BEFORE any v6 record of 1.0.1 or v0.3.3 is read (FR-003). The
+# strata counts and ids_sha256 are written by `tools/panel_003g.py build` and checked by `check`.
+
+naveh_ok = "PR-1..PR-6 OK'd by Naveh 2026-10-22 (spec Clarifications, AskUserQuestion, each the recommendation)"
+
+[sources]   # research R1; paths relative to code_5 (DROPBOX); each read only after its sha256 matches
+register = { path = "sr_calibration_tester_jax2_freeze/reports/freeze101/defects/defect_register.json", sha256 = "ec11e15437c743afef52ddaa86de8349a01e7c809669701a05ffda5cfab4c97c" }
+manifest_v6 = { path = "sr_calibration_tester/data/library/v6/manifest.json", sha256 = "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f" }
+reference_set = { path = "sr_calibration_tester_jax2_rel/reports/rel101/ADD3/census_dev5/set_REF_v6_J.tsv", sha256 = "6bdedd1fea571024fe63a8b54ae0466d6df9b9bfa686ce88a84e94c9a9e94a10" }
+validity_v6 = { path = "sr_calibration_tester/reports/validity/validity_v6.csv", sha256 = "32f928d62ea2c6553f61b2ca876707df4eca32033a8f1a15c2aa9aa224b7f776" }
+basin_labels = { path = "sr_calibration_tester/reports/basin/scope/label_final.csv", sha256 = "f69b679449454f358d3290996c29830d8fafb271e43f443ddeb2d755de15c2c2" }
+basin_scope = { path = "sr_calibration_tester/reports/basin/scope/scope_cohorts.csv", sha256 = "63f2b7087226ca3ee706e145d8da8256591268e439658e7ca114a360f870553e" }
+census = { path = "sr_calibration_tester_jax2_rel/reports/rel101/ADD3/census_dev5/rows_v6.jsonl", sha256 = "a39e87d3927fac5f0c4ac558f09f9fe8cb952a630b8280d6e68c931700e42cb9" }
+basin_records = { path = "sr_calibration_tester/reports/basin/scope/records.json", sha256 = "1e7043b64976f8d822439a88326d8d0563459c86d3cce6ef2c98174d1d852d5c" }   # v0.3.3 v1 records the scope scored (v033-points-verify)
+ids = { path = "tests/acceptance/panel_003g_ids.tsv", sha256 = "8b82710e7b64e7962bffc789cbbd80c15bdd26b01cce6cce209a6672d08d4c70" }   # written by build
+
+[rules]   # PR-1..PR-6 (spec "Pre-registered rules"); fixed before W1, never changed after a v6 record is read
+w_thr = 1.92                      # PR-1: a valid informative cohort with W > w_thr fails its stratum (V)
+pr2_loses = "z < -2.0"            # PR-2: the tester's own paired_coverage_gap verdict "loses" (srbench verdict.py)
+pr3_margin = 0.10                 # PR-3: p_out - p_in one-sided 95 % lower bound must exceed -pr3_margin (Naveh
+                                  # 2026-10-22: 0.10, correcting 0.05, which failed equal coverage at the panel's N)
+pr3_alpha = 0.05
+pr3_interval = "newcombe-hybrid-score"
+pr4_quantities = ["eta", "epsilon"]   # PR-4 (XI): J's intervals narrower than the null's on these
+pr4_statistic = "the tester's information axis, its width comparison only (median closed width, WIDTH_TOLERANCE_DEX); its closed-share rule not applied, J's closed share reported (Naveh 2026-10-22, after a v5 dry run: the null is closed on every cohort)"
+pr5_measures = { "BASIN-J" = "W33 > w_thr", "BASIN-P15" = "W33 > w_thr", "P-ROUNDOFF" = "W33 > w_thr", "P-DTCEIL" = "cpu_s_v033 > cpu_s_j", "P-CENSORTIE" = "W33 > w_thr" }
+pr6 = "blocked iff any PR-1..PR-4 verdict is FAIL or incomplete, or any PR-5 is 'not shown'; empty strata never pass"
+g_crit = 1.0                      # FR-011: not_assessed iff g0 == 0 and free-gradient norm > g_crit (leverage_rule)
+
+[verify]   # tasks T031: v033-points-verify reproduces the basin scope's points on its own v1 records (no v6)
+points_rows = "BASIN-J's 32 ids (claims path); the 5 smallest-n `recon` rows of scope_cohorts.csv in J's domain; the 2 smallest-n `recon_failed` rows in J's domain (the null twin)"
+value_rel_tol = 1e-5              # the kappa rebuild's value against the scope's (recon rows; matched to 1e-12 [M])
+point_rel_tol = 1e-12             # claims rows: the recovered point equals the scope's per-parameter points
+# Claims rows are gated on the point, not on v0.3.3's value there. A development run (2026-10-22, before this was
+# committed) found v0.3.3's value at its own point differs from the scope's WEXAC value by more than 1 nat at 5 of
+# the 32 human basin points (up to 3,346 nats): the predecessor's likelihood is host-dependent there, so it is reported as a
+# measurement, and W33 is always taken in 1.0.1's likelihood (spec PR-5), never in v0.3.3's.
+
+[seal]   # research R5: v0.3.3's v6 records are read only after jax2's gate run is on record
+jax033_v6 = "GATE-V6 registered run 2026-10-27 10:00:07 IST: mle_profile_jax2 1.0.1 PASS (G1-G5); out/GATE_V6.txt sha256 f8c428431bdd337b1cab51325b27e432fa52861fdb5cf75b8b4440685667f7c0; jax2 sesync 20261027-100208-jax2-dccf: the no-peek on runs/jax033-v6-full-bign.json is LIFTED"
+
+[s4]   # FR-009: exactly two sraging fits, each priced before it runs (never from theta-only timers)
+fit1 = { cohort = "censor-k0.01-p05-c1-s1", calibrator = "profile_jax2", version = "1.0.1", settings = "default (combinations on, leverage on)", price_cpu_h = "8.6-15 [I]: 19,654 CPU-s full fit without combinations (parity_003b.json) x ITP's 2.6 lead-pair ratio" }
+fit2 = { rule = "the human BASIN-J id with basin_fix.fired in W1's record and the lowest record cpu_seconds; priced from that timer before it runs" }
+dd_cap_cpu_h = 3.0                # Naveh Dd: the 3 p15 theta-only v0.3.3 fits run only under this total
+
+[windows]   # research R4 (jax2's rev-5 merge plan); HZ-1 (sharp hazard) has no _h record in any window
+W1 = { runs = ["jax2-v6-full-bign", "null_prior-v6-full-bign"], witness = "mle_profile_jax2" }
+W2 = { runs = ["jax2h-v6-full-bign"], witness = "mle_profile_jax2_h" }
+W3 = { runs = ["jax2-v6-sharp-nladder"], witness = "mle_profile_jax2", held = ["pure-k0.0316-p15-c1-s1"], not_stored = ["pure-k0.0316-p15-c1-s1", "pure-k0.0316-p15-c0-s1", "pure-k0.0316-p15-c1-s0"] }   # jax2 sesync 20261028-160206-jax2-960a: 629 of 632; c0-s1 and c1-s0 stopped without a record after repeated preemption; c0-s1 is VALID in SRK-1/outside pure, so PR-1 there reads incomplete
+sealed_runs = ["jax033-v6-full-bign"]
+
+# Post-W1 deviations from the registration above (Naveh, spec Clarifications Session 2026-10-28, after the sr-naveh
+# interim review). [rules] and [strata] stay as registered; each change is listed here. kind = "verdict": the gate
+# reports that stratum's rule as `as`, with the reason (T071). kind = "rule-code": the change is in the named code, a
+# reviewed commit in the results test, and the gate copies the entry into its output.
+[[deviations]]
+id = "DV-1"
+kind = "verdict"
+stratum = "P-DTCEIL"
+rule = "PR-5"
+as = "reported"
+reason = "a library gap, like E. coli: v0.3.3's step cap delta/(3L) costs more than 1.0.1's floor only below delta/L ~ 4.4e-4 [I]; v6's 16 C. elegans cohorts sit at ~6e-4 [M], so no v6 cohort is in the defect's regime (constitution V deviation)"
+decided = "Naveh 2026-10-28"
+
+[[deviations]]
+id = "DV-2"
+kind = "rule-code"
+rule = "PR-2"
+code = "sraging.default_gate.coverage_inside"
+change = "every axis 'not measured' -> 'reported' (listed under Not Covered), not PASS; a stratum with one measured axis is unchanged"
+decided = "Naveh 2026-10-28"
+
+[[deviations]]
+id = "DV-3"
+kind = "rule-code"
+rule = "FR-011"
+code = "sraging.leverage.not_assessed, sraging.leverage_rule.G_CRIT_PER_IND"
+change = "not_assessed iff g0 == 0 and |g|/n > 5e-5 (n = all individuals), replacing [rules] g_crit = 1.0 on the summed norm, which grows with n"
+decided = "Naveh 2026-10-28"
+
+[[deviations]]
+id = "DV-4"
+kind = "verdict"
+stratum = "P-ROUNDOFF"
+rule = "PR-5"
+as = "reported"
+reason = "shown through the basin mechanism only: the 19 shown are human, 15 of them BASIN-J cohorts and 4 more human cohorts with the basin's W33 (270-1,883); on the 112 non-human round-off cohorts v0.3.3 is shown on none (109 not shown, 3 no point; largest W33 -0.034), so the round-off defect itself is not shown on v6 (sr-naveh N7)"
+decided = "Naveh 2026-10-29"
+
+[[deviations]]
+id = "DV-5"
+kind = "rule-code"
+rule = "PR-2"
+code = "sraging.default_gate.coverage_inside, sraging.default_gate.PR2_N_MIN_LOSES"
+change = "a PASS whose measured axes all have fewer than 3 paired cells, where srbench's calibration axis cannot read 'loses' (z < -2.0), reads 'reported' (Not Covered), as DV-2 (sr-naveh N13)"
+decided = "Naveh 2026-10-29"
+
+# N9 (Naveh 2026-10-29): one decision per blocking entry of the gate; the gate copies each onto its entry, and the
+# results test requires every blocking entry decided before registry.DEFAULT is profile_jax2.
+
+[[decisions]]
+stratum = "BASIN-P15/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "eta"
+decision = "stated limit"
+reason = "N = 3 cannot pass PR-3 (pr3_power, before W3); every closed claim covered (eta 3/3, epsilon 3/3, beta 1/1)"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "BASIN-P15/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "beta"
+decision = "stated limit"
+reason = "N = 3 cannot pass PR-3 (pr3_power, before W3); every closed claim covered (eta 3/3, epsilon 3/3, beta 1/1)"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "BASIN-P15/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "epsilon"
+decision = "stated limit"
+reason = "N = 3 cannot pass PR-3 (pr3_power, before W3); every closed claim covered (eta 3/3, epsilon 3/3, beta 1/1)"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "LB-1x/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "eta"
+decision = "stated limit"
+reason = "N = 1 cannot pass PR-3; the one closed claim covered"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "LB-1x/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "epsilon"
+decision = "stated limit"
+reason = "N = 1 cannot pass PR-3; the one closed claim covered"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "SRK-2/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "eta"
+decision = "stated limit"
+reason = "N = 1 cannot pass PR-3; the one closed claim covered"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "SRK-2/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "epsilon"
+decision = "stated limit"
+reason = "N = 1 cannot pass PR-3; the one closed claim covered"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "SRK-1/outside"
+rule = "PR-3"
+arm = "censor"
+quantity = "eta"
+decision = "stated limit"
+reason = "43/45 against 194/199 inside (lower bound -0.102); a count this low has p = 0.31 under exactly equal coverage (N3)"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "SRK-1/outside"
+rule = "PR-3"
+arm = "censor"
+quantity = "beta"
+decision = "stated limit"
+reason = "too few closed beta claims to test (1/2)"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "SRK-1/outside"
+rule = "PR-1"
+arm = "pure"
+decision = "stated limit"
+reason = "pure-k0.0316-p15-c0-s1 not stored: stopped after repeated preemption (jax2 20261028-160206-jax2-960a); named"
+decided = "Naveh 2026-10-28 (T050)"
+
+[[decisions]]
+stratum = "SRK-1/outside"
+rule = "PR-3"
+arm = "pure"
+quantity = "beta"
+decision = "stated limit"
+reason = "too few closed beta claims to test (3/4)"
+decided = "Naveh 2026-10-28 (T050)"
+
+[strata]   # written by build: { kind, rule, defect, calibrator, gating, count, ids_sha256 }
+
+[strata."BASIN-ECOLI"]
+kind = "register"
+rule = "label_final fail_mle, E. coli: no v5 or v6 cohort"
+defect = "T-JAX-BASIN"
+calibrator = ""
+gating = false
+count = 0
+ids_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+deviation = ["censor-real-ecoli-c0-s1", "hazard-real-ecoli-c0-s0", "hazard-real-ecoli-c0-s1", "hazard-real-ecoli-c1-s0", "het-real-ecoli-c0-s0"]
+
+[strata."BASIN-H"]
+kind = "register"
+rule = "label_final fail_mle, hazard arm (Naveh D5-D6: _h, reported)"
+defect = "T-JAX-BASIN"
+calibrator = "profile_jax2_h"
+gating = false
+count = 13
+ids_sha256 = "f2851bd461fc272fa2ca8a83cffc6213138f78685c0a9d216d8a04b9746fe69b"
+
+[strata."BASIN-J"]
+kind = "register"
+rule = "label_final fail_mle, J's domain, inside the reference set"
+defect = "T-JAX-BASIN"
+calibrator = "profile_jax2"
+gating = true
+count = 32
+ids_sha256 = "4a349b1d54d1bd742e3fad7d003ebd70e6b19a883664b2d9bf30ec42d0def60d"
+
+[strata."BASIN-P15"]
+kind = "register"
+rule = "label_final fail_mle, outside the reference set (sharp p15)"
+defect = "T-JAX-BASIN"
+calibrator = "profile_jax2"
+gating = true
+count = 3
+ids_sha256 = "37dbb48d263e915a38fe7097059c4d19eb74af6c06e148e25ea9c254df98eff6"
+
+[strata."HZ-1"]
+kind = "register"
+rule = "register REV 6 list HZ-1 (spec.arm == 'hazard' AND converged SR CV (sraging's point table at the spec's pa...)"
+defect = "T-H-HAZARD-SHARP"
+calibrator = "profile_jax2_h"
+gating = false
+count = 56
+ids_sha256 = "0a0a63f68c5d109d6e52e56ad00051885ecb76875b5391dd0c58bd961175dc17"
+
+[strata."HZ-4"]
+kind = "register"
+rule = "register REV 6 list HZ-4 (spec.arm == 'hazard', NOT in HZ-1, and N_rule(n, converged SR CV) > N used (cens...)"
+defect = "T-H-HAZARD-SHARP"
+calibrator = "profile_jax2_h"
+gating = false
+count = 69
+ids_sha256 = "35877a7fb3d190b81ecaca469588b200e150b35c3b793ad26ad8737f6fcc48c3"
+
+[strata."LB-1x"]
+kind = "register"
+rule = "register REV 6 list LB-1x (the union of the cohort ids detected on v5 / v2 records (every DETECTED set of s...)"
+defect = "T-LBFGS-STORED-VALUE"
+calibrator = "profile_jax2"
+gating = true
+count = 35
+ids_sha256 = "f5963cc64b23c954bd215590a58035f23c6f8062e9be404fb3418feea0055beb"
+
+[strata."LB-2"]
+kind = "register"
+rule = "register REV 6 list LB-2 (spec.real_name in the library's 11 human anchors (data/library/real_anchors.json...)"
+defect = "T-LBFGS-STORED-VALUE"
+calibrator = "profile_jax2"
+gating = true
+count = 264
+ids_sha256 = "9d4c1649d96328f236b241b2f0cc4def08005d74355572ce09488a22575273d0"
+
+[strata."P-CENSORTIE"]
+kind = "data"
+rule = "jax2's censor-tie detector (compat/jax2_101 censor_tie_relabel, enabled=False) dose >= 0.005"
+defect = "v0.3.3 censor-tie bias (fixed by 1.0.0)"
+calibrator = "profile_jax2"
+gating = true
+count = 0
+ids_sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+[strata."P-DTCEIL"]
+kind = "data"
+rule = "delta / L_phys < 1e-3 (validity_v6.csv)"
+defect = "T-DT-CEILING (v0.3.3's step cap delta/(3L))"
+calibrator = "profile_jax2"
+gating = true
+count = 16
+ids_sha256 = "d20fe8b6676061a0b81b9dfc3da42ce0a54c42cfd5690a98c1b25e5494cea4a5"
+
+[strata."P-ROUNDOFF"]
+kind = "data"
+rule = "a death in the first recording bin (event == 1 and age < delta)"
+defect = "v0.3.3 round-off early deaths (fixed by 1.0.0)"
+calibrator = "profile_jax2"
+gating = true
+count = 324
+ids_sha256 = "04d725f5d5667640c45f1754d9a13c69f841ab4ced4522a693508acc6fa8d569"
+
+[strata."SRK-1"]
+kind = "register"
+rule = "register REV 6 list SRK-1 (for the data each name sees (J view: window off; H view: window on, = the J view...)"
+defect = "T-SRK-SHARP-DT"
+calibrator = "profile_jax2"
+gating = true
+count = 238
+ids_sha256 = "5f854522ae5d44537d368fa704db38a49e9c7b96fd2a752ec175078cbd409b35"
+
+[strata."SRK-1b"]
+kind = "register"
+rule = "register REV 6 list SRK-1b (SRK-1's rule on the v6 reference set (main + bign, census set_REF_v6_J.tsv), J v...)"
+defect = "T-SRK-SHARP-DT"
+calibrator = "profile_jax2"
+gating = true
+count = 1
+ids_sha256 = "a83edf495a04cc4bb5d862c3aa2806489d1797399ffe40ed3346f3b8b8bf957e"
+
+[strata."SRK-2"]
+kind = "register"
+rule = "register REV 6 list SRK-2 (the out-of-scope residual: sides HHL -- KM CV >= 0.05 and CV_c >= 0.05 on the v6...)"
+defect = "T-SRK-SHARP-DT"
+calibrator = "profile_jax2"
+gating = true
+count = 4
+ids_sha256 = "03b20ec298bb8569fc7ba02e5a29ae35a368cad63bfd6afdfb553727c0e66f01"

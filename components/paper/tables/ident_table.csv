@@ -1,0 +1,11 @@
+quantity,identified,report,n_pure,closed_n,closed_share,hits,coverage,err_source,err_n,err_median,err_q25,err_q75,width_median,v100_hits,v100_n,one_sided_n,declined_n
+eta,pinned,value,688,644,0.936,617,0.9581,claimed point,688,0.052,0.019,0.171,0.448,,,44,0
+epsilon,pinned,value,688,654,0.9506,627,0.9587,claimed point,688,0.049,0.018,0.157,0.455,,,34,0
+sqrt_eta_over_eps,pinned,value,688,,,,,claimed point,688,0.033,0.013,0.101,,79,94,,
+eta_over_eps,pinned,value,688,,,,,claimed point,688,0.017,0.007,0.039,,,,,
+beta_rbar,pinned,value or bound,688,,,,,fitted point,688,0.184,0.048,0.466,,47,50,,
+beta_rbar_over_eta,pinned,value or bound,688,,,,,fitted point,688,0.069,0.017,0.251,,,,,
+beta,not pinned,bound,688,281,0.4084,272,0.968,claimed point,685,0.294,0.09,0.774,3.29,,,404,3
+kappa,not pinned,no claim,688,0,0.0,0,,claimed point,56,1.016,0.618,1.239,,,,56,632
+beta_over_kp1,not pinned,no claim,688,,,,,fitted point,688,0.208,0.063,0.501,,,,,
+xc,fixed by convention,none ($X_c=1$),688,,,,,,,,,,,,,,

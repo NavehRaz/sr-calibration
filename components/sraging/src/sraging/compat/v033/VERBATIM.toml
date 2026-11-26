@@ -1,0 +1,78 @@
+# Declared provenance and allowed edits of every module in sraging/compat/v033.
+# Written by tools/port_v033.py; read by tests/unit/test_verbatim.py (research R2).
+
+[[module]]
+port = "fp_likelihood.py"
+source = "tests/oracle/v033/SRtools_kappa/SRK/fp_likelihood.py"
+mode = "subset"
+source_md5 = "f059235ac088d006ab5797681ecdbcd4"
+names = ["_trapz", "_bernoulli", "fpt_full", "to_dimensionless", "kaplan_meier", "auto_grid"]
+[[module.edit]]
+kind = "delete_statements"
+name = "auto_grid"
+match = ["_ceil = _os.environ.get('SRK_DT_CEILING')", "if _ceil:\n    dt = min(dt, float(_ceil))"]
+reason = "SRK_DT_CEILING environment hook (D-103); unset in v0.3.3"
+
+[[module]]
+port = "fp_gof.py"
+source = "tests/oracle/v033/SRtools_kappa/SRK/fp_gof.py"
+mode = "subset"
+source_md5 = "e406e5265d54c9d7921f7b440bd16428"
+names = ["_CHI2_1", "profile_ci"]
+
+[[module]]
+port = "fp_curvefit.py"
+source = "tests/oracle/v033/SRtools_kappa/SRK/fp_curvefit.py"
+mode = "subset"
+source_md5 = "cf64615780a5dc36cfc8f079f9c4c073"
+names = ["fpt_full", "kaplan_meier", "XC_NOMINAL", "KAPPA_FLOOR", "KAPPA_CEIL", "N_FIT", "DT_FIT", "N_POLISH", "DT_POLISH", "TAU_MAX", "NGRID", "DEFAULT_EXTERNAL_HAZARD", "_START_PRODUCTION", "_START_REMOVAL", "fpt_full_survival", "from_dimensionless", "_empirical_on_taugrid", "S_FLOOR", "RHO_CEIL", "_MOMENT_TAU_MAX", "_empirical_cv", "_trapz_area", "_SURFACE_STARTS", "_surface_starts", "_s_of_omega", "_resid_fn", "_fit_one_arm", "fp_curvefit_seed"]
+[[module.edit]]
+kind = "note"
+reason = "the try/except loader of `_fpl` is replaced by `from sraging.compat.v033 import fp_likelihood as _fpl`; module-level imports are not compared"
+
+[[module]]
+port = "fp_jax.py"
+source = "tests/oracle/v033/sr_calibration_tester/methods/mle_profile_jax/fp_jax.py"
+mode = "whole"
+source_md5 = "66327b6481e1290339111891c2afec6e"
+names = []
+[[module.edit]]
+kind = "replace_statement"
+old = "os.environ.setdefault('PJRT_NPROC', '1')"
+new = "from sraging.compat.v033 import runtime as _runtime\n_runtime.configure()"
+reason = "explicit runtime (R3); PJRT_NPROC overwritten, not defaulted"
+
+[[module]]
+port = "estimator.py"
+source = "tests/oracle/v033/sr_calibration_tester/methods/mle_profile_jax/estimator.py"
+mode = "whole"
+source_md5 = "cbda4a6ac91cf4832e0e03c5eb08fe93"
+names = []
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK import fp_likelihood as FPL"
+new = "from sraging.compat.v033 import fp_likelihood as FPL"
+reason = "SRK -> sraging.compat.v033"
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK import fp_gof as GOF"
+new = "from sraging.compat.v033 import fp_gof as GOF"
+reason = "SRK -> sraging.compat.v033"
+[[module.edit]]
+kind = "import_rewrite"
+old = "from SRK.fp_curvefit import fp_curvefit_seed"
+new = "from sraging.compat.v033.fp_curvefit import fp_curvefit_seed"
+reason = "SRK -> sraging.compat.v033"
+
+[[module]]
+port = "claims.py"
+source = "tests/oracle/v033/sr_calibration_tester/methods/mle_profile_jax/__init__.py"
+mode = "logic_verbatim"
+function = "build"
+source_function = "MleProfileJax.calibrate"
+source_lines = [119, 150]
+source_md5 = "b5d4c10b78912ecd09d21ca3389ba402"
+names = ["BOUNDS", "KAPPA_MAX", "LEVEL", "VERDICT_TO_SHAPE"]
+[[module.edit]]
+kind = "note"
+reason = "body of build = calibrate statements in source_lines; Claim(**kw) is a dict with srbench defaults; diag['code'] added by caller"

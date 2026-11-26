@@ -1,0 +1,302 @@
+{
+ "phase": "refusals",
+ "written_at": "2026-10-17T21:35:41Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 1.0962231159210205,
+ "cpu_s": 0.34186300000000003,
+ "status": "PASS",
+ "verdicts": {
+  "no_library": true,
+  "method_labelled_v1": true,
+  "method_labelled_v2": true,
+  "reference_record_changed": true,
+  "reference_run_file_changed": true,
+  "manifest_not_the_pinned_file": true,
+  "key_not_the_pinned_key": true,
+  "h_port_at_v5": true,
+  "clone_at_another_head": true,
+  "claims_on_changed_arrays": true
+ },
+ "cases": {
+  "no_library": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "library is required (one of v1-v6): the tester's Library() default moves with its reference, so sraging never relies on it (spec 003e)",
+    "names_cause": true,
+    "tokens": [
+     "library"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "method_labelled_v1": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "the method run None is labelled v1, not the library named, v5",
+    "names_cause": true,
+    "tokens": [
+     "v1",
+     "v5"
+    ]
+   },
+   "tester_require_comparable": {
+    "refused": true,
+    "error": "ValueError",
+    "message": "refusing to compare: library versions differ (v1 vs v5). The same cohort id in a different library can be different data, so the pairing would be fictional.",
+    "names_cause": true,
+    "tokens": [
+     "v1",
+     "v5"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "method_labelled_v2": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "the method run None is labelled v2, not the library named, v5",
+    "names_cause": true,
+    "tokens": [
+     "v2",
+     "v5"
+    ]
+   },
+   "tester_require_comparable": {
+    "refused": true,
+    "error": "ValueError",
+    "message": "refusing to compare: library versions differ (v2 vs v5). The same cohort id in a different library can be different data, so the pairing would be fictional.",
+    "names_cause": true,
+    "tokens": [
+     "v2",
+     "v5"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "reference_record_changed": {
+   "planted_cohort": "pure-k0.01-p01-c0-s0",
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "jax2-v5-full-bign/pure-k0.01-p01-c0-s0: the store record's sha256 8ed177c5264fec12 differs from its pin cb49c89a26eeb6d0",
+    "names_cause": true,
+    "tokens": [
+     "pure-k0.01-p01-c0-s0"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "reference_run_file_changed": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "runs/jax2-v5-full-bign.json: sha256 6500aa63763e52f2 differs from its pin 29fa9f7b5dfc149c",
+    "names_cause": true,
+    "tokens": [
+     "runs/jax2-v5-full-bign.json"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "manifest_not_the_pinned_file": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "the reference manifest passed for run jax2-v5-full-bign is not the pinned run file's content",
+    "names_cause": true,
+    "tokens": [
+     "jax2-v5-full-bign",
+     "pinned run file"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "key_not_the_pinned_key": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "jax2-v5-full-bign/pure-k0.01-p01-c0-s0: the manifest's key 927dcee5ec69 is not the pinned key 741d64b76592",
+    "names_cause": true,
+    "tokens": [
+     "pure-k0.01-p01-c0-s0",
+     "key"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": 22
+   }
+  },
+  "h_port_at_v5": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "sraging_profile_jax2_h (the port of mle_profile_jax2_h 1.0.0) is pinned to library v2 and refused on v5: the tester's quarantine does not cover sraging's name (spec 003e C6)",
+    "names_cause": true,
+    "tokens": [
+     "sraging_profile_jax2_h",
+     "v5"
+    ]
+   },
+   "planted_run_records": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "sraging_profile_jax2_h (the port of mle_profile_jax2_h 1.0.0) is pinned to library v2 and refused on v5: the tester's quarantine does not cover sraging's name (spec 003e C6)",
+    "names_cause": true,
+    "tokens": [
+     "sraging_profile_jax2_h",
+     "v5"
+    ]
+   },
+   "planted_compare_v5": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "sraging_profile_jax2_h (the port of mle_profile_jax2_h 1.0.0) is pinned to library v2 and refused on v5: the tester's quarantine does not cover sraging's name (spec 003e C6)",
+    "names_cause": true,
+    "tokens": [
+     "sraging_profile_jax2_h",
+     "v5"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": "sraging_profile_jax2_h"
+   },
+   "twin_compare_v5": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  },
+  "clone_at_another_head": {
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "the pinned tester clone: tester checkout /var/folders/q5/0mvc1p6d79vgn5649qgb6hfm0000gp/T/sraging003e_7f3yl6zn/clone is at 55fc4446cbb62ba2ce010c13fa11748fffe12901, not the recorded revision 42a2789a5f0e41e8820cbb354857c450d68da1f8",
+    "names_cause": true,
+    "tokens": [
+     "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+     "55fc444"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "srbench_from_temp_clone": true
+    }
+   }
+  },
+  "claims_on_changed_arrays": {
+   "planted_cohort": "hazard-k0.01-p01-c0-s0",
+   "planted": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "1 cohort(s) computed on v2 have arrays that differ in v5 (first ['hazard-k0.01-p01-c0-s0']): not claims on v5",
+    "names_cause": true,
+    "tokens": [
+     "hazard-k0.01-p01-c0-s0",
+     "v2",
+     "v5"
+    ]
+   },
+   "planted_no_computed_on": {
+    "refused": true,
+    "error": "UnsupportedOptionError",
+    "message": "sraging's own claim sets must name the library they were computed on (computed_on)",
+    "names_cause": true,
+    "tokens": [
+     "computed_on"
+    ]
+   },
+   "twin": {
+    "refused": false,
+    "ran": true,
+    "result": {
+     "paired": 22
+    }
+   }
+  }
+ },
+ "cohorts": 22,
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

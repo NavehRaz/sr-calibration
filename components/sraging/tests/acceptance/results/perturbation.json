@@ -1,0 +1,57 @@
+{
+ "censor_tie": {
+  "detail": [
+   "at 0.5%: fired=True",
+   "at 0.4%: fired=False"
+  ],
+  "detected": true,
+  "perturbation": "ties 5/1000 (fires) -> 4/1000 (must not fire)"
+ },
+ "claims_identity": {
+  "detail": [
+   "/claims[0]/upper: 0.012253132475163173 != 0.012253132475163171"
+  ],
+  "detected": true,
+  "perturbation": "eta.upper + 1 ulp"
+ },
+ "claims_identity_end_to_end": {
+  "detail": [
+   "/claims[0]/lower: 0.0001759367859502072 != 0.00017593682060697724",
+   "/claims[0]/upper: 0.0004571594275076884 != 0.0004571426226547347",
+   "/claims[1]/upper: 7.088659525299481 != 7.088314006511739"
+  ],
+  "detected": true,
+  "perturbation": "port fp_gof._CHI2_1[0.95] 3.8415 -> 3.8416, real fit of pure-k0.01-p02-c0-s1"
+ },
+ "cohort_arrays": {
+  "detail": [
+   "cohort.events: bytes differ (port array([0, 1, 1, 1]) vs oracle array([1, 1, 1, 1]))"
+  ],
+  "detected": true,
+  "perturbation": "events[0] 1 -> 0"
+ },
+ "grad_bytes": {
+  "detail": [
+   "value_and_grad[0]: bytes differ (port array([-2921.73734262]) vs oracle array([-2921.7373427]))",
+   "value_and_grad[1]: bytes differ (port array([280.81081244, -30.42329763,  77.09968979,   1.65479709]) vs oracle array([280.81081261, -30.42329766,  77.09968987,   1.65479709]))"
+  ],
+  "detected": true,
+  "perturbation": "age[0] x (1+1e-9) in the port's input"
+ },
+ "value_bytes": {
+  "detail": [
+   "value: bytes differ (port array([-2921.73734262]) vs oracle array([-2921.7373427]))"
+  ],
+  "detected": true,
+  "perturbation": "age[0] x (1+1e-9) in the port's input"
+ },
+ "warnings_counts": {
+  "detail": [
+   "pure-k0.01-p00-c0-s0",
+   "pure-k0.01-p00-c0-s1",
+   "pure-k0.01-p00-c1-s0"
+  ],
+  "detected": true,
+  "perturbation": "DELTA_GRID rule: every age moved half a delta off the grid"
+ }
+}

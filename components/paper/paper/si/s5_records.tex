@@ -1,0 +1,24 @@
+\section{Released benchmark records}\label{si:records}
+
+The benchmark of Section~\ref{sec:val-benchmark} is released as data, not only as the summaries printed in the paper.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \textbf{Library.} For each of the \C{v6-n-cohorts} cohorts of library v6: its arm, group, true parameters,
+    sample size, recording resolution, censoring fraction, window and external hazard (\code{manifest.json}), and the
+    simulated ages with their event flags (one file per cohort).
+  \item \textbf{Records.} For each calibrator run of the paper (J and H on the reference cohorts, and J on all groups
+    including the sharp cohorts): one record per cohort with the shape, point and interval of every reported quantity,
+    the diagnostics (grid, time step, optimizer and profile counts, log-likelihood), the CPU and wall-clock time and the
+    host, with the list of each run's cohorts. The $\kappa$-fixed panel of Section~\ref{sec:val-ident} is released the
+    same way.
+  \item \textbf{Reports.} The scoring reports from which the coverage, error and width tables are computed, and the
+    gate records of SI Section~\ref{sec:si-gates} (per-arm coverage with Wilson intervals, one-sided coverage, claim
+    shapes and widths).
+  \item \textbf{Explorer.} A self-contained HTML page per run, and one for all runs, that lists every cohort with its
+    truth, estimate, interval and hit or miss, filterable by arm, group, sample size and sharpness.
+  \item \textbf{The paper's other inputs.} Every other stored file that a number, table or figure of this paper is read
+    from and that is public in this version, so that the paper's scripts and \code{verify_claims.py} run from the
+    release (\code{README-DATA.md} in the data record).
+\end{itemize}
+The harness that generates the library, runs a calibrator on it and scores the records is released with them, so a
+new calibrator version can be benchmarked on the same cohorts and compared row by row. The stored acceptance results of
+\code{sraging} are released with its tests, in the software record.

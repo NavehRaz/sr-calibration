@@ -1,0 +1,3737 @@
+{
+ "phase": "pilot",
+ "written_at": "2026-10-02T23:02:09Z",
+ "repo_head": "396e58473b3fc9611baafdf17c892c5c459ed887",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "status": "pass",
+ "named": [
+  {
+   "cohort_id": "pure-k2-p04-c0-s0",
+   "role": "dt_ceiling",
+   "substituted_for": "",
+   "pilot_outcome": "dt_ceiling=0.00033743878227791743",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "realfull-real-mice_M-c1-s1",
+   "role": "dt_ceiling",
+   "substituted_for": "",
+   "pilot_outcome": "dt_ceiling=0.0004294766207577445",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "pure-real-Sweden_F_1910_homo-c0-s0",
+   "role": "basin_fires",
+   "substituted_for": "",
+   "pilot_outcome": "basin warnings on this host: 2",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "pure-real-Denmark_F_1900_hetro-c0-s0",
+   "role": "basin_fires",
+   "substituted_for": "",
+   "pilot_outcome": "basin warnings on this host: 2",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "censor-k0.0316-p05-c0-s1",
+   "role": "basin_fires",
+   "substituted_for": "",
+   "pilot_outcome": "basin warnings on this host: 1",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "het-k0.01-p01-c1-s0",
+   "role": "basin_fires",
+   "substituted_for": "",
+   "pilot_outcome": "basin warnings on this host: 2",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s0",
+   "role": "basin_blind",
+   "substituted_for": "",
+   "pilot_outcome": "kept by rule; basin warning fired here: False",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s1",
+   "role": "basin_blind",
+   "substituted_for": "",
+   "pilot_outcome": "kept by rule; basin warning fired here: False",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c0-s0",
+   "role": "censor_tie",
+   "substituted_for": "",
+   "pilot_outcome": "tie fraction 10.8000%",
+   "role_ok": true
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "role": "censor_tie",
+   "substituted_for": "",
+   "pilot_outcome": "tie fraction 12.5300%",
+   "role_ok": true
+  }
+ ],
+ "results": [
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s1",
+   "status": "ok",
+   "wall_s": 185.060185959097,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00019606713963716613,
+     "beta": 0.001,
+     "epsilon": 0.00031622776601683794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00017857730921557127,
+     "beta": 1.000000000000001e-12,
+     "epsilon": 0.0002661800575788282,
+     "kappa": 0.0015189345213626243,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0002192649657017641,
+     "beta": 0.002236181425652979,
+     "epsilon": 0.0003247022353708762,
+     "kappa": 0.0012708814850062454,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0017857730921557128,
+     "beta": 1.000000000000001e-12,
+     "epsilon": 0.0002661800575788282,
+     "kappa": 0.0015189345213626243,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00017857730921557127,
+     "beta": 1.000000000000001e-12,
+     "epsilon": 0.0002661800575788282,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00017593682060697724,
+     "upper": 0.0004571426226547347,
+     "point": 0.00017857730921557127
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 7.088314006511739,
+     "point": 1.000000000000001e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0002449292279522866,
+     "upper": 0.0008548502325767811,
+     "point": 0.0002661800575788282
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3879.0806633276693
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s1",
+   "status": "ok",
+   "wall_s": 217.70043566683307,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00020452144364423015,
+     "beta": 0.001,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00018782621759861728,
+     "beta": 7.568889774473016e-11,
+     "epsilon": 0.00013768851250331324,
+     "kappa": 0.0019400724458822187,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00021081558492807854,
+     "beta": 0.001088219742834624,
+     "epsilon": 0.0001478049002723335,
+     "kappa": 0.0017366320169248692,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0018782621759861728,
+     "beta": 7.568889774473016e-11,
+     "epsilon": 0.00013768851250331324,
+     "kappa": 0.0019400724458822187,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00018782621759861728,
+     "beta": 7.568889774473016e-11,
+     "epsilon": 0.00013768851250331324,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00018586006431827058,
+     "upper": 0.0014173067771842565,
+     "point": 0.00018782621759861728
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 47.90002924837593,
+     "point": 7.568889774473016e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0001264368157646891,
+     "upper": 0.0019354623395054053,
+     "point": 0.00013768851250331324
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3526.3543023221896
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c0-s0",
+   "status": "ok",
+   "wall_s": 224.4655929999426,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00019606713963716613,
+     "beta": 0.001,
+     "epsilon": 0.00031622776601683794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00017981854941456548,
+     "beta": 3.2468701426035937e-12,
+     "epsilon": 0.00026811187991871246,
+     "kappa": 0.001079367745770948,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00028795445341414785,
+     "beta": 0.0065898469089612595,
+     "epsilon": 0.000455640712767217,
+     "kappa": 0.001000514530622048,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0017981854941456548,
+     "beta": 3.2468701426035937e-12,
+     "epsilon": 0.00026811187991871246,
+     "kappa": 0.001079367745770948,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00017981854941456548,
+     "beta": 3.2468701426035937e-12,
+     "epsilon": 0.00026811187991871246,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00017715457184652424,
+     "upper": 0.0007776112503301653,
+     "point": 0.00017981854941456548
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 22.31570048330523,
+     "point": 3.2468701426035937e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.00024670649615086217,
+     "upper": 0.0014884430227896826,
+     "point": 0.00026811187991871246
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3877.5874045825944
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s1",
+   "status": "ok",
+   "wall_s": 287.47946150042117,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0002125427697723628,
+     "beta": 0.001,
+     "epsilon": 3.9810717055349735e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019619969471443662,
+     "beta": 2.7267668504158356e-09,
+     "epsilon": 3.424709450531572e-05,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.000420056314915929,
+     "beta": 0.021868603221343947,
+     "epsilon": 8.251891685682965e-05,
+     "kappa": 0.18623634148360774,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.001961996947144366,
+     "beta": 2.7267668504158356e-09,
+     "epsilon": 3.424709450531572e-05,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019619969471443662,
+     "beta": 2.7267668504158356e-09,
+     "epsilon": 3.424709450531572e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019523309546044554,
+     "upper": 0.0033313844929902837,
+     "point": 0.00019619969471443662
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 66.57743612335155,
+     "point": 2.7267668504158356e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 3.144079223129539e-05,
+     "upper": 0.001737711357795737,
+     "point": 3.424709450531572e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -2825.0147145863334
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c0-s0",
+   "status": "ok",
+   "wall_s": 311.0284983343445,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0002125427697723628,
+     "beta": 0.001,
+     "epsilon": 3.9810717055349735e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0024643307848450525,
+     "beta": 0.18386864471573383,
+     "epsilon": 0.001717377025345654,
+     "kappa": 0.0010000000000000002,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0004455858357045585,
+     "beta": 0.024472541224546684,
+     "epsilon": 0.00011232178939965163,
+     "kappa": 0.18594779370741474,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.024643307848450525,
+     "beta": 0.18386864471573383,
+     "epsilon": 0.001717377025345654,
+     "kappa": 0.0010000000000000002,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0024643307848450525,
+     "beta": 0.18386864471573383,
+     "epsilon": 0.001717377025345654,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019484121898491412,
+     "upper": 0.012253132475163171,
+     "point": 0.0024643307848450525
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 192.64108103949195,
+     "point": 0.18386864471573383
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 3.848730503032917e-05,
+     "upper": 0.01621483900570107,
+     "point": 0.001717377025345654
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -2915.585701721865
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c0-s0",
+   "status": "ok",
+   "wall_s": 320.8406232497655,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00020452144364423015,
+     "beta": 0.001,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00023069542162749792,
+     "beta": 0.002593050859509345,
+     "epsilon": 0.00019946924848880576,
+     "kappa": 0.0010000000000000002,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.000386864045792575,
+     "beta": 0.021080932566507237,
+     "epsilon": 0.0004076998460206367,
+     "kappa": 0.22921311345933607,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.002306954216274979,
+     "beta": 0.002593050859509345,
+     "epsilon": 0.00019946924848880576,
+     "kappa": 0.0010000000000000002,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00023069542162749792,
+     "beta": 0.002593050859509345,
+     "epsilon": 0.00019946924848880576,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00018510408676076078,
+     "upper": 0.002390574512237583,
+     "point": 0.00023069542162749792
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 70.72587172782833,
+     "point": 0.002593050859509345
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.00014187444407775268,
+     "upper": 0.004147901995047351,
+     "point": 0.00019946924848880576
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3583.3092839082396
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s1",
+   "status": "ok",
+   "wall_s": 326.69849645812064,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00020452144364423015,
+     "beta": 0.001,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0002591889441161958,
+     "beta": 0.0042814890552323286,
+     "epsilon": 0.00022324135524611098,
+     "kappa": 0.0012799747369107086,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00022943745857301315,
+     "beta": 0.0021548650811571415,
+     "epsilon": 0.00017340829997012242,
+     "kappa": 0.0012884827367943908,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.002591889441161958,
+     "beta": 0.0042814890552323286,
+     "epsilon": 0.00022324135524611098,
+     "kappa": 0.0012799747369107086,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0002591889441161958,
+     "beta": 0.0042814890552323286,
+     "epsilon": 0.00022324135524611098,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00018805558428155815,
+     "upper": 0.000872662237643595,
+     "point": 0.0002591889441161958
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 7.792197729519421e-05,
+     "upper": 23.44386523082081,
+     "point": 0.0042814890552323286
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.00015093208211170833,
+     "upper": 0.0009196365184456274,
+     "point": 0.00022324135524611098
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -35613.502575414794
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s1",
+   "status": "ok",
+   "wall_s": 328.5211482504383,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0002125427697723628,
+     "beta": 0.001,
+     "epsilon": 3.9810717055349735e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019540752225982166,
+     "beta": 2.262339305613429e-08,
+     "epsilon": 3.861169237171773e-05,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00044826011178141227,
+     "beta": 0.02457068501583526,
+     "epsilon": 0.00010295140798425391,
+     "kappa": 0.18090093989546402,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0019540752225982168,
+     "beta": 2.262339305613429e-08,
+     "epsilon": 3.861169237171773e-05,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019540752225982166,
+     "beta": 2.262339305613429e-08,
+     "epsilon": 3.861169237171773e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019508032203369952,
+     "upper": 0.0015212543756551275,
+     "point": 0.00019540752225982166
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 38.885612855247444,
+     "point": 2.262339305613429e-08
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 3.7562464393518314e-05,
+     "upper": 0.000517478809687212,
+     "point": 3.861169237171773e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -28856.787625462388
+  },
+  {
+   "cohort_id": "pure-k0.01-p00-c1-s0",
+   "status": "ok",
+   "wall_s": 337.93031045794487,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0002125427697723628,
+     "beta": 0.001,
+     "epsilon": 3.9810717055349735e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019573932446558892,
+     "beta": 5.29265844900022e-09,
+     "epsilon": 3.938322344058249e-05,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00045184700024609976,
+     "beta": 0.024979995554250865,
+     "epsilon": 0.00010562740445243447,
+     "kappa": 0.18365745864447156,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0019573932446558893,
+     "beta": 5.29265844900022e-09,
+     "epsilon": 3.938322344058249e-05,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019573932446558892,
+     "beta": 5.29265844900022e-09,
+     "epsilon": 3.938322344058249e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.000195464510782392,
+     "upper": 0.0011391209257748246,
+     "point": 0.00019573932446558892
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 30.205294113851306,
+     "point": 5.29265844900022e-09
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 3.842568471711714e-05,
+     "upper": 0.00034543176988705265,
+     "point": 3.938322344058249e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -28935.82215809384
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s0",
+   "status": "ok",
+   "wall_s": 211.88443387532607,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00019606713963716613,
+     "beta": 0.001,
+     "epsilon": 0.00031622776601683794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019996143062822608,
+     "beta": 0.001193420761562043,
+     "epsilon": 0.0003294812105411315,
+     "kappa": 0.0011902737835153714,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0002514573636404785,
+     "beta": 0.004194582307151023,
+     "epsilon": 0.00042557172011645466,
+     "kappa": 0.0011865234432287548,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0019996143062822607,
+     "beta": 0.001193420761562043,
+     "epsilon": 0.0003294812105411315,
+     "kappa": 0.0011902737835153714,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019996143062822608,
+     "beta": 0.001193420761562043,
+     "epsilon": 0.0003294812105411315,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00017979893597763833,
+     "upper": 0.0002688734295717255,
+     "point": 0.00019996143062822608
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 3.9908128941076795,
+     "point": 0.001193420761562043
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0002866032788346055,
+     "upper": 0.000506188377463494,
+     "point": 0.0003294812105411315
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -39173.802869393265
+  },
+  {
+   "cohort_id": "pure-k0.01-p02-c1-s1",
+   "status": "ok",
+   "wall_s": 179.68175924988464,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00019606713963716613,
+     "beta": 0.001,
+     "epsilon": 0.00031622776601683794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00018018093176793462,
+     "beta": 5.840741355409319e-12,
+     "epsilon": 0.00028809970130058937,
+     "kappa": 0.0012552452435578689,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00023151743772895677,
+     "beta": 0.0029389145233059337,
+     "epsilon": 0.0003796488701878962,
+     "kappa": 0.00114459066092911,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.001801809317679346,
+     "beta": 5.840741355409319e-12,
+     "epsilon": 0.00028809970130058937,
+     "kappa": 0.0012552452435578689,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00018018093176793462,
+     "beta": 5.840741355409319e-12,
+     "epsilon": 0.00028809970130058937,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00017931081742717672,
+     "upper": 0.00021121808400537232,
+     "point": 0.00018018093176793462
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 1.3012199295128863,
+     "point": 5.840741355409319e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.00028057858714804906,
+     "upper": 0.00035476904873823394,
+     "point": 0.00028809970130058937
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -39103.225011371316
+  },
+  {
+   "cohort_id": "pure-k0.01-p01-c1-s0",
+   "status": "ok",
+   "wall_s": 419.25602029217407,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00020452144364423015,
+     "beta": 0.001,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00018769366722323907,
+     "beta": 4.327294161307364e-06,
+     "epsilon": 0.00014883315356895862,
+     "kappa": 0.0021823412372743304,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00025147446981002537,
+     "beta": 0.003539324322190163,
+     "epsilon": 0.00019863199041577034,
+     "kappa": 0.0019396489323516327,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0018769366722323907,
+     "beta": 4.327294161307364e-06,
+     "epsilon": 0.00014883315356895862,
+     "kappa": 0.0021823412372743304,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00018769366722323907,
+     "beta": 4.327294161307364e-06,
+     "epsilon": 0.00014883315356895862,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00018697756768512407,
+     "upper": 0.0006027216181476849,
+     "point": 0.00018769366722323907
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 6.463858392197792,
+     "point": 4.327294161307364e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.00014478023526036106,
+     "upper": 0.000588227754176585,
+     "point": 0.00014883315356895862
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -35643.45987969178
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s0",
+   "status": "ok",
+   "wall_s": 245.87182758422568,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00018154144455025697,
+     "beta": 0.001,
+     "epsilon": 0.000630957344480193,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00016595164390298587,
+     "beta": 1.8767331629206275e-10,
+     "epsilon": 0.0005619922554406024,
+     "kappa": 0.0035147687144393342,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00019782947028913707,
+     "beta": 0.00189804951824631,
+     "epsilon": 0.0006672994617184842,
+     "kappa": 0.0028286434227798463,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0016595164390298587,
+     "beta": 1.8767331629206275e-10,
+     "epsilon": 0.0005619922554406024,
+     "kappa": 0.0035147687144393342,
+     "rule": "optimum, eta x 10^1 (clipped to box): 997 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00016595164390298587,
+     "beta": 1.8767331629206275e-10,
+     "epsilon": 0.0005619922554406024,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00016227264008855443,
+     "upper": 0.00033234768537793223,
+     "point": 0.00016595164390298587
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 6.88198884556365,
+     "point": 1.8767331629206275e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.000519065814332063,
+     "upper": 0.0012419273383571653,
+     "point": 0.0005619922554406024
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -4283.579530636681
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c0-s1",
+   "status": "ok",
+   "wall_s": 205.83192629087716,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00018154144455025697,
+     "beta": 0.001,
+     "epsilon": 0.000630957344480193,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019046742260090516,
+     "beta": 0.0017897521065478926,
+     "epsilon": 0.000747716948794429,
+     "kappa": 0.00204842722229335,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00023301771944911744,
+     "beta": 0.004625655745959589,
+     "epsilon": 0.000956286304667905,
+     "kappa": 0.0020334861947905337,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0019046742260090516,
+     "beta": 0.0017897521065478926,
+     "epsilon": 0.000747716948794429,
+     "kappa": 0.00204842722229335,
+     "rule": "optimum, eta x 10^1 (clipped to box): 995 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019046742260090516,
+     "beta": 0.0017897521065478926,
+     "epsilon": 0.000747716948794429,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0001606455192003103,
+     "upper": 0.0003771079281007608,
+     "point": 0.00019046742260090516
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 9.040563891701845,
+     "point": 0.0017897521065478926
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0005963723462802565,
+     "upper": 0.0016223024690462545,
+     "point": 0.000747716948794429
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -4350.815303220971
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s0",
+   "status": "ok",
+   "wall_s": 238.93417466711253,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00018154144455025697,
+     "beta": 0.001,
+     "epsilon": 0.000630957344480193,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0001811193961589318,
+     "beta": 0.0009919872754640946,
+     "epsilon": 0.0006264757179691206,
+     "kappa": 0.0030252966417335294,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00019596230555379168,
+     "beta": 0.0017735143928394846,
+     "epsilon": 0.0006801177991213272,
+     "kappa": 0.003084409564910681,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.001811193961589318,
+     "beta": 0.0009919872754640946,
+     "epsilon": 0.0006264757179691206,
+     "kappa": 0.0030252966417335294,
+     "rule": "optimum, eta x 10^1 (clipped to box): 9980 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0001811193961589318,
+     "beta": 0.0009919872754640946,
+     "epsilon": 0.0006264757179691206,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0001653998445587863,
+     "upper": 0.00021254547398600379,
+     "point": 0.0001811193961589318
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 2.0573363612907825,
+     "point": 0.0009919872754640946
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0005615979607246192,
+     "upper": 0.0007661250221328176,
+     "point": 0.0006264757179691206
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -42909.66520859882
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s0",
+   "status": "ok",
+   "wall_s": 234.393925125245,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00010680478368264066,
+     "beta": 0.001,
+     "epsilon": 0.0025118864315095794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00010040255800114422,
+     "beta": 1.0345113464531428e-06,
+     "epsilon": 0.0024770496409039383,
+     "kappa": 4.999999789571056,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00010145329732125093,
+     "beta": 1.0345112968886404e-06,
+     "epsilon": 0.0025631696546832955,
+     "kappa": 4.999999999992675,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0010040255800114423,
+     "beta": 1.0345113464531428e-06,
+     "epsilon": 0.0024770496409039383,
+     "kappa": 4.999999789571056,
+     "rule": "optimum, eta x 10^1 (clipped to box): 452 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00010040255800114422,
+     "beta": 1.0345113464531428e-06,
+     "epsilon": 0.0024770496409039383,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 9.366157195784796e-05,
+     "upper": 0.0001222400195770742,
+     "point": 0.00010040255800114422
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 1.3436198230302778,
+     "point": 1.0345113464531428e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.002315546255262689,
+     "upper": 0.002871242815033953,
+     "point": 0.0024770496409039383
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -5117.455668447242
+  },
+  {
+   "cohort_id": "pure-k0.01-p03-c1-s1",
+   "status": "ok",
+   "wall_s": 256.933239125181,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00018154144455025697,
+     "beta": 0.001,
+     "epsilon": 0.000630957344480193,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00017124681316690825,
+     "beta": 0.0003175784621669821,
+     "epsilon": 0.0005956057169531001,
+     "kappa": 0.022079131131339,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00018148915941639825,
+     "beta": 0.0007908736297165018,
+     "epsilon": 0.000624179192819507,
+     "kappa": 0.020365158892124348,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0017124681316690825,
+     "beta": 0.0003175784621669821,
+     "epsilon": 0.0005956057169531001,
+     "kappa": 0.022079131131339,
+     "rule": "optimum, eta x 10^1 (clipped to box): 9967 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00017124681316690825,
+     "beta": 0.0003175784621669821,
+     "epsilon": 0.0005956057169531001,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0001656505928085698,
+     "upper": 0.00020022950132750952,
+     "point": 0.00017124681316690825
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 1.451689171387564,
+     "point": 0.0003175784621669821
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0005654632246686563,
+     "upper": 0.0007157400241349824,
+     "point": 0.0005956057169531001
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -42940.59265077135
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c0-s1",
+   "status": "ok",
+   "wall_s": 264.16484629176557,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00010680478368264066,
+     "beta": 0.001,
+     "epsilon": 0.0025118864315095794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0001003716424577502,
+     "beta": 1.0108479267294598e-06,
+     "epsilon": 0.0023190769380781883,
+     "kappa": 4.998952404729038,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00010200779070196042,
+     "beta": 1.010611429454766e-06,
+     "epsilon": 0.002352924572031459,
+     "kappa": 4.999999994674264,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.001003716424577502,
+     "beta": 1.0108479267294598e-06,
+     "epsilon": 0.0023190769380781883,
+     "kappa": 4.998952404729038,
+     "rule": "optimum, eta x 10^1 (clipped to box): 493 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0001003716424577502,
+     "beta": 1.0108479267294598e-06,
+     "epsilon": 0.0023190769380781883,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 9.4011985553601e-05,
+     "upper": 0.0001357862845733632,
+     "point": 0.0001003716424577502
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 2.2031352307198806,
+     "point": 1.0108479267294598e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0021670940443687925,
+     "upper": 0.00292865521299399,
+     "point": 0.0023190769380781883
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -5115.980502059871
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s1",
+   "status": "ok",
+   "wall_s": 258.06745495833457,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00010680478368264066,
+     "beta": 0.001,
+     "epsilon": 0.0025118864315095794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00010503015368541292,
+     "beta": 0.0006570187254214015,
+     "epsilon": 0.002451294322418098,
+     "kappa": 0.0010034143782694613,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00011513980641126246,
+     "beta": 0.0015835906889333656,
+     "epsilon": 0.0026477087452579187,
+     "kappa": 0.0010000000002907588,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0010503015368541293,
+     "beta": 0.0006570187254214015,
+     "epsilon": 0.002451294322418098,
+     "kappa": 0.0010034143782694613,
+     "rule": "optimum, eta x 10^1 (clipped to box): 5099 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00010503015368541292,
+     "beta": 0.0006570187254214015,
+     "epsilon": 0.002451294322418098,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 9.768540797368744e-05,
+     "upper": 0.00011443558278848964,
+     "point": 0.00010503015368541292
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 1.0021600636482082,
+     "point": 0.0006570187254214015
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.002318307639812396,
+     "upper": 0.002614950352394672,
+     "point": 0.002451294322418098
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -51265.10417689227
+  },
+  {
+   "cohort_id": "pure-k0.01-p04-c1-s0",
+   "status": "ok",
+   "wall_s": 338.48426179168746,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00010680478368264066,
+     "beta": 0.001,
+     "epsilon": 0.0025118864315095794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00010267040416321138,
+     "beta": 0.0009237120823417148,
+     "epsilon": 0.0024640554494037054,
+     "kappa": 0.20215048409931438,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00011315734495057028,
+     "beta": 0.002943592184231,
+     "epsilon": 0.0027145995787527934,
+     "kappa": 0.2997635097535895,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0010267040416321138,
+     "beta": 0.0009237120823417148,
+     "epsilon": 0.0024640554494037054,
+     "kappa": 0.20215048409931438,
+     "rule": "optimum, eta x 10^1 (clipped to box): 4923 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00010267040416321138,
+     "beta": 0.0009237120823417148,
+     "epsilon": 0.0024640554494037054,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 9.55223358213349e-05,
+     "upper": 0.00011183091049286557,
+     "point": 0.00010267040416321138
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 0.9674739717635921,
+     "point": 0.0009237120823417148
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.002334397399966196,
+     "upper": 0.0026261754937524596,
+     "point": 0.0024640554494037054
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -51378.64694217508
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s0",
+   "status": "ok",
+   "wall_s": 237.31376129202545,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003623001525409166,
+     "beta": 0.01092600861117378,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019330536507575032,
+     "beta": 3.333210266752479e-12,
+     "epsilon": 6.99393945408241e-05,
+     "kappa": 0.001001851158597797,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00031657108956076855,
+     "beta": 0.006981382471539126,
+     "epsilon": 0.0001188715037838723,
+     "kappa": 0.0010059086204191113,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0019330536507575031,
+     "beta": 3.333210266752479e-12,
+     "epsilon": 6.99393945408241e-05,
+     "kappa": 0.001001851158597797,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019330536507575032,
+     "beta": 3.333210266752479e-12,
+     "epsilon": 6.99393945408241e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019187377488290742,
+     "upper": 0.0021976895452922246,
+     "point": 0.00019330536507575032
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 53.279918785641286,
+     "point": 3.333210266752479e-12
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 6.412290338234005e-05,
+     "upper": 0.002052490090871328,
+     "point": 6.99393945408241e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3178.6350863934285
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c0-s1",
+   "status": "ok",
+   "wall_s": 270.98757454240695,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003623001525409166,
+     "beta": 0.01092600861117378,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0015618378271985848,
+     "beta": 0.10637049599214876,
+     "epsilon": 0.0014236913620039684,
+     "kappa": 0.0010015864652797466,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0003418433137354723,
+     "beta": 0.008583146782519296,
+     "epsilon": 0.0001329821810912276,
+     "kappa": 0.0010022044857354207,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.015618378271985848,
+     "beta": 0.10637049599214876,
+     "epsilon": 0.0014236913620039684,
+     "kappa": 0.0010015864652797466,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0015618378271985848,
+     "beta": 0.10637049599214876,
+     "epsilon": 0.0014236913620039684,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019300389671034364,
+     "upper": 0.007344915720150357,
+     "point": 0.0015618378271985848
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 144.77390527878038,
+     "point": 0.10637049599214876
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 6.474495944121642e-05,
+     "upper": 0.012602580721997996,
+     "point": 0.0014236913620039684
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3163.8899884406637
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s0",
+   "status": "ok",
+   "wall_s": 479.487045167014,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003700652013919124,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.004034648566644547,
+     "beta": 0.41445357305940456,
+     "epsilon": 0.0006990436254792636,
+     "kappa": 0.14747423868689,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0003280484740614578,
+     "beta": 0.007185583225147314,
+     "epsilon": 6.587791093536006e-06,
+     "kappa": 0.0017582631076974334,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.04034648566644547,
+     "beta": 0.41445357305940456,
+     "epsilon": 0.0006990436254792636,
+     "kappa": 0.14747423868689,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.004034648566644547,
+     "beta": 0.41445357305940456,
+     "epsilon": 0.0006990436254792636,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019821093654561725,
+     "upper": 0.034703911559075484,
+     "point": 0.004034648566644547
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 3.436892859484586,
+     "point": 0.41445357305940456
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 8.256301386159427e-06,
+     "upper": 0.01901976424306477,
+     "point": 0.0006990436254792636
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -2225.3180839966103
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s1",
+   "status": "ok",
+   "wall_s": 289.24026462528855,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003623001525409166,
+     "beta": 0.01092600861117378,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00037349265739488474,
+     "beta": 0.011149278063804651,
+     "epsilon": 0.0001672149285457465,
+     "kappa": 0.0010752902401248788,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00030254097158121204,
+     "beta": 0.0061314103600684485,
+     "epsilon": 0.00010150178156835142,
+     "kappa": 0.0010780147459698492,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.003734926573948847,
+     "beta": 0.011149278063804651,
+     "epsilon": 0.0001672149285457465,
+     "kappa": 0.0010752902401248788,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00037349265739488474,
+     "beta": 0.011149278063804651,
+     "epsilon": 0.0001672149285457465,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019274450859325641,
+     "upper": 0.0015611575073143096,
+     "point": 0.00037349265739488474
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 39.58650913338051,
+     "point": 0.011149278063804651
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 6.541264226103361e-05,
+     "upper": 0.001155396835963325,
+     "point": 0.0001672149285457465
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -31522.164539356483
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s0",
+   "status": "ok",
+   "wall_s": 255.006538791582,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00026094039708609613,
+     "beta": 0.004923882631706739,
+     "epsilon": 0.00031622776601683794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00018710184943244174,
+     "beta": 0.00019511273623737767,
+     "epsilon": 0.00020386433834208427,
+     "kappa": 0.0033242140991262777,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0002043250237246856,
+     "beta": 0.0009721717384462061,
+     "epsilon": 0.00021132348871416207,
+     "kappa": 0.003299639280672905,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0018710184943244175,
+     "beta": 0.00019511273623737767,
+     "epsilon": 0.00020386433834208427,
+     "kappa": 0.0033242140991262777,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00018710184943244174,
+     "beta": 0.00019511273623737767,
+     "epsilon": 0.00020386433834208427,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0001815178023390516,
+     "upper": 0.001258773279187303,
+     "point": 0.00018710184943244174
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 38.3248143115355,
+     "point": 0.00019511273623737767
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0001836733644943368,
+     "upper": 0.002288330630729337,
+     "point": 0.00020386433834208427
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3720.8953608766656
+  },
+  {
+   "cohort_id": "pure-k0.01-p06-c1-s0",
+   "status": "ok",
+   "wall_s": 344.60275291698053,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003623001525409166,
+     "beta": 0.01092600861117378,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00021742908110735913,
+     "beta": 0.0013745056751139505,
+     "epsilon": 7.843794700178734e-05,
+     "kappa": 0.0010285369205386271,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0003410443874064698,
+     "beta": 0.008553315090227689,
+     "epsilon": 0.00012736315577053533,
+     "kappa": 0.0010261081717386142,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0021742908110735913,
+     "beta": 0.0013745056751139505,
+     "epsilon": 7.843794700178734e-05,
+     "kappa": 0.0010285369205386271,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00021742908110735913,
+     "beta": 0.0013745056751139505,
+     "epsilon": 7.843794700178734e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019263228796503418,
+     "upper": 0.0013070363973265264,
+     "point": 0.00021742908110735913
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 35.78020787838879,
+     "point": 0.0013745056751139505
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 6.584487206215681e-05,
+     "upper": 0.0006859571124003635,
+     "point": 7.843794700178734e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -31630.579038276905
+  },
+  {
+   "cohort_id": "pure-k0.01-p07-c0-s1",
+   "status": "ok",
+   "wall_s": 259.97705841623247,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00026094039708609613,
+     "beta": 0.004923882631706739,
+     "epsilon": 0.00031622776601683794,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0001853398255955533,
+     "beta": 2.4041574801128054e-11,
+     "epsilon": 0.0002171523455586335,
+     "kappa": 0.006098602343891631,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00020564467451758127,
+     "beta": 0.0009380053947334673,
+     "epsilon": 0.00022298396988303676,
+     "kappa": 0.0037173375135382118,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0018533982559555328,
+     "beta": 2.4041574801128054e-11,
+     "epsilon": 0.0002171523455586335,
+     "kappa": 0.006098602343891631,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0001853398255955533,
+     "beta": 2.4041574801128054e-11,
+     "epsilon": 0.0002171523455586335,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00018289166933560161,
+     "upper": 0.0010721230479523191,
+     "point": 0.0001853398255955533
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 31.805904485109057,
+     "point": 2.4041574801128054e-11
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.00019965966827620776,
+     "upper": 0.0019197992721359384,
+     "point": 0.0002171523455586335
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -3754.734313882475
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c0-s1",
+   "status": "ok",
+   "wall_s": 585.2860906249844,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003700652013919124,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0010454348341632515,
+     "beta": 28.269385532481543,
+     "epsilon": 6.058145731526528e-05,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00043006826120250974,
+     "beta": 0.023479668517008737,
+     "epsilon": 1.2402917009984112e-05,
+     "kappa": 0.20715452307661714,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.010454348341632516,
+     "beta": 28.269385532481543,
+     "epsilon": 6.058145731526528e-05,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0010454348341632515,
+     "beta": 28.269385532481543,
+     "epsilon": 6.058145731526528e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0003079952361899617,
+     "upper": 0.006919308312236971,
+     "point": 0.0010454348341632515
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.021720618132622663,
+     "upper": 103.39874880230009,
+     "point": 28.269385532481543
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 1.9711247834771465e-05,
+     "upper": 0.0014287362171896056,
+     "point": 6.058145731526528e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -2234.4959638504083
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s1",
+   "status": "ok",
+   "wall_s": 536.3344056657515,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003700652013919124,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0009948045960502477,
+     "beta": 26.704476925978007,
+     "epsilon": 5.849222455661646e-05,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0002764974090270557,
+     "beta": 0.004019733456581348,
+     "epsilon": 1.9300924319177413e-06,
+     "kappa": 0.0011076964321410576,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.009948045960502477,
+     "beta": 26.704476925978007,
+     "epsilon": 5.849222455661646e-05,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0009948045960502477,
+     "beta": 26.704476925978007,
+     "epsilon": 5.849222455661646e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0006606639004923066,
+     "upper": 0.001521755500908163,
+     "point": 0.0009948045960502477
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.4679563526200629,
+     "upper": 42.87995095296453,
+     "point": 26.704476925978007
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 4.085667051636628e-05,
+     "upper": 9.860255583338397e-05,
+     "point": 5.849222455661646e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "lower": 3.048246950312245,
+     "upper": null,
+     "point": 299.99999999999994
+    }
+   ],
+   "loglik": -22395.647516223573
+  },
+  {
+   "cohort_id": "pure-k0.01-p05-c1-s0",
+   "status": "ok",
+   "wall_s": 664.2183635830879,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003700652013919124,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0013689040587890932,
+     "beta": 0.3396061249278272,
+     "epsilon": 0.00010278326423082687,
+     "kappa": 1.7856864673265869,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0002760368574621458,
+     "beta": 0.003989144530489943,
+     "epsilon": 1.874287235964244e-06,
+     "kappa": 0.0011040701302703437,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.013689040587890932,
+     "beta": 0.3396061249278272,
+     "epsilon": 0.00010278326423082687,
+     "kappa": 1.7856864673265869,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0013689040587890932,
+     "beta": 0.3396061249278272,
+     "epsilon": 0.00010278326423082687,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00039268201327995964,
+     "upper": 0.005309365302858267,
+     "point": 0.0013689040587890932
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.05687804226306709,
+     "upper": 81.95139386852105,
+     "point": 0.3396061249278272
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 2.5459786250033214e-05,
+     "upper": 0.0009150767884213234,
+     "point": 0.00010278326423082687
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "lower": 0.04688590166145872,
+     "upper": null,
+     "point": 1.7856864673265869
+    }
+   ],
+   "loglik": -22301.083277018755
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c0-s0",
+   "status": "ok",
+   "wall_s": 129.17928745923564,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.108,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003700652013919124,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00019996078273557316,
+     "beta": 2.2037367632302655e-10,
+     "epsilon": 5.561790111635882e-06,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0003547217432782741,
+     "beta": 0.008710136211914367,
+     "epsilon": 6.301057675793996e-06,
+     "kappa": 0.0010982325109212877,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0019996078273557317,
+     "beta": 2.2037367632302655e-10,
+     "epsilon": 5.561790111635882e-06,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00019996078273557316,
+     "beta": 2.2037367632302655e-10,
+     "epsilon": 5.561790111635882e-06,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019940443903274834,
+     "upper": 0.00020049917606400046,
+     "point": 0.00019996078273557316
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 2.3679426859979285,
+     "point": 2.2037367632302655e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 4.751612814382187e-06,
+     "upper": 1.6524597322193484e-05,
+     "point": 5.561790111635882e-06
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -1895.9587260160301
+  },
+  {
+   "cohort_id": "censor-k0.0316-p05-c0-s1",
+   "status": "ok",
+   "wall_s": 267.81005116691813,
+   "dt_ceiling": null,
+   "basin_messages": [
+    "NOT CONVERGED: the profile walk found a point 12.9 nats better than the reported best fit (epsilon). The point is not the maximum and the intervals are centred wrongly -- do not use these numbers ([T-JAX-BASIN])."
+   ],
+   "basin_fires": true,
+   "tie_fraction": 0.112,
+   "n": 1000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003546412038835441,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.0316,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00020002144857482747,
+     "beta": 3.8541599915523003e-10,
+     "epsilon": 5.646366808958373e-06,
+     "kappa": 299.99999999999994,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0005955815482043644,
+     "beta": 0.041656112870361084,
+     "epsilon": 3.926378426652668e-05,
+     "kappa": 0.2218107887991516,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0020002144857482747,
+     "beta": 3.8541599915523003e-10,
+     "epsilon": 5.646366808958373e-06,
+     "kappa": 299.99999999999994,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00020002144857482747,
+     "beta": 3.8541599915523003e-10,
+     "epsilon": 5.646366808958373e-06,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.00019947547086078,
+     "upper": 0.0002005572663059648,
+     "point": 0.00020002144857482747
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 2.998132516973652,
+     "point": 3.8541599915523003e-10
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "lower_bound",
+     "lower": 0.06606786672595624,
+     "upper": null,
+     "point": 5.646366808958373e-06
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -1890.2191763269277
+  },
+  {
+   "cohort_id": "het-k0.01-p01-c1-s0",
+   "status": "ok",
+   "wall_s": 270.65133441612124,
+   "dt_ceiling": null,
+   "basin_messages": [
+    "NOT CONVERGED: the profile walk found a point 2.1 nats better than the reported best fit (beta, kappa). The point is not the maximum and the intervals are centred wrongly -- do not use these numbers ([T-JAX-BASIN]).",
+    "NOT CONVERGED: the beta point 0.072253 lies outside its own interval [0.10398, 70.523]."
+   ],
+   "basin_fires": true,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00020452144364423015,
+     "beta": 0.001,
+     "epsilon": 0.00015848931924611134,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0010591854140316265,
+     "beta": 0.07225319918296723,
+     "epsilon": 0.0038834684469932815,
+     "kappa": 0.0015553952495928219,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0003675320287329067,
+     "beta": 0.012488570522046683,
+     "epsilon": 0.0008666413779204469,
+     "kappa": 0.0015570007365960294,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.010591854140316265,
+     "beta": 0.07225319918296723,
+     "epsilon": 0.0038834684469932815,
+     "kappa": 0.0015553952495928219,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0010591854140316265,
+     "beta": 0.07225319918296723,
+     "epsilon": 0.0038834684469932815,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0008780676912832776,
+     "upper": 0.001985173037149064,
+     "point": 0.0010591854140316265
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.10397884986894068,
+     "upper": 70.52277022650846,
+     "point": 0.07225319918296723
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.002135382582480594,
+     "upper": 0.007336943674364087,
+     "point": 0.0038834684469932815
+    },
+    {
+     "parameter": "kappa",
+     "shape": "lower_bound",
+     "lower": 0.08619605739491147,
+     "upper": null,
+     "point": 0.0015553952495928219
+    }
+   ],
+   "loglik": -40102.4699241925
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s0",
+   "status": "ok",
+   "wall_s": 276.9590441249311,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.14177014462602552,
+     "beta": 14.251026703029963,
+     "epsilon": 0.07943282347242815,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0007627148426319874,
+     "beta": 0.038099451081359585,
+     "epsilon": 4.493201642649651e-05,
+     "kappa": 0.0010000000000000002,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00039668559823774876,
+     "beta": 0.020252502184666166,
+     "epsilon": 4.954928797706712e-06,
+     "kappa": 0.21751625808872138,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.007627148426319874,
+     "beta": 0.038099451081359585,
+     "epsilon": 4.493201642649651e-05,
+     "kappa": 0.0010000000000000002,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0007627148426319874,
+     "beta": 0.038099451081359585,
+     "epsilon": 4.493201642649651e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0006484763013056289,
+     "upper": 0.0010231663186841926,
+     "point": 0.0007627148426319874
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.030046054669007217,
+     "upper": 0.05820113297405867,
+     "point": 0.038099451081359585
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 3.594273945765643e-05,
+     "upper": 7.01593267931426e-05,
+     "point": 4.493201642649651e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 0.0466999467225456,
+     "point": 0.0010000000000000002
+    }
+   ],
+   "loglik": -19806.698962332313
+  },
+  {
+   "cohort_id": "pure-real-Denmark_F_1900_hetro-c0-s0",
+   "status": "ok",
+   "wall_s": 369.09072008309886,
+   "dt_ceiling": null,
+   "basin_messages": [
+    "NOT CONVERGED: the profile walk found a point 5206.2 nats better than the reported best fit (eta, beta, epsilon, kappa). The point is not the maximum and the intervals are centred wrongly -- do not use these numbers ([T-JAX-BASIN]).",
+    "NOT CONVERGED: the eta point 7.0597e-09 lies outside its own interval [1.5317e-05, 7.314e-05]."
+   ],
+   "basin_fires": true,
+   "tie_fraction": 0.0,
+   "n": 100000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 8.870021831761223e-05,
+     "beta": 6.29500879790567,
+     "epsilon": 0.20200030431780142,
+     "kappa": 0.141,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 7.059696098152783e-09,
+     "beta": 0.00012326418059862957,
+     "epsilon": 4.861149163887116e-06,
+     "kappa": 0.2072319451931204,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 5.384810324042794e-09,
+     "beta": 7.78218631563746e-05,
+     "epsilon": 2.922443109681379e-06,
+     "kappa": 0.2433088281493456,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 7.059696098152784e-08,
+     "beta": 0.00012326418059862957,
+     "epsilon": 4.861149163887116e-06,
+     "kappa": 0.2072319451931204,
+     "rule": "optimum, eta x 10^1 (clipped to box): 99886 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 7.059696098152783e-09,
+     "beta": 0.00012326418059862957,
+     "epsilon": 4.861149163887116e-06,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 1.531678780508678e-05,
+     "upper": 7.31396153967721e-05,
+     "point": 7.059696098152783e-09
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "lower": 0.0009580213678070747,
+     "upper": null,
+     "point": 0.00012326418059862957
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "lower_bound",
+     "lower": 5.6995933407114725e-06,
+     "upper": null,
+     "point": 4.861149163887116e-06
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 0.014120285637295378,
+     "point": 0.2072319451931204
+    }
+   ],
+   "loglik": -437551.28581155767
+  },
+  {
+   "cohort_id": "censor-k0.01-p05-c1-s1",
+   "status": "ok",
+   "wall_s": 151.60967829078436,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.1253,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.0003700652013919124,
+     "beta": 0.01092600861117378,
+     "epsilon": 1.995262314968879e-05,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00042028379244702226,
+     "beta": 0.013405752973410519,
+     "epsilon": 2.182658102994569e-05,
+     "kappa": 0.001213681042559923,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00034913953292672184,
+     "beta": 0.008378560878005072,
+     "epsilon": 5.502048788155737e-06,
+     "kappa": 0.0012539712567730074,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.004202837924470223,
+     "beta": 0.013405752973410519,
+     "epsilon": 2.182658102994569e-05,
+     "kappa": 0.001213681042559923,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00042028379244702226,
+     "beta": 0.013405752973410519,
+     "epsilon": 2.182658102994569e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0003742344112339761,
+     "upper": 0.0004891618043581707,
+     "point": 0.00042028379244702226
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.01033908379053441,
+     "upper": 0.018083110435920702,
+     "point": 0.013405752973410519
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 1.8664446486175112e-05,
+     "upper": 2.7320207746898215e-05,
+     "point": 2.182658102994569e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 0.019273763053317423,
+     "point": 0.001213681042559923
+    }
+   ],
+   "loglik": -18721.62589953299
+  },
+  {
+   "cohort_id": "pure-real-Sweden_F_1910_homo-c0-s0",
+   "status": "ok",
+   "wall_s": 501.01387345790863,
+   "dt_ceiling": null,
+   "basin_messages": [
+    "NOT CONVERGED: the profile walk found a point 4932.6 nats better than the reported best fit (eta, beta, epsilon, kappa). The point is not the maximum and the intervals are centred wrongly -- do not use these numbers ([T-JAX-BASIN]).",
+    "NOT CONVERGED: the eta point 4.5402e-09 lies outside its own interval [2.5446e-06, 6.0401e-06]."
+   ],
+   "basin_fires": true,
+   "tie_fraction": 0.0,
+   "n": 100000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 3.7000101001309648e-06,
+     "beta": 0.20400039210230075,
+     "epsilon": 0.009690017834330452,
+     "kappa": 0.0117,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 4.540247751709656e-09,
+     "beta": 9.698512959440118e-05,
+     "epsilon": 3.8076903160834527e-06,
+     "kappa": 0.20916214770398917,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 3.506531101995581e-09,
+     "beta": 6.149849108250183e-05,
+     "epsilon": 2.18108037489804e-06,
+     "kappa": 0.24448665144305035,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 4.5402477517096556e-08,
+     "beta": 9.698512959440118e-05,
+     "epsilon": 3.8076903160834527e-06,
+     "kappa": 0.20916214770398917,
+     "rule": "optimum, eta x 10^1 (clipped to box): 99921 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 4.540247751709656e-09,
+     "beta": 9.698512959440118e-05,
+     "epsilon": 3.8076903160834527e-06,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 2.5446438767836593e-06,
+     "upper": 6.0400985543080875e-06,
+     "point": 4.540247751709656e-09
+    },
+    {
+     "parameter": "beta",
+     "shape": "lower_bound",
+     "lower": 0.009443312432548449,
+     "upper": null,
+     "point": 9.698512959440118e-05
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "lower_bound",
+     "lower": 4.227194409960115e-06,
+     "upper": null,
+     "point": 3.8076903160834527e-06
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 0.0023950503866582867,
+     "point": 0.20916214770398917
+    }
+   ],
+   "loglik": -454771.7070510016
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s1",
+   "status": "ok",
+   "wall_s": 403.527459166944,
+   "dt_ceiling": null,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 10000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.14177014462602552,
+     "beta": 14.251026703029963,
+     "epsilon": 0.07943282347242815,
+     "kappa": 0.01,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.0006467494645793124,
+     "beta": 0.029447292635259796,
+     "epsilon": 3.403361552464001e-05,
+     "kappa": 0.0010000000000000002,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.00039676784784102034,
+     "beta": 0.020287613924607133,
+     "epsilon": 4.995389957139384e-06,
+     "kappa": 0.21773862893399146,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.006467494645793124,
+     "beta": 0.029447292635259796,
+     "epsilon": 3.403361552464001e-05,
+     "kappa": 0.0010000000000000002,
+     "rule": "optimum, eta x 10^1 (clipped to box): 10000 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.0006467494645793124,
+     "beta": 0.029447292635259796,
+     "epsilon": 3.403361552464001e-05,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.000534987496027376,
+     "upper": 0.0008609001555023056,
+     "point": 0.0006467494645793124
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.022287614005669924,
+     "upper": 0.04552816363679665,
+     "point": 0.029447292635259796
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 2.6087256182937385e-05,
+     "upper": 5.2749602535646003e-05,
+     "point": 3.403361552464001e-05
+    },
+    {
+     "parameter": "kappa",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 0.07086965915741467,
+     "point": 0.0010000000000000002
+    }
+   ],
+   "loglik": -19709.66502494363
+  },
+  {
+   "cohort_id": "realfull-real-mice_M-c1-s1",
+   "status": "ok",
+   "wall_s": 705.7579247090034,
+   "dt_ceiling": 0.0004294766207577445,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 686,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 7.859995143906167e-06,
+     "beta": 0.00516999607352108,
+     "epsilon": 0.0007169993515554357,
+     "kappa": 0.0535,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 6.1735941199569744e-06,
+     "beta": 0.0030274777956788984,
+     "epsilon": 0.0005402528324397944,
+     "kappa": 0.001005651017085517,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 8.569969789429031e-06,
+     "beta": 0.005249040617873893,
+     "epsilon": 0.0008113095273726693,
+     "kappa": 0.001003627326968762,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 6.173594119956974e-05,
+     "beta": 0.0030274777956788984,
+     "epsilon": 0.0005402528324397944,
+     "kappa": 0.001005651017085517,
+     "rule": "optimum, eta x 10^1 (clipped to box): 592 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 6.1735941199569744e-06,
+     "beta": 0.0030274777956788984,
+     "epsilon": 0.0005402528324397944,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 4.1518415441457665e-06,
+     "upper": 1.20286752803014e-05,
+     "point": 6.1735941199569744e-06
+    },
+    {
+     "parameter": "beta",
+     "shape": "closed",
+     "lower": 0.0013895037354916553,
+     "upper": 4.903183850958646,
+     "point": 0.0030274777956788984
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0003406205096132093,
+     "upper": 0.0011663366085649196,
+     "point": 0.0005402528324397944
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -4550.568105229224
+  },
+  {
+   "cohort_id": "pure-k2-p04-c0-s0",
+   "status": "ok",
+   "wall_s": 793.6711365832016,
+   "dt_ceiling": 0.00033743878227791743,
+   "basin_messages": [],
+   "basin_fires": false,
+   "tie_fraction": 0.0,
+   "n": 2000,
+   "points": [
+    {
+     "label": "truth",
+     "eta": 0.00014247978106653322,
+     "beta": 0.001,
+     "epsilon": 0.0012589254117941675,
+     "kappa": 2.0,
+     "rule": "library v1 physical_truth()"
+    },
+    {
+     "label": "optimum",
+     "eta": 0.00014295032992057692,
+     "beta": 1.0123200185175424e-06,
+     "epsilon": 0.001262288982880488,
+     "kappa": 4.999998985311838,
+     "rule": "pilot oracle theta-hat"
+    },
+    {
+     "label": "seed",
+     "eta": 0.0001416993822799474,
+     "beta": 1.0123199158829854e-06,
+     "epsilon": 0.0013032264929200934,
+     "kappa": 4.999999427471212,
+     "rule": "oracle fp_curvefit_seed(t, e, xc=1.0)"
+    },
+    {
+     "label": "floor",
+     "eta": 0.0014295032992057693,
+     "beta": 1.0123200185175424e-06,
+     "epsilon": 0.001262288982880488,
+     "kappa": 4.999998985311838,
+     "rule": "optimum, eta x 10^1 (clipped to box): 1706 terms at -700"
+    },
+    {
+     "label": "kmax",
+     "eta": 0.00014295032992057692,
+     "beta": 1.0123200185175424e-06,
+     "epsilon": 0.001262288982880488,
+     "kappa": 300.0,
+     "rule": "optimum, kappa = 300"
+    },
+    {
+     "label": "corner",
+     "eta": 1e-12,
+     "beta": 1000.0,
+     "epsilon": 1000.0,
+     "kappa": 0.001,
+     "rule": "box corner (eta lo, beta hi, epsilon hi, kappa lo)"
+    }
+   ],
+   "oracle_claims": [
+    {
+     "parameter": "eta",
+     "shape": "closed",
+     "lower": 0.0001392999634179552,
+     "upper": 0.00017759222463364536,
+     "point": 0.00014295032992057692
+    },
+    {
+     "parameter": "beta",
+     "shape": "upper_bound",
+     "lower": null,
+     "upper": 1.6834399377140088,
+     "point": 1.0123200185175424e-06
+    },
+    {
+     "parameter": "epsilon",
+     "shape": "closed",
+     "lower": 0.0011985017969256002,
+     "upper": 0.0015526532608091943,
+     "point": 0.001262288982880488
+    },
+    {
+     "parameter": "kappa",
+     "shape": "none",
+     "lower": null,
+     "upper": null,
+     "point": null
+    }
+   ],
+   "loglik": -14073.58276889818
+  }
+ ]
+}

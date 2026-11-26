@@ -1,0 +1,146 @@
+{
+ "phase": "unchanged",
+ "written_at": "2026-11-05T22:55:10Z",
+ "repo_head": "dbfd4e084cbfdb72c98b0bc2977e4f5226245395",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 746.5402750968933,
+ "cpu_s": 0.06280400000000003,
+ "status": "PASS",
+ "verdict": {
+  "status": "PASS",
+  "groups_ok": true,
+  "skips_unlisted": [],
+  "named": {
+   "parity_t1_normal_frac_sd_v033": {
+    "group": "parity",
+    "module": "tests.parity.test_engine_t1_het",
+    "n": 20,
+    "kinds": [
+     "ok"
+    ],
+    "ok": true
+   },
+   "generator_checksums": {
+    "group": "unit",
+    "module": "tests.unit.test_generator_checksums",
+    "n": 19,
+    "kinds": [
+     "ok"
+    ],
+    "ok": true
+   },
+   "register": {
+    "group": "unit",
+    "module": "tests.unit.test_register",
+    "n": 20,
+    "kinds": [
+     "ok"
+    ],
+    "ok": true
+   }
+  }
+ },
+ "groups": {
+  "unit": {
+   "tests": 1639,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 1639,
+   "returncode": 0,
+   "summary": "1639 passed, 14 deselected in 643.04s (0:10:43)",
+   "wall_s": 647.2,
+   "paths": [
+    "tests/unit"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "parity": {
+   "tests": 497,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 497,
+   "returncode": 0,
+   "summary": "497 passed, 1 deselected in 94.75s (0:01:34)",
+   "wall_s": 96.7,
+   "paths": [
+    "tests/parity"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  },
+  "results_001_to_003g": {
+   "tests": 191,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 2,
+   "passed": 189,
+   "returncode": 1,
+   "summary": "189 passed, 1 skipped, 1 xfailed in 2.24s",
+   "wall_s": 2.5,
+   "paths": [
+    "tests/acceptance/test_results.py",
+    "tests/acceptance/test_results_002.py",
+    "tests/acceptance/test_results_003.py",
+    "tests/acceptance/test_results_003b.py",
+    "tests/acceptance/test_results_003e.py",
+    "tests/acceptance/test_results_003f.py",
+    "tests/acceptance/test_results_003g.py"
+   ],
+   "skipped_list": [
+    [
+     "tests.acceptance.test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch",
+     "NOT APPLICABLE: the fit path changed since spec 002's claims re-run (['src/sraging/adapters/observation.py', 'src/sraging/adapters/srbench.py', 'src/sraging/labels.py', 'src/sraging/registry.py', 'src/sraging/result.py']); spec 003's re-run (results/claims-001_003.json, test_results_003.py) is the c"
+    ],
+    [
+     "tests.acceptance.test_results_003::test_coverage_no_combination_loses_on_a_gated_arm",
+     "SC-005 fails as recorded: [['profile_jax2|censor', 'eta_over_eps', 'vs_eta'], ['profile_jax2|censor', 'eta_over_eps', 'vs_epsilon']] (Naveh 2026-10-10, [coverage_result])"
+    ]
+   ],
+   "failed_list": []
+  }
+ },
+ "superseded": {
+  "test_results_002::test_claims_001_rerun_is_identical_and_valid_for_this_branch": "spec 002's claims re-run; once spec 003 changed the fit path it is NOT APPLICABLE for good, and spec 003's re-run (results/claims-001_003.json, test_results_003.py) is the check, as its own comment rules"
+ },
+ "recorded_skips": {
+  "test_results_003::test_coverage_no_combination_loses_on_a_gated_arm": "xfail: spec 003 SC-005 fails as recorded (eta/eps on censored cohorts; Naveh 2026-10-10, [coverage_result])"
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {},
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.14733333333333332,
+  "projected_from": "003g's unchanged per-group wall (its record's cpu_s counts the parent only) [I]",
+  "cap_cpu_h": 2.0,
+  "cap_frozen_cpu_h": 2.0,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.3732717455555556,
+  "parent_cpu_s": 0.05549100000000001,
+  "worker_cpu_s": 1343.7227950000001,
+  "capped": false
+ }
+}

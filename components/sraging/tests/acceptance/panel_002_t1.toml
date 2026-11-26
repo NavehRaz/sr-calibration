@@ -1,0 +1,89 @@
+# The T1 panel (spec 002 SC-002; research R15, amended at the sr-manager gate). COMMIT before `t1-pilot` and
+# again (with the frozen cut below) before `t1`; both phases refuse an uncommitted panel.
+# Library cohorts are compared like for like with SRK's frozen NumPy code (tests/oracle/fp_piecewise_cb191f5,
+# worker), synthetic segment configurations with fp_piecewise, mixtures with fp_loglik_het_physical, and
+# staggered entry with tests/reference/numpy_scheme.py (no old code has entry).
+library = "v1"
+tester_head = "dbe504a91a34ffe6656f5a662e1a33a6cbecba09"
+tester_note = "3 commits after spec 001's f8eaed2; none touches data/library/v1 or methods/mle_profile_jax"
+source = "reports/validity/validity.csv of the tester (read-only): medium tier (in_medium), library order (position)"
+selection = """Per arm, the first 4 medium-tier cohorts in library order that meet the arm's filter:
+pure, hazard, het, censor: none; window: both window edges on the delta grid; realfull: the first 4 where
+v0.3.3's dt ceiling does not fire, plus the first 2 where it fires (cost-bounded); plus the medium-tier
+realfull cohort with the largest number of observed rows (n_obs; library order breaks ties) -- added at the
+sr-manager gate because research R15's rule alone gives a largest n of 24,512, not the 100,000 it stated."""
+schemes = ["bdf2", "be"]
+theta_rule = "truth; truth with eta, beta, epsilon each x1.5 (one at a time); far: eta x10"
+theta_labels = ["truth", "eta x1.5", "beta x1.5", "epsilon x1.5", "eta x10"]
+largest_n = 93893
+grid = "v033 (solver_grid of the cohort) passed explicitly to both sides as policy 'fixed'"
+het_M = 7
+
+[low_mass]
+# Frozen from the committed `t1-pilot` result before `t1` (spec SC-002; review T064, sr-naveh N2): terms with
+# mass below their evaluation's cut are routed to `mpref`; t1 reports their number and the totals with and
+# without them (gate condition 3).
+c = 5.734677885573692
+f = 1171.824712159285
+source = "results/t1_pilot_002.json at 1cedba0 (acceptance; clean tree): c = 4 x 1.4337 u K (realfull-real-Denmark_M_1900_homo-c0-s0 truth, BE), f = 4 x 293.0 u (realfull-real-mice_M-c0-s0)"
+rule = "cut = 4 x 2 x dS / 1e-8; dS = this evaluation's measured engine-vs-NumPy max|dS| where one exists, else u (c K + f) with K = rho_eps dtau N^2 (segments, mixtures); dS is floored at u f"
+
+[arms]
+pure = ["pure-k0.01-p00-c0-s0", "pure-k0.01-p00-c0-s1", "pure-k0.01-p00-c1-s0", "pure-k0.01-p00-c1-s1"]
+hazard = ["hazard-k0.01-p00-c0-s0", "hazard-k0.01-p00-c0-s1", "hazard-k0.01-p00-c1-s0", "hazard-k0.01-p00-c1-s1"]
+het = ["het-k0.01-p00-c0-s0", "het-k0.01-p00-c0-s1", "het-k0.01-p00-c1-s0", "het-k0.01-p00-c1-s1"]
+censor = ["censor-k0.01-p00-c0-s0", "censor-k0.01-p00-c0-s1", "censor-k0.01-p00-c1-s0", "censor-k0.01-p00-c1-s1"]
+window = ["window-k0.01-p00-c0-s0", "window-k0.01-p00-c0-s1", "window-k0.01-p00-c1-s0", "window-k0.01-p00-c1-s1"]
+realfull = ["realfull-real-yeast-c0-s0", "realfull-real-yeast-c0-s1", "realfull-real-yeast-c1-s0",
+            "realfull-real-yeast-c1-s1", "realfull-real-mice_F-c0-s0", "realfull-real-mice_F-c0-s1",
+            "realfull-real-Sweden_F_1910_homo-c0-s1"]
+# hazard arm: external hazard e^-5.5 per day (validity.csv external_hazard = 5.5); het arm: xc, v = 0.2
+
+# -- synthetic configurations ---------------------------------------------------------------------------
+[[het_window]]
+# heterogeneity x window on a het-arm cohort; window edges on the delta grid
+base = "het-k0.01-p00-c0-s0"
+window = [80.0, 120.0]
+v = 0.2
+M = 7
+parameters = ["xc", "eta", "beta", "epsilon"]
+
+[[entry]]
+name = "entry on the delta grid"
+base = "pure-k0.01-p00-c0-s0"
+rule = "e_i = floor(0.5 t_i)"
+[[entry]]
+name = "entry off grid, some inside the death's interval"
+base = "pure-k0.01-p00-c0-s0"
+rule = "e_i = 0.37 t_i; every 20th death row: e_i = t_i + 0.5"
+[[entry]]
+name = "entry with an external hazard"
+base = "hazard-k0.01-p00-c0-s0"
+rule = "e_i = floor(0.5 t_i)"
+[[entry]]
+name = "entry with exact death times"
+base = "pure-k0.01-p00-c0-s0"
+rule = "e_i = 0.37 t_i; ages read as exact (continuous)"
+
+[segments]
+# SRK's own tests/test_fp_piecewise.py configurations (survey section 3), on its synthetic cohort, with edges
+# that are exact grid nodes (dt = 2^-8 of L); fp_piecewise's interventions as multipliers 1 + effect
+cohort = "gamma(9, 14) rounded down + 1, n = 500, 90% deaths, numpy default_rng(7) (tests/parity/test_engine_t1_segments.py)"
+grid = { L = 124.0, N = 300, dt = 0.00390625, tau_max = 2.5 }
+base_theta = { eta = 6e-4, beta = 0.08, epsilon = 8e-3, kappa = 0.1 }
+external_hazard_level = 6.0
+configs = [
+  { name = "chronic beta", parameter = "beta", effect = -0.3 },
+  { name = "chronic eta", parameter = "eta", effect = 0.5 },
+  { name = "chronic epsilon", parameter = "epsilon", effect = 0.4 },
+  { name = "chronic kappa", parameter = "kappa", effect = 1.0 },
+  { name = "chronic xc", parameter = "xc", effect = 0.3 },
+  { name = "beta (62,124)", parameter = "beta", effect = -0.6, window = [62.0, 124.0] },
+  { name = "beta (93,186)", parameter = "beta", effect = -0.6, window = [93.0, 186.0] },
+  { name = "A slow (62,124)", parameter = "A", effect = -0.3, window = [62.0, 124.0] },
+  { name = "A fast (62,124)", parameter = "A", effect = 0.25, window = [62.0, 124.0] },
+  { name = "xc lower (62,124)", parameter = "xc", effect = -0.25, window = [62.0, 124.0] },
+  { name = "xc raise (93,186)", parameter = "xc", effect = 0.3, window = [93.0, 186.0] },
+  { name = "hazard window (62,124)", parameter = "h_ext", level = 4.5, window = [62.0, 124.0] },
+  { name = "hazard window (124,186)", parameter = "h_ext", level = 5.0, window = [124.0, 186.0] },
+]

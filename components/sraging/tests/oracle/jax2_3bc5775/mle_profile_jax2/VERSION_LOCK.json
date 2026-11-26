@@ -1,0 +1,30 @@
+{
+ "files": [
+  "__init__.py",
+  "estimator.py",
+  "fp_jax.py",
+  "observation_model.py"
+ ],
+ "names": {
+  "mle_profile_jax2": {
+   "sha256": {
+    "__init__.py": "cf4a214d66d3b3a13338774c00b886183ce4dada936bd7f0dd0e8f0c8dc86e73",
+    "estimator.py": "b2e9b34bdd6037fa98a45d450f3a119128d3b07fd2d99a95bb82ead9c7978fd0",
+    "fp_jax.py": "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253",
+    "observation_model.py": "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0"
+   },
+   "version": "1.0.0"
+  },
+  "mle_profile_jax2_h": {
+   "sha256": {
+    "__init__.py": "cf4a214d66d3b3a13338774c00b886183ce4dada936bd7f0dd0e8f0c8dc86e73",
+    "estimator.py": "b2e9b34bdd6037fa98a45d450f3a119128d3b07fd2d99a95bb82ead9c7978fd0",
+    "fp_jax.py": "e5b9db257789b252193ef5b402174b3e5ada516808af532164e4b4de3a55e253",
+    "observation_model.py": "deff521c80985a699f513758c494d9e0f3e8ab0fdf5cc97da292b342025d25d0"
+   },
+   "version": "1.0.0"
+  }
+ },
+ "package": "mle_profile_jax2",
+ "rule": "If a name's version equals its locked version, every runtime file's sha256 must equal the locked one. The names share every runtime file, so any code change needs every version bumped. Regenerate with: python tests/version_lock.py --write (refuses on a code change under an unchanged version)."
+}

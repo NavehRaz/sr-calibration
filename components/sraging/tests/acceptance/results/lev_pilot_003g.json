@@ -1,0 +1,472 @@
+{
+ "phase": "lev-pilot",
+ "written_at": "2026-10-28T23:59:51Z",
+ "repo_head": "5a71830313a7e9626c2123825f81aed8b7434e6f",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 456.01207208633423,
+ "cpu_s": 524.843969,
+ "status": "PASS",
+ "rows": [
+  {
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s1",
+   "n": 25000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 17 over 25000 individuals (0.000679 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.01327892969097795,
+     997.5589765085971,
+     35.699098546505034,
+     0.0011598220371429378
+    ],
+    "ll_ref": -112639.38851770636,
+    "ll_warm": -112639.38851770636,
+    "cpu_s": 2.663074999999999
+   },
+   "free_gradient_norm": 16.969711362986178,
+   "free_gradient_per_individual": 0.0006787884545194471,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 15,
+    "moved": 0.0,
+    "cpu_s": 2.6952520000000035
+   },
+   "cost": {
+    "cpu_s": 38.786452999999995,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "hazard-real-combined_human_F-c1-s1",
+   "n": 25000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 26.4 over 25000 individuals (0.00106 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.013453367807317197,
+     999.9999999999998,
+     37.60788236393151,
+     0.0010000000000000002
+    ],
+    "ll_ref": -112903.58857094559,
+    "ll_warm": -112903.58857094559,
+    "cpu_s": 2.647327000000004
+   },
+   "free_gradient_norm": 26.398584040026357,
+   "free_gradient_per_individual": 0.0010559433616010544,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 2.629514999999998
+   },
+   "cost": {
+    "cpu_s": 44.511227,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c1-s0",
+   "n": 25000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 642 over 25000 individuals (0.0257 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.013129161149902835,
+     991.2814689719373,
+     35.38933121508866,
+     0.002171648671842251
+    ],
+    "ll_ref": -112828.87939405389,
+    "ll_warm": -112828.87939405389,
+    "cpu_s": 3.281084000000007
+   },
+   "free_gradient_norm": 641.8155194867896,
+   "free_gradient_per_individual": 0.025672620779471585,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 2.933171999999999
+   },
+   "cost": {
+    "cpu_s": 39.813582,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "hazard-real-combined_human_F-c1-s0",
+   "n": 25000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 156 over 25000 individuals (0.00623 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.013630896176977197,
+     999.9999999999998,
+     37.38979619781277,
+     0.0010009048232835114
+    ],
+    "ll_ref": -112343.41265846569,
+    "ll_warm": -112343.41265846569,
+    "cpu_s": 3.697718000000009
+   },
+   "free_gradient_norm": 155.85448918790138,
+   "free_gradient_per_individual": 0.006234179567516055,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 3.5902580000000057
+   },
+   "cost": {
+    "cpu_s": 51.758123999999995,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "hazard-real-Denmark_F_1900_hetro-c1-s1",
+   "n": 25000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 10.1 over 25000 individuals (0.000404 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.01209806822631427,
+     996.4308802201788,
+     38.130656451408235,
+     0.0010048750267778056
+    ],
+    "ll_ref": -114502.26063182163,
+    "ll_warm": -114502.26063182163,
+    "cpu_s": 3.567177000000015
+   },
+   "free_gradient_norm": 10.10325767373518,
+   "free_gradient_per_individual": 0.00040413030694940724,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 15,
+    "moved": 0.0,
+    "cpu_s": 3.311961999999994
+   },
+   "cost": {
+    "cpu_s": 64.44808499999999,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "hazard-real-Sweden_M_1910_hetro-c0-s0",
+   "n": 100000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 267 over 100000 individuals (0.00267 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.011107112392661975,
+     999.9999999999998,
+     38.776317761614926,
+     0.0013789126621063825
+    ],
+    "ll_ref": -474911.37139536196,
+    "ll_warm": -474911.37139536196,
+    "cpu_s": 4.634757000000036
+   },
+   "free_gradient_norm": 267.0503293199079,
+   "free_gradient_per_individual": 0.002670503293199079,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 4.651673999999957
+   },
+   "cost": {
+    "cpu_s": 81.56599500000002,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "ITP+age0",
+   "n": 305,
+   "label_003b": "flag",
+   "label": "flag",
+   "want": "flag",
+   "ok": true,
+   "reason": null,
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.0008579307799090451,
+     1.3762978120404292,
+     0.09041066797772547,
+     0.0010094340144849727
+    ],
+    "ll_ref": -1974.748240129554,
+    "ll_warm": -1974.748240129554,
+    "cpu_s": 5.390692000000001
+   },
+   "free_gradient_norm": 0.0017827684219882702,
+   "free_gradient_per_individual": 5.845142367174657e-06,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 5.468617999999992
+   },
+   "cost": {
+    "cpu_s": 125.73776099999998,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "hazard-real-Sweden_F_1910_hetro-c0-s0",
+   "n": 100000,
+   "label_003b": "no_flag",
+   "label": "not_assessed",
+   "want": "not_assessed",
+   "ok": true,
+   "reason": "the optimiser could not move from theta-hat: its warm start on the full data stopped where it began (g0 = 0) at a free-gradient norm of 475 over 100000 individuals (0.00475 per individual > 5e-05), so a refit without one row cannot be compared with it",
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.013221568523585692,
+     992.8425210612603,
+     35.5545822047934,
+     0.0010000000000000002
+    ],
+    "ll_ref": -450635.45287678496,
+    "ll_warm": -450635.45287678496,
+    "cpu_s": 4.498148000000015
+   },
+   "free_gradient_norm": 474.5248843869398,
+   "free_gradient_per_individual": 0.004745248843869398,
+   "warm_termination": {
+    "status": "ok",
+    "scipy_status": 2,
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 16,
+    "moved": 0.0,
+    "cpu_s": 4.748227000000043
+   },
+   "cost": {
+    "cpu_s": 76.76460700000001,
+    "share_of_fit": null
+   },
+   "provenance": {
+    "calibrator": "profile_jax2",
+    "version": "1.0.1",
+    "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  }
+ ],
+ "g_crit_per_ind": 5e-05,
+ "rule": {
+  "quantities": "all4",
+  "ratio": 1.5,
+  "delta_total_nats": 1.92,
+  "fail_nats": 0.1,
+  "refit": "mle_stage_and_warm_start",
+  "provisional": false
+ },
+ "labels": {
+  "hazard-real-Sweden_F_1910_hetro-c1-s1": "not_assessed",
+  "hazard-real-combined_human_F-c1-s1": "not_assessed",
+  "hazard-real-Sweden_F_1910_hetro-c1-s0": "not_assessed",
+  "hazard-real-combined_human_F-c1-s0": "not_assessed",
+  "hazard-real-Denmark_F_1900_hetro-c1-s1": "not_assessed",
+  "hazard-real-Sweden_M_1910_hetro-c0-s0": "not_assessed",
+  "ITP+age0": "flag",
+  "hazard-real-Sweden_F_1910_hetro-c0-s0": "not_assessed"
+ }
+}

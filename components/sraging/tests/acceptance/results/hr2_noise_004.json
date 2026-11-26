@@ -1,0 +1,283 @@
+{
+ "phase": "hr2-noise",
+ "written_at": "2026-10-29T14:59:28Z",
+ "repo_head": "59a7b05a21eb626899b72a6849d363a2c19b87e5",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 84.40552806854248,
+ "cpu_s": 94.086544,
+ "status": "written",
+ "cohorts": [
+  {
+   "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0",
+   "ladder_at_0.35": {
+    "M": 38,
+    "M_check": 57,
+    "abs_dll": 0.00682263516682724,
+    "verdict": "converged"
+   },
+   "points": [
+    {
+     "sd": 0.3,
+     "M": 38,
+     "h": 0.001,
+     "cd": -2297.910965981373,
+     "grad": -2297.9374463223353,
+     "abs_diff": 0.026480340962280025,
+     "cpu_s": 4.294076999999999,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.3,
+     "M": 38,
+     "h": 0.0001,
+     "cd": -2297.9371958263073,
+     "grad": -2297.9374463223353,
+     "abs_diff": 0.0002504960280020896,
+     "cpu_s": 2.2113799999999983,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.3,
+     "M": 38,
+     "h": 1e-05,
+     "cd": -2297.9374744409142,
+     "grad": -2297.9374463223353,
+     "abs_diff": 2.811857893902925e-05,
+     "cpu_s": 2.1725399999999997,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.35,
+     "M": 38,
+     "h": 0.001,
+     "cd": -2418.5618849533057,
+     "grad": -2418.5704349386237,
+     "abs_diff": 0.008549985318040854,
+     "cpu_s": 2.224413000000002,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.35,
+     "M": 38,
+     "h": 0.0001,
+     "cd": -2418.5702482282068,
+     "grad": -2418.5704349386237,
+     "abs_diff": 0.00018671041698326007,
+     "cpu_s": 2.2377379999999967,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.35,
+     "M": 38,
+     "h": 1e-05,
+     "cd": -2418.570285772148,
+     "grad": -2418.5704349386237,
+     "abs_diff": 0.0001491664756940736,
+     "cpu_s": 2.2365770000000005,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.4,
+     "M": 38,
+     "h": 0.001,
+     "cd": -2354.860879952412,
+     "grad": -2354.8705670257204,
+     "abs_diff": 0.009687073308668914,
+     "cpu_s": 2.2487260000000013,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.4,
+     "M": 38,
+     "h": 0.0001,
+     "cd": -2354.8705002122006,
+     "grad": -2354.8705670257204,
+     "abs_diff": 6.681351987936068e-05,
+     "cpu_s": 2.2514330000000022,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    },
+    {
+     "sd": 0.4,
+     "M": 38,
+     "h": 1e-05,
+     "cd": -2354.8703747110267,
+     "grad": -2354.8705670257204,
+     "abs_diff": 0.00019231469377700705,
+     "cpu_s": 2.2672419999999995,
+     "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0"
+    }
+   ]
+  },
+  {
+   "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0",
+   "ladder_at_0.35": {
+    "M": 85,
+    "M_check": 128,
+    "abs_dll": 0.0024538072757422924,
+    "verdict": "converged"
+   },
+   "points": [
+    {
+     "sd": 0.3,
+     "M": 85,
+     "h": 0.001,
+     "cd": -131598.6128882505,
+     "grad": -131600.3592936033,
+     "abs_diff": 1.7464053528092336,
+     "cpu_s": 7.439275999999996,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.3,
+     "M": 85,
+     "h": 0.0001,
+     "cd": -131600.37039080635,
+     "grad": -131600.3592936033,
+     "abs_diff": 0.011097203037934378,
+     "cpu_s": 5.583663999999999,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.3,
+     "M": 85,
+     "h": 1e-05,
+     "cd": -131600.40947259404,
+     "grad": -131600.3592936033,
+     "abs_diff": 0.050178990728454664,
+     "cpu_s": 5.549939999999999,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.35,
+     "M": 85,
+     "h": 0.001,
+     "cd": -142669.28447625833,
+     "grad": -142670.1388506246,
+     "abs_diff": 0.8543743662594352,
+     "cpu_s": 5.578906999999994,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.35,
+     "M": 85,
+     "h": 0.0001,
+     "cd": -142670.11061310768,
+     "grad": -142670.1388506246,
+     "abs_diff": 0.028237516904482618,
+     "cpu_s": 5.561903999999998,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.35,
+     "M": 85,
+     "h": 1e-05,
+     "cd": -142670.51186179742,
+     "grad": -142670.1388506246,
+     "abs_diff": 0.3730111728364136,
+     "cpu_s": 5.657440000000001,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.4,
+     "M": 85,
+     "h": 0.001,
+     "cd": -140415.5252346536,
+     "grad": -140415.89752643858,
+     "abs_diff": 0.3722917849663645,
+     "cpu_s": 5.716757999999999,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.4,
+     "M": 85,
+     "h": 0.0001,
+     "cd": -140415.8374009421,
+     "grad": -140415.89752643858,
+     "abs_diff": 0.06012549647130072,
+     "cpu_s": 5.782655000000005,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    },
+    {
+     "sd": 0.4,
+     "M": 85,
+     "h": 1e-05,
+     "cd": -140415.72128189728,
+     "grad": -140415.89752643858,
+     "abs_diff": 0.176244541304186,
+     "cpu_s": 5.699358999999987,
+     "cohort_id": "het-real-Sweden_F_1910_homo-c0-s0"
+    }
+   ]
+  }
+ ],
+ "noise": {
+  "floor": {
+   "0.001": 1.7464053528092336,
+   "0.0001": 0.06012549647130072,
+   "1e-05": 0.3730111728364136
+  },
+  "h": 0.0001,
+  "tol": 0.6012549647130072
+ },
+ "plants": [
+  {
+   "M": 5,
+   "v_cross": 0.3500211745815407,
+   "jump": 15.87778395715577,
+   "cd": 73487.22694577191,
+   "grad": -2069.745526067469,
+   "abs_diff": 75556.97247183938,
+   "step": 0.0001,
+   "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0",
+   "informative": true
+  },
+  {
+   "M": 3,
+   "v_cross": 0.5773502691896257,
+   "jump": 153.78279376259889,
+   "cd": 767277.0104848131,
+   "grad": -945.1124182433512,
+   "abs_diff": 768222.1229030564,
+   "step": 0.0001,
+   "cohort_id": "het-real-Jack_Russell_vetCompass-c0-s0",
+   "informative": true
+  }
+ ],
+ "tol_factor": 10.0,
+ "cpu_point_s": 4.922008499999999,
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {},
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.025264823933691612,
+  "projected_from": "tests/acceptance/results/p0_het_cost_004.json per_node_cpu_s at M ~ 85",
+  "cap_cpu_h": 0.2,
+  "cap_frozen_cpu_h": 0.2,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.026125975555555556,
+  "parent_cpu_s": 94.053546,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

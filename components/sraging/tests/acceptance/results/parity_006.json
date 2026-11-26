@@ -1,0 +1,389 @@
+{
+ "phase": "parity",
+ "written_at": "2026-11-15T12:25:36Z",
+ "repo_head": "8a224db4d131a634d22d152aef1a44bf76af9288",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "e694cbc4bf697cc5f3c6af73c929cfbc9fd17055"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 521.7194590568542,
+ "cpu_s": 69.005728,
+ "status": "pass",
+ "cases": {
+  "examples/data/itp_c2016_het3_control_female.csv": {
+   "R-7_FR-005": {
+    "rows": [
+     {
+      "shift": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "S_lo": 0.9959387852215644,
+      "W_on": -1828.9189705612941,
+      "W_off": -1830.1438852173733,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -1828.918961035004,
+       "off": -1830.143871906504,
+       "S_lo": 0.9959387977438543
+      },
+      "v033": {
+       "on": -1828.91896103505,
+       "off": -1830.1438719065504,
+       "S_lo": 0.9959387977438543
+      }
+     },
+     {
+      "shift": [
+       0.5,
+       -0.3,
+       0.2,
+       2.0
+      ],
+      "S_lo": 0.6296459592701995,
+      "W_on": -61111.294121029525,
+      "W_off": -61250.53599470838,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -61111.329494136786,
+       "off": -61250.571042351236,
+       "S_lo": 0.6296466400922952
+      },
+      "v033": {
+       "on": -61111.329494136786,
+       "off": -61250.571042351236,
+       "S_lo": 0.6296466400922952
+      }
+     },
+     {
+      "shift": [
+       -1.0,
+       1.0,
+       -0.5,
+       6.0
+      ],
+      "S_lo": 0.9999999998684087,
+      "W_on": -6660.157114485581,
+      "W_off": -6660.15711452519,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -6660.157277593457,
+       "off": -6660.15727763311,
+       "S_lo": 0.9999999998682659
+      },
+      "v033": {
+       "on": -6660.145826120299,
+       "off": -6660.14582615995,
+       "S_lo": 0.9999999998682659
+      }
+     },
+     {
+      "shift": "underflow",
+      "S_lo": 0.0,
+      "W_on": -202383.06264410552,
+      "W_off": -210700.0,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -202383.06264410543,
+       "off": -210700.0,
+       "S_lo": 0.0
+      },
+      "v033": {
+       "on": -202383.06264410543,
+       "off": -210700.0,
+       "S_lo": 0.0
+      }
+     }
+    ],
+    "R-7": {
+     "v1": {
+      "tolerance": 0.03504764285753481,
+      "tolerance_points": [
+       0,
+       1
+      ],
+      "no_window_diffs": [
+       -1.3310869235283462e-05,
+       0.03504764285753481,
+       0.00016310792034346377,
+       0.0
+      ],
+      "window_term_diffs": [
+       3.784579121202114e-06,
+       0.00032546440343139693,
+       -4.3655745685100555e-11,
+       -8.731149137020111e-11
+      ],
+      "passes": true
+     },
+     "v033": {
+      "tolerance": 0.03504764285753481,
+      "tolerance_points": [
+       0,
+       1
+      ],
+      "no_window_diffs": [
+       -1.3310822851053672e-05,
+       0.03504764285753481,
+       -0.011288365240034182,
+       0.0
+      ],
+      "window_term_diffs": [
+       3.784578666454763e-06,
+       0.00032546440343139693,
+       -4.18367562815547e-11,
+       -8.731149137020111e-11
+      ],
+      "passes": true
+     }
+    },
+    "FR-005": {
+     "passes": true
+    },
+    "underflow_point": true,
+    "passes": true,
+    "plant": null,
+    "window_eff": [
+     365.0,
+     1100.0
+    ],
+    "n": 301,
+    "edge_tie_deaths": 0
+   },
+   "R-8": {
+    "no_h": {
+     "finite": true,
+     "equal": true,
+     "value_equal": true,
+     "grad_max_rel": 8.511589393688604e-14,
+     "value": -1917.6331530970865
+    },
+    "h": {
+     "finite": true,
+     "equal": true,
+     "value_equal": true,
+     "grad_max_rel": 0.0,
+     "value": -1921.7122963695952
+    },
+    "underflow": {
+     "lo_clipped": true,
+     "S_lo_min": 0.0,
+     "value": -202226.24661837507,
+     "value_at_base": -1828.9189610350043
+    },
+    "passes": true
+   },
+   "plants_fail": {
+    "cond": true,
+    "clip": true
+   },
+   "plants_not_applicable": {
+    "edge": "no death censored at the window's edge in this case"
+   }
+  },
+  "window-k2-p01-c1-s1": {
+   "R-7_FR-005": {
+    "rows": [
+     {
+      "shift": [
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "S_lo": 0.9993988868150556,
+      "W_on": -1720.5582955307102,
+      "W_off": -1721.7602820886025,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -1720.5524641362504,
+       "off": -1721.7577438047892,
+       "S_lo": 0.9993972404276605
+      },
+      "v033": {
+       "on": -1720.552464136256,
+       "off": -1721.7577438047947,
+       "S_lo": 0.9993972404276605
+      }
+     },
+     {
+      "shift": [
+       0.5,
+       -0.3,
+       0.2,
+       2.0
+      ],
+      "S_lo": 0.29275085474547136,
+      "W_on": -18347.076208717226,
+      "W_off": -20802.714488955055,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -18342.994904825206,
+       "off": -20798.37746676222,
+       "S_lo": 0.29278830674127637
+      },
+      "v033": {
+       "on": -18342.994904825206,
+       "off": -20798.37746676222,
+       "S_lo": 0.29278830674127637
+      }
+     },
+     {
+      "shift": [
+       -1.0,
+       1.0,
+       -0.5,
+       6.0
+      ],
+      "S_lo": 0.9999999999998697,
+      "W_on": -23297.689141882776,
+      "W_off": -23297.68914188304,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -23277.4094715083,
+       "off": -23277.409471508316,
+       "S_lo": 0.9999999999999889
+      },
+      "v033": {
+       "on": -23284.04133601307,
+       "off": -23284.041336013084,
+       "S_lo": 0.9999999999999889
+      }
+     },
+     {
+      "shift": "underflow",
+      "S_lo": 0.0,
+      "W_on": -1344065.5887892589,
+      "W_off": -1399300.0,
+      "decomposition_terms_equal": true,
+      "decomposition_value_ulps": 0.0,
+      "v1": {
+       "on": -1344065.5887892584,
+       "off": -1399300.0,
+       "S_lo": 0.0
+      },
+      "v033": {
+       "on": -1344065.5887892584,
+       "off": -1399300.0,
+       "S_lo": 0.0
+      }
+     }
+    ],
+    "R-7": {
+     "v1": {
+      "tolerance": 4.337022192834411,
+      "tolerance_points": [
+       0,
+       1
+      ],
+      "no_window_diffs": [
+       -0.0025382838132372854,
+       -4.337022192834411,
+       -20.279670374722627,
+       0.0
+      ],
+      "window_term_diffs": [
+       -0.0032931106466094207,
+       0.25571830081389635,
+       2.473825588822365e-10,
+       -4.656612873077393e-10
+      ],
+      "passes": true
+     },
+     "v033": {
+      "tolerance": 4.337022192834411,
+      "tolerance_points": [
+       0,
+       1
+      ],
+      "no_window_diffs": [
+       -0.002538283807780317,
+       -4.337022192834411,
+       -13.647805869954027,
+       0.0
+      ],
+      "window_term_diffs": [
+       -0.003293110646382047,
+       0.25571830081389635,
+       2.473825588822365e-10,
+       -4.656612873077393e-10
+      ],
+      "passes": true
+     }
+    },
+    "FR-005": {
+     "passes": true
+    },
+    "underflow_point": true,
+    "passes": true,
+    "plant": null,
+    "window_eff": [
+     80.0,
+     100.0
+    ],
+    "n": 1999,
+    "edge_tie_deaths": 934
+   },
+   "R-8": {
+    "no_h": {
+     "finite": true,
+     "equal": true,
+     "value_equal": true,
+     "grad_max_rel": 6.823839430604373e-14,
+     "value": -2031.6672489769803
+    },
+    "h": {
+     "finite": true,
+     "equal": true,
+     "value_equal": true,
+     "grad_max_rel": 6.8127375727972e-14,
+     "value": -2031.6691248270445
+    },
+    "underflow": {
+     "lo_clipped": true,
+     "S_lo_min": 0.0,
+     "value": -1334601.2804128267,
+     "value_at_base": -1720.5524641362504
+    },
+    "passes": true
+   },
+   "plants_fail": {
+    "cond": true,
+    "edge": true,
+    "clip": true
+   },
+   "plants_not_applicable": {}
+  }
+ },
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "f2b23baab000cb61e55fffad291c7212d2af2a2443f7c25cf24dbaf7f247568a"
+ },
+ "cap": {
+  "cap_cpu_h": 0.5,
+  "cpu_spent_h": 0.019153381944444443,
+  "capped": false,
+  "where": "mac"
+ }
+}

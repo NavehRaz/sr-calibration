@@ -1,0 +1,190 @@
+% Section for specs/004-samplers (T132; FR-020; research R1-R8, R26, R28). Paths are relative to src/sraging/ unless
+% they start with tests/ or tools/. Every measured number carries a \verify marker against
+% tests/acceptance/results/*_004.json (macros.tex).
+\section{Heterogeneity: the truncated normal on a checked Gauss rule}\label{sec:het}
+
+\subsection{Overview}\label{sec:het-overview}
+
+Spec 004 gives \code{sraging} one heterogeneity definition at a known cost. A heterogeneous parameter $P$ (one of
+$\eta,\beta,\eps,\kappa,\xc$) is $P\,s$ for each individual, with the scale $s$ drawn from a truncated normal: gen-1's
+law, so the FP engine, the cohort generator (Section~\ref{sec:gen}) and the Langevin engine
+(Section~\ref{sec:lgv}) share one model \src{engine/inputs.py:Heterogeneity}. The FP likelihood of a cohort is the
+mixture over $s$, evaluated on a Gauss rule for the truncated measure whose node count $M$ is chosen per cohort by a
+checked ladder. This replaces spec 002's \code{normal_frac_sd}: $P(1+vZ)$ on $M$ probabilists' Gauss-Hermite nodes
+with the non-positive nodes dropped and $M$ fixed by the caller and never checked (registers D-116, D-117). That
+definition stays selectable by name, byte for byte; the change of default is register D-401.
+
+\subsection{The definition}\label{sec:het-def}
+
+For a spread $\sigma\in(0,1]$ (\code{sd}),
+\begin{equation}\label{eq:het-tn}
+  s = 1+\sigma Z,\qquad Z\sim\mathcal N(0,1)\ \text{truncated to}\ s>0,\ \text{i.e.}\ Z>-1/\sigma,
+\end{equation}
+with density $\varphi(z)/\Phi(1/\sigma)$ on $z>-1/\sigma$. The parameter is $P\,s$; at $\sigma=0.2$ the truncated
+mass $\Phi(-5)$ is $2.9\times10^{-7}$, at $\sigma=0.5$ it is $\Phi(-2)=2.3\%$. The object
+\code{Heterogeneity(parameter=, sd=, M="auto", check=True)} names one parameter; a spread given as \code{v} without
+naming \code{definition="normal_frac_sd"} is refused (OD-8), so \code{v} never silently changes meaning. $M$ is
+\code{"auto"} (the checked ladder, Section~\ref{sec:het-ladder}) or a fixed integer in $[1,192]$, checked against the
+smallest rung $\ge\lceil1.5M\rceil$ unless \code{check=False}, which is never clean
+\src{engine/inputs.py:Heterogeneity}. Several parameters are
+a tuple, which only the Langevin engine accepts (Section~\ref{sec:lgv-multi}).
+
+\subsection{The Gauss rule and its derivative in $\sigma$}\label{sec:het-rule}
+
+\code{truncated_normal_rule(sd, M)} is Gaussian quadrature for the measure~\eqref{eq:het-tn} in $z$
+\src{engine/quadrature.py:truncated_normal_rule, _tn_nodes}:
+\begin{enumerate}[nosep]
+  \item Discretise the measure on 4,000 Gauss-Legendre points over $[\max(-1/\sigma,-8),\,8]$ (\code{BASE_POINTS},
+    \code{Z_HI}); the base grid is computed once per process.
+  \item Run the monic discretised Stieltjes procedure on it: the recurrence coefficients $(a_k,b_k)$ of the orthogonal
+    polynomials of the discretised measure, $k<M$.
+  \item Golub-Welsch: the eigenvalues of the $M\times M$ Jacobi matrix are the nodes $z_k$; the squared first
+    components of its eigenvectors are the weights $w_k$, which sum to 1.
+\end{enumerate}
+The scales are $s_k=1+\sigma z_k>0$ for every $k$: no node is ever dropped, so nodes and weights move smoothly with
+$\sigma$ (spec 002's dropped node was the jump of D-116). The rule is written in \code{jax.numpy} in float64, one
+jitted program per $M$, so the $\sigma$-derivatives $\partial z_k/\partial\sigma$ and $\partial w_k/\partial\sigma$
+come from \code{jax.jvp} on the same implementation as the values (\code{dz_dsd}, \code{dw_dsd}). Rules are memoised on
+$(\sigma,M)$, returned read-only, and carry the sha256 of their $z\Vert w$ bytes, so an evaluation records the nodes it
+used. \code{composite_rule(sd, panels, order=8)} is the cross-check: Gauss-Legendre panels of order 8 on the same
+measure \src{engine/quadrature.py:composite_rule}.
+
+\paragraph{The mixture and its gradient.} With $P_k$ the node-$k$ survival quantities at the observation ages (the
+model at parameters scaled by $s_k$), the cohort's quantities are $\sum_k w_kP_k$ and the log-likelihood is the
+engine's assembly on them \src{engine/mixture.py:_fold, _ll}. The gradient takes two passes
+\src{engine/mixture.py:_pass2}: pass 1 computes and mixes the points; the parent runs \code{jax.vjp} of the assembly at
+the mixture, giving the cotangent $c$; pass 2 runs each node's VJP with $w_kc$ and sums the parameter parts in node
+order. The $\sigma$ term is
+\begin{equation}\label{eq:het-dsd}
+  \frac{\partial\ell}{\partial\sigma}=\sum_k\Big[c\cdot P_k\,\frac{\partial w_k}{\partial\sigma}
+  +w_k\Big(c\cdot\frac{\partial P_k}{\partial s}\Big)\Big(z_k+\sigma\frac{\partial z_k}{\partial\sigma}\Big)\Big],
+\end{equation}
+since $\partial s_k/\partial\sigma=z_k+\sigma\,\partial z_k/\partial\sigma$. The value never depends on whether a
+gradient was asked for.
+
+\subsection{The ladder, its check, and the curve check}\label{sec:het-ladder}
+
+\paragraph{The ladder.} The rungs are $192/1.5^j$ rounded: 5, 8, 11, 17, 25, 38, 57, 85, 128, 192
+\src{engine/mixture.py:RUNGS}. No node count above 192 is ever evaluated (\code{CAP}). For \code{M="auto"} the walk
+\src{engine/mixture.py:_walk} starts at a guided rung, evaluates $\ell(M)$ and $\ell$ at the next rung, and stops at
+the first rung with
+\begin{equation}\label{eq:het-check}
+  |\ell(M)-\ell(M_{\rm next})|<0.05\ \text{nats},
+\end{equation}
+returning $\ell(M)$ with the verdict \code{converged}. If the top pair (128, 192) still fails, it returns $\ell(192)$
+with \code{unconverged_at_cap} and the warning \code{HET_UNCONVERGED}: never clean, with no fallback. A fixed $M$ is
+checked against the smallest rung $\ge\lceil1.5M\rceil$ \src{engine/mixture.py:check_rung, _fixed}.
+
+\paragraph{The start.} The guide \src{engine/mixture.py:guide} measures how much the mixture spreads the
+first-passage time beyond the homogeneous curve: from six node marches (the homogeneous one and a 5-node rule),
+\begin{equation}
+  r=\frac{\sqrt{\mathrm{CV}_{\rm mix}^2-\mathrm{CV}_c^2}}{\mathrm{CV}_c},\qquad
+  \text{start}=\min\{\text{rung}\ \ge 10\,r\,g(n)\},\quad g(n)=\max(1,(n/10^4)^{0.3}).
+\end{equation}
+Where $r$ is undefined (a zero first moment, or $\mathrm{CV}_c=0$ at a degenerate point) the ladder starts at the
+lowest rung and the check still chooses $M$. The start saves rungs; it never decides the value.
+
+\paragraph{The curve check (R26).} A reference curve has no data and so no likelihood to check. Its node count is
+chosen instead by the first rung $M$ with $\sup_t|S_M(t)-S_{M_{\rm next}}(t)|$ below a stated bar: $10^{-4}$ for the
+exact population of \code{population(..., n=None)} \src{population.py:fp_curves}, and ${\rm crit}_{95}/10$ at the
+sample's own $n$ (${\rm crit}_{95}=1.358/\sqrt n$, over the sample's raw times) for the Langevin's error statement
+\src{langevin/sample.py:Reference.curve_check}. The same rule, applied per dimension, sizes the tensor reference
+(Section~\ref{sec:het-tensor}) and the damage density (Section~\ref{sec:lgv-paths}).
+
+\subsection{Adaptive $M$ in a series}\label{sec:het-adaptive}
+
+Inside a maximisation at fixed $\sigma$ the node count can be lower while the optimiser explores
+\src{engine/series.py:maximise_fixed_sd}: (A) L-BFGS-B in log parameters at $M_{\rm low}$, two rungs below the start
+rung (floor 5); (B) the checked ladder at $\hat\theta_A$ gives $M_c$; (C) L-BFGS-B at $M_c$ from $\hat\theta_A$;
+(D) the check at $\hat\theta$, raising $M_c$ one rung and repeating (C) while it fails. The final value is always a
+checked one; \code{evaluate(params, phase="final")} runs the ladder afresh from the guide, so no value depends on the
+call history. A profile point is the same maximisation with one more parameter fixed.
+
+\subsection{The parallel mixture and its fixed-order sum}\label{sec:het-pool}
+
+A mixture's nodes can run over $W$ worker processes \src{engine/pool.py:NodePool}. Each worker builds the evaluator
+once and computes the nodes it is sent; the parent folds the returned $P_k$ in ascending node index, in float64, on the
+host \src{engine/pool.py:in_order}. The sum's order never depends on which worker finished first, so the value and
+gradient bytes are those of $W=1$ for every $W$ and $M$, including $M$ not divisible by $W$. Node programs are compiled
+once per process and their compile CPU is recorded apart \src{engine/mixture.py:Programs}.
+
+\subsection{The cost model}\label{sec:het-cost}
+
+Each rung or phase states its CPU before it runs \src{engine/mixture.py:_Ledger, time_hom; engine/cost.py}:
+\begin{equation}
+  \text{stated CPU}=M\times t_{\rm hom}\times f_{\rm mode},
+\end{equation}
+with $t_{\rm hom}$ the median of three timed homogeneous values through the same per-node programs after a warm-up,
+measured in the same process, and $f_{\rm value}$, $f_{\rm grad}$ constants frozen from pilot P0. The statement keeps
+the start rung, the worst case up to the cap, and after the work the measured CPU (parent and workers) and wall time;
+compilation is stated and measured apart. P0 measured
+$f_{\rm value}=\verify{tests/acceptance/results/p0_het_cost_004.json}{f_value}{.3f}{0.870}$ and
+$f_{\rm grad}=\verify{tests/acceptance/results/p0_het_cost_004.json}{f_grad}{.3f}{3.132}$ homogeneous values per
+node.
+
+\subsection{The tensor-product reference}\label{sec:het-tensor}
+
+FP's likelihood and curves take one heterogeneous parameter. For a Langevin sample with $d=2$ or 3 spreads, the error
+statement's reference is the tensor product of the per-dimension rules \src{engine/tensor_reference.py:TensorReference}:
+\begin{equation}
+  S(t)=\sum_{k_1,\dots,k_d}\Big(\prod_j w_{j,k_j}\Big)\,S\big(t;\theta\odot s_{(k_1,\dots,k_d)}\big),
+\end{equation}
+run by the same per-node program with a five-factor scale vector (one factor per parameter, 1.0 for the others: exact)
+and folded lexicographically over the parameter-sorted node indices \src{engine/tensor_reference.py:fold}. The node
+counts are chosen per dimension by R26's check: dimension $j$ climbs to its next rung only while
+$\sup|S_{(\dots,M_j,\dots)}-S_{(\dots,\mathrm{next}(M_j),\dots)}|$ exceeds the bar, and only the failing dimensions
+climb \src{engine/tensor_reference.py:TensorReference._climb}. The product is capped at 20,000 nodes
+(\code{BUDGET}); above it, or at $d>3$ (\code{D_MAX}), the sample's statement reads ``no FP reference'' and is not
+clean. One member at $\sigma=0$ is one node at $s=1$, $w=1$, and reduces to the single-parameter curve bit for bit.
+The composite cross-check (\code{composite_rule} panels per dimension) is HR-11's (Section~\ref{sec:lgv-multi}).
+
+\subsection{Validation evidence}\label{sec:het-evidence}
+
+Each rule below is a pure function in \code{sampler_rules.py} judged on a frozen panel (\code{panel_004.toml}), with a
+planted case beside its twin (contracts/register-and-panel.md §3).
+\begin{itemize}[nosep]
+  \item \textbf{HR-1, the check:}
+    \verify{tests/acceptance/results/hr1_004.json}{verdicts[0].status}{}{pass}; no false pass
+    (\verify{tests/acceptance/results/hr1_004.json}{verdicts[0].statistic.n_false_pass}{d}{0}) among
+    \verify{tests/acceptance/results/hr1_004.json}{verdicts[0].statistic.n_checked_valid}{d}{159} checked cells,
+    Clopper-Pearson upper bound
+    \verify{tests/acceptance/results/hr1_004.json}{verdicts[0].statistic.cp_upper_95}{.3g}{0.0187}.
+    The result's overall status is
+    \verify{tests/acceptance/results/hr1_004.json}{status}{}{fail} through FR-009
+    (\verify{tests/acceptance/results/hr1_004.json}{verdicts[1].status}{}{fail}): gen-1's 161-node law sits more
+    than 0.1 nats from the converged mixture on 4 cohorts above $n=20{,}000$ (register D-412).
+  \item \textbf{HR-2, $\partial\ell/\partial\sigma$ against central differences:}
+    \verify{tests/acceptance/results/hr2_004.json}{status}{}{pass}; the largest difference
+    \verify{tests/acceptance/results/hr2_004.json}{verdicts[0].statistic.max_abs_diff}{.3g}{0.101} against the
+    tolerance \verify{tests/acceptance/results/hr2_004.json}{tol}{.3g}{0.601}.
+  \item \textbf{HR-3, adaptive against full $M$:}
+    \verify{tests/acceptance/results/hr3_004.json}{status}{}{fail}: the largest
+    $|\Delta\ell|$ is \verify{tests/acceptance/results/hr3_004.json}{verdicts[0].statistic.max_abs_dll}{.3g}{7.35e+04}
+    nats, and the CPU saving is not claimed (upper 95\,\% bound of the mean log ratio
+    \verify{tests/acceptance/results/hr3_004.json}{verdicts[0].statistic.saving.upper_95_log_ratio}{.3g}{0.0548}).
+  \item \textbf{HR-4, the parallel bytes:} \verify{tests/acceptance/results/hr4_004.json}{status}{}{fail}: every
+    (W, M) value and gradient is byte-equal to $W=1$, but the remainder plant (dropping $M\bmod W$ nodes) left the bytes
+    unchanged on some sized cells, which the rule reads as a failure. The wall-time speedup at
+    $W=\verify{tests/acceptance/results/hr4_004.json}{verdicts[0].statistic.speedup.W}{d}{5}$ is claimed (upper bound
+    of the mean ratio \verify{tests/acceptance/results/hr4_004.json}{verdicts[0].statistic.speedup.upper_95_ratio}{.3g}{0.518}).
+  \item \textbf{HR-5, the cost statement:} \verify{tests/acceptance/results/hr5_004.json}{status}{}{pass}; a share
+    \verify{tests/acceptance/results/hr5_004.json}{verdicts[0].statistic.share_inside}{.4f}{0.9938} of cells within
+    $[0.5,2]$ of the stated CPU and a median ratio
+    \verify{tests/acceptance/results/hr5_004.json}{verdicts[0].statistic.median_ratio}{.3f}{1.097}.
+  \item \textbf{D-401, the change of default:} the largest per-cohort $|\Delta\ell|$ between the two definitions at
+    fixed $\theta$ is \verify{tests/acceptance/results/d401_004.json}{max_abs_dloglik}{,.0f}{196,269} nats, nearly all
+    of it $M=7$'s error on \code{normal_frac_sd}, not the definition (divergences/register.toml, D-401).
+\end{itemize}
+
+\subsection{Known issues}\label{sec:het-issues}
+
+\begin{itemize}[nosep]
+  \item FR-009 fails as written (D-412): gen-1's heterogeneous law is not within 0.1 nats of the converged mixture on 4
+    v6 cohorts above gen-1's \code{HET_N_CAP}; the limit is stated for the tester. It also covers analyses that pool
+    replicate cohorts past $n=20{,}000$ (Naveh 2026-11-05): at S5's configuration gen-1's law is
+    \verify{specs/004-samplers/review/evidence/sr_naveh_004/s5_binned_kl.json}{kl_per_individual}{.2e}{4.70e-06} nats per individual from the converged
+    mixture.
+  \item HR-3 and HR-4 read \code{fail} (above); their cells are listed in their results.
+  \item No calibrator consumes engine heterogeneity until spec 006. HR-2 shows that the gradient in $\sigma$ is
+    correct; whether $\sigma$ can be told apart from $\eps$ is spec 006's to measure, not a claim made here.
+\end{itemize}

@@ -1,0 +1,9 @@
+# Declared provenance of every module in sraging/compat/tester_f94ec2b (no edit).
+# Written by tools/port_tester_f94ec2b.py; read by tests/unit/test_verbatim.py (spec 006 research R3).
+
+[[module]]
+port = "observation.py"
+source = "tests/oracle/tester_f94ec2b/srbench/library/observation.py"
+mode = "subset"
+source_sha256 = "63820997f7ef39723ca2fe4356b70b9d23797570f5a3e389b0789a8d8110762f"
+names = ["apply_window"]

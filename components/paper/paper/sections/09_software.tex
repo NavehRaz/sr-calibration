@@ -1,0 +1,45 @@
+\section{Software and reproducibility}\label{sec:software}
+
+\paragraph{Package.} The likelihood engine, the calibrators and the cohort generator are in \code{sraging}, a Python
+package pinned to Python \C{sw-python}, JAX \C{sw-jax} \citep{bradbury2018jax}, NumPy \C{sw-numpy} \citep{harris2020array} and
+SciPy \C{sw-scipy} \citep{virtanen2020scipy}, with double-precision arithmetic throughout. A locked environment is built
+with \code{uv sync}. The command line is \code{sraging fit-cohort}
+(Section~\ref{sec:example}); the same fit is available from Python as \code{sraging.fit_cohort}. Every result file
+records the package commit, the calibrator name and version, the numerical settings and the host.
+% src: ~/code/sraging/README.md (install, CLI); pyproject.toml pins; examples JSON provenance block
+
+\paragraph{Frozen calibrator versions.} A calibrator version is frozen at the commit that produced it, and
+\code{sraging} holds a port that is meant to be identical to it bit for bit, not merely close. The reference code of each
+version is kept as an oracle snapshot, and three kinds of check tie the port to it. First, the compiled likelihood
+programs of the port and of the oracle are identical on \C{sw-t0-prog-pass} of \C{sw-t0-prog-tot} test cohorts, and
+\C{sw-t0-bytes-pass} of \C{sw-t0-bytes-tot} output arrays agree byte for byte. Second, \C{repro-oracle-pairs} complete
+fits of the 1.0.1 calibrator, port against oracle, gave \C{repro-oracle-diffs} differences. Third, every deliberate difference from the earlier reference
+(version 0.3.3), and every known defect that is kept on purpose, is entered in a divergence register with the test that
+pins it. The register in the released version (tag \code{v0.1.1}) has \C{sw-register-main} entries: \C{sw-register-asis} defects ported as they
+are, \C{sw-register-diverged} deliberate divergences and \C{sw-register-refused} inputs that are refused. The generator
+is deterministic: \C{repro-gen-determinism-n} cohorts had identical digests on two runs.
+% src: tests/acceptance/results/{t0_002,parity_003b,determinism_003d}.json; divergences/register.toml at tag v0.1.1 (d368157; the same entries as v0.1.0, 33213ce)
+
+\paragraph{Tests.} The last stored whole-suite run on the oracle's snapshot host (October \C{sw-tests-date}, 2026)
+passed \C{repro-tests-unit} unit tests, \C{repro-tests-parity} parity tests and \C{sw-tests-results} tests on stored
+acceptance results. For the release the unit and parity tests were rerun at the tag on the same laptop, after an update
+of its operating system (macOS \C{t011-macos}; the snapshots were taken under \C{t011-snap-macos}). Of \C{t011-tests}
+tests, \C{t011-passed} passed and \C{t011-skipped} were skipped, \C{t011-host-skips} of them because byte identity with
+the oracle is claimed only on the snapshot host; the parity comparisons were therefore not repeated. The other
+\C{t011-failed} failed on the same host check, raised inside the test instead of as a skip. The logs are in the
+release (\code{test_results/}, listed in \code{TESTS.md}).
+% t011-failed-host (claims.toml) checks that all t011-failed failures are this host check
+
+\paragraph{Host dependence.} Bit identity holds on one host with one pinned environment, and only there; the
+oracle comparisons above were run on one host. Across hosts the last digits of the likelihood differ, and an optimizer or
+a profile walk that stops at a flat ridge can end elsewhere. A platform study refitted \C{plat-n-cohorts} cohorts with the
+same code and inputs on \C{plat-n-cpu} CPU models and a laptop (version 1.0.0): the median log-likelihood spread among
+runs was \C{plat-ll-median} nats, but on large human life tables the claim shape changed for $\eta$ on \C{plat-eta-human} of
+\C{plat-n-human} cohorts, for $\eps$ on \C{plat-eps-human} and for $\beta$ on \C{plat-beta-human}, while the other
+\C{plat-n-other} cohorts changed shape for no parameter (\C{plat-other-max-changes} changes). Such cohorts should be fitted and reported on one declared
+host.
+
+\paragraph{Runtime.} Over the \C{gate-v6-n} benchmark cohorts the default calibrator took a median of
+\C{cost-J-median-cpu} CPU-s per fit (\C{cost-J-total-cpuh} CPU-h in total); wall time ranged from \C{cost-J-min-wall-min}\,min to
+\C{cost-J-max-wall-h}\,h. The long fits are the sharp cohorts, whose tightly bunched lifespans force a fine time step. The combination
+claims and the leverage check add to this (Section~\ref{sec:example}).

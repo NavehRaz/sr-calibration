@@ -1,0 +1,350 @@
+{
+ "phase": "plants",
+ "written_at": "2026-11-04T14:00:35Z",
+ "repo_head": "508d7fe61f44138ef8897c69287dd8278ed0925f",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/langevin_004.toml": "635967eb71e9672286dc8c84db30a510c5300a72"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 204.92976808547974,
+ "cpu_s": 182.482875,
+ "status": "pass",
+ "plants": [
+  {
+   "id": "D-402",
+   "plant": {
+    "D": 0.02216000000000007,
+    "p_value": 9.171679984675767e-06,
+    "n": 25000
+   },
+   "twin": {
+    "D": 0.006679999999999908,
+    "p_value": 0.6299764282658025,
+    "n": 25000
+   },
+   "fix": {
+    "D": 0.005562627975682799,
+    "p_value": 0.4200936675066206,
+    "n": 25000,
+    "dt": 0.0002518150688961322
+   },
+   "verdict": {
+    "rule": "HR-9",
+    "wall": null,
+    "status": "pass",
+    "n_valid": 3,
+    "n_unassessable": 0,
+    "statistic": {
+     "failed": [],
+     "arms": {
+      "plant": {
+       "D": 0.02216000000000007,
+       "p_value": 9.171679984675767e-06,
+       "n": 25000
+      },
+      "twin": {
+       "D": 0.006679999999999908,
+       "p_value": 0.6299764282658025,
+       "n": 25000
+      },
+      "fix": {
+       "D": 0.005562627975682799,
+       "p_value": 0.4200936675066206,
+       "n": 25000,
+       "dt": 0.0002518150688961322
+      }
+     }
+    },
+    "crit": {
+     "plant": 0.05,
+     "twin": 0.025,
+     "fix": 0.025
+    },
+    "incomplete_reasons": [],
+    "cpu_spent": null,
+    "cap": null
+   },
+   "sup_abs_dS": 0.02216000000000007,
+   "n": 25000,
+   "dt": 2.3566223919972233,
+   "m": 16,
+   "predicted": 0.02,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-403",
+   "plant": {
+    "requested": 0.04280856171234247,
+    "realised": 0.042817126850740295,
+    "relative_mismatch": 0.0002000800320127727,
+    "nsteps": 4999,
+    "time_step_multiplier": 1
+   },
+   "twin": {
+    "stated": 0.04280856171234247,
+    "realised": 0.04280856171234247,
+    "equal": true
+   },
+   "n": 25000,
+   "sup_abs_dS": 0.013000000000000012,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-404",
+   "plant": {
+    "n": 1003,
+    "n_jobs": 15,
+    "n_real": 990,
+    "padded": 13
+   },
+   "twin": {
+    "n": 1003,
+    "present": 1003,
+    "all_present": true
+   },
+   "n": 1003,
+   "sup_abs_dS": 0.01296111665004995,
+   "informative": true,
+   "predicted": {
+    "padded": 13
+   },
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-405",
+   "n": 25000,
+   "predicted": 0.022750131948179216,
+   "plant": {
+    "sd": 0.5,
+    "first_step_fraction": 0.02416
+   },
+   "twin": {
+    "srk_sd_twin": {
+     "sd": 0.2,
+     "first_step_fraction": 0.0
+    },
+    "sraging_first_step": 0.00188
+   },
+   "sup_abs_dS": 0.02396,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-406",
+   "n": 25000,
+   "plant": {
+    "srk_runs_differ": true,
+    "n_jobs": 7
+   },
+   "twin": {
+    "sraging_identical": true,
+    "W": 7
+   },
+   "sup_abs_dS": null,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-407",
+   "n": 25000,
+   "plant": {
+    "D": 0.017359999999999987,
+    "p_value": 0.0010562421042808528,
+    "n": 25000,
+    "h": 1.1679906542056075,
+    "predicted_sup_dS": 0.009393518760650735
+   },
+   "twin": {
+    "D": 0.010000000000000009,
+    "p_value": 0.1629889813875156,
+    "n": 25000,
+    "h": 0.002335981308411215,
+    "predicted_sup_dS": 7.83794689716923e-06
+   },
+   "sup_abs_dS": 0.017359999999999987,
+   "predicted": {
+    "plant": 0.009393518760650735,
+    "detection_crit_2sample": 0.012146321253778859,
+    "plant_detectable": false
+   },
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-408",
+   "n": 25000,
+   "plant": {
+    "Dt": 1.0,
+    "delta": 0.25,
+    "srk_on_Dt_grid": 1.0,
+    "sraging_off_Dt_grid": 0.74816
+   },
+   "twin": {
+    "note": "Delta t = delta: both on one grid"
+   },
+   "sup_abs_dS": 0.0242,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-409",
+   "n": 25000,
+   "plant": {
+    "D": 0.06112000000000001,
+    "p_value": 4.908465834585657e-41,
+    "n": 25000,
+    "default_xc_var": 0.2
+   },
+   "twin": {
+    "sraging_default_homogeneous": true
+   },
+   "sup_abs_dS": 0.06112000000000001,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-410",
+   "n": 25000,
+   "plant": {
+    "p0": 0.22932,
+    "n_alive": 25000
+   },
+   "twin": {
+    "p0": 0.0,
+    "n_alive": 25000
+   },
+   "sup_abs_dS": null,
+   "age": 0.4280856171234247,
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  },
+  {
+   "id": "D-411",
+   "n": 25000,
+   "age": 109.1618323664733,
+   "plant": {
+    "zeros_among_dead": 5999,
+    "values_among_dead": 5999,
+    "nan_among_alive": 0,
+    "n_dead": 5999,
+    "n_alive": 19001,
+    "holds": false
+   },
+   "twin": {
+    "zeros_among_dead": 0,
+    "values_among_dead": 0,
+    "nan_among_alive": 0,
+    "n_dead": 6053,
+    "n_alive": 18947,
+    "holds": true
+   },
+   "sup_abs_dS": 0.00691067343940116,
+   "measure": "sup|dF| of the living's X at the age",
+   "informative": true,
+   "status": "pass",
+   "preset": "mice_F"
+  }
+ ],
+ "errors": [],
+ "sup_abs_dS": {
+  "D-402": 0.02216000000000007,
+  "D-403": 0.013000000000000012,
+  "D-404": 0.01296111665004995,
+  "D-405": 0.02396,
+  "D-406": null,
+  "D-407": 0.017359999999999987,
+  "D-408": 0.0242,
+  "D-409": 0.06112000000000001,
+  "D-410": null,
+  "D-411": 0.00691067343940116
+ },
+ "hr9": {
+  "rule": "HR-9",
+  "wall": null,
+  "status": "pass",
+  "n_valid": 3,
+  "n_unassessable": 0,
+  "statistic": {
+   "failed": [],
+   "arms": {
+    "plant": {
+     "D": 0.02216000000000007,
+     "p_value": 9.171679984675767e-06,
+     "n": 25000
+    },
+    "twin": {
+     "D": 0.006679999999999908,
+     "p_value": 0.6299764282658025,
+     "n": 25000
+    },
+    "fix": {
+     "D": 0.005562627975682799,
+     "p_value": 0.4200936675066206,
+     "n": 25000,
+     "dt": 0.0002518150688961322
+    }
+   }
+  },
+  "crit": {
+   "plant": 0.05,
+   "twin": 0.025,
+   "fix": 0.025
+  },
+  "incomplete_reasons": [],
+  "cpu_spent": null,
+  "cap": null
+ },
+ "cap": {
+  "key": "plants",
+  "frozen_cpu_h": 3.0,
+  "spent_by": {},
+  "left_cpu_h": 3.0
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/langevin_004.toml": "52152f32601e08d946dbc6b6aec30e50bade932df013bba01df96f1965bd99a0"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.052248811101885236,
+  "projected_from": "each plant at its own steps: n x lifetime / step x the CPU per individual-step (SRK's from P1's re-measure, sraging's P1's)",
+  "cap_cpu_h": 3.0,
+  "cap_frozen_cpu_h": 3.0,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.05536537749999999,
+  "parent_cpu_s": 182.445032,
+  "worker_cpu_s": 16.87034299999999,
+  "capped": false
+ }
+}

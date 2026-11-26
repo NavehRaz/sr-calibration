@@ -1,0 +1,15 @@
+{
+ "order": [
+  "eta_over_eps",
+  "rbar_over_eta",
+  "sqrt_eta_over_eps",
+  "rbar",
+  "beta_over_eta_kp1",
+  "beta_over_kp1"
+ ],
+ "lead_group": [
+  "eta_over_eps",
+  "rbar_over_eta"
+ ],
+ "source": "tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac)"
+}

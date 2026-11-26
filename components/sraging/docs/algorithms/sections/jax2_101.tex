@@ -1,0 +1,130 @@
+% Section for specs/003b-jax2-101-port (T040; research R16; constitution XII). Paths are relative to src/sraging/ unless
+% they start with tests/, tools/ or specs/. Every figure comes from a 003b result file, named where it is used.
+\section{jax2 1.0.1: what changed against 1.0.0 (\texttt{compat.jax2\_101})}\label{sec:j101}
+
+\tplPurpose
+Spec 003b ports \code{mle_profile_jax2} 1.0.1, frozen by the jax2 session at tag \code{mle_profile_jax2-1.0.1} (commit
+6884fc8; handoff \code{reports/freeze101/HANDOFF.txt}, sha256 \code{a424d48f...}). The names \code{profile_jax2} and
+\code{profile_jax2_h} now mean 1.0.1; \code{profile_jax2@1.0.0} selects the port of Section~\ref{sec:pj} unchanged
+\src{registry.py:get}. The default calibrator stays \code{profile_v033}: whether 1.0.1 replaces it is spec 003g's
+comparison with the benchmark's library-v6 reference. This section describes only what 1.0.1 changes; everything else is
+Section~\ref{sec:pj}.
+
+\tplMath
+\textbf{The scoped time step (\code{DT_RULE}).} With $\mathrm{CV}$ the Kaplan--Meier coefficient of variation of the
+prepared data, $\delta$ the recording resolution and $L$ the Kaplan--Meier mean, the binning-corrected CV is
+\begin{equation}
+  \mathrm{CV}_c=\sqrt{\max\!\bigl(0,\ \mathrm{CV}^2-(\delta/L)^2/12\bigr)}\qquad(\mathrm{CV}_c=\mathrm{CV}\text{ for exact times}),
+\end{equation}
+Sheppard's correction for recording on a $\delta$ grid \src{compat/jax2_101/estimator.py:_cv_c}. Where
+$0<\mathrm{CV}$ and $\mathrm{CV}_c<0.05$ (strict), the march's step is capped,
+$\Delta t\leftarrow\min(\Delta t,\ \mathrm{CV}/80)$, with the uncorrected CV in the cap
+\src{compat/jax2_101/estimator.py:_grid}. Outside that scope the grid is 1.0.0's. The cap removes the defect 1.0.0 and
+v0.3.3 share on sharp data: at $\mathrm{CV}\lesssim0.025$ and $\Delta t=0.002$, BDF2 overshoot and the positivity clip set
+$S$ to 0 past the mean, and every later death scores the $-700$ floor (handoff \S6 issue 13; Section~\ref{sec:pj}).
+
+\textbf{Three changes to the profile stage}, each on in both registered classes and off in 1.0.0
+\src{compat/jax2_101/settings.py}:
+\begin{itemize}[nosep]
+  \item \emph{inner polish} (\code{INNER_POLISH_J}): the inner re-optimisation \code{_polish_inner}, which 1.0.0 ran only
+    with the hazard, now runs on \code{profile_jax2} too \src{compat/jax2_101/estimator.py:_polish_inner};
+  \item \emph{bracket bisection} (\code{BRACKET_BISECT}): a profile bracket that crosses the threshold over more than
+    0.3\,dex is bisected, at most 6 times per side, so an end is not set by a coarse node
+    \src{compat/jax2_101/estimator.py:_bisect_brackets};
+  \item \emph{extent $z$} (\code{EXTENT_Z}): each self-consistency extent stores its point's exact log-parameters
+    (\code{z_qmin}, \code{z_qmax}), a bit-exact key into the fit's memo; no claim changes.
+\end{itemize}
+\code{BOX_FLAG} exists and is off. The likelihood itself is unchanged: of the four runtime files, \code{fp_jax.py} and
+\code{observation_model.py} are byte-identical to 1.0.0's; \code{estimator.py} and the adapter changed
+(\code{tests/oracle/jax2_6884fc8/MANIFEST.json}).
+
+\textbf{\code{diagnostics["estimate"]}} (schema 1) is built by the adapter from \code{run_fit}'s result alone, with no
+likelihood call \src{compat/jax2_101/claims.py:estimate_block}: the reported point $\hat\theta$, its stored
+log-likelihood, and the best point the fit evaluated (its log-likelihood, the gap, and its $\theta$ and $z$ where the
+record identifies them). Two caveats travel with it. The stored value is not guaranteed to be the likelihood at
+$\hat\theta$ (scipy's L-BFGS-B keeps the last trial's value after a failed line search; [T-LBFGS-STORED-VALUE]), and
+$\hat\theta$ has no $z$, so a re-evaluation at $\log\hat\theta$ on box-corner human cohorts can differ by about one nat
+(handoff \S6 issues 11, 14, 17c). The 1.0.1 FitResult also records \code{diagnostics["switches"]}, the class constants,
+as the frozen ClaimSet does \src{calibrators/profile_jax2.py:method_diagnostics}.
+
+\tplImpl
+The port is generated, not edited: \code{tools/port_jax2_101.py} reads the frozen files from the snapshot
+\code{tests/oracle/jax2_6884fc8/} (built from git objects at the tag) and writes \code{compat/jax2_101/}, keeping
+\code{fp_jax}, \code{observation_model} and \code{estimator} whole, and the adapter's functions the fit needs, with its
+guard deletions and sibling-import replacements counted and asserted \src{compat/jax2_101/VERBATIM.toml}. The 1.0.0
+port is never touched. Both ports are handles (\code{JaxPort}); every function that reads a port takes it, and the
+leverage check runs on the fit's own port: its MLE-stage refit passes the port's own \code{run_fit} keywords (1.0.1 adds
+\code{inner_polish}, \code{bracket_bisect} and \code{extent_z}) plus \code{stages=("mle",)} \src{leverage.py:refit_mle}.
+The six $\kappa$-fixed names 1.0.1 ships are ported but not registered: a fit asking for one is refused with its reason
+\src{registry.py:UNREGISTERED}.
+
+The check also records $g_0$, the warm start's gain at $\hat\theta$ on the full data \src{leverage.py:g0}. No label reads
+it (Naveh, 2026-10-20, after the pilot below).
+
+\tplLimits
+As in Section~\ref{sec:pj}, plus the limits jax2 lists for 1.0.1 (handoff \S6; numbers copied with their lines into
+\code{specs/003b-jax2-101-port/review/evidence/jax2_101_limits.json}): human claims depend on the CPU model (issue 1);
+\code{profile_jax2_h}'s grid was 1.2--13.6 nats off at the truth (14.9 against a second reference) on the 3 of the 56
+registered sharp hazard cohorts where it was measured, all on library v5 data, none on v6; 69 more v6 cohorts are
+inferred, and the two of them measured were 0.11--0.60 nats off ([T-H-HAZARD-SHARP], issue 8; every \code{_h} 1.0.1 fit
+prints this as a note, without saying whether the cohort is in the stratum); interval coverage inside \code{DT_RULE}'s
+scope is expected but untested (issue 6); stale reported points (issue 11); \code{profile_jax2} is misspecified on hazard and window data (issue 12);
+\code{best_point.theta} is empty where the gap is at most 0.01 nats (issue 14); and \code{DT_RULE}'s own limits: the
+grid error at the profile edges on sharp cohorts of about $10^4$ is not measured, the scope's edge cases are untested,
+and nothing is claimed for $\mathrm{CV}_c\ge0.05$ (issue 17). The public fit still refuses windows, entry ages and
+per-row $\delta$ (spec 006).
+
+\tplWhere
+\code{compat/jax2_101/} (generated); \code{calibrators/profile_jax2.py} (the handles, \code{fit_result},
+\code{method_diagnostics}, \code{version_warnings}, \code{notes_for}); \code{leverage.py}; \code{registry.py}
+(several versions per name).
+
+\tplEvidence
+All side by side on this Mac (MC06268844), in \code{tests/acceptance/results/}:
+\begin{itemize}[nosep]
+  \item \code{census_003b.json}: the port's grid equals jax2's census bit for bit on 2,798 of 2,798 library-v6 rows;
+    290 J and 52 H rows are in \code{DT_RULE}'s scope.
+  \item \code{identity_off_003b.json}: with 1.0.0's ten keywords, the 1.0.1 port's result, claims and self-consistency
+    block equal the 1.0.0 port's on 11 of 11 of jax2's identity lines.
+  \item \code{parity_003b.json}: at its class constants the port equals the frozen 1.0.1 code on 7 of 7 pairs: 5 at the
+    \code{run_fit} level and as the benchmark's ClaimSet (\code{estimate} and \code{switches} included), 2 at the MLE
+    stage; 3 inside the scope, one of them a full fit; the mechanism pairs (inner polish, bracket bisection, the hazard
+    path, the basin re-fit) ran on the library-v5 arrays where jax2's records showed them firing, and each fired in the
+    port's run. The full in-scope fit (\code{censor-k0.01-p05-c1-s1}, $n=10^4$, no combination claims) took 19,654
+    CPU-seconds, against 1,850 for a full fit outside the scope at the same $n$ (\code{hazard-k0.01-p04-c1-s1}).
+  \item \code{bytes_003b.json}: value and gradient bytes equal where an age-0 death's first-interval mass is
+    $2.4\times10^{-21}$ and $1.8\times10^{-35}$. v0.3.3's $S(0)-S(\delta)$ scores the $-700$ floor at both; the two
+    $\theta$ were chosen by a pre-registered scan for exactly that, and across the scan v0.3.3 scored the floor on only
+    34 of 127 and 56 of 164 such $\theta$, and round-off noise ($-29$ to $-37$ nats) on the rest, where the true term is
+    $-47$ or lower (\code{tests/acceptance/panel_003b.toml} [parity.bytes]).
+  \item \code{v100_unchanged_003b.json}: \code{profile_jax2@1.0.0} on ITP with an added age-0 death reproduces
+    1.0.0's stored $\hat\theta$, log-likelihood and leverage block.
+  \item \code{lev_measure_003b.json} (the pilot), \code{itp_003b.json}, \code{ac11_003b.json}: the leverage check on 1.0.1
+    flags the planted age-0 death on ITP (R 38.2, 5.42 nats; its refit equals 1.0.1's fit without the death); against
+    the ceilings pre-registered in \code{tests/acceptance/panel_003b.toml}, it flags 0 of 12 held-out cohorts, 0 of 47
+    cohorts of 150 and 0 of 18 generated twins, and finds a planted age-0 death in 5, 6 and 6 of 6 cohorts at $n$ = 100,
+    300 and 1,000 and a planted late death in 5, 6 and 4 of 6. These cohorts sit where removal is negligible
+    ($\rho_\beta/\rho_\eta<0.1$ on 56 of the 59 library cohorts, 0.055--0.060 at every planted point): there
+    $\bar r/\eta$ is not determined and its ratio slides freely, so the nulls test the 1.92-nat gain alone, and 9 of the
+    15 late detections moved only $\bar r/\eta$ (\code{specs/003b-jax2-101-port/review/evidence/ac11_reading.json}).
+    Cohorts where removal matters, fits inside \code{DT_RULE}'s scope, and \code{profile_jax2_h}'s check, are not
+    tested.
+\end{itemize}
+
+\tplIssues
+\begin{itemize}[nosep]
+  \item $g_0$ was 0 on all 8 pilot fits: the estimator's L-BFGS-B stops at its first line search at $\hat\theta$ (8 of
+    8, \code{review/evidence/pilot_lnsrch.json}); on the 7 human hazard cohorts $\hat\theta$ is not stationary
+    (gradient norms 10--642), so $g_0$ cannot fail there and a \code{no_flag} means the check could not see
+    ([T-LEV-G0-LNSRCH]).
+  \item Deferred to a later spec (Naveh, 2026-10-21): an $\bar r/\eta$ floor in the drop's comparison, floored deaths
+    ranked first, a $g_0$ that can fail, a removal-dominated AC panel, the \code{_h} note naming the fit's own SR CV, and
+    a printed \code{DT_RULE} line.
+  \item The fixes jax2 defers to its next version: the stored value at the returned point, recording the best point and
+    $\hat\theta$'s $z$ always ([T-LBFGS-STORED-VALUE]); a hazard-aware grid for \code{_h} ([T-H-HAZARD-SHARP]).
+  \item The default switch, the v6 scoring and the $\kappa$-fixed names are later specs (003g and after).
+\end{itemize}
+
+\tplRefs
+\code{specs/003b-jax2-101-port/} (spec, plan, research R1--R16); jax2's handoff (\S\S1--7) and defect register REV 6
+(\code{defects/DEFECT_REGISTER.txt}, sha256 \code{20ba3bc9...}); Section~\ref{sec:pj}; Section~\ref{sec:lev}.

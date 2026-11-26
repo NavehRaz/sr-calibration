@@ -1,0 +1,511 @@
+# Acceptance panel for spec 001 (FR-021). Written by `tools/acceptance.py pilot`;
+# COMMIT before `tools/acceptance.py claims` (it refuses an uncommitted panel).
+library = "v1"
+tester_head = "f8eaed2d56d7b237d01e38f140fe1d71a8c83717"
+quick = ["pure-k0.01-p00-c0-s0", "pure-k0.01-p00-c0-s1", "pure-k0.01-p00-c1-s0", "pure-k0.01-p00-c1-s1", "pure-k0.01-p01-c0-s0", "pure-k0.01-p01-c0-s1", "pure-k0.01-p01-c1-s0", "pure-k0.01-p01-c1-s1", "pure-k0.01-p02-c0-s0", "pure-k0.01-p02-c0-s1", "pure-k0.01-p02-c1-s0", "pure-k0.01-p02-c1-s1", "pure-k0.01-p03-c0-s0", "pure-k0.01-p03-c0-s1", "pure-k0.01-p03-c1-s0", "pure-k0.01-p03-c1-s1", "pure-k0.01-p04-c0-s0", "pure-k0.01-p04-c0-s1", "pure-k0.01-p04-c1-s0", "pure-k0.01-p04-c1-s1", "pure-k0.01-p05-c0-s0", "pure-k0.01-p05-c0-s1", "pure-k0.01-p05-c1-s0", "pure-k0.01-p05-c1-s1", "pure-k0.01-p06-c0-s0", "pure-k0.01-p06-c0-s1", "pure-k0.01-p06-c1-s0", "pure-k0.01-p06-c1-s1", "pure-k0.01-p07-c0-s0", "pure-k0.01-p07-c0-s1"]
+
+[[named]]
+cohort_id = "pure-k2-p04-c0-s0"
+role = "dt_ceiling"
+pilot_outcome = "dt_ceiling=0.00033743878227791743"
+substituted_for = ""
+
+[[named]]
+cohort_id = "realfull-real-mice_M-c1-s1"
+role = "dt_ceiling"
+pilot_outcome = "dt_ceiling=0.0004294766207577445"
+substituted_for = ""
+
+[[named]]
+cohort_id = "pure-real-Sweden_F_1910_homo-c0-s0"
+role = "basin_fires"
+pilot_outcome = "basin warnings on this host: 2"
+substituted_for = ""
+
+[[named]]
+cohort_id = "pure-real-Denmark_F_1900_hetro-c0-s0"
+role = "basin_fires"
+pilot_outcome = "basin warnings on this host: 2"
+substituted_for = ""
+
+[[named]]
+cohort_id = "censor-k0.0316-p05-c0-s1"
+role = "basin_fires"
+pilot_outcome = "basin warnings on this host: 1"
+substituted_for = ""
+
+[[named]]
+cohort_id = "het-k0.01-p01-c1-s0"
+role = "basin_fires"
+pilot_outcome = "basin warnings on this host: 2"
+substituted_for = ""
+
+[[named]]
+cohort_id = "pure-k0.01-p15-c1-s0"
+role = "basin_blind"
+pilot_outcome = "kept by rule; basin warning fired here: False"
+substituted_for = ""
+
+[[named]]
+cohort_id = "pure-k0.01-p15-c1-s1"
+role = "basin_blind"
+pilot_outcome = "kept by rule; basin warning fired here: False"
+substituted_for = ""
+
+[[named]]
+cohort_id = "censor-k0.01-p05-c0-s0"
+role = "censor_tie"
+pilot_outcome = "tie fraction 10.8000%"
+substituted_for = ""
+
+[[named]]
+cohort_id = "censor-k0.01-p05-c1-s1"
+role = "censor_tie"
+pilot_outcome = "tie fraction 12.5300%"
+substituted_for = ""
+
+[[theta]]
+cohort_id = "pure-k0.01-p00-c0-s0"
+points = [
+  { label = "truth", eta = 0.0002125427697723628, beta = 0.001, epsilon = 3.9810717055349735e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0024643307848450525, beta = 0.18386864471573383, epsilon = 0.001717377025345654, kappa = 0.0010000000000000002, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0004455858357045585, beta = 0.024472541224546684, epsilon = 0.00011232178939965163, kappa = 0.18594779370741474, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.024643307848450525, beta = 0.18386864471573383, epsilon = 0.001717377025345654, kappa = 0.0010000000000000002, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.0024643307848450525, beta = 0.18386864471573383, epsilon = 0.001717377025345654, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p00-c0-s1"
+points = [
+  { label = "truth", eta = 0.0002125427697723628, beta = 0.001, epsilon = 3.9810717055349735e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019619969471443662, beta = 2.7267668504158356e-09, epsilon = 3.424709450531572e-05, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.000420056314915929, beta = 0.021868603221343947, epsilon = 8.251891685682965e-05, kappa = 0.18623634148360774, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.001961996947144366, beta = 2.7267668504158356e-09, epsilon = 3.424709450531572e-05, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00019619969471443662, beta = 2.7267668504158356e-09, epsilon = 3.424709450531572e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p00-c1-s0"
+points = [
+  { label = "truth", eta = 0.0002125427697723628, beta = 0.001, epsilon = 3.9810717055349735e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019573932446558892, beta = 5.29265844900022e-09, epsilon = 3.938322344058249e-05, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00045184700024609976, beta = 0.024979995554250865, epsilon = 0.00010562740445243447, kappa = 0.18365745864447156, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0019573932446558893, beta = 5.29265844900022e-09, epsilon = 3.938322344058249e-05, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00019573932446558892, beta = 5.29265844900022e-09, epsilon = 3.938322344058249e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p00-c1-s1"
+points = [
+  { label = "truth", eta = 0.0002125427697723628, beta = 0.001, epsilon = 3.9810717055349735e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019540752225982166, beta = 2.262339305613429e-08, epsilon = 3.861169237171773e-05, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00044826011178141227, beta = 0.02457068501583526, epsilon = 0.00010295140798425391, kappa = 0.18090093989546402, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0019540752225982168, beta = 2.262339305613429e-08, epsilon = 3.861169237171773e-05, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00019540752225982166, beta = 2.262339305613429e-08, epsilon = 3.861169237171773e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p01-c0-s0"
+points = [
+  { label = "truth", eta = 0.00020452144364423015, beta = 0.001, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00023069542162749792, beta = 0.002593050859509345, epsilon = 0.00019946924848880576, kappa = 0.0010000000000000002, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.000386864045792575, beta = 0.021080932566507237, epsilon = 0.0004076998460206367, kappa = 0.22921311345933607, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.002306954216274979, beta = 0.002593050859509345, epsilon = 0.00019946924848880576, kappa = 0.0010000000000000002, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00023069542162749792, beta = 0.002593050859509345, epsilon = 0.00019946924848880576, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p01-c0-s1"
+points = [
+  { label = "truth", eta = 0.00020452144364423015, beta = 0.001, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00018782621759861728, beta = 7.568889774473016e-11, epsilon = 0.00013768851250331324, kappa = 0.0019400724458822187, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00021081558492807854, beta = 0.001088219742834624, epsilon = 0.0001478049002723335, kappa = 0.0017366320169248692, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0018782621759861728, beta = 7.568889774473016e-11, epsilon = 0.00013768851250331324, kappa = 0.0019400724458822187, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00018782621759861728, beta = 7.568889774473016e-11, epsilon = 0.00013768851250331324, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p01-c1-s0"
+points = [
+  { label = "truth", eta = 0.00020452144364423015, beta = 0.001, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00018769366722323907, beta = 4.327294161307364e-06, epsilon = 0.00014883315356895862, kappa = 0.0021823412372743304, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00025147446981002537, beta = 0.003539324322190163, epsilon = 0.00019863199041577034, kappa = 0.0019396489323516327, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0018769366722323907, beta = 4.327294161307364e-06, epsilon = 0.00014883315356895862, kappa = 0.0021823412372743304, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00018769366722323907, beta = 4.327294161307364e-06, epsilon = 0.00014883315356895862, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p01-c1-s1"
+points = [
+  { label = "truth", eta = 0.00020452144364423015, beta = 0.001, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0002591889441161958, beta = 0.0042814890552323286, epsilon = 0.00022324135524611098, kappa = 0.0012799747369107086, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00022943745857301315, beta = 0.0021548650811571415, epsilon = 0.00017340829997012242, kappa = 0.0012884827367943908, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.002591889441161958, beta = 0.0042814890552323286, epsilon = 0.00022324135524611098, kappa = 0.0012799747369107086, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.0002591889441161958, beta = 0.0042814890552323286, epsilon = 0.00022324135524611098, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p02-c0-s0"
+points = [
+  { label = "truth", eta = 0.00019606713963716613, beta = 0.001, epsilon = 0.00031622776601683794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00017981854941456548, beta = 3.2468701426035937e-12, epsilon = 0.00026811187991871246, kappa = 0.001079367745770948, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00028795445341414785, beta = 0.0065898469089612595, epsilon = 0.000455640712767217, kappa = 0.001000514530622048, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0017981854941456548, beta = 3.2468701426035937e-12, epsilon = 0.00026811187991871246, kappa = 0.001079367745770948, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00017981854941456548, beta = 3.2468701426035937e-12, epsilon = 0.00026811187991871246, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p02-c0-s1"
+points = [
+  { label = "truth", eta = 0.00019606713963716613, beta = 0.001, epsilon = 0.00031622776601683794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00017857730921557127, beta = 1.000000000000001e-12, epsilon = 0.0002661800575788282, kappa = 0.0015189345213626243, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0002192649657017641, beta = 0.002236181425652979, epsilon = 0.0003247022353708762, kappa = 0.0012708814850062454, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0017857730921557128, beta = 1.000000000000001e-12, epsilon = 0.0002661800575788282, kappa = 0.0015189345213626243, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00017857730921557127, beta = 1.000000000000001e-12, epsilon = 0.0002661800575788282, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p02-c1-s0"
+points = [
+  { label = "truth", eta = 0.00019606713963716613, beta = 0.001, epsilon = 0.00031622776601683794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019996143062822608, beta = 0.001193420761562043, epsilon = 0.0003294812105411315, kappa = 0.0011902737835153714, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0002514573636404785, beta = 0.004194582307151023, epsilon = 0.00042557172011645466, kappa = 0.0011865234432287548, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0019996143062822607, beta = 0.001193420761562043, epsilon = 0.0003294812105411315, kappa = 0.0011902737835153714, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00019996143062822608, beta = 0.001193420761562043, epsilon = 0.0003294812105411315, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p02-c1-s1"
+points = [
+  { label = "truth", eta = 0.00019606713963716613, beta = 0.001, epsilon = 0.00031622776601683794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00018018093176793462, beta = 5.840741355409319e-12, epsilon = 0.00028809970130058937, kappa = 0.0012552452435578689, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00023151743772895677, beta = 0.0029389145233059337, epsilon = 0.0003796488701878962, kappa = 0.00114459066092911, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.001801809317679346, beta = 5.840741355409319e-12, epsilon = 0.00028809970130058937, kappa = 0.0012552452435578689, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00018018093176793462, beta = 5.840741355409319e-12, epsilon = 0.00028809970130058937, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p03-c0-s0"
+points = [
+  { label = "truth", eta = 0.00018154144455025697, beta = 0.001, epsilon = 0.000630957344480193, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00016595164390298587, beta = 1.8767331629206275e-10, epsilon = 0.0005619922554406024, kappa = 0.0035147687144393342, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00019782947028913707, beta = 0.00189804951824631, epsilon = 0.0006672994617184842, kappa = 0.0028286434227798463, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0016595164390298587, beta = 1.8767331629206275e-10, epsilon = 0.0005619922554406024, kappa = 0.0035147687144393342, rule = "optimum, eta x 10^1 (clipped to box): 997 terms at -700" },
+  { label = "kmax", eta = 0.00016595164390298587, beta = 1.8767331629206275e-10, epsilon = 0.0005619922554406024, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p03-c0-s1"
+points = [
+  { label = "truth", eta = 0.00018154144455025697, beta = 0.001, epsilon = 0.000630957344480193, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019046742260090516, beta = 0.0017897521065478926, epsilon = 0.000747716948794429, kappa = 0.00204842722229335, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00023301771944911744, beta = 0.004625655745959589, epsilon = 0.000956286304667905, kappa = 0.0020334861947905337, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0019046742260090516, beta = 0.0017897521065478926, epsilon = 0.000747716948794429, kappa = 0.00204842722229335, rule = "optimum, eta x 10^1 (clipped to box): 995 terms at -700" },
+  { label = "kmax", eta = 0.00019046742260090516, beta = 0.0017897521065478926, epsilon = 0.000747716948794429, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p03-c1-s0"
+points = [
+  { label = "truth", eta = 0.00018154144455025697, beta = 0.001, epsilon = 0.000630957344480193, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0001811193961589318, beta = 0.0009919872754640946, epsilon = 0.0006264757179691206, kappa = 0.0030252966417335294, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00019596230555379168, beta = 0.0017735143928394846, epsilon = 0.0006801177991213272, kappa = 0.003084409564910681, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.001811193961589318, beta = 0.0009919872754640946, epsilon = 0.0006264757179691206, kappa = 0.0030252966417335294, rule = "optimum, eta x 10^1 (clipped to box): 9980 terms at -700" },
+  { label = "kmax", eta = 0.0001811193961589318, beta = 0.0009919872754640946, epsilon = 0.0006264757179691206, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p03-c1-s1"
+points = [
+  { label = "truth", eta = 0.00018154144455025697, beta = 0.001, epsilon = 0.000630957344480193, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00017124681316690825, beta = 0.0003175784621669821, epsilon = 0.0005956057169531001, kappa = 0.022079131131339, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00018148915941639825, beta = 0.0007908736297165018, epsilon = 0.000624179192819507, kappa = 0.020365158892124348, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0017124681316690825, beta = 0.0003175784621669821, epsilon = 0.0005956057169531001, kappa = 0.022079131131339, rule = "optimum, eta x 10^1 (clipped to box): 9967 terms at -700" },
+  { label = "kmax", eta = 0.00017124681316690825, beta = 0.0003175784621669821, epsilon = 0.0005956057169531001, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p04-c0-s0"
+points = [
+  { label = "truth", eta = 0.00010680478368264066, beta = 0.001, epsilon = 0.0025118864315095794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00010040255800114422, beta = 1.0345113464531428e-06, epsilon = 0.0024770496409039383, kappa = 4.999999789571056, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00010145329732125093, beta = 1.0345112968886404e-06, epsilon = 0.0025631696546832955, kappa = 4.999999999992675, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0010040255800114423, beta = 1.0345113464531428e-06, epsilon = 0.0024770496409039383, kappa = 4.999999789571056, rule = "optimum, eta x 10^1 (clipped to box): 452 terms at -700" },
+  { label = "kmax", eta = 0.00010040255800114422, beta = 1.0345113464531428e-06, epsilon = 0.0024770496409039383, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p04-c0-s1"
+points = [
+  { label = "truth", eta = 0.00010680478368264066, beta = 0.001, epsilon = 0.0025118864315095794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0001003716424577502, beta = 1.0108479267294598e-06, epsilon = 0.0023190769380781883, kappa = 4.998952404729038, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00010200779070196042, beta = 1.010611429454766e-06, epsilon = 0.002352924572031459, kappa = 4.999999994674264, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.001003716424577502, beta = 1.0108479267294598e-06, epsilon = 0.0023190769380781883, kappa = 4.998952404729038, rule = "optimum, eta x 10^1 (clipped to box): 493 terms at -700" },
+  { label = "kmax", eta = 0.0001003716424577502, beta = 1.0108479267294598e-06, epsilon = 0.0023190769380781883, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p04-c1-s0"
+points = [
+  { label = "truth", eta = 0.00010680478368264066, beta = 0.001, epsilon = 0.0025118864315095794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00010267040416321138, beta = 0.0009237120823417148, epsilon = 0.0024640554494037054, kappa = 0.20215048409931438, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00011315734495057028, beta = 0.002943592184231, epsilon = 0.0027145995787527934, kappa = 0.2997635097535895, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0010267040416321138, beta = 0.0009237120823417148, epsilon = 0.0024640554494037054, kappa = 0.20215048409931438, rule = "optimum, eta x 10^1 (clipped to box): 4923 terms at -700" },
+  { label = "kmax", eta = 0.00010267040416321138, beta = 0.0009237120823417148, epsilon = 0.0024640554494037054, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p04-c1-s1"
+points = [
+  { label = "truth", eta = 0.00010680478368264066, beta = 0.001, epsilon = 0.0025118864315095794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00010503015368541292, beta = 0.0006570187254214015, epsilon = 0.002451294322418098, kappa = 0.0010034143782694613, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00011513980641126246, beta = 0.0015835906889333656, epsilon = 0.0026477087452579187, kappa = 0.0010000000002907588, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0010503015368541293, beta = 0.0006570187254214015, epsilon = 0.002451294322418098, kappa = 0.0010034143782694613, rule = "optimum, eta x 10^1 (clipped to box): 5099 terms at -700" },
+  { label = "kmax", eta = 0.00010503015368541292, beta = 0.0006570187254214015, epsilon = 0.002451294322418098, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p05-c0-s0"
+points = [
+  { label = "truth", eta = 0.0003700652013919124, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.004034648566644547, beta = 0.41445357305940456, epsilon = 0.0006990436254792636, kappa = 0.14747423868689, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0003280484740614578, beta = 0.007185583225147314, epsilon = 6.587791093536006e-06, kappa = 0.0017582631076974334, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.04034648566644547, beta = 0.41445357305940456, epsilon = 0.0006990436254792636, kappa = 0.14747423868689, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.004034648566644547, beta = 0.41445357305940456, epsilon = 0.0006990436254792636, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p05-c0-s1"
+points = [
+  { label = "truth", eta = 0.0003700652013919124, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0010454348341632515, beta = 28.269385532481543, epsilon = 6.058145731526528e-05, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00043006826120250974, beta = 0.023479668517008737, epsilon = 1.2402917009984112e-05, kappa = 0.20715452307661714, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.010454348341632516, beta = 28.269385532481543, epsilon = 6.058145731526528e-05, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.0010454348341632515, beta = 28.269385532481543, epsilon = 6.058145731526528e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p05-c1-s0"
+points = [
+  { label = "truth", eta = 0.0003700652013919124, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0013689040587890932, beta = 0.3396061249278272, epsilon = 0.00010278326423082687, kappa = 1.7856864673265869, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0002760368574621458, beta = 0.003989144530489943, epsilon = 1.874287235964244e-06, kappa = 0.0011040701302703437, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.013689040587890932, beta = 0.3396061249278272, epsilon = 0.00010278326423082687, kappa = 1.7856864673265869, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.0013689040587890932, beta = 0.3396061249278272, epsilon = 0.00010278326423082687, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p05-c1-s1"
+points = [
+  { label = "truth", eta = 0.0003700652013919124, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0009948045960502477, beta = 26.704476925978007, epsilon = 5.849222455661646e-05, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0002764974090270557, beta = 0.004019733456581348, epsilon = 1.9300924319177413e-06, kappa = 0.0011076964321410576, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.009948045960502477, beta = 26.704476925978007, epsilon = 5.849222455661646e-05, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.0009948045960502477, beta = 26.704476925978007, epsilon = 5.849222455661646e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p06-c0-s0"
+points = [
+  { label = "truth", eta = 0.0003623001525409166, beta = 0.01092600861117378, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019330536507575032, beta = 3.333210266752479e-12, epsilon = 6.99393945408241e-05, kappa = 0.001001851158597797, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00031657108956076855, beta = 0.006981382471539126, epsilon = 0.0001188715037838723, kappa = 0.0010059086204191113, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0019330536507575031, beta = 3.333210266752479e-12, epsilon = 6.99393945408241e-05, kappa = 0.001001851158597797, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00019330536507575032, beta = 3.333210266752479e-12, epsilon = 6.99393945408241e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p06-c0-s1"
+points = [
+  { label = "truth", eta = 0.0003623001525409166, beta = 0.01092600861117378, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0015618378271985848, beta = 0.10637049599214876, epsilon = 0.0014236913620039684, kappa = 0.0010015864652797466, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0003418433137354723, beta = 0.008583146782519296, epsilon = 0.0001329821810912276, kappa = 0.0010022044857354207, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.015618378271985848, beta = 0.10637049599214876, epsilon = 0.0014236913620039684, kappa = 0.0010015864652797466, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.0015618378271985848, beta = 0.10637049599214876, epsilon = 0.0014236913620039684, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p06-c1-s0"
+points = [
+  { label = "truth", eta = 0.0003623001525409166, beta = 0.01092600861117378, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00021742908110735913, beta = 0.0013745056751139505, epsilon = 7.843794700178734e-05, kappa = 0.0010285369205386271, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0003410443874064698, beta = 0.008553315090227689, epsilon = 0.00012736315577053533, kappa = 0.0010261081717386142, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0021742908110735913, beta = 0.0013745056751139505, epsilon = 7.843794700178734e-05, kappa = 0.0010285369205386271, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00021742908110735913, beta = 0.0013745056751139505, epsilon = 7.843794700178734e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p06-c1-s1"
+points = [
+  { label = "truth", eta = 0.0003623001525409166, beta = 0.01092600861117378, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00037349265739488474, beta = 0.011149278063804651, epsilon = 0.0001672149285457465, kappa = 0.0010752902401248788, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00030254097158121204, beta = 0.0061314103600684485, epsilon = 0.00010150178156835142, kappa = 0.0010780147459698492, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.003734926573948847, beta = 0.011149278063804651, epsilon = 0.0001672149285457465, kappa = 0.0010752902401248788, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00037349265739488474, beta = 0.011149278063804651, epsilon = 0.0001672149285457465, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p07-c0-s0"
+points = [
+  { label = "truth", eta = 0.00026094039708609613, beta = 0.004923882631706739, epsilon = 0.00031622776601683794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00018710184943244174, beta = 0.00019511273623737767, epsilon = 0.00020386433834208427, kappa = 0.0033242140991262777, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0002043250237246856, beta = 0.0009721717384462061, epsilon = 0.00021132348871416207, kappa = 0.003299639280672905, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0018710184943244175, beta = 0.00019511273623737767, epsilon = 0.00020386433834208427, kappa = 0.0033242140991262777, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00018710184943244174, beta = 0.00019511273623737767, epsilon = 0.00020386433834208427, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p07-c0-s1"
+points = [
+  { label = "truth", eta = 0.00026094039708609613, beta = 0.004923882631706739, epsilon = 0.00031622776601683794, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0001853398255955533, beta = 2.4041574801128054e-11, epsilon = 0.0002171523455586335, kappa = 0.006098602343891631, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00020564467451758127, beta = 0.0009380053947334673, epsilon = 0.00022298396988303676, kappa = 0.0037173375135382118, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0018533982559555328, beta = 2.4041574801128054e-11, epsilon = 0.0002171523455586335, kappa = 0.006098602343891631, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.0001853398255955533, beta = 2.4041574801128054e-11, epsilon = 0.0002171523455586335, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k2-p04-c0-s0"
+points = [
+  { label = "truth", eta = 0.00014247978106653322, beta = 0.001, epsilon = 0.0012589254117941675, kappa = 2.0, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00014295032992057692, beta = 1.0123200185175424e-06, epsilon = 0.001262288982880488, kappa = 4.999998985311838, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0001416993822799474, beta = 1.0123199158829854e-06, epsilon = 0.0013032264929200934, kappa = 4.999999427471212, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0014295032992057693, beta = 1.0123200185175424e-06, epsilon = 0.001262288982880488, kappa = 4.999998985311838, rule = "optimum, eta x 10^1 (clipped to box): 1706 terms at -700" },
+  { label = "kmax", eta = 0.00014295032992057692, beta = 1.0123200185175424e-06, epsilon = 0.001262288982880488, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "realfull-real-mice_M-c1-s1"
+points = [
+  { label = "truth", eta = 7.859995143906167e-06, beta = 0.00516999607352108, epsilon = 0.0007169993515554357, kappa = 0.0535, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 6.1735941199569744e-06, beta = 0.0030274777956788984, epsilon = 0.0005402528324397944, kappa = 0.001005651017085517, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 8.569969789429031e-06, beta = 0.005249040617873893, epsilon = 0.0008113095273726693, kappa = 0.001003627326968762, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 6.173594119956974e-05, beta = 0.0030274777956788984, epsilon = 0.0005402528324397944, kappa = 0.001005651017085517, rule = "optimum, eta x 10^1 (clipped to box): 592 terms at -700" },
+  { label = "kmax", eta = 6.1735941199569744e-06, beta = 0.0030274777956788984, epsilon = 0.0005402528324397944, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-real-Sweden_F_1910_homo-c0-s0"
+points = [
+  { label = "truth", eta = 3.7000101001309648e-06, beta = 0.20400039210230075, epsilon = 0.009690017834330452, kappa = 0.0117, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 4.540247751709656e-09, beta = 9.698512959440118e-05, epsilon = 3.8076903160834527e-06, kappa = 0.20916214770398917, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 3.506531101995581e-09, beta = 6.149849108250183e-05, epsilon = 2.18108037489804e-06, kappa = 0.24448665144305035, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 4.5402477517096556e-08, beta = 9.698512959440118e-05, epsilon = 3.8076903160834527e-06, kappa = 0.20916214770398917, rule = "optimum, eta x 10^1 (clipped to box): 99921 terms at -700" },
+  { label = "kmax", eta = 4.540247751709656e-09, beta = 9.698512959440118e-05, epsilon = 3.8076903160834527e-06, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-real-Denmark_F_1900_hetro-c0-s0"
+points = [
+  { label = "truth", eta = 8.870021831761223e-05, beta = 6.29500879790567, epsilon = 0.20200030431780142, kappa = 0.141, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 7.059696098152783e-09, beta = 0.00012326418059862957, epsilon = 4.861149163887116e-06, kappa = 0.2072319451931204, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 5.384810324042794e-09, beta = 7.78218631563746e-05, epsilon = 2.922443109681379e-06, kappa = 0.2433088281493456, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 7.059696098152784e-08, beta = 0.00012326418059862957, epsilon = 4.861149163887116e-06, kappa = 0.2072319451931204, rule = "optimum, eta x 10^1 (clipped to box): 99886 terms at -700" },
+  { label = "kmax", eta = 7.059696098152783e-09, beta = 0.00012326418059862957, epsilon = 4.861149163887116e-06, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "censor-k0.0316-p05-c0-s1"
+points = [
+  { label = "truth", eta = 0.0003546412038835441, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.0316, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00020002144857482747, beta = 3.8541599915523003e-10, epsilon = 5.646366808958373e-06, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0005955815482043644, beta = 0.041656112870361084, epsilon = 3.926378426652668e-05, kappa = 0.2218107887991516, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0020002144857482747, beta = 3.8541599915523003e-10, epsilon = 5.646366808958373e-06, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00020002144857482747, beta = 3.8541599915523003e-10, epsilon = 5.646366808958373e-06, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "het-k0.01-p01-c1-s0"
+points = [
+  { label = "truth", eta = 0.00020452144364423015, beta = 0.001, epsilon = 0.00015848931924611134, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0010591854140316265, beta = 0.07225319918296723, epsilon = 0.0038834684469932815, kappa = 0.0015553952495928219, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0003675320287329067, beta = 0.012488570522046683, epsilon = 0.0008666413779204469, kappa = 0.0015570007365960294, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.010591854140316265, beta = 0.07225319918296723, epsilon = 0.0038834684469932815, kappa = 0.0015553952495928219, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.0010591854140316265, beta = 0.07225319918296723, epsilon = 0.0038834684469932815, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p15-c1-s0"
+points = [
+  { label = "truth", eta = 0.14177014462602552, beta = 14.251026703029963, epsilon = 0.07943282347242815, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0007627148426319874, beta = 0.038099451081359585, epsilon = 4.493201642649651e-05, kappa = 0.0010000000000000002, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00039668559823774876, beta = 0.020252502184666166, epsilon = 4.954928797706712e-06, kappa = 0.21751625808872138, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.007627148426319874, beta = 0.038099451081359585, epsilon = 4.493201642649651e-05, kappa = 0.0010000000000000002, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.0007627148426319874, beta = 0.038099451081359585, epsilon = 4.493201642649651e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "pure-k0.01-p15-c1-s1"
+points = [
+  { label = "truth", eta = 0.14177014462602552, beta = 14.251026703029963, epsilon = 0.07943282347242815, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.0006467494645793124, beta = 0.029447292635259796, epsilon = 3.403361552464001e-05, kappa = 0.0010000000000000002, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00039676784784102034, beta = 0.020287613924607133, epsilon = 4.995389957139384e-06, kappa = 0.21773862893399146, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.006467494645793124, beta = 0.029447292635259796, epsilon = 3.403361552464001e-05, kappa = 0.0010000000000000002, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.0006467494645793124, beta = 0.029447292635259796, epsilon = 3.403361552464001e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "censor-k0.01-p05-c0-s0"
+points = [
+  { label = "truth", eta = 0.0003700652013919124, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00019996078273557316, beta = 2.2037367632302655e-10, epsilon = 5.561790111635882e-06, kappa = 299.99999999999994, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.0003547217432782741, beta = 0.008710136211914367, epsilon = 6.301057675793996e-06, kappa = 0.0010982325109212877, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.0019996078273557317, beta = 2.2037367632302655e-10, epsilon = 5.561790111635882e-06, kappa = 299.99999999999994, rule = "optimum, eta x 10^1 (clipped to box): 1000 terms at -700" },
+  { label = "kmax", eta = 0.00019996078273557316, beta = 2.2037367632302655e-10, epsilon = 5.561790111635882e-06, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[[theta]]
+cohort_id = "censor-k0.01-p05-c1-s1"
+points = [
+  { label = "truth", eta = 0.0003700652013919124, beta = 0.01092600861117378, epsilon = 1.995262314968879e-05, kappa = 0.01, rule = "library v1 physical_truth()" },
+  { label = "optimum", eta = 0.00042028379244702226, beta = 0.013405752973410519, epsilon = 2.182658102994569e-05, kappa = 0.001213681042559923, rule = "pilot oracle theta-hat" },
+  { label = "seed", eta = 0.00034913953292672184, beta = 0.008378560878005072, epsilon = 5.502048788155737e-06, kappa = 0.0012539712567730074, rule = "oracle fp_curvefit_seed(t, e, xc=1.0)" },
+  { label = "floor", eta = 0.004202837924470223, beta = 0.013405752973410519, epsilon = 2.182658102994569e-05, kappa = 0.001213681042559923, rule = "optimum, eta x 10^1 (clipped to box): 10000 terms at -700" },
+  { label = "kmax", eta = 0.00042028379244702226, beta = 0.013405752973410519, epsilon = 2.182658102994569e-05, kappa = 300.0, rule = "optimum, kappa = 300" },
+  { label = "corner", eta = 1e-12, beta = 1000.0, epsilon = 1000.0, kappa = 0.001, rule = "box corner (eta lo, beta hi, epsilon hi, kappa lo)" },
+]
+
+[pilot]
+run_id = "pilot-20261003-0202"
+host_uuid = "2DC3E2E3-BBB6-532B-9973-49B7129C6643"
+finished_at = "2026-10-02T23:02:09Z"
+cpu_hours = 3.662486940892284

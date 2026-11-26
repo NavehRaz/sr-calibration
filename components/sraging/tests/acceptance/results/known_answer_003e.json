@@ -1,0 +1,335 @@
+{
+ "phase": "known-answer",
+ "written_at": "2026-10-17T21:35:37Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 1.7349560260772705,
+ "cpu_s": 1.0213809999999999,
+ "status": "PASS",
+ "score_file": "sr_calibration_tester_jax2/reports/rc2/SWITCH/real/s6_5_score.txt",
+ "score_file_sha256": "1627043169be29ccf48d6e0ba640860a8dff1f1235f0223a0555a4f6d2cec08a",
+ "paired": 1776,
+ "paired_expected": 1776,
+ "lines_compared": 47,
+ "planted_one_digit_change": {
+  "caught": true,
+  "mismatch": [
+   {
+    "quantity": "eta",
+    "line": 1,
+    "want": "   calibration    loses          -0.0357 +/-0.0133   n=1623  paired=True  [cell average, cluster-robust on the parameter point]",
+    "got": "   calibration    loses          -0.0358 +/-0.0133   n=1623  paired=True  [cell average, cluster-robust on the parameter point]"
+   }
+  ]
+ },
+ "quantities": [
+  "eta",
+  "beta",
+  "epsilon",
+  "kappa",
+  "external_hazard"
+ ],
+ "header_mismatches": [],
+ "mismatches": [],
+ "overall": {
+  "eta": "does not supersede",
+  "beta": "does not supersede",
+  "epsilon": "does not supersede",
+  "kappa": "no difference detected",
+  "external_hazard": "not measured"
+ },
+ "null_coverage": {
+  "eta": {
+   "parameter": "eta",
+   "shape_class": "closed",
+   "coverage": 1.0,
+   "hits": 1776,
+   "claimed": 1776,
+   "declined": 0,
+   "decline_rate": 0.0,
+   "failed": 0,
+   "failure_rate": 0.0,
+   "total": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "beta": {
+   "parameter": "beta",
+   "shape_class": "closed",
+   "coverage": 1.0,
+   "hits": 1776,
+   "claimed": 1776,
+   "declined": 0,
+   "decline_rate": 0.0,
+   "failed": 0,
+   "failure_rate": 0.0,
+   "total": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "epsilon": {
+   "parameter": "epsilon",
+   "shape_class": "closed",
+   "coverage": 1.0,
+   "hits": 1776,
+   "claimed": 1776,
+   "declined": 0,
+   "decline_rate": 0.0,
+   "failed": 0,
+   "failure_rate": 0.0,
+   "total": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "kappa": {
+   "parameter": "kappa",
+   "shape_class": "closed",
+   "coverage": 1.0,
+   "hits": 1776,
+   "claimed": 1776,
+   "declined": 0,
+   "decline_rate": 0.0,
+   "failed": 0,
+   "failure_rate": 0.0,
+   "total": 1776,
+   "cohort_set": "1776 paired"
+  },
+  "external_hazard": {
+   "parameter": "external_hazard",
+   "shape_class": "closed",
+   "coverage": null,
+   "hits": 0,
+   "claimed": 0,
+   "declined": 318,
+   "decline_rate": 1.0,
+   "failed": 0,
+   "failure_rate": 0.0,
+   "total": 318,
+   "cohort_set": "1776 paired"
+  }
+ },
+ "closed_widths": {
+  "eta": {
+   "reference": {
+    "n_closed": 1666,
+    "median_width_dex": 0.44974120091212494
+   },
+   "null": {
+    "n_closed": 1776,
+    "median_width_dex": 15.0
+   }
+  },
+  "beta": {
+   "reference": {
+    "n_closed": 578,
+    "median_width_dex": 3.3760679824568767
+   },
+   "null": {
+    "n_closed": 1776,
+    "median_width_dex": 15.0
+   }
+  },
+  "epsilon": {
+   "reference": {
+    "n_closed": 1632,
+    "median_width_dex": 0.44186154834139146
+   },
+   "null": {
+    "n_closed": 1776,
+    "median_width_dex": 15.0
+   }
+  },
+  "kappa": {
+   "reference": {
+    "n_closed": 9,
+    "median_width_dex": 1.5837301548328186
+   },
+   "null": {
+    "n_closed": 1776,
+    "median_width_dex": 5.477121254719663
+   }
+  }
+ },
+ "reference_composition": {
+  "records": 1776,
+  "groups": [
+   {
+    "key_library": "v2",
+    "harness_revision": "3bc5775",
+    "written_utc": "2026-10-04",
+    "n": 378
+   },
+   {
+    "key_library": "v2",
+    "harness_revision": "3bc5775",
+    "written_utc": "2026-10-05",
+    "n": 152
+   },
+   {
+    "key_library": "v2",
+    "harness_revision": "3bc5775",
+    "written_utc": "2026-10-06",
+    "n": 680
+   },
+   {
+    "key_library": "v2",
+    "harness_revision": null,
+    "written_utc": "2026-10-06",
+    "n": 1
+   },
+   {
+    "key_library": "v5",
+    "harness_revision": "0e0089b",
+    "written_utc": "2026-10-08",
+    "n": 541
+   },
+   {
+    "key_library": "v5",
+    "harness_revision": null,
+    "written_utc": "2026-10-08",
+    "n": 24
+   }
+  ],
+  "shapes": {
+   "eta": {
+    "closed": 1666,
+    "lower_bound": 79,
+    "upper_bound": 31
+   },
+   "beta": {
+    "closed": 578,
+    "lower_bound": 544,
+    "none": 40,
+    "upper_bound": 614
+   },
+   "epsilon": {
+    "closed": 1632,
+    "lower_bound": 141,
+    "upper_bound": 3
+   },
+   "kappa": {
+    "closed": 9,
+    "lower_bound": 51,
+    "none": 1317,
+    "upper_bound": 399
+   }
+  }
+ },
+ "not_proven": "the score file prints no null lines, so the null path is checked by self-pair's round trip, not here; both sides come from the tester's store",
+ "rendered": {
+  "header": [
+   "method     mle_profile_jax v0.3.3",
+   "reference: mle_profile_jax2 v1.0.0 (run jax2-v5-full-bign, library v5)",
+   "library    v5   paired cohorts 1776",
+   "0 calibrations performed -- scoring reads the store."
+  ],
+  "blocks": {
+   "eta": [
+    "=== eta ===  DOES NOT SUPERSEDE",
+    "   calibration    loses          -0.0357 +/-0.0133   n=1623  paired=True  [cell average, cluster-robust on the parameter point]",
+    "   calibration_one_sided no difference  -0.0930 +/-0.1389   n=43  paired=True  [ONE-SIDED claims only; cell average, cluster-robust on the parameter point]",
+    "   availability   no difference  +0.0000   n=1776  paired=False  [decline rate over all cohorts]",
+    "   information    no difference  +0.0269   n=1690  paired=False  [median width of CLOSED claims, in dex]",
+    "   accuracy       no difference  +0.0320   n=1776  paired=False  [median |log10(est/truth)| in dex, FIXED floor]",
+    "   cost           cheaper        +0.6936   n=1776  paired=False  [median wall-clock seconds per calibration]",
+    "   - calibration: loses (-0.0357)"
+   ],
+   "beta": [
+    "=== beta ===  DOES NOT SUPERSEDE",
+    "   calibration    loses          -0.0276 +/-0.0207   n=543  paired=True  [cell average, cluster-robust on the parameter point]",
+    "   calibration_one_sided loses          -0.0294 +/-0.0153   n=1088  paired=True  [ONE-SIDED claims only; cell average, cluster-robust on the parameter point]",
+    "   availability   no difference  -0.0023   n=1776  paired=False  [decline rate over all cohorts]",
+    "   information    no difference  -0.0475   n=591  paired=False  [median width of CLOSED claims, in dex]",
+    "   accuracy       loses          +0.1760   n=1740  paired=False  [median |log10(est/truth)| in dex, FIXED floor]",
+    "   cost           cheaper        +0.6936   n=1776  paired=False  [median wall-clock seconds per calibration]",
+    "   - calibration: loses (-0.0276)",
+    "   - accuracy: loses (+0.1760) -- median |log10(est/truth)| in dex, FIXED floor",
+    "   - calibration_one_sided: loses (-0.0294) -- ONE-SIDED claims only; cell average, cluster-robust on the parameter point"
+   ],
+   "epsilon": [
+    "=== epsilon ===  DOES NOT SUPERSEDE",
+    "   calibration    loses          -0.0408 +/-0.0147   n=1593  paired=True  [cell average, cluster-robust on the parameter point]",
+    "   calibration_one_sided no difference  -0.0250 +/-0.0520   n=40  paired=True  [ONE-SIDED claims only; cell average, cluster-robust on the parameter point]",
+    "   availability   no difference  +0.0000   n=1776  paired=False  [decline rate over all cohorts]",
+    "   information    no difference  +0.0494   n=1697  paired=False  [median width of CLOSED claims, in dex]",
+    "   accuracy       loses          +0.0546   n=1776  paired=False  [median |log10(est/truth)| in dex, FIXED floor]",
+    "   cost           cheaper        +0.6936   n=1776  paired=False  [median wall-clock seconds per calibration]",
+    "   - calibration: loses (-0.0408)",
+    "   - accuracy: loses (+0.0546) -- median |log10(est/truth)| in dex, FIXED floor"
+   ],
+   "kappa": [
+    "=== kappa ===  NO DIFFERENCE DETECTED",
+    "   calibration    no difference  +0.0000 +/-0.0000   n=8  paired=True  [cell average, cluster-robust on the parameter point]",
+    "   calibration_one_sided no difference  -0.0124 +/-0.0160   n=402  paired=True  [ONE-SIDED claims only; cell average, cluster-robust on the parameter point]",
+    "   availability   wins           -0.0231   n=1776  paired=False  [decline rate over all cohorts]",
+    "   information    wins           -1.0910   n=56  paired=False  [median width of CLOSED claims, in dex]",
+    "   accuracy       no difference  +0.0000   n=500  paired=False  [median |log10(est/truth)| in dex, FIXED floor]",
+    "   cost           cheaper        +0.6936   n=1776  paired=False  [median wall-clock seconds per calibration]",
+    "   - calibration: no difference (+0.0000)"
+   ],
+   "external_hazard": [
+    "=== external_hazard ===  NOT MEASURED",
+    "   calibration    not measured   n/a   n=0  paired=True  [cell average, cluster-robust on the parameter point]",
+    "   calibration_one_sided not measured   n/a   n=0  paired=True  [ONE-SIDED claims only; cell average, cluster-robust on the parameter point]",
+    "   availability   no difference  +0.0000   n=318  paired=False  [decline rate over all cohorts]",
+    "   information    not measured   n/a   n=0  paired=False  [median width of CLOSED claims]",
+    "   accuracy       not measured   n/a   n=0  paired=False  [median |log10(est/truth)| dex, fixed floor]",
+    "   cost           cheaper        +0.6936   n=1776  paired=False  [median wall-clock seconds per calibration]",
+    "   - calibration could not be measured on this cohort set"
+   ]
+  }
+ },
+ "sraging_provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs": {
+   "method": "jax033-v5-full-bign",
+   "reference": "jax2-v5-full-bign",
+   "null": "null_prior-v5-full-bign"
+  },
+  "cohort_ids": null,
+  "computed_on_manifest_sha256": {},
+  "runs_sha256": {
+   "method": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "reference": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "null": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  }
+ },
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

@@ -1,0 +1,325 @@
+{
+ "phase": "fit1",
+ "written_at": "2026-10-23T10:32:00Z",
+ "repo_head": "f0eb23eeacee35f7b35a12252c86b8ab7f34f618",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "67a183ec805a645727b16c278944dd8d1854add8",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "adb964c6250854c3e8a5ed6bb75d2c586a2cb777"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "6cf8c9b95977b5c56023708938de277620149d92"
+ },
+ "wall_s": 80134.78686785698,
+ "cpu_s": 59866.870886000004,
+ "status": "written",
+ "cohort_id": "censor-k0.01-p05-c1-s1",
+ "settings": "default (combinations on, leverage on)",
+ "price_cpu_h": "8.6-15 [I]: 19,654 CPU-s full fit without combinations (parity_003b.json) x ITP's 2.6 lead-pair ratio",
+ "wall_s_fit": 80125.52039909363,
+ "n": 10000,
+ "fit": {
+  "status": "ok",
+  "claims": {
+   "eta": {
+    "parameter": "eta",
+    "shape": "closed",
+    "lower": 0.00019834973601481326,
+    "upper": 0.00935279130004471,
+    "point": 0.0009026619195074558,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "two-sided 95% profile-likelihood interval",
+    "scored": true,
+    "label_info": null,
+    "widening": null,
+    "decline_reason": null
+   },
+   "beta": {
+    "parameter": "beta",
+    "shape": "upper_bound",
+    "lower": null,
+    "upper": 126.26046592837614,
+    "point": 0.06866631635630352,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "only an upper bound is supported by the data; the lower side is not constrained inside the prior box; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target; its upper end is set by the kappa box (kappa_max = 300), not by the data (spec 003's kappa_max = 3000 study): the data bound raw beta on neither side; the data determine combinations such as r-bar and beta/(1+kappa) \u00b7 open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+    "scored": true,
+    "label_info": {
+     "kind": "box_limited",
+     "edge": "kappa<=300",
+     "side": "upper",
+     "log10_cap_over_floor": null,
+     "regime": null
+    },
+    "widening": null,
+    "decline_reason": null
+   },
+   "epsilon": {
+    "parameter": "epsilon",
+    "shape": "closed",
+    "lower": 7.329575440617754e-06,
+    "upper": 0.0018729815907433441,
+    "point": 6.943644004637373e-05,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "two-sided 95% profile-likelihood interval",
+    "scored": true,
+    "label_info": null,
+    "widening": null,
+    "decline_reason": null
+   },
+   "kappa": {
+    "parameter": "kappa",
+    "shape": "none",
+    "lower": null,
+    "upper": null,
+    "point": null,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+    "scored": true,
+    "label_info": null,
+    "widening": null,
+    "decline_reason": null
+   },
+   "eta_over_eps": {
+    "parameter": "eta_over_eps",
+    "shape": "closed",
+    "lower": 4.285146697907363,
+    "upper": 27.083760618592503,
+    "point": 12.999830044636578,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "",
+    "scored": true,
+    "label_info": null,
+    "widening": null,
+    "decline_reason": null
+   },
+   "rbar_over_eta": {
+    "parameter": "rbar_over_eta",
+    "shape": "upper_bound",
+    "lower": null,
+    "upper": 84.96242913324525,
+    "point": 53.93123424170928,
+    "level": 0.95,
+    "n_components": 1,
+    "label": "",
+    "scored": true,
+    "label_info": null,
+    "widening": null,
+    "decline_reason": null
+   }
+  },
+  "theta_hat": {
+   "eta": 0.0009026619195074558,
+   "beta": 0.06866631635630352,
+   "epsilon": 6.943644004637373e-05,
+   "kappa": 0.13791163792078484,
+   "xc": 1.0,
+   "h_ext": 0.0,
+   "time_unit": "input units",
+   "xc_fixed": true
+  },
+  "loglik": -19365.665663241987,
+  "timing": {
+   "wall_s": 60643.045371832326,
+   "cpu_s": 20266.677809
+  },
+  "combinations": {
+   "on": true,
+   "mode": "lead",
+   "lead_group": [
+    "eta_over_eps",
+    "rbar_over_eta"
+   ],
+   "cost_s": 38102.868921999994,
+   "fit_cost_s": 20266.677809,
+   "evals": 45893,
+   "param_claims_contradicted": [
+    {
+     "parameter": "epsilon",
+     "side": "upper",
+     "claim_end": 0.0018729815907433441,
+     "archive_point": 0.0018771470298459651,
+     "dex": 0.0009647818216190268
+    }
+   ],
+   "combination_claims_contradicted": [],
+   "ratio_to_fit": 1.8800747355385163,
+   "order": [
+    "eta_over_eps",
+    "rbar_over_eta"
+   ],
+   "order_source": "measured (tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac))",
+   "walks": {
+    "eta_over_eps": {
+     "ci": {
+      "ci_lo": 4.285146697907363,
+      "ci_hi": 27.083760618592503,
+      "ci_level": 0.95,
+      "ci_thr": 3.8415,
+      "verdict": "identified",
+      "argmax_value": 23.466726237119858,
+      "max_deviance": 10.169377849793818,
+      "n_components": 1,
+      "ci_lo_connected": 4.285146697907363,
+      "ci_hi_connected": 27.083760618592503
+     },
+     "stops": {
+      "lower": "deviance",
+      "upper": "stalled"
+     },
+     "evals": 15493,
+     "gain": 0.015348322813224513,
+     "n_nodes": 28
+    },
+    "rbar_over_eta": {
+     "ci": {
+      "ci_lo": NaN,
+      "ci_hi": 84.96242913324525,
+      "ci_level": 0.95,
+      "ci_thr": 3.8415,
+      "verdict": "one-sided:<",
+      "argmax_value": 47.83443631700239,
+      "max_deviance": 10.396596241029329,
+      "n_components": 1,
+      "ci_lo_connected": NaN,
+      "ci_hi_connected": 84.96242913324525
+     },
+     "stops": {
+      "lower": "beta_floor",
+      "upper": "deviance"
+     },
+     "evals": 30400,
+     "gain": 0.015348322693171212,
+     "n_nodes": 36
+    }
+   }
+  },
+  "mechanisms": {
+   "basin_refit": {
+    "fired": false,
+    "rounds": 0
+   },
+   "relabelled_rows": 0,
+   "N": 3600,
+   "dt_floor": {
+    "binds": false,
+    "dt": 0.00022899682992687996
+   },
+   "n_fallback": 7,
+   "widened": []
+  },
+  "dt_in_scope": true,
+  "cv_c": 0.018088137226776654,
+  "leverage": {
+   "label": "flat_valley_slide",
+   "reason": null,
+   "g0": {
+    "status": "ok",
+    "g0": 0.0,
+    "below_start": false,
+    "theta": [
+     0.0009026619195074558,
+     0.06866631635630352,
+     6.943644004637373e-05,
+     0.13791163792078484
+    ],
+    "ll_ref": -19365.665663241987,
+    "ll_warm": -19365.665663241987,
+    "cpu_s": 9.654671000003873
+   },
+   "warm_termination": {
+    "status": "ok",
+    "message": "ABNORMAL: ",
+    "nit": 0,
+    "nfev": 14,
+    "moved": 0.0,
+    "cpu_s": 9.574976000003517
+   },
+   "at_theta_hat": {
+    "log_distance_to_bounds": {
+     "eta": [
+      20.620858644275494,
+      13.91791775063519
+     ],
+     "beta": [
+      24.952524615447636,
+      9.586251779463046
+     ],
+     "epsilon": [
+      18.05592236038891,
+      16.482854034521775
+     ],
+     "kappa": [
+      4.92661317515261,
+      7.684924578485727
+     ]
+    },
+    "gradient": [
+     -0.015099989416262229,
+     0.010767412001587656,
+     0.00030876265616378506,
+     -0.0023927131691209905
+    ],
+    "free_gradient_norm": 0.018702065454668144
+   },
+   "dropped": {
+    "row": 1,
+    "age": 90.0,
+    "event": 1
+   },
+   "R": {
+    "all4": 8.744923501237604,
+    "lead_pair": 8.744923501237604,
+    "raw": 7.847687650850097
+   },
+   "delta_total": 0.15398350773466518,
+   "cost": {
+    "cpu_s": 1494.2291929999992,
+    "share_of_fit": 0.07372837359344825
+   }
+  },
+  "notes": [
+   {
+    "code": "COMBINATIONS_NOT_TRUTH_SCORED",
+    "message": "combination claims are not truth-scored on 1.0.1: they were scored on 1.0.0 only (spec 003), where the censored arm's eta/eps covered 0.818; read them as the 1.0.0 claims' method applied to this fit",
+    "data": {
+     "version": "1.0.1",
+     "scored_on": "1.0.0",
+     "censor_eta_over_eps_coverage_1_0_0": 0.818
+    }
+   }
+  ],
+  "warnings": [],
+  "basin_fix_fired": false
+ },
+ "store_file": ".cache/store_003g/fit1_censor-k0.01-p05-c1-s1.json",
+ "store_sha256": "3893dd059c75a3e62b69a29de7e5e0ea13ce95c48112101d444ad9c534cc9583",
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.1",
+  "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+  "library": "v6",
+  "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+  "run_manifest": null,
+  "run_manifest_sha256": null,
+  "record_sha256": null,
+  "witness_sha256": null,
+  "host": "MC06268844",
+  "cpu": "Apple M5 Pro"
+ }
+}

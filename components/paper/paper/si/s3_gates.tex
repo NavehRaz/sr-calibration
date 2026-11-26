@@ -1,0 +1,59 @@
+\section{Release gate and acceptance records}\label{sec:si-gates}
+% src: aging:code_5/sr_calibration_tester_jax2/reports/rc2/GATEV6/out/GATE_V6.txt (GATE-V6);
+%      ~/code/sraging/tests/acceptance/results/gate_003g.json (003g gate); rules in sraging specs/003g-default-switch/spec.md
+
+The released calibrator (version 1.0.1) passed two release gates before it became the default, both specified before the
+records were read. Table~\ref{tab:gates} summarises them. They are acceptance tests of a software release, not
+measurements of statistical performance; the performance results are in Sections~\ref{sec:val-benchmark}--\ref{sec:val-leverage}.
+
+\paragraph{GATE-V6.} Run on the \C{gate-v6-n} reference cohorts of library v6 (main and big-$n$ groups) with the released
+calibrator, the previous calibrator (v0.3.3) and an uninformative-prior null, in five gates. G1 compares calibration
+against v0.3.3, per arm and quantity, with a paired two-sided and a one-sided test. G2 uses a truth witness: on
+informative cohorts, the log-likelihood at the truth minus that at the fitted estimate must not exceed $1.92$ nats more
+often than for v0.3.3. G3 asks that availability and floored accuracy do not lose on the pure arm. G4 is a registry of
+\C{gate-v6-registry-total} automatic checks of the benchmark harness itself: \C{gate-v6-registry-passed} passed, \C{gate-v6-registry-warned}
+warned and \C{gate-v6-registry-failed} failed. The warnings are not failures of the calibrator. Four checks cannot be run against
+a record that does not carry the profile or the likelihood at the truth, three do not apply to this call and one is not wired; of the others, one flags that
+\C{gate-v6-g14-low} of \C{gate-v6-g14-n} values of $\kappa$ in the library are represented by fewer than twenty distinct manifold points, and one that
+\C{gate-v6-g2cells-low} of \C{gate-v6-g2cells-n} strata has fewer than ten cells. G5 re-evaluates the stored estimates and checks
+the integrity of each record.
+
+\begin{table}[H]
+\centering\small
+\caption{Release gates of the calibrator version 1.0.1. Verdicts are as written in the stored gate files.}\label{tab:gates}
+\begin{tabular}{@{}p{1.5cm}p{5.2cm}p{6.2cm}p{1.6cm}@{}}
+\toprule
+Gate & What is checked & Result & Verdict\\\midrule
+\multicolumn{4}{@{}l}{\textit{GATE-V6, \C{gate-v6-n} cohorts of library v6}}\\
+G1 & calibration, released against v0.3.3, per arm & no arm loses calibration on any quantity & \C{gate-v6-g1-verdict}\\
+G2 & truth-witnessed estimate failures, released not above v0.3.3, per arm & \C{gate-v6-g2-informative} informative cohorts;
+  \C{gate-v6-g2-new} failures for the released calibrator & \C{gate-v6-g2-verdict}\\
+G3 & pure arm: availability and floored accuracy & neither loses & \C{gate-v6-g3-verdict}\\
+G4 & registry of \C{gate-v6-registry-total} harness checks & \C{gate-v6-registry-passed} passed, \C{gate-v6-registry-warned} warned,
+  \C{gate-v6-registry-failed} failed; publishable, not clean & \C{gate-v6-g4-verdict}\\
+G5 & stored estimates re-evaluated; record integrity & \C{gate-v6-g5-sc3} re-evaluation failures, \C{gate-v6-g5-integrity} integrity failures & \C{gate-v6-g5-verdict}\\
+Overall & G1--G5 & G2 conclusive & \C{gate-v6-overall}\\\midrule
+\multicolumn{4}{@{}l}{\textit{Default-switch gate (spec 003g), strata inside and outside the reference set}}\\
+PR-1 to PR-5 & witness; coverage against v0.3.3 inside the reference set; coverage outside it against the released
+  calibrator's own inside coverage (margin $0.10$); null; predecessor shown failing & \C{gate-003g-n-verdicts} verdicts over
+  \C{gate-003g-required} required strata and rules; \C{gate-003g-notcovered} cells not covered (no valid informative cohort) & blocked\\
+Blocking & \C{gate-003g-blocking} entries: \C{gate-003g-blocking-pr3} coverage failures outside the reference set (PR-3), \C{gate-003g-blocking-pr1} incomplete stratum (PR-1) &
+  all \C{gate-003g-decided} decided as a stated limit & decided (\C{gate-003g-decided} of \C{gate-003g-blocking})\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The default-switch gate.} The gate of the specification that made the released calibrator the default has five
+pre-registered rules per stratum: PR-1, the truth witness (no valid cohort with $W>1.92$); PR-2, coverage inside the
+reference set against v0.3.3; PR-3, coverage outside the reference set, which has no v0.3.3 comparator, against the released
+calibrator's own coverage on the same arm and quantity inside it (not lower by more than $0.10$ at one-sided $95\,\%$); PR-4,
+intervals narrower than the null's; PR-5, the predecessor shown failing where a defect was being fixed. The stored file
+holds \C{gate-003g-n-verdicts} verdicts and its status is ``blocked; decided (\C{gate-003g-decided} of \C{gate-003g-blocking})'': every blocking entry was
+referred to the project lead, who accepted each as a stated limit. They are of three kinds. Three strata outside the reference set have only
+a handful of closed claims (one to three), so PR-3 cannot pass at that sample size whatever the coverage; every closed claim there covered the
+truth. For $\beta$ in two strata there were too few closed claims to test at all. And in one stratum the failure is a low count that is
+compatible with equal coverage: for $\eta$ on censored cohorts, \C{gate-003g-censor-hits} of \C{gate-003g-censor-n} intervals covered the truth
+against \C{gate-003g-censor-in-hits} of \C{gate-003g-censor-in-n} inside the reference set (lower bound of the difference
+\C{gate-003g-censor-lb}), a count that has probability \C{gate-003g-censor-p} under exactly equal coverage. One cohort of one stratum is not stored
+(its job was preempted repeatedly), which is the PR-1 entry. The file also records \C{gate-003g-deviations} deviations from the rules, each with the
+decision that accepted it.

@@ -1,0 +1,358 @@
+{
+ "phase": "v100-unchanged",
+ "written_at": "2026-10-21T07:19:32Z",
+ "repo_head": "c2788b61181fa79ea572792473f739284694be17",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003b.toml": "06f889509eb0549c8a444c7d78457fc20436147a"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "3b4db97d15cbfa3f4ed56152d2c2c587382d70c7"
+ },
+ "wall_s": 7532.826997995377,
+ "cpu_s": 2673.9543129999997,
+ "status": "pass",
+ "theta_hat_equal": {
+  "eta": true,
+  "beta": true,
+  "epsilon": true,
+  "kappa": true
+ },
+ "loglik_equal": true,
+ "claims_equal_frozen_adapter": true,
+ "claims_diff": [],
+ "claims": [
+  {
+   "parameter": "eta",
+   "shape": "lower_bound",
+   "lower": 0.00042795335215096373,
+   "upper": null,
+   "point": 0.0008579307799090451,
+   "level": 0.95,
+   "n_components": 1
+  },
+  {
+   "parameter": "beta",
+   "shape": "lower_bound",
+   "lower": 0.6131051806271471,
+   "upper": null,
+   "point": 1.3762978120404292,
+   "level": 0.95,
+   "n_components": 1
+  },
+  {
+   "parameter": "epsilon",
+   "shape": "closed",
+   "lower": 0.035532385894550794,
+   "upper": 1.7504815884079385,
+   "point": 0.09041066797772547,
+   "level": 0.95,
+   "n_components": 1
+  },
+  {
+   "parameter": "kappa",
+   "shape": "none",
+   "lower": null,
+   "upper": null,
+   "point": null,
+   "level": 0.95,
+   "n_components": 1
+  }
+ ],
+ "leverage": {
+  "equal": true,
+  "diff_paths": [],
+  "added_keys": [
+   "g0"
+  ],
+  "missing_keys": []
+ },
+ "leverage_block": {
+  "version": "003f/2",
+  "label": "flag",
+  "reason": null,
+  "rule": {
+   "quantities": "all4",
+   "ratio": 1.5,
+   "delta_total_nats": 1.92,
+   "fail_nats": 0.1,
+   "refit": "mle_stage_and_warm_start",
+   "provisional": false
+  },
+  "provenance": {
+   "calibrator": "profile_jax2",
+   "version": "1.0.0",
+   "host": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro",
+   "library": null
+  },
+  "gap_sd": {
+   "g": 0.6496735817857486,
+   "n_deaths": 304,
+   "applicable": true,
+   "flagged": false
+  },
+  "share": {
+   "row": 221,
+   "age": 1338.0,
+   "event": 1,
+   "term": -15.121875605296289,
+   "share": 0.0076576220188474325
+  },
+  "influence": {
+   "all4": {
+    "top": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.06327864509567382,
+      "rbar_over_eta": -0.09833793993056324,
+      "eta": -0.6811476070274705,
+      "epsilon": -0.7444262521231443
+     }
+    },
+    "median": {
+     "row": 191,
+     "age": 761.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": -0.00020516884419245068,
+      "rbar_over_eta": 0.00102850645049461,
+      "eta": 0.0073991470632388074,
+      "epsilon": 0.007604315907431258
+     }
+    },
+    "n_tied_top": 1
+   },
+   "lead_pair": {
+    "top": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.06327864509567382,
+      "rbar_over_eta": -0.09833793993056324,
+      "eta": -0.6811476070274705,
+      "epsilon": -0.7444262521231443
+     }
+    },
+    "median": {
+     "row": 271,
+     "age": 673.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.0018053946106056937,
+      "rbar_over_eta": -0.0004612179934737315,
+      "eta": 0.003016882907827232,
+      "epsilon": 0.0012114882972215383
+     }
+    },
+    "n_tied_top": 1
+   },
+   "raw": {
+    "top": {
+     "row": 1,
+     "age": 0.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.06327864509567382,
+      "rbar_over_eta": -0.09833793993056324,
+      "eta": -0.6811476070274705,
+      "epsilon": -0.7444262521231443
+     }
+    },
+    "median": {
+     "row": 97,
+     "age": 1186.0,
+     "event": 1,
+     "shift": {
+      "eta_over_eps": 0.007751476683736677,
+      "rbar_over_eta": -0.004844918262439247,
+      "eta": 0.007468136032311273,
+      "epsilon": -0.0002833406514254042
+     }
+    },
+    "n_tied_top": 1
+   },
+   "hessian": {
+    "free": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "active": [],
+    "eigenvalues": [
+     -0.0017265092107668196,
+     0.7039991304725937,
+     921.6954424132238,
+     57161.95682496493
+    ],
+    "min_eigenvalue": -0.0017265092107668196,
+    "min_relative": -3.02038157310385e-08,
+    "n_negative": 1,
+    "condition": 81196.06168631514,
+    "n_cut": 1,
+    "n_kept": 3,
+    "rel_cut": 1e-06,
+    "source": "finite_difference"
+   }
+  },
+  "at_theta_hat": {
+   "log_distance_to_bounds": {
+    "eta": [
+     20.57003397810106,
+     13.968742416809624
+    ],
+    "beta": [
+     27.950418265190336,
+     6.588358129720348
+    ],
+    "epsilon": [
+     25.227628105985232,
+     9.311148288925452
+    ],
+    "kappa": [
+     0.009389792082614257,
+     12.602147961555723
+    ]
+   },
+   "gradient": [
+    -3.819219325711874e-05,
+    0.00023292149125278306,
+    -0.00022105097987894318,
+    0.0017531938415417437
+   ],
+   "free_gradient_norm": 0.0017827684219882702
+  },
+  "basin_fix_fired": false,
+  "dropped": {
+   "row": 1,
+   "age": 0.0,
+   "event": 1
+  },
+  "refit": {
+   "status": "ok",
+   "reason": null,
+   "theta": [
+    3.57913138545272e-05,
+    0.03166671731968555,
+    0.002369154067613347,
+    0.0010000000000000002
+   ],
+   "loglik_stage": -1956.3349841006857,
+   "relabelled": 0,
+   "cpu_s": 73.35365000000002,
+   "start": "mle_stage"
+  },
+  "refits": {
+   "mle_stage": {
+    "status": "ok",
+    "reason": null,
+    "theta": [
+     3.57913138545272e-05,
+     0.03166671731968555,
+     0.002369154067613347,
+     0.0010000000000000002
+    ],
+    "loglik_stage": -1956.3349841006857,
+    "relabelled": 0,
+    "cpu_s": 73.35365000000002
+   },
+   "warm": {
+    "status": "ok",
+    "reason": null,
+    "theta": [
+     3.579133274859204e-05,
+     0.031666738963241375,
+     0.0023691557258257744,
+     0.0010000000000000002
+    ],
+    "loglik_stage": -1956.3349841008771,
+    "plateau": false,
+    "n_grad": 53,
+    "exc_counts": {},
+    "cpu_s": 12.569527999999991
+   }
+  },
+  "n_tied_top": 1,
+  "ratios": {
+   "eta_over_eps": {
+    "log": 0.465011125172877,
+    "ratio": 1.592031900418697
+   },
+   "rbar_over_eta": {
+    "log": -0.5950119422550149,
+    "ratio": 0.5515559790063426
+   },
+   "eta": {
+    "log": -3.176818185931305,
+    "ratio": 0.04171818367248891
+   },
+   "epsilon": {
+    "log": -3.641829311104182,
+    "ratio": 0.026204364159736513
+   }
+  },
+  "R": {
+   "all4": 38.161582319044335,
+   "lead_pair": 1.8130525967673365,
+   "raw": 38.161582319044335
+  },
+  "ll_ref": -1961.7500726606556,
+  "ll_new": -1956.3349841006857,
+  "ll_by_start": {
+   "mle_stage": -1956.3349841006857,
+   "warm": -1956.3349841008771
+  },
+  "delta_total": 5.415088559969945,
+  "delta_nats": 0.017812791315690607,
+  "labels": {
+   "all4": "flag",
+   "lead_pair": "flag",
+   "raw": "flag"
+  },
+  "g0": {
+   "status": "ok",
+   "g0": 0.0,
+   "below_start": false,
+   "theta": [
+    0.0008579307799090451,
+    1.3762978120404292,
+    0.09041066797772547,
+    0.0010094340144849727
+   ],
+   "ll_ref": -1974.748240129554,
+   "ll_warm": -1974.748240129554,
+   "cpu_s": 4.479883999999856
+  },
+  "cost": {
+   "cpu_s": 99.9851190000004,
+   "share_of_fit": 0.03896408234682799
+  }
+ },
+ "fit_cpu_s": 2566.084275,
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.0",
+  "lock_sha256": "e6437e3ea03ce4752f48806c21041cc02b3a444ba7836080a7abd14c347d81b0",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": null,
+  "manifest_sha256": null,
+  "panel_commit": "06f889509eb0549c8a444c7d78457fc20436147a"
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "phase": "v033-leverage",
+ "waves": [
+  {
+   "element_cpu_s": 4162.3,
+   "elements_cpu_s": 4131.545064,
+   "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+   "job_id": "669928",
+   "lsf_cpu_s": 4162.3,
+   "missing": [],
+   "n": 9,
+   "states": {
+    "DONE": 9
+   },
+   "wave": 1
+  },
+  {
+   "element_cpu_s": 4690.5,
+   "elements_cpu_s": 4658.920457,
+   "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+   "job_id": "672173",
+   "lsf_cpu_s": 4690.5,
+   "missing": [],
+   "n": 6,
+   "states": {
+    "DONE": 6
+   },
+   "wave": 2
+  },
+  {
+   "element_cpu_s": 4104.1,
+   "elements_cpu_s": 4071.84656,
+   "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+   "job_id": "675423",
+   "lsf_cpu_s": 4104.1,
+   "missing": [],
+   "n": 5,
+   "states": {
+    "DONE": 5
+   },
+   "wave": 3
+  },
+  {
+   "element_cpu_s": 3017.9,
+   "elements_cpu_s": 3002.4042600000002,
+   "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+   "job_id": "678736",
+   "lsf_cpu_s": 3017.9,
+   "missing": [],
+   "n": 4,
+   "states": {
+    "DONE": 4
+   },
+   "wave": 4
+  },
+  {
+   "element_cpu_s": 1786.8,
+   "elements_cpu_s": 1779.719987,
+   "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+   "job_id": "679398",
+   "lsf_cpu_s": 1786.8,
+   "missing": [],
+   "n": 2,
+   "states": {
+    "DONE": 2
+   },
+   "wave": 5
+  },
+  {
+   "element_cpu_s": 10944.0,
+   "head": "966bbe770602c9ecea250e7e5f76004443ad6e20",
+   "job_id": null,
+   "n": 0,
+   "note": "R-9's control on the Mac (in itp_control or itp-late; nothing printed), stopped by hand at the cell's 8 CPU-h cap, 2026-11-11 17:57; the CPU is the driver's ps TIME (FR-020: a failed attempt counts); no row",
+   "wave": "r9_control",
+   "where": "mac"
+  },
+  {
+   "element_cpu_s": 1754.902384,
+   "head": "e694cbc",
+   "job_id": null,
+   "n": 0,
+   "note": "2026-11-14: a mistaken re-run of the ITP pilot (--dev --resume routed to phase_v033_pilot); it repeated T054's fit (not_assessed, fit 1,696 CPU-s). Charged to the cell (FR-020); no row",
+   "wave": "itp_pilot_rerun",
+   "where": "mac"
+  }
+ ]
+}

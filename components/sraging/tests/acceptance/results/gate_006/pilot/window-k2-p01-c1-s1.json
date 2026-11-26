@@ -1,0 +1,133 @@
+{
+ "cell": "pilot",
+ "claims": [
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 0.00018968223998034017,
+   "n_components": 1,
+   "parameter": "eta",
+   "point": 0.00019141511224728228,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "beta",
+   "point": null,
+   "scored": true,
+   "shape": "none",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "only a lower bound is supported by the data; the upper side is not constrained inside the prior box",
+   "label_info": null,
+   "level": 0.95,
+   "lower": 7.261106196236112e-05,
+   "n_components": 1,
+   "parameter": "epsilon",
+   "point": 8.158628414330821e-05,
+   "scored": true,
+   "shape": "lower_bound",
+   "upper": null,
+   "widening": null
+  },
+  {
+   "decline_reason": null,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "label_info": null,
+   "level": 0.95,
+   "lower": null,
+   "n_components": 1,
+   "parameter": "kappa",
+   "point": null,
+   "scored": true,
+   "shape": "none",
+   "upper": null,
+   "widening": null
+  }
+ ],
+ "cluster": "k2|b0.1|e0.00794328",
+ "cohort_id": "window-k2-p01-c1-s1",
+ "combinations": {
+  "combination_claims_contradicted": [],
+  "cost_s": 1485.188415271,
+  "evals": 14236,
+  "fit_cost_s": 661.5064474970001,
+  "lead_group": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "mode": "lead",
+  "on": true,
+  "order": [
+   "eta_over_eps",
+   "rbar_over_eta"
+  ],
+  "order_source": "measured (tests/acceptance/results/order_003.json (run at 12264a1, committed 8d89aac))",
+  "param_claims_contradicted": [],
+  "ratio_to_fit": 2.2451609064290112
+ },
+ "cpu_model": "AMD EPYC 7702 64-Core Processor",
+ "element_cpu_s": 2271.818515,
+ "fit_cpu_s": 661.5064474970001,
+ "head": "7398c326e02af3339daf41cfb425a0fbd3743771",
+ "host": "cn651.wexac.weizmann.ac.il",
+ "kappa_true": 2.0,
+ "leverage_flag": "no_flag",
+ "loglik_hat": -1719.8989054219603,
+ "loglik_truth": -1720.5582955307088,
+ "lsf_index": "1",
+ "lsf_jobid": "613173",
+ "n": 2000,
+ "negligible_labels": [],
+ "status": "ok",
+ "theta_hat": {
+  "beta": 1.0577495662390006e-06,
+  "epsilon": 8.158628414330821e-05,
+  "eta": 0.00019141511224728228,
+  "h_ext": 0.0,
+  "kappa": 4.999561628848932,
+  "time_unit": "input units",
+  "xc": 1.0
+ },
+ "warnings": [
+  "CENSOR_TIE"
+ ],
+ "window": {
+  "S_lo_at_theta_hat": 0.9992739527623028,
+  "hi_mapped_from": null,
+  "hi_rule": null,
+  "hi_used": 100.0,
+  "lo_rule": "on the grid",
+  "min_deaths": 4,
+  "n_censored_above_hi": 92,
+  "n_censored_at_hi_eff": 1026,
+  "n_deaths_censored": 934,
+  "n_deaths_fitted": 973,
+  "n_dropped_below_lo": 1,
+  "n_rows_given": 2000,
+  "n_rows_kept": 1999,
+  "row_map": "the kept rows (age >= lo), in the cohort's order",
+  "rule": "the tester's apply_window, then the frozen snap",
+  "window_eff": [
+   80.0,
+   100.0
+  ],
+  "window_given": [
+   80.0,
+   100.0
+  ]
+ }
+}

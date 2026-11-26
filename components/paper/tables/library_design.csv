@@ -1,0 +1,8 @@
+arm,main,bign,sharp,nladder,library,reference_run,valid_reference_run,invalid_reference_run
+pure,666,22,112,300,1100,688,688,0
+censor,218,22,56,0,296,240,240,0
+hazard,218,22,56,0,296,240,142,98
+window,218,22,52,0,292,240,240,0
+het,218,22,56,0,296,240,142,98
+realfull,106,22,0,0,128,128,92,36
+all,1644,132,332,300,2408,1776,1544,232

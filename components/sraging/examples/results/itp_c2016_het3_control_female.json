@@ -1,0 +1,301 @@
+{
+ "schema": "sraging.fitresult/4",
+ "status": "ok",
+ "cohort": {
+  "name": "itp_c2016_het3_control_female.csv",
+  "n": 304,
+  "n_deaths": 303,
+  "n_censored": 1,
+  "delta": 1.0,
+  "continuous": false
+ },
+ "theta_hat": {
+  "eta": 3.58088451358447e-05,
+  "beta": 0.03168620431375733,
+  "epsilon": 0.002370584208801515,
+  "kappa": 0.0010000000000000002,
+  "xc": 1.0,
+  "h_ext": 0.0,
+  "time_unit": "days",
+  "xc_fixed": true
+ },
+ "theta_labels": {
+  "eta": "two-sided 95% profile-likelihood interval",
+  "beta": "two-sided 95% profile-likelihood interval; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+  "epsilon": "two-sided 95% profile-likelihood interval",
+  "kappa": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target"
+ },
+ "claims": {
+  "eta": {
+   "parameter": "eta",
+   "shape": "closed",
+   "lower": 1.5420839211741994e-05,
+   "upper": 0.0002141072808601319,
+   "point": 3.58088451358447e-05,
+   "level": 0.95,
+   "n_components": 1,
+   "label": "two-sided 95% profile-likelihood interval",
+   "scored": true,
+   "label_info": null,
+   "widening": null,
+   "decline_reason": null
+  },
+  "beta": {
+   "parameter": "beta",
+   "shape": "closed",
+   "lower": 0.010647060346639644,
+   "upper": 132.29171594807895,
+   "point": 0.03168620431375733,
+   "level": 0.95,
+   "n_components": 1,
+   "label": "two-sided 95% profile-likelihood interval; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "scored": true,
+   "label_info": null,
+   "widening": null,
+   "decline_reason": null
+  },
+  "epsilon": {
+   "parameter": "epsilon",
+   "shape": "closed",
+   "lower": 0.0008136078977053877,
+   "upper": 0.015531969432206149,
+   "point": 0.002370584208801515,
+   "level": 0.95,
+   "n_components": 1,
+   "label": "two-sided 95% profile-likelihood interval",
+   "scored": true,
+   "label_info": null,
+   "widening": null,
+   "decline_reason": null
+  },
+  "kappa": {
+   "parameter": "kappa",
+   "shape": "none",
+   "lower": null,
+   "upper": null,
+   "point": null,
+   "level": 0.95,
+   "n_components": 1,
+   "label": "not determined by the data inside the prior box (the profile does not close on either side); the value shown is the fit's representative point, not an estimate; theta-hat for kappa and raw beta is one point on a flat ridge; it depends on the start and the box and is not a regression target",
+   "scored": true,
+   "label_info": null,
+   "widening": null,
+   "decline_reason": null
+  }
+ },
+ "loglik": -1956.3352137306206,
+ "warnings": [],
+ "checks": [
+  {
+   "code": "BASIN_GAIN",
+   "ran": true,
+   "fired": false
+  },
+  {
+   "code": "BASIN_OUTSIDE",
+   "ran": true,
+   "fired": false
+  },
+  {
+   "code": "CENSOR_TIE",
+   "ran": true,
+   "fired": false
+  },
+  {
+   "code": "DELTA_GRID",
+   "ran": true,
+   "fired": false
+  },
+  {
+   "code": "BOX_EDGE",
+   "ran": true,
+   "fired": false
+  },
+  {
+   "code": "FLOORED_DEATHS",
+   "ran": true,
+   "fired": false
+  },
+  {
+   "code": "AGE0_DEATHS",
+   "ran": true,
+   "fired": false
+  }
+ ],
+ "diagnostics": {
+  "verdicts": {
+   "eta": "identified",
+   "beta": "identified",
+   "epsilon": "identified",
+   "kappa": "flat"
+  },
+  "n_profile": 11,
+  "grid": {
+   "eta": {
+    "recentred": false,
+    "down": "dev_stop",
+    "up": "dev_stop",
+    "n_nodes": 23,
+    "n_violations": 2,
+    "n_repaired": 2
+   },
+   "beta": {
+    "recentred": false,
+    "down": "dev_stop",
+    "up": "box_edge",
+    "n_nodes": 21,
+    "n_violations": 0,
+    "n_repaired": 0
+   },
+   "epsilon": {
+    "recentred": false,
+    "down": "dev_stop",
+    "up": "dev_stop",
+    "n_nodes": 15,
+    "n_violations": 0,
+    "n_repaired": 0
+   },
+   "kappa": {
+    "recentred": false,
+    "down": "box_edge",
+    "up": "box_edge",
+    "n_nodes": 8,
+    "n_violations": 0,
+    "n_repaired": 0
+   }
+  },
+  "n_eval": 0,
+  "n_grad": 8929,
+  "compile_s": 0.7378912498243153,
+  "seed_s": 31.683694957755506,
+  "mle_s": 49.10811479203403,
+  "solver": {
+   "N": 900,
+   "dt": 0.0003831620814843195,
+   "tau_max": 2.0,
+   "Gtol": 1e-11,
+   "scheme": "bdf2",
+   "sampling_dt": 1.0
+  },
+  "polish": true,
+  "n_f": 0,
+  "n_g": 8929,
+  "n_f_calls": 0,
+  "n_g_calls": 14816,
+  "n_fallback": 0,
+  "n_fallback_improved": 0,
+  "n_alt_start": 0,
+  "n_restart": 41,
+  "n_restart_won": 15,
+  "n_restart_skipped": 9,
+  "n_restart_deferred": 3,
+  "n_restart_plateau": 2,
+  "n_polish": 37,
+  "n_polish_improved": 3,
+  "n_polish_moved": 1,
+  "n_polish_extend": 0,
+  "p1_rejections": 13,
+  "loglik": -1956.3352137306206,
+  "dt_ceiling": 0.0003831620814843195,
+  "code": "sraging 0.1.0 @ 20dbefce201a; numerics v033; calibrator profile_v033@0.3.3",
+  "floor_report": {
+   "deaths": [],
+   "counts": {
+    "horizon": 0,
+    "impossible": 0,
+    "grid": 0,
+    "cancellation": 0
+   },
+   "grad_v1_at_theta_hat": {
+    "eta": -0.0018892157561605969,
+    "beta": 0.0009698541540132112,
+    "epsilon": 0.00044457360434996566,
+    "kappa": -0.0015051161952286118
+   },
+   "grid": {
+    "policy": "v033",
+    "policy_version": 1,
+    "L": 869.9538640202702,
+    "N": 900,
+    "tau_max": 2.0,
+    "Gtol": 1e-11,
+    "scheme": "bdf2",
+    "nstart": 20,
+    "dt_ceiling": 0.0003831620814843195,
+    "nsteps": 5219,
+    "mesh": {
+     "kind": "uniform",
+     "dt": 0.0003831620814843195
+    }
+   },
+   "refinement": {
+    "N": 900,
+    "steps": [],
+    "refine_max": 6,
+    "budget_node_steps": 4000000000.0
+   },
+   "rules": {
+    "list_nats": 1.0,
+    "candidate_mass": 1e-12,
+    "impossible_mass": 1e-12
+   },
+   "cost_s": 4.516165000000001
+  }
+ },
+ "timing": {
+  "wall_s": 1760.6990185417235,
+  "cpu_s": 1732.2898910000001,
+  "compile_s": 0.7378912498243153,
+  "seed_s": 31.683694957755506,
+  "mle_s": 49.10811479203403
+ },
+ "provenance": {
+  "package": {
+   "version": "0.1.0",
+   "git_sha": "20dbefce201afc8842b95512acb2917ac4bdd544",
+   "dirty": false
+  },
+  "numerics": "v033",
+  "calibrator": {
+   "name": "profile_v033",
+   "version": "0.3.3"
+  },
+  "engine": "fp",
+  "grid": {
+   "N": 900,
+   "dt": 0.0003831620814843195,
+   "tau_max": 2.0,
+   "Gtol": 1e-11,
+   "scheme": "bdf2",
+   "sampling_dt": 1.0,
+   "L_km": 869.9538640202702,
+   "dt_ceiling": 0.0003831620814843195
+  },
+  "prng": "none (deterministic path)",
+  "runtime": {
+   "x64": true,
+   "pjrt_nproc": "1",
+   "pjrt_nproc_before": null,
+   "backend_preinitialized": false
+  },
+  "libraries": {
+   "python": "3.14.6",
+   "numpy": "2.4.3",
+   "scipy": "1.17.1",
+   "jax": "0.11.1",
+   "jaxlib": "0.11.1"
+  },
+  "host": {
+   "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+   "machine": "arm64",
+   "node": "MC06268844"
+  },
+  "created_at": "2026-10-04T11:24:57Z",
+  "upgraded_from": "sraging.fitresult/3"
+ },
+ "nuisance": null,
+ "mechanisms": null,
+ "gap_nats": null,
+ "archive_points": null,
+ "combinations": null
+}

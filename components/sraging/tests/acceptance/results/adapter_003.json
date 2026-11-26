@@ -1,0 +1,335 @@
+{
+ "phase": "adapter",
+ "written_at": "2026-10-06T12:56:13Z",
+ "repo_head": "10d12cefef548d49768d9adf5a4848b14bec5707",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003.toml": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "a6f1e8373128f9daaadf26196699248857c3754c"
+ },
+ "wall_s": 6.335916042327881,
+ "cpu_s": 4.903473,
+ "status": "pass",
+ "methods": {
+  "jax2": {
+   "n": 30,
+   "invalid": [],
+   "claims_unequal": [],
+   "scores": {
+    "eta": {
+     "port": {
+      "closed": {
+       "hits": 28,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 28,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    },
+    "beta": {
+     "port": {
+      "closed": {
+       "hits": 1,
+       "claimed": 4,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 26,
+       "claimed": 26,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 1,
+       "claimed": 4,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 26,
+       "claimed": 26,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    },
+    "epsilon": {
+     "port": {
+      "closed": {
+       "hits": 27,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 27,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    },
+    "kappa": {
+     "port": {
+      "closed": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 2,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 2,
+       "declined": 28,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    }
+   },
+   "ok": true
+  },
+  "jax2_h": {
+   "n": 30,
+   "invalid": [],
+   "claims_unequal": [],
+   "scores": {
+    "eta": {
+     "port": {
+      "closed": {
+       "hits": 26,
+       "claimed": 27,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 1,
+       "claimed": 2,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 26,
+       "claimed": 27,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 1,
+       "claimed": 2,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    },
+    "beta": {
+     "port": {
+      "closed": {
+       "hits": 1,
+       "claimed": 1,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 27,
+       "claimed": 28,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 1,
+       "claimed": 1,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 27,
+       "claimed": 28,
+       "declined": 1,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    },
+    "epsilon": {
+     "port": {
+      "closed": {
+       "hits": 27,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 27,
+       "claimed": 30,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 0,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    },
+    "kappa": {
+     "port": {
+      "closed": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 29,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 1,
+       "declined": 29,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "oracle": {
+      "closed": {
+       "hits": 0,
+       "claimed": 0,
+       "declined": 29,
+       "failed": 0,
+       "total": 30
+      },
+      "one_sided": {
+       "hits": 0,
+       "claimed": 1,
+       "declined": 29,
+       "failed": 0,
+       "total": 30
+      }
+     },
+     "equal": true
+    }
+   },
+   "ok": true
+  }
+ },
+ "adapter_tester": {
+  "root": "/Users/navehr/code/sraging/.cache/j2_5578de2",
+  "head": "5578de259eb2165d5fbb0823b8f1c81b0216238f",
+  "clean": true,
+  "library_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2/data/library/v2",
+  "library_note": "data files untracked in J2: read from the live checkout, read-only"
+ },
+ "oracle_side": "frozen method's claimset() on the oracle's claims (oracle_claimset)",
+ "fits_result": {
+  "repo_head": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b",
+  "status": "fail"
+ }
+}

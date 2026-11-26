@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Cite the preprint for the methods and the Zenodo version DOI of this release for the code and data you used."
+title: "sr-calibration: code, frozen calibrators, tests and benchmark for calibrating the saturating-removal model of aging from survival data"
+version: "0.1.0"
+repository-code: "https://github.com/NavehRaz/sr-calibration"
+authors:
+  - family-names: Raz
+    given-names: Naveh
+    affiliation: "Department of Molecular Cell Biology, Weizmann Institute of Science"
+  - family-names: Mayo
+    given-names: Avi
+    affiliation: "Department of Molecular Cell Biology, Weizmann Institute of Science"
+  - family-names: Alon
+    given-names: Uri
+    affiliation: "Department of Molecular Cell Biology, Weizmann Institute of Science"
+license: BSD-3-Clause
+# doi: TBD (Zenodo version DOI, filled at release)
+# preferred-citation: the methods preprint (filled when posted)

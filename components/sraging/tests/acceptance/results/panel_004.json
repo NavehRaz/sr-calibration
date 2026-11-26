@@ -1,0 +1,70 @@
+{
+ "phase": "panel",
+ "written_at": "2026-10-29T15:24:44Z",
+ "repo_head": "c9cb9ef085cbf4129cdc9095d996c82f7385e57c",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_004.toml": "c9cb9ef085cbf4129cdc9095d996c82f7385e57c",
+  "tests/acceptance/panel_004_ids.tsv": "c9cb9ef085cbf4129cdc9095d996c82f7385e57c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 79.34879994392395,
+ "cpu_s": 157.236369,
+ "status": "pass",
+ "differences": [],
+ "counts": {
+  "syn-broad": 4,
+  "syn-mid": 4,
+  "syn-sharp": 4,
+  "real-lo-r": 6,
+  "real-hi-r": 6,
+  "human-10k": 4,
+  "human-25k": 4,
+  "human-100k": 4,
+  "realfull": 4
+ },
+ "rows": 40,
+ "ids_sha256": "23328a8e2bfe6ed5425291a8dd028eb93251692a51440ac3c34fa55ce0dfcdfd",
+ "cap": {
+  "key": "panel",
+  "frozen_cpu_h": 0.1,
+  "spent_by": {},
+  "left_cpu_h": 0.1
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/panel_004.toml": "631faceaf1b69a5dfd28e515d2c3188745b9373af149827d6bd383f32dbb4f2c",
+  "tests/acceptance/panel_004_ids.tsv": "23328a8e2bfe6ed5425291a8dd028eb93251692a51440ac3c34fa55ce0dfcdfd"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.07377777777777779,
+  "projected_from": "332 candidates x 0.8 CPU-s",
+  "cap_cpu_h": 0.1,
+  "cap_frozen_cpu_h": 0.1,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.04362024472222222,
+  "parent_cpu_s": 157.032894,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

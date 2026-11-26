@@ -1,0 +1,39 @@
+\subsection{Leverage check}\label{sec:val-leverage}
+
+\paragraph{The rule.} After each fit the calibrator ranks the individuals by the first-order shift that dropping them would
+cause in $\log\eta$, $\log\eps$, $\log(\eta/\eps)$ and $\log(\beta\rbar/\eta)$, refits the cohort without the top-ranked individual
+(twice: the calibrator's own first fitting stage, and the optimiser started at the reported estimate), and compares the
+refit with the reported estimate on the reduced cohort's own likelihood. The cohort is flagged when one of the four quantities
+moves by more than $1.5\times$ \emph{and} the refit gains more than $1.92$ nats, the one-parameter $95\,\%$ threshold. A
+larger move at a smaller gain is reported as a slide along a flat likelihood ridge, not a flag. The check never changes the
+estimate or the intervals. % src: sraging docs/algorithms/sections/leverage.tex; leverage_rule.py
+
+\paragraph{Nulls.} If no individual is influential, the check should not flag. It flagged none of \C{lev-null-heldout-n}
+held-out cohorts of the benchmark library ($n=\C{lev-heldout-size}$), none of \C{lev-null-smalln-n} small cohorts ($n=\C{lev-smalln-size}$),
+and none of \C{lev-null-twins-n} twin cohorts, \C{lev-null-heldout-flags}, \C{lev-null-smalln-flags} and
+\C{lev-null-twins-flags} flags; the exact binomial one-sided $95\,\%$ upper bounds on the false-flag rate are
+\C{lev-null-heldout-ub}\,\%, \C{lev-null-smalln-ub}\,\% and \C{lev-null-twins-ub}\,\%. A pilot panel of \C{lev-p3-n} cohorts of \C{lev-p3-nmin} to
+\C{lev-p3-nmax} individuals also gave \C{lev-p3-flags} false flags. The size of the null is what limits these bounds: with
+\C{lev-null-heldout-n} cohorts the rate cannot be shown to be below about a fifth. The second criterion is
+needed. Dropping one individual moved one of the four quantities by more than $1.5\times$ on \C{lev-null-slide-heldout} of the
+\C{lev-null-heldout-n} held-out cohorts and on \C{lev-null-slide-smalln} of the \C{lev-null-smalln-n} small cohorts, with a likelihood gain below $1.92$ nats: a move along a flat ridge, not influence. In the pilot panel these slides were all
+moves of the removal combination $\beta\rbar/\eta$, which is where the ridge acts.% src: leverage.tex, evidence
+
+\paragraph{Planted individuals.} To measure power, a single death was added to simulated cohorts. A death at age zero, which
+the model assigns negligible probability, was flagged in \C{lev-age0-detected-n100} of \C{lev-age0-reps} replicates at
+$n=100$, \C{lev-age0-detected-n300} of \C{lev-age0-reps} at $n=300$ and \C{lev-age0-detected-n1000} of \C{lev-age0-reps} at $n=1000$.
+A planted death late in life, which moves the fit less, was flagged in \C{lev-late-detected-n100}, \C{lev-late-detected-n300} and
+\C{lev-late-detected-n1000} of \C{lev-age0-reps} at the same sizes, so the power for a late individual is not monotone in $n$ in
+this small experiment.
+
+\paragraph{Overhead.} On the pilot panel the check added a median of \C{lev-overhead-median}\,\% to the fit's CPU time
+(ninetieth percentile \C{lev-overhead-p90}\,\%).
+
+\paragraph{Limits.} The check runs in the released calibrator both without (J) and with an external hazard (H), but its error rates were measured
+for J only, on cohorts simulated from the model, and not separately on cohorts in which removal is strongly identified. (i) It drops one individual, so a cluster of similar early deaths acting together is not seen:
+removing one of them moves nothing while the others remain. (ii) Its error rates are measured on a few dozen cohorts at the sizes above;
+the ratio $1.5$ is a convention that was measured, not calibrated. (iii) On very large human cohorts with parameters at the
+edge of the search box the refit cannot move from the reported estimate, and the check returns ``not assessed''.
+(iv) The convergence of the refit could be checked for only \C{lev-smalln-measured} of the \C{lev-null-smalln-n} small null cohorts,
+because the stored acceptance records of the rest do not hold the estimate. % src: sraging tests/acceptance/results/lev_small_n_003g.json
+It checks fits of single cohorts; the effect fits of Section~\ref{sec:effects} (a multiplier within a pair of groups) have no drop-one check and are outside its evidence.

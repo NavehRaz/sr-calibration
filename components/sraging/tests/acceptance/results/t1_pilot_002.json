@@ -1,0 +1,166 @@
+{
+ "phase": "t1-pilot",
+ "written_at": "2026-10-03T21:28:09Z",
+ "repo_head": "1cedba05dfdba80886475c6f594ece86b1ca0635",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_002_t1.toml": "1cedba05dfdba80886475c6f594ece86b1ca0635"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "head": "dbe504a91a34ffe6656f5a662e1a33a6cbecba09"
+ },
+ "wall_s": 10.565754890441895,
+ "cpu_s": 7.828123000000001,
+ "status": "measured",
+ "cohorts": [
+  "pure-k0.01-p01-c0-s0",
+  "hazard-k0.01-p01-c0-s0",
+  "het-k0.01-p01-c0-s0",
+  "censor-k0.01-p01-c0-s0",
+  "window-k0.01-p01-c0-s0",
+  "realfull-real-mice_M-c0-s0",
+  "realfull-real-Denmark_M_1900_homo-c0-s0"
+ ],
+ "margin": 4.0,
+ "c": 5.734677885573692,
+ "f": 1171.824712159285,
+ "n_stiff": 2,
+ "rows": [
+  {
+   "cohort": "pure-k0.01-p01-c0-s0",
+   "scheme": "bdf2",
+   "K": 25.56473768173465,
+   "max_dS": 1.4099832412739488e-14,
+   "ulps": 63.5,
+   "ratio_uK": 2.4838901455018303,
+   "excess_ulps": 26.84861604151596
+  },
+  {
+   "cohort": "pure-k0.01-p01-c0-s0",
+   "scheme": "be",
+   "K": 25.56473768173465,
+   "max_dS": 1.3766765505351941e-14,
+   "ulps": 62.0,
+   "ratio_uK": 2.4252155751356455,
+   "excess_ulps": 25.34861604151596
+  },
+  {
+   "cohort": "hazard-k0.01-p01-c0-s0",
+   "scheme": "bdf2",
+   "K": 20.687206693430863,
+   "max_dS": 6.328271240363392e-15,
+   "ulps": 28.5,
+   "ratio_uK": 1.3776630369845948,
+   "excess_ulps": 0.0
+  },
+  {
+   "cohort": "hazard-k0.01-p01-c0-s0",
+   "scheme": "be",
+   "K": 20.687206693430863,
+   "max_dS": 4.884981308350689e-15,
+   "ulps": 22.0,
+   "ratio_uK": 1.0634591864442486,
+   "excess_ulps": 0.0
+  },
+  {
+   "cohort": "het-k0.01-p01-c0-s0",
+   "scheme": "bdf2",
+   "K": 25.496441464285112,
+   "max_dS": 2.142730437526552e-14,
+   "ulps": 96.5,
+   "ratio_uK": 3.7848419017679467,
+   "excess_ulps": 59.94653024348501
+  },
+  {
+   "cohort": "het-k0.01-p01-c0-s0",
+   "scheme": "be",
+   "K": 25.496441464285112,
+   "max_dS": 1.3322676295501878e-14,
+   "ulps": 60.0,
+   "ratio_uK": 2.3532695762287754,
+   "excess_ulps": 23.446530243485007
+  },
+  {
+   "cohort": "censor-k0.01-p01-c0-s0",
+   "scheme": "bdf2",
+   "K": 25.378206847234328,
+   "max_dS": 1.865174681370263e-14,
+   "ulps": 84.0,
+   "ratio_uK": 3.309926524976455,
+   "excess_ulps": 47.61603960441261
+  },
+  {
+   "cohort": "censor-k0.01-p01-c0-s0",
+   "scheme": "be",
+   "K": 25.378206847234328,
+   "max_dS": 1.454392162258955e-14,
+   "ulps": 65.5,
+   "ratio_uK": 2.580954611737593,
+   "excess_ulps": 29.116039604412613
+  },
+  {
+   "cohort": "window-k0.01-p01-c0-s0",
+   "scheme": "bdf2",
+   "K": 25.728883345087873,
+   "max_dS": 5.662137425588298e-15,
+   "ulps": 25.5,
+   "ratio_uK": 0.9911040311381578,
+   "excess_ulps": 0.0
+  },
+  {
+   "cohort": "window-k0.01-p01-c0-s0",
+   "scheme": "be",
+   "K": 25.728883345087873,
+   "max_dS": 8.215650382226158e-15,
+   "ulps": 37.0,
+   "ratio_uK": 1.4380725157690917,
+   "excess_ulps": 0.11328541510482637
+  },
+  {
+   "cohort": "realfull-real-mice_M-c0-s0",
+   "scheme": "bdf2",
+   "K": 193.58982491998398,
+   "max_dS": 1.2667644710973036e-13,
+   "ulps": 570.5,
+   "ratio_uK": 2.946952404320854,
+   "excess_ulps": 292.9561780398212
+  },
+  {
+   "cohort": "realfull-real-mice_M-c0-s0",
+   "scheme": "be",
+   "K": 193.58982491998398,
+   "max_dS": 1.0091927293842673e-13,
+   "ulps": 454.5,
+   "ratio_uK": 2.34774735804352,
+   "excess_ulps": 176.95617803982122
+  },
+  {
+   "cohort": "realfull-real-Denmark_M_1900_homo-c0-s0",
+   "scheme": "bdf2",
+   "K": 11770904.895950774,
+   "max_dS": 3.3060805204598864e-09,
+   "ulps": 14889263.0,
+   "ratio_uK": 1.264920847769482,
+   "excess_ulps": 0.0
+  },
+  {
+   "cohort": "realfull-real-Denmark_M_1900_homo-c0-s0",
+   "scheme": "be",
+   "K": 11770904.895950774,
+   "max_dS": 3.747133048292994e-09,
+   "ulps": 16875587.0,
+   "ratio_uK": 1.433669471393423,
+   "excess_ulps": 0.0
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+run,cpu_model,count,cpu_median_s
+jax2-v6-full-bign,Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz,627,1307.5
+jax2-v6-full-bign,AMD EPYC 9754 128-Core Processor,469,828.3
+jax2-v6-full-bign,Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz,343,1185.3
+jax2-v6-full-bign,AMD EPYC 9634 84-Core Processor,309,1197.1
+jax2-v6-full-bign,Intel(R) Xeon(R) Gold 6438Y+,28,1417.1
+jax2h-v6-full-bign,AMD EPYC 9754 128-Core Processor,639,1763.7
+jax2h-v6-full-bign,Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz,486,2521.3
+jax2h-v6-full-bign,Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz,315,3204.1
+jax2h-v6-full-bign,AMD EPYC 9634 84-Core Processor,298,2401.0
+jax2h-v6-full-bign,Intel(R) Xeon(R) Gold 6438Y+,38,3298.2
+jax2-v6-all-groups,AMD EPYC 9754 128-Core Processor,779,910.7
+jax2-v6-all-groups,Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz,751,1466.2
+jax2-v6-all-groups,Intel(R) Xeon(R) Gold 6230R CPU @ 2.10GHz,465,1179.8
+jax2-v6-all-groups,AMD EPYC 9634 84-Core Processor,381,1249.1
+jax2-v6-all-groups,Intel(R) Xeon(R) Gold 6438Y+,29,1433.2

@@ -1,0 +1,2160 @@
+{
+ "phase": "retest-score",
+ "written_at": "2026-10-15T11:00:35Z",
+ "repo_head": "8971b2805f43417e7b62375388b1a952e91ce1b0",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "4146e03bb56d0e3183663731917530a2cd53625c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "63c92820e6a34aabd658529cb05af060d943f110"
+ },
+ "wall_s": 0.16098523139953613,
+ "cpu_s": 0.04902300000000004,
+ "status": "underpowered",
+ "problems": [],
+ "read_as": "a finding about the calibrator (SC-011), not a gate on the generator",
+ "losses": [],
+ "underpowered": [
+  [
+   "profile_jax2|censor",
+   "rbar_over_eta",
+   "vs_eta",
+   [
+    "5 paired cells < 30",
+    "3 clusters < 10"
+   ]
+  ],
+  [
+   "profile_jax2|censor",
+   "rbar_over_eta",
+   "vs_epsilon",
+   [
+    "8 paired cells < 30",
+    "4 clusters < 10"
+   ]
+  ]
+ ],
+ "quantities": [
+  "eta_over_eps",
+  "rbar_over_eta",
+  "sqrt_eta_over_eps"
+ ],
+ "cell": {
+  "n": 55,
+  "n_informative": 55,
+  "n_failed": 0
+ },
+ "scores": {
+  "eta_over_eps": {
+   "closed_coverage": 0.9767441860465116,
+   "closed_n": 43,
+   "wilson95": [
+    0.8794100655939282,
+    0.9958829127256662
+   ],
+   "decline_rate": 0.0,
+   "failure_rate": 0.0,
+   "shape_mix": {
+    "closed": 54,
+    "upper_bound": 1,
+    "lower_bound": 0,
+    "none": 0,
+    "failed": 0
+   },
+   "box_limited_n": 11,
+   "labels": {
+    "box_limited": 11,
+    "negligible": 0,
+    "saturated": 0,
+    "widened": 0
+   },
+   "one_sided_coverage": 1.0,
+   "one_sided_n": 1,
+   "widened": {
+    "n": 0
+   },
+   "label_rates": {
+    "box_limited": 0.2,
+    "negligible": 0.0,
+    "saturated": 0.0,
+    "widened": 0.0
+   },
+   "upper_bound_dex_inside_null": 14.23853194058855,
+   "closed_median_width_dex": 0.2865158262776132,
+   "null_width_dex": 30.0,
+   "gate": {
+    "vs_eta": {
+     "mean_difference": 0.02564102564102564,
+     "se": 0.025155984838539105,
+     "z": 1.0192813283041675,
+     "ci_lo": -0.023663798638146653,
+     "ci_hi": 0.07494584992019793,
+     "n_cells": 39,
+     "n_clusters": 12,
+     "outcome": "no difference",
+     "verdict": "no loss",
+     "reasons": [],
+     "margin": null,
+     "margin_source": "Naveh 2026-10-05"
+    },
+    "vs_epsilon": {
+     "mean_difference": 0.02631578947368421,
+     "se": 0.02560610590388814,
+     "z": 1.0277154039923075,
+     "ci_lo": -0.023871255882254992,
+     "ci_hi": 0.07650283482962342,
+     "n_cells": 38,
+     "n_clusters": 13,
+     "outcome": "no difference",
+     "verdict": "no loss",
+     "reasons": [],
+     "margin": null,
+     "margin_source": "Naveh 2026-10-05"
+    },
+    "verdict": "no loss"
+   },
+   "axes": {
+    "vs_eta": {
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "a": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      },
+      "b": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      }
+     },
+     "information": {
+      "outcome": "wins",
+      "statistic": -0.5772353272648589,
+      "median_dex": [
+       0.2865158262776132,
+       0.8637511535424721
+      ],
+      "closed_share": {
+       "a": 0.9818181818181818,
+       "b": 0.9090909090909091
+      },
+      "n_widths": [
+       54,
+       50
+      ]
+     }
+    },
+    "vs_epsilon": {
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "a": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      },
+      "b": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      }
+     },
+     "information": {
+      "outcome": "wins",
+      "statistic": -0.7909734316264255,
+      "median_dex": [
+       0.2865158262776132,
+       1.0774892579040387
+      ],
+      "closed_share": {
+       "a": 0.9818181818181818,
+       "b": 1.0
+      },
+      "n_widths": [
+       54,
+       55
+      ]
+     }
+    },
+    "gating": false,
+    "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+   }
+  },
+  "rbar_over_eta": {
+   "closed_coverage": 0.25,
+   "closed_n": 8,
+   "wilson95": [
+    0.071479212752109,
+    0.5907245696898311
+   ],
+   "decline_rate": 0.05454545454545454,
+   "failure_rate": 0.0,
+   "shape_mix": {
+    "closed": 8,
+    "upper_bound": 44,
+    "lower_bound": 0,
+    "none": 3,
+    "failed": 0
+   },
+   "box_limited_n": 19,
+   "labels": {
+    "box_limited": 19,
+    "negligible": 0,
+    "saturated": 0,
+    "widened": 0
+   },
+   "one_sided_coverage": 1.0,
+   "one_sided_n": 25,
+   "widened": {
+    "n": 0
+   },
+   "label_rates": {
+    "box_limited": 0.34545454545454546,
+    "negligible": 0.0,
+    "saturated": 0.0,
+    "widened": 0.0
+   },
+   "upper_bound_dex_inside_null": 13.23102653745153,
+   "closed_median_width_dex": 0.4650748862697991,
+   "null_width_dex": 32.77610416477645,
+   "negligible": {
+    "labelled": 0,
+    "costly_errors": 0,
+    "costly_error_rate": null,
+    "truths_above_3x_floor": 2,
+    "labelled_rate_among_truths_above_3x": 0.0,
+    "labelled_without_floor": 0,
+    "floor_mismatch": 0,
+    "x": 3.0
+   },
+   "gate": {
+    "vs_eta": {
+     "mean_difference": 0.0,
+     "se": 0.0,
+     "z": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.0,
+     "n_cells": 5,
+     "n_clusters": 3,
+     "outcome": "no difference",
+     "verdict": "underpowered",
+     "reasons": [
+      "5 paired cells < 30",
+      "3 clusters < 10"
+     ],
+     "margin": null,
+     "margin_source": "Naveh 2026-10-05"
+    },
+    "vs_epsilon": {
+     "mean_difference": -0.25,
+     "se": 0.21650635094610965,
+     "z": -1.1547005383792517,
+     "ci_lo": -0.6743446502785644,
+     "ci_hi": 0.17434465027856438,
+     "n_cells": 8,
+     "n_clusters": 4,
+     "outcome": "no difference",
+     "verdict": "underpowered",
+     "reasons": [
+      "8 paired cells < 30",
+      "4 clusters < 10"
+     ],
+     "margin": null,
+     "margin_source": "Naveh 2026-10-05"
+    },
+    "verdict": "underpowered"
+   },
+   "axes": {
+    "vs_eta": {
+     "availability": {
+      "outcome": "loses",
+      "statistic": 0.05454545454545454,
+      "a": {
+       "total": 55,
+       "answered": 52,
+       "declined": 3,
+       "failed": 0,
+       "decline_rate": 0.05454545454545454,
+       "failure_rate": 0.0
+      },
+      "b": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      }
+     },
+     "information": {
+      "outcome": "loses",
+      "statistic": -0.398676267272673,
+      "median_dex": [
+       0.4650748862697991,
+       0.8637511535424721
+      ],
+      "closed_share": {
+       "a": 0.14545454545454545,
+       "b": 0.9090909090909091
+      },
+      "n_widths": [
+       8,
+       50
+      ]
+     }
+    },
+    "vs_epsilon": {
+     "availability": {
+      "outcome": "loses",
+      "statistic": 0.05454545454545454,
+      "a": {
+       "total": 55,
+       "answered": 52,
+       "declined": 3,
+       "failed": 0,
+       "decline_rate": 0.05454545454545454,
+       "failure_rate": 0.0
+      },
+      "b": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      }
+     },
+     "information": {
+      "outcome": "loses",
+      "statistic": -0.6124143716342396,
+      "median_dex": [
+       0.4650748862697991,
+       1.0774892579040387
+      ],
+      "closed_share": {
+       "a": 0.14545454545454545,
+       "b": 1.0
+      },
+      "n_widths": [
+       8,
+       55
+      ]
+     }
+    },
+    "gating": false,
+    "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+   }
+  },
+  "sqrt_eta_over_eps": {
+   "closed_coverage": 0.9523809523809523,
+   "closed_n": 42,
+   "wilson95": [
+    0.8421014760304114,
+    0.9868424750910944
+   ],
+   "decline_rate": 0.0,
+   "failure_rate": 0.0,
+   "shape_mix": {
+    "closed": 55,
+    "upper_bound": 0,
+    "lower_bound": 0,
+    "none": 0,
+    "failed": 0
+   },
+   "box_limited_n": 13,
+   "labels": {
+    "box_limited": 13,
+    "negligible": 0,
+    "saturated": 0,
+    "widened": 0
+   },
+   "one_sided_coverage": null,
+   "one_sided_n": 0,
+   "widened": {
+    "n": 0
+   },
+   "label_rates": {
+    "box_limited": 0.23636363636363636,
+    "negligible": 0.0,
+    "saturated": 0.0,
+    "widened": 0.0
+   },
+   "upper_bound_dex_inside_null": null,
+   "closed_median_width_dex": 0.6602458556831484,
+   "null_width_dex": 22.5,
+   "gate": {
+    "vs_eta": {
+     "mean_difference": 0.0,
+     "se": 0.0,
+     "z": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.0,
+     "n_cells": 37,
+     "n_clusters": 12,
+     "outcome": "no difference",
+     "verdict": "no loss",
+     "reasons": [],
+     "margin": null,
+     "margin_source": "Naveh 2026-10-05"
+    },
+    "vs_epsilon": {
+     "mean_difference": 0.0,
+     "se": 0.0,
+     "z": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.0,
+     "n_cells": 36,
+     "n_clusters": 13,
+     "outcome": "no difference",
+     "verdict": "no loss",
+     "reasons": [],
+     "margin": null,
+     "margin_source": "Naveh 2026-10-05"
+    },
+    "verdict": "no loss"
+   },
+   "axes": {
+    "vs_eta": {
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "a": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      },
+      "b": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      }
+     },
+     "information": {
+      "outcome": "wins",
+      "statistic": -0.2035052978593237,
+      "median_dex": [
+       0.6602458556831484,
+       0.8637511535424721
+      ],
+      "closed_share": {
+       "a": 1.0,
+       "b": 0.9090909090909091
+      },
+      "n_widths": [
+       55,
+       50
+      ]
+     }
+    },
+    "vs_epsilon": {
+     "availability": {
+      "outcome": "no difference",
+      "statistic": 0.0,
+      "a": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      },
+      "b": {
+       "total": 55,
+       "answered": 55,
+       "declined": 0,
+       "failed": 0,
+       "decline_rate": 0.0,
+       "failure_rate": 0.0
+      }
+     },
+     "information": {
+      "outcome": "wins",
+      "statistic": -0.4172434022208903,
+      "median_dex": [
+       0.6602458556831484,
+       1.0774892579040387
+      ],
+      "closed_share": {
+       "a": 1.0,
+       "b": 1.0
+      },
+      "n_widths": [
+       55,
+       55
+      ]
+     }
+    },
+    "gating": false,
+    "note": "the tester's axes (verdict.py:137-178), reported beside the gate"
+   }
+  },
+  "eta": {
+   "closed_coverage": 0.8913043478260869,
+   "closed_n": 46,
+   "wilson95": [
+    0.7696217135574916,
+    0.9526685414190106
+   ],
+   "decline_rate": 0.0,
+   "failure_rate": 0.0,
+   "shape_mix": {
+    "closed": 50,
+    "upper_bound": 0,
+    "lower_bound": 5,
+    "none": 0,
+    "failed": 0
+   },
+   "box_limited_n": 4,
+   "labels": {
+    "box_limited": 4,
+    "negligible": 0,
+    "saturated": 0,
+    "widened": 3
+   },
+   "one_sided_coverage": 0.8,
+   "one_sided_n": 5,
+   "widened": {
+    "n": 4,
+    "widened": {
+     "n": 4,
+     "coverage": 0.75
+    },
+    "claims_profile": {
+     "n": 4,
+     "coverage": 0.75
+    },
+    "shape_moves": {
+     "closed->closed": 4
+    },
+    "median_width_dex": {
+     "widened": 0.7247180294787385,
+     "claims_profile": 0.5426505451986536
+    },
+    "median_upper_moved_dex": 0.17848416091113592,
+    "median_lower_moved_dex": 0.0
+   },
+   "label_rates": {
+    "box_limited": 0.07272727272727272,
+    "negligible": 0.0,
+    "saturated": 0.0,
+    "widened": 0.05454545454545454
+   }
+  },
+  "epsilon": {
+   "closed_coverage": 0.8958333333333334,
+   "closed_n": 48,
+   "wilson95": [
+    0.7783257830561368,
+    0.9546782809581869
+   ],
+   "decline_rate": 0.0,
+   "failure_rate": 0.0,
+   "shape_mix": {
+    "closed": 55,
+    "upper_bound": 0,
+    "lower_bound": 0,
+    "none": 0,
+    "failed": 0
+   },
+   "box_limited_n": 7,
+   "labels": {
+    "box_limited": 7,
+    "negligible": 0,
+    "saturated": 0,
+    "widened": 4
+   },
+   "one_sided_coverage": null,
+   "one_sided_n": 0,
+   "widened": {
+    "n": 6,
+    "widened": {
+     "n": 6,
+     "coverage": 0.8333333333333334
+    },
+    "claims_profile": {
+     "n": 6,
+     "coverage": 0.8333333333333334
+    },
+    "shape_moves": {
+     "closed->closed": 6
+    },
+    "median_width_dex": {
+     "widened": 0.8596469991700281,
+     "claims_profile": 0.8053316960358194
+    },
+    "median_upper_moved_dex": 0.062371430483610615,
+    "median_lower_moved_dex": 0.0
+   },
+   "label_rates": {
+    "box_limited": 0.12727272727272726,
+    "negligible": 0.0,
+    "saturated": 0.0,
+    "widened": 0.07272727272727272
+   }
+  }
+ },
+ "v2_pairs": {
+  "eta_over_eps": {
+   "pairs": {
+    "censor-k0.01-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s0": [
+     false,
+     true
+    ],
+    "censor-k0.01-p00-c1-s1": [
+     null,
+     true
+    ],
+    "censor-k0.01-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s1": [
+     false,
+     false
+    ],
+    "censor-k0.01-p02-c1-s0": [
+     false,
+     true
+    ],
+    "censor-k0.01-p02-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p05-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.01-p05-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p05-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p05-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p00-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p00-c0-s1": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s0": [
+     false,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s1": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s1": [
+     false,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p05-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c1-s0": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p05-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c0-s0": [
+     false,
+     true
+    ],
+    "censor-k0.1-p00-c0-s1": [
+     true,
+     null
+    ],
+    "censor-k0.1-p00-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c1-s1": [
+     false,
+     true
+    ],
+    "censor-k0.1-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s1": [
+     false,
+     true
+    ],
+    "censor-k0.1-p01-c1-s0": [
+     true,
+     null
+    ]
+   },
+   "v2_miss_new_hit": 7,
+   "v2_hit_new_miss": 0,
+   "both_hit": 31,
+   "both_miss": 1,
+   "like_for_like": true
+  },
+  "rbar_over_eta": {
+   "pairs": {
+    "censor-k0.01-p00-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p00-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p00-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p00-c1-s1": [
+     null,
+     false
+    ],
+    "censor-k0.01-p01-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p01-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p01-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p01-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p02-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p02-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p02-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p02-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p03-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.01-p03-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p03-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p03-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p04-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p04-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p04-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p04-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p05-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p05-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p05-c1-s0": [
+     false,
+     false
+    ],
+    "censor-k0.01-p05-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.0316-p00-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p00-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p00-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p00-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p01-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p01-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p01-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p01-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p02-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p02-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p02-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p02-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p03-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p03-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p03-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p03-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p05-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p05-c1-s0": [
+     null,
+     false
+    ],
+    "censor-k0.0316-p05-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.1-p00-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c1-s0": [
+     false,
+     false
+    ],
+    "censor-k0.1-p00-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.1-p01-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.1-p01-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.1-p01-c1-s0": [
+     null,
+     null
+    ]
+   },
+   "v2_miss_new_hit": 0,
+   "v2_hit_new_miss": 2,
+   "both_hit": 1,
+   "both_miss": 2,
+   "like_for_like": true
+  },
+  "sqrt_eta_over_eps": {
+   "pairs": {
+    "censor-k0.01-p00-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.01-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.01-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s1": [
+     false,
+     false
+    ],
+    "censor-k0.01-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c0-s0": [
+     false,
+     true
+    ],
+    "censor-k0.01-p03-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c0-s1": [
+     true,
+     null
+    ],
+    "censor-k0.01-p04-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p05-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.01-p05-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p05-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.01-p05-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c0-s1": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p00-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s1": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s1": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p03-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p05-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c1-s0": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p05-c1-s1": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p00-c0-s1": [
+     null,
+     true
+    ],
+    "censor-k0.1-p00-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c1-s0": [
+     true,
+     true
+    ]
+   },
+   "v2_miss_new_hit": 1,
+   "v2_hit_new_miss": 1,
+   "both_hit": 36,
+   "both_miss": 1,
+   "like_for_like": false
+  },
+  "eta": {
+   "pairs": {
+    "censor-k0.01-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.01-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s1": [
+     null,
+     false
+    ],
+    "censor-k0.01-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.01-p03-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.01-p03-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p05-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.01-p05-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p05-c1-s0": [
+     true,
+     false
+    ],
+    "censor-k0.01-p05-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.0316-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p02-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c0-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p03-c0-s1": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c1-s0": [
+     false,
+     false
+    ],
+    "censor-k0.0316-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p05-c1-s0": [
+     null,
+     null
+    ],
+    "censor-k0.0316-p05-c1-s1": [
+     true,
+     null
+    ],
+    "censor-k0.1-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p00-c0-s1": [
+     null,
+     null
+    ],
+    "censor-k0.1-p00-c1-s0": [
+     false,
+     null
+    ],
+    "censor-k0.1-p00-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c1-s0": [
+     true,
+     true
+    ]
+   },
+   "v2_miss_new_hit": 0,
+   "v2_hit_new_miss": 3,
+   "both_hit": 39,
+   "both_miss": 1,
+   "like_for_like": true
+  },
+  "epsilon": {
+   "pairs": {
+    "censor-k0.01-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p00-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.01-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.01-p02-c0-s1": [
+     false,
+     false
+    ],
+    "censor-k0.01-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p02-c1-s1": [
+     true,
+     null
+    ],
+    "censor-k0.01-p03-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.01-p03-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p03-c1-s0": [
+     null,
+     true
+    ],
+    "censor-k0.01-p03-c1-s1": [
+     null,
+     true
+    ],
+    "censor-k0.01-p04-c0-s0": [
+     true,
+     null
+    ],
+    "censor-k0.01-p04-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.01-p04-c1-s1": [
+     true,
+     null
+    ],
+    "censor-k0.01-p05-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.01-p05-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.01-p05-c1-s0": [
+     false,
+     false
+    ],
+    "censor-k0.01-p05-c1-s1": [
+     true,
+     false
+    ],
+    "censor-k0.0316-p00-c0-s0": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p00-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p01-c1-s0": [
+     true,
+     null
+    ],
+    "censor-k0.0316-p01-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p02-c1-s1": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p03-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s0": [
+     null,
+     true
+    ],
+    "censor-k0.0316-p03-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p04-c1-s0": [
+     false,
+     null
+    ],
+    "censor-k0.0316-p04-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c1-s0": [
+     true,
+     true
+    ],
+    "censor-k0.0316-p05-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p00-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p00-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p00-c1-s0": [
+     false,
+     false
+    ],
+    "censor-k0.1-p00-c1-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s0": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c0-s1": [
+     true,
+     true
+    ],
+    "censor-k0.1-p01-c1-s0": [
+     true,
+     null
+    ]
+   },
+   "v2_miss_new_hit": 0,
+   "v2_hit_new_miss": 2,
+   "both_hit": 36,
+   "both_miss": 3,
+   "like_for_like": true
+  }
+ },
+ "v2_rows": {
+  "path": ".cache/out/wexac_rows/d903979764194c5b7afa7b048710210c15e9179b",
+  "n_shards": 215,
+  "sha256": "ceb1b4280a3611a8d22f9b49c1082ee90d8d116e6733bb3249fd283e1f85c5e6"
+ },
+ "prediction_vs_observed": [
+  {
+   "name": "censor-k0.01-p00-c0",
+   "ids": [
+    "censor-k0.01-p00-c0-s0",
+    "censor-k0.01-p00-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p00-c1",
+   "ids": [
+    "censor-k0.01-p00-c1-s0",
+    "censor-k0.01-p00-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p01-c0",
+   "ids": [
+    "censor-k0.01-p01-c0-s0",
+    "censor-k0.01-p01-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p01-c1",
+   "ids": [
+    "censor-k0.01-p01-c1-s0",
+    "censor-k0.01-p01-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p02-c0",
+   "ids": [
+    "censor-k0.01-p02-c0-s0",
+    "censor-k0.01-p02-c0-s1"
+   ],
+   "observed": [
+    true,
+    false
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p02-c1",
+   "ids": [
+    "censor-k0.01-p02-c1-s0",
+    "censor-k0.01-p02-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p03-c0",
+   "ids": [
+    "censor-k0.01-p03-c0-s0",
+    "censor-k0.01-p03-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p03-c1",
+   "ids": [
+    "censor-k0.01-p03-c1-s0",
+    "censor-k0.01-p03-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p04-c0",
+   "ids": [
+    "censor-k0.01-p04-c0-s0",
+    "censor-k0.01-p04-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p04-c1",
+   "ids": [
+    "censor-k0.01-p04-c1-s0",
+    "censor-k0.01-p04-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p05-c0",
+   "ids": [
+    "censor-k0.01-p05-c0-s0",
+    "censor-k0.01-p05-c0-s1"
+   ],
+   "observed": [
+    null,
+    null
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.01-p05-c1",
+   "ids": [
+    "censor-k0.01-p05-c1-s0",
+    "censor-k0.01-p05-c1-s1"
+   ],
+   "observed": [
+    null,
+    null
+   ],
+   "predicted_be": true,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p00-c0",
+   "ids": [
+    "censor-k0.0316-p00-c0-s0",
+    "censor-k0.0316-p00-c0-s1"
+   ],
+   "observed": [
+    null,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p00-c1",
+   "ids": [
+    "censor-k0.0316-p00-c1-s0",
+    "censor-k0.0316-p00-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": true,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p01-c0",
+   "ids": [
+    "censor-k0.0316-p01-c0-s0",
+    "censor-k0.0316-p01-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p01-c1",
+   "ids": [
+    "censor-k0.0316-p01-c1-s0",
+    "censor-k0.0316-p01-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p02-c0",
+   "ids": [
+    "censor-k0.0316-p02-c0-s0",
+    "censor-k0.0316-p02-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p02-c1",
+   "ids": [
+    "censor-k0.0316-p02-c1-s0",
+    "censor-k0.0316-p02-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p03-c0",
+   "ids": [
+    "censor-k0.0316-p03-c0-s0",
+    "censor-k0.0316-p03-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p03-c1",
+   "ids": [
+    "censor-k0.0316-p03-c1-s0",
+    "censor-k0.0316-p03-c1-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p04-c0",
+   "ids": [
+    "censor-k0.0316-p04-c0-s0",
+    "censor-k0.0316-p04-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p04-c1",
+   "ids": [
+    "censor-k0.0316-p04-c1-s0",
+    "censor-k0.0316-p04-c1-s1"
+   ],
+   "observed": [
+    null,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p05-c0",
+   "ids": [
+    "censor-k0.0316-p05-c0-s0",
+    "censor-k0.0316-p05-c0-s1"
+   ],
+   "observed": [
+    null,
+    true
+   ],
+   "predicted_be": true,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.0316-p05-c1",
+   "ids": [
+    "censor-k0.0316-p05-c1-s0",
+    "censor-k0.0316-p05-c1-s1"
+   ],
+   "observed": [
+    null,
+    null
+   ],
+   "predicted_be": true,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.1-p00-c0",
+   "ids": [
+    "censor-k0.1-p00-c0-s0",
+    "censor-k0.1-p00-c0-s1"
+   ],
+   "observed": [
+    true,
+    null
+   ],
+   "predicted_be": true,
+   "predicted_gen1": true
+  },
+  {
+   "name": "censor-k0.1-p00-c1",
+   "ids": [
+    "censor-k0.1-p00-c1-s0",
+    "censor-k0.1-p00-c1-s1"
+   ],
+   "observed": [
+    null,
+    true
+   ],
+   "predicted_be": true,
+   "predicted_gen1": true
+  },
+  {
+   "name": "censor-k0.1-p01-c0",
+   "ids": [
+    "censor-k0.1-p01-c0-s0",
+    "censor-k0.1-p01-c0-s1"
+   ],
+   "observed": [
+    true,
+    true
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  },
+  {
+   "name": "censor-k0.1-p01-c1",
+   "ids": [
+    "censor-k0.1-p01-c1-s0"
+   ],
+   "observed": [
+    null
+   ],
+   "predicted_be": false,
+   "predicted_gen1": false
+  }
+ ],
+ "arrays": {
+  "repo_head": "bf0fcad41a140288c2a3e88cf35c169c259d8d3f",
+  "tag": "sraging-gen-1"
+ },
+ "fit_heads": [
+  "196cdea6e3afc9971a40e3a8905cbd7f8dab4d22"
+ ],
+ "fit_hosts": {
+  "n_nodes": 10,
+  "rows_by_cpu": {
+   "AMD EPYC 7702 64-Core Processor": 22,
+   "AMD EPYC 9634 84-Core Processor": 15,
+   "AMD EPYC 9754 128-Core Processor": 18
+  },
+  "rows_without_host": 0
+ },
+ "cost_cpu_s": 401275.979336717
+}

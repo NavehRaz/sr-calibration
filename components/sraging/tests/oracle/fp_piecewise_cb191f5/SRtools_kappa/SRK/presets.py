@@ -1,0 +1,1015 @@
+"""
+This file is used to generate presets for the SR model.
+"""
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+import sys
+import warnings
+import ast
+from . import SR_hetro as srh
+from . import config as _config
+
+# Dictionary mapping aliases to actual preset names
+PRESET_ALIASES = {
+    # Mice aliases
+    'Mice_M': 'mice_M',
+    'mice_m': 'mice_M', 
+    'Mice M': 'mice_M',
+    'mice M': 'mice_M',
+    'mice m': 'mice_M',
+    'male mice': 'mice_M',
+    'Male Mice': 'mice_M',
+    
+    # Female mice aliases
+    'Mice_F': 'mice_F',
+    'mice_f': 'mice_F',
+    'Mice F': 'mice_F', 
+    'mice F': 'mice_F',
+    'mice f': 'mice_F',
+    'female mice': 'mice_F',
+    'Female Mice': 'mice_F',
+    
+    # Cats aliases
+    'cats': 'cats_BPH',
+    'Cats': 'cats_BPH',
+    
+    # Drosophila aliases
+    'drosophila': 'drosophila_441',
+    'Drosophila': 'drosophila_441',
+    'flies': 'drosophila_441',
+    'drosophila melanogaster': 'drosophila_441',
+    'Drosophila Melanogaster': 'drosophila_441',
+    
+    # Human male aliases
+    'humans_M': 'combined_human_M',
+    'Humans M': 'combined_human_M',
+    'Humans_M': 'combined_human_M',
+    'humans male': 'combined_human_M',
+    'Humans Male': 'combined_human_M',
+    'humans_M_combined': 'combined_human_M',
+    
+    # Human female aliases
+    'humans_F': 'combined_human_F',
+    'Humans F': 'combined_human_F',
+    'Humans_F': 'combined_human_F',
+    'humans female': 'combined_human_F',
+    'Humans Female': 'combined_human_F',
+    'humans_F_combined': 'combined_human_F',
+
+    # Denmark male hetro aliases
+    'Denmark_M_1900': 'Denmark_M_1900_hetro',
+    'Denmark_M_1890': 'Denmark_M_1890_hetro',
+
+    # Denmark female hetro aliases
+    'Denmark_F_1900': 'Denmark_F_1900_hetro',
+    'Denmark_F_1890': 'Denmark_F_1890_hetro',
+    
+    # Labrador aliases
+    'Labradors': 'Labradors_vetCompass',
+    'dogs': 'Labradors_vetCompass',
+    'Dogs': 'Labradors_vetCompass',
+    'dog labrador': 'Labradors_vetCompass',
+    'Dog Labrador': 'Labradors_vetCompass',
+
+    # Staffy aliases
+    'Staffy': 'Staffy_vetCompass',
+    'staffy': 'Staffy_vetCompass',
+    'Staffy_vetCompass': 'Staffy_vetCompass',
+    'staffy_vetCompass': 'Staffy_vetCompass',
+    'dog staffy': 'Staffy_vetCompass',
+    'Dog Staffy': 'Staffy_vetCompass',
+    
+    # German Shepherd aliases
+    'German Shepherd': 'GermanShepherd_vetCompass',
+    'German Shepherd_vetCompass': 'GermanShepherd_vetCompass',
+    'german shepherd': 'GermanShepherd_vetCompass',
+    'German Shepherd_vetCompass': 'GermanShepherd_vetCompass',
+    'dog german shepherd': 'GermanShepherd_vetCompass',
+    'Dog German Shepherd': 'GermanShepherd_vetCompass',
+    
+    # Jack Russell aliases
+    'Jack Russell': 'Jack_Russell_vetCompass',
+    'Jack Russell_vetCompass': 'Jack_Russell_vetCompass',
+    'jack russell': 'Jack_Russell_vetCompass',
+    'Jack Russell_vetCompass': 'Jack_Russell_vetCompass',
+    'dog jack russell': 'Jack_Russell_vetCompass',
+    'Dog Jack Russell': 'Jack_Russell_vetCompass',
+
+    # C. elegans aliases
+    'C. elegans': 'celegans',
+    'c. elegans': 'celegans',
+    'Celegans': 'celegans',
+    'celegans': 'celegans',
+    
+    #E. coli aliases
+    'E. coli': 'ecoli',
+    'e. coli': 'ecoli',
+    'Ecoli': 'ecoli',
+    'E coli': 'ecoli',
+
+    #Yeast aliases
+    'Yeast': 'yeast',
+    'Budding yeast': 'yeast',
+    'budding yeast': 'yeast',
+
+    #Guinea pigs aliases
+    'Guinea pigs': 'Guiniea_pig_VC',
+    'guinea pigs': 'Guiniea_pig_VC',
+    'Guinea Pig': 'Guiniea_pig_VC',
+    'guinea pig': 'Guiniea_pig_VC',
+    'gpig': 'Guiniea_pig_VC',
+    'Guinea Pig VC': 'Guiniea_pig_VC',
+    'guinea pig vc': 'Guiniea_pig_VC',
+    'guinea pig vc': 'Guiniea_pig_VC',
+}
+
+
+params_and_time_powers_dict ={
+    'xc/eta': 2,
+    'beta/eta': 1,
+    'xc^2/epsilon': 1,
+    'xc': 0,
+    'eta': -2,
+    'epsilon': -1,
+    'beta': -1,
+    'sqrt(xc/eta)': 1,
+    's= eta^0.5*xc^1.5/epsilon': 0,
+    'beta*xc/epsilon': 0,
+    'eta*xc/epsilon': -1,
+    'Fx=beta^2/eta*xc': 0,
+    'Dx =beta*epsilon/eta*xc^2': 0,
+    'Pk=beta*k/epsilon': 0,
+    'Fk=beta^2/eta*k': 0,
+    'Dk =beta*epsilon/eta*k^2': 0,
+    'Fk^2/Dk=beta^3/eta*epsilon': 0,
+    'epsilon/beta^2':1,
+    'k/beta':1,
+    'k^2/epsilon':1,
+    'best fit no ext hazard_MedianLifetime': 1,
+    'best fit no ext hazard_MaxLifetime': 1,
+    'best fit_MedianLifetime': 1,
+    'best fit_MaxLifetime': 1,
+    'data_MedianLifetime': 1,
+    'data_MaxLifetime': 1,
+    'ML_lnprob': 0,
+    'ExtH': 0,
+    'eta/xc': -2,
+    'beta/xc': -1,
+    'epsilon/xc^2': -1,
+    'k/xc': 0
+}
+
+FOLDER_ALIASES = {
+    'smurf': 'extras/Preset_values/smurfs',
+    'smurfs': 'extras/Preset_values/smurfs',
+}
+
+
+def _resolve_preset_dir(folder=None):
+    """
+    Resolve the preset directory path.
+
+    Parameters
+    ----------
+    folder : str or None
+        - None  -> default ``Preset_values/`` next to this module.
+        - A key in ``FOLDER_ALIASES`` (e.g. ``'smurf'``) -> mapped path
+          relative to this module.
+        - Any other string -> treated as a path.  Absolute paths are used
+          as-is; relative paths are resolved relative to this module's
+          directory.
+
+    Returns
+    -------
+    str
+        Absolute path to the preset directory.
+    """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    if folder is None:
+        return os.path.join(current_dir, "Preset_values")
+
+    if folder in FOLDER_ALIASES:
+        return os.path.join(current_dir, FOLDER_ALIASES[folder])
+
+    if os.path.isabs(folder):
+        return folder
+
+    return os.path.join(current_dir, folder)
+
+
+def getKarinTheta():
+    # kappa variant: xc is fixed = 1 and kappa is the free parameter. The original
+    # Karin fit is [eta, beta, epsilon, xc] = [0.49275, 54.75, 51.83, 17] with kappa=0.5.
+    # Rescale by X -> X/xc so xc=1 and kappa=0.5/xc, returning [eta, beta, epsilon, xc, kappa].
+    eta, beta, epsilon, xc = 0.49275, 54.75, 51.83, 17
+    return [eta / xc, beta / xc, epsilon / xc**2, 1.0, 0.5 / xc]
+
+    
+def _as_theta(arr, as_theta):
+    """Return the raw array, or a labelled `SRK.curves.Theta` when ``as_theta=True``.
+
+    A bare 5-element array is ambiguous in this codebase -- ``[eta, beta, epsilon, xc, kappa]``
+    (this module and the simulator) versus ``[eta, beta, epsilon, kappa, ExtH]``
+    (`sr_mcmc.inv_transform`, `intervention.io.load_posterior`) -- and confusing them swaps kappa
+    with xc, which yields a plausible-looking wrong curve rather than an error. Asking for a Theta
+    removes the question at the source.
+    """
+    if not as_theta:
+        return arr
+    from .curves import Theta                     # lazy: curves imports presets lazily too
+    return Theta.from_sim_vector(arr)
+
+
+def _kappa_convention(df, preset_name, eta, beta, epsilon, xc):
+    """Return ``(eta, beta, epsilon, xc=1, kappa)``, reading whichever schema the CSV uses.
+
+    TWO SCHEMAS COEXIST, and they mean genuinely different things:
+
+    'fitted' -- the file has a `kappa` row with a value for this organism. Those numbers come from a
+        run that FITTED kappa with xc pinned to 1 (Baysian03_kappa, metric='fp'), so eta/beta/epsilon
+        are already in xc=1 units and kappa is a measurement. Nothing is rescaled; the values are
+        returned as they were fitted.
+
+    'legacy' -- no kappa row (or blank for this organism): a pre-kappa Langevin calibration with a
+        free threshold. It is converted with ``X -> X/xc`` and ``kappa = 0.5/xc``, which is NOT a fit
+        but a restatement of Karin's original model (eta,beta,epsilon,xc = 0.49275, 54.75, 51.83, 17
+        AT kappa=0.5) in the new coordinates. It is the best available for organisms the kappa run
+        never covered, and meaningless for ones it did.
+
+    Applying the legacy transform to fitted values would report kappa = 0.5/1 = 0.5 for every
+    organism -- the same class of error as the hard-coded kappa=0.5 removed from getISR/getSrDDD.
+    """
+    kappa = None
+    if 'kappa' in df.index:
+        raw = df.loc['kappa', preset_name]
+        if raw is not None and str(raw).strip() != '' and pd.notna(raw):
+            kappa = float(raw)
+    if kappa is not None:
+        return eta, beta, epsilon, 1.0, kappa          # fitted: already in xc=1 units
+    return eta / xc, beta / xc, epsilon / xc**2, 1.0, 0.5 / xc      # legacy restatement
+
+
+def getTheta(preset_name="humans_M_combined",type = "mode_overall",time_unit='auto',ExtH =False, file=None, folder=None, as_theta=False):
+    """
+    Return calibrated SR parameters for a preset organism or population.
+
+    Parameters are loaded from pre-computed MCMC posterior summaries and
+    optionally converted to the requested time unit.
+
+    Parameters
+    ----------
+    preset_name : str, optional
+        Name of the organism/population preset.  Default ``'humans_M_combined'``.
+        Case-insensitive aliases are supported (e.g. ``'mice'``, ``'flies'``,
+        ``'humans'``).  See :func:`get_preset_names` for the full list.
+    type : str, optional
+        Which posterior summary to use:
+
+        - ``'mode_overall'`` (default) — mode of the joint posterior.
+        - ``'mode'`` — marginal mode of each parameter independently.
+        - ``'max_likelihood'`` — parameters from the highest-likelihood run.
+    time_unit : str, optional
+        Output time unit.  ``'auto'`` (default) selects the natural unit for
+        the preset (years for mammals, hours for *E. coli*, generations for
+        yeast).  Other options: ``'days'``, ``'years'``, ``'weeks'``,
+        ``'hours'``, ``'generations'``.
+
+        Scaling applied to convert from the stored unit:
+        ``eta → eta·s²``, ``beta → beta·s``, ``epsilon → epsilon·s``,
+        ``xc`` is unchanged.
+    ExtH : bool, optional
+        If True, append the external-hazard rate as a 5th element.
+        Default False.
+    file : str, optional
+        Load from this CSV file directly, bypassing preset lookup.
+    folder : str or None, optional
+        Preset directory.  None → default ``Preset_values/``.
+        ``'smurf'`` → ``extras/Preset_values/smurfs/``.
+        Also accepts an absolute or relative path.
+
+    Returns
+    -------
+    ndarray, shape (5,) or (6,)
+        kappa parametrization ``[eta, beta, epsilon, xc, kappa]`` with ``xc`` fixed = 1 and
+        ``kappa = 0.5 / xc_original`` (the free saturation parameter), or
+        ``[eta, beta, epsilon, xc, kappa, external_hazard]`` when ``ExtH=True``.
+
+    Examples
+    --------
+    >>> from SRK import presets
+    >>> theta = presets.getTheta('combined_human_M')
+    >>> theta_mle = presets.getTheta('mice_F', type='max_likelihood')
+    """
+    
+    # If file is provided, use it directly
+    if file is not None:
+        # Load the CSV file directly
+        try:
+            df = pd.read_csv(file, index_col=0)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Could not find preset file: {file}")
+        
+        # Determine time unit conversion factor
+        if time_unit == 'auto':
+            # Auto-detect based on preset name
+            if any(keyword in preset_name.lower() for keyword in ['human','sweden','denmark', 'dog', 'cat', 'labrador', 'staffy', 'german', 'jack','pig','guinea pigs']):
+                time_unit = 'years'
+            elif any(keyword in preset_name.lower() for keyword in ['ecoli', 'e. coli']):
+                time_unit = 'hours'
+            elif any(keyword in preset_name.lower() for keyword in ['mice', 'mouse']):
+                time_unit = 'weeks'
+            elif any(keyword in preset_name.lower() for keyword in ['yeast']):
+                time_unit = 'generations'
+            else:
+                time_unit = 'days'  # Default for other organisms
+        
+        # Set conversion factor based on time unit
+        if time_unit == 'days':
+            s = 1.0
+        elif time_unit == 'years':
+            s = 365.0
+        elif time_unit == 'hours':
+            s = 1.0/24.0
+        elif time_unit == 'generations':
+            s = 3.0/24.0
+        elif time_unit == 'weeks':
+            s = 7.0
+        else:
+            raise ValueError(f"Unknown time_unit: {time_unit}. Must be one of 'auto', 'days', 'years', 'hours', 'generations'")
+        
+        # Check if the preset_name exists in the columns
+        if preset_name not in df.columns:
+            available_presets = list(df.columns)
+            raise ValueError(f"Preset '{preset_name}' not found. Available presets: {available_presets}")
+        
+        # Extract the required parameters: xc/eta, beta/eta, xc^2/epsilon, xc
+        try:
+            xc_eta = df.loc['xc/eta', preset_name]
+            beta_eta = df.loc['beta/eta', preset_name]
+            xc_2_epsilon = df.loc['xc^2/epsilon', preset_name]
+            xc = df.loc['xc', preset_name]
+        except KeyError as e:
+            raise KeyError(f"Parameter {e} not found in the preset data")
+        
+        eta = xc/xc_eta
+        beta = beta_eta*eta
+        epsilon = xc**2/xc_2_epsilon
+
+        # Apply time unit conversion if needed
+        if s != 1.0:
+            print(f"Converting time units: days -> {time_unit} (s={s})")
+            eta = eta * (s**2)  # eta -> eta*s^2
+            beta = beta * s     # beta -> beta*s
+            epsilon = epsilon * s  # epsilon -> epsilon*s
+            xc = xc  # xc -> xc (no change)
+
+        # kappa convention. A `kappa` row means these values were FITTED at xc=1 and are used as
+        # they are; its absence means a legacy free-xc calibration that gets restated. See
+        # _kappa_convention -- conflating the two reports kappa=0.5 for everything.
+        eta, beta, epsilon, xc, kappa = _kappa_convention(df, preset_name, eta, beta, epsilon, xc)
+
+        if ExtH:
+            external_hazard = df.loc['ExtH', preset_name]
+            # If the external_hazard is empty string, convert to None. Otherwise, keep as is.
+            if external_hazard == '':
+                external_hazard = None
+            return _as_theta(np.array([eta, beta, epsilon, xc, kappa, external_hazard]), as_theta)
+        else:
+            return _as_theta(np.array([eta, beta, epsilon, xc, kappa]), as_theta)
+
+    #load the preset
+    # Check if preset_name is an alias and convert to actual name
+    original_preset_name = preset_name
+    if preset_name in PRESET_ALIASES:
+        preset_name = PRESET_ALIASES[preset_name]
+        print(f"Using alias '{original_preset_name}' -> '{preset_name}'")
+
+    # Determine time unit conversion factor
+    if time_unit == 'auto':
+        # Auto-detect based on preset name
+        if any(keyword in preset_name.lower() for keyword in ['human','sweden','denmark', 'dog', 'cat', 'labrador', 'staffy', 'german', 'jack','pig','guinea pigs']):
+            time_unit = 'years'
+        elif any(keyword in preset_name.lower() for keyword in ['ecoli', 'e. coli']):
+            time_unit = 'hours'
+        elif any(keyword in preset_name.lower() for keyword in ['mice', 'mouse']):
+            time_unit = 'weeks'
+        elif any(keyword in preset_name.lower() for keyword in ['yeast']):
+            time_unit = 'generations'
+        else:
+            time_unit = 'days'  # Default for other organisms
+    
+    # Set conversion factor based on time unit
+    if time_unit == 'days':
+        s = 1.0
+    elif time_unit == 'years':
+        s = 365.0
+    elif time_unit == 'hours':
+        s = 1.0/24.0
+    elif time_unit == 'generations':
+        s = 3.0/24.0
+    elif time_unit == 'weeks':
+        s = 7.0
+    else:
+        raise ValueError(f"Unknown time_unit: {time_unit}. Must be one of 'auto', 'days', 'years', 'hours', 'generations'")
+    
+    # Determine which CSV file to load based on the type parameter
+    if type == "mode_overall":
+        csv_filename = "summery_mode_overall.csv"
+    elif type == "mode":
+        csv_filename = "summery_mode.csv"
+    elif type == "max_likelihood":
+        csv_filename = "summery_max_likelihood.csv"
+    else:
+        raise ValueError(f"Unknown type: {type}. Must be one of 'mode_overall', 'mode', or 'max_likelihood'")
+    
+    preset_dir = _resolve_preset_dir(folder)
+    csv_file = os.path.join(preset_dir, csv_filename)
+
+    # Load the CSV file
+    try:
+        df = pd.read_csv(csv_file, index_col=0)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Could not find preset file: {csv_file}")
+    
+    # Check if the preset_name exists in the columns
+    if preset_name not in df.columns:
+        available_presets = list(df.columns)
+        raise ValueError(f"Preset '{preset_name}' not found. Available presets: {available_presets}")
+    
+    # Extract the required parameters: xc/eta, beta/eta, xc^2/epsilon, xc
+    try:
+        xc_eta = df.loc['xc/eta', preset_name]
+        beta_eta = df.loc['beta/eta', preset_name]
+        xc_2_epsilon = df.loc['xc^2/epsilon', preset_name]
+        xc = df.loc['xc', preset_name]
+    except KeyError as e:
+        raise KeyError(f"Parameter {e} not found in the preset data")
+    
+    eta = xc/xc_eta
+    beta = beta_eta*eta
+    epsilon = xc**2/xc_2_epsilon
+
+    # Apply time unit conversion if needed
+    if s != 1.0:
+        print(f"Converting time units: days -> {time_unit} (s={s})")
+        eta = eta * (s**2)  # eta -> eta*s^2
+        beta = beta * s     # beta -> beta*s
+        epsilon = epsilon * s  # epsilon -> epsilon*s
+        xc = xc  # xc -> xc (no change)
+
+    # kappa convention -- see _kappa_convention (fitted `kappa` row vs legacy free-xc restatement).
+    eta, beta, epsilon, xc, kappa = _kappa_convention(df, preset_name, eta, beta, epsilon, xc)
+
+    if ExtH:
+        external_hazard = df.loc['ExtH', preset_name]
+        # If the external_hazard is empty string, convert to None. Otherwise, keep as is.
+        if external_hazard == '':
+            external_hazard = None
+        return _as_theta(np.array([eta, beta, epsilon, xc, kappa, external_hazard]), as_theta)
+    else:
+        return _as_theta(np.array([eta, beta, epsilon, xc, kappa]), as_theta)
+    
+
+def getParams(
+    preset_name="humans_M_combined",
+    type="mode_overall",
+    time_unit="auto",
+    file=None,
+    params=["eta/xc", "beta/xc", "epsilon/xc^2", "k/xc"],
+    folder=None,
+):
+    """
+    Get arbitrary preset parameters (rows) with consistent time-unit conversion.
+
+    Parameters
+    ----------
+    preset_name : str
+        Preset column name (aliases supported via PRESET_ALIASES).
+    type : str
+        Which preset CSV to use: 'mode_overall', 'mode', or 'max_likelihood'.
+    time_unit : str
+        'auto', 'days', 'weeks', 'years', 'hours', or 'generations'.
+        Conversion assumes the preset table is in 'days', and converts via factor s:
+          - years: s=365
+          - weeks: s=7
+          - hours: s=1/24
+          - generations: s=3/24
+    ExtH : bool
+        If True and `params` is None, append 'ExtH' to the default parameter list.
+    file : str or None
+        Optional path to a preset CSV to load directly (skips preset_dir resolution).
+    params : list[str] or None
+        List of parameter names (must be keys in `params_and_time_powers_dict` and
+        present as rows in the preset CSV). Returned in the same order.
+        Default is ['eta/xc', 'beta/xc', 'epsilon/xc^2', 'k/xc'] (kappa parametrization).
+    folder : str or None
+        Preset directory. None -> default Preset_values/. 'smurf' -> extras/Preset_values/smurfs.
+        Can also be an absolute or relative path.
+
+    Returns
+    -------
+    list
+        List of parameter values, ordered to match `params`.
+
+    Notes
+    -----
+    Time-unit conversion uses `params_and_time_powers_dict[param] = p` and applies:
+        value_converted = value * s**(-p)
+    """
+
+    # If file is provided, use it directly; otherwise resolve from type.
+    if file is not None:
+        try:
+            df = pd.read_csv(file, index_col=0)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Could not find preset file: {file}")
+    else:
+        # Check if preset_name is an alias and convert to actual name
+        original_preset_name = preset_name
+        if preset_name in PRESET_ALIASES:
+            preset_name = PRESET_ALIASES[preset_name]
+            print(f"Using alias '{original_preset_name}' -> '{preset_name}'")
+
+        if type == "mode_overall":
+            csv_filename = "summery_mode_overall.csv"
+        elif type == "mode":
+            csv_filename = "summery_mode.csv"
+        elif type == "max_likelihood":
+            csv_filename = "summery_max_likelihood.csv"
+        else:
+            raise ValueError(
+                "Unknown type: {t}. Must be one of 'mode_overall', 'mode', or 'max_likelihood'".format(
+                    t=type
+                )
+            )
+
+        preset_dir = _resolve_preset_dir(folder)
+        csv_file = os.path.join(preset_dir, csv_filename)
+        try:
+            df = pd.read_csv(csv_file, index_col=0)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Could not find preset file: {csv_file}")
+
+    # Auto-detect time_unit when requested
+    if time_unit == "auto":
+        preset_name_lower = preset_name.lower()
+        if any(
+            keyword in preset_name_lower
+            for keyword in [
+                "human",
+                "sweden",
+                "denmark",
+                "dog",
+                "cat",
+                "labrador",
+                "staffy",
+                "german",
+                "jack",
+                "pig",
+                "guinea pigs",
+            ]
+        ):
+            time_unit = "years"
+        elif any(keyword in preset_name_lower for keyword in ["ecoli", "e. coli"]):
+            time_unit = "hours"
+        elif any(keyword in preset_name_lower for keyword in ["mice", "mouse"]):
+            time_unit = "weeks"
+        elif any(keyword in preset_name_lower for keyword in ["yeast"]):
+            time_unit = "generations"
+        else:
+            time_unit = "days"
+
+    # Set conversion factor based on time unit
+    if time_unit == "days":
+        s = 1.0
+    elif time_unit == "years":
+        s = 365.0
+    elif time_unit == "hours":
+        s = 1.0 / 24.0
+    elif time_unit == "generations":
+        s = 3.0 / 24.0
+    elif time_unit == "weeks":
+        s = 7.0
+    else:
+        raise ValueError(
+            f"Unknown time_unit: {time_unit}. Must be one of 'auto', 'days', 'weeks', 'years', 'hours', 'generations'"
+        )
+
+    # Validate preset column
+    if preset_name not in df.columns:
+        available_presets = list(df.columns)
+        raise ValueError(
+            f"Preset '{preset_name}' not found. Available presets: {available_presets}"
+        )
+
+    def _coerce_value(v):
+        # Normalize missing/empty values
+        if v == "" or v is None or (isinstance(v, float) and pd.isna(v)):
+            return None
+        if isinstance(v, str):
+            # Some tables store lists/tuples as strings; try to parse.
+            try:
+                v_parsed = ast.literal_eval(v)
+                v = v_parsed
+            except Exception:
+                # Fall back to float parsing if possible
+                try:
+                    return float(v)
+                except Exception:
+                    return v
+        return v
+
+    out = []
+    for par in params:
+        if par not in params_and_time_powers_dict:
+            raise KeyError(
+                f"Unknown parameter '{par}'. Must be a key in params_and_time_powers_dict."
+            )
+        try:
+            raw = df.loc[par, preset_name]
+        except KeyError as e:
+            raise KeyError(
+                f"Parameter {e} not found in the preset data (row '{par}', column '{preset_name}')."
+            )
+
+        val = _coerce_value(raw)
+        if val is None:
+            out.append(None)
+            continue
+
+        p = params_and_time_powers_dict[par]
+
+        # Apply conversion: multiply by s**(-p) (supports scalars + array-likes)
+        try:
+            out.append(np.asarray(val, dtype=float) * (s ** (-p)))
+        except Exception:
+            # Non-numeric values are returned as-is (no scaling)
+            out.append(val)
+
+    return out
+
+
+def get_preset_names(type = "mode_overall", folder=None):
+    """
+    List all available preset organism/population names.
+
+    Parameters
+    ----------
+    type : str, optional
+        Which summary CSV to query:
+        ``'mode_overall'`` (default), ``'mode'``, or ``'max_likelihood'``.
+    folder : str or None, optional
+        Preset directory.  None → default ``Preset_values/``.
+        ``'smurf'`` → ``extras/Preset_values/smurfs/``.
+
+    Returns
+    -------
+    list of str
+        All column names in the requested CSV, each representing one
+        calibrated organism or population
+        (e.g. ``'combined_human_M'``, ``'mice_F'``, ``'celegans'``).
+
+    Examples
+    --------
+    >>> from SRK import presets
+    >>> print(presets.get_preset_names())
+    """
+    if type == "mode_overall":
+        csv_filename = "summery_mode_overall.csv"
+    elif type == "mode":
+        csv_filename = "summery_mode.csv"
+    elif type == "max_likelihood":
+        csv_filename = "summery_max_likelihood.csv"
+    else:
+        raise ValueError(f"Unknown type: {type}. Must be one of 'mode_overall', 'mode', or 'max_likelihood'")
+
+    preset_dir = _resolve_preset_dir(folder)
+    csv_file = os.path.join(preset_dir, csv_filename)
+    
+    # Load the CSV file
+    try:
+        df = pd.read_csv(csv_file, index_col=0)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Could not find preset file: {csv_file}")
+
+    #return a list of all presets
+    return list(df.columns)
+
+def get_config_params(
+    preset_name="humans_M_combined",
+    config_params=['nsteps', 'time_step_multiplier', 'npeople', 't_end', 'time_range','hetro'],
+    types=[int, int, int, int, list,bool],
+    time_unit=None,
+    verbose=False,
+    folder=None,
+    ):
+    """
+    This function is used to get the configuration parameters for a given preset. They are returned as a dictionary.
+    Optionally, you can specify a target time_unit (e.g., 'years', 'days', 'hours', 'generations').
+    If time_unit is given and differs from the detected original_time_unit, t_end and time_range will be converted accordingly.
+
+    folder : str or None
+        Preset directory. None -> default Preset_values/. 'smurf' -> extras/Preset_values/smurfs.
+    """
+    
+    
+    if time_unit == 'auto':
+        time_unit = None
+    # Helper: get conversion factor from original_time_unit to time_unit
+    def get_time_unit_conversion_factor(from_unit, to_unit):
+        # Define conversion factors to days
+        to_days = {
+            'days': 1.0,
+            'weeks': 7.0,
+            'years': 365,
+            'hours': 1.0 / 24.0,
+            'generations': 3.0/24.0, 
+        }
+        # If units are the same, factor is 1
+        
+        if from_unit == to_unit:
+            return 1.0
+        # Convert from original to days, then days to target
+        if from_unit not in to_days or to_unit not in to_days:
+            raise ValueError(f"Unknown time unit(s): {from_unit}, {to_unit}")
+        # Convert to days, then to target
+        days = to_days[from_unit]
+        factor = to_days[to_unit] * days
+        return factor
+    
+    # Auto-detect original time unit from preset_name
+    preset_name_lower = preset_name.lower()
+    if any(keyword in preset_name_lower for keyword in ['human','sweden','denmark', 'dog', 'cat', 'labrador', 'staffy', 'german', 'jack','pig','guinea pigs']):
+        original_time_unit = 'years'
+    elif any(keyword in preset_name_lower for keyword in ['ecoli', 'e. coli']):
+        original_time_unit = 'hours'
+    elif any(keyword in preset_name_lower for keyword in ['mice', 'mouse']):
+        original_time_unit = 'weeks'
+    elif any(keyword in preset_name_lower for keyword in ['yeast']):
+        original_time_unit = 'generations'
+    else:
+        original_time_unit = 'days'  # Default for other organisms
+
+    # Check if preset_name is an alias and convert to actual name
+    original_preset_name = preset_name
+    if preset_name in PRESET_ALIASES:
+        preset_name = PRESET_ALIASES[preset_name]
+        print(f"Using alias '{original_preset_name}' -> '{preset_name}'")
+    if preset_name == 'combined_human_M':
+        preset_name = 'Denmark_M_1900_hetro'
+        print(f"Using specific cohort config -> 'Denmark_M_1900_hetro'")
+    if preset_name == 'combined_human_F':
+        preset_name = 'Denmark_F_1900_hetro'
+        print(f"Using specific cohort config for combined_human_F -> 'Denmark_F_1900_hetro'")
+
+    csv_filename = 'All_config.csv'
+
+    preset_dir = _resolve_preset_dir(folder)
+    csv_file = os.path.join(preset_dir, csv_filename)
+
+    # Load the CSV file
+    try:
+        df = pd.read_csv(csv_file, index_col=0)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Could not find preset file: {csv_file}")
+
+    # Get the config values as a dict
+    # Handle possible NaN for time_range gracefully
+    config = {}
+    for i in range(len(config_params)):
+        value = df.loc[config_params[i], preset_name]
+        param_type = types[i]
+        # If the type is not int, float, str, or bool, parse with ast.literal_eval
+        if param_type not in [int, float, str, bool]:
+            # If value is NaN or None, keep as None
+            if pd.isna(value) or value is None:
+                config[config_params[i]] = None
+            else:
+                config[config_params[i]] = ast.literal_eval(value)
+        else:
+            config[config_params[i]] = param_type(value)
+
+    # Optionally handle time unit conversion
+    if time_unit is not None and original_time_unit != time_unit:
+        s = get_time_unit_conversion_factor(original_time_unit, time_unit)
+        # Convert t_end if present
+        if 't_end' in config.keys():
+            config['t_end'] = int(round(int(config['t_end']) * s))
+        # Convert time_range if present in config_params or in the CSV
+        if 'time_range' in config.keys():
+            # Try to get time_range from config or from CSV
+            if 'time_range' in config and config['time_range'] is not None:
+                if verbose:
+                    print(f"type of time_range: {type(config['time_range'])}")
+                    print(f"Converting time_range from {config['time_range']} in {original_time_unit} to {time_unit}")
+                traw = config['time_range']
+                traw = [int(round(x * s)) for x in traw]
+                config['time_range'] = traw
+
+    return config
+
+
+def getSim(
+    preset_name="humans_M_combined",
+    type="mode_overall",
+    time_unit='auto',
+    config_params=['nsteps', 'time_step_multiplier', 'npeople', 't_end', 'hetro'],
+    theta=None,
+    nsteps=None,
+    npeople=None,
+    t_end=None,
+    time_step_multiplier=None,
+    method='brownian_bridge',
+    parallel=False,
+    resolution=_config.INHERIT,
+    ExtH = True,
+    folder=None,
+):
+    """
+    Create a ready-to-use SR simulation for a preset organism.
+
+    Combines :func:`getTheta` and :func:`get_config_params` to return a
+    fully configured :class:`~SRK.SR_hetro.SR_Hetro` simulation object.
+    Any simulation parameter can be overridden via keyword arguments.
+
+    Parameters
+    ----------
+    as_theta : bool, optional
+        Return a labelled :class:`SRK.curves.Theta` instead of a bare array. Default False.
+        Recommended for new code: it makes the layout explicit and unmistakable.
+    preset_name : str, optional
+        Organism/population preset.  Default ``'humans_M_combined'``.
+        See :func:`get_preset_names` for available names.
+    type : str, optional
+        Posterior summary: ``'mode_overall'`` (default), ``'mode'``, or
+        ``'max_likelihood'``.
+    time_unit : str, optional
+        Time unit for parameters and simulation.  ``'auto'`` (default)
+        selects the natural unit for the preset.
+    config_params : list of str, optional
+        Config fields to load from the preset CSV.  Default:
+        ``['nsteps', 'time_step_multiplier', 'npeople', 't_end', 'hetro']``.
+    theta : array-like, optional
+        Override the preset theta vector; if None, loaded from the preset.
+    nsteps : int, optional
+        Override number of simulation time steps.
+    npeople : int, optional
+        Override population size.
+    t_end : float, optional
+        Override simulation end time.
+    time_step_multiplier : int, optional
+        Override sub-step multiplier.
+    method : str, optional
+        Simulation algorithm: ``'brownian_bridge'`` (default) or ``'euler'``.
+    parallel : bool, optional
+        Use parallel computation.  Default False.
+    ExtH : bool, optional
+        Include external hazard in theta.  Default True.
+    folder : str or None, optional
+        Preset directory (see :func:`getTheta`).
+
+    Returns
+    -------
+    SR_Hetro
+        Initialised simulation.  Access results via ``sim.getSurvival()``,
+        ``sim.plotSurvival()``, ``sim.getMedianLifetime()``, etc.
+
+    Examples
+    --------
+    >>> from SRK import presets
+    >>> sim = presets.getSim('combined_human_M')
+    >>> sim.plotSurvival()
+    >>> print(sim.getMedianLifetime())
+    """
+    # Get theta for the preset unless overridden
+    if theta is None:
+        theta_val = getTheta(preset_name=preset_name, type=type, time_unit=time_unit, ExtH=ExtH, folder=folder)
+    else:
+        theta_val = theta
+
+    # Get config parameters for the preset
+    if time_unit == 'auto':
+        config_time_unit = None
+    else:
+        config_time_unit = time_unit
+    config = get_config_params(preset_name=preset_name, time_unit=config_time_unit, config_params=config_params, folder=folder)
+    
+    if config['hetro'] is None:
+        config['hetro'] = False
+    # Remove 'time_range' from config if present
+    config.pop('time_range', None)
+
+
+
+
+    # Override config values if provided
+    if nsteps is not None:
+        config['nsteps'] = nsteps
+    if npeople is not None:
+        config['npeople'] = npeople
+    if t_end is not None:
+        config['t_end'] = t_end
+    if time_step_multiplier is not None:
+        config['time_step_multiplier'] = time_step_multiplier
+    if ExtH:
+        external_hazard = theta_val[-1]
+        theta_val = theta_val[:-1]
+    else:
+        external_hazard = None
+
+    # getSim is a user-facing convenience, so it honours the config profile ('modern' turns
+    # automatic resolution on). getSrHetro itself stays pinned to resolution=None -- it is on the
+    # MCMC hot path (SR_hetro.model calls it per likelihood evaluation), where an FP reference plus
+    # probe simulations would be ruinous. That asymmetry is deliberate and tested.
+    resolution = _config.resolve('resolution', resolution)
+    return srh.getSrHetro(theta_val, external_hazard=external_hazard, method=method,
+                          parallel=parallel, resolution=resolution, **config)
+
+
+def getCurves(preset_name="humans_M_combined", type="mode_overall", time_unit='auto',
+              engine=None, theta=None, t_end=None, n_grid=400, L=None, hetro=None, het_var=0.2,
+              nsteps=None, npeople=None, time_step_multiplier=None, method='brownian_bridge',
+              parallel=False, resolution=None, seed=None, time_range=None, ExtH=True, folder=None,
+              **kw):
+    """Model curves for a preset organism -- the FP twin of :func:`getSim`.
+
+    ``getSim`` builds a Monte-Carlo cohort and is the only way this module has ever produced a
+    curve. For a survival or hazard curve that is a waste: the exact Fokker-Planck solve is ~60 ms
+    against seconds, and it carries no sampling noise. This returns a
+    :class:`SRK.fp_curves.CurveSet` from whichever engine you ask for.
+
+    engine='fp'   exact FP solver, no simulation (fast, exact, no trajectories).
+    engine='sim'  delegates to :func:`getSim` VERBATIM and wraps the result, so the cohort is
+                  byte-for-byte the one getSim produces.
+    engine='auto' 'sim' only if something a density solver cannot provide was requested.
+    engine=None   take it from :mod:`SRK.config` ('legacy' -> 'sim', 'modern' -> 'fp').
+
+    Differences from ``getSim``, both additive:
+      * ``time_range`` is honoured. ``getSim`` pops it from the preset config and drops it, but the
+        human and dog presets were FITTED in a window, so their curve belongs in one too.
+      * ``L`` (the FP lifetime scale) defaults to :func:`SRK.fp_curves.auto_L`, since a preset
+        carries parameters but no death times. Pass the cohort's Kaplan-Meier mean to pin it to the
+        scale the likelihood used.
+
+    Examples
+    --------
+    >>> from SRK import presets
+    >>> cs = presets.getCurves('Jack_Russell_vetCompass', engine='fp')
+    >>> cs.plot_survival(); print(cs.median, cs.steepness)
+    """
+    from . import config as _config
+    from . import curves as _curves
+
+    engine = _config.resolve("curve_engine", _config.INHERIT if engine is None else engine)
+    if theta is None:
+        theta_val = getTheta(preset_name=preset_name, type=type, time_unit=time_unit, ExtH=ExtH,
+                             folder=folder)
+    else:
+        theta_val = list(theta)
+
+    # `types` is POSITIONAL and must line up with `config_params`: get_config_params applies
+    # types[i] to config_params[i], so a reordered name list silently mis-parses (int('[3,24]')).
+    # Pass both explicitly rather than relying on the default order matching.
+    cfg_names = ['nsteps', 'time_step_multiplier', 'npeople', 't_end', 'time_range', 'hetro']
+    # `hetro` must be read as int, NOT bool. The CSV cell is the STRING '0' or '1', and
+    # get_config_params applies the requested type directly for primitives -- so bool('0') is True
+    # and EVERY organism would take the heterogeneous branch: a mixture over xc applied to cohorts
+    # that were fitted homogeneously, at M times the cost. (getSim escapes this only because its
+    # positional type for hetro lands on `list`, which routes through ast.literal_eval and yields
+    # int 0.) Caught by the tutorial notebook, where a homogeneous preset took 1.9 s instead of 90 ms.
+    cfg_types = [int, int, int, int, list, int]
+    config = get_config_params(preset_name=preset_name,
+                               time_unit=None if time_unit == 'auto' else time_unit,
+                               config_params=cfg_names, types=cfg_types, folder=folder)
+    if ExtH:
+        external_hazard = theta_val[-1]
+        theta_val = theta_val[:-1]
+    else:
+        external_hazard = None
+
+    th = _curves.Theta.from_sim_vector(theta_val, external_hazard=external_hazard)
+    if hetro is None:
+        hetro = bool(config.get('hetro') or False)
+    if t_end is None:
+        t_end = float(config.get('t_end') or 0) or None
+    if time_range is None:
+        tr = config.get('time_range')
+        time_range = tuple(tr) if tr else None
+
+    if engine == 'sim' or (engine == 'auto' and kw.get('needs')):
+        sim = getSim(preset_name=preset_name, type=type, time_unit=time_unit, theta=theta,
+                     nsteps=nsteps, npeople=npeople, t_end=t_end,
+                     time_step_multiplier=time_step_multiplier, method=method, parallel=parallel,
+                     resolution=resolution, ExtH=ExtH, folder=folder)
+        cs = _curves.from_dataset(sim, time_range=time_range, engine='sim')
+        cs.meta.update({'params': th.as_dict(), 'preset': preset_name,
+                        'resolution_report': getattr(sim, 'resolution_report', None)})
+        return cs
+
+    return _curves.get_curves(th, engine=engine, t_end=t_end, n_grid=n_grid, L=L, hetro=hetro,
+                              het_var=het_var, time_range=time_range,
+                              meta={'preset': preset_name}, **kw)

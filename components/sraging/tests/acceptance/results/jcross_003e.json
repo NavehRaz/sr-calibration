@@ -1,0 +1,8877 @@
+{
+ "phase": "jcross",
+ "written_at": "2026-10-17T21:35:42Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 0.8326568603515625,
+ "cpu_s": 0.567022,
+ "status": "REPORTED",
+ "gated": false,
+ "prediction_r9": {
+  "zero_shape_flips_on_the_22": true,
+  "every_axis_no_difference_or_not_measured": {
+   "mac_22": true,
+   "wexac_118": true
+  }
+ },
+ "coverage_hits_all": {
+  "claims": 419,
+  "flips": 0
+ },
+ "bit_equal_by_batch_and_cpu": {
+  "table": [
+   {
+    "reference_written_utc": "2026-10-04",
+    "port_cpu": "AMD EPYC 7702 64-Core Processor",
+    "bit_equal": 5,
+    "of": 12
+   },
+   {
+    "reference_written_utc": "2026-10-04",
+    "port_cpu": "AMD EPYC 9634 84-Core Processor",
+    "bit_equal": 30,
+    "of": 46
+   },
+   {
+    "reference_written_utc": "2026-10-05",
+    "port_cpu": "AMD EPYC 7702 64-Core Processor",
+    "bit_equal": 3,
+    "of": 60
+   }
+  ],
+  "fisher": {
+   "batch, AMD EPYC 7702 64-Core Processor: 2026-10-04 vs 2026-10-05": {
+    "a": [
+     5,
+     12
+    ],
+    "b": [
+     3,
+     60
+    ],
+    "fisher_p": 0.0024050209449354714
+   },
+   "cpu, batch 2026-10-04: AMD EPYC 7702 64-Core Processor vs AMD EPYC 9634 84-Core Processor": {
+    "a": [
+     5,
+     12
+    ],
+    "b": [
+     30,
+     46
+    ],
+    "fisher_p": 0.18862274997647271
+   }
+  }
+ },
+ "selection": {
+  "rule": "calibrator profile_jax2; v2->v5 checksums equal; a key in jax2-v5-full-bign",
+  "by_arm": {
+   "censor": 35,
+   "pure": 67,
+   "realfull": 16
+  },
+  "v2_manifest_sha256": "defd72084aa2b7d58431813df1281ee43c3c54b300a711d2aa711a54801dc1ec",
+  "excluded_by_the_rule": "every hazard cohort, every human life table, every age-0 cohort and every record recomputed at v5 (arrays changed v2 -> v5)"
+ },
+ "sources": {
+  "mac_fits": {
+   "path": "tests/acceptance/results/fits_003.json",
+   "sha256": "f5a655651af69b21233ed249010b223add5b28ea4913dfce994d50f590f45ea9",
+   "port_head": "6ceb692dcd288f46e571f6d58ba3f155d4c7f70b"
+  },
+  "wexac_rows": {
+   "dir": ".cache/out/wexac_rows/d903979764194c5b7afa7b048710210c15e9179b",
+   "port_heads": [
+    "d903979764194c5b7afa7b048710210c15e9179b"
+   ],
+   "shards_sha256": {
+    "shard_1.jsonl": "72cb3278514d97315a1d718911bf6e9d9e6f293ff61297567ea5980ccd28987c",
+    "shard_10.jsonl": "8f8b3724e366a9a1bf39d776d7e936f2ab2de20af074419a11e651de2369efae",
+    "shard_100.jsonl": "3bf0b72beb24b92b3052bd925c4683b21dfade0cc16b99f0ec02764e4ef77130",
+    "shard_101.jsonl": "d14734488e981b0453f3909acf1d1fe1dcb2c74736aff7b7d76b231747fb7f05",
+    "shard_102.jsonl": "86644eb960d0fccda1f8b72a2b1c84c53c360d30663c322ee8f95e4da779a0c8",
+    "shard_103.jsonl": "c6ae45fe333b3d05652a1f952851b8c16547a96d51296c8efb1c4e1e1c564c6c",
+    "shard_104.jsonl": "ed925be2adfce9a25b0091ad6b6409bfd91180529cfc7e516465cbd06e75b760",
+    "shard_105.jsonl": "becf2ad9134b721efe4d368caa7fee8d505fbc97d51fa9bc9be98a3fb6670f6e",
+    "shard_106.jsonl": "da27739f2738a870d1925a1db7aa5b7b66082418a832fe6123759d43dc9e6676",
+    "shard_107.jsonl": "fd1ae546fb38686756411a4fffea2b86fa45666030d0005272cead057ec81e4f",
+    "shard_108.jsonl": "632f87f8f3f36be517201cca99e8d8959c098a9a9d6f1cf312675dd55752ad73",
+    "shard_109.jsonl": "1cbe981db4cc90e85ae9f92a0190a6a19a10bd4a18dcaf6d8e4f5d7cde63470a",
+    "shard_11.jsonl": "c2ab2fa4e7c8dd7394d4564c74fdd3925dfb39976c455f10dccf6f424f597b4b",
+    "shard_110.jsonl": "c6902e24e712b4af5ade84b6210bee5eb4ddd9945014c107d90a9d3cf85412e8",
+    "shard_111.jsonl": "a81ac7546c6810963a7406adcdd093a27c2337fd76f99cadafdfc83b78b4b4ef",
+    "shard_112.jsonl": "48141468dbfa6495b3e6993832cca0ee1f87ee60bb1e58d47b550d254028044d",
+    "shard_113.jsonl": "7b7cc27464404bada98a330760179e9ffb52555045f98a50531b1a425b3d4164",
+    "shard_114.jsonl": "ac34257784284c2c716e9653bb9c4762d96dd63cc0e4bf6a64f69929d0f10e39",
+    "shard_115.jsonl": "9c1749c8b51ec231dfd174279680dc4c26b44e5a7153422fcd53d5e75d4c6435",
+    "shard_116.jsonl": "54f316a18728122dec6fe5a238a5bbda76293e8e77f473c4f1f419cc1b7c22f0",
+    "shard_117.jsonl": "e3214840959fb6a88706c9dc0adc4b3b32e510fd846ec0b7bfb00bb18c29a61f",
+    "shard_118.jsonl": "bde6338a94fa379b5e24d7064a1a213fbd628ed3a8117782d8627faf649f73af",
+    "shard_119.jsonl": "b43be2b61f916ef1e7b3357cdc6de128a96dbdc0b9cc9b581e6186308569a6f6",
+    "shard_12.jsonl": "9627ac4761631cf893d1432fc3241887d88c998c04d6fc97db3f2fdccb60c25f",
+    "shard_120.jsonl": "f90fd95a684d5b6de4a579b52752402d747fd54b96db6cce42dd36fc2fc7f399",
+    "shard_121.jsonl": "675fb0339c7e95914658a40a5cc1d193db1acb0ff60ef109b8550a40dd7ef8f0",
+    "shard_122.jsonl": "bfac970bb460ad9d7aec366adf4c749af2a0eea9f528ce82b1843d4ab64ff91f",
+    "shard_123.jsonl": "2299fdcfbd5d6b39b2aee5061b00236357fe28a8fa6c33f6feaafb99a007b0c2",
+    "shard_124.jsonl": "1f71cced6551b4dbf1bb50dc101103a3a15f8f1f000bfea3257c8228a6d104f7",
+    "shard_125.jsonl": "43a943794f0a495f1b6d13ceca7f5beef1cae09b7c9b471159c7568096054558",
+    "shard_126.jsonl": "b25cf9922fca53dab9036cb8834fae87a7b63b4241a77f7cf63b34f403899374",
+    "shard_127.jsonl": "abfe21363aa260be036bd7d6d4f219100125e863cd77ac49255d532597dbd887",
+    "shard_128.jsonl": "8aabd253b5143b84bd021ac5fad439ce6eafb686bc20e313e772cea82f5a0b78",
+    "shard_129.jsonl": "790a2ee3acc70280e369772bc05b56ab720389722a78d52fd291c2e9360e5c78",
+    "shard_13.jsonl": "7d30be75fc895303211f2159f98ac50d03cbecc10e8e0a873c0ccc86ac7c9271",
+    "shard_130.jsonl": "6bbf0002aa27f433739cb602bc5856a895574915a4b0f1bb33c0a01f5b3a1b83",
+    "shard_131.jsonl": "a4429fc1053543793d96708bc1ece350dc329eb2bbe9b4c10c758453408c7eb0",
+    "shard_132.jsonl": "8ec850ebbeab62033ac1f6354006579ca121e59d118b216826aa31f8356ad1c9",
+    "shard_133.jsonl": "797e1414f4bc9d984b00bd04bc8d532d8ed240d64a2d6d6cc97069539b76115d",
+    "shard_134.jsonl": "f3e581e4f8d98c0dd03280e7fc07737c7579002db19f380f13f3e5a98991a849",
+    "shard_135.jsonl": "c07b3654d4cbaf4efd41e4a945a2f295c0d6ba74400ed699ac08a0579dc2931b",
+    "shard_136.jsonl": "89c0f182e5ed737b0c5751ed5d222797460b741dd2e8a1f41dc2bd6c19c26f8f",
+    "shard_137.jsonl": "dac91ed739b37a638d99d8f8c645f3e9f591bb3f2cc87014d17257238d18c1fb",
+    "shard_138.jsonl": "85d856e5e1e42c2d6542c401e27ea8fc2ef6902dc53fa90bc9bdb6554a9e4bd9",
+    "shard_139.jsonl": "00237530ddeb2f9944b1af3425888fb532a62955aadedbdcf0698d735fe5914a",
+    "shard_14.jsonl": "6888f98823430c92f7c1de99c044063fb1fab78fcf1a3a9f7d6127e56f11f314",
+    "shard_140.jsonl": "e43e0535f25d4d264191da2a898b40a3b262361b7913db634c372b99df2f3720",
+    "shard_141.jsonl": "be6e8a4bf543e6bb723a8ea3b66f93f39ec41a382734b1994c08c426276691ac",
+    "shard_142.jsonl": "d8c4c261a6f1a6ea8e345c356006b4a66571b640a414938e0a876132c2092b9e",
+    "shard_143.jsonl": "6c078a953d7e7fa720be8bd1371ee23bc70a98d26da6f4e3f03b17ea7183df4e",
+    "shard_144.jsonl": "2dd9383a1e41346dfdc488cfe94a9120c724002f6e7118cbdd6f6a0ecf76e766",
+    "shard_145.jsonl": "3b574914e54f4427b24b51a43319d5c5e5a863320972c3d61fab6bfe81e15e81",
+    "shard_146.jsonl": "ff3c3dcad870e828639cba6e6d1d81b8597b77b9f7d187cb4a3fd673f75b8d1f",
+    "shard_147.jsonl": "c6bb925332c08fd2ebe3221e29280e2eac856076f13b2bdbad09a48f2c935fc4",
+    "shard_148.jsonl": "5912eca7ac5a37e2d5053575f70ebd6aa8a5c2fcf38fc8bb6b6aa97224c30cf7",
+    "shard_149.jsonl": "3771616eead1e6110c90438de950ab70583aeb2b97cdb7caa83b634f3d5d22e8",
+    "shard_15.jsonl": "dd4e8c4037e09817d9ae293715ef1896eb4677dda204dd1c067a29cc022c987a",
+    "shard_150.jsonl": "017623b4b2f11c57e359c8cbf8701c47ba0033c3be1a6794c8634ed9927b0bd0",
+    "shard_151.jsonl": "24feba50bfbffa2a22b66c7b8f9ada816b40f7eef1a3d0c4b85e63c5f8cfb929",
+    "shard_152.jsonl": "da160157dc27989591bd484e3319d9b138026d6df00a6f64ad0880f20222fc20",
+    "shard_153.jsonl": "6f190375d5e763bc1465e77ac8493e7e119075afff7868ffffeedbb2c5b24ebc",
+    "shard_154.jsonl": "c848db48d3fac485dec462e2b9998f3e43dfd1124eeea4928239b4e759f999d8",
+    "shard_155.jsonl": "582fe7429b731db25b1e6f2825704169cb63c7b241864c26cb870c673dd99634",
+    "shard_156.jsonl": "436dab6904c4b956c4032e0bbc915ed0d8f1cde69e08278d83df50bd5df2e02d",
+    "shard_157.jsonl": "e79438b1871f139c4c75efbbcff44a7e9f71379df5f07e965cbde85a2a7c17bd",
+    "shard_158.jsonl": "d3a7658ad941726ec2a39be9af74366110a56b058372ba7d9b120291838dd941",
+    "shard_159.jsonl": "0d5fc6df5f865b4bd670082a9f8c49315ebb293ee55f6e7de9bb647e52311bfc",
+    "shard_16.jsonl": "3681874f14ecf245e3ea331132d5e28c4017661c5c99c990596c7709abdfdf38",
+    "shard_160.jsonl": "eee80eccf5214c879743387ef8cb23fb60f881e224be09091f948aac6988e1e7",
+    "shard_161.jsonl": "5767a0fd3a07e73aa1446b1d36e9a56e417e9ea8ab64a7eb897353307b8c570b",
+    "shard_162.jsonl": "447b4c317e2aad0b3270a87200a5b10ea7b890c6ee5b312098a7b1dba04e088c",
+    "shard_163.jsonl": "047aae5765f96bed7b26fb31cafaa15eb26134b1946a5b89603c9d46e9d663cb",
+    "shard_164.jsonl": "301567ba1e04f2701829ddec2b4f8cc8de0cc0b48be82b2978ea687553ab2dd3",
+    "shard_165.jsonl": "4b4224101edb6a4691af8eb5f2244c38b35db9fbb93c3c9b01ccc324bc334307",
+    "shard_166.jsonl": "4b9b78bdf3f727d4552cc3edddf932a5cf432fe111752d78f1d51ab4dbbf42f2",
+    "shard_167.jsonl": "5e578a468d52c05d158d079d00bfe722a34f6e50efb12d9f6b9cbe872206bce3",
+    "shard_168.jsonl": "9c2f0d025b05d8cfbe7c4b7e139af565ff5de0f85ee208794b04cdfbc83e8588",
+    "shard_169.jsonl": "bb868a5a02463e6dac74a98e8fad862b5c8f424d31ea81b3f837fab3fa588875",
+    "shard_17.jsonl": "f899f2a5634d7d60f709b1e349f77fc0b49f0a237cc5c7e211b223df10dc9433",
+    "shard_170.jsonl": "6dc7ccea5cf31a54b0983bb23eb5a081941824fbcebfa5300a2c0ac916ab06d1",
+    "shard_171.jsonl": "9f824830bba354ac8993597605cff427373a9ca857a69a7372fffc575137c915",
+    "shard_172.jsonl": "3e8ee52d007068590c452d12eda2dd614dc1dac9d7eeda2315d4abb9db73143c",
+    "shard_173.jsonl": "5068c148ee81938bb9b9dd80b607a5d5067e96ac716e52243eae0e8b972acd6f",
+    "shard_174.jsonl": "bae968b9bec2f013b3f6565d42ac2ba1aa554a40a2b140834820f8a5d3b8bd25",
+    "shard_175.jsonl": "45d20b710be99a68024b83b1f83d29031cce91d94479f3efdc35914bf726aef3",
+    "shard_176.jsonl": "b9d1b8080c4c7c22f97be316e10cff91a9735551594fea34afc11226a2229bef",
+    "shard_177.jsonl": "250d2df44ccb05837e340f31edd1316fd02a5cf19be1766b585ecbc9f8b2f3f0",
+    "shard_178.jsonl": "55d6447f3dfc85a361dc6a7f4c227e69b0e1a0cfe088228d82cb461af9f920a0",
+    "shard_179.jsonl": "97d6cf66adaf58fdd906a719330260ad76fc9a9a536088d81551352743c2c87f",
+    "shard_18.jsonl": "22dafb190dfcd2b151a1921cfec1b27d3779ec60b26e0160fdc7c37381c7c6c0",
+    "shard_180.jsonl": "37150489df2d61793d45ebe92671a76d039ea258c7f0ff687ab3e62c3993d284",
+    "shard_181.jsonl": "2f83a7cdd8e694de1fc101a0fdfdc79813d7d41f52df74b8aab9d2be463c03ee",
+    "shard_182.jsonl": "749f5113ff23ae87257ffe329736e0cdf400cda2e1af3358b300d0f8c02c0dea",
+    "shard_183.jsonl": "d6b85bcf383a9d912cdc21ddda4c5e5cc32ab94b58d369a1f6be050238e58869",
+    "shard_184.jsonl": "1f70a64c4a73c0d8bc1e13a3102bf47afabd37565adf80b8d6264bf1b9cadaf9",
+    "shard_185.jsonl": "cade5e7baebb9763fce5387e66b558706c2b9c7a0bf57357394a0aa191c5121f",
+    "shard_186.jsonl": "dfd6a7bc7ae6f577a888bbf618a3af7203956b54780ae995f95f3faae73d16d9",
+    "shard_187.jsonl": "097f2e9ebeceb18d68143108a12d61c18cb273375153d7a99a0d563a7c8e9482",
+    "shard_188.jsonl": "2ca4a03905839d59e94584f1f82ed4c33dbca769dfe77b871d73ecf73dfa90c0",
+    "shard_189.jsonl": "89eb69156e36ed2217a5e091ab6b6488538c9335fd6b5a073dc161141c8c5903",
+    "shard_19.jsonl": "dae2f70692bbab93e4c5cd5c1d895b4d9e4d2f39109da2cc23ed32560484cfb6",
+    "shard_190.jsonl": "787430650b9a403d6e742cece6fbafe03dd3f6be066f926f4bd3dffe52ed3695",
+    "shard_191.jsonl": "17dc91cf92727964ff79649283d11a60a117dd26b021439847eaf255790b02c2",
+    "shard_192.jsonl": "a0f936759063ebbca8bbf5e7689f898d68e8578acfcd71790aa8edef0b52f208",
+    "shard_193.jsonl": "cf3aed1175bc93cd3370055a9cdacf0c8e31d5d2c1d8b13fdb0d920e99578ab7",
+    "shard_194.jsonl": "c0a62be44203811522aa3592498d47c5a058f7b6668994181d876817718e7e96",
+    "shard_195.jsonl": "719c8c589081aed097adbebafdb0330b109cc2513d92463c832ad6e875075340",
+    "shard_196.jsonl": "c3b5e3f0a66b2a1ae1fca6d5df334fe4f47de740b1c37a700d66b9bccd21666d",
+    "shard_197.jsonl": "f9d89f4d241d06ceb30bb94a014d0ce842ae7d11b7003f6b3ea4bf5ca32b1ea6",
+    "shard_198.jsonl": "83cf67ae416ccc698e5abf5c54d4636a9fe56d13a6aa065baa515fee94e60fd9",
+    "shard_199.jsonl": "1d122d58895272c522790a14670805110a20a8d7ae5c76f352d62ab9b7237e90",
+    "shard_2.jsonl": "ceb7f2e0bde74d9337582f9b9e2f0e84521b9949666850e4735c089b3bbbbc23",
+    "shard_20.jsonl": "034afd60b11fedd330effecc4fc6151f119ed85c8ffaeb165c628af3a4adfe6a",
+    "shard_200.jsonl": "52711f5404f056ac01bf31332887bc0fb00998421741cac635348f0ddd65bee7",
+    "shard_201.jsonl": "af974376e24bd28d61fd4d9afb0cb9ce6585871ee0f1aa3a83f9f67d7b1c78f8",
+    "shard_202.jsonl": "6e4494e8fe274c1da11a0aaf2d14367075f4c5276e7685da74dd37a464a9c23e",
+    "shard_203.jsonl": "620dce0c0a756a4c58749b49f99321fe74e2c2ef64b0512d316c95c6b95ea2ec",
+    "shard_204.jsonl": "67a51336c0f2122db497f32831e5c40d00be7160dc3c5792aa837b79be2c46fd",
+    "shard_205.jsonl": "270ddd91f3c4fabc67a2478e3264232bfb340995aa07b231ba8d497fc5a4fed2",
+    "shard_206.jsonl": "d7cfae978eec265dcd1087b75547573cfa1b3a3de3d4ee8392200df51d40cd6a",
+    "shard_207.jsonl": "9fe29758137e8f7d01548601865190f3b7aaef5ca0a28bd8d86518d9110ac8f3",
+    "shard_208.jsonl": "87f194b4b3876124c26c33e9e0b1bae893f7cb8cc02d1268537936da14617265",
+    "shard_209.jsonl": "f1ec4913fabfd182eb9bcdc8fccff5778892c6a3f5d19ef86b28f60e6d9d672c",
+    "shard_21.jsonl": "94646139bda0aff04ff8c6f9df99bff8beb769025823f0fca1921525f7d8388c",
+    "shard_210.jsonl": "783bf98881b0e606a41662bb0577265edbc44dc4608ac5d775300ab4231c9e5b",
+    "shard_211.jsonl": "01c7a7f9d16a99a6c9d07ccfabf5074833b504a2b2c14ced2df3de2506f36692",
+    "shard_212.jsonl": "89771c7745adfc3d8171310c347635366cc3e6013ec46e448a54fd34ce49eb25",
+    "shard_213.jsonl": "f284623700c8d06cfc42126763decfbd551fdf66e27b1f1cab84d9d1aed4498f",
+    "shard_214.jsonl": "6bb9daefd2de8944f04662677d412dc5249a70da52dd455f9a030a9663bdfa4e",
+    "shard_215.jsonl": "47592870846b13110233f6374f0d97f059e4befd2f899b33fc12c60e7a17d671",
+    "shard_22.jsonl": "553ad9604b298cfeb526fdfe7a4c2b890069135c56cc7d107e248c879dde9f36",
+    "shard_23.jsonl": "44100dcef0aae2c0767259d58604a8cbd7590c01b5cb0f6370a0fb4d27380963",
+    "shard_24.jsonl": "f020853fbc26764ebfdaac799f1f912df00a50e00cae5e1762073c381228652e",
+    "shard_25.jsonl": "854c32123080a9525f5231b8d1874b40a2ba824fb696f9c83b862d8eff1edc9b",
+    "shard_26.jsonl": "a0915ad0d87ae474d747e01c98e6460584c8100f7381a746f10d273cd02a748a",
+    "shard_27.jsonl": "775159538ab60a5365bc75ba678451a7a0c2b973d49f654fcbd79aa70862192f",
+    "shard_28.jsonl": "289764a9f4a5aa2b409d2ac4757ff6f57bbe15a00243aedeb4bcd26012ee1da7",
+    "shard_29.jsonl": "bc70c533df27c185ca9ff50a391d9b2d5b0b7770e555b91664176ba5a3010b60",
+    "shard_3.jsonl": "935b610e954c30e314598a15971ef1cbaf85f71f04e96624a535b61f72261b53",
+    "shard_30.jsonl": "58734361ed86a65263667d3f28fb8ca28d4ef22189f96703c6164c4557635e47",
+    "shard_31.jsonl": "d22b3f95d29e9351c77db716b64dc560c6889166cb6d5063d0d9304affe68a70",
+    "shard_32.jsonl": "a22201471f22dee7971974dd1631e0d1875eb436a05cd5878756ddab74e3d9d5",
+    "shard_33.jsonl": "1c8bedd3ebe83367578c57804db69250fa46985332abbafcc5f4f5f3a6edff46",
+    "shard_34.jsonl": "ed69418ea18d3f053b4ea06bc8991eb7012901dccfc56877919ec23e0d6530e7",
+    "shard_35.jsonl": "6cda127f5103da96c190e18083e66771f4679537969a8ddfeeab54f635981ef6",
+    "shard_36.jsonl": "f3c2ab47c8119e71b5e2c0a3e3b6177c7f12e02b4bacb09672dbbc79eadcfb90",
+    "shard_37.jsonl": "87ff38a9a9ebc4cd3d22ca93a02eff4e173213dc10549c0558e00ef8942f390b",
+    "shard_38.jsonl": "5bd8238852274b861730d87da8f1b50808189b2019610e0b382a27cd8801037b",
+    "shard_39.jsonl": "4870254de4707304a9a9f0ac96c81b25d27c43bcbd03d9975e044a0ff94a07bb",
+    "shard_4.jsonl": "f540fc790c0d7003d2a8bc095787422a28d565390bae0dddd60a5a771d0203df",
+    "shard_40.jsonl": "bf5c6720600f0f8bd5d2288612119b91b7e062435e699ac60631d4d7fbfe7506",
+    "shard_41.jsonl": "e3888743a05ad85f08644777df5d59ac417d676bf92bbb7cdf77f24c1cb5135e",
+    "shard_42.jsonl": "1e7be03538bce0127304aca4ff7a86208444377dfec851798d3f38efea826d77",
+    "shard_43.jsonl": "3c24ddc683c761878cd82d2065a6b75eea6b00a61bf0445ba1d13a1411fadb97",
+    "shard_44.jsonl": "51bf251e07f22e0cff5b2a4f0848dfce90b06f5681bd28ffb4e519fe801c8a6e",
+    "shard_45.jsonl": "e9d19596f4cf585a830e77c22b59c7a23162d829ff2b229a7d1ec6efa767c1b2",
+    "shard_46.jsonl": "791c65c1313ff19872fee141d6cc12e6f04580712052f7812d57ae53243cdc06",
+    "shard_47.jsonl": "bb68c0013026b428584792ef6cd788e4a211d6564a8cbe69dd090e4fca2f9bbd",
+    "shard_48.jsonl": "9354e8f6de83bf5bc7c52ea44520f939825d9b5508a8992f8be8a9e78633cd22",
+    "shard_49.jsonl": "d13204a18a43452c2f5ba80956de8cec4530020ed524d8a996950cbc8185eea0",
+    "shard_5.jsonl": "c7defc4b2c62234a91ccb6173a4bfa244d76661df3d7130091d01d44bd3a6959",
+    "shard_50.jsonl": "8526efe2ce99f83b52a39198ee8c86b1bae41a8bbb2565fba1566a46f02d6a28",
+    "shard_51.jsonl": "392a2d7298784b9f0a187dac94ce20c4eeb79ef399e16a14488ab26185b97e36",
+    "shard_52.jsonl": "5814e5195dd27cd6fa946d38fa082ff3881635f6f7f7dc9a152316829acd87b4",
+    "shard_53.jsonl": "48ec5a518c3bb2742d0c225813870e4f9e8beccdced2999900c21b388b79b919",
+    "shard_54.jsonl": "7a1d8149d9cdfa2d24fa47501d6ddc20f171c0641160640bc86a388fe8f82c5c",
+    "shard_55.jsonl": "d1b15750164be539c11e7c5de98eb12dc53ad7e426eacaf30ebc6d14e8532b35",
+    "shard_56.jsonl": "e6a213b4a2ea64737c5948e58585608a400d7fb9630777ae844a3e911e597048",
+    "shard_57.jsonl": "d6b9687164c7125c3d6c3c4939e08b41f717ede271014d35f60c4ce254f522ef",
+    "shard_58.jsonl": "3b97996b27409d84cf2709a7531a3fc1aefc0bcaf9200e1c8a73d57d44443dbe",
+    "shard_59.jsonl": "3e2aa5480eab9b00259f65170147d929e98fe64f49e90de10e3d94efbcdc03d1",
+    "shard_6.jsonl": "be04cad13963f32bc48727c95146858081621bca8ec05fb6f77907ba2947395f",
+    "shard_60.jsonl": "48886c1db74567dee3437bc2005a710675838f02d27b59c65f214bc4e7f1695b",
+    "shard_61.jsonl": "fb7d2ccf663fc2ea8f645833576d04f8cdad6b553dda795e53bceb3f6896c352",
+    "shard_62.jsonl": "4f596ee943652273d66a4fea21e6ec7b4746990cd73feac24f3a09837754bdf5",
+    "shard_63.jsonl": "836561e3ee92586c0ad212e54cb2f72097a092a00a39261f32ee847c1232362b",
+    "shard_64.jsonl": "51d7bf5e02768dc281d4f18a2d4719753b954130178e8ea5b6c0c1761cca4621",
+    "shard_65.jsonl": "38eb262c095b7bd0bb6b1a1d20b3e20c986b49744fb61d26fb2be2a170d54f80",
+    "shard_66.jsonl": "3b8c54245d1280b55bd8eae2d72225548e20a5cf7719beecd932e042ef6cd0f2",
+    "shard_67.jsonl": "7b482c78612c81cb7a066f1019dc0c29a0cd4ba63a084d7b04bdf310487206b5",
+    "shard_68.jsonl": "2c70b53cb13e313fc317010af2fafb87e724de6ea28fb48df85d6010031b0216",
+    "shard_69.jsonl": "d91d8e7a0acf571b0de621181c5685da8241d6acc0dd45486622e75f75226494",
+    "shard_7.jsonl": "22fb79c3c026faa3e003a250030be5d3b7fa73dc54d0e9d43148d39955152145",
+    "shard_70.jsonl": "827db33fa05fa84e332e386fb47f0eea9ab8d48ece169db42e1fb6e774e7ea39",
+    "shard_71.jsonl": "8e11fbdeb8ae615d8c9d44dacd49b9859a423b9301e006dca29d0a16d56123fd",
+    "shard_72.jsonl": "194bb5a44a81c6d73951a7a701305de6e4575a20728c8e015de46b50a4bf4ce9",
+    "shard_73.jsonl": "6ca0c85ad236a0940c38b254448380cc4e8b3eecd3456bde5039780d6ed608bf",
+    "shard_74.jsonl": "6f7804c345fe4d883cafd5b887e0bdc4aeb0b907ae79a242c4e7b969d4be0708",
+    "shard_75.jsonl": "a9d95d8aabd5938941cdf352464033295a076115d0bb9976c7b5d95f074bbc69",
+    "shard_76.jsonl": "4dbcdb8d9e145f3e88413526ef32198771411c9ce6e90410af76220a19a0a4c9",
+    "shard_77.jsonl": "0f6d68c1f40e2650048ef5d23fba70a1004ff18b7f1d4044058247d2c793e2d3",
+    "shard_78.jsonl": "45fe13f2b8369f4252e08824963c0975f0c4fc76f5b85cd598a8a4132e3a3d7c",
+    "shard_79.jsonl": "c90ba7421393c5ff32af2a472d597b896dfe50d6c4e183689b678be4a4012202",
+    "shard_8.jsonl": "b92b9bd631a4e4e58992c69810b56e5fc65ab92d5b2f50a3b20e5abff0eb323e",
+    "shard_80.jsonl": "cbbcde650c7b15fbbabe551bb3b75d209c3d6083b9a44a2402fa51ffb52d2929",
+    "shard_81.jsonl": "a59104a85b076467801a7eb9515f94ad135341e58883da0b280b3998eb0f5037",
+    "shard_82.jsonl": "c91173319e7e9d3ed49cb35296dafb7cfc99a7cb865aca728ec8f874f3d55c17",
+    "shard_83.jsonl": "1711a1b64ba08b66c56ac5001ac755a0dec6cd90c1db664547113b1b0318fdbc",
+    "shard_84.jsonl": "00e97a02ec34bc735c8c45a749e61dd8e07edaa2e92031f818c1d7dbe43e8864",
+    "shard_85.jsonl": "df1e0013a680106e3d2e2a88eedcdc43435ab54c9e6acf958300bd4262970d1e",
+    "shard_86.jsonl": "e590a6629b84629f4fc5debb6cbeb73f11da25c472a6c07becc4816612e9fe0c",
+    "shard_87.jsonl": "cd96a4ab7b8de7681cd57fffd9d3137659731f219b4e526ced1442595334bb20",
+    "shard_88.jsonl": "74a130ef580eadbe37601d5b537fbbbcc9e7b609c69389c4aeef5bf316915ee7",
+    "shard_89.jsonl": "d483086f78892af310180b9a6a6e5331cbfb14b35a91022a43b06da605bffcb7",
+    "shard_9.jsonl": "f177445e33246ae624091f8182034f1f3a37708393ffc15f34f96022e3d8a92b",
+    "shard_90.jsonl": "1c16433654e32412b2e199f3b8c90630d9b3ef626de22a812c7944affeaddc2c",
+    "shard_91.jsonl": "19224005e8850d26a108870c76910023532d972a51ebb5bcaeb9b0d6338c4f94",
+    "shard_92.jsonl": "d36e5a7f9c1b10886398bcc6599d38912cda67fdb067235cb6411ccee7e0aa5b",
+    "shard_93.jsonl": "57294763b4c6234258d1f81446820e6a38d923ad2451b9cc25ee7701e3fe9b1e",
+    "shard_94.jsonl": "eda546dd8898ace122fe03952569527e407ee5777f19e26f8332d745b1b75760",
+    "shard_95.jsonl": "6d62e0ed414da20476c0e69c8d3c1c1ef5fe5ad4d7e17f64d2d917bc33c467f2",
+    "shard_96.jsonl": "77a48675aa4d97617bdb94a9491201285e061dd03c79aa9a30343ffa0e4b9ac6",
+    "shard_97.jsonl": "d4831f1eb6941f9b32054cc4f81f48d5295c78181cf758de45da2b84e927bba0",
+    "shard_98.jsonl": "7b741050ec5aa8fd77aa6ed71207b078792a4c22f82ebbf3b7909e0db8299289",
+    "shard_99.jsonl": "ca77477e3a0b78e338a935ec9f87e3782cd3080a6fa70e08a91401518c07036b"
+   },
+   "selected_rows_sha256": {
+    "censor-k0.01-p01-c0-s0": "c4e69888f40d3ba3d5b5a8e6510aff2c7e6d6ad97adb359e82466eaf50aa91bc",
+    "censor-k0.01-p01-c0-s1": "473aace9e59bfe510597265555315e249546fa435b3ce67945231ece528112ca",
+    "censor-k0.01-p01-c1-s0": "afbedb9c4a3ad5189a0465719ffd71a2bd075bdcc62a1ffa6ef6e422afa53b9a",
+    "censor-k0.01-p01-c1-s1": "086ca1515a34da2f6db63d06dac979bd698f1d946a822956746be0ed3e43db8a",
+    "censor-k0.01-p02-c0-s0": "0900fb1fc9b4105a45d5bf9fcb7586b4eaafc19dc753ff82ce8026f6908654a0",
+    "censor-k0.01-p02-c0-s1": "881755fced2110d97c8c761e6ebffe3e4f15f59cc3598055cb02dbb0a4fd1e91",
+    "censor-k0.01-p02-c1-s0": "2a55ee96cdb906a2e51e9fcc765d4a1c9d1b086e182841229244f8a2140cf401",
+    "censor-k0.01-p02-c1-s1": "2b4a0a1340502da5f05853bc90022ab9cae1ec6986dcf3596222a9a96dc98104",
+    "censor-k0.01-p03-c0-s0": "3adfe68c0a5dc62a5c464530e624865d1733ac19b435ddbcba11de2c103cdeec",
+    "censor-k0.01-p03-c0-s1": "63888ef7d91f5b716227f51902b80c6b41996d1a6491b01095be6b7c1ae1b13d",
+    "censor-k0.01-p03-c1-s0": "f42124e33d6b19eb602fe73a6726f4aced974a2eb1e6008f1497f307f9324d0a",
+    "censor-k0.01-p03-c1-s1": "24d2ee69cf26e1535956bbaeb88553d57e6bb801c4d315d06dbe430c798e8ef8",
+    "censor-k0.01-p04-c0-s0": "f739bbaea6efddf5ad27f63e130174b631eef91c11d66c1aa94099308f5c2167",
+    "censor-k0.01-p04-c0-s1": "a42e04c2430d67c805075bfc6b7bfeee5a473b92edb3030b7a8c68bc3c90167b",
+    "censor-k0.01-p04-c1-s0": "f95ffd88525dbf93c277ae1a677f8122fb6d4d3bc57b761131b668a20771b2df",
+    "censor-k0.01-p04-c1-s1": "57d38631e97cd627b2bc5e1b52e6d1454e0d50d3b8bedaba5c069ab44d3ed771",
+    "censor-k0.0316-p01-c0-s0": "9d8f276120bd63983413c50e063a69ca338c214c9f42958cf2417c75d6e3e0fb",
+    "censor-k0.0316-p01-c0-s1": "ddf94307f66c1110ecc09ccc039c0c601fc5cba4b25cd3316ad4325747f95668",
+    "censor-k0.0316-p01-c1-s0": "028e38d12ea7eca6b5e7ca29b9c27b2cc4a7d771307b23611b32f0d35fc49045",
+    "censor-k0.0316-p01-c1-s1": "099f8f11c6a73c8784c9bd5f04953c58ffbad31ae051007e87362c80d5fa9933",
+    "censor-k0.0316-p02-c0-s0": "76b4fe146cf72165011497bce2c6e1e7107719d776278f7df6d0f9eea222be08",
+    "censor-k0.0316-p02-c0-s1": "fc8e6edf120bd1a5c120d15ee43525668c62b01e48d16a6d70197aea2f1cfbd6",
+    "censor-k0.0316-p02-c1-s0": "3f8099de88a76dea3e0dac7c4e10f9c088817b5090d1e1f6036bbcd206f21de9",
+    "censor-k0.0316-p02-c1-s1": "df87df038b258b05c3680aab7cfaa2cc7af20db01cf5bde86f548db666c30df8",
+    "censor-k0.0316-p03-c0-s0": "6e0c4ee7ef5ad36c6abd55dc62726606732c84536369449de9d1a092fcad2cc0",
+    "censor-k0.0316-p03-c0-s1": "345bd2a09d34e7e1bc690dec6817e74c6ef0f0b63dacdd3a31710c43fa5abf4e",
+    "censor-k0.0316-p03-c1-s0": "673c79c986c1a39462263a1cfeafb1d4c7c60bedca49ecc0027402afc24fb39d",
+    "censor-k0.0316-p03-c1-s1": "91379f7b7ab74b1362871a6e72dd25acab171b15aa06a1fbe6b1a9b60e8570ce",
+    "censor-k0.0316-p04-c0-s0": "a6812875c16347fd7ef595fe1a6cf7459de96f9955157eba6ba447f9a3e97abf",
+    "censor-k0.0316-p04-c0-s1": "e19b5cd1af464b78935e82132a5a86fcda0edf0f89909c9567e14c5f5d3ca975",
+    "censor-k0.0316-p04-c1-s0": "2bca03217fe0299c662760f29c12087db9d8ed359a73048c42c25537cfbaa3bb",
+    "censor-k0.0316-p04-c1-s1": "1cabd71767882db0633cd53503115da184f27b881691c79e00e9c806a7b09ae5",
+    "censor-k0.1-p01-c0-s0": "d306533a6e675f44e371cf7a5ab35af570ae25045bcb0ec29309c4ebc8149e1f",
+    "censor-k0.1-p01-c0-s1": "5140887163157c0e254214a9a988a078374c5e11b5ece5e7f5caea86cd35e958",
+    "censor-k0.1-p01-c1-s0": "ce1083209820d6f38ed21cddbd3294b9123ad22b3b0d79ea2f82a34b98d0e31a",
+    "pure-k0.01-p01-c0-s0": "2d1ccdbd1abfad8541483cfd10eab5a6e7afbd6932e37b72e953d256cbc88b5c",
+    "pure-k0.01-p01-c0-s1": "2ba48900ad0209a77fef3f43e776c294f18917cbcb52d41bd954b8717e19df3d",
+    "pure-k0.01-p01-c1-s0": "463b44d6ac8ee79d673ae6d5f84e437e621742fb3ca087aa9d5e32ef410979fb",
+    "pure-k0.01-p01-c1-s1": "19c40b3e689a8c099d2fe0bf3c279e707d99d25a245abd931464a5df7cea972e",
+    "pure-k0.01-p02-c0-s0": "333d63a424abcd30d06b1e12d44b3f6276002282d322d4636f5c444915657c19",
+    "pure-k0.01-p02-c0-s1": "18a7f27e009fc11c1252be77ea439e08ad9d5748bd277f85270d5c1047b94cbc",
+    "pure-k0.01-p02-c1-s0": "a0e3a9c35764c23f6aeee30b89717eb4a55cbb1c711db6bbcf4f871aa6db0896",
+    "pure-k0.01-p02-c1-s1": "fbd5376291c2c97fd233a37c27de6b8c75e44f82af22113abafc21ee198bb5c2",
+    "pure-k0.01-p03-c0-s0": "e7d6a127fa0105d14decf3dc176ae71b573b862f1d695dc2dc9da79058931062",
+    "pure-k0.01-p03-c0-s1": "e1e2813e2063bb0be08e0a0a581fa5c7ddcae6fcf222606d4a18fb87e6497227",
+    "pure-k0.01-p03-c1-s0": "5283d9c98696340d7b8fce5bd3ae01553e6fc4fb758abd518362037ea7e85fe5",
+    "pure-k0.01-p03-c1-s1": "c7558e5d14678ec4df384a2b6cd5f5c6a2551750bb9d26bb0ccc03737a5d7510",
+    "pure-k0.01-p04-c0-s0": "dd9866629847202381f207cfa834deec0e2e46f9bd86070613815698c152af4c",
+    "pure-k0.01-p04-c0-s1": "73c2920ed3fbafc9c4c70ca3789a9dbbf0ba39bfe6bc27951cd5fed72a67c43c",
+    "pure-k0.01-p04-c1-s0": "945f7ff79bfd8836f4af2508a45d7813e1ed6adacf93b2e3cc7eb34bcb765d42",
+    "pure-k0.01-p04-c1-s1": "45093b6dfe162623c3b08de6a959725b29cd20c43fa00067d6ffddc3172a1e74",
+    "pure-k0.01-p06-c0-s0": "55ebd9ed42067c5924eb4b980b65103c1519f5af793b475b5533b1926870373a",
+    "pure-k0.01-p06-c0-s1": "1b1ed6289f3c81650e16fd704f212281e9d3ce04056664c30dcd489fda968e95",
+    "pure-k0.01-p06-c1-s0": "9d995af63f4121921fda4b4407b20edec5737ba5ffe9cff33c6747b458968cfb",
+    "pure-k0.01-p06-c1-s1": "d518137b955e81abe86b204d47628e390c2aabc9bd7f6a8cc0008e3afdaf036e",
+    "pure-k0.01-p07-c0-s0": "1200b3dd46dfa0c831f587927663bc918465a97fea86ef61a94186e7bf0ca93f",
+    "pure-k0.01-p07-c0-s1": "de80043c75256e2f4c02c02974dc7360c8909d97d6a32a063a803df284c96f44",
+    "pure-k0.01-p07-c1-s0": "add125a44918ce4eedb6ac938ea410b1c97ae396291cc91099b52982cbd48ff6",
+    "pure-k0.01-p07-c1-s1": "554e4ac76c5eacf889b263c188e9d026983772ecdce9c76b4fad785cf6a98e7e",
+    "pure-k0.01-p08-c0-s0": "03ed861f7485c10315eb9e8666dc5847ed315efa583f8a2efb49d2bf83063981",
+    "pure-k0.01-p08-c0-s1": "dbe586c95144b02558682e226cb69202f8653f40a03094e21dfc91c3a03bf002",
+    "pure-k0.01-p08-c1-s0": "6ed96eb7dfd80bb34be09794dd7207766a2b512d2f7d4a0cfc4510af92de2a08",
+    "pure-k0.01-p08-c1-s1": "e5066f7ab1b0d0b49b76109920b05a750dee9720656da9c67bfb8a9ae68a6c7a",
+    "pure-k0.01-p09-c0-s0": "a8719343a1bd785d127c88cca744f21342256e7fec85fe6a0917597929e89779",
+    "pure-k0.01-p09-c0-s1": "54c637c792617432045c1f591dc470df1567e585b8be0eab24d5ef071b170cc7",
+    "pure-k0.01-p09-c1-s0": "09d6e62497e0c66513a4b20a0bcfcfc117dbff86d7dff84cf3f5dea4f01b54c8",
+    "pure-k0.01-p09-c1-s1": "0bcb351e6cccd38d5977c7b34c56ad796c62b0315efb9a734eee570f64510efd",
+    "pure-k0.01-p11-c0-s0": "9ec96a1c9c7c1d7aeae7a5692d6089f9c1139207ee0175e92e648658e22a4ccc",
+    "pure-k0.01-p11-c0-s1": "64de1138eabca8870a27146255508e62810b8e17acda536edb31c18591f28d8b",
+    "pure-k0.01-p11-c1-s0": "e58058269790bed47521dc0ecd66744eb2ee62855916cb391697a87d73c15ec9",
+    "pure-k0.01-p11-c1-s1": "23dc7ac3af52fe175c0930b77e2ff46f8a342e4478ddd8de50ad36f10bc5da4a",
+    "pure-k0.01-p12-c0-s0": "2e11cec36fbc63c5131b8bfe318330ff9ad7fac20b57b0d154fcf9de682fe34e",
+    "pure-k0.01-p12-c0-s1": "8761b083df6d9a6ed398829f57f8815e6ef0f2b34175f50c6c904e32d3270234",
+    "pure-k0.01-p12-c1-s0": "c9bd56e0da555ab3a3d8a27ae914acf4a9b5e7e6f3b7cf359e21eae13cf23157",
+    "pure-k0.01-p12-c1-s1": "724ffa5defc3c93899e26ac1723bea8f3c50214009bd03b555ef0d559b8e480d",
+    "pure-k0.01-p13-c0-s0": "71a0365a993a8fb570c1ceeca38c7ebeab0951d76da5a937ff01ba5676bed52c",
+    "pure-k0.01-p13-c0-s1": "415fc65006f709a2253ea26d80a0535938bd6b9c0c773ad75bde107447432c15",
+    "pure-k0.01-p13-c1-s0": "2ea011954fe03a73d5a99cac26e71166cd48667ee78674034e276be88acbdbd8",
+    "pure-k0.01-p13-c1-s1": "3a563d98942fb87a8d61fba79dbceac8727d50ee1b289ce8439812cf09aa6256",
+    "pure-k0.01-p14-c0-s0": "b673732c9712dc14faa777c518435c421dfbd9e68c0407a9c0b66dd5e830a7a8",
+    "pure-k0.01-p14-c0-s1": "af2580c9245016b2aebc12e60755b6f0929cabfa7cdadd33cd6d2b60a0c44d40",
+    "pure-k0.01-p14-c1-s0": "18b2355bfd6c8e54513df031b1767c981abf82755eafec1e2adfc3ed22f3691c",
+    "pure-k0.01-p14-c1-s1": "3f52021f81a91d0af6ee06dfdf673e8c59051990f37742e10f35e7373cee983f",
+    "pure-k0.01-p16-c0-s0": "4b6920636b7ddc4dc84f8566d56c89b1887a63409a6e859051f073766aa25524",
+    "pure-k0.01-p16-c0-s1": "a1735d49912654d5233a9d58a74bde31148734df1a7a548bec620cdc4dc42995",
+    "pure-k0.01-p16-c1-s0": "aa603bedb279965a0ff83cd6a0d5a4f1495d3a6299a5896a549920c487a16601",
+    "pure-k0.01-p16-c1-s1": "ebbad1e8aa2b9c07d14744bed1a52694f8abb06152aa6e25f3b6a83dbc7ef218",
+    "pure-k0.01-p17-c0-s0": "aa3d47ea991d93cca190c80427cd9dac8019d225b7703e2ee41ed6e2a9061f5d",
+    "pure-k0.01-p17-c0-s1": "99260a5361c86289392c944582404ba5d64aa04826110dfa9ad6dc8655336b08",
+    "pure-k0.01-p17-c1-s0": "86b058549e6ca6365b4649ca78163371e1e9103b083f3cd606f3152fc69c66fe",
+    "pure-k0.01-p17-c1-s1": "96ba867dfb7f25e30bab9f9076c6f87ae18d3ad9b5e913cff9fd17460610bd3f",
+    "pure-k0.01-p18-c0-s0": "72821e149cd64b605272d04bb7a3cecbe8869ef38ab2623594a8fbc85bcbe1c1",
+    "pure-k0.01-p18-c0-s1": "b57012aacbf64f8aaada797f0d8ee659867f15d01cfadc78928e99d52285829c",
+    "pure-k0.01-p18-c1-s0": "731cef6b086691714b0e09628d5155349ca0509c981dbee3b3519e8c7f3a159d",
+    "pure-k0.01-p18-c1-s1": "4b91167eabe1b3237b805f1490f5df2672436eba4dd4b6fc5cc608271d9c8b8b",
+    "pure-k0.01-p19-c0-s0": "7db3284a8fde32d9a20680828b2f5ee89b10ddd01cffdcb259be8f920765e8df",
+    "pure-k0.01-p19-c0-s1": "48a8af5bd49e5d85524e236e101accf0d115f4652076b272d5e468b705653d90",
+    "pure-k0.01-p20-c0-s0": "5427cd3dc4a9c52004a93bed2530107f236368e71ef2f8980fc10d8aef29e4a5",
+    "pure-k0.01-p20-c0-s1": "f70fcf361cbe563b6feb41182214a8c0ab6475202a8bbbbbcbe19a4842123eaa",
+    "pure-k0.01-p20-c1-s0": "cdcb83e57f23b854da637d503eb34960e0eb28365f167103b916234dee04d377",
+    "pure-k0.01-p20-c1-s1": "7e9c4e4ee1b25185897b4377080579cdb26e6f725728daa05a95e50b1e0aa6f8",
+    "pure-k0.01-p21-c0-s0": "02b9decebcc99866b101cd23cd8a505e097f592d5eafbc4ac4886bc3817b3dbf",
+    "realfull-real-drosophila_707-c0-s0": "a27541be6618e595486a6f056b6a94ab0f8c2d421102d3155e00f8066c8b9131",
+    "realfull-real-drosophila_707-c0-s1": "81f4ecfc03f35e0f0676aa7c9c3067096b4bc66c0df4721c3cd535f185a2c2d1",
+    "realfull-real-drosophila_707-c1-s0": "58e5a516fbf14dcbdba299d35a0a70cb79da81f6a72cc742eaa0d276d9440655",
+    "realfull-real-drosophila_707-c1-s1": "ce56a3e41a03a57fbf02893c383aeefa84eca4a4c4270f3ed8745aacb4340d5c",
+    "realfull-real-mice_F-c0-s0": "5c1681c1fe8ee59521002a0e4a2c927b97df88b0df0eafa75480be945983601a",
+    "realfull-real-mice_F-c0-s1": "db3a9ded79517ccef08360266ec1a26cb4149254884ff8ac6af69a3386f82f67",
+    "realfull-real-mice_F-c1-s0": "caf5b6cc53d31145bad6817377c841decab1149688807c1d69c70be7759fbb5c",
+    "realfull-real-mice_F-c1-s1": "d19855192d397f954dcdaadddd0af14908f7f08deaca976c6de50a33b90ecef6",
+    "realfull-real-mice_M-c0-s0": "1840b720bb39380ef501bd72a0d4337f2e636b345f82156aecb10c08001fe8c3",
+    "realfull-real-mice_M-c0-s1": "906fb83cc355fbe6f7fe46a48da9519663484b3638de9332f22edbbc640b3a22",
+    "realfull-real-mice_M-c1-s0": "5bb4d67e8a5116750d1d2a809811b32a723aaf0afba388fceee4eac4c45811ec",
+    "realfull-real-mice_M-c1-s1": "7a2ad219bf9a99d7a62ed8d4f80dff920eeeac585dbbbdbf8ce5e94f8c110e3f",
+    "realfull-real-yeast-c0-s0": "fe11bd57158b42c4bafab05042121448d73248089e4541d2e3a737f5307744a8",
+    "realfull-real-yeast-c0-s1": "0aebfc32efe840d50dae316a740884c5d4a28ebce2e6254b067371a9c5bce746",
+    "realfull-real-yeast-c1-s0": "6db1a50d938968fb85d5a6447d8a9ef0a89da25f9e084f6647d5887a10eef440",
+    "realfull-real-yeast-c1-s1": "f4258703abcd7ca294d0a15112d311a0bb957dd9db26c9b39ca0de408aa1777f"
+   }
+  },
+  "port_heads_note": "the two sources are at two port heads; profile_jax2 changed between them in the combination walker only (339d113), and FR-019 keeps the parameter claims"
+ },
+ "mac_22": {
+  "cohorts": 22,
+  "port_hosts": [
+   {
+    "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+    "machine": "arm64",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "node": "MC06268844"
+   }
+  ],
+  "reference_records": {
+   "host": "none recorded",
+   "written_utc": [
+    "2026-10-04"
+   ],
+   "harness_revision": [
+    "3bc5775"
+   ]
+  },
+  "by_arm": {
+   "pure": {
+    "cohorts": 22,
+    "bit_equal": 0,
+    "ends_dex": {
+     "n": 111,
+     "median": 6.728965431617923e-08,
+     "p90": 0.00019330265420157148,
+     "max": 0.052268772541080394,
+     "n_above_0_03": 1
+    },
+    "closed_points_dex": {
+     "n": 45,
+     "median": 4.557330759682913e-08,
+     "p90": 1.629006192321143e-06,
+     "max": 5.157097846042461e-06,
+     "n_above_0_03": 0
+    }
+   },
+   "all": {
+    "cohorts": 22,
+    "bit_equal": 0,
+    "ends_dex": {
+     "n": 111,
+     "median": 6.728965431617923e-08,
+     "p90": 0.00019330265420157148,
+     "max": 0.052268772541080394,
+     "n_above_0_03": 1
+    },
+    "closed_points_dex": {
+     "n": 45,
+     "median": 4.557330759682913e-08,
+     "p90": 1.629006192321143e-06,
+     "max": 5.157097846042461e-06,
+     "n_above_0_03": 0
+    }
+   }
+  },
+  "shape_flips": [],
+  "n_shape_flips": 0,
+  "coverage_hits": {
+   "claims": 66,
+   "flips": 0,
+   "params": [
+    "eta",
+    "beta",
+    "epsilon"
+   ],
+   "flipped": []
+  },
+  "above_0_03_dex": [
+   {
+    "cohort": "pure-k0.01-p01-c1-s0",
+    "parameter": "beta",
+    "shape": [
+     "upper_bound",
+     "upper_bound"
+    ],
+    "upper": 0.052268772541080394
+   }
+  ],
+  "n_ends_above_0_03": 1,
+  "n_ends": 111,
+  "per_cohort": {
+   "pure-k0.01-p01-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.7596307192656012e-07,
+      "point": null,
+      "floor": 0.0019596633845524515,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.266189407449153e-09,
+      "upper": 4.0806372335178376e-08,
+      "point": 6.405285005388345e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.728965431617923e-08,
+      "upper": 0.029010524553162092,
+      "point": 4.409589131698474e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p01-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.001773605665879368,
+      "point": null,
+      "floor": 0.0019596633845524515,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0451996938859057e-10,
+      "upper": 1.131554385363279e-10,
+      "point": 6.09575301564225e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.043447815699497e-13,
+      "upper": 0.00019330265420157148,
+      "point": 6.824445185379171e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p01-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.052268772541080394,
+      "point": null,
+      "floor": 0.0013856912680600194,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.3245147338949174e-10,
+      "upper": 2.286649536837483e-05,
+      "point": 5.712275153136331e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.1423884722650213e-10,
+      "upper": 6.368652762890255e-05,
+      "point": 6.859163039350294e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p01-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 4.52780762665726e-08,
+      "point": 3.243614198631946e-06,
+      "floor": 0.0013856912680600194,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.885903178227979e-08,
+      "upper": 6.577335617939404e-07,
+      "point": 1.4052764418102053e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.0198693803085884e-07,
+      "upper": 9.64974796272426e-08,
+      "point": 8.48754050889182e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p02-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0015236374236188154,
+      "point": null,
+      "floor": 0.0018786567687702055,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.383335333587103e-13,
+      "upper": 7.002526569308258e-06,
+      "point": 8.854837388652602e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.584902522546953e-13,
+      "upper": 8.911555117846176e-06,
+      "point": 5.83382469996553e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p02-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.02075409850794639,
+      "point": null,
+      "floor": 0.0018786567687702055,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.248359819536519e-13,
+      "upper": 8.780096119368451e-05,
+      "point": 5.7708011668948264e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.599826849826884e-13,
+      "upper": 0.0007012125866094631,
+      "point": 2.0906156602723243e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p02-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.00012069939065318792,
+      "point": null,
+      "floor": 0.00132841094071942,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.7256593760537022e-09,
+      "upper": 9.401762664879218e-06,
+      "point": 1.848499956174451e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.662214180141348e-10,
+      "upper": 2.7554212293928e-06,
+      "point": 4.557330759682913e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p02-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.003971847907025405,
+      "point": null,
+      "floor": 0.00132841094071942,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0320925549543608e-10,
+      "upper": 2.1340782923943196e-07,
+      "point": 4.454402293421781e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.9825023197629094e-12,
+      "upper": 1.003528673900885e-07,
+      "point": 1.03778962230512e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p03-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.001266465624091176,
+      "point": null,
+      "floor": 0.0017394758971228017,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.1306739543865452e-10,
+      "upper": 1.1867684124927891e-08,
+      "point": 1.1046866555561993e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.729015080165795e-11,
+      "upper": 5.835215594990807e-05,
+      "point": 1.0766394427404992e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p03-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 5.7115187189393655e-12,
+      "point": null,
+      "floor": 0.0017394758971228017,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.263134676181598e-11,
+      "upper": 1.9286112744902005e-05,
+      "point": 4.439570790291106e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.97089523742165e-11,
+      "upper": 2.29720257709124e-05,
+      "point": 4.349039727740244e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p03-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 3.393863728929695e-11,
+      "point": null,
+      "floor": 0.0012299952025660863,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0578748136734703e-11,
+      "upper": 3.429601260643668e-06,
+      "point": 1.6931970245832572e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.948958889615426e-14,
+      "upper": 7.115464353686863e-07,
+      "point": 1.544474103162373e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p03-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 2.9196502578956874e-07,
+      "point": null,
+      "floor": 0.0012299952025660863,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.8995129566519304e-10,
+      "upper": 1.0086797986190688e-06,
+      "point": 2.8228677037209554e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.127005255478138e-10,
+      "upper": 3.072697327756399e-08,
+      "point": 3.4469425187204346e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p04-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 5.744698330244063e-10,
+      "point": null,
+      "floor": 0.0010233715357593543,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.901365866841203e-11,
+      "upper": 1.6032337454520548e-06,
+      "point": 2.6489080308423975e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.436162414615434e-07,
+      "upper": 1.4480551766451397e-07,
+      "point": 3.9481536735735306e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p04-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 2.322582703194213e-13,
+      "point": null,
+      "floor": 0.0010233715357593543,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.2196233888118413e-10,
+      "upper": 1.617147144576959e-07,
+      "point": 2.3460640770105014e-12,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.076878643631697e-06,
+      "upper": 1.8864587171637427e-07,
+      "point": 5.971115672893849e-13,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p04-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 5.560099512949227e-08,
+      "point": null,
+      "floor": 0.0007236329526087307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.202538062042295e-09,
+      "upper": 1.828843495147952e-07,
+      "point": 2.7359727622581062e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.9890004628368276e-07,
+      "upper": 1.6902500391864864e-10,
+      "point": 1.7514866154798695e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p04-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.97138326231098e-08,
+      "point": null,
+      "floor": 0.0007236329526087307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.1937226204676925e-09,
+      "upper": 1.3449155131238397e-06,
+      "point": 8.175796770371175e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.5741835426408746e-09,
+      "upper": 2.181965015091112e-08,
+      "point": 7.601525413082427e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p06-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.006445865381636671,
+      "point": null,
+      "floor": 0.0034714518463268822,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.2533680993401888e-11,
+      "upper": 2.1723358496997515e-09,
+      "point": 7.373149076505578e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.885838134025857e-11,
+      "upper": 1.1747309968771366e-08,
+      "point": 7.098273245749212e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p06-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 7.8795373996636e-09,
+      "point": null,
+      "floor": 0.0034714518463268822,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.097721962083913e-06,
+      "upper": 2.975185862148095e-07,
+      "point": 5.157097846042461e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.469877640878299e-07,
+      "upper": 9.210615798638137e-08,
+      "point": 3.4149267520652768e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p06-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.00046766806850226595,
+      "point": null,
+      "floor": 0.0024546871411002986,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.6658695491163568e-08,
+      "upper": 1.4293790579461662e-07,
+      "point": 1.410961351284147e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.0532153138332172e-09,
+      "upper": 1.0988222647462814e-07,
+      "point": 6.894197154032553e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p06-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.9691636009874906e-07,
+      "point": null,
+      "floor": 0.0024546871411002986,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.515751192172576e-07,
+      "upper": 1.7205478533043393e-08,
+      "point": 2.4365417428516233e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0001575964955268356,
+      "upper": 6.369002482807167e-05,
+      "point": 1.629006192321143e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p07-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 3.3315679952322674e-07,
+      "point": null,
+      "floor": 0.0025002529446727082,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.461179703299112e-10,
+      "upper": 4.0290298294009334e-07,
+      "point": 7.333061349282031e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.388483079005275e-10,
+      "upper": 5.251927159744469e-09,
+      "point": 3.1331185310315907e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p07-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.003660952569628235,
+      "point": null,
+      "floor": 0.0025002529446727082,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.501079717259807e-12,
+      "upper": 1.4802231780401651e-08,
+      "point": 6.957110461140325e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.873726181537434e-12,
+      "upper": 3.654673734505693e-06,
+      "point": 1.6421817899913635e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   }
+  },
+  "paired": 22,
+  "verdicts": {
+   "eta": {
+    "overall": "no difference detected",
+    "axes": {
+     "calibration": "no difference",
+     "calibration_one_sided": "not measured",
+     "availability": "no difference",
+     "information": "no difference",
+     "accuracy": "no difference",
+     "cost": "not measured"
+    }
+   },
+   "beta": {
+    "overall": "no difference detected",
+    "axes": {
+     "calibration": "not measured",
+     "calibration_one_sided": "no difference",
+     "availability": "no difference",
+     "information": "no difference",
+     "accuracy": "no difference",
+     "cost": "not measured"
+    }
+   },
+   "epsilon": {
+    "overall": "no difference detected",
+    "axes": {
+     "calibration": "no difference",
+     "calibration_one_sided": "not measured",
+     "availability": "no difference",
+     "information": "no difference",
+     "accuracy": "no difference",
+     "cost": "not measured"
+    }
+   },
+   "kappa": {
+    "overall": "not measured",
+    "axes": {
+     "calibration": "not measured",
+     "calibration_one_sided": "not measured",
+     "availability": "no difference",
+     "information": "not measured",
+     "accuracy": "not measured",
+     "cost": "not measured"
+    }
+   }
+  },
+  "axes_not_no_difference": [],
+  "sraging_provenance": {
+   "library": "v5",
+   "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+   "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+   "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+   "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+   "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+   "runs": {
+    "method": null,
+    "reference": "jax2-v5-full-bign",
+    "null": "null_prior-v5-full-bign"
+   },
+   "cohort_ids": 22,
+   "computed_on_manifest_sha256": {
+    "v2": "defd72084aa2b7d58431813df1281ee43c3c54b300a711d2aa711a54801dc1ec"
+   },
+   "runs_sha256": {
+    "reference": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+    "null": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+   }
+  }
+ },
+ "wexac_118": {
+  "cohorts": 118,
+  "port_hosts": [
+   [
+    "cn127.wexac.weizmann.ac.il",
+    "AMD EPYC 9634 84-Core Processor"
+   ],
+   [
+    "cn650.wexac.weizmann.ac.il",
+    "AMD EPYC 7702 64-Core Processor"
+   ],
+   [
+    "cn653.wexac.weizmann.ac.il",
+    "AMD EPYC 7702 64-Core Processor"
+   ]
+  ],
+  "reference_records": {
+   "host": "none recorded",
+   "written_utc": [
+    "2026-10-04",
+    "2026-10-05"
+   ],
+   "harness_revision": [
+    "3bc5775"
+   ]
+  },
+  "by_arm": {
+   "censor": {
+    "cohorts": 35,
+    "bit_equal": 22,
+    "ends_dex": {
+     "n": 178,
+     "median": 0.0,
+     "p90": 5.670814186814094e-07,
+     "max": 0.48000282144990253,
+     "n_above_0_03": 2
+    },
+    "closed_points_dex": {
+     "n": 73,
+     "median": 0.0,
+     "p90": 2.3601458327230717e-06,
+     "max": 0.00012162090118573814,
+     "n_above_0_03": 0
+    }
+   },
+   "pure": {
+    "cohorts": 67,
+    "bit_equal": 16,
+    "ends_dex": {
+     "n": 362,
+     "median": 2.7608174620955176e-08,
+     "p90": 0.00041652037811787667,
+     "max": 0.12639392207169298,
+     "n_above_0_03": 3
+    },
+    "closed_points_dex": {
+     "n": 162,
+     "median": 1.7818362575689323e-07,
+     "p90": 0.0002284942359485115,
+     "max": 0.21493159823528693,
+     "n_above_0_03": 5
+    }
+   },
+   "realfull": {
+    "cohorts": 16,
+    "bit_equal": 0,
+    "ends_dex": {
+     "n": 94,
+     "median": 3.984601130802245e-08,
+     "p90": 0.00010216988205138608,
+     "max": 0.014113842751443895,
+     "n_above_0_03": 0
+    },
+    "closed_points_dex": {
+     "n": 46,
+     "median": 2.1772990596188355e-07,
+     "p90": 5.793678617109764e-06,
+     "max": 0.1594628658021657,
+     "n_above_0_03": 1
+    }
+   },
+   "all": {
+    "cohorts": 118,
+    "bit_equal": 38,
+    "ends_dex": {
+     "n": 634,
+     "median": 4.323604701611184e-09,
+     "p90": 0.00012624776844418555,
+     "max": 0.48000282144990253,
+     "n_above_0_03": 5
+    },
+    "closed_points_dex": {
+     "n": 281,
+     "median": 7.838426571447113e-08,
+     "p90": 9.460733544284127e-05,
+     "max": 0.21493159823528693,
+     "n_above_0_03": 6
+    }
+   }
+  },
+  "shape_flips": [],
+  "n_shape_flips": 0,
+  "coverage_hits": {
+   "claims": 353,
+   "flips": 0,
+   "params": [
+    "eta",
+    "beta",
+    "epsilon"
+   ],
+   "flipped": []
+  },
+  "above_0_03_dex": [
+   {
+    "cohort": "censor-k0.01-p01-c1-s1",
+    "parameter": "beta",
+    "shape": [
+     "upper_bound",
+     "upper_bound"
+    ],
+    "upper": 0.48000282144990253
+   },
+   {
+    "cohort": "censor-k0.0316-p01-c1-s0",
+    "parameter": "beta",
+    "shape": [
+     "upper_bound",
+     "upper_bound"
+    ],
+    "upper": 0.4548713002025604
+   },
+   {
+    "cohort": "pure-k0.01-p14-c0-s0",
+    "parameter": "beta",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "point": 0.21493159823528693
+   },
+   {
+    "cohort": "pure-k0.01-p17-c0-s0",
+    "parameter": "epsilon",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "point": 0.07856765885694067
+   },
+   {
+    "cohort": "pure-k0.01-p17-c0-s0",
+    "parameter": "eta",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "point": 0.15602279599533567
+   },
+   {
+    "cohort": "pure-k0.01-p17-c0-s1",
+    "parameter": "epsilon",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "lower": 0.05112567711891802,
+    "upper": 0.07161755891836168
+   },
+   {
+    "cohort": "pure-k0.01-p18-c0-s1",
+    "parameter": "beta",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "point": 0.1312140082935114
+   },
+   {
+    "cohort": "pure-k0.01-p19-c0-s0",
+    "parameter": "epsilon",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "upper": 0.12639392207169298
+   },
+   {
+    "cohort": "pure-k0.01-p20-c1-s0",
+    "parameter": "beta",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "point": 0.03208711175157471
+   },
+   {
+    "cohort": "realfull-real-yeast-c1-s0",
+    "parameter": "beta",
+    "shape": [
+     "closed",
+     "closed"
+    ],
+    "point": 0.1594628658021657
+   }
+  ],
+  "n_ends_above_0_03": 5,
+  "n_ends": 634,
+  "per_cohort": {
+   "censor-k0.01-p01-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0019596633845524515,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p01-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.197946594141254e-09,
+      "point": null,
+      "floor": 0.0019596633845524515,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.749305189942996e-12,
+      "upper": 3.506669264202642e-05,
+      "point": 1.9524600128548072e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.6013697737819383e-12,
+      "upper": 1.636904985071047e-08,
+      "point": 1.2116234618225023e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p01-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 6.732809003685507e-10,
+      "point": null,
+      "floor": 0.0013856912680600194,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.789824653910035e-09,
+      "upper": 3.2914402719861106e-07,
+      "point": 5.5018152255766124e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.2369880728195963e-07,
+      "upper": 3.91572435790654e-05,
+      "point": 2.234522710854617e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p01-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.48000282144990253,
+      "point": null,
+      "floor": 0.0013856912680600194,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.834782517484734e-12,
+      "upper": 0.021362505178044524,
+      "point": 4.613439192716061e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.593655153964273e-11,
+      "upper": 0.020907618825417446,
+      "point": 1.7815719024685748e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p02-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0018786567687702055,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p02-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": 0.0018786567687702055,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p02-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.00132841094071942,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p02-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.00132841094071942,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p03-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": 0.0017394758971228017,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p03-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0017394758971228017,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p03-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0012299952025660863,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p03-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 2.6015479736979587e-09,
+      "point": null,
+      "floor": 0.0012299952025660863,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.194238521873095e-10,
+      "upper": 4.613236143946273e-08,
+      "point": 5.006201045876082e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0296647589063567e-09,
+      "upper": 2.5682635956113806e-06,
+      "point": 4.1495831003625737e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p04-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0016628795614216508,
+      "point": null,
+      "floor": 0.0010233715357593543,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.0911974293473505e-06,
+      "upper": 4.496353758510732e-07,
+      "point": 0.00010302740247156976,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.1721694906954e-06,
+      "upper": 1.7208597351556244e-06,
+      "point": 0.00012162090118573814,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p04-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 2.8096206869545696e-09,
+      "point": null,
+      "floor": 0.0010233715357593543,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.435108760815582e-10,
+      "upper": 9.412270021022024e-12,
+      "point": 3.9756097006803674e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.991600750028752e-11,
+      "upper": 2.7853793385499085e-07,
+      "point": 5.288626405809281e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.01-p04-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.004938992337823957,
+      "point": null,
+      "floor": 0.0007236329526087307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.9221323070708422e-07,
+      "upper": 1.4153300570639375e-06,
+      "point": 5.086307123106747e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.670814186814094e-07,
+      "upper": 4.565468994900293e-07,
+      "point": 9.460733544284127e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.01-p04-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.00022299260506092707,
+      "point": null,
+      "floor": 0.0007236329526087307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.578785054264127e-10,
+      "upper": 3.015510711725235e-07,
+      "point": 7.551627721025367e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.3629956081600155e-10,
+      "upper": 1.0922860053715818e-09,
+      "point": 8.002490381586287e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p01-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 3.3820450488547864e-08,
+      "point": null,
+      "floor": 0.001945226710529333,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.827648721886727e-08,
+      "upper": 3.351766518572936e-07,
+      "point": 2.6650934149219235e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.3720406646964298e-08,
+      "upper": 7.082140004837583e-07,
+      "point": 2.3601458327230717e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p01-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0001163527928062334,
+      "point": null,
+      "floor": 0.001945226710529333,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.5017518527762266e-10,
+      "upper": 3.905588648779566e-08,
+      "point": 1.6497869206877665e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.89918442122883e-10,
+      "upper": 3.606314711721345e-10,
+      "point": 1.3671040575349889e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p01-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.4548713002025604,
+      "point": null,
+      "floor": 0.0013754829979604926,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.5640166808795562e-10,
+      "upper": 0.005241149794408489,
+      "point": 4.3173176279148013e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.5259207928644738e-11,
+      "upper": 0.0016256540394437625,
+      "point": 3.887431753656629e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p01-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0013754829979604926,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p02-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0018659197373853897,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p02-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0018659197373853897,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p02-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0013194044994550307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p02-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0013194044994550307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p03-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.001728466231326155,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p03-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.001728466231326155,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p03-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0012222101932226799,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p03-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0012222101932226799,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p04-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0014821374591903434,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p04-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0014821374591903434,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.0316-p04-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0010480294480440914,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.0316-p04-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": 0.0010480294480440914,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "censor-k0.1-p01-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 4.907770267575758e-07,
+      "point": null,
+      "floor": 0.0019180946872433791,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.6281461993405905e-07,
+      "upper": 1.7355583593392157e-07,
+      "point": 6.3869599377828395e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.0510677808832055e-07,
+      "upper": 7.176058614125856e-08,
+      "point": 4.411274729494387e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.1-p01-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 4.595469096213468e-08,
+      "point": null,
+      "floor": 0.0019180946872433791,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.2838128823287749e-10,
+      "upper": 5.150707872131209e-08,
+      "point": 1.443067050799912e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.842497536648854e-10,
+      "upper": 7.359481064118292e-10,
+      "point": 1.5150479086470702e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "censor-k0.1-p01-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0013562977603076831,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p01-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0019596633845524515,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p01-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0019596633845524515,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p01-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0013856912680600194,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p01-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 2.0675871813528008e-08,
+      "point": 1.4866356446571064e-06,
+      "floor": 0.0013856912680600194,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.5093944321392139e-05,
+      "upper": 3.433091971683425e-06,
+      "point": 5.547764868234446e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.706455818627059e-08,
+      "upper": 1.2379770710101345e-07,
+      "point": 3.886866934421395e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p02-c0-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0018786567687702055,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p02-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0018786567687702055,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p02-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.00132841094071942,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p02-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.00132841094071942,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p03-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.5538964783045025e-05,
+      "point": null,
+      "floor": 0.0017394758971228017,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.437866122480869e-10,
+      "upper": 2.5224399139017767e-08,
+      "point": 2.3966455475764976e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0615778306069682e-10,
+      "upper": 3.724406294033673e-05,
+      "point": 3.758249984276145e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p03-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0017394758971228017,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p03-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 6.039004326963176e-11,
+      "point": null,
+      "floor": 0.0012299952025660863,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.5898674075861744e-11,
+      "upper": 3.1330123204352586e-06,
+      "point": 1.4933141199940993e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.3090938223756883e-11,
+      "upper": 4.7114416501578784e-07,
+      "point": 5.687911982893054e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p03-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0012299952025660863,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p04-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 4.971289380800635e-10,
+      "point": null,
+      "floor": 0.0010233715357593543,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.44415892845868e-11,
+      "upper": 6.641528833429834e-07,
+      "point": 2.64914289763284e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.43611039483353e-07,
+      "upper": 1.5359320480989623e-07,
+      "point": 3.9482198650048175e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p04-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0010233715357593543,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p04-c1-s0": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0007236329526087307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p04-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0007236329526087307,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p06-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.004831728813219966,
+      "point": null,
+      "floor": 0.0034714518463268822,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.7135555105709325e-11,
+      "upper": 4.791153372196645e-09,
+      "point": 1.5952686494611876e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.4709307195002014e-11,
+      "upper": 6.993233749685787e-09,
+      "point": 4.100692213095916e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p06-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 4.573694444936228e-09,
+      "point": null,
+      "floor": 0.0034714518463268822,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.2186006826514956e-07,
+      "upper": 7.340584493423632e-08,
+      "point": 4.356848222807881e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.4793153332653327e-07,
+      "upper": 5.152340859635135e-08,
+      "point": 5.932125479189075e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p06-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.00033114884181007116,
+      "point": null,
+      "floor": 0.0024546871411002986,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.969884110094537e-07,
+      "upper": 2.317043260918832e-05,
+      "point": 3.1413874155206163e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.859169051627637e-10,
+      "upper": 3.5372278676315836e-08,
+      "point": 1.3284193154316168e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p06-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 4.892223952305861e-07,
+      "point": null,
+      "floor": 0.0024546871411002986,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0940433509795056e-06,
+      "upper": 4.3391713404850455e-08,
+      "point": 5.990848334790549e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.456054755554979e-05,
+      "upper": 0.00012624776844418555,
+      "point": 4.04441597536476e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p07-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 9.38719851602625e-07,
+      "point": null,
+      "floor": 0.0025002529446727082,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.9319753011421784e-09,
+      "upper": 1.1128451878868664e-06,
+      "point": 6.52700608301572e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.322855794520138e-09,
+      "upper": 1.4957240931998538e-08,
+      "point": 8.653903252063121e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p07-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0,
+      "point": null,
+      "floor": 0.0025002529446727082,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p07-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 2.4810807001347994e-08,
+      "point": 4.2885449936946174e-07,
+      "floor": 0.0017679458118597057,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.7608174620955176e-08,
+      "upper": 3.924523648666122e-08,
+      "point": 1.7818362575689323e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.2158949649198915e-08,
+      "upper": 2.1561123516881947e-08,
+      "point": 1.4411286134083257e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p07-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 4.804544794711237e-09,
+      "point": 7.545899212909733e-07,
+      "floor": 0.0017679458118597057,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.913913651826664e-06,
+      "upper": 2.7868131463432226e-06,
+      "point": 3.4826501110434206e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.117013380184309e-06,
+      "upper": 4.155238709297937e-06,
+      "point": 2.4091906357618183e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p08-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 5.958048557649321e-10,
+      "point": null,
+      "floor": 0.0019334623150889258,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.0449668528486266e-09,
+      "upper": 1.980093067375072e-05,
+      "point": 1.0027652488519007e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.343469383307791e-10,
+      "upper": 3.568007337419533e-05,
+      "point": 8.045390247061393e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p08-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0021397575974243114,
+      "point": null,
+      "floor": 0.0019334623150889258,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.1426910365885578e-06,
+      "upper": 3.637379518339996e-05,
+      "point": 0.00017258097067687143,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.586261134374082e-08,
+      "upper": 1.5943064840681896e-05,
+      "point": 0.00013042018753603457,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p08-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 1.1994054802574403e-09,
+      "point": 1.2361812718079477e-06,
+      "floor": 0.0013671643141680203,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.795705822207185e-09,
+      "upper": 1.3745449454292426e-05,
+      "point": 3.931745297006965e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.401129082351079e-08,
+      "upper": 3.309761504373029e-05,
+      "point": 2.447071577813274e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p08-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 8.304974221481915e-07,
+      "point": null,
+      "floor": 0.0013671643141680203,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.8399368061797744e-12,
+      "upper": 4.783593981677348e-07,
+      "point": 1.6694656935545025e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.6899336083857057e-11,
+      "upper": 2.4719125887079333e-08,
+      "point": 2.1528988653806918e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p09-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 2.519189521233561e-07,
+      "point": null,
+      "floor": 0.0012008721291253699,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.0910676638160985e-10,
+      "upper": 5.23644024972502e-07,
+      "point": 2.6830499144017283e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.970452347120507e-11,
+      "upper": 6.235881421667131e-11,
+      "point": 1.0080707497205252e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p09-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.3633275991357738e-11,
+      "point": null,
+      "floor": 0.0012008721291253699,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.356075197592538e-12,
+      "upper": 4.297353465473468e-07,
+      "point": 3.921191739411991e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.574978060432883e-10,
+      "upper": 3.8467548745714683e-08,
+      "point": 4.5642776187325386e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p09-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.2807467626633931e-06,
+      "upper": 1.1529255837256137e-06,
+      "point": 1.5693005903876658e-05,
+      "floor": 0.0008491448258424762,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.525638686857549e-10,
+      "upper": 9.053401591370715e-07,
+      "point": 1.3351753424098005e-07,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.918255362116992e-12,
+      "upper": 2.3184269458148737e-07,
+      "point": 1.9316718966973412e-07,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p09-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 3.9817178869836195e-08,
+      "point": 2.2696607809754606e-06,
+      "floor": 0.0008491448258424762,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.002151717004769e-10,
+      "upper": 1.7303459914241181e-06,
+      "point": 1.1767260451192475e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.5428043714056432e-08,
+      "upper": 1.128303714958978e-08,
+      "point": 3.2473568283446683e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p11-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0013484781408353778,
+      "upper": 0.0001468192046719281,
+      "point": 0.006073865060418265,
+      "floor": 0.015649514168551086,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.5160269166900176e-05,
+      "upper": 1.321199241899738e-05,
+      "point": 0.00029420283678076,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.4881311510302564e-05,
+      "upper": 8.954434214410988e-07,
+      "point": 0.0002284942359485115,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p11-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 2.620996897401176e-06,
+      "point": null,
+      "floor": 0.015649514168551086,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0017983120801657647,
+      "upper": 5.741238692789085e-06,
+      "point": 8.411589744671786e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.396286128574348e-06,
+      "upper": 3.373212590030778e-06,
+      "point": 0.00010727861684102535,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p11-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.455138553865486e-05,
+      "upper": 2.2147385669389755e-05,
+      "point": 0.00040342452396077016,
+      "floor": 0.011065877590857425,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.00040343201247858567,
+      "upper": 9.261896748006935e-06,
+      "point": 1.9506827341574616e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.09209812339517e-05,
+      "upper": 9.770080938186694e-07,
+      "point": 5.9398888338401194e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p11-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.4604211030795233e-07,
+      "upper": 8.878226654593846e-07,
+      "point": 3.958848855403681e-06,
+      "floor": 0.011065877590857425,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.4521970047374456e-08,
+      "upper": 7.543875795847497e-07,
+      "point": 1.0263680379377954e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.39866649550674e-06,
+      "upper": 1.1922002484892037e-08,
+      "point": 6.60457467766022e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p12-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.435612521325372e-10,
+      "upper": 3.1546084951849744e-08,
+      "point": 2.105870377066881e-06,
+      "floor": 0.008102075570175137,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.7850311420647654e-07,
+      "upper": 5.449144092443785e-08,
+      "point": 2.822362364034835e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.97999892246467e-06,
+      "upper": 2.8841484699074564e-08,
+      "point": 2.0071690805966785e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p12-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.00016841540554472543,
+      "upper": 0.00010952609230737064,
+      "point": 0.0014519175423759324,
+      "floor": 0.008102075570175137,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0006990749988684963,
+      "upper": 6.81551712235769e-05,
+      "point": 0.0015879576664795828,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.17602180817258e-05,
+      "upper": 0.00020694686079368883,
+      "point": 0.0012036905324379781,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p12-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.119847652848509e-05,
+      "upper": 8.458900617923941e-08,
+      "point": 9.281217815713435e-07,
+      "floor": 0.005729032577356702,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.904184602945891e-05,
+      "upper": 7.052050716644411e-09,
+      "point": 3.475335499412491e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.372006206693518e-08,
+      "upper": 2.019979288773686e-08,
+      "point": 2.0354776930113584e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p12-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": 0.005729032577356702,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p13-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.440303679165612e-11,
+      "upper": 1.5308264584443282e-11,
+      "point": 3.9125388306399826e-10,
+      "floor": 0.0043503029988149235,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.198326389572044e-12,
+      "upper": 1.7072841270602936e-05,
+      "point": 2.450356092581029e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.841479730126253e-12,
+      "upper": 0.0013590096502323636,
+      "point": 4.2951531093393974e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p13-c0-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": 0.0043503029988149235,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p13-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.6819967119170716e-10,
+      "upper": 2.1465250571986324e-09,
+      "point": 2.988360573822159e-08,
+      "floor": 0.0030761287506782054,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.4596035580342794e-09,
+      "upper": 1.4335050991076835e-07,
+      "point": 4.047935015088685e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.4382554455858154e-10,
+      "upper": 9.830933576288532e-06,
+      "point": 5.386266490332735e-10,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p13-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.2068844431134791e-08,
+      "upper": 1.9822172811242923e-05,
+      "point": 7.437436771187836e-06,
+      "floor": 0.0030761287506782054,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.975171141823865e-06,
+      "upper": 1.309759472885011e-05,
+      "point": 1.0396553400150786e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.229519534424787e-09,
+      "upper": 1.4666263426766656e-07,
+      "point": 3.4359197466685367e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p14-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0010975046022795173,
+      "upper": 1.7349760724025015e-05,
+      "point": 0.21493159823528693,
+      "floor": 0.0013678970380999428,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.822930781461266e-05,
+      "upper": 0.0001676490985455854,
+      "point": 0.003102514423331082,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.868448959823083e-05,
+      "upper": 0.002531866372875933,
+      "point": 0.00023865989483824943,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p14-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.7384509835688095e-11,
+      "upper": 1.0913486804339738e-11,
+      "point": 1.409167869335834e-10,
+      "floor": 0.0013678970380999428,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.223383738103704e-12,
+      "upper": 1.3442724883773627e-12,
+      "point": 6.528342655680433e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.3177067006670335e-09,
+      "upper": 3.8945466394885025e-08,
+      "point": 7.577926313381239e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p14-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.1453220887355714e-11,
+      "upper": 7.233863917853278e-11,
+      "point": 5.649261737293703e-11,
+      "floor": 0.0009672492716054625,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.8097609392872235e-12,
+      "upper": 7.270643366886023e-12,
+      "point": 2.1749923843831484e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.1297366280892994e-10,
+      "upper": 2.285620319153014e-06,
+      "point": 2.2236619916176282e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p14-c1-s1": {
+    "bit_equal": true,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": 0.0009672492716054625,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 0.0,
+      "point": 0.0,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p16-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.12315083593748312,
+      "hit": [
+       null,
+       null
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 0.000627595654600571,
+      "upper": null,
+      "point": null,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.329322657653924e-08,
+      "upper": 8.660518799390185e-08,
+      "point": 7.968051490972331e-06,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p16-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 0.00012088353996846712,
+      "upper": null,
+      "point": null,
+      "floor": 0.12315083593748312,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0011259631014723921,
+      "upper": 0.012542059363466019,
+      "point": 4.031329504317993e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.7881216464948756e-05,
+      "upper": 0.00032245789706221017,
+      "point": 3.1828692066942574e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p16-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.084335546507623e-05,
+      "upper": 1.7678297707448518e-06,
+      "point": 3.452602887816863e-05,
+      "floor": 0.08708079120018627,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.2136817622340563e-07,
+      "upper": 1.5448627788646823e-07,
+      "point": 4.493110065093554e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.9288596964210293e-08,
+      "upper": 0.00039629139317435327,
+      "point": 8.36139931147801e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p16-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.97963410169033e-06,
+      "upper": 2.1668871441837938e-06,
+      "point": 6.619552334171945e-05,
+      "floor": 0.08708079120018627,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.01247646041223439,
+      "upper": 3.5174157600594392e-06,
+      "point": 5.802022034111384e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.247338238122102e-06,
+      "upper": 3.322820509522239e-06,
+      "point": 1.0413874885645699e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p17-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 0.0013340105629639117,
+      "upper": null,
+      "point": null,
+      "floor": 0.04855434348783933,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.013182193512434326,
+      "upper": 0.019571666690841937,
+      "point": 0.07856765885694067,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0018290297889757506,
+      "upper": 0.002906457903078748,
+      "point": 0.15602279599533567,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p17-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 1.6176149657784214e-10,
+      "upper": null,
+      "point": null,
+      "floor": 0.04855434348783933,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.05112567711891802,
+      "upper": 0.07161755891836168,
+      "point": 9.264327602404736e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.797337192751599e-05,
+      "upper": 0.0028802297403284624,
+      "point": 7.116633245620075e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p17-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 1.984190450939979e-09,
+      "upper": null,
+      "point": null,
+      "floor": 0.034333105536312074,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.6363959112179223e-09,
+      "upper": 1.6934778212126184e-08,
+      "point": 1.345944506570112e-07,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.847127254380776e-05,
+      "upper": 0.0008428084905054576,
+      "point": 3.1338973631475246e-08,
+      "floor": null,
+      "hit": [
+       false,
+       false
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p17-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.033451745952183e-08,
+      "upper": 7.481912503223034e-09,
+      "point": 3.308004097248617e-07,
+      "floor": 0.034333105536312074,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.54316492982981e-09,
+      "upper": 9.244111949310274e-09,
+      "point": 5.334299305708795e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.005342558911268311,
+      "upper": 0.004605656100783057,
+      "point": 1.731526607517778e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p18-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.796420561212621e-09,
+      "upper": 5.256780490588461e-09,
+      "point": 8.579613168209518e-08,
+      "floor": 0.006580117297045208,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.2887228364125845e-07,
+      "upper": 2.8658895442142197e-08,
+      "point": 2.3522499986298683e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.018907471129245e-10,
+      "upper": 1.746119109370444e-05,
+      "point": 8.65101962318298e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p18-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.00016315209836796464,
+      "upper": 0.004494475394766109,
+      "point": 0.1312140082935114,
+      "floor": 0.006580117297045208,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0004855566328221452,
+      "upper": 0.0013726774466865854,
+      "point": 0.011240520762971253,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0005966976561685114,
+      "upper": 0.014351284648435988,
+      "point": 0.0025798270036414004,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p18-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0018885245739688648,
+      "upper": 0.00025224396383443704,
+      "point": 0.009893342691023552,
+      "floor": 0.0046528455617435615,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.0392799573334264e-06,
+      "upper": 2.7060438478588894e-07,
+      "point": 0.00012084633949326212,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.002314455490058293,
+      "upper": 7.239167022900006e-06,
+      "point": 9.706089580691352e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p18-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.3809260989266455e-06,
+      "upper": 3.534845964556449e-06,
+      "point": 0.00013835321797274128,
+      "floor": 0.0046528455617435615,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.4502430413094783e-06,
+      "upper": 5.098803464508454e-07,
+      "point": 0.00010684848545170201,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.935889101574363e-06,
+      "upper": 1.6327147357308874e-06,
+      "point": 0.00010233318954160866,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p19-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 3.031354702802249e-08,
+      "upper": null,
+      "point": null,
+      "floor": 0.016062069695534455,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.427410706095234e-09,
+      "upper": 0.12639392207169298,
+      "point": 5.465173169531821e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.58930741949152e-09,
+      "upper": 0.018004047686876905,
+      "point": 4.939694243043931e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p19-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "lower_bound",
+       "lower_bound"
+      ],
+      "lower": 4.8029677335898795e-09,
+      "upper": null,
+      "point": null,
+      "floor": 0.016062069695534455,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0013360370457682607,
+      "upper": 0.015788333348045056,
+      "point": 5.859809255090758e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.297325128172158e-10,
+      "upper": 1.0184145644775309e-06,
+      "point": 7.881614052355852e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p20-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 6.400678231139822e-10,
+      "point": null,
+      "floor": 0.00010578687702757523,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 8.385454134615046e-12,
+      "upper": 2.5929319084495464e-12,
+      "point": 2.1507877650324497e-12,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 0.0168720064034911,
+      "point": null,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p20-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.4799683843949497e-05,
+      "point": null,
+      "floor": 0.00010578687702757523,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.5865914554262448e-11,
+      "upper": 2.500832850141205e-10,
+      "point": 3.780135588250471e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.41521008328164e-07,
+      "upper": 3.358512502613655e-07,
+      "point": 4.6887641471204863e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "pure-k0.01-p20-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0006570804555109586,
+      "upper": 0.00041652037811787667,
+      "point": 0.03208711175157471,
+      "floor": 7.480261810674585e-05,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.804949218009414e-07,
+      "upper": 3.597368099099207e-07,
+      "point": 1.396133715534968e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.220977348276482e-06,
+      "upper": 1.3625399851926921e-05,
+      "point": 8.638783807046912e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p20-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 1.508663113178593e-07,
+      "point": null,
+      "floor": 7.480261810674585e-05,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.1745274479549883e-10,
+      "upper": 2.0380909877010547e-07,
+      "point": 3.6770612150938865e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.8093751992230125e-09,
+      "upper": 7.373368866204407e-09,
+      "point": 1.2466747339011834e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "pure-k0.01-p21-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.2492022046844626e-11,
+      "upper": 2.067653094184785e-11,
+      "point": 1.5010509194919865e-10,
+      "floor": 0.0006344595062134641,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.9638335990420368e-11,
+      "upper": 1.4577159715650753e-11,
+      "point": 3.625716981694364e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.13706437299577e-07,
+      "upper": 4.2303666004919975e-06,
+      "point": 2.3838946434516225e-11,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0115106906830129
+     }
+    }
+   },
+   "realfull-real-drosophila_707-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 5.721740590009582e-12,
+      "point": null,
+      "floor": 0.006738602556204219,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.9498888109542076e-10,
+      "upper": 6.084891160569941e-06,
+      "point": 6.523096714704067e-12,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.153350815617801e-12,
+      "upper": 6.676208466055492e-08,
+      "point": 1.9220975063382652e-12,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.010915634619054022
+     }
+    }
+   },
+   "realfull-real-drosophila_707-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 1.488233806060448e-07,
+      "point": 1.1778907665914288e-05,
+      "floor": 0.006738602556204219,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.209474748456625e-08,
+      "upper": 5.757167699847632e-08,
+      "point": 1.6827062792776105e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.8878819169803267e-08,
+      "upper": 2.3371478633206987e-09,
+      "point": 1.3668629248085183e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.010915634619054022
+     }
+    }
+   },
+   "realfull-real-drosophila_707-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "upper_bound",
+       "upper_bound"
+      ],
+      "lower": null,
+      "upper": 3.2104446632048995e-06,
+      "point": null,
+      "floor": 0.011235495763923374,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.1564376223778181e-08,
+      "upper": 3.0003886409606726e-06,
+      "point": 2.72508892173216e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.547536601414444e-08,
+      "upper": 3.636789280232729e-06,
+      "point": 1.1118173058592875e-06,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0182
+     }
+    }
+   },
+   "realfull-real-drosophila_707-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0,
+      "upper": 1.4531370367240102e-07,
+      "point": 2.349059235077244e-06,
+      "floor": 0.011235495763923374,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.0822807413857264e-09,
+      "upper": 1.1525241633674862e-06,
+      "point": 1.2988058792884125e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.05053295014048e-07,
+      "upper": 1.9845669453294746e-08,
+      "point": 1.9437271867953422e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.0182
+     }
+    }
+   },
+   "realfull-real-mice_F-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.3739700581768838e-05,
+      "upper": 3.6693450835374036e-10,
+      "point": 1.2443285304419572e-08,
+      "floor": 0.0013620721456500478,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 7.71978081988842e-10,
+      "upper": 2.9948757120783116e-05,
+      "point": 1.219235939725415e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.0486477781915766e-10,
+      "upper": 9.350365362695636e-08,
+      "point": 8.388542697962965e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-mice_F-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.2921370863013263e-09,
+      "upper": 4.554462669203153e-09,
+      "point": 8.428975673056883e-08,
+      "floor": 0.0013620721456500478,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0013053939624633444,
+      "upper": 1.8453227236538916e-09,
+      "point": 1.9921813139270945e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.295652433796747e-05,
+      "upper": 0.00011550986679254213,
+      "point": 3.2051487808666286e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-mice_F-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.160854316837492e-09,
+      "upper": 2.9603981370257363e-09,
+      "point": 1.8199342442557266e-07,
+      "floor": 0.002002830715657204,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.855884958831326e-09,
+      "upper": 3.930731971211058e-06,
+      "point": 2.1772990596188355e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.00010216988205138608,
+      "upper": 0.0026713711203090094,
+      "point": 1.1716246296770873e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.01196824627583001
+     }
+    }
+   },
+   "realfull-real-mice_F-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.2997933364752664e-08,
+      "upper": 1.4063399634658588e-08,
+      "point": 7.125117596038402e-07,
+      "floor": 0.002002830715657204,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.1992281768109524e-08,
+      "upper": 0.0125592545730565,
+      "point": 7.233659806812185e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.627422075639186e-10,
+      "upper": 0.014113842751443895,
+      "point": 5.463987762233874e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.01196824627583001
+     }
+    }
+   },
+   "realfull-real-mice_M-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.057069817064103e-08,
+      "upper": 9.418531595957386e-08,
+      "point": 5.793678617109764e-06,
+      "floor": 0.0004163753527340998,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.503893759207856e-09,
+      "upper": 2.3835102469265743e-07,
+      "point": 1.2814729263029182e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 6.937948117493497e-09,
+      "upper": 2.8554127724440663e-06,
+      "point": 1.954522647173761e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-mice_M-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.089356898743894e-09,
+      "upper": 1.0524876594239243e-08,
+      "point": 7.56816089842648e-07,
+      "floor": 0.0004163753527340998,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.1365402329394939e-08,
+      "upper": 7.879538661643336e-06,
+      "point": 2.0622956762359768e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.323604701611184e-09,
+      "upper": 1.5423806936146925e-05,
+      "point": 7.838426571447113e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-mice_M-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.6547622630972465e-09,
+      "upper": 3.3801456054080634e-09,
+      "point": 2.226284217220319e-07,
+      "floor": 0.0007109481911564226,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.3110811064594957e-09,
+      "upper": 3.0404364785837506e-08,
+      "point": 7.375518530968025e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.5385806158484408e-10,
+      "upper": 1.59150708340248e-05,
+      "point": 1.555064320406421e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.013897584579446067
+     }
+    }
+   },
+   "realfull-real-mice_M-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.984601130802245e-08,
+      "upper": 3.6381533857179047e-08,
+      "point": 1.2236176918698234e-06,
+      "floor": 0.0007109481911564226,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.4971290272701148e-08,
+      "upper": 2.25871298482447e-05,
+      "point": 7.1466501106014e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 2.1208716217191097e-09,
+      "upper": 1.9113457751214864e-05,
+      "point": 6.83668985037494e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.013897584579446067
+     }
+    }
+   },
+   "realfull-real-yeast-c0-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.1188071604059677e-10,
+      "upper": 2.7016814396343195e-09,
+      "point": 1.0315887504443993e-06,
+      "floor": 0.056753784587076576,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.145948948356705e-08,
+      "upper": 4.985338072307028e-09,
+      "point": 6.542561647230291e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0003154795995060892,
+      "upper": 2.082766187072062e-06,
+      "point": 5.12578254043427e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-yeast-c0-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 1.7251047913254841e-09,
+      "upper": 1.704702219045478e-09,
+      "point": 5.813663713774133e-08,
+      "floor": 0.056753784587076576,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.787698925364253e-10,
+      "upper": 1.7870946058922158e-09,
+      "point": 1.0201427185473298e-08,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0002424440240256186,
+      "upper": 8.171524964418287e-06,
+      "point": 3.936026826167485e-09,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-yeast-c1-s0": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.761192171980001e-06,
+      "upper": 0.00012351149853976175,
+      "point": 0.1594628658021657,
+      "floor": 0.056753784587076576,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 9.980217726125983e-06,
+      "upper": 1.0613964801880577e-05,
+      "point": 5.59142198517075e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 0.0020797773978082504,
+      "upper": 2.6665946052883582e-06,
+      "point": 6.950756778373983e-05,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   },
+   "realfull-real-yeast-c1-s1": {
+    "bit_equal": false,
+    "params": {
+     "beta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 5.6724766059261686e-08,
+      "upper": 7.27175025690092e-08,
+      "point": 5.114424507466496e-06,
+      "floor": 0.056753784587076576,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "epsilon": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 4.662404264659675e-08,
+      "upper": 5.4558058062846175e-08,
+      "point": 8.568388040330616e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "eta": {
+      "shape": [
+       "closed",
+       "closed"
+      ],
+      "lower": 3.289141450736082e-08,
+      "upper": 2.9196111480843956e-06,
+      "point": 3.336391976999152e-07,
+      "floor": null,
+      "hit": [
+       true,
+       true
+      ]
+     },
+     "kappa": {
+      "shape": [
+       "none",
+       "none"
+      ],
+      "lower": null,
+      "upper": null,
+      "point": null,
+      "floor": 0.008139287438099234
+     }
+    }
+   }
+  },
+  "paired": 118,
+  "verdicts": {
+   "eta": {
+    "overall": "no difference detected",
+    "axes": {
+     "calibration": "no difference",
+     "calibration_one_sided": "not measured",
+     "availability": "no difference",
+     "information": "no difference",
+     "accuracy": "no difference",
+     "cost": "not measured"
+    }
+   },
+   "beta": {
+    "overall": "no difference detected",
+    "axes": {
+     "calibration": "no difference",
+     "calibration_one_sided": "no difference",
+     "availability": "no difference",
+     "information": "no difference",
+     "accuracy": "no difference",
+     "cost": "not measured"
+    }
+   },
+   "epsilon": {
+    "overall": "no difference detected",
+    "axes": {
+     "calibration": "no difference",
+     "calibration_one_sided": "not measured",
+     "availability": "no difference",
+     "information": "no difference",
+     "accuracy": "no difference",
+     "cost": "not measured"
+    }
+   },
+   "kappa": {
+    "overall": "not measured",
+    "axes": {
+     "calibration": "not measured",
+     "calibration_one_sided": "not measured",
+     "availability": "no difference",
+     "information": "not measured",
+     "accuracy": "not measured",
+     "cost": "not measured"
+    }
+   }
+  },
+  "axes_not_no_difference": [],
+  "sraging_provenance": {
+   "library": "v5",
+   "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+   "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+   "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+   "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+   "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+   "runs": {
+    "method": null,
+    "reference": "jax2-v5-full-bign",
+    "null": "null_prior-v5-full-bign"
+   },
+   "cohort_ids": 118,
+   "computed_on_manifest_sha256": {
+    "v2": "defd72084aa2b7d58431813df1281ee43c3c54b300a711d2aa711a54801dc1ec"
+   },
+   "runs_sha256": {
+    "reference": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+    "null": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+   }
+  }
+ },
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

@@ -1,0 +1,113 @@
+\section{Algorithms}\label{sec:si-algorithms}
+
+The three procedures below are the likelihood evaluation (Section~\ref{sec:likelihood}), the calibrator
+(Section~\ref{sec:estimation}) and the profile walk with its interval. Fixed values are in Table~\ref{tab:switches}. The
+parameter box is in the time unit of the data.
+
+\subsection{One likelihood evaluation}\label{sec:si-alg-lik}
+
+Input: $\theta=(\eta,\beta,\eps,\kappa)$ (and $h$, and age segments if used); the prepared cohort $(a_i,d_i,q_i)_{i\le n}$ with
+resolution $\delta$; the grid $(L,N,\tau_{\max},\Delta\tau,\text{mesh})$.
+\begin{enumerate}[leftmargin=2em,itemsep=1pt]
+  \item Compute $\rho_\eta=L^2\eta$, $\rho_\beta=L\beta$, $\rho_\eps=L\eps$ and the removal rate $r_j=\rho_\beta y_j/(y_j+\kappa)$ at each of the $N$ cell centres $y_j=(j+\tfrac12)/N$.
+  \item Initialise $p^0$ as all mass in the first cell, $S^0=1$, $F^0=0$.
+  \item For each step $n=0,1,\dots$ of the mesh (graded start, then uniform):
+  \begin{enumerate}[label=(\alph*),leftmargin=1.6em,itemsep=0pt]
+    \item set the segment parameters of the span that contains the step midpoint (constant parameters: one span);
+    \item form the Scharfetter--Gummel coefficients of eq.~\eqref{eq:sg} for each face from $P_j$ (the argument of $B$ is clipped to avoid overflow);
+    \item solve the tridiagonal system of backward Euler (first steps, at $n=0$ and after each segment edge) or BDF2 (eq.~\eqref{eq:bdf2}) for $q^{n+1}$;
+    \item set $p^{n+1}=\max(q^{n+1},0)$ and $S^{n+1}=\Delta y\sum_jp^{n+1}_j$;
+    \item update $F^{n+1}$ from the outflow through the absorbing face with the same coefficients, plus the mass restored by the clip in (d);
+    \item if a segment lowers the threshold, add the mass above the new threshold to $F$ and remove it from $p$;
+    \item stop when $S<$ the march tolerance and $\tau>$\,\C{m-tau-guard}.
+  \end{enumerate}
+  \item Make $S$ monotone (running minimum, clipped to $[0,1]$), $F$ monotone, and (for exact times) the density $f=\dd F/\dd\tau$ by differences.
+  \item Interpolate $S$, $F$ (and $f$) linearly in $\tau$ at each $a_i$, $a_i+\delta$, $q_i$ ($S=1$, $F=0$ to the left of the grid, the last value to the right).
+  \item For each individual compute $m_i$ from eq.~\eqref{eq:mass} (from $F$ where $F(a_i+\delta)<S(a_i)$, else from $S$), and $\ell_i$ from eq.~\eqref{eq:term}, floored at the log floor of Table~\ref{tab:switches}.
+  \item Return $\ell=\sum_i\ell_i$ (or $-\infty$ if not finite), and, on request, $\nabla_{\log\theta}\ell$ by the reverse sweep of the march.
+\end{enumerate}
+
+\subsection{The calibrator}\label{sec:si-alg-cal}
+
+Input: ages, event flags, $\delta$ (or exact times), optional window.
+\begin{enumerate}[leftmargin=2em,itemsep=1pt]
+  \item \textbf{Prepare.} Apply the window snap (H, W and W0) and the censoring-tie relabelling; compute $L$, the Kaplan--Meier CV, the grid by the rules of Section~\ref{sec:likelihood}; compile the value and value-and-gradient programs of Algorithm~\ref{sec:si-alg-lik} over $z=\log\theta$.
+  \item \textbf{Seed.} Fit the Kaplan--Meier curve deterministically from two starting points; keep the lower residual; for kfix, map the seed to $\kappa_0$ keeping $\beta/(1+\kappa)$.
+  \item \textbf{Maximise.} Run bounded L-BFGS-B from the seed and from the seed with $\eps$ scaled; for H add the Makeham fit and the hazard ladder as starts. Keep the best finite value; if all fail, return the seed with no claims.
+  \item \textbf{Profile.} For each parameter $p$ (not $\kappa$ under kfix; not $h$): obtain nodes by Algorithm~\ref{sec:si-alg-prof}, repair, polish, bisect, and repair again if the polish changed anything.
+  \item \textbf{Re-fit check.} If some node exceeds the reported maximum by more than the half-cut, restart steps 3--4 from the best nodes and from an $\eta$ ladder, redo all profiles, and repeat at most the re-fit limit.
+  \item \textbf{Interval and claim.} For each $p$: interval by Algorithm~\ref{sec:si-alg-prof}, widen by self-consistency over every evaluated point, map the verdict to a claim shape, clip ends to the box.
+  \item \textbf{Identified quantities.} Profile each claimed combination $g(\theta)$ by the same walk with the constraint $\log g(z)=c$, and widen likewise.
+  \item \textbf{Return} $\hat\theta$, claims, log-likelihood, grid record and warnings.
+\end{enumerate}
+
+\subsection{The profile walk and interval}\label{sec:si-alg-prof}
+
+Input: parameter $p$ with maximum-likelihood value $\hat v$ and value $\hat\ell$; box edges; the constants of Table~\ref{tab:switches}.
+\begin{enumerate}[leftmargin=2em,itemsep=1pt]
+  \item \textbf{Node solve} at value $v$: maximise $\ell$ over the other parameters by bounded L-BFGS-B, warm-started from the previous node. If the result is a degenerate corner ($\rho_\beta$ small, or a free parameter at a box edge), re-solve from the seed's nuisance values and keep the better.
+  \item \textbf{Walk}, on each side: set the step $s=s_0$ decades. Repeat:
+  \begin{enumerate}[label=(\alph*),leftmargin=1.6em,itemsep=0pt]
+    \item $v'=v\cdot10^{\pm s}$, snapped to just inside the box edge if it would pass it;
+    \item solve the node, compute $D=2(\hat\ell-\ell_p(v'))$;
+    \item if $D$ rose by more than the jump limit or is not finite: if $s$ is above the minimum, set $s\leftarrow\max(s/\C{m-step-shrink},s_{\min})$ and retry, else record the node and stop (cliff);
+    \item otherwise accept; stop if $D\ge D_{\rm stop}$, or at the box edge; else $s\leftarrow\min(\C{m-step-grow-fast}s,s_{\max})$ if $D<\C{m-step-fast-dev}$, or $\min(\C{m-step-grow-slow}s,s_{\max})$ if $D$ rose by less than \C{m-step-slow-rise} since the last node.
+  \end{enumerate}
+  The side ends after the accepted-node limit or the rejection limit.
+  \item \textbf{Repair} (up to \C{m-repair-passes} passes): for each node left (right) of the best, if a node further out is higher by more than the repair threshold, re-solve it from that node's solution and keep the result if higher.
+  \item \textbf{Polish}: on each side, take the first node outward with $D\ge$ the cut; re-solve it from fresh starts (the optimum's nuisance values, the seed's, the next node out, the opposite corners of $\kappa$ with $\beta$ rescaled to keep $\beta/(1+\kappa)$, and the points nearest in $p$ among all evaluated); keep a gain above the noise limit; if the node now falls below the cut, move the edge outward (at most the move limit); do the same for the node just inside. Continue the walk once if the edge moves past the last node.
+  \item \textbf{Bisection}: while a crossing bracket (the outermost accepted node and its outer neighbour) is wider than the bisection width, solve a node at its geometric midpoint, from the polish starts and the mean nuisance values of the bracket; at most the bisection limit per side; then re-solve the two bracket nodes from each other's nuisance values and resume if the bracket moved.
+  \item \textbf{Interval}: discard non-finite nodes (fewer than \C{m-min-nodes} leaves no claim); let $d_k=2(\max_m\ell_m-\ell_k)$. On each side the edge is the first crossing of $d=\C{m-chi2}$ outward from the outermost accepted nodes, interpolated linearly in $\sqrt d$ against $\log v$ (against $v$ if non-positive). Both edges: \emph{value}; one: \emph{bound} (upper if only the upper edge exists); none: \emph{no claim}.
+  \item \textbf{Widen}: extend the interval to include every evaluated point of the fit with $\ell\ge\ell_{\rm best}-\C{m-chi2-half}$.
+\end{enumerate}
+
+\subsection{Fixed values}
+
+\begin{center}\small
+\begin{longtable}{@{}p{3.3cm}p{5.5cm}p{5.6cm}@{}}
+\caption{Fixed switches, constants and boxes of the calibrator (version 1.0.1). Every name of the family has the same
+constants; kfix names add the pinned $\kappa_0$ and the combination $\sqrt\eta/\eps$.}\label{tab:switches}\\
+\toprule
+Setting & Value & Role \\
+\midrule
+\endfirsthead
+\toprule
+Setting & Value & Role \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{3}{@{}l}{\emph{Boxes and level}}\\
+$\eta,\beta,\eps$ box & [\C{m-box-lo}, \C{m-box-hi}] & search box in the time unit of the data \\
+$\kappa$ box & [\C{m-kappa-lo}, \C{m-kappa-hi}] & search box, in units of the threshold \\
+$h$ box & [\C{m-h-lo}, \C{m-h-hi}]$/L$ & H only; floor is the no-hazard limit \\
+confidence level & \C{m-level} & profile interval; deviance cut \C{m-chi2}, i.e.\ \C{m-chi2-half} nats \\
+$\kappa_0$ (kfix) & \C{m-kappa0} & recommended pinned value \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Grid}}\\
+horizon & $\min(\C{m-tau-max},\max(\C{m-tau-min},\C{m-tau-fac}\,t_{(n)}/L))$ & in units of $L$; $t_{(n)}$ the last age \\
+nominal step & $\max($\C{m-dtau-min}$,\,\tau_{\max}/$\C{m-dtau-steps}$)$ & in units of $L$ \\
+recording ceiling & $\delta/(3L)$ & applied when $\delta/L$ is below the nominal step \\
+ceiling floor / cells & \C{m-dt-floor} / \C{m-N-floor} & where the ceiling would fall below the floor \\
+base cells $N_0$ & \C{m-N0} & $N=N_0\,2^k$ \\
+$N$ rule target, $q$, cap & \C{m-nr-target} nats, \C{m-nr-q}, \C{m-Nmax} & $k$ smallest with $E_{900}q^k\le$ target \\
+$N$ rule coefficients & \C{nrule-A}, \C{nrule-B}, \C{nrule-C} & $\log_{10}E_{900}=A+B\log_{10}n+C\log_{10}\mathrm{CV}$ \\
+\code{DT_RULE} & $k=\C{m-dtr-k}$, scope $\mathrm{CV}_c<\C{m-dtr-cvmax}$ & step $\le\mathrm{CV}/k$ in scope \\
+graded early mesh & \C{m-early-dt0}, $\times\C{m-early-ratio}$ & first step and growth ratio; after \C{m-nstart} backward Euler steps \\
+march tolerance & $S<$\,\C{m-gtol} & together with $\tau>$\,\C{m-tau-guard} \\
+log floor & \C{m-log-floor} & lowest log-probability of a term \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Maximisation}}\\
+second start & $\eps\times\C{m-eps-start}$ & the seed with $\eps$ scaled \\
+L-BFGS-B limits & \C{m-lbfgs-mle-iter} / \C{m-lbfgs-node-iter} & iterations, maximisation / node; ftol \C{m-lbfgs-ftol}, gtol \C{m-lbfgs-gtol} \\
+re-fit limit & \C{m-refit-max} & basin re-fits per cohort, triggered by a gain above \C{m-chi2-half} nats \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Profile walk}}\\
+step: first / largest / smallest & \C{m-step0} / \C{m-step-max} / \C{m-step-min} & decades \\
+jump / stop deviance & \C{m-dev-jump} / \C{m-dev-stop} & a rise by more than the first rejects a node; the walk stops at the second \\
+accepted nodes, rejections & \C{m-per-side}, \C{m-max-rej} & per side \\
+repair threshold & \C{m-repair-nats} nats & node re-solved if a node further out is higher by more \\
+polish moves & \C{m-polish-moves} & per side \\
+bisection & \C{m-bisect-dex} dex, \C{m-bisect-max} & bracket width that triggers it; nodes per side \\
+\end{longtable}
+\end{center}

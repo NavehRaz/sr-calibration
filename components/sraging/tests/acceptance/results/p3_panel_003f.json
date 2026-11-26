@@ -1,0 +1,140 @@
+{
+ "phase": "p3-panel",
+ "written_at": "2026-10-18T14:25:04Z",
+ "repo_head": "950ca19f319c8bff969cda4bf6bad6f044897d98",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003f.toml": "ca81a489ad75c76be0637ec998de3c22c60fd520"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "68a3f891702011602fa184dc215ec155f79aaaa8"
+ },
+ "wall_s": 2.348374128341675,
+ "cpu_s": 3.528128,
+ "status": "written",
+ "strata": {
+  "human_no_basin_fix": [
+   "hazard-real-Sweden_F_1910_hetro-c1-s0",
+   "hazard-real-Sweden_F_1910_hetro-c1-s1",
+   "censor-real-Denmark_M_1900_hetro-c1-s0",
+   "censor-real-Denmark_M_1890_hetro-c1-s0",
+   "hazard-real-Denmark_F_1900_hetro-c1-s1",
+   "hazard-real-combined_human_F-c1-s1",
+   "pure-real-Sweden_F_1910_homo-c1-s0",
+   "pure-real-Denmark_M_1900_hetro-c1-s1",
+   "pure-real-Denmark_M_1890_hetro-c1-s1",
+   "pure-real-Denmark_F_1900_hetro-c1-s0"
+  ],
+  "human_basin_fix": [
+   "hazard-real-combined_human_F-c1-s0",
+   "hazard-real-Sweden_M_1910_hetro-c0-s0",
+   "hazard-real-Sweden_F_1910_hetro-c0-s0"
+  ],
+  "main_pure_n1000": [
+   "pure-k0.01-p01-c0-s0",
+   "pure-k0.01-p01-c0-s1",
+   "pure-k0.01-p02-c0-s0",
+   "pure-k0.01-p02-c0-s1",
+   "pure-k0.01-p03-c0-s0"
+  ],
+  "main_censor": [
+   "censor-k0.01-p01-c0-s0",
+   "censor-k0.01-p01-c0-s1",
+   "censor-k0.01-p01-c1-s0",
+   "censor-k0.01-p01-c1-s1",
+   "censor-k0.01-p02-c0-s0"
+  ],
+  "v6_single_age0": [
+   "pure-k2-p09-c1-s0",
+   "pure-k10-p09-c1-s0",
+   "censor-real-Denmark_F_1890_hetro-c0-s1"
+  ]
+ },
+ "n": 26,
+ "age0_scan": [
+  {
+   "cohort": "hazard-k0.1-p01-c0-s0",
+   "age0_term": -5.50204268981523,
+   "min_other": -9.023152107918513,
+   "calibrator_for_terms": "profile_jax2_h",
+   "below_all_others": false
+  },
+  {
+   "cohort": "pure-k2-p09-c1-s0",
+   "age0_term": -10.953321492414046,
+   "min_other": -7.508007146704598,
+   "calibrator_for_terms": "profile_jax2",
+   "below_all_others": true
+  },
+  {
+   "cohort": "pure-k10-p09-c1-s0",
+   "age0_term": -10.89355645445409,
+   "min_other": -6.665588118891944,
+   "calibrator_for_terms": "profile_jax2",
+   "below_all_others": true
+  },
+  {
+   "cohort": "censor-real-Denmark_F_1890_hetro-c0-s1",
+   "age0_term": -11.646399937777879,
+   "min_other": -11.577982636919693,
+   "calibrator_for_terms": "profile_jax2",
+   "below_all_others": true
+  }
+ ],
+ "panel_ids_scanned": 306,
+ "v6_manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+ "arrays_sha256": {
+  "hazard-real-Sweden_F_1910_hetro-c1-s0": "5639fe35880175c051ecfb8bedc1300a0c33a79719bb83491ab26d8f2d55c118",
+  "hazard-real-Sweden_F_1910_hetro-c1-s1": "5acef7b1e91b64319c0f8c2c785cad179bf71bf79860f432eadc611a4bfd8bde",
+  "censor-real-Denmark_M_1900_hetro-c1-s0": "23b7f61b6872dd336f56de65e597d276539e9e384f31a4ce53f0b5685c5e96bd",
+  "censor-real-Denmark_M_1890_hetro-c1-s0": "a41e89900bac9cf2c88c3105f67c2f962b80c8e944817104e287dea9ed326fc0",
+  "hazard-real-Denmark_F_1900_hetro-c1-s1": "9419f14fe8c94fc6c94ba6006fad5c027023c1fed4768e74d01f67e7d5b11c95",
+  "hazard-real-combined_human_F-c1-s1": "1de5f6c7239ce919ad01a95441534fea1b7b5d6f1936f4b2fb5a8e67a6d7b7bf",
+  "pure-real-Sweden_F_1910_homo-c1-s0": "1aead385f76ab7c2e583657d11e2e2ef243bc826015497409054838385aedd46",
+  "pure-real-Denmark_M_1900_hetro-c1-s1": "6ef7d3c72522f38fb12686187883d8460a36e46b084d8af47d3691b8307cfe76",
+  "pure-real-Denmark_M_1890_hetro-c1-s1": "49a2f30b5e34b450f5994ecc9adf91f1ac2ea0a8e47d73a5dc5abea5d27fc689",
+  "pure-real-Denmark_F_1900_hetro-c1-s0": "40c50aa76e68a64c05f3a2226629396eedbebd099d78f11158343d91c8df5ae6",
+  "hazard-real-combined_human_F-c1-s0": "27bac940e34baa29db5b17974ba2004643ea4ecf74ef2d5646cde4ab8a6b3156",
+  "hazard-real-Sweden_M_1910_hetro-c0-s0": "7db5358de21b3bf9043143644ea46626ddd372471f834ef9e98b4b7d0ab636b3",
+  "hazard-real-Sweden_F_1910_hetro-c0-s0": "f4fccfe0541721ae4e454205f6a460965eb39bf60d51ae578834f287d416b575",
+  "pure-k0.01-p01-c0-s0": "15558898ca5196ec069f794e25258b71fb8ee9d8797c91fe8cc8dbb7b0059330",
+  "pure-k0.01-p01-c0-s1": "0cfff5894b90bc7650f5968285e3dc801d1e303b0edfe733e2e746031a5824bb",
+  "pure-k0.01-p02-c0-s0": "38b65e40b8aa88568b949e7cce3d07fb67b73142196940f97ead3064ec6e58b9",
+  "pure-k0.01-p02-c0-s1": "a9e244d1664721ea4e4c1c5ad838de6406f732b848323edbedc22430f7fa5ff4",
+  "pure-k0.01-p03-c0-s0": "b1a358d83620098d20356a26f027120f2d34b07f3ee3f75b1acfa03a0e74d886",
+  "censor-k0.01-p01-c0-s0": "ad7b932ba95cca2d95714153dc77af2971162ef7c344b16c4a4df7ac7c05bfdf",
+  "censor-k0.01-p01-c0-s1": "c7e4ce1e7fed9d3d3f118edcfa3789ad9ad5ea918da905f4a72ca67a323f807e",
+  "censor-k0.01-p01-c1-s0": "05ef2c8cd233d0064d0ffeb3e3b04846a3e79d0dc1953b0443d813df709972f8",
+  "censor-k0.01-p01-c1-s1": "5c84ede2d6ab617d0069695fac225b9daa64cf07abbf8c2a4cfffacb1999e1d3",
+  "censor-k0.01-p02-c0-s0": "bb04c3d64de250c2a136513f445c8bac1c5a8ce2cc55eea02dad9b11b63c1cef",
+  "pure-k2-p09-c1-s0": "946494b983125ab673b85ffe1d4ea94f6d82116ccdc69197ef799f5e783f47e1",
+  "pure-k10-p09-c1-s0": "5964cc2852ca8f83d5882b8c9f0b944b5484aed1fd88dc8d22cc03e26a422c1a",
+  "censor-real-Denmark_F_1890_hetro-c0-s1": "cdad6cccf9d0a5b757a1a13eaaf4f6ed810dd96b37c409ecf1641c287de3b6e2"
+ },
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.0",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": "v6",
+  "rule": {
+   "quantities": "lead_pair",
+   "ratio": 1.5,
+   "delta_nats": 0.001,
+   "basin_fix_policy": "mle_both",
+   "provisional": true
+  },
+  "panel_commit": "ca81a489ad75c76be0637ec998de3c22c60fd520"
+ }
+}

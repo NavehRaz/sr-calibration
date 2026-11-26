@@ -1,0 +1,13 @@
+run,N,count,cpu_ms_per_eval_median,cpu_ms_per_eval_q90,cpu_median_s
+jax2-v6-full-bign,all,1776,131.6,459.1,1105.8
+jax2-v6-full-bign,900,1254,109.5,436.9,829.5
+jax2-v6-full-bign,1800,270,164.7,1008.0,1726.4
+jax2-v6-full-bign,3600,252,284.8,371.6,3065.1
+jax2h-v6-full-bign,all,1776,129.4,466.0,2280.5
+jax2h-v6-full-bign,900,1254,107.0,456.8,1798.1
+jax2h-v6-full-bign,1800,270,168.8,1036.7,3333.5
+jax2h-v6-full-bign,3600,252,290.0,364.3,5419.8
+jax2-v6-all-groups,all,2405,137.8,1007.3,1191.8
+jax2-v6-all-groups,900,1534,106.2,413.6,776.0
+jax2-v6-all-groups,1800,341,168.7,920.6,1704.6
+jax2-v6-all-groups,3600,530,375.6,1654.1,5260.5

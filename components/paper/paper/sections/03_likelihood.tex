@@ -1,0 +1,131 @@
+\section{The likelihood}\label{sec:likelihood}
+
+The likelihood of a cohort is computed from the exact distribution of the first-passage time of the process in
+eq.~\eqref{eq:sr}, not from a simulation or a fitted curve. This section gives the equation that is solved, its
+discretisation, the observation model that turns survival and absorbed-mass curves into a log-likelihood, and the grid
+rules that set the numerical resolution.
+
+\paragraph{The Fokker--Planck problem.} Let $p(x,t)$ be the density of damage among individuals that are still alive
+at age $t$ (with $A=1$, so $Y(t)=t$). It obeys the Fokker--Planck equation of eq.~\eqref{eq:sr} \citep{risken1996fokker},
+\begin{equation}\label{eq:fp}
+  \partial_t p = -\partial_x\!\Bigl[\Bigl(\eta\,t-\beta\frac{x}{x+\kappa}\Bigr)p\Bigr]+\eps\,\partial_x^2 p,
+  \qquad p(x,0)=\delta_0(x),
+\end{equation}
+on $0<x<\xc=1$. The boundary at $0$ is reflecting (zero flux) and the boundary at $\xc$ is absorbing, $p(\xc,t)=0$. The
+survival function is $S(t)=\int_0^{\xc}p\,\dd x$. Individuals die by crossing $\xc$, so the death density is the flux
+absorbed at the boundary,
+\begin{equation}\label{eq:flux}
+  f(t)=-\dd S/\dd t=-\eps\,\partial_x p(\xc,t),\qquad F(t)=\int_0^t f(s)\,\dd s=1-S(t).
+\end{equation}
+Time enters through $\tau=t/L$, where $L$ is the Kaplan--Meier mean lifetime of the cohort
+\citep{kaplan1958nonparametric}. In $\tau$ the problem has the rates $\rho_\eta=L^2\eta$, $\rho_\beta=L\beta$,
+$\rho_\eps=L\eps$ and the unchanged $\kappa$, so that all quantities are of order one. An external hazard $h$ (Section~\ref{sec:model})
+acts outside the equation: the observed survival is $S_h(t)=S(t)\,e^{-ht}$.
+
+\paragraph{Discretisation.} The interval $(0,\xc)$ is divided into $N$ cells of width $\Delta y=1/N$ with cell values
+$p_j$. The flux between cells $j$ and $j+1$ uses the Scharfetter--Gummel scheme \citep{scharfetter1969large}, which
+stays positive and accurate when drift dominates diffusion:
+\begin{equation}\label{eq:sg}
+  J_{j+\frac12}=\frac{\rho_\eps}{\Delta y}\bigl[B(-P_j)\,p_j-B(P_j)\,p_{j+1}\bigr],\qquad
+  B(z)=\frac{z}{e^{z}-1},\qquad P_j=\frac{(\rho_\eta\tau-r_j)\,\Delta y}{\rho_\eps},
+\end{equation}
+where $r_j=\rho_\beta y_j/(y_j+\kappa)$ is the removal rate at the cell centre. The flux is zero at the wall at $0$, and
+the flux out of the last cell, $J_{N-\frac12}$, is the absorbed flux of eq.~\eqref{eq:flux}. Writing the resulting
+tridiagonal operator as $A(\tau)$, time is advanced by backward Euler for the first steps, which damps the
+$\delta$-function start, and then by the second-order backward differentiation formula BDF2 \citep{hairer1996solving},
+\begin{equation}\label{eq:bdf2}
+  \bigl(\tfrac32 I-\Delta\tau\,A(\tau_{n+1})\bigr)\,p^{n+1}=2p^{n}-\tfrac12 p^{n-1},\qquad p^{n+1}\leftarrow\max(p^{n+1},0),
+\end{equation}
+with the corresponding variable-step coefficients on a non-uniform mesh. The first \C{m-nstart} steps are backward Euler.
+Clipping negative values to zero keeps the density a density; the mass it adds back is accounted for below. The march
+stops when $S$ falls below \C{m-gtol} and $\tau>$\,\C{m-tau-guard}, since later deaths carry no probability, and $S$ is made
+monotone afterwards. The absorbed mass $F$ is accumulated step by step from the flux $J_{N-\frac12}$ with the same
+time-stepping weights, plus the mass restored by the clip. The reason is round-off. An early death has mass
+$F(a+\delta)-F(a)$ that can be many orders of magnitude below one; computed as $S(a)-S(a+\delta)$ it is a difference of two
+numbers near one and is lost in round-off, whereas every term accumulated into $F$ is small and positive and keeps full
+relative precision. The interval mass is therefore taken from $F$ wherever $F$ is the smaller operand, and from $S$
+otherwise; the two are equal in exact arithmetic. Gradients of the log-likelihood with respect to $\log\theta$ are
+exact, obtained by a hand-written reverse sweep of the march.
+
+\paragraph{Observation model.} A cohort has, for each individual $i$, a recorded age $a_i$, an event flag $d_i$ (1
+death, 0 right-censored) and a recording resolution $\delta$. A death recorded at $a_i$ is scored on $[a_i,a_i+\delta)$.
+Under census-based recording, an animal found dead at census $c$ was alive at the previous census, so it is entered
+with $a_i=c-\delta$. The contribution of individual $i$ is
+\begin{equation}\label{eq:term}
+  \ell_i=d_i\log m_i+(1-d_i)\log S_h(a_i)-\log S_h(q_i),
+\end{equation}
+with the interval mass of a death and its external-hazard correction
+\begin{equation}\label{eq:mass}
+  m_i=e^{-h a_i}\Bigl[\bigl(F(a_i+\delta)-F(a_i)\bigr)+S(a_i+\delta)\bigl(1-e^{-h\delta}\bigr)\Bigr],
+\end{equation}
+which reduces to $F(a_i+\delta)-F(a_i)$ when $h=0$. For exact (continuous) death times $m_i$ is replaced by the density
+$\bigl(f(a_i)+h\,S(a_i)\bigr)e^{-h a_i}$. The total is $\ell(\theta)=\sum_i\ell_i$, each term is floored at a log-probability of
+\C{m-log-floor} so that one impossible death does not make the likelihood undefined, and $\ell=-\infty$ if the sum is
+not finite. The quantity $q_i$ in eq.~\eqref{eq:term} is the entry age. It is zero
+for individuals observed from birth; individuals first observed at age $q_i>0$ (left truncation, as in the group
+comparisons of Section~\ref{sec:effects}) are conditioned on survival to $q_i$, which is the last term.
+
+\emph{Right censoring.} A censored individual contributes $\log S_h(a_i)$, the probability of surviving to its last
+observation.
+
+\emph{Fit window $[\mathrm{lo},\mathrm{hi})$.} A window restricts the likelihood to the part of life in which the model is
+trusted. Individuals recorded before $\mathrm{lo}$ are dropped, every remaining individual enters with $q_i=\mathrm{lo}$
+(condition on $S_h(\mathrm{lo})$), and individuals alive or recorded as dying at or after $\mathrm{hi}$, including a death
+whose recording interval crosses $\mathrm{hi}$, are censored at $\mathrm{hi}$. The window edges are snapped to the
+recording grid.
+
+\emph{Ties.} Individuals with the same recorded age have the same term; with interval scoring no tie-breaking rule is
+needed. One tie is not harmless. If all censored individuals share one age $t_c$ equal to the last census, a death
+recorded in the recording interval that contains $t_c$ may have occurred after $t_c$, while the censored are credited
+with $S(t_c)$; scoring that death over its whole interval counts the sliver after $t_c$ twice and biases $\eta$ upward.
+These deaths are therefore relabelled as censored at their own recorded age (Section~\ref{sec:estimation}).
+
+\paragraph{Parameters that change with age.} The engine accepts parameter changes on age segments
+$[t_s,t_{s+1})$, each with its own multipliers on $\eta$, $\beta$, $\eps$, $\kappa$, $\xc$ and $A$; this is how
+Section~\ref{sec:effects} represents a treatment started at age $t_0$. Parameters are constant within a segment and the
+density is carried across the edge unchanged. The production term uses the accumulated damage-production units $Y$, which grow
+at the rate $A$ of the current segment (so $Y$ is continuous and only its slope changes at an edge), whereas removal, noise
+and the time step are not rescaled. Segment edges are snapped to the nearest grid node; the step that starts at the edge is a
+backward Euler restart. A change of the threshold moves the absorbing cell: raising it exposes empty cells, and lowering it
+absorbs at once the mass above the new threshold, which is added to $F$ as a pulse of deaths at the edge. This is exact
+on the grid; a threshold change is not equivalent to rescaling the other parameters except from birth
+(Section~\ref{sec:model}).
+
+\paragraph{Grid rules.} The numerical resolution is set from the data by rules that were calibrated on the benchmark
+(Section~\ref{sec:val-numerics}); all constants are listed in Table~\ref{tab:switches} of the SI.
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt]
+  \item \emph{Scale and horizon.} $L$ is the Kaplan--Meier mean. The horizon is a multiple of the last recorded age and the nominal
+    step divides it into a fixed number of steps (SI Table~\ref{tab:switches}).
+  \item \emph{Recording ceiling.} The step is at most $\delta/(3L)$, so that a recording interval spans at least three steps. Where this
+    would fall below \C{m-dt-floor} the ceiling is held at that value and $N$ is doubled to \C{m-N-floor}.
+  \item \emph{Graded early mesh.} The march starts with steps of \C{m-early-dt0} that grow by a factor \C{m-early-ratio} per step
+    up to the nominal step. Deaths in the first recording intervals then keep a small grid error; with a uniform start they
+    can be several nats off.
+  \item \emph{The $N$ rule.} The number of cells is $N=\C{m-N0}\cdot 2^{k}$ for the smallest $k\ge0$ for which the predicted error of the
+    interval-relevant deviances, $E_{900}\,q^{k}$, is at most \C{m-nr-target} nats, with a cap of \C{m-Nmax} cells. The error at $N=\C{m-N0}$ is
+    predicted from the cohort size $n$ and the Kaplan--Meier coefficient of variation (CV) of the lifetime,
+    $\log_{10}E_{900}=\C{nrule-A}+\C{nrule-B}\log_{10}n+(\C{nrule-C})\log_{10}\mathrm{CV}$, fitted on \C{nrule-n} cohorts, with the error
+    contracting by $q=\C{m-nr-q}$ per doubling of $N$. The prediction comes from a grid study of \C{conv-n-measured} stored
+    cohorts, chosen because they were numerically hard (Section~\ref{sec:val-numerics}, Figure~\ref{fig:convergence}). For
+    each cohort, $E_{900}$ is the largest error of the deviance on $N=\C{nrule-N0}$ cells at the points that set the interval
+    edges, measured against a Richardson limit from grids of up to $14400$ cells; the regression uses the \C{nrule-n} cohorts
+    whose values are reproducible, and its residual standard deviation is \C{nrule-resid-sd} decades. The rule is a median
+    model with no safety margin: the measured error exceeds the prediction for \C{conv-resid-pos}\,\% of these cohorts. The
+    contraction $q$ is a chosen value. It is slower than the measured median on non-human cohorts
+    (\C{conv-r-med-nonhuman}) but faster than on human cohorts (\C{conv-r-med-human}), so the rule under-refines large human
+    life tables.
+  \item \emph{The step rule for sharp cohorts (\code{DT_RULE}).} When lifetimes are tightly clustered, the time error dominates
+    and the step is capped at $\mathrm{CV}/\C{m-dtr-k}$. The rule applies only where the CV, corrected for the recording
+    resolution, $\mathrm{CV}_c=\sqrt{\max(0,\mathrm{CV}^2-(\delta/L)^2/12)}$, is below \C{m-dtr-cvmax}. The correction removes the
+    spread that recording adds: a death known only to lie in an interval of length $\delta$ is, within it, uniform, and a
+    uniform distribution over an interval of length $\delta$ has variance $\delta^2/12$ (in units of $L$, $(\delta/L)^2/12$).
+    Without the rule, BDF2 overshoot and the
+    positivity clip set $S$ to zero past the mean and every later death falls on the numerical floor.
+\end{itemize}
+Cost is proportional to $N$ times the number of steps, so the rules for large cohorts and sharp cohorts increase run time
+(Section~\ref{sec:estimation}, Section~\ref{sec:limitations}).
+\paragraph{Heterogeneity.} A population with a spread of one parameter (for example the threshold) is a mixture over
+Gauss--Hermite nodes of that parameter: the survival, absorbed-mass and density curves are averaged over nodes, and the
+observation terms of eq.~\eqref{eq:term} are applied once to the mixture, so that conditioning on entry divides the
+mixture rather than mixing conditional terms. This is available in the engine but is not part of the released calibrators
+and is not validated for calibration (Section~\ref{sec:limitations}).

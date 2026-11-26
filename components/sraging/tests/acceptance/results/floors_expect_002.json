@@ -1,0 +1,27 @@
+{
+ "phase": "floors-expect",
+ "written_at": "2026-10-03T22:32:39Z",
+ "repo_head": "89530e9630faf698a3872d198d7da4312dc9398a",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_v1.toml": "c2c8f0fe2c5baf354fae3ba59a35a49b3f15f729"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "head": "dbe504a91a34ffe6656f5a662e1a33a6cbecba09"
+ },
+ "wall_s": 2059.60302901268,
+ "cpu_s": 37.382672,
+ "status": "measured",
+ "expected_file": "tests/acceptance/expected_floors_002.json",
+ "n_cases": 32
+}

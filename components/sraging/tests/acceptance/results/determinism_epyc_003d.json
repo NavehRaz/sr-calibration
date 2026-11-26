@@ -1,0 +1,36 @@
+{
+ "phase": "determinism-epyc",
+ "written_at": "2026-10-14T15:47:58Z",
+ "repo_head": "2700dfafeefed1640550792ea8a7c50cabc6a7b7",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "f39f31acce7ad7a2c864a96ca1108c5210dd8b14"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84c40a04c6ffa86ffca163329af77cca3c81221f"
+ },
+ "wall_s": 0.10789990425109863,
+ "cpu_s": 0.017591999999999997,
+ "status": "pass",
+ "n_epyc": 2410,
+ "n_mac": 2410,
+ "n_match": 2410,
+ "cpu_models": {
+  "AMD EPYC 7552 48-Core Processor": 15,
+  "AMD EPYC 9754 128-Core Processor": 17,
+  "AMD EPYC 9634 84-Core Processor": 8
+ },
+ "mismatches": [],
+ "missing": [],
+ "shards": 40
+}

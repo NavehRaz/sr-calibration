@@ -1,0 +1,255 @@
+"""mle_profile_jax2's observation model: the data the likelihood is given, derived from what the method is shown.
+
+STDLIB ONLY (no numpy, no JAX, no SRK), so it can be imported and tested without the system under test.
+
+`prepare(ages, events, delta, window, window_on=..., relabel_on=...)` runs, in this order
+(PHASE_B_DESIGN.txt section 3), each step writing its own record:
+
+  (a) GRID CHECK (`grid_check`). Death ages should be multiples of `delta` (relative tolerance 1e-9), or the
+      library's delta/2 clamp (SRK.benchmark.cohorts.materialize: t = max(floor(t/delta)*delta, delta/2)).
+      It decides whether the window snap is allowed (`grid_unverified` = some death age is off the grid ->
+      no snapping). MEASURED (B1): no library cohort has an off-grid death age.
+  (b) WINDOW SNAP (`window_snap`, only with `window_on=True`, the fit-window names). The harness
+      (srbench/library/observation.py `apply_window`) truncates and censors on RECORDED ages: it keeps
+      `ages >= lo` and censors `ages > hi` at hi. With ages recorded as floor(T/delta)*delta that means:
+        * `ages >= lo` keeps exactly T >= ceil_grid(lo), so the left truncation point is
+          lo_eff = ceil_grid(lo) (= lo on the grid);
+        * a death recorded in the bin [hi_eff, hi_eff + delta), hi_eff = floor_grid(hi), may have happened
+          after hi, while the censored are credited S(hi) -- the window-edge tie. Every record with
+          age >= hi_eff is therefore CENSORED AT hi_eff ("alive at hi_eff", true for all of them);
+        * lo <= delta/2 (jax2 B2 deviation D-B2-3; MEASURED: the 4 Guinea-pig window cohorts have
+          lo = delta/2): the delta/2 clamp puts every T < delta at delta/2 >= lo, so the harness dropped no
+          one -- lo_eff = 0, no left truncation. (delta/2 < lo < delta snaps to delta, exactly.)
+      The likelihood then conditions on S(lo_eff) and needs every age in [lo_eff, hi_eff].
+      With the window off the observation's window is ignored, as mle_profile_jax v0.3.3 and rc1 ignore it.
+      No delta: window_eff = the window as given (exact times have no bin tie). Off-grid death ages: the
+      same, unsnapped (`reason` says so).
+  (c) GENERIC TIE RELABEL (`censor_tie_relabel`): the jax2 rc1 candidate's rule, VERBATIM
+      (reports/basin/candidate/code/adapter.py, md5 299bd420), on the data AFTER the snap. With
+      `relabel_on=False` it runs as a detector only, exactly as rc1's `enabled=False`.
+
+INVARIANTS (`check_invariants`, asserted on every call): n unchanged, events only flip 1 -> 0, ages never
+increase. A violation raises AssertionError (an explicit raise, so `python -O` cannot strip it).
+
+The records: `Prepared.censor_tie` is rc1's `diagnostics.censor_tie` record, unchanged in content, so the
+identity harness can compare it to rc1's. `Prepared.record` is `diagnostics.observation_model`.
+"""
+from __future__ import annotations
+
+import math
+from dataclasses import dataclass
+
+# Censoring-tie relabel: a death is in the delta-bin containing tc when b <= tc < b + delta. The strict
+# upper edge is applied with this relative margin so that a recorded age one grid step below an ON-grid
+# tc (tc - b = delta up to round-off) is never taken for the bin itself.   (rc1, verbatim)
+_TIE_REL_TOL = 1e-9
+
+# Grid check: |a/delta - round(a/delta)| <= _GRID_REL_TOL * max(1, |a/delta|) is "on the grid" -- the same
+# test rc1 applies to tc (`on_grid`).
+_GRID_REL_TOL = 1e-9
+
+RECORD_VERSION = 2           # 2 = B2: window_snap filled when window_on
+
+
+def censor_tie_relabel(ages, events, delta, enabled=True):
+    """(ages, events, record): the generalised censoring-tie relabel (Naveh's choice (a), 2026-10-02).
+
+    VERBATIM from the jax2 rc1 candidate's adapter (the identity oracle). Its docstring:
+
+    PATTERN. `delta` is set, there is at least one censored record, ALL censored records share ONE age tc,
+    and tc equals the maximum recorded age (an end-of-follow-up censoring: the censor arm's study end, a
+    realfull study end, or a window close). Then a death recorded at age b with b <= tc < b + delta -- the
+    delta-bin that contains tc -- may have died AFTER the censoring point: under rounding-down it died
+    somewhere in [b, b + delta), and the censored were alive at tc. Scoring it over the whole bin while the
+    censored are credited S(tc) counts the sliver [tc, b + delta) twice (implied total probability > 1),
+    which biases eta upward (reports/censor_tie). Every such death is RELABELLED CENSORED AT ITS OWN
+    RECORDED AGE b ("alive at b", which is true). On the grid (tc = b) that is "alive at tc", exactly the
+    censored records' statement; off the grid (b < tc, a window closing between grid points) it is the
+    weaker true statement S(b). Ages are never moved. Needs no knowledge of the censoring point.
+
+    `enabled=False` runs the detector only: the record says what WOULD be relabelled (`n_tied`, `dose`),
+    and the data are returned unchanged. The record is `diagnostics.censor_tie`.
+    """
+    a = [float(x) for x in ages]
+    ev = [int(x) for x in events]
+    n = len(a)
+    cens = [x for x, e in zip(a, ev) if e == 0]
+    rec = dict(enabled=bool(enabled), detected=False, applied=False, reason="", n=n,
+               n_censored=len(cens), delta=(float(delta) if delta else None), tc=None, on_grid=None,
+               n_tied=0, n_relabelled=0, dose=0.0)
+    if not delta or not (float(delta) > 0):
+        rec["reason"] = "no delta"
+        return a, ev, rec
+    d = float(delta)
+    if not cens:
+        rec["reason"] = "no censored records"
+        return a, ev, rec
+    tc = max(cens)
+    if min(cens) != tc:
+        rec["reason"] = "censored records at more than one age"
+        return a, ev, rec
+    if max(a) != tc:
+        rec["reason"] = "a record lies beyond the censoring age"
+        return a, ev, rec
+    rec["tc"] = tc
+    q = tc / d
+    rec["on_grid"] = bool(abs(q - round(q)) <= 1e-9 * max(1.0, abs(q)))
+    tied = [i for i, (x, e) in enumerate(zip(a, ev)) if e == 1 and x <= tc and (tc - x) < d * (1.0 - _TIE_REL_TOL)]
+    rec["n_tied"] = len(tied)
+    rec["dose"] = len(tied) / n if n else 0.0
+    if not tied:
+        rec["reason"] = "no death in the censoring bin"
+        return a, ev, rec
+    rec["detected"] = True
+    rec["tied_ages"] = sorted(set(a[i] for i in tied))
+    if not enabled:
+        rec["reason"] = "detected; relabel disabled"
+        return a, ev, rec
+    for i in tied:
+        ev[i] = 0
+    rec.update(applied=True, n_relabelled=len(tied), reason="relabelled")
+    return a, ev, rec
+
+
+def _on_grid(x, d):
+    q = x / d
+    return abs(q - round(q)) <= _GRID_REL_TOL * max(1.0, abs(q))
+
+
+def grid_check(ages, events, delta):
+    """The record of step (a): are the recorded ages on the delta grid?
+
+    Death ages must be multiples of delta or exactly the delta/2 clamp. Censored ages are counted
+    separately (a window close or a study end may lie between grid points, legitimately). `grid_unverified`
+    is True when ANY death age is off the grid; it is None when there is no delta (nothing to verify)."""
+    rec = dict(delta=(float(delta) if delta else None), n_deaths=0, n_deaths_on_grid=0, n_half_clamp=0,
+               n_deaths_off_grid=0, n_censored=0, n_censored_off_grid=0, grid_unverified=None,
+               first_off_grid=None, rel_tol=_GRID_REL_TOL)
+    if not delta or not (float(delta) > 0):
+        rec["reason"] = "no delta"
+        rec["n_deaths"] = sum(1 for e in events if int(e) == 1)
+        rec["n_censored"] = sum(1 for e in events if int(e) == 0)
+        return rec
+    d = float(delta)
+    for x, e in zip(ages, events):
+        x = float(x)
+        if int(e) == 1:
+            rec["n_deaths"] += 1
+            if _on_grid(x, d):
+                rec["n_deaths_on_grid"] += 1
+            elif abs(x / d - 0.5) <= _GRID_REL_TOL:
+                rec["n_half_clamp"] += 1
+            else:
+                rec["n_deaths_off_grid"] += 1
+                if rec["first_off_grid"] is None:
+                    rec["first_off_grid"] = x
+        else:
+            rec["n_censored"] += 1
+            if not _on_grid(x, d):
+                rec["n_censored_off_grid"] += 1
+    rec["grid_unverified"] = rec["n_deaths_off_grid"] > 0
+    rec["reason"] = "off-grid death ages" if rec["grid_unverified"] else "ok"
+    return rec
+
+
+def check_invariants(ages_in, events_in, ages_out, events_out):
+    """Assert what the observation model may never do: change n, turn a censored record into a death, or
+    move an age upward. Returns the number of 1 -> 0 flips. Raises AssertionError on any violation."""
+    n = len(ages_in)
+    if not (len(events_in) == n and len(ages_out) == n and len(events_out) == n):
+        raise AssertionError(f"observation model changed n: ages {n} -> {len(ages_out)}, events "
+                             f"{len(events_in)} -> {len(events_out)}")
+    flips = 0
+    for j, (a0, e0, a1, e1) in enumerate(zip(ages_in, events_in, ages_out, events_out)):
+        e0, e1 = int(e0), int(e1)
+        if e1 not in (0, 1) or e1 > e0:
+            raise AssertionError(f"observation model changed record {j}'s event {e0} -> {e1} (only 1 -> 0 allowed)")
+        if not (float(a1) <= float(a0)):
+            raise AssertionError(f"observation model moved record {j}'s age up: {a0!r} -> {a1!r}")
+        flips += e0 - e1
+    return flips
+
+
+def _grid_index(x, d, up):
+    """The grid index of x on the delta grid: x itself when on the grid (tolerance _GRID_REL_TOL), else
+    ceil (up=True) or floor. Returns (k, on_grid)."""
+    q = x / d
+    r = round(q)
+    if abs(q - r) <= _GRID_REL_TOL * max(1.0, abs(q)):
+        return int(r), True
+    return (math.ceil(q) if up else math.floor(q)), False
+
+
+def window_snap(ages, events, delta, window, grid_unverified):
+    """Step (b): (ages, events, window_eff, record). See the module docstring. Never moves an age up, never
+    turns a censored record into a death, never changes n."""
+    a = [float(x) for x in ages]
+    ev = [int(x) for x in events]
+    lo, hi = float(window[0]), float(window[1])
+    rec = dict(applied=False, reason="", lo=lo, hi=hi, lo_eff=lo, hi_eff=hi, lo_on_grid=None,
+               hi_on_grid=None, lo_rule=None, n_moved=0, n_deaths_censored=0, n_censored_at_hi_eff=0,
+               n_below_lo_eff=0, n_above_hi_eff=0)
+    if not delta or not (float(delta) > 0):
+        rec["reason"] = "no delta: exact times have no bin tie; the window is used as given"
+        return a, ev, (lo, hi), rec
+    if grid_unverified:
+        rec["reason"] = "off-grid death ages: not snapped; the window is used as given"
+        return a, ev, (lo, hi), rec
+    d = float(delta)
+    k_hi, hi_on = _grid_index(hi, d, up=False)
+    hi_eff = hi if hi_on else k_hi * d
+    k_lo, lo_on = _grid_index(lo, d, up=True)
+    if lo <= 0.5 * d * (1.0 + _GRID_REL_TOL):
+        lo_eff, lo_rule = 0.0, "lo <= delta/2: the delta/2 clamp keeps every record; no left truncation"
+    else:
+        lo_eff = lo if lo_on else k_lo * d
+        lo_rule = "on the grid" if lo_on else "ceil_grid(lo)"
+    rec.update(lo_on_grid=lo_on, hi_on_grid=hi_on, lo_rule=lo_rule, lo_eff=lo_eff, hi_eff=hi_eff)
+    if not lo_eff < hi_eff:
+        rec["reason"] = f"empty snapped window [{lo_eff!r}, {hi_eff!r}]: not snapped; the window is used as given"
+        rec.update(lo_eff=lo, hi_eff=hi)
+        return a, ev, (lo, hi), rec
+    thr = k_hi - _GRID_REL_TOL * max(1.0, abs(k_hi))      # "in the bin of hi_eff or later", in grid units
+    for j in range(len(a)):
+        if a[j] / d >= thr:
+            if ev[j] == 1:
+                rec["n_deaths_censored"] += 1
+            if a[j] > hi_eff:
+                a[j] = hi_eff
+                rec["n_moved"] += 1
+            ev[j] = 0
+            rec["n_censored_at_hi_eff"] += 1
+    tol = 1e-9 * max(1.0, abs(lo_eff), abs(hi_eff))
+    rec["n_below_lo_eff"] = sum(1 for x in a if x < lo_eff - tol)
+    rec["n_above_hi_eff"] = sum(1 for x in a if x > hi_eff + tol)
+    if rec["n_below_lo_eff"] or rec["n_above_hi_eff"]:
+        raise AssertionError(f"window snap left {rec['n_below_lo_eff']} ages below lo_eff={lo_eff!r} and "
+                             f"{rec['n_above_hi_eff']} above hi_eff={hi_eff!r}")
+    rec.update(applied=True, reason="snapped")
+    return a, ev, (lo_eff, hi_eff), rec
+
+
+@dataclass(frozen=True)
+class Prepared:
+    ages: list            # what the likelihood is given
+    events: list
+    window_eff: object    # (lo_eff, hi_eff) for the fit-window likelihood, or None (window off / no window)
+    censor_tie: dict      # rc1's diagnostics.censor_tie record
+    record: dict          # diagnostics.observation_model
+
+
+def prepare(ages, events, delta, window=None, *, window_on=False, relabel_on=True):
+    """Steps (a)-(c) and the invariants. See the module docstring."""
+    grid = grid_check(ages, events, delta)
+    a0, ev0, window_eff, snap = list(ages), list(events), None, None
+    if window_on and window is not None:
+        a0, ev0, window_eff, snap = window_snap(ages, events, delta, window, grid["grid_unverified"])
+    a, ev, tie = censor_tie_relabel(a0, ev0, delta, enabled=relabel_on)
+    flips = check_invariants(ages, events, a, ev)
+    record = dict(version=RECORD_VERSION, relabel_on=bool(relabel_on), window_on=bool(window_on),
+                  window=(None if window is None else [float(window[0]), float(window[1])]),
+                  window_eff=(None if window_eff is None else [float(window_eff[0]), float(window_eff[1])]),
+                  window_snap=snap, grid=grid, n=len(a),
+                  n_events_in=sum(int(e) for e in events), n_events_out=sum(ev), n_flipped=flips,
+                  invariants="ok")
+    return Prepared(ages=a, events=ev, window_eff=window_eff, censor_tie=tie, record=record)

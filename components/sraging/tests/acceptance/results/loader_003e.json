@@ -1,0 +1,458 @@
+{
+ "phase": "loader",
+ "written_at": "2026-10-17T21:35:45Z",
+ "repo_head": "f496c5ef82399dd3773f8d64171d252485491cd2",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003e.toml": "50bdc8bb2d4d9b81f0f989fde0ff547b191781a4"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "c2241a4c73ed21e9c8a78c3fa89406ce18703e56"
+ },
+ "wall_s": 2.0312657356262207,
+ "cpu_s": 5.439961,
+ "status": "PASS",
+ "byte_compared": {
+  "hazard-k0.01-p00-c0-s0": {
+   "n": 1000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 4,
+   "calibrator": "profile_jax2_h",
+   "truth": {
+    "eta": 0.0002125427697723628,
+    "beta": 0.001,
+    "epsilon": 3.9810717055349735e-05,
+    "kappa": 0.01,
+    "external_hazard": 0.004086771438464067
+   },
+   "age0_deaths_in_fit_inputs": 4,
+   "age0_terms": [
+    -5.502042689815231,
+    -5.502042689815231,
+    -5.502042689815231,
+    -5.502042689815231
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -7.423962801104358
+  },
+  "hazard-k0.01-p02-c1-s0": {
+   "n": 10000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 38,
+   "calibrator": "profile_jax2_h",
+   "truth": {
+    "eta": 0.00019606713963716613,
+    "beta": 0.001,
+    "epsilon": 0.00031622776601683794,
+    "kappa": 0.01,
+    "external_hazard": 0.004086771438464067
+   },
+   "age0_deaths_in_fit_inputs": 38,
+   "age0_terms": [
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523,
+    -5.50204268981523
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -9.545966667319341
+  },
+  "hazard-k0.01-p04-c1-s1": {
+   "n": 10000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 29,
+   "calibrator": "profile_jax2_h",
+   "truth": {
+    "eta": 0.00010680478368264066,
+    "beta": 0.001,
+    "epsilon": 0.0025118864315095794,
+    "kappa": 0.01,
+    "external_hazard": 0.004086771438464067
+   },
+   "age0_deaths_in_fit_inputs": 29,
+   "age0_terms": [
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229,
+    -5.502042689815229
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -10.74164469708329
+  },
+  "hazard-k0.0316-p00-c0-s1": {
+   "n": 1000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 3,
+   "calibrator": "profile_jax2_h",
+   "truth": {
+    "eta": 0.000210750820757183,
+    "beta": 0.001,
+    "epsilon": 3.9810717055349735e-05,
+    "kappa": 0.0316,
+    "external_hazard": 0.004086771438464067
+   },
+   "age0_deaths_in_fit_inputs": 3,
+   "age0_terms": [
+    -5.502042689815226,
+    -5.502042689815226,
+    -5.502042689815226
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -9.061991147992796
+  },
+  "hazard-k0.0316-p02-c0-s0": {
+   "n": 1000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 3,
+   "calibrator": "profile_jax2_h",
+   "truth": {
+    "eta": 0.00019473783172280746,
+    "beta": 0.001,
+    "epsilon": 0.00031622776601683794,
+    "kappa": 0.0316,
+    "external_hazard": 0.004086771438464067
+   },
+   "age0_deaths_in_fit_inputs": 3,
+   "age0_terms": [
+    -5.502042689815234,
+    -5.502042689815234,
+    -5.502042689815234
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -7.389971182513851
+  },
+  "hazard-k0.0316-p03-c0-s1": {
+   "n": 1000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 10,
+   "calibrator": "profile_jax2_h",
+   "truth": {
+    "eta": 0.00018039241418079638,
+    "beta": 0.001,
+    "epsilon": 0.000630957344480193,
+    "kappa": 0.0316,
+    "external_hazard": 0.004086771438464067
+   },
+   "age0_deaths_in_fit_inputs": 10,
+   "age0_terms": [
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355,
+    -5.5020426898152355
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -10.69432964472992
+  },
+  "pure-k0.01-p19-c1-s0": {
+   "n": 10000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 8,
+   "calibrator": "profile_jax2",
+   "truth": {
+    "eta": 0.0016763275305035027,
+    "beta": 0.5878016072274912,
+    "epsilon": 0.07943282347242815,
+    "kappa": 0.01
+   },
+   "age0_deaths_in_fit_inputs": 8,
+   "age0_terms": [
+    -7.550429912980939,
+    -7.550429912980939,
+    -7.550429912980939,
+    -7.550429912980939,
+    -7.550429912980939,
+    -7.550429912980939,
+    -7.550429912980939,
+    -7.550429912980939
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -12.148944879681057
+  },
+  "pure-k0.01-p19-c1-s1": {
+   "n": 10000,
+   "delta": [
+    1.0,
+    1.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 4,
+   "calibrator": "profile_jax2",
+   "truth": {
+    "eta": 0.0016763275305035027,
+    "beta": 0.5878016072274912,
+    "epsilon": 0.07943282347242815,
+    "kappa": 0.01
+   },
+   "age0_deaths_in_fit_inputs": 4,
+   "age0_terms": [
+    -7.551206902054326,
+    -7.551206902054326,
+    -7.551206902054326,
+    -7.551206902054326
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -10.951459194772104
+  },
+  "pure-k10-p09-c1-s0": {
+   "n": 2000,
+   "delta": [
+    10.0,
+    10.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 1,
+   "calibrator": "profile_jax2",
+   "truth": {
+    "eta": 9.245228909271731e-05,
+    "beta": 0.001,
+    "epsilon": 0.0025118864315095794,
+    "kappa": 10.0
+   },
+   "age0_deaths_in_fit_inputs": 1,
+   "age0_terms": [
+    -10.893472812630954
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -6.6655870700740225
+  },
+  "pure-k2-p09-c1-s0": {
+   "n": 2000,
+   "delta": [
+    10.0,
+    10.0
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 1,
+   "calibrator": "profile_jax2",
+   "truth": {
+    "eta": 9.829679547457776e-05,
+    "beta": 0.0022189823414589713,
+    "epsilon": 0.0025118864315095794,
+    "kappa": 2.0
+   },
+   "age0_deaths_in_fit_inputs": 1,
+   "age0_terms": [
+    -10.953285864016202
+   ],
+   "log_floor": -700.0,
+   "age0_terms_finite_above_floor": true,
+   "other_terms_min": -7.508006919054225
+  },
+  "pure-real-celegans-c1-s0": {
+   "n": 727,
+   "delta": [
+    0.0084,
+    0.0084
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 0
+  },
+  "censor-real-celegans-c0-s0": {
+   "n": 2908,
+   "delta": [
+    0.0084,
+    0.0084
+   ],
+   "window": null,
+   "ages_bytes_equal": true,
+   "events_bytes_equal": true,
+   "age0_deaths": 0
+  }
+ },
+ "refused_windowed": {
+  "realfull-real-Denmark_M_1900_homo-c1-s0": {
+   "refused": true,
+   "window": [
+    10957.5,
+    40177.5
+   ],
+   "message": "observation 'realfull-real-Denmark_M_1900_homo-c1-s0' has a fit window (10957.5, 40177.5); sraging's srbench loader (both ports) refuses windows: profile_v033 does not model them (its reference ignores them silently; register D-104)",
+   "names_window": true
+  },
+  "realfull-real-Denmark_M_1900_homo-c1-s1": {
+   "refused": true,
+   "window": [
+    10957.5,
+    40177.5
+   ],
+   "message": "observation 'realfull-real-Denmark_M_1900_homo-c1-s1' has a fit window (10957.5, 40177.5); sraging's srbench loader (both ports) refuses windows: profile_v033 does not model them (its reference ignores them silently; register D-104)",
+   "names_window": true
+  },
+  "realfull-real-Sweden_F_1910_homo-c1-s1": {
+   "refused": true,
+   "window": [
+    10957.5,
+    40177.5
+   ],
+   "message": "observation 'realfull-real-Sweden_F_1910_homo-c1-s1' has a fit window (10957.5, 40177.5); sraging's srbench loader (both ports) refuses windows: profile_v033 does not model them (its reference ignores them silently; register D-104)",
+   "names_window": true
+  }
+ },
+ "cohorts_with_age0_deaths": [
+  "hazard-k0.01-p00-c0-s0",
+  "hazard-k0.01-p02-c1-s0",
+  "hazard-k0.01-p04-c1-s1",
+  "hazard-k0.0316-p00-c0-s1",
+  "hazard-k0.0316-p02-c0-s0",
+  "hazard-k0.0316-p03-c0-s1",
+  "pure-k0.01-p19-c1-s0",
+  "pure-k0.01-p19-c1-s1",
+  "pure-k10-p09-c1-s0",
+  "pure-k2-p09-c1-s0"
+ ],
+ "age0_rule": "the 10 panel cohorts with an age-0 death on v5 plus the 2 bytes cohorts (research R10)",
+ "provenance": {
+  "library": "v5",
+  "library_manifest_sha256": "9489fb0df0024c44e692bf91762b2e6db500bdfdd83a9bd935e6dfe2b946fcb3",
+  "tester_clone": "/Users/navehr/code/sraging/.cache/tester_42a2789",
+  "tester_clone_head": "42a2789a5f0e41e8820cbb354857c450d68da1f8",
+  "tester_clone_dirty": false,
+  "tester_data_root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester",
+  "pins_sha256": "02200b1728312712721b5101f9407e1b45ebc66ad4f98706996fe14e1a469a90",
+  "runs_sha256": {
+   "jax2-v5-full-bign": "29fa9f7b5dfc149cd8dab452e4b285207505a08204014d2a74d3e3bcafbb2cb5",
+   "jax033-v5-full-bign": "451233595862208c8fc9dc9709d44f24e44aa480b7ef24fe61e87d331b0cd248",
+   "null_prior-v5-full-bign": "98ae928e8676896933ff918e1582a6f80f81a8445d2814a3c576eba3b4676f79"
+  },
+  "host": {
+   "node": "MC06268844",
+   "machine": "arm64",
+   "cpu": "Apple M5 Pro"
+  },
+  "header_tester_note": "each result's header field `tester` is spec 003's J2 checkout (acceptance_003.Run, shared); the tester commit 003e pins is provenance.tester_clone_head"
+ }
+}

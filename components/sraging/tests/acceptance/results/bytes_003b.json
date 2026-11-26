@@ -1,0 +1,92 @@
+{
+ "phase": "bytes",
+ "written_at": "2026-10-21T05:13:45Z",
+ "repo_head": "f68340fedcae13260cec1827ca9a31ba9c9c7997",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003b.toml": "06f889509eb0549c8a444c7d78457fc20436147a"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "3f9b2daf4b32d35c11de67eb572a845c491ad978"
+ },
+ "wall_s": 404.8302128314972,
+ "cpu_s": 0.05998300000000001,
+ "status": "PASS",
+ "groups": {
+  "parity": {
+   "tests": 497,
+   "failures": 0,
+   "errors": 0,
+   "skipped": 0,
+   "passed": 497,
+   "returncode": 0,
+   "summary": "497 passed, 1 deselected in 155.96s (0:02:35)",
+   "wall_s": 399.2,
+   "paths": [
+    "tests/parity"
+   ],
+   "skipped_list": [],
+   "failed_list": []
+  }
+ },
+ "skips_unlisted": [],
+ "bytes_item": [
+  {
+   "cid": "hazard-k0.01-p04-c1-s1",
+   "name": "profile_jax2",
+   "diffs": {
+    "jax2": []
+   },
+   "bytes_equal": true,
+   "n_age0": 29,
+   "term": -47.48367625688595,
+   "mass": 2.388368975597981e-21,
+   "v033_terms": [
+    -700.0
+   ],
+   "n_age0_v033": 29,
+   "oracle_term": -47.48367625688595,
+   "term_bytes_equal": true
+  },
+  {
+   "cid": "hazard-k0.01-p04-c0-s0",
+   "name": "profile_jax2_h",
+   "diffs": {
+    "jax2": [],
+    "jax2_h@box_floor": [],
+    "jax2_h@hL=0.1": []
+   },
+   "bytes_equal": true,
+   "n_age0": 2,
+   "term": -80.02168765906734,
+   "mass": 1.766129794365505e-35,
+   "v033_terms": [
+    -700.0
+   ],
+   "n_age0_v033": 2,
+   "oracle_term": -80.02168765906734,
+   "term_bytes_equal": true
+  }
+ ],
+ "provenance": {
+  "calibrator": "profile_jax2",
+  "version": "1.0.1",
+  "lock_sha256": "e3e6e2fe2bea8d5b9b9c5e01a23e24971d005e0d1b7128fc76d03de5392dbb06",
+  "host": "MC06268844",
+  "machine": "arm64",
+  "cpu": "Apple M5 Pro",
+  "library": null,
+  "manifest_sha256": null,
+  "panel_commit": "06f889509eb0549c8a444c7d78457fc20436147a"
+ }
+}

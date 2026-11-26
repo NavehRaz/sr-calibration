@@ -1,0 +1,207 @@
+{
+ "phase": "p15-v033",
+ "written_at": "2026-10-28T23:51:50Z",
+ "repo_head": "eddf916c1b7dacf98177d9720c73bb927e458416",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003g.toml": "630aff2765356f5f4b8b068706b350fe66a77eff",
+  "tests/acceptance/panel_003g_ids.tsv": "a02d635bac20713865eb2e272bc239f6376a0293",
+  "tests/acceptance/pins_003g.json": "75a01fd6b8dde5e6906be075bb8759c12c388028"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 82.40915489196777,
+ "cpu_s": 90.439542,
+ "status": "written",
+ "rows": [
+  {
+   "cohort_id": "pure-k0.01-p15-c0-s1",
+   "n": 1000,
+   "price_s": 59.46141158277169,
+   "mle": {
+    "solver": {
+     "N": 900,
+     "dt": 0.002,
+     "tau_max": 2.0,
+     "Gtol": 1e-11,
+     "scheme": "bdf2",
+     "sampling_dt": 1.0
+    },
+    "L": 99.43299999999999,
+    "dt_ceiling": null,
+    "compile_s": 0.7759142920003796,
+    "seed_s": 10.42476062499918,
+    "mle_s": 10.7369358750002,
+    "cpu_s": 22.779179,
+    "status": "ok",
+    "theta": [
+     0.000754842368734981,
+     0.037475865262944205,
+     4.250643388409892e-05,
+     0.0010000000000000002
+    ],
+    "loglik": -1964.7874074062256
+   },
+   "witness": {
+    "W4": 11.874708299575559,
+    "l_truth": -1961.4863154823345,
+    "l_point": -1973.36102378191,
+    "shown": true,
+    "grid": {
+     "N": 3600,
+     "dt": 0.0002459448279162969,
+     "tau_max": 2.0,
+     "sampling_dt": 1.0
+    },
+    "dt_in_scope": true
+   },
+   "shown": true,
+   "provenance": {
+    "calibrator": "profile_v033",
+    "version": "0.3.3",
+    "lock_sha256": null,
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s0",
+   "n": 10000,
+   "price_s": 109.33288959041238,
+   "mle": {
+    "solver": {
+     "N": 900,
+     "dt": 0.002,
+     "tau_max": 2.0,
+     "Gtol": 1e-11,
+     "scheme": "bdf2",
+     "sampling_dt": 1.0
+    },
+    "L": 99.50845000000011,
+    "dt_ceiling": null,
+    "compile_s": 0.3934863750000659,
+    "seed_s": 8.652124125001137,
+    "mle_s": 13.63360029100295,
+    "cpu_s": 23.755699999999997,
+    "status": "ok",
+    "theta": [
+     0.0007963100286258747,
+     0.04065538010961179,
+     4.69460930557232e-05,
+     0.0010000000000000002
+    ],
+    "loglik": -19704.917001860136
+   },
+   "witness": {
+    "W4": 103.33206067223728,
+    "l_truth": -19670.369026611956,
+    "l_point": -19773.701087284193,
+    "shown": true,
+    "grid": {
+     "N": 3600,
+     "dt": 0.00022303659430004345,
+     "tau_max": 2.0,
+     "sampling_dt": 1.0
+    },
+    "dt_in_scope": true
+   },
+   "shown": true,
+   "provenance": {
+    "calibrator": "profile_v033",
+    "version": "0.3.3",
+    "lock_sha256": null,
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  },
+  {
+   "cohort_id": "pure-k0.01-p15-c1-s1",
+   "n": 10000,
+   "price_s": 84.88864069245756,
+   "mle": {
+    "solver": {
+     "N": 900,
+     "dt": 0.002,
+     "tau_max": 2.0,
+     "Gtol": 1e-11,
+     "scheme": "bdf2",
+     "sampling_dt": 1.0
+    },
+    "L": 99.53755000000008,
+    "dt_ceiling": null,
+    "compile_s": 0.3866839580005035,
+    "seed_s": 8.883160957997461,
+    "mle_s": 19.330364207999082,
+    "cpu_s": 29.436182999999993,
+    "status": "ok",
+    "theta": [
+     0.0006770129824186566,
+     0.03168482682818016,
+     3.566990325690594e-05,
+     0.0010000000000000002
+    ],
+    "loglik": -19602.42025568884
+   },
+   "witness": {
+    "W4": 111.41164977265726,
+    "l_truth": -19574.763763098053,
+    "l_point": -19686.17541287071,
+    "shown": true,
+    "grid": {
+     "N": 3600,
+     "dt": 0.00022069150643146173,
+     "tau_max": 2.0,
+     "sampling_dt": 1.0
+    },
+    "dt_in_scope": true
+   },
+   "shown": true,
+   "provenance": {
+    "calibrator": "profile_v033",
+    "version": "0.3.3",
+    "lock_sha256": null,
+    "library": "v6",
+    "manifest_sha256": "399c9c555782b4271f0e790099893180a2c5101e2e56318eb87d9c25785f7d2f",
+    "run_manifest": null,
+    "run_manifest_sha256": null,
+    "record_sha256": null,
+    "witness_sha256": null,
+    "scored_on_host": "MC06268844",
+    "scored_on_cpu": "Apple M5 Pro",
+    "record_host": null,
+    "record_cpu": null
+   }
+  }
+ ],
+ "cpu_s_total": 75.97106199999999,
+ "cap_s": 10800.0,
+ "shown": 3,
+ "n": 3
+}

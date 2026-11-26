@@ -1,0 +1,17 @@
+{
+ "description": "Byte copies of SRK's Preset_values from the frozen snapshot (spec 005 research R9; tasks T005). sraging.presets reads these; tests/unit/test_presets.py checks each sha256 against the snapshot.",
+ "files": {
+  "summery_mode_overall.csv": {
+   "sha256": "646bc1ac3233baf8007dd156a560a231c01c98b562e8a1bd72c7c69ec1196d05",
+   "snapshot": "tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/Preset_values/summery_mode_overall.csv"
+  },
+  "summery_mode.csv": {
+   "sha256": "6b917bfc721a2112d318c4dc8830118d589af09578f63ffb61e0fbdaa16c0373",
+   "snapshot": "tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/Preset_values/summery_mode.csv"
+  },
+  "summery_max_likelihood.csv": {
+   "sha256": "38cfcb6c3270e0ca13b25dc8910a0530e7147310a2ff2070ed3b68b7cd67ecce",
+   "snapshot": "tests/oracle/fp_piecewise_cb191f5/SRtools_kappa/SRK/Preset_values/summery_max_likelihood.csv"
+  }
+ }
+}

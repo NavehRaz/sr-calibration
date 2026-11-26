@@ -1,0 +1,140 @@
+{
+ "phase": "pilot",
+ "written_at": "2026-11-11T08:32:05Z",
+ "repo_head": "958a3e735914a2f06bf4c03374bd6577eec10808",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/rules_006.toml": "435a4c99ab0457ece0a2ab27fac73d03f7b27033"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "development",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 27.84115767478943,
+ "cpu_s": 0.35422,
+ "R-1": {
+  "gated": {
+   "eta": {
+    "hits": 5,
+    "claimed": 5,
+    "coverage": 1.0,
+    "cut": 0.7434079771208687,
+    "passes": true
+   },
+   "epsilon": {
+    "hits": 5,
+    "claimed": 5,
+    "coverage": 1.0,
+    "cut": 0.7434079771208687,
+    "passes": true
+   }
+  },
+  "reported": {
+   "beta": {
+    "hits": 0,
+    "claimed": 0,
+    "coverage": null
+   },
+   "kappa": {
+    "hits": 0,
+    "claimed": 0,
+    "coverage": null
+   }
+  },
+  "passes": true
+ },
+ "R-2": {
+  "eta": {
+   "vs_null": {
+    "n_paired": 5,
+    "median_dex": -14.110518512381926,
+    "passes": true
+   },
+   "vs_H": {
+    "n_paired": 5,
+    "median_dex": -0.004037349394919065
+   }
+  },
+  "epsilon": {
+   "vs_null": {
+    "n_paired": 5,
+    "median_dex": -13.813406241555876,
+    "passes": true
+   },
+   "vs_H": {
+    "n_paired": 5,
+    "median_dex": -0.016841716953194474
+   }
+  }
+ },
+ "R-3": {
+  "n": 6,
+  "failures": [],
+  "passes": true
+ },
+ "R-4": {
+  "n_applicable": 3,
+  "failures": [],
+  "passes": true,
+  "not_applicable": {
+   "window-k2-p01-c1-s1": "H's lowest-h node (1.057e-08) is not at the box floor (1.057e-08; relative distance 9.7e-09)",
+   "window-k0.1-p01-c1-s0": "H's lowest-h node (1.007e-08) is not at the box floor (9.967e-09; relative distance 0.01)",
+   "window-real-Denmark_M_1890_hetro-c0-s0": "H's lowest-h node (4.73e-11) is not at the box floor (4.713e-11; relative distance 0.0035)"
+  }
+ },
+ "FR-022": {
+  "leverage_flagged": 0,
+  "leverage_labels": {
+   "flat_valley_slide": 2,
+   "no_flag": 3,
+   "not_assessed": 1
+  },
+  "negligible": 0,
+  "n": 6
+ },
+ "errors": {},
+ "missing": [],
+ "r": {
+  "element_over_j": 3.627415095408571,
+  "fit_over_j": 1.0291078455405138
+ },
+ "Dg": {
+  "lead_pair_over_fit": [
+   2.2451609064290112,
+   2.150464844620531,
+   2.872469131763971,
+   1.6858104134336167,
+   2.060137883149234,
+   2.456058641131827
+  ],
+  "median": 2.197812875524771,
+  "max": 2.872469131763971,
+  "threshold": 2.6
+ },
+ "status": "pass",
+ "head": "7398c326e02af3339daf41cfb425a0fbd3743771",
+ "n_cohorts": 6,
+ "n_rows": 6,
+ "waves": [],
+ "factor": 4.4,
+ "price_cpu_h": 9.995214924014222,
+ "ledger": "tests/acceptance/results/gate_006/pilot_ledger.json",
+ "manifests_sha256": {
+  "tests/acceptance/rules_006.toml": "4508ed485ded4d09bc486f5c9c6df6bf07cb3c2d2c8b55fb47b0beaaf4f21e6f"
+ },
+ "cap": {
+  "cap_cpu_h": 12.0,
+  "cpu_spent_h": 8.259741832222222,
+  "capped": false,
+  "where": "wexac"
+ }
+}

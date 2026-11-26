@@ -1,0 +1,22 @@
+\begin{abstract}
+\noindent The saturating-removal (SR) model describes aging as damage that is produced at a rising rate, removed by a
+saturating process and perturbed by noise, with death when damage crosses a threshold. It explains the shape of
+survival curves across species, and is increasingly used to ask which damage process an intervention or a genetic
+difference changes. Answering that question from survival data needs a fitting method whose errors are known. We
+describe the methods now used to fit the SR model to survival data, and the evidence for them.
+
+The likelihood is exact: it is obtained by solving the model's Fokker--Planck equation for the first-passage
+distribution, and it handles deaths recorded at a finite resolution, censoring, left truncation, a fit window, an
+external hazard and parameter changes at a given age. A maximum-likelihood calibrator reports each parameter with a
+profile-likelihood interval, as a value, a bound or no claim. Survival data determine the damage production slope,
+the noise and the mean removal, but not the saturation constant of removal; we give the reporting rules that follow.
+
+The likelihood agrees with 60-digit arithmetic to \C{acc-mp-v1-lowmass} nats on its hardest rows. In a
+benchmark of \C{gate-v6-n} synthetic cohorts with known parameters, nominal 95\,\% intervals for the production slope
+covered the truth in \C{v6-pure-eta-J-hits} of \C{v6-pure-eta-J-n} cohorts without external deaths or delayed entry;
+with external deaths or a delayed entry, the variant that models them restored coverage. For comparisons between groups we give a naming rule and its measured
+error rates: close to nominal for independent individuals, and too permissive when individuals housed together (in cages, vials or plates) are handled by
+design-effect scaling instead of a simulated threshold. The code, the frozen calibrator versions, the tests and the
+benchmark records are released with pinned versions, so that studies can cite the exact method they used and readers
+can recheck the numbers reported here.
+\end{abstract}

@@ -1,0 +1,343 @@
+{
+ "named": {
+  "N": 10,
+  "port_basin": 10,
+  "port_grid": 0,
+  "port_tie": 3,
+  "ref_basin": 10,
+  "ref_grid": 0,
+  "ref_tie": 3
+ },
+ "per_cohort": {
+  "censor-k0.01-p05-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 1,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 1
+  },
+  "censor-k0.01-p05-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 1,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 1
+  },
+  "censor-k0.0316-p05-c0-s1": {
+   "port_basin": 1,
+   "port_grid": 0,
+   "port_tie": 1,
+   "ref_basin": 1,
+   "ref_grid": 0,
+   "ref_tie": 1
+  },
+  "het-k0.01-p01-c1-s0": {
+   "port_basin": 2,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 2,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p00-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p00-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p00-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p00-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p01-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p01-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p01-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p01-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p02-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p02-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p02-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p02-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p03-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p03-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p03-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p03-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p04-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p04-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p04-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p04-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p05-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p05-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p05-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p05-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p06-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p06-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p06-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p06-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p07-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p07-c0-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p15-c1-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k0.01-p15-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-k2-p04-c0-s0": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-real-Denmark_F_1900_hetro-c0-s0": {
+   "port_basin": 3,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 3,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "pure-real-Sweden_F_1910_homo-c0-s0": {
+   "port_basin": 4,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 4,
+   "ref_grid": 0,
+   "ref_tie": 0
+  },
+  "realfull-real-mice_M-c1-s1": {
+   "port_basin": 0,
+   "port_grid": 0,
+   "port_tie": 0,
+   "ref_basin": 0,
+   "ref_grid": 0,
+   "ref_tie": 0
+  }
+ },
+ "quick": {
+  "N": 30,
+  "port_basin": 0,
+  "port_grid": 0,
+  "port_tie": 0,
+  "ref_basin": 0,
+  "ref_grid": 0,
+  "ref_tie": 0
+ },
+ "source": "stored v0.3.3 records (run mle_profile_jax-full), no calibration"
+}

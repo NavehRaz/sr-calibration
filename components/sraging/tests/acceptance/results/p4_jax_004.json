@@ -1,0 +1,113 @@
+{
+ "phase": "p4-jax",
+ "written_at": "2026-11-01T04:15:08Z",
+ "repo_head": "ac4a57d5d822760115e0d299151866f6ecd68843",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {},
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 2347.6985368728638,
+ "cpu_s": 0.01322899999999999,
+ "status": "written",
+ "config": {
+  "preset": "human",
+  "n": 25000,
+  "source": "spec.md Clarifications 2026-10-30 (4075cd5); research R19"
+ },
+ "preset": "human",
+ "n": 25000,
+ "dt": 0.003143485840025148,
+ "t_max": 96.508376669531,
+ "nsteps": 30701,
+ "wall": "clamp",
+ "repeats": 20,
+ "cpu_numba_s": [
+  8.020128,
+  8.119024999999993,
+  8.091493999999983,
+  8.197590999999989,
+  8.124263999999982,
+  7.7354330000000004,
+  7.845073999999954,
+  7.7907260000000065,
+  7.798915000000022,
+  7.972593000000074,
+  8.123017000000004,
+  8.062733999999978,
+  8.049669999999992,
+  8.184442999999987,
+  8.106679999999983,
+  8.154931999999917,
+  8.13876700000003,
+  8.144817999999987,
+  8.123691000000008,
+  8.122850999999855
+ ],
+ "cpu_jax_s": [
+  46.706935,
+  46.998103,
+  47.863112,
+  48.701402,
+  48.45450299999999,
+  45.24949000000004,
+  45.70882899999998,
+  44.641572999999994,
+  45.90389799999997,
+  46.2892250000001,
+  46.69509500000004,
+  46.74182399999995,
+  46.84874400000001,
+  46.7601820000001,
+  46.94521599999996,
+  46.83558800000003,
+  46.74277500000005,
+  46.850648999999976,
+  46.72627499999999,
+  46.70291300000008
+ ],
+ "compile_cpu_s": 46.630714999999995,
+ "two_sample_ks": {
+  "D": 0.012480000000000047,
+  "p_value": 0.040396710140840786,
+  "n": 25000
+ },
+ "xla_flags": "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1",
+ "n_pairs": 20,
+ "mean_log_ratio": 1.7589982752809696,
+ "ratio_geomean": 5.8066178474654455,
+ "upper_95_ratio": 5.83453379577163,
+ "threshold": 1.2,
+ "jax_spec_opens": false,
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {},
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.2357226685477086,
+  "projected_from": "P1's human|hom|clamp m = 1 rung: steps per individual x ns per individual-step x 20 pairs (x 3 for the scan)",
+  "cap_cpu_h": 1.0,
+  "cap_frozen_cpu_h": 1.0,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.3199579355555555,
+  "parent_cpu_s": 0.0041100000000000025,
+  "worker_cpu_s": 1151.844463,
+  "capped": false
+ }
+}

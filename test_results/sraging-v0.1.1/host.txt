@@ -1,0 +1,10 @@
+uv sync --frozen --group dev --group oracle --extra langevin --extra plots
+2026-11-25T15:29:10Z
+26.7.3
+arm64
+Apple M5 Pro
+3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]
+d3681575844b9b191a26b02f70c45296ed5ceebf
+v0.1.1
+main branch: d3681575844b9b191a26b02f70c45296ed5ceebf
+SRAGING_CODE5 set to the authors' code_5 folder (the lab's checkouts)

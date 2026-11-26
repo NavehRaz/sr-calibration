@@ -1,0 +1,688 @@
+{
+ "phase": "predict-pilot",
+ "written_at": "2026-10-14T18:10:32Z",
+ "repo_head": "152d665a02969573370a78f6289eeca821c6936c",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_003d.toml": "152d665a02969573370a78f6289eeca821c6936c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "84c40a04c6ffa86ffca163329af77cca3c81221f"
+ },
+ "wall_s": 89.36697173118591,
+ "cpu_s": 1.8573040000000003,
+ "status": "written",
+ "rule": "R12: a miss is predicted where |log10(pseudo-true) - log10(truth)| of eta_over_eps exceeds the median half-width, on the side facing the truth, of the v2 rows' closed claims at that configuration",
+ "laws": {
+  "be": "SRK cb191f5's materialize on SRK's backward-Euler generation grid (v2's law: 55/55 v2 censored cohorts rebuilt byte for byte), large-n limit",
+  "gen1": "sraging-gen-1's binned_distribution on its grid (the re-test's law)"
+ },
+ "read_as": {
+  "be": "a retrodiction of v2's misses: which ones the backward-Euler law explains",
+  "gen1": "the prediction for the re-test: the misses the calibrator's own large-n fit leaves on the clean cohorts"
+ },
+ "scale": 10,
+ "calibrator": "profile_jax2",
+ "quantity": "eta_over_eps",
+ "stage": "mle (no profile, no claim)",
+ "v2_rows": {
+  "path": ".cache/out/wexac_rows/d903979764194c5b7afa7b048710210c15e9179b",
+  "n_shards": 215,
+  "sha256": "ceb1b4280a3611a8d22f9b49c1082ee90d8d116e6733bb3249fd283e1f85c5e6"
+ },
+ "library_v2": {
+  "manifest": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2/data/library/v2/manifest.json",
+  "manifest_sha256": "defd72084aa2b7d58431813df1281ee43c3c54b300a711d2aa711a54801dc1ec"
+ },
+ "pilot": true,
+ "summary": {
+  "be": {
+   "predicted": [
+    "censor-k0.1-p00-c0",
+    "censor-k0.1-p00-c1"
+   ],
+   "not_predicted": [],
+   "undetermined": [],
+   "failed": [],
+   "v2_misses_at_predicted": 2,
+   "v2_hits_at_predicted": 1,
+   "v2_misses_elsewhere": 0,
+   "predicted_cohorts": [
+    "censor-k0.1-p00-c0-s0",
+    "censor-k0.1-p00-c0-s1",
+    "censor-k0.1-p00-c1-s0",
+    "censor-k0.1-p00-c1-s1"
+   ],
+   "search_short": []
+  },
+  "gen1": {
+   "predicted": [
+    "censor-k0.1-p00-c0",
+    "censor-k0.1-p00-c1"
+   ],
+   "not_predicted": [],
+   "undetermined": [],
+   "failed": [],
+   "v2_misses_at_predicted": 2,
+   "v2_hits_at_predicted": 1,
+   "v2_misses_elsewhere": 0,
+   "predicted_cohorts": [
+    "censor-k0.1-p00-c0-s0",
+    "censor-k0.1-p00-c0-s1",
+    "censor-k0.1-p00-c1-s0",
+    "censor-k0.1-p00-c1-s1"
+   ],
+   "search_short": []
+  }
+ },
+ "configurations": [
+  {
+   "name": "censor-k0.1-p00-c0",
+   "ids": [
+    "censor-k0.1-p00-c0-s0",
+    "censor-k0.1-p00-c0-s1"
+   ],
+   "n": 1000,
+   "truth": {
+    "eta": 0.00022434680350647503,
+    "beta": 0.0022189823414589713,
+    "epsilon": 1.995262314968879e-05,
+    "kappa": 0.1
+   },
+   "truth_eta_over_eps": 11.24397538225314,
+   "v2": {
+    "censor-k0.1-p00-c0-s0": {
+     "hit": false,
+     "claim": {
+      "parameter": "eta_over_eps",
+      "shape": "closed",
+      "lower": 1.8271395074108567,
+      "upper": 11.187888006898769,
+      "point": 6.967721108053567,
+      "level": 0.95,
+      "n_components": 1,
+      "label": "",
+      "scored": true,
+      "label_info": null,
+      "widening": null,
+      "decline_reason": null
+     }
+    },
+    "censor-k0.1-p00-c0-s1": {
+     "hit": true,
+     "claim": {
+      "parameter": "eta_over_eps",
+      "shape": "closed",
+      "lower": 0.8569476774422092,
+      "upper": 11.563955854951528,
+      "point": 9.310693215607412,
+      "level": 0.95,
+      "n_components": 1,
+      "label": "",
+      "scored": true,
+      "label_info": null,
+      "widening": null,
+      "decline_reason": null
+     }
+    }
+   },
+   "laws": {
+    "be": {
+     "cohort": {
+      "n": 9998,
+      "n_censored": 2000,
+      "C": 102.59557559316012,
+      "censored_mass": 0.20000000000000098,
+      "tied_death_mass": 0.058449401424159914,
+      "n_cells": 104,
+      "first_cell_deaths": 0,
+      "digest": "7ee189dd273bd50305a80d7c9ad0a92bad51044d613528143fbf40ee9149ce88",
+      "path": ".cache/out/predict_003d/censor-k0.1-p00-c0__be.npz"
+     },
+     "fit": {
+      "name": "censor-k0.1-p00-c0",
+      "law": "be",
+      "theta": {
+       "eta": 0.00045143229458254297,
+       "beta": 0.01579465595502862,
+       "epsilon": 6.465048691618784e-05,
+       "kappa": 0.001090758588274336
+      },
+      "loglik": -21340.385186016014,
+      "cpu_s": 60.407201,
+      "censor_tie": {
+       "enabled": true,
+       "detected": true,
+       "applied": true,
+       "reason": "relabelled",
+       "n": 9998,
+       "n_censored": 2000,
+       "delta": 1.0,
+       "tc": 102.0,
+       "on_grid": true,
+       "n_tied": 584,
+       "n_relabelled": 584,
+       "dose": 0.05841168233646729,
+       "tied_ages": [
+        102.0
+       ]
+      },
+      "diagnostics": {
+       "solver": {
+        "N": 3600,
+        "dt": 0.002,
+        "tau_max": 2.0,
+        "Gtol": 1e-11,
+        "scheme": "bdf2",
+        "sampling_dt": 1.0,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "exact_from_F": true
+       },
+       "dt_floor": {
+        "binds": false,
+        "dl": 0.010087063729196929,
+        "raw_ceiling": null,
+        "dt_ord": 0.002,
+        "dt_floor": 0.0003,
+        "n_floor": 1800,
+        "dt": 0.002,
+        "N": 3600,
+        "nsteps": 1000,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "early_all": {
+         "applied": true,
+         "scope": "every grid with a sampling_dt",
+         "nsteps": 1249
+        },
+        "grid_rule": {
+         "n": 9998,
+         "cv": 0.026049052800553738,
+         "N_base": 900,
+         "dt_base": 0.002,
+         "n_rule": true,
+         "dt_rule": false,
+         "N_rule": 3600,
+         "e900_pred": 1.2698431431871293,
+         "e_pred": 0.45714353154736653,
+         "capped": true,
+         "degenerate_cv": false,
+         "target": 0.2,
+         "q": 0.6,
+         "n_max": 3600,
+         "coef": [
+          -3.034,
+          0.428,
+          -0.9
+         ],
+         "N": 3600,
+         "dt": 0.002
+        }
+       },
+       "n_eval": 0,
+       "n_grad": 443,
+       "mle_s": 46.514267624821514,
+       "compile_s": 1.4036282082088292,
+       "exc_counts": {},
+       "error": null
+      },
+      "dt_ceiling": null,
+      "loglik_truth": -21383.44399721973
+     },
+     "pseudo_true_eta_over_eps": 6.982658849387702,
+     "off_dex": -0.20689906177945627,
+     "side": "upper",
+     "half_widths": [
+      0.20565735118700837,
+      0.09412440807742735
+     ],
+     "median_half_width": 0.14989087963221787,
+     "predicted_miss": true,
+     "dll_hat_minus_truth": 43.05881120371487,
+     "dll_per_individual": 0.00430674246886526,
+     "search_short": false
+    },
+    "gen1": {
+     "cohort": {
+      "n": 9999,
+      "n_censored": 2382,
+      "C": 102.0,
+      "censored_mass": 0.23819199159073456,
+      "tied_death_mass": 0.0,
+      "n_cells": 103,
+      "first_cell_deaths": 0,
+      "digest": "50639045746076aaed87539a3a57062dde0e3419748166e403ef8d6040d86819",
+      "path": ".cache/out/predict_003d/censor-k0.1-p00-c0__gen1.npz"
+     },
+     "fit": {
+      "name": "censor-k0.1-p00-c0",
+      "law": "gen1",
+      "theta": {
+       "eta": 0.0006576076940382058,
+       "beta": 0.030570334399030837,
+       "epsilon": 9.464047406647148e-05,
+       "kappa": 0.0012366453417101335
+      },
+      "loglik": -21021.146848122688,
+      "cpu_s": 80.447088,
+      "censor_tie": {
+       "enabled": true,
+       "detected": false,
+       "applied": false,
+       "reason": "no death in the censoring bin",
+       "n": 9999,
+       "n_censored": 2382,
+       "delta": 1.0,
+       "tc": 102.0,
+       "on_grid": true,
+       "n_tied": 0,
+       "n_relabelled": 0,
+       "dose": 0.0
+      },
+      "diagnostics": {
+       "solver": {
+        "N": 3600,
+        "dt": 0.002,
+        "tau_max": 2.0,
+        "Gtol": 1e-11,
+        "scheme": "bdf2",
+        "sampling_dt": 1.0,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "exact_from_F": true
+       },
+       "dt_floor": {
+        "binds": false,
+        "dl": 0.010079093516629913,
+        "raw_ceiling": null,
+        "dt_ord": 0.002,
+        "dt_floor": 0.0003,
+        "n_floor": 1800,
+        "dt": 0.002,
+        "N": 3600,
+        "nsteps": 1000,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "early_all": {
+         "applied": true,
+         "scope": "every grid with a sampling_dt",
+         "nsteps": 1249
+        },
+        "grid_rule": {
+         "n": 9999,
+         "cv": 0.0242873602750137,
+         "N_base": 900,
+         "dt_base": 0.002,
+         "n_rule": true,
+         "dt_rule": false,
+         "N_rule": 3600,
+         "e900_pred": 1.3525057734449557,
+         "e_pred": 0.486902078440184,
+         "capped": true,
+         "degenerate_cv": false,
+         "target": 0.2,
+         "q": 0.6,
+         "n_max": 3600,
+         "coef": [
+          -3.034,
+          0.428,
+          -0.9
+         ],
+         "N": 3600,
+         "dt": 0.002
+        }
+       },
+       "n_eval": 0,
+       "n_grad": 681,
+       "mle_s": 68.85811270773411,
+       "compile_s": 1.190190292429179,
+       "exc_counts": {},
+       "error": null
+      },
+      "dt_ceiling": null,
+      "loglik_truth": -21022.641590918836
+     },
+     "pseudo_true_eta_over_eps": 6.948482671127892,
+     "off_dex": -0.20902990732209903,
+     "side": "upper",
+     "half_widths": [
+      0.20565735118700837,
+      0.09412440807742735
+     ],
+     "median_half_width": 0.14989087963221787,
+     "predicted_miss": true,
+     "dll_hat_minus_truth": 1.4947427961487847,
+     "dll_per_individual": 0.00014948922853773224,
+     "search_short": false
+    }
+   }
+  },
+  {
+   "name": "censor-k0.1-p00-c1",
+   "ids": [
+    "censor-k0.1-p00-c1-s0",
+    "censor-k0.1-p00-c1-s1"
+   ],
+   "n": 10000,
+   "truth": {
+    "eta": 0.00022434680350647503,
+    "beta": 0.0022189823414589713,
+    "epsilon": 1.995262314968879e-05,
+    "kappa": 0.1
+   },
+   "truth_eta_over_eps": 11.24397538225314,
+   "v2": {
+    "censor-k0.1-p00-c1-s0": {
+     "hit": null,
+     "claim": {
+      "parameter": "eta_over_eps",
+      "shape": "closed",
+      "lower": 6.443160259531827,
+      "upper": 9.01704179501124,
+      "point": 8.487395357010056,
+      "level": 0.95,
+      "n_components": 1,
+      "label": "open above: box-limited (kappa<=300): the upper end is set by the box, not by the data",
+      "scored": true,
+      "label_info": {
+       "kind": "box_limited",
+       "edge": "kappa<=300",
+       "side": "upper",
+       "log10_cap_over_floor": null,
+       "regime": null
+      },
+      "widening": null,
+      "decline_reason": null
+     }
+    },
+    "censor-k0.1-p00-c1-s1": {
+     "hit": false,
+     "claim": {
+      "parameter": "eta_over_eps",
+      "shape": "closed",
+      "lower": 2.0750315419311423,
+      "upper": 10.86270940864586,
+      "point": 7.826713737282879,
+      "level": 0.95,
+      "n_components": 1,
+      "label": "",
+      "scored": true,
+      "label_info": null,
+      "widening": null,
+      "decline_reason": null
+     }
+    }
+   },
+   "laws": {
+    "be": {
+     "cohort": {
+      "n": 100000,
+      "n_censored": 20000,
+      "C": 102.59557559316012,
+      "censored_mass": 0.20000000000000098,
+      "tied_death_mass": 0.058449401424159914,
+      "n_cells": 104,
+      "first_cell_deaths": 0,
+      "digest": "abf35d372612119c49c48ca393547524d5ef7c553917d4bd094eae3ebb54e558",
+      "path": ".cache/out/predict_003d/censor-k0.1-p00-c1__be.npz"
+     },
+     "fit": {
+      "name": "censor-k0.1-p00-c1",
+      "law": "be",
+      "theta": {
+       "eta": 0.0004582357427195945,
+       "beta": 0.01626331605813628,
+       "epsilon": 6.62206280786294e-05,
+       "kappa": 0.0010886888484100115
+      },
+      "loglik": -213497.57692181988,
+      "cpu_s": 68.131876,
+      "censor_tie": {
+       "enabled": true,
+       "detected": true,
+       "applied": true,
+       "reason": "relabelled",
+       "n": 100000,
+       "n_censored": 20000,
+       "delta": 1.0,
+       "tc": 102.0,
+       "on_grid": true,
+       "n_tied": 5845,
+       "n_relabelled": 5845,
+       "dose": 0.05845,
+       "tied_ages": [
+        102.0
+       ]
+      },
+      "diagnostics": {
+       "solver": {
+        "N": 3600,
+        "dt": 0.002,
+        "tau_max": 2.0,
+        "Gtol": 1e-11,
+        "scheme": "bdf2",
+        "sampling_dt": 1.0,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "exact_from_F": true
+       },
+       "dt_floor": {
+        "binds": false,
+        "dl": 0.010086654957068899,
+        "raw_ceiling": null,
+        "dt_ord": 0.002,
+        "dt_floor": 0.0003,
+        "n_floor": 1800,
+        "dt": 0.002,
+        "N": 3600,
+        "nsteps": 1000,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "early_all": {
+         "applied": true,
+         "scope": "every grid with a sampling_dt",
+         "nsteps": 1249
+        },
+        "grid_rule": {
+         "n": 100000,
+         "cv": 0.025888768278942126,
+         "N_base": 900,
+         "dt_base": 0.002,
+         "n_rule": true,
+         "dt_rule": false,
+         "N_rule": 3600,
+         "e900_pred": 3.421367695951996,
+         "e_pred": 1.2316923705427183,
+         "capped": true,
+         "degenerate_cv": false,
+         "target": 0.2,
+         "q": 0.6,
+         "n_max": 3600,
+         "coef": [
+          -3.034,
+          0.428,
+          -0.9
+         ],
+         "N": 3600,
+         "dt": 0.002
+        }
+       },
+       "n_eval": 0,
+       "n_grad": 479,
+       "mle_s": 54.19469620799646,
+       "compile_s": 1.3891000840812922,
+       "exc_counts": {},
+       "error": null
+      },
+      "dt_ceiling": null,
+      "loglik_truth": -213936.39946479542
+     },
+     "pseudo_true_eta_over_eps": 6.919833834488736,
+     "off_dex": -0.21082422018752045,
+     "side": "upper",
+     "half_widths": [
+      0.0262896498758129,
+      0.14235871200690975
+     ],
+     "median_half_width": 0.08432418094136132,
+     "predicted_miss": true,
+     "dll_hat_minus_truth": 438.8225429755403,
+     "dll_per_individual": 0.004388225429755403,
+     "search_short": false
+    },
+    "gen1": {
+     "cohort": {
+      "n": 100000,
+      "n_censored": 23819,
+      "C": 102.0,
+      "censored_mass": 0.23819199159073456,
+      "tied_death_mass": 0.0,
+      "n_cells": 103,
+      "first_cell_deaths": 0,
+      "digest": "6bb5c0b9dced8fddad41420a32e586761024c204bcb82714d682662f5b88fe1b",
+      "path": ".cache/out/predict_003d/censor-k0.1-p00-c1__gen1.npz"
+     },
+     "fit": {
+      "name": "censor-k0.1-p00-c1",
+      "law": "gen1",
+      "theta": {
+       "eta": 0.0006629863234528902,
+       "beta": 0.0309718759397671,
+       "epsilon": 9.589106209168021e-05,
+       "kappa": 0.0012403617180448535
+      },
+      "loglik": -210269.65350835875,
+      "cpu_s": 87.488278,
+      "censor_tie": {
+       "enabled": true,
+       "detected": false,
+       "applied": false,
+       "reason": "no death in the censoring bin",
+       "n": 100000,
+       "n_censored": 23819,
+       "delta": 1.0,
+       "tc": 102.0,
+       "on_grid": true,
+       "n_tied": 0,
+       "n_relabelled": 0,
+       "dose": 0.0
+      },
+      "diagnostics": {
+       "solver": {
+        "N": 3600,
+        "dt": 0.002,
+        "tau_max": 2.0,
+        "Gtol": 1e-11,
+        "scheme": "bdf2",
+        "sampling_dt": 1.0,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "exact_from_F": true
+       },
+       "dt_floor": {
+        "binds": false,
+        "dl": 0.010078709175369563,
+        "raw_ceiling": null,
+        "dt_ord": 0.002,
+        "dt_floor": 0.0003,
+        "n_floor": 1800,
+        "dt": 0.002,
+        "N": 3600,
+        "nsteps": 1000,
+        "early": {
+         "dt0": 1e-08,
+         "ratio": 1.05
+        },
+        "early_all": {
+         "applied": true,
+         "scope": "every grid with a sampling_dt",
+         "nsteps": 1249
+        },
+        "grid_rule": {
+         "n": 100000,
+         "cv": 0.02412095357962385,
+         "N_base": 900,
+         "dt_base": 0.002,
+         "n_rule": true,
+         "dt_rule": false,
+         "N_rule": 3600,
+         "e900_pred": 3.6462376773309866,
+         "e_pred": 1.312645563839155,
+         "capped": true,
+         "degenerate_cv": false,
+         "target": 0.2,
+         "q": 0.6,
+         "n_max": 3600,
+         "coef": [
+          -3.034,
+          0.428,
+          -0.9
+         ],
+         "N": 3600,
+         "dt": 0.002
+        }
+       },
+       "n_eval": 0,
+       "n_grad": 697,
+       "mle_s": 76.1539497920312,
+       "compile_s": 1.3745684172026813,
+       "exc_counts": {},
+       "error": null
+      },
+      "dt_ceiling": null,
+      "loglik_truth": -210284.02844653855
+     },
+     "pseudo_true_eta_over_eps": 6.913953281892087,
+     "off_dex": -0.21119344542940244,
+     "side": "upper",
+     "half_widths": [
+      0.0262896498758129,
+      0.14235871200690975
+     ],
+     "median_half_width": 0.08432418094136132,
+     "predicted_miss": true,
+     "dll_hat_minus_truth": 14.374938179797027,
+     "dll_per_individual": 0.00014374938179797028,
+     "search_short": false
+    }
+   }
+  }
+ ],
+ "fit_cpu_s": {
+  "total": 296.474443,
+  "max": 87.488278,
+  "median": 74.28948199999999,
+  "n": 4
+ },
+ "host_cpu": {
+  "machine": "arm64",
+  "processor": "arm",
+  "brand": "Apple M5 Pro",
+  "node": "MC06268844"
+ }
+}

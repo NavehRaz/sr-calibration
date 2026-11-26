@@ -1,0 +1,1216 @@
+{
+ "phase": "hr5",
+ "written_at": "2026-10-29T17:03:40Z",
+ "repo_head": "7f2b8df2b694ef8e1f3ec429d8b2a926f998c0c5",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/panel_004.toml": "3c935c1419dabe2ea4b74727301deb3afe8e8eb0",
+  "tests/acceptance/panel_004_ids.tsv": "c9cb9ef085cbf4129cdc9095d996c82f7385e57c"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "847ef157cebf8bf1796b836791ae7b5f1860733a"
+ },
+ "wall_s": 0.4669229984283447,
+ "cpu_s": 0.21641900000000003,
+ "status": "pass",
+ "verdicts": [
+  {
+   "rule": "HR-5",
+   "wall": null,
+   "status": "pass",
+   "n_valid": 160,
+   "n_unassessable": 0,
+   "statistic": {
+    "n_outside": 1,
+    "share_inside": 0.99375,
+    "median_ratio": 1.0965810632888766,
+    "plant": {
+     "n_outside": 99,
+     "share_inside": 0.38125,
+     "median_ratio": 2.6812249924243825,
+     "status": "fail"
+    }
+   },
+   "crit": {
+    "band": [
+     0.5,
+     2.0
+    ],
+    "share": 0.95,
+    "median_band": [
+     0.8,
+     1.25
+    ]
+   },
+   "incomplete_reasons": [],
+   "cpu_spent": null,
+   "cap": null
+  }
+ ],
+ "cells": [
+  {
+   "id": "het-k0.1-p04-c0-s0/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.2194090532541454,
+   "measured_cpu_s": 3.4946729999999997,
+   "blind_stated_cpu_s": 0.38107888196772627
+  },
+  {
+   "id": "het-k0.1-p04-c0-s0/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.2798456163801355,
+   "measured_cpu_s": 0.30848400000000087,
+   "blind_stated_cpu_s": 0.3693962136217789
+  },
+  {
+   "id": "het-k0.1-p04-c0-s0/sd0.3",
+   "M_used": 11,
+   "stated_cpu_s": 0.3769819891146409,
+   "measured_cpu_s": 0.3974639999999994,
+   "blind_stated_cpu_s": 0.36589428355244563
+  },
+  {
+   "id": "het-k0.1-p04-c0-s0/sd0.5",
+   "M_used": 17,
+   "stated_cpu_s": 0.5317923492424785,
+   "measured_cpu_s": 0.8647279999999995,
+   "blind_stated_cpu_s": 0.365607240104204
+  },
+  {
+   "id": "het-k0.0316-p03-c0-s1/sd0.1",
+   "M_used": 8,
+   "stated_cpu_s": 0.30470966780364755,
+   "measured_cpu_s": 0.349101000000001,
+   "blind_stated_cpu_s": 0.44690751277868307
+  },
+  {
+   "id": "het-k0.0316-p03-c0-s1/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.2534680631383085,
+   "measured_cpu_s": 0.27924400000000027,
+   "blind_stated_cpu_s": 0.3345778433425672
+  },
+  {
+   "id": "het-k0.0316-p03-c0-s1/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 0.49601107866843125,
+   "measured_cpu_s": 0.5071550000000009,
+   "blind_stated_cpu_s": 0.3410076165845465
+  },
+  {
+   "id": "het-k0.0316-p03-c0-s1/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 0.7016724904060547,
+   "measured_cpu_s": 1.0333879999999969,
+   "blind_stated_cpu_s": 0.33558249541159135
+  },
+  {
+   "id": "het-k0.0316-p03-c1-s1/sd0.1",
+   "M_used": 11,
+   "stated_cpu_s": 0.49311802864100807,
+   "measured_cpu_s": 0.5551309999999923,
+   "blind_stated_cpu_s": 0.5770530122394776
+  },
+  {
+   "id": "het-k0.0316-p03-c1-s1/sd0.2",
+   "M_used": 11,
+   "stated_cpu_s": 0.43696885083828885,
+   "measured_cpu_s": 0.46636900000000026,
+   "blind_stated_cpu_s": 0.4577768913543978
+  },
+  {
+   "id": "het-k0.0316-p03-c1-s1/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 0.5057392420800139,
+   "measured_cpu_s": 0.5164930000000041,
+   "blind_stated_cpu_s": 0.34769572893000955
+  },
+  {
+   "id": "het-k0.0316-p03-c1-s1/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 0.7226788518501411,
+   "measured_cpu_s": 0.7516420000000004,
+   "blind_stated_cpu_s": 0.3456290161022414
+  },
+  {
+   "id": "het-k2-p03-c1-s0/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.21400480796834084,
+   "measured_cpu_s": 0.24016799999999705,
+   "blind_stated_cpu_s": 0.37169256120817096
+  },
+  {
+   "id": "het-k2-p03-c1-s0/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.27577916752912235,
+   "measured_cpu_s": 0.29770799999999653,
+   "blind_stated_cpu_s": 0.36402850113844154
+  },
+  {
+   "id": "het-k2-p03-c1-s0/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 0.5265733774551172,
+   "measured_cpu_s": 0.5425730000000044,
+   "blind_stated_cpu_s": 0.36201919700039314
+  },
+  {
+   "id": "het-k2-p03-c1-s0/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 0.756889211916115,
+   "measured_cpu_s": 0.786845999999997,
+   "blind_stated_cpu_s": 0.3619904926555333
+  },
+  {
+   "id": "het-k10-p02-c0-s0/sd0.1",
+   "M_used": 8,
+   "stated_cpu_s": 1.6222912852344906,
+   "measured_cpu_s": 1.8535740000000018,
+   "blind_stated_cpu_s": 2.379360551677253
+  },
+  {
+   "id": "het-k10-p02-c0-s0/sd0.2",
+   "M_used": 11,
+   "stated_cpu_s": 1.8216212143654715,
+   "measured_cpu_s": 1.9733019999999897,
+   "blind_stated_cpu_s": 1.7680441198253107
+  },
+  {
+   "id": "het-k10-p02-c0-s0/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 2.5464407144770087,
+   "measured_cpu_s": 2.7584660000000056,
+   "blind_stated_cpu_s": 1.7506779912029435
+  },
+  {
+   "id": "het-k10-p02-c0-s0/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 3.7339707739397063,
+   "measured_cpu_s": 4.11661800000001,
+   "blind_stated_cpu_s": 1.7858121092755115
+  },
+  {
+   "id": "het-k0.316-p02-c0-s1/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.17483642470439661,
+   "measured_cpu_s": 0.1968570000000085,
+   "blind_stated_cpu_s": 0.3036632639602678
+  },
+  {
+   "id": "het-k0.316-p02-c0-s1/sd0.2",
+   "M_used": 11,
+   "stated_cpu_s": 0.3115047690708131,
+   "measured_cpu_s": 0.3424440000000004,
+   "blind_stated_cpu_s": 0.3023428640981421
+  },
+  {
+   "id": "het-k0.316-p02-c0-s1/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 0.4333834172203187,
+   "measured_cpu_s": 0.4681840000000008,
+   "blind_stated_cpu_s": 0.2979510993389691
+  },
+  {
+   "id": "het-k0.316-p02-c0-s1/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 0.6171668992256335,
+   "measured_cpu_s": 0.6859060000000028,
+   "blind_stated_cpu_s": 0.29516677789052037
+  },
+  {
+   "id": "het-k0.0316-p01-c0-s1/sd0.1",
+   "M_used": 8,
+   "stated_cpu_s": 0.19636381349843499,
+   "measured_cpu_s": 0.22029799999999966,
+   "blind_stated_cpu_s": 0.2592002338179342
+  },
+  {
+   "id": "het-k0.0316-p01-c0-s1/sd0.2",
+   "M_used": 17,
+   "stated_cpu_s": 0.3758077204630168,
+   "measured_cpu_s": 0.419257000000016,
+   "blind_stated_cpu_s": 0.258367807818324
+  },
+  {
+   "id": "het-k0.0316-p01-c0-s1/sd0.3",
+   "M_used": 25,
+   "stated_cpu_s": 0.5447849795064372,
+   "measured_cpu_s": 0.6432860000000176,
+   "blind_stated_cpu_s": 0.2605493380248178
+  },
+  {
+   "id": "het-k0.0316-p01-c0-s1/sd0.5",
+   "M_used": 38,
+   "stated_cpu_s": 0.8087718802832052,
+   "measured_cpu_s": 1.2791909999999973,
+   "blind_stated_cpu_s": 0.264252198508374
+  },
+  {
+   "id": "het-k0.316-p01-c1-s0/sd0.1",
+   "M_used": 11,
+   "stated_cpu_s": 0.2515579194640479,
+   "measured_cpu_s": 0.28135400000000743,
+   "blind_stated_cpu_s": 0.24415915712686997
+  },
+  {
+   "id": "het-k0.316-p01-c1-s0/sd0.2",
+   "M_used": 25,
+   "stated_cpu_s": 0.5153160553094412,
+   "measured_cpu_s": 0.5716599999999943,
+   "blind_stated_cpu_s": 0.24645550471321104
+  },
+  {
+   "id": "het-k0.316-p01-c1-s0/sd0.3",
+   "M_used": 38,
+   "stated_cpu_s": 0.7325157438414368,
+   "measured_cpu_s": 0.8870409999999964,
+   "blind_stated_cpu_s": 0.23933682719571697
+  },
+  {
+   "id": "het-k0.316-p01-c1-s0/sd0.5",
+   "M_used": 57,
+   "stated_cpu_s": 1.0728744682669418,
+   "measured_cpu_s": 1.678297999999998,
+   "blind_stated_cpu_s": 0.23922200981627756
+  },
+  {
+   "id": "het-k1-p00-c0-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 3.0579643169540422,
+   "measured_cpu_s": 3.5142020000000116,
+   "blind_stated_cpu_s": 1.5645398830927657
+  },
+  {
+   "id": "het-k1-p00-c0-s1/sd0.2",
+   "M_used": 38,
+   "stated_cpu_s": 3.63226954054885,
+   "measured_cpu_s": 4.276223999999999,
+   "blind_stated_cpu_s": 1.1867811370110104
+  },
+  {
+   "id": "het-k1-p00-c0-s1/sd0.3",
+   "M_used": 57,
+   "stated_cpu_s": 5.3460920228176905,
+   "measured_cpu_s": 6.944532000000024,
+   "blind_stated_cpu_s": 1.1920340321147553
+  },
+  {
+   "id": "het-k1-p00-c0-s1/sd0.5",
+   "M_used": 85,
+   "stated_cpu_s": 7.914390660967786,
+   "measured_cpu_s": 11.574748999999997,
+   "blind_stated_cpu_s": 1.1925794146663786
+  },
+  {
+   "id": "het-k0.1-p05-c0-s0/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.3993009219632103,
+   "measured_cpu_s": 0.43674000000000035,
+   "blind_stated_cpu_s": 0.19097000615631798
+  },
+  {
+   "id": "het-k0.1-p05-c0-s0/sd0.2",
+   "M_used": 38,
+   "stated_cpu_s": 0.5664741564270629,
+   "measured_cpu_s": 0.6589460000000145,
+   "blind_stated_cpu_s": 0.18508561546626806
+  },
+  {
+   "id": "het-k0.1-p05-c0-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 1.2277239706823468,
+   "measured_cpu_s": 1.5977869999999967,
+   "blind_stated_cpu_s": 0.18499950243158653
+  },
+  {
+   "id": "het-k0.1-p05-c0-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 1.8224666877957285,
+   "measured_cpu_s": 3.043205999999998,
+   "blind_stated_cpu_s": 0.18448282422472095
+  },
+  {
+   "id": "het-k0.316-p05-c0-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 2.419392674771428,
+   "measured_cpu_s": 2.7058640000000054,
+   "blind_stated_cpu_s": 1.1571008444559001
+  },
+  {
+   "id": "het-k0.316-p05-c0-s1/sd0.2",
+   "M_used": 38,
+   "stated_cpu_s": 3.5607574494622773,
+   "measured_cpu_s": 4.160093999999987,
+   "blind_stated_cpu_s": 1.1634158003193578
+  },
+  {
+   "id": "het-k0.316-p05-c0-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 7.584457702517891,
+   "measured_cpu_s": 9.892678999999987,
+   "blind_stated_cpu_s": 1.142863489420504
+  },
+  {
+   "id": "het-k0.316-p05-c0-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 11.255794726207258,
+   "measured_cpu_s": 16.320922999999993,
+   "blind_stated_cpu_s": 1.1393902636958266
+  },
+  {
+   "id": "het-k10-p05-c1-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.5346332095522466,
+   "measured_cpu_s": 0.605809000000022,
+   "blind_stated_cpu_s": 0.273533270003475
+  },
+  {
+   "id": "het-k10-p05-c1-s1/sd0.2",
+   "M_used": 38,
+   "stated_cpu_s": 0.6172530122622186,
+   "measured_cpu_s": 0.724207999999976,
+   "blind_stated_cpu_s": 0.2016767267787447
+  },
+  {
+   "id": "het-k10-p05-c1-s1/sd0.3",
+   "M_used": 57,
+   "stated_cpu_s": 0.9140159256862488,
+   "measured_cpu_s": 1.1641439999999932,
+   "blind_stated_cpu_s": 0.20380084829490686
+  },
+  {
+   "id": "het-k10-p05-c1-s1/sd0.5",
+   "M_used": 85,
+   "stated_cpu_s": 1.3561158956205899,
+   "measured_cpu_s": 1.8871230000000025,
+   "blind_stated_cpu_s": 0.2043462308469382
+  },
+  {
+   "id": "het-real-drosophila_707-c1-s1/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.2259040636438392,
+   "measured_cpu_s": 0.25689999999997326,
+   "blind_stated_cpu_s": 0.3923596894866681
+  },
+  {
+   "id": "het-real-drosophila_707-c1-s1/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.2940890602167955,
+   "measured_cpu_s": 0.316962999999987,
+   "blind_stated_cpu_s": 0.38819755948617
+  },
+  {
+   "id": "het-real-drosophila_707-c1-s1/sd0.3",
+   "M_used": 8,
+   "stated_cpu_s": 0.29298002871169626,
+   "measured_cpu_s": 0.3051969999999926,
+   "blind_stated_cpu_s": 0.3867336378994391
+  },
+  {
+   "id": "het-real-drosophila_707-c1-s1/sd0.5",
+   "M_used": 17,
+   "stated_cpu_s": 0.563398442386889,
+   "measured_cpu_s": 0.5864459999999951,
+   "blind_stated_cpu_s": 0.3873364291409862
+  },
+  {
+   "id": "het-real-yeast-c1-s0/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.22810212059455637,
+   "measured_cpu_s": 0.25918799999999464,
+   "blind_stated_cpu_s": 0.39617736734844
+  },
+  {
+   "id": "het-real-yeast-c1-s0/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.29672029182578147,
+   "measured_cpu_s": 0.3113089999999943,
+   "blind_stated_cpu_s": 0.3916707852100315
+  },
+  {
+   "id": "het-real-yeast-c1-s0/sd0.3",
+   "M_used": 8,
+   "stated_cpu_s": 0.29730742615161054,
+   "measured_cpu_s": 0.29650499999999624,
+   "blind_stated_cpu_s": 0.3924458025201259
+  },
+  {
+   "id": "het-real-yeast-c1-s0/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 1.0201941670460144,
+   "measured_cpu_s": 1.022358999999966,
+   "blind_stated_cpu_s": 0.5219598063956352
+  },
+  {
+   "id": "het-real-mice_M-c0-s1/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 1.02307156015699,
+   "measured_cpu_s": 1.1811870000000226,
+   "blind_stated_cpu_s": 1.77691376237793
+  },
+  {
+   "id": "het-real-mice_M-c0-s1/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 1.343254609481938,
+   "measured_cpu_s": 1.3913009999999701,
+   "blind_stated_cpu_s": 1.773096084516158
+  },
+  {
+   "id": "het-real-mice_M-c0-s1/sd0.3",
+   "M_used": 11,
+   "stated_cpu_s": 1.8199650606520223,
+   "measured_cpu_s": 1.7841759999999738,
+   "blind_stated_cpu_s": 1.7664366765151982
+  },
+  {
+   "id": "het-real-mice_M-c0-s1/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 4.596035314798086,
+   "measured_cpu_s": 4.5956429999999955,
+   "blind_stated_cpu_s": 2.3514599285013467
+  },
+  {
+   "id": "het-real-mice_F-c1-s0/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.9942489186327578,
+   "measured_cpu_s": 1.1044520000000375,
+   "blind_stated_cpu_s": 1.7268533849937373
+  },
+  {
+   "id": "het-real-mice_F-c1-s0/sd0.2",
+   "M_used": 11,
+   "stated_cpu_s": 2.142027809647733,
+   "measured_cpu_s": 2.1734349999999836,
+   "blind_stated_cpu_s": 2.2440291339166727
+  },
+  {
+   "id": "het-real-mice_F-c1-s0/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 2.446236456160681,
+   "measured_cpu_s": 2.3883869999999945,
+   "blind_stated_cpu_s": 1.6817875636104684
+  },
+  {
+   "id": "het-real-mice_F-c1-s0/sd0.5",
+   "M_used": 38,
+   "stated_cpu_s": 6.739644472900807,
+   "measured_cpu_s": 6.519209000000018,
+   "blind_stated_cpu_s": 2.3535266413304403
+  },
+  {
+   "id": "het-real-mice_F-c0-s1/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.9815398525021091,
+   "measured_cpu_s": 1.1130530000000363,
+   "blind_stated_cpu_s": 1.7047797438194525
+  },
+  {
+   "id": "het-real-mice_F-c0-s1/sd0.2",
+   "M_used": 17,
+   "stated_cpu_s": 3.495079299002452,
+   "measured_cpu_s": 3.406179999999978,
+   "blind_stated_cpu_s": 2.8690949469423117
+  },
+  {
+   "id": "het-real-mice_F-c0-s1/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 2.4568414068330666,
+   "measured_cpu_s": 2.3938120000000254,
+   "blind_stated_cpu_s": 1.6890784671977337
+  },
+  {
+   "id": "het-real-mice_F-c0-s1/sd0.5",
+   "M_used": 38,
+   "stated_cpu_s": 6.485376167418947,
+   "measured_cpu_s": 6.443205999999975,
+   "blind_stated_cpu_s": 2.2647345346542354
+  },
+  {
+   "id": "het-real-drosophila_217-c1-s1/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.2078072789713778,
+   "measured_cpu_s": 0.2351539999999659,
+   "blind_stated_cpu_s": 0.36092843189765617
+  },
+  {
+   "id": "het-real-drosophila_217-c1-s1/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.2699078242680505,
+   "measured_cpu_s": 0.28909599999997226,
+   "blind_stated_cpu_s": 0.35627832803382664
+  },
+  {
+   "id": "het-real-drosophila_217-c1-s1/sd0.3",
+   "M_used": 11,
+   "stated_cpu_s": 0.3635553143631015,
+   "measured_cpu_s": 0.3733400000000415,
+   "blind_stated_cpu_s": 0.35286251099948085
+  },
+  {
+   "id": "het-real-drosophila_217-c1-s1/sd0.5",
+   "M_used": 17,
+   "stated_cpu_s": 0.5165529516221792,
+   "measured_cpu_s": 0.5267440000000079,
+   "blind_stated_cpu_s": 0.3551301542402482
+  },
+  {
+   "id": "het-real-Guiniea_pig_VC-c1-s0/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.22486287877160632,
+   "measured_cpu_s": 0.2421739999999204,
+   "blind_stated_cpu_s": 0.39055131576121105
+  },
+  {
+   "id": "het-real-Guiniea_pig_VC-c1-s0/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.2916752857650661,
+   "measured_cpu_s": 0.26608699999997043,
+   "blind_stated_cpu_s": 0.38501137720988726
+  },
+  {
+   "id": "het-real-Guiniea_pig_VC-c1-s0/sd0.3",
+   "M_used": 11,
+   "stated_cpu_s": 0.3984824132204533,
+   "measured_cpu_s": 0.3474949999999808,
+   "blind_stated_cpu_s": 0.38676234224338113
+  },
+  {
+   "id": "het-real-Guiniea_pig_VC-c1-s0/sd0.5",
+   "M_used": 17,
+   "stated_cpu_s": 0.559933045118167,
+   "measured_cpu_s": 0.513074999999958,
+   "blind_stated_cpu_s": 0.38495396851873986
+  },
+  {
+   "id": "het-real-German_Shepherd_vetCompass-c1-s0/sd0.1",
+   "M_used": 5,
+   "stated_cpu_s": 0.18832224780276244,
+   "measured_cpu_s": 0.21339300000005323,
+   "blind_stated_cpu_s": 0.32708600934164
+  },
+  {
+   "id": "het-real-German_Shepherd_vetCompass-c1-s0/sd0.2",
+   "M_used": 8,
+   "stated_cpu_s": 0.24598753691048572,
+   "measured_cpu_s": 0.24981699999995044,
+   "blind_stated_cpu_s": 0.32470354872184115
+  },
+  {
+   "id": "het-real-German_Shepherd_vetCompass-c1-s0/sd0.3",
+   "M_used": 17,
+   "stated_cpu_s": 0.4689141771489838,
+   "measured_cpu_s": 0.45037300000001323,
+   "blind_stated_cpu_s": 0.32237849678992636
+  },
+  {
+   "id": "het-real-German_Shepherd_vetCompass-c1-s0/sd0.5",
+   "M_used": 25,
+   "stated_cpu_s": 0.6748443659353127,
+   "measured_cpu_s": 0.6596989999999892,
+   "blind_stated_cpu_s": 0.32275165327341043
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c1-s1/sd0.1",
+   "M_used": 8,
+   "stated_cpu_s": 0.2630796695141222,
+   "measured_cpu_s": 0.28102899999998954,
+   "blind_stated_cpu_s": 0.34726516375864136
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c1-s1/sd0.2",
+   "M_used": 17,
+   "stated_cpu_s": 0.49885019931913654,
+   "measured_cpu_s": 0.4607809999999404,
+   "blind_stated_cpu_s": 0.3429595120319064
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c1-s1/sd0.3",
+   "M_used": 25,
+   "stated_cpu_s": 0.7142763072705022,
+   "measured_cpu_s": 0.6802409999999668,
+   "blind_stated_cpu_s": 0.3416104078250228
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c1-s1/sd0.5",
+   "M_used": 38,
+   "stated_cpu_s": 1.3066322146240423,
+   "measured_cpu_s": 1.3277270000000385,
+   "blind_stated_cpu_s": 0.45628426542426875
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c0-s0/sd0.1",
+   "M_used": 8,
+   "stated_cpu_s": 0.27282175018270627,
+   "measured_cpu_s": 0.28792500000002974,
+   "blind_stated_cpu_s": 0.36012471024117226
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c0-s0/sd0.2",
+   "M_used": 17,
+   "stated_cpu_s": 0.5190580580808958,
+   "measured_cpu_s": 0.47040199999997867,
+   "blind_stated_cpu_s": 0.35685241493061587
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c0-s0/sd0.3",
+   "M_used": 25,
+   "stated_cpu_s": 0.7358228322947068,
+   "measured_cpu_s": 0.6904070000000502,
+   "blind_stated_cpu_s": 0.35191526761920755
+  },
+  {
+   "id": "het-real-Labradors_vetCompass-c0-s0/sd0.5",
+   "M_used": 38,
+   "stated_cpu_s": 1.3569378836797665,
+   "measured_cpu_s": 1.3405069999999455,
+   "blind_stated_cpu_s": 0.47385132445960104
+  },
+  {
+   "id": "het-real-cats_vp_F-c1-s0/sd0.1",
+   "M_used": 11,
+   "stated_cpu_s": 0.250611545912725,
+   "measured_cpu_s": 0.26353900000003705,
+   "blind_stated_cpu_s": 0.2432406180917625
+  },
+  {
+   "id": "het-real-cats_vp_F-c1-s0/sd0.2",
+   "M_used": 38,
+   "stated_cpu_s": 0.9333400385585437,
+   "measured_cpu_s": 0.9058369999999059,
+   "blind_stated_cpu_s": 0.3259282674331423
+  },
+  {
+   "id": "het-real-cats_vp_F-c1-s0/sd0.3",
+   "M_used": 38,
+   "stated_cpu_s": 0.7400710753306404,
+   "measured_cpu_s": 0.7697460000000547,
+   "blind_stated_cpu_s": 0.2418054008506053
+  },
+  {
+   "id": "het-real-cats_vp_F-c1-s0/sd0.5",
+   "M_used": 57,
+   "stated_cpu_s": 1.077251445933692,
+   "measured_cpu_s": 1.2510650000000396,
+   "blind_stated_cpu_s": 0.24019795753926915
+  },
+  {
+   "id": "het-real-Jack_Russell_vetCompass-c0-s1/sd0.1",
+   "M_used": 11,
+   "stated_cpu_s": 0.31162306576457083,
+   "measured_cpu_s": 0.32436699999993834,
+   "blind_stated_cpu_s": 0.3024576814773776
+  },
+  {
+   "id": "het-real-Jack_Russell_vetCompass-c0-s1/sd0.2",
+   "M_used": 38,
+   "stated_cpu_s": 1.13708347816082,
+   "measured_cpu_s": 1.1310410000000957,
+   "blind_stated_cpu_s": 0.3970767701513974
+  },
+  {
+   "id": "het-real-Jack_Russell_vetCompass-c0-s1/sd0.3",
+   "M_used": 38,
+   "stated_cpu_s": 0.9124380565502774,
+   "measured_cpu_s": 0.9685420000000136,
+   "blind_stated_cpu_s": 0.2981233254075164
+  },
+  {
+   "id": "het-real-Jack_Russell_vetCompass-c0-s1/sd0.5",
+   "M_used": 57,
+   "stated_cpu_s": 1.679522529853734,
+   "measured_cpu_s": 1.916312000000005,
+   "blind_stated_cpu_s": 0.397306404911636
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c2-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.5967215772473713,
+   "measured_cpu_s": 0.6281610000000342,
+   "blind_stated_cpu_s": 0.3052994116149341
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c2-s1/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.5685202189064105,
+   "measured_cpu_s": 1.9054020000000946,
+   "blind_stated_cpu_s": 0.45404532652553986
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c2-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.3288983134689962,
+   "measured_cpu_s": 3.0349699999999302,
+   "blind_stated_cpu_s": 0.4534138309408665
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c2-s1/sd0.5",
+   "M_used": 85,
+   "stated_cpu_s": 2.296462403808786,
+   "measured_cpu_s": 3.3232980000000225,
+   "blind_stated_cpu_s": 0.44709887507781676
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c2-s0/sd0.1",
+   "M_used": 17,
+   "stated_cpu_s": 0.3778953091774273,
+   "measured_cpu_s": 0.3859820000000127,
+   "blind_stated_cpu_s": 0.2598030250594813
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c2-s0/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4680654499467032,
+   "measured_cpu_s": 1.6174399999999878,
+   "blind_stated_cpu_s": 0.3472842999873922
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c2-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.4939152427589204,
+   "measured_cpu_s": 2.9718220000000315,
+   "blind_stated_cpu_s": 0.4368322877443969
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c2-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.7162314888464634,
+   "measured_cpu_s": 4.838324,
+   "blind_stated_cpu_s": 0.43673660659520397
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c2-s0/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.6937440024328849,
+   "measured_cpu_s": 0.6906220000000189,
+   "blind_stated_cpu_s": 0.35493879194240624
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c2-s0/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4674182974467074,
+   "measured_cpu_s": 1.6050319999999942,
+   "blind_stated_cpu_s": 0.3471312101486835
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c2-s0/sd0.3",
+   "M_used": 57,
+   "stated_cpu_s": 1.1882207033957823,
+   "measured_cpu_s": 1.3741390000000138,
+   "blind_stated_cpu_s": 0.26494110278419475
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c2-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.7418775161909634,
+   "measured_cpu_s": 4.802453999999955,
+   "blind_stated_cpu_s": 0.43975056280022007
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c2-s0/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.5822093563666737,
+   "measured_cpu_s": 0.5746599999999944,
+   "blind_stated_cpu_s": 0.29787455442015864
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c2-s0/sd0.2",
+   "M_used": 85,
+   "stated_cpu_s": 2.083406578878638,
+   "measured_cpu_s": 2.107263000000046,
+   "blind_stated_cpu_s": 0.36492790394371044
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c2-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 1.8636843873032933,
+   "measured_cpu_s": 1.9979280000000017,
+   "blind_stated_cpu_s": 0.29710910522226414
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c2-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 2.7270067003793637,
+   "measured_cpu_s": 3.224166000000025,
+   "blind_stated_cpu_s": 0.2919423231549684
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c1-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.5912607931015856,
+   "measured_cpu_s": 0.6335300000000075,
+   "blind_stated_cpu_s": 0.30250552205197406
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c1-s1/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4253238106666462,
+   "measured_cpu_s": 1.7755660000000262,
+   "blind_stated_cpu_s": 0.371529903254339
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c1-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.31002651148335,
+   "measured_cpu_s": 3.1240720000000692,
+   "blind_stated_cpu_s": 0.4497396748020682
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c1-s1/sd0.5",
+   "M_used": 85,
+   "stated_cpu_s": 2.1429480883480223,
+   "measured_cpu_s": 3.198265000000106,
+   "blind_stated_cpu_s": 0.3753571492329338
+  },
+  {
+   "id": "het-real-Sweden_M_1910_hetro-c1-s0/sd0.1",
+   "M_used": 17,
+   "stated_cpu_s": 0.3585642376784735,
+   "measured_cpu_s": 0.36157899999994925,
+   "blind_stated_cpu_s": 0.24651291340395057
+  },
+  {
+   "id": "het-real-Sweden_M_1910_hetro-c1-s0/sd0.2",
+   "M_used": 85,
+   "stated_cpu_s": 2.3308589071996626,
+   "measured_cpu_s": 2.349158999999986,
+   "blind_stated_cpu_s": 0.4082714646368836
+  },
+  {
+   "id": "het-real-Sweden_M_1910_hetro-c1-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.0466197863951217,
+   "measured_cpu_s": 2.219359000000054,
+   "blind_stated_cpu_s": 0.3262727195702368
+  },
+  {
+   "id": "het-real-Sweden_M_1910_hetro-c1-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 2.9951313759474276,
+   "measured_cpu_s": 3.6040610000000015,
+   "blind_stated_cpu_s": 0.3206466679846394
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c1-s1/sd0.1",
+   "M_used": 38,
+   "stated_cpu_s": 1.0458976030984235,
+   "measured_cpu_s": 1.0399449999999888,
+   "blind_stated_cpu_s": 0.3652340836216717
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c1-s1/sd0.2",
+   "M_used": 85,
+   "stated_cpu_s": 2.5591924022081063,
+   "measured_cpu_s": 2.831707000000108,
+   "blind_stated_cpu_s": 0.448266185100146
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c1-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.2698873994668287,
+   "measured_cpu_s": 2.6864499999999794,
+   "blind_stated_cpu_s": 0.3618661071613785
+  },
+  {
+   "id": "het-real-Denmark_F_1890_hetro-c1-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.3408334576557026,
+   "measured_cpu_s": 4.369620999999938,
+   "blind_stated_cpu_s": 0.357656136586012
+  },
+  {
+   "id": "het-real-Denmark_M_1890_hetro-c1-s0/sd0.1",
+   "M_used": 38,
+   "stated_cpu_s": 1.013018080840228,
+   "measured_cpu_s": 1.025615000000073,
+   "blind_stated_cpu_s": 0.3537523456902384
+  },
+  {
+   "id": "het-real-Denmark_M_1890_hetro-c1-s0/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4878036012425582,
+   "measured_cpu_s": 1.6594570000000886,
+   "blind_stated_cpu_s": 0.35195354007888474
+  },
+  {
+   "id": "het-real-Denmark_M_1890_hetro-c1-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.2113096601235482,
+   "measured_cpu_s": 2.6843509999999924,
+   "blind_stated_cpu_s": 0.35252762697621787
+  },
+  {
+   "id": "het-real-Denmark_M_1890_hetro-c1-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.2879235216670213,
+   "measured_cpu_s": 4.374875000000031,
+   "blind_stated_cpu_s": 0.35199181253856193
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c0-s1/sd0.1",
+   "M_used": 38,
+   "stated_cpu_s": 1.1677710322800983,
+   "measured_cpu_s": 1.2093550000000732,
+   "blind_stated_cpu_s": 0.40779305889146283
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c0-s1/sd0.2",
+   "M_used": 85,
+   "stated_cpu_s": 2.755570132965743,
+   "measured_cpu_s": 3.3705720000000383,
+   "blind_stated_cpu_s": 0.48266355832202507
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c0-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.7596670258084584,
+   "measured_cpu_s": 3.6199669999999173,
+   "blind_stated_cpu_s": 0.483381166940972
+  },
+  {
+   "id": "het-real-Denmark_M_1890_homo-c0-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 4.141629879222651,
+   "measured_cpu_s": 5.876523000000077,
+   "blind_stated_cpu_s": 0.48673000717360215
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c0-s1/sd0.1",
+   "M_used": 38,
+   "stated_cpu_s": 1.02532876545814,
+   "measured_cpu_s": 1.033378999999968,
+   "blind_stated_cpu_s": 0.3350084085160259
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c0-s1/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4805770649797496,
+   "measured_cpu_s": 1.6471230000000219,
+   "blind_stated_cpu_s": 0.33012866989413336
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c0-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.189329960448467,
+   "measured_cpu_s": 2.619788000000028,
+   "blind_stated_cpu_s": 0.32989903513607033
+  },
+  {
+   "id": "het-real-Denmark_M_1900_hetro-c0-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.2624053591227806,
+   "measured_cpu_s": 4.19798899999995,
+   "blind_stated_cpu_s": 0.3302434872731649
+  },
+  {
+   "id": "het-real-combined_human_F-c0-s0/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.6597798038682611,
+   "measured_cpu_s": 0.651455999999996,
+   "blind_stated_cpu_s": 0.3155468627196032
+  },
+  {
+   "id": "het-real-combined_human_F-c0-s0/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.392522572979278,
+   "measured_cpu_s": 1.4450469999999882,
+   "blind_stated_cpu_s": 0.31049489802916336
+  },
+  {
+   "id": "het-real-combined_human_F-c0-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.0536993216351007,
+   "measured_cpu_s": 2.280415000000005,
+   "blind_stated_cpu_s": 0.30946154161624806
+  },
+  {
+   "id": "het-real-combined_human_F-c0-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.0664625426767893,
+   "measured_cpu_s": 3.6435020000000122,
+   "blind_stated_cpu_s": 0.3104087849948897
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c0-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.6327116066933491,
+   "measured_cpu_s": 0.625500000000045,
+   "blind_stated_cpu_s": 0.30260120320116696
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c0-s1/sd0.2",
+   "M_used": 85,
+   "stated_cpu_s": 2.487873413075793,
+   "measured_cpu_s": 2.5785070000000587,
+   "blind_stated_cpu_s": 0.39661750063527135
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c0-s1/sd0.3",
+   "M_used": 128,
+   "stated_cpu_s": 2.933754528064963,
+   "measured_cpu_s": 3.209789999999998,
+   "blind_stated_cpu_s": 0.29697515161393795
+  },
+  {
+   "id": "het-real-Sweden_F_1910_hetro-c0-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 2.9419778879560177,
+   "measured_cpu_s": 3.4117129999999634,
+   "blind_stated_cpu_s": 0.29780757761517973
+  },
+  {
+   "id": "realfull-real-Denmark_M_1890_hetro-c2-s1/sd0.1",
+   "M_used": 38,
+   "stated_cpu_s": 1.0189659690186643,
+   "measured_cpu_s": 1.0160170000000335,
+   "blind_stated_cpu_s": 0.3919099880841016
+  },
+  {
+   "id": "realfull-real-Denmark_M_1890_hetro-c2-s1/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.3187350102048083,
+   "measured_cpu_s": 1.3959520000000225,
+   "blind_stated_cpu_s": 0.31195881961834176
+  },
+  {
+   "id": "realfull-real-Denmark_M_1890_hetro-c2-s1/sd0.3",
+   "M_used": 57,
+   "stated_cpu_s": 1.3311926958573173,
+   "measured_cpu_s": 1.497696000000019,
+   "blind_stated_cpu_s": 0.31490579902001054
+  },
+  {
+   "id": "realfull-real-Denmark_M_1890_hetro-c2-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.2847269014482285,
+   "measured_cpu_s": 4.07989699999996,
+   "blind_stated_cpu_s": 0.38602559739242004
+  },
+  {
+   "id": "realfull-real-Denmark_F_1890_hetro-c1-s1/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.52918025386076,
+   "measured_cpu_s": 0.5252850000000535,
+   "blind_stated_cpu_s": 0.25308620836818957
+  },
+  {
+   "id": "realfull-real-Denmark_F_1890_hetro-c1-s1/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4285891473457968,
+   "measured_cpu_s": 1.4750269999999546,
+   "blind_stated_cpu_s": 0.33794581980223154
+  },
+  {
+   "id": "realfull-real-Denmark_F_1890_hetro-c1-s1/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.1152805792333718,
+   "measured_cpu_s": 2.324847000000034,
+   "blind_stated_cpu_s": 0.3372186430661897
+  },
+  {
+   "id": "realfull-real-Denmark_F_1890_hetro-c1-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.1281212150217086,
+   "measured_cpu_s": 3.733703999999989,
+   "blind_stated_cpu_s": 0.33488402301935566
+  },
+  {
+   "id": "realfull-real-Denmark_F_1900_hetro-c1-s0/sd0.1",
+   "M_used": 25,
+   "stated_cpu_s": 0.5356622168247361,
+   "measured_cpu_s": 0.5218009999999822,
+   "blind_stated_cpu_s": 0.2561862776118303
+  },
+  {
+   "id": "realfull-real-Denmark_F_1900_hetro-c1-s0/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.4114396060591217,
+   "measured_cpu_s": 1.471115999999995,
+   "blind_stated_cpu_s": 0.33388893906774925
+  },
+  {
+   "id": "realfull-real-Denmark_F_1900_hetro-c1-s0/sd0.3",
+   "M_used": 85,
+   "stated_cpu_s": 2.0948743995554677,
+   "measured_cpu_s": 2.3431700000000433,
+   "blind_stated_cpu_s": 0.3339654839871036
+  },
+  {
+   "id": "realfull-real-Denmark_F_1900_hetro-c1-s0/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 3.118468726705079,
+   "measured_cpu_s": 3.7596550000000093,
+   "blind_stated_cpu_s": 0.3338506666058965
+  },
+  {
+   "id": "realfull-real-Sweden_F_1910_hetro-c0-s1/sd0.1",
+   "M_used": 57,
+   "stated_cpu_s": 1.9138908958961984,
+   "measured_cpu_s": 1.8734949999999344,
+   "blind_stated_cpu_s": 0.4988815131482982
+  },
+  {
+   "id": "realfull-real-Sweden_F_1910_hetro-c0-s1/sd0.2",
+   "M_used": 57,
+   "stated_cpu_s": 1.327769050359031,
+   "measured_cpu_s": 1.3420739999999114,
+   "blind_stated_cpu_s": 0.29605661258005417
+  },
+  {
+   "id": "realfull-real-Sweden_F_1910_hetro-c0-s1/sd0.3",
+   "M_used": 128,
+   "stated_cpu_s": 2.9280832453875902,
+   "measured_cpu_s": 3.1393130000000156,
+   "blind_stated_cpu_s": 0.2964010647171487
+  },
+  {
+   "id": "realfull-real-Sweden_F_1910_hetro-c0-s1/sd0.5",
+   "M_used": 128,
+   "stated_cpu_s": 2.9022789092144117,
+   "measured_cpu_s": 3.343872999999917,
+   "blind_stated_cpu_s": 0.2937889693376552
+  }
+ ],
+ "hr1_sha256": "3a2d2bb73a9104455facd0dba1ab4b39a5c5c063e58c7b3758e6f546d163607d",
+ "cap": {
+  "key": "reference",
+  "frozen_cpu_h": 2.0,
+  "spent_by": {
+   "reference": 0.2904907222222223,
+   "hr1": 0.14615463527777775
+  },
+  "left_cpu_h": 1.5633546425
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/panel_004.toml": "c5f36a55ad8973409287dd4f7b0dbb717a537e9ecdcb877c89b20915f80077a3",
+  "tests/acceptance/panel_004_ids.tsv": "23328a8e2bfe6ed5425291a8dd028eb93251692a51440ac3c34fa55ce0dfcdfd"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.0,
+  "projected_from": "hr1_004.json's records",
+  "cap_cpu_h": 1.5633546425,
+  "cap_frozen_cpu_h": 1.5633546425,
+  "naveh_ok": null,
+  "cpu_spent_h": 5.521083333333334e-05,
+  "parent_cpu_s": 0.198764,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}

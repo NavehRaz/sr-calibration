@@ -1,0 +1,113 @@
+{
+ "phase": "hr8",
+ "written_at": "2026-11-04T08:44:58Z",
+ "repo_head": "252ad3aac8cfbc7f879749ff10e00991bab7b1ab",
+ "tree_dirty": false,
+ "tree_changed_during_run": false,
+ "manifests": {
+  "tests/acceptance/langevin_004.toml": "252ad3aac8cfbc7f879749ff10e00991bab7b1ab"
+ },
+ "manifests_uncommitted": [],
+ "status_for_acceptance": "acceptance",
+ "host": {
+  "uuid": "2DC3E2E3-BBB6-532B-9973-49B7129C6643",
+  "machine": "arm64",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "node": "MC06268844"
+ },
+ "tester": {
+  "root": "/Users/navehr/Library/CloudStorage/Dropbox/naveh/weizmann/uri alon/aging/code_5/sr_calibration_tester_jax2",
+  "head": "df6910caa71653065aeba69dbd5901543bca025c"
+ },
+ "wall_s": 509.5498390197754,
+ "cpu_s": 461.24359799999996,
+ "status": "pass",
+ "verdicts": [
+  {
+   "rule": "HR-8",
+   "wall": null,
+   "status": "pass",
+   "n_valid": 3,
+   "n_unassessable": 0,
+   "statistic": {
+    "unequal": [],
+    "plant_same": [],
+    "n_plant_sized": 2
+   },
+   "crit": null,
+   "incomplete_reasons": [],
+   "cpu_spent": null,
+   "cap": null
+  }
+ ],
+ "rows": [
+  {
+   "W": 1,
+   "n": 25013,
+   "equal": true
+  },
+  {
+   "W": 7,
+   "n": 25013,
+   "equal": true
+  },
+  {
+   "W": 15,
+   "n": 25013,
+   "equal": true
+  }
+ ],
+ "plants": [
+  {
+   "W": 7,
+   "dropped": 2,
+   "differs": true
+  },
+  {
+   "W": 15,
+   "dropped": 8,
+   "differs": true
+  }
+ ],
+ "config": {
+  "preset": "mice_F",
+  "het": "hom",
+  "dt": 0.0002518150688961322,
+  "n": 25013,
+  "W": [
+   1,
+   7,
+   15
+  ],
+  "source": "spec.md Clarifications 2026-10-30 (4075cd5); research R17"
+ },
+ "cap": {
+  "key": "hr8",
+  "frozen_cpu_h": 0.5,
+  "spent_by": {},
+  "left_cpu_h": 0.5
+ },
+ "cores": {
+  "logical": 15,
+  "performance": 5,
+  "efficiency": 10
+ },
+ "manifests_sha256": {
+  "tests/acceptance/langevin_004.toml": "9a20b4579f11aa1bf9d3c2de9fcedd872270751d419f4bbc0df765165a149996"
+ },
+ "naveh_ok_arg": {
+  "said": null,
+  "cap_cpu_h": null
+ },
+ "stop_rule": {
+  "projected_cpu_h": 0.2027696218481025,
+  "projected_from": "P1's mice_F|hom|clamp steps per individual x ns per individual-step x 5 draws",
+  "cap_cpu_h": 0.5,
+  "cap_frozen_cpu_h": 0.5,
+  "naveh_ok": null,
+  "cpu_spent_h": 0.12811845805555555,
+  "parent_cpu_s": 461.226465,
+  "worker_cpu_s": 0.0,
+  "capped": false
+ }
+}
