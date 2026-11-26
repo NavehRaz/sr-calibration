@@ -95,8 +95,8 @@
    "id": "paper",
    "include": true,
    "repo": "aging:code_5/sr_methods_preprint",
-   "ref": "HEAD",
-   "commit": "dbb262cf05dfe33f3e2926d4b026d23c5171c09f",
+   "ref": "bc6358c",
+   "commit": "bc6358cde2443c6ee9ddf9bf5aaf8049b51c6cc5",
    "paths": [
     "verify_claims.py",
     "claims.toml",
@@ -120,7 +120,7 @@
     "**/__pycache__/**"
    ],
    "files": 86,
-   "archive_sha256": "a41c9c954bd001864df70ee9e79a7072031fe017422e2b092ee12230d568e8d0"
+   "archive_sha256": "7ea4aaefd238356ca71dc6a0ec35591224f13689ba711459c6cabce666caf729"
   }
  ]
 }

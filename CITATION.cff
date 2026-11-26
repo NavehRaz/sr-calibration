@@ -14,5 +14,18 @@ authors:
     given-names: Uri
     affiliation: "Department of Molecular Cell Biology, Weizmann Institute of Science"
 license: BSD-3-Clause
-# doi: TBD (Zenodo version DOI, filled at release)
+# doi: the Zenodo version DOI of this release is created by the GitHub release (see the Zenodo record)
 # preferred-citation: the methods preprint (filled when posted)
+references:
+  - type: dataset
+    title: "sr-calibration 0.1.0: benchmark data and stored results for calibrating the saturating-removal model of aging"
+    version: "0.1.0"
+    doi: "10.5281/zenodo.24555552"
+    license: CC-BY-4.0
+    authors:
+      - family-names: Raz
+        given-names: Naveh
+      - family-names: Mayo
+        given-names: Avi
+      - family-names: Alon
+        given-names: Uri

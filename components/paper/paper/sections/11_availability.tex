@@ -2,11 +2,12 @@
 
 Everything needed to run the methods described here and to check their validation, including the frozen calibrator
 versions that studies citing this paper used, is released in one public repository, \code{sr-calibration}
-(\url{https://github.com/NavehRaz/sr-calibration}; code, BSD 3-Clause licence), with a linked data record (CC BY 4.0),
-both archived at Zenodo. This paper describes release 0.1.0. Each release is a version with its own DOI; a concept DOI always
-resolves to the newest version. A study cites the version it used (SI Table~\ref{tab:versions}
-maps each study to its version), and later versions add to the same record rather than replacing it.
-\NOTE{Placeholders until the release: the concept and version DOIs of the two Zenodo records.}
+(\url{https://github.com/NavehRaz/sr-calibration}; code, BSD 3-Clause licence), with a linked data record (CC BY 4.0;
+version 0.1.0: \href{https://doi.org/10.5281/zenodo.24555552}{doi:10.5281/zenodo.24555552}), both archived at Zenodo.
+This paper describes release 0.1.0; the DOI of its software record is shown on the repository's page. Each release is a
+version with its own DOI; a concept DOI always resolves to the newest version. A study cites the version it used (SI
+Table~\ref{tab:versions} maps each study to its version), and later versions add to the same record rather than
+replacing it.
 \begin{itemize}[leftmargin=1.5em,itemsep=1pt]
   \item \textbf{Software.} The \code{sraging} Python package at a tagged release: the likelihood engine, the default
     calibrator (\code{profile_jax2}, version 1.0.1), the leverage check, the cohort generator and the command-line
@@ -34,9 +35,3 @@ maps each study to its version), and later versions add to the same record rathe
 \end{itemize}
 The windowed fit W is in \code{sraging}. Future versions are planned to bring the group comparisons into \code{sraging}
 itself, after their own validation, together with a graphical interface and user documentation.
-
-% MISSING-ID: release-scope
-\MISSING{The release itself: the public repository with the contents listed above, its first tagged version and the
-Zenodo deposit.}{A methods paper is citable only if readers can run the methods and check the validation; the
-effect-comparison code and the benchmark records are private today.}{Assemble the repository from the frozen commits
-(no runs); the \code{sraging} session cuts its tag; Naveh makes the repository public and connects it to Zenodo.}

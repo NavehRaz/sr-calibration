@@ -94,7 +94,7 @@ note    = "joint fits, design effect, permutation tests, W0, as the mosquito stu
 id      = "paper"
 kind    = "code"
 repo    = "aging:code_5/sr_methods_preprint"
-ref     = "HEAD"                       # REPLACE with the commit of the posted version
+ref     = "bc6358c"                    # 2026-11-26: data DOI in §11. The bioRxiv version adds only the software DOI, which the GitHub release creates
 paths   = ["verify_claims.py", "claims.toml", "paper_paths.py", "paper_inputs.py", "release_inputs.json", "script_inputs.txt",
            "build.sh", "README.md", "paper", "tables", "figures", "sources/CLAIMS_FORMAT.md"]
 # Naveh 2026-11-23 (option a): released, without the two version-bridge scripts, which read the studies' own fits

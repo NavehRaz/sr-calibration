@@ -5,7 +5,8 @@ Code, frozen calibrator versions, tests and benchmark data for the methods prepr
 > Raz N, Mayo A, Alon U. *Calibrating the saturating-removal model of aging from survival data: exact likelihood,
 > identifiability and intervention effects.* bioRxiv (2026). DOI: TBD
 
-Release **0.1.0**. Software record (this repository on Zenodo): DOI TBD. Data record: DOI TBD.
+Release **0.1.0**. Data record: [doi:10.5281/zenodo.24555552](https://doi.org/10.5281/zenodo.24555552). Software record: this repository, archived by
+Zenodo when the GitHub release is published (its DOI is on that Zenodo record).
 Code: BSD 3-Clause (`LICENSE`). Data record: CC BY 4.0.
 
 ## What is here
@@ -31,11 +32,12 @@ uv sync --frozen                    # Python 3.14 and the exact pins of uv.lock
 ```
 
 `components/sraging/README.md` explains the input format, the choice of calibrator (J, H or W), and how to read the
-output; `examples/` has the worked example of the preprint (Section 8).
+output; `examples/` has the worked example of the preprint (Section 8). Its install section clones the authors'
+development repository, which is private: use `components/sraging/` of this repository instead.
 
 ## Recheck the preprint
 
-1. Download the zips of the data record and unzip them all into a folder `data/` at the top of this repository (or
+1. Download the zips of the data record ([doi:10.5281/zenodo.24555552](https://doi.org/10.5281/zenodo.24555552)) and unzip them all into a folder `data/` at the top of this repository (or
    anywhere, and set `SR_DATA` to that folder).
 2. Build the environment once: `cd components/sraging && uv sync --frozen --extra plots`.
 3. Recheck every number: `cd components/paper && ../sraging/.venv/bin/python -B verify_claims.py`.

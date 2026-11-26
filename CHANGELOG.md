@@ -17,6 +17,7 @@ First release, accompanying the methods preprint (Raz, Mayo and Alon, bioRxiv 20
 - **Data record:** library v6, the records of three calibrator runs with their cohort lists, the reports and explorer
   pages, the κ-fixed panel, the evidence files of W's validation, and the preprint's other public inputs
   (`paper_inputs/`), as one zip per entry.
+- **Data record DOI:** 10.5281/zenodo.24555552 (Zenodo, version 0.1.0).
 - **Known issues:** see `README.md`.
 - Recorded results keep the absolute paths and host names of the machine that produced them (provenance). The frozen
   calibrator tags are released byte-identical, so one comment line in a test fixture of each
